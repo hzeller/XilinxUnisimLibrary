@@ -29,1756 +29,1754 @@
 //  End Revision:
 ///////////////////////////////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module HBM_TWO_STACK_INTF #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter CLK_SEL_00 = "FALSE",
-  parameter CLK_SEL_01 = "FALSE",
-  parameter CLK_SEL_02 = "FALSE",
-  parameter CLK_SEL_03 = "FALSE",
-  parameter CLK_SEL_04 = "FALSE",
-  parameter CLK_SEL_05 = "FALSE",
-  parameter CLK_SEL_06 = "FALSE",
-  parameter CLK_SEL_07 = "FALSE",
-  parameter CLK_SEL_08 = "FALSE",
-  parameter CLK_SEL_09 = "FALSE",
-  parameter CLK_SEL_10 = "FALSE",
-  parameter CLK_SEL_11 = "FALSE",
-  parameter CLK_SEL_12 = "FALSE",
-  parameter CLK_SEL_13 = "FALSE",
-  parameter CLK_SEL_14 = "FALSE",
-  parameter CLK_SEL_15 = "FALSE",
-  parameter CLK_SEL_16 = "FALSE",
-  parameter CLK_SEL_17 = "FALSE",
-  parameter CLK_SEL_18 = "FALSE",
-  parameter CLK_SEL_19 = "FALSE",
-  parameter CLK_SEL_20 = "FALSE",
-  parameter CLK_SEL_21 = "FALSE",
-  parameter CLK_SEL_22 = "FALSE",
-  parameter CLK_SEL_23 = "FALSE",
-  parameter CLK_SEL_24 = "FALSE",
-  parameter CLK_SEL_25 = "FALSE",
-  parameter CLK_SEL_26 = "FALSE",
-  parameter CLK_SEL_27 = "FALSE",
-  parameter CLK_SEL_28 = "FALSE",
-  parameter CLK_SEL_29 = "FALSE",
-  parameter CLK_SEL_30 = "FALSE",
-  parameter CLK_SEL_31 = "FALSE",
-  parameter integer DATARATE_00 = 1800,
-  parameter integer DATARATE_01 = 1800,
-  parameter integer DATARATE_02 = 1800,
-  parameter integer DATARATE_03 = 1800,
-  parameter integer DATARATE_04 = 1800,
-  parameter integer DATARATE_05 = 1800,
-  parameter integer DATARATE_06 = 1800,
-  parameter integer DATARATE_07 = 1800,
-  parameter integer DATARATE_08 = 1800,
-  parameter integer DATARATE_09 = 1800,
-  parameter integer DATARATE_10 = 1800,
-  parameter integer DATARATE_11 = 1800,
-  parameter integer DATARATE_12 = 1800,
-  parameter integer DATARATE_13 = 1800,
-  parameter integer DATARATE_14 = 1800,
-  parameter integer DATARATE_15 = 1800,
-  parameter DA_LOCKOUT_0 = "FALSE",
-  parameter DA_LOCKOUT_1 = "FALSE",
-  parameter [0:0] IS_APB_0_PCLK_INVERTED = 1'b0,
-  parameter [0:0] IS_APB_0_PRESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_APB_1_PCLK_INVERTED = 1'b0,
-  parameter [0:0] IS_APB_1_PRESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_00_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_00_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_01_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_01_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_02_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_02_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_03_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_03_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_04_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_04_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_05_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_05_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_06_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_06_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_07_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_07_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_08_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_08_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_09_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_09_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_10_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_10_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_11_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_11_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_12_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_12_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_13_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_13_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_14_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_14_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_15_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_15_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_16_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_16_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_17_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_17_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_18_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_18_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_19_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_19_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_20_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_20_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_21_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_21_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_22_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_22_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_23_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_23_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_24_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_24_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_25_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_25_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_26_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_26_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_27_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_27_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_28_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_28_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_29_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_29_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_30_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_30_ARESET_N_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_31_ACLK_INVERTED = 1'b0,
-  parameter [0:0] IS_AXI_31_ARESET_N_INVERTED = 1'b0,
-  parameter MC_ENABLE_00 = "FALSE",
-  parameter MC_ENABLE_01 = "FALSE",
-  parameter MC_ENABLE_02 = "FALSE",
-  parameter MC_ENABLE_03 = "FALSE",
-  parameter MC_ENABLE_04 = "FALSE",
-  parameter MC_ENABLE_05 = "FALSE",
-  parameter MC_ENABLE_06 = "FALSE",
-  parameter MC_ENABLE_07 = "FALSE",
-  parameter MC_ENABLE_08 = "FALSE",
-  parameter MC_ENABLE_09 = "FALSE",
-  parameter MC_ENABLE_10 = "FALSE",
-  parameter MC_ENABLE_11 = "FALSE",
-  parameter MC_ENABLE_12 = "FALSE",
-  parameter MC_ENABLE_13 = "FALSE",
-  parameter MC_ENABLE_14 = "FALSE",
-  parameter MC_ENABLE_15 = "FALSE",
-  parameter MC_ENABLE_APB_00 = "FALSE",
-  parameter MC_ENABLE_APB_01 = "FALSE",
-  parameter integer PAGEHIT_PERCENT_00 = 75,
-  parameter integer PAGEHIT_PERCENT_01 = 75,
-  parameter PHY_ENABLE_00 = "FALSE",
-  parameter PHY_ENABLE_01 = "FALSE",
-  parameter PHY_ENABLE_02 = "FALSE",
-  parameter PHY_ENABLE_03 = "FALSE",
-  parameter PHY_ENABLE_04 = "FALSE",
-  parameter PHY_ENABLE_05 = "FALSE",
-  parameter PHY_ENABLE_06 = "FALSE",
-  parameter PHY_ENABLE_07 = "FALSE",
-  parameter PHY_ENABLE_08 = "FALSE",
-  parameter PHY_ENABLE_09 = "FALSE",
-  parameter PHY_ENABLE_10 = "FALSE",
-  parameter PHY_ENABLE_11 = "FALSE",
-  parameter PHY_ENABLE_12 = "FALSE",
-  parameter PHY_ENABLE_13 = "FALSE",
-  parameter PHY_ENABLE_14 = "FALSE",
-  parameter PHY_ENABLE_15 = "FALSE",
-  parameter PHY_ENABLE_16 = "FALSE",
-  parameter PHY_ENABLE_17 = "FALSE",
-  parameter PHY_ENABLE_18 = "FALSE",
-  parameter PHY_ENABLE_19 = "FALSE",
-  parameter PHY_ENABLE_20 = "FALSE",
-  parameter PHY_ENABLE_21 = "FALSE",
-  parameter PHY_ENABLE_22 = "FALSE",
-  parameter PHY_ENABLE_23 = "FALSE",
-  parameter PHY_ENABLE_24 = "FALSE",
-  parameter PHY_ENABLE_25 = "FALSE",
-  parameter PHY_ENABLE_26 = "FALSE",
-  parameter PHY_ENABLE_27 = "FALSE",
-  parameter PHY_ENABLE_28 = "FALSE",
-  parameter PHY_ENABLE_29 = "FALSE",
-  parameter PHY_ENABLE_30 = "FALSE",
-  parameter PHY_ENABLE_31 = "FALSE",
-  parameter PHY_ENABLE_APB_00 = "FALSE",
-  parameter PHY_ENABLE_APB_01 = "FALSE",
-  parameter PHY_PCLK_INVERT_01 = "FALSE",
-  parameter PHY_PCLK_INVERT_02 = "FALSE",
-  parameter integer READ_PERCENT_00 = 50,
-  parameter integer READ_PERCENT_01 = 50,
-  parameter integer READ_PERCENT_02 = 50,
-  parameter integer READ_PERCENT_03 = 50,
-  parameter integer READ_PERCENT_04 = 50,
-  parameter integer READ_PERCENT_05 = 50,
-  parameter integer READ_PERCENT_06 = 50,
-  parameter integer READ_PERCENT_07 = 50,
-  parameter integer READ_PERCENT_08 = 50,
-  parameter integer READ_PERCENT_09 = 50,
-  parameter integer READ_PERCENT_10 = 50,
-  parameter integer READ_PERCENT_11 = 50,
-  parameter integer READ_PERCENT_12 = 50,
-  parameter integer READ_PERCENT_13 = 50,
-  parameter integer READ_PERCENT_14 = 50,
-  parameter integer READ_PERCENT_15 = 50,
-  parameter integer READ_PERCENT_16 = 50,
-  parameter integer READ_PERCENT_17 = 50,
-  parameter integer READ_PERCENT_18 = 50,
-  parameter integer READ_PERCENT_19 = 50,
-  parameter integer READ_PERCENT_20 = 50,
-  parameter integer READ_PERCENT_21 = 50,
-  parameter integer READ_PERCENT_22 = 50,
-  parameter integer READ_PERCENT_23 = 50,
-  parameter integer READ_PERCENT_24 = 50,
-  parameter integer READ_PERCENT_25 = 50,
-  parameter integer READ_PERCENT_26 = 50,
-  parameter integer READ_PERCENT_27 = 50,
-  parameter integer READ_PERCENT_28 = 50,
-  parameter integer READ_PERCENT_29 = 50,
-  parameter integer READ_PERCENT_30 = 50,
-  parameter integer READ_PERCENT_31 = 50,
-  parameter SIM_DEVICE = "ULTRASCALE_PLUS",
-  parameter SWITCH_ENABLE_00 = "FALSE",
-  parameter SWITCH_ENABLE_01 = "FALSE",
-  parameter integer WRITE_PERCENT_00 = 50,
-  parameter integer WRITE_PERCENT_01 = 50,
-  parameter integer WRITE_PERCENT_02 = 50,
-  parameter integer WRITE_PERCENT_03 = 50,
-  parameter integer WRITE_PERCENT_04 = 50,
-  parameter integer WRITE_PERCENT_05 = 50,
-  parameter integer WRITE_PERCENT_06 = 50,
-  parameter integer WRITE_PERCENT_07 = 50,
-  parameter integer WRITE_PERCENT_08 = 50,
-  parameter integer WRITE_PERCENT_09 = 50,
-  parameter integer WRITE_PERCENT_10 = 50,
-  parameter integer WRITE_PERCENT_11 = 50,
-  parameter integer WRITE_PERCENT_12 = 50,
-  parameter integer WRITE_PERCENT_13 = 50,
-  parameter integer WRITE_PERCENT_14 = 50,
-  parameter integer WRITE_PERCENT_15 = 50,
-  parameter integer WRITE_PERCENT_16 = 50,
-  parameter integer WRITE_PERCENT_17 = 50,
-  parameter integer WRITE_PERCENT_18 = 50,
-  parameter integer WRITE_PERCENT_19 = 50,
-  parameter integer WRITE_PERCENT_20 = 50,
-  parameter integer WRITE_PERCENT_21 = 50,
-  parameter integer WRITE_PERCENT_22 = 50,
-  parameter integer WRITE_PERCENT_23 = 50,
-  parameter integer WRITE_PERCENT_24 = 50,
-  parameter integer WRITE_PERCENT_25 = 50,
-  parameter integer WRITE_PERCENT_26 = 50,
-  parameter integer WRITE_PERCENT_27 = 50,
-  parameter integer WRITE_PERCENT_28 = 50,
-  parameter integer WRITE_PERCENT_29 = 50,
-  parameter integer WRITE_PERCENT_30 = 50,
-  parameter integer WRITE_PERCENT_31 = 50
-)(
-  output [31:0] APB_0_PRDATA,
-  output APB_0_PREADY,
-  output APB_0_PSLVERR,
-  output [31:0] APB_1_PRDATA,
-  output APB_1_PREADY,
-  output APB_1_PSLVERR,
-  output AXI_00_ARREADY,
-  output AXI_00_AWREADY,
-  output [5:0] AXI_00_BID,
-  output [1:0] AXI_00_BRESP,
-  output AXI_00_BVALID,
-  output [1:0] AXI_00_DFI_AW_AERR_N,
-  output AXI_00_DFI_CLK_BUF,
-  output [7:0] AXI_00_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_00_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_00_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_00_DFI_DW_RDDATA_VALID,
-  output AXI_00_DFI_INIT_COMPLETE,
-  output AXI_00_DFI_PHYUPD_REQ,
-  output AXI_00_DFI_PHY_LP_STATE,
-  output AXI_00_DFI_RST_N_BUF,
-  output [5:0] AXI_00_MC_STATUS,
-  output [7:0] AXI_00_PHY_STATUS,
-  output [255:0] AXI_00_RDATA,
-  output [31:0] AXI_00_RDATA_PARITY,
-  output [5:0] AXI_00_RID,
-  output AXI_00_RLAST,
-  output [1:0] AXI_00_RRESP,
-  output AXI_00_RVALID,
-  output AXI_00_WREADY,
-  output AXI_01_ARREADY,
-  output AXI_01_AWREADY,
-  output [5:0] AXI_01_BID,
-  output [1:0] AXI_01_BRESP,
-  output AXI_01_BVALID,
-  output [1:0] AXI_01_DFI_AW_AERR_N,
-  output AXI_01_DFI_CLK_BUF,
-  output [7:0] AXI_01_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_01_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_01_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_01_DFI_DW_RDDATA_VALID,
-  output AXI_01_DFI_INIT_COMPLETE,
-  output AXI_01_DFI_PHYUPD_REQ,
-  output AXI_01_DFI_PHY_LP_STATE,
-  output AXI_01_DFI_RST_N_BUF,
-  output [255:0] AXI_01_RDATA,
-  output [31:0] AXI_01_RDATA_PARITY,
-  output [5:0] AXI_01_RID,
-  output AXI_01_RLAST,
-  output [1:0] AXI_01_RRESP,
-  output AXI_01_RVALID,
-  output AXI_01_WREADY,
-  output AXI_02_ARREADY,
-  output AXI_02_AWREADY,
-  output [5:0] AXI_02_BID,
-  output [1:0] AXI_02_BRESP,
-  output AXI_02_BVALID,
-  output [1:0] AXI_02_DFI_AW_AERR_N,
-  output AXI_02_DFI_CLK_BUF,
-  output [7:0] AXI_02_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_02_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_02_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_02_DFI_DW_RDDATA_VALID,
-  output AXI_02_DFI_INIT_COMPLETE,
-  output AXI_02_DFI_PHYUPD_REQ,
-  output AXI_02_DFI_PHY_LP_STATE,
-  output AXI_02_DFI_RST_N_BUF,
-  output [5:0] AXI_02_MC_STATUS,
-  output [7:0] AXI_02_PHY_STATUS,
-  output [255:0] AXI_02_RDATA,
-  output [31:0] AXI_02_RDATA_PARITY,
-  output [5:0] AXI_02_RID,
-  output AXI_02_RLAST,
-  output [1:0] AXI_02_RRESP,
-  output AXI_02_RVALID,
-  output AXI_02_WREADY,
-  output AXI_03_ARREADY,
-  output AXI_03_AWREADY,
-  output [5:0] AXI_03_BID,
-  output [1:0] AXI_03_BRESP,
-  output AXI_03_BVALID,
-  output [1:0] AXI_03_DFI_AW_AERR_N,
-  output AXI_03_DFI_CLK_BUF,
-  output [7:0] AXI_03_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_03_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_03_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_03_DFI_DW_RDDATA_VALID,
-  output AXI_03_DFI_INIT_COMPLETE,
-  output AXI_03_DFI_PHYUPD_REQ,
-  output AXI_03_DFI_PHY_LP_STATE,
-  output AXI_03_DFI_RST_N_BUF,
-  output [255:0] AXI_03_RDATA,
-  output [31:0] AXI_03_RDATA_PARITY,
-  output [5:0] AXI_03_RID,
-  output AXI_03_RLAST,
-  output [1:0] AXI_03_RRESP,
-  output AXI_03_RVALID,
-  output AXI_03_WREADY,
-  output AXI_04_ARREADY,
-  output AXI_04_AWREADY,
-  output [5:0] AXI_04_BID,
-  output [1:0] AXI_04_BRESP,
-  output AXI_04_BVALID,
-  output [1:0] AXI_04_DFI_AW_AERR_N,
-  output AXI_04_DFI_CLK_BUF,
-  output [7:0] AXI_04_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_04_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_04_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_04_DFI_DW_RDDATA_VALID,
-  output AXI_04_DFI_INIT_COMPLETE,
-  output AXI_04_DFI_PHYUPD_REQ,
-  output AXI_04_DFI_PHY_LP_STATE,
-  output AXI_04_DFI_RST_N_BUF,
-  output [5:0] AXI_04_MC_STATUS,
-  output [7:0] AXI_04_PHY_STATUS,
-  output [255:0] AXI_04_RDATA,
-  output [31:0] AXI_04_RDATA_PARITY,
-  output [5:0] AXI_04_RID,
-  output AXI_04_RLAST,
-  output [1:0] AXI_04_RRESP,
-  output AXI_04_RVALID,
-  output AXI_04_WREADY,
-  output AXI_05_ARREADY,
-  output AXI_05_AWREADY,
-  output [5:0] AXI_05_BID,
-  output [1:0] AXI_05_BRESP,
-  output AXI_05_BVALID,
-  output [1:0] AXI_05_DFI_AW_AERR_N,
-  output AXI_05_DFI_CLK_BUF,
-  output [7:0] AXI_05_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_05_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_05_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_05_DFI_DW_RDDATA_VALID,
-  output AXI_05_DFI_INIT_COMPLETE,
-  output AXI_05_DFI_PHYUPD_REQ,
-  output AXI_05_DFI_PHY_LP_STATE,
-  output AXI_05_DFI_RST_N_BUF,
-  output [255:0] AXI_05_RDATA,
-  output [31:0] AXI_05_RDATA_PARITY,
-  output [5:0] AXI_05_RID,
-  output AXI_05_RLAST,
-  output [1:0] AXI_05_RRESP,
-  output AXI_05_RVALID,
-  output AXI_05_WREADY,
-  output AXI_06_ARREADY,
-  output AXI_06_AWREADY,
-  output [5:0] AXI_06_BID,
-  output [1:0] AXI_06_BRESP,
-  output AXI_06_BVALID,
-  output [1:0] AXI_06_DFI_AW_AERR_N,
-  output AXI_06_DFI_CLK_BUF,
-  output [7:0] AXI_06_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_06_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_06_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_06_DFI_DW_RDDATA_VALID,
-  output AXI_06_DFI_INIT_COMPLETE,
-  output AXI_06_DFI_PHYUPD_REQ,
-  output AXI_06_DFI_PHY_LP_STATE,
-  output AXI_06_DFI_RST_N_BUF,
-  output [5:0] AXI_06_MC_STATUS,
-  output [7:0] AXI_06_PHY_STATUS,
-  output [255:0] AXI_06_RDATA,
-  output [31:0] AXI_06_RDATA_PARITY,
-  output [5:0] AXI_06_RID,
-  output AXI_06_RLAST,
-  output [1:0] AXI_06_RRESP,
-  output AXI_06_RVALID,
-  output AXI_06_WREADY,
-  output AXI_07_ARREADY,
-  output AXI_07_AWREADY,
-  output [5:0] AXI_07_BID,
-  output [1:0] AXI_07_BRESP,
-  output AXI_07_BVALID,
-  output [1:0] AXI_07_DFI_AW_AERR_N,
-  output AXI_07_DFI_CLK_BUF,
-  output [7:0] AXI_07_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_07_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_07_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_07_DFI_DW_RDDATA_VALID,
-  output AXI_07_DFI_INIT_COMPLETE,
-  output AXI_07_DFI_PHYUPD_REQ,
-  output AXI_07_DFI_PHY_LP_STATE,
-  output AXI_07_DFI_RST_N_BUF,
-  output [255:0] AXI_07_RDATA,
-  output [31:0] AXI_07_RDATA_PARITY,
-  output [5:0] AXI_07_RID,
-  output AXI_07_RLAST,
-  output [1:0] AXI_07_RRESP,
-  output AXI_07_RVALID,
-  output AXI_07_WREADY,
-  output AXI_08_ARREADY,
-  output AXI_08_AWREADY,
-  output [5:0] AXI_08_BID,
-  output [1:0] AXI_08_BRESP,
-  output AXI_08_BVALID,
-  output [1:0] AXI_08_DFI_AW_AERR_N,
-  output AXI_08_DFI_CLK_BUF,
-  output [7:0] AXI_08_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_08_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_08_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_08_DFI_DW_RDDATA_VALID,
-  output AXI_08_DFI_INIT_COMPLETE,
-  output AXI_08_DFI_PHYUPD_REQ,
-  output AXI_08_DFI_PHY_LP_STATE,
-  output AXI_08_DFI_RST_N_BUF,
-  output [5:0] AXI_08_MC_STATUS,
-  output [7:0] AXI_08_PHY_STATUS,
-  output [255:0] AXI_08_RDATA,
-  output [31:0] AXI_08_RDATA_PARITY,
-  output [5:0] AXI_08_RID,
-  output AXI_08_RLAST,
-  output [1:0] AXI_08_RRESP,
-  output AXI_08_RVALID,
-  output AXI_08_WREADY,
-  output AXI_09_ARREADY,
-  output AXI_09_AWREADY,
-  output [5:0] AXI_09_BID,
-  output [1:0] AXI_09_BRESP,
-  output AXI_09_BVALID,
-  output [1:0] AXI_09_DFI_AW_AERR_N,
-  output AXI_09_DFI_CLK_BUF,
-  output [7:0] AXI_09_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_09_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_09_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_09_DFI_DW_RDDATA_VALID,
-  output AXI_09_DFI_INIT_COMPLETE,
-  output AXI_09_DFI_PHYUPD_REQ,
-  output AXI_09_DFI_PHY_LP_STATE,
-  output AXI_09_DFI_RST_N_BUF,
-  output [255:0] AXI_09_RDATA,
-  output [31:0] AXI_09_RDATA_PARITY,
-  output [5:0] AXI_09_RID,
-  output AXI_09_RLAST,
-  output [1:0] AXI_09_RRESP,
-  output AXI_09_RVALID,
-  output AXI_09_WREADY,
-  output AXI_10_ARREADY,
-  output AXI_10_AWREADY,
-  output [5:0] AXI_10_BID,
-  output [1:0] AXI_10_BRESP,
-  output AXI_10_BVALID,
-  output [1:0] AXI_10_DFI_AW_AERR_N,
-  output AXI_10_DFI_CLK_BUF,
-  output [7:0] AXI_10_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_10_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_10_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_10_DFI_DW_RDDATA_VALID,
-  output AXI_10_DFI_INIT_COMPLETE,
-  output AXI_10_DFI_PHYUPD_REQ,
-  output AXI_10_DFI_PHY_LP_STATE,
-  output AXI_10_DFI_RST_N_BUF,
-  output [5:0] AXI_10_MC_STATUS,
-  output [7:0] AXI_10_PHY_STATUS,
-  output [255:0] AXI_10_RDATA,
-  output [31:0] AXI_10_RDATA_PARITY,
-  output [5:0] AXI_10_RID,
-  output AXI_10_RLAST,
-  output [1:0] AXI_10_RRESP,
-  output AXI_10_RVALID,
-  output AXI_10_WREADY,
-  output AXI_11_ARREADY,
-  output AXI_11_AWREADY,
-  output [5:0] AXI_11_BID,
-  output [1:0] AXI_11_BRESP,
-  output AXI_11_BVALID,
-  output [1:0] AXI_11_DFI_AW_AERR_N,
-  output AXI_11_DFI_CLK_BUF,
-  output [7:0] AXI_11_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_11_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_11_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_11_DFI_DW_RDDATA_VALID,
-  output AXI_11_DFI_INIT_COMPLETE,
-  output AXI_11_DFI_PHYUPD_REQ,
-  output AXI_11_DFI_PHY_LP_STATE,
-  output AXI_11_DFI_RST_N_BUF,
-  output [255:0] AXI_11_RDATA,
-  output [31:0] AXI_11_RDATA_PARITY,
-  output [5:0] AXI_11_RID,
-  output AXI_11_RLAST,
-  output [1:0] AXI_11_RRESP,
-  output AXI_11_RVALID,
-  output AXI_11_WREADY,
-  output AXI_12_ARREADY,
-  output AXI_12_AWREADY,
-  output [5:0] AXI_12_BID,
-  output [1:0] AXI_12_BRESP,
-  output AXI_12_BVALID,
-  output [1:0] AXI_12_DFI_AW_AERR_N,
-  output AXI_12_DFI_CLK_BUF,
-  output [7:0] AXI_12_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_12_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_12_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_12_DFI_DW_RDDATA_VALID,
-  output AXI_12_DFI_INIT_COMPLETE,
-  output AXI_12_DFI_PHYUPD_REQ,
-  output AXI_12_DFI_PHY_LP_STATE,
-  output AXI_12_DFI_RST_N_BUF,
-  output [5:0] AXI_12_MC_STATUS,
-  output [7:0] AXI_12_PHY_STATUS,
-  output [255:0] AXI_12_RDATA,
-  output [31:0] AXI_12_RDATA_PARITY,
-  output [5:0] AXI_12_RID,
-  output AXI_12_RLAST,
-  output [1:0] AXI_12_RRESP,
-  output AXI_12_RVALID,
-  output AXI_12_WREADY,
-  output AXI_13_ARREADY,
-  output AXI_13_AWREADY,
-  output [5:0] AXI_13_BID,
-  output [1:0] AXI_13_BRESP,
-  output AXI_13_BVALID,
-  output [1:0] AXI_13_DFI_AW_AERR_N,
-  output AXI_13_DFI_CLK_BUF,
-  output [7:0] AXI_13_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_13_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_13_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_13_DFI_DW_RDDATA_VALID,
-  output AXI_13_DFI_INIT_COMPLETE,
-  output AXI_13_DFI_PHYUPD_REQ,
-  output AXI_13_DFI_PHY_LP_STATE,
-  output AXI_13_DFI_RST_N_BUF,
-  output [255:0] AXI_13_RDATA,
-  output [31:0] AXI_13_RDATA_PARITY,
-  output [5:0] AXI_13_RID,
-  output AXI_13_RLAST,
-  output [1:0] AXI_13_RRESP,
-  output AXI_13_RVALID,
-  output AXI_13_WREADY,
-  output AXI_14_ARREADY,
-  output AXI_14_AWREADY,
-  output [5:0] AXI_14_BID,
-  output [1:0] AXI_14_BRESP,
-  output AXI_14_BVALID,
-  output [1:0] AXI_14_DFI_AW_AERR_N,
-  output AXI_14_DFI_CLK_BUF,
-  output [7:0] AXI_14_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_14_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_14_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_14_DFI_DW_RDDATA_VALID,
-  output AXI_14_DFI_INIT_COMPLETE,
-  output AXI_14_DFI_PHYUPD_REQ,
-  output AXI_14_DFI_PHY_LP_STATE,
-  output AXI_14_DFI_RST_N_BUF,
-  output [5:0] AXI_14_MC_STATUS,
-  output [7:0] AXI_14_PHY_STATUS,
-  output [255:0] AXI_14_RDATA,
-  output [31:0] AXI_14_RDATA_PARITY,
-  output [5:0] AXI_14_RID,
-  output AXI_14_RLAST,
-  output [1:0] AXI_14_RRESP,
-  output AXI_14_RVALID,
-  output AXI_14_WREADY,
-  output AXI_15_ARREADY,
-  output AXI_15_AWREADY,
-  output [5:0] AXI_15_BID,
-  output [1:0] AXI_15_BRESP,
-  output AXI_15_BVALID,
-  output [1:0] AXI_15_DFI_AW_AERR_N,
-  output AXI_15_DFI_CLK_BUF,
-  output [7:0] AXI_15_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_15_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_15_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_15_DFI_DW_RDDATA_VALID,
-  output AXI_15_DFI_INIT_COMPLETE,
-  output AXI_15_DFI_PHYUPD_REQ,
-  output AXI_15_DFI_PHY_LP_STATE,
-  output AXI_15_DFI_RST_N_BUF,
-  output [255:0] AXI_15_RDATA,
-  output [31:0] AXI_15_RDATA_PARITY,
-  output [5:0] AXI_15_RID,
-  output AXI_15_RLAST,
-  output [1:0] AXI_15_RRESP,
-  output AXI_15_RVALID,
-  output AXI_15_WREADY,
-  output AXI_16_ARREADY,
-  output AXI_16_AWREADY,
-  output [5:0] AXI_16_BID,
-  output [1:0] AXI_16_BRESP,
-  output AXI_16_BVALID,
-  output [1:0] AXI_16_DFI_AW_AERR_N,
-  output AXI_16_DFI_CLK_BUF,
-  output [7:0] AXI_16_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_16_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_16_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_16_DFI_DW_RDDATA_VALID,
-  output AXI_16_DFI_INIT_COMPLETE,
-  output AXI_16_DFI_PHYUPD_REQ,
-  output AXI_16_DFI_PHY_LP_STATE,
-  output AXI_16_DFI_RST_N_BUF,
-  output [5:0] AXI_16_MC_STATUS,
-  output [7:0] AXI_16_PHY_STATUS,
-  output [255:0] AXI_16_RDATA,
-  output [31:0] AXI_16_RDATA_PARITY,
-  output [5:0] AXI_16_RID,
-  output AXI_16_RLAST,
-  output [1:0] AXI_16_RRESP,
-  output AXI_16_RVALID,
-  output AXI_16_WREADY,
-  output AXI_17_ARREADY,
-  output AXI_17_AWREADY,
-  output [5:0] AXI_17_BID,
-  output [1:0] AXI_17_BRESP,
-  output AXI_17_BVALID,
-  output [1:0] AXI_17_DFI_AW_AERR_N,
-  output AXI_17_DFI_CLK_BUF,
-  output [7:0] AXI_17_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_17_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_17_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_17_DFI_DW_RDDATA_VALID,
-  output AXI_17_DFI_INIT_COMPLETE,
-  output AXI_17_DFI_PHYUPD_REQ,
-  output AXI_17_DFI_PHY_LP_STATE,
-  output AXI_17_DFI_RST_N_BUF,
-  output [255:0] AXI_17_RDATA,
-  output [31:0] AXI_17_RDATA_PARITY,
-  output [5:0] AXI_17_RID,
-  output AXI_17_RLAST,
-  output [1:0] AXI_17_RRESP,
-  output AXI_17_RVALID,
-  output AXI_17_WREADY,
-  output AXI_18_ARREADY,
-  output AXI_18_AWREADY,
-  output [5:0] AXI_18_BID,
-  output [1:0] AXI_18_BRESP,
-  output AXI_18_BVALID,
-  output [1:0] AXI_18_DFI_AW_AERR_N,
-  output AXI_18_DFI_CLK_BUF,
-  output [7:0] AXI_18_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_18_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_18_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_18_DFI_DW_RDDATA_VALID,
-  output AXI_18_DFI_INIT_COMPLETE,
-  output AXI_18_DFI_PHYUPD_REQ,
-  output AXI_18_DFI_PHY_LP_STATE,
-  output AXI_18_DFI_RST_N_BUF,
-  output [5:0] AXI_18_MC_STATUS,
-  output [7:0] AXI_18_PHY_STATUS,
-  output [255:0] AXI_18_RDATA,
-  output [31:0] AXI_18_RDATA_PARITY,
-  output [5:0] AXI_18_RID,
-  output AXI_18_RLAST,
-  output [1:0] AXI_18_RRESP,
-  output AXI_18_RVALID,
-  output AXI_18_WREADY,
-  output AXI_19_ARREADY,
-  output AXI_19_AWREADY,
-  output [5:0] AXI_19_BID,
-  output [1:0] AXI_19_BRESP,
-  output AXI_19_BVALID,
-  output [1:0] AXI_19_DFI_AW_AERR_N,
-  output AXI_19_DFI_CLK_BUF,
-  output [7:0] AXI_19_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_19_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_19_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_19_DFI_DW_RDDATA_VALID,
-  output AXI_19_DFI_INIT_COMPLETE,
-  output AXI_19_DFI_PHYUPD_REQ,
-  output AXI_19_DFI_PHY_LP_STATE,
-  output AXI_19_DFI_RST_N_BUF,
-  output [255:0] AXI_19_RDATA,
-  output [31:0] AXI_19_RDATA_PARITY,
-  output [5:0] AXI_19_RID,
-  output AXI_19_RLAST,
-  output [1:0] AXI_19_RRESP,
-  output AXI_19_RVALID,
-  output AXI_19_WREADY,
-  output AXI_20_ARREADY,
-  output AXI_20_AWREADY,
-  output [5:0] AXI_20_BID,
-  output [1:0] AXI_20_BRESP,
-  output AXI_20_BVALID,
-  output [1:0] AXI_20_DFI_AW_AERR_N,
-  output AXI_20_DFI_CLK_BUF,
-  output [7:0] AXI_20_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_20_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_20_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_20_DFI_DW_RDDATA_VALID,
-  output AXI_20_DFI_INIT_COMPLETE,
-  output AXI_20_DFI_PHYUPD_REQ,
-  output AXI_20_DFI_PHY_LP_STATE,
-  output AXI_20_DFI_RST_N_BUF,
-  output [5:0] AXI_20_MC_STATUS,
-  output [7:0] AXI_20_PHY_STATUS,
-  output [255:0] AXI_20_RDATA,
-  output [31:0] AXI_20_RDATA_PARITY,
-  output [5:0] AXI_20_RID,
-  output AXI_20_RLAST,
-  output [1:0] AXI_20_RRESP,
-  output AXI_20_RVALID,
-  output AXI_20_WREADY,
-  output AXI_21_ARREADY,
-  output AXI_21_AWREADY,
-  output [5:0] AXI_21_BID,
-  output [1:0] AXI_21_BRESP,
-  output AXI_21_BVALID,
-  output [1:0] AXI_21_DFI_AW_AERR_N,
-  output AXI_21_DFI_CLK_BUF,
-  output [7:0] AXI_21_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_21_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_21_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_21_DFI_DW_RDDATA_VALID,
-  output AXI_21_DFI_INIT_COMPLETE,
-  output AXI_21_DFI_PHYUPD_REQ,
-  output AXI_21_DFI_PHY_LP_STATE,
-  output AXI_21_DFI_RST_N_BUF,
-  output [255:0] AXI_21_RDATA,
-  output [31:0] AXI_21_RDATA_PARITY,
-  output [5:0] AXI_21_RID,
-  output AXI_21_RLAST,
-  output [1:0] AXI_21_RRESP,
-  output AXI_21_RVALID,
-  output AXI_21_WREADY,
-  output AXI_22_ARREADY,
-  output AXI_22_AWREADY,
-  output [5:0] AXI_22_BID,
-  output [1:0] AXI_22_BRESP,
-  output AXI_22_BVALID,
-  output [1:0] AXI_22_DFI_AW_AERR_N,
-  output AXI_22_DFI_CLK_BUF,
-  output [7:0] AXI_22_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_22_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_22_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_22_DFI_DW_RDDATA_VALID,
-  output AXI_22_DFI_INIT_COMPLETE,
-  output AXI_22_DFI_PHYUPD_REQ,
-  output AXI_22_DFI_PHY_LP_STATE,
-  output AXI_22_DFI_RST_N_BUF,
-  output [5:0] AXI_22_MC_STATUS,
-  output [7:0] AXI_22_PHY_STATUS,
-  output [255:0] AXI_22_RDATA,
-  output [31:0] AXI_22_RDATA_PARITY,
-  output [5:0] AXI_22_RID,
-  output AXI_22_RLAST,
-  output [1:0] AXI_22_RRESP,
-  output AXI_22_RVALID,
-  output AXI_22_WREADY,
-  output AXI_23_ARREADY,
-  output AXI_23_AWREADY,
-  output [5:0] AXI_23_BID,
-  output [1:0] AXI_23_BRESP,
-  output AXI_23_BVALID,
-  output [1:0] AXI_23_DFI_AW_AERR_N,
-  output AXI_23_DFI_CLK_BUF,
-  output [7:0] AXI_23_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_23_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_23_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_23_DFI_DW_RDDATA_VALID,
-  output AXI_23_DFI_INIT_COMPLETE,
-  output AXI_23_DFI_PHYUPD_REQ,
-  output AXI_23_DFI_PHY_LP_STATE,
-  output AXI_23_DFI_RST_N_BUF,
-  output [255:0] AXI_23_RDATA,
-  output [31:0] AXI_23_RDATA_PARITY,
-  output [5:0] AXI_23_RID,
-  output AXI_23_RLAST,
-  output [1:0] AXI_23_RRESP,
-  output AXI_23_RVALID,
-  output AXI_23_WREADY,
-  output AXI_24_ARREADY,
-  output AXI_24_AWREADY,
-  output [5:0] AXI_24_BID,
-  output [1:0] AXI_24_BRESP,
-  output AXI_24_BVALID,
-  output [1:0] AXI_24_DFI_AW_AERR_N,
-  output AXI_24_DFI_CLK_BUF,
-  output [7:0] AXI_24_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_24_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_24_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_24_DFI_DW_RDDATA_VALID,
-  output AXI_24_DFI_INIT_COMPLETE,
-  output AXI_24_DFI_PHYUPD_REQ,
-  output AXI_24_DFI_PHY_LP_STATE,
-  output AXI_24_DFI_RST_N_BUF,
-  output [5:0] AXI_24_MC_STATUS,
-  output [7:0] AXI_24_PHY_STATUS,
-  output [255:0] AXI_24_RDATA,
-  output [31:0] AXI_24_RDATA_PARITY,
-  output [5:0] AXI_24_RID,
-  output AXI_24_RLAST,
-  output [1:0] AXI_24_RRESP,
-  output AXI_24_RVALID,
-  output AXI_24_WREADY,
-  output AXI_25_ARREADY,
-  output AXI_25_AWREADY,
-  output [5:0] AXI_25_BID,
-  output [1:0] AXI_25_BRESP,
-  output AXI_25_BVALID,
-  output [1:0] AXI_25_DFI_AW_AERR_N,
-  output AXI_25_DFI_CLK_BUF,
-  output [7:0] AXI_25_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_25_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_25_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_25_DFI_DW_RDDATA_VALID,
-  output AXI_25_DFI_INIT_COMPLETE,
-  output AXI_25_DFI_PHYUPD_REQ,
-  output AXI_25_DFI_PHY_LP_STATE,
-  output AXI_25_DFI_RST_N_BUF,
-  output [255:0] AXI_25_RDATA,
-  output [31:0] AXI_25_RDATA_PARITY,
-  output [5:0] AXI_25_RID,
-  output AXI_25_RLAST,
-  output [1:0] AXI_25_RRESP,
-  output AXI_25_RVALID,
-  output AXI_25_WREADY,
-  output AXI_26_ARREADY,
-  output AXI_26_AWREADY,
-  output [5:0] AXI_26_BID,
-  output [1:0] AXI_26_BRESP,
-  output AXI_26_BVALID,
-  output [1:0] AXI_26_DFI_AW_AERR_N,
-  output AXI_26_DFI_CLK_BUF,
-  output [7:0] AXI_26_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_26_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_26_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_26_DFI_DW_RDDATA_VALID,
-  output AXI_26_DFI_INIT_COMPLETE,
-  output AXI_26_DFI_PHYUPD_REQ,
-  output AXI_26_DFI_PHY_LP_STATE,
-  output AXI_26_DFI_RST_N_BUF,
-  output [5:0] AXI_26_MC_STATUS,
-  output [7:0] AXI_26_PHY_STATUS,
-  output [255:0] AXI_26_RDATA,
-  output [31:0] AXI_26_RDATA_PARITY,
-  output [5:0] AXI_26_RID,
-  output AXI_26_RLAST,
-  output [1:0] AXI_26_RRESP,
-  output AXI_26_RVALID,
-  output AXI_26_WREADY,
-  output AXI_27_ARREADY,
-  output AXI_27_AWREADY,
-  output [5:0] AXI_27_BID,
-  output [1:0] AXI_27_BRESP,
-  output AXI_27_BVALID,
-  output [1:0] AXI_27_DFI_AW_AERR_N,
-  output AXI_27_DFI_CLK_BUF,
-  output [7:0] AXI_27_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_27_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_27_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_27_DFI_DW_RDDATA_VALID,
-  output AXI_27_DFI_INIT_COMPLETE,
-  output AXI_27_DFI_PHYUPD_REQ,
-  output AXI_27_DFI_PHY_LP_STATE,
-  output AXI_27_DFI_RST_N_BUF,
-  output [255:0] AXI_27_RDATA,
-  output [31:0] AXI_27_RDATA_PARITY,
-  output [5:0] AXI_27_RID,
-  output AXI_27_RLAST,
-  output [1:0] AXI_27_RRESP,
-  output AXI_27_RVALID,
-  output AXI_27_WREADY,
-  output AXI_28_ARREADY,
-  output AXI_28_AWREADY,
-  output [5:0] AXI_28_BID,
-  output [1:0] AXI_28_BRESP,
-  output AXI_28_BVALID,
-  output [1:0] AXI_28_DFI_AW_AERR_N,
-  output AXI_28_DFI_CLK_BUF,
-  output [7:0] AXI_28_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_28_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_28_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_28_DFI_DW_RDDATA_VALID,
-  output AXI_28_DFI_INIT_COMPLETE,
-  output AXI_28_DFI_PHYUPD_REQ,
-  output AXI_28_DFI_PHY_LP_STATE,
-  output AXI_28_DFI_RST_N_BUF,
-  output [5:0] AXI_28_MC_STATUS,
-  output [7:0] AXI_28_PHY_STATUS,
-  output [255:0] AXI_28_RDATA,
-  output [31:0] AXI_28_RDATA_PARITY,
-  output [5:0] AXI_28_RID,
-  output AXI_28_RLAST,
-  output [1:0] AXI_28_RRESP,
-  output AXI_28_RVALID,
-  output AXI_28_WREADY,
-  output AXI_29_ARREADY,
-  output AXI_29_AWREADY,
-  output [5:0] AXI_29_BID,
-  output [1:0] AXI_29_BRESP,
-  output AXI_29_BVALID,
-  output [1:0] AXI_29_DFI_AW_AERR_N,
-  output AXI_29_DFI_CLK_BUF,
-  output [7:0] AXI_29_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_29_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_29_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_29_DFI_DW_RDDATA_VALID,
-  output AXI_29_DFI_INIT_COMPLETE,
-  output AXI_29_DFI_PHYUPD_REQ,
-  output AXI_29_DFI_PHY_LP_STATE,
-  output AXI_29_DFI_RST_N_BUF,
-  output [255:0] AXI_29_RDATA,
-  output [31:0] AXI_29_RDATA_PARITY,
-  output [5:0] AXI_29_RID,
-  output AXI_29_RLAST,
-  output [1:0] AXI_29_RRESP,
-  output AXI_29_RVALID,
-  output AXI_29_WREADY,
-  output AXI_30_ARREADY,
-  output AXI_30_AWREADY,
-  output [5:0] AXI_30_BID,
-  output [1:0] AXI_30_BRESP,
-  output AXI_30_BVALID,
-  output [1:0] AXI_30_DFI_AW_AERR_N,
-  output AXI_30_DFI_CLK_BUF,
-  output [7:0] AXI_30_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_30_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_30_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_30_DFI_DW_RDDATA_VALID,
-  output AXI_30_DFI_INIT_COMPLETE,
-  output AXI_30_DFI_PHYUPD_REQ,
-  output AXI_30_DFI_PHY_LP_STATE,
-  output AXI_30_DFI_RST_N_BUF,
-  output [5:0] AXI_30_MC_STATUS,
-  output [7:0] AXI_30_PHY_STATUS,
-  output [255:0] AXI_30_RDATA,
-  output [31:0] AXI_30_RDATA_PARITY,
-  output [5:0] AXI_30_RID,
-  output AXI_30_RLAST,
-  output [1:0] AXI_30_RRESP,
-  output AXI_30_RVALID,
-  output AXI_30_WREADY,
-  output AXI_31_ARREADY,
-  output AXI_31_AWREADY,
-  output [5:0] AXI_31_BID,
-  output [1:0] AXI_31_BRESP,
-  output AXI_31_BVALID,
-  output [1:0] AXI_31_DFI_AW_AERR_N,
-  output AXI_31_DFI_CLK_BUF,
-  output [7:0] AXI_31_DFI_DBI_BYTE_DISABLE,
-  output [20:0] AXI_31_DFI_DW_RDDATA_DBI,
-  output [7:0] AXI_31_DFI_DW_RDDATA_DERR,
-  output [1:0] AXI_31_DFI_DW_RDDATA_VALID,
-  output AXI_31_DFI_INIT_COMPLETE,
-  output AXI_31_DFI_PHYUPD_REQ,
-  output AXI_31_DFI_PHY_LP_STATE,
-  output AXI_31_DFI_RST_N_BUF,
-  output [255:0] AXI_31_RDATA,
-  output [31:0] AXI_31_RDATA_PARITY,
-  output [5:0] AXI_31_RID,
-  output AXI_31_RLAST,
-  output [1:0] AXI_31_RRESP,
-  output AXI_31_RVALID,
-  output AXI_31_WREADY,
-  output DRAM_0_STAT_CATTRIP,
-  output [2:0] DRAM_0_STAT_TEMP,
-  output DRAM_1_STAT_CATTRIP,
-  output [2:0] DRAM_1_STAT_TEMP,
+    parameter CLK_SEL_00 = "FALSE",
+    parameter CLK_SEL_01 = "FALSE",
+    parameter CLK_SEL_02 = "FALSE",
+    parameter CLK_SEL_03 = "FALSE",
+    parameter CLK_SEL_04 = "FALSE",
+    parameter CLK_SEL_05 = "FALSE",
+    parameter CLK_SEL_06 = "FALSE",
+    parameter CLK_SEL_07 = "FALSE",
+    parameter CLK_SEL_08 = "FALSE",
+    parameter CLK_SEL_09 = "FALSE",
+    parameter CLK_SEL_10 = "FALSE",
+    parameter CLK_SEL_11 = "FALSE",
+    parameter CLK_SEL_12 = "FALSE",
+    parameter CLK_SEL_13 = "FALSE",
+    parameter CLK_SEL_14 = "FALSE",
+    parameter CLK_SEL_15 = "FALSE",
+    parameter CLK_SEL_16 = "FALSE",
+    parameter CLK_SEL_17 = "FALSE",
+    parameter CLK_SEL_18 = "FALSE",
+    parameter CLK_SEL_19 = "FALSE",
+    parameter CLK_SEL_20 = "FALSE",
+    parameter CLK_SEL_21 = "FALSE",
+    parameter CLK_SEL_22 = "FALSE",
+    parameter CLK_SEL_23 = "FALSE",
+    parameter CLK_SEL_24 = "FALSE",
+    parameter CLK_SEL_25 = "FALSE",
+    parameter CLK_SEL_26 = "FALSE",
+    parameter CLK_SEL_27 = "FALSE",
+    parameter CLK_SEL_28 = "FALSE",
+    parameter CLK_SEL_29 = "FALSE",
+    parameter CLK_SEL_30 = "FALSE",
+    parameter CLK_SEL_31 = "FALSE",
+    parameter integer DATARATE_00 = 1800,
+    parameter integer DATARATE_01 = 1800,
+    parameter integer DATARATE_02 = 1800,
+    parameter integer DATARATE_03 = 1800,
+    parameter integer DATARATE_04 = 1800,
+    parameter integer DATARATE_05 = 1800,
+    parameter integer DATARATE_06 = 1800,
+    parameter integer DATARATE_07 = 1800,
+    parameter integer DATARATE_08 = 1800,
+    parameter integer DATARATE_09 = 1800,
+    parameter integer DATARATE_10 = 1800,
+    parameter integer DATARATE_11 = 1800,
+    parameter integer DATARATE_12 = 1800,
+    parameter integer DATARATE_13 = 1800,
+    parameter integer DATARATE_14 = 1800,
+    parameter integer DATARATE_15 = 1800,
+    parameter DA_LOCKOUT_0 = "FALSE",
+    parameter DA_LOCKOUT_1 = "FALSE",
+    parameter [0:0] IS_APB_0_PCLK_INVERTED = 1'b0,
+    parameter [0:0] IS_APB_0_PRESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_APB_1_PCLK_INVERTED = 1'b0,
+    parameter [0:0] IS_APB_1_PRESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_00_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_00_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_01_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_01_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_02_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_02_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_03_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_03_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_04_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_04_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_05_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_05_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_06_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_06_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_07_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_07_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_08_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_08_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_09_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_09_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_10_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_10_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_11_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_11_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_12_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_12_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_13_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_13_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_14_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_14_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_15_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_15_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_16_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_16_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_17_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_17_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_18_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_18_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_19_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_19_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_20_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_20_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_21_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_21_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_22_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_22_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_23_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_23_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_24_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_24_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_25_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_25_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_26_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_26_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_27_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_27_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_28_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_28_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_29_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_29_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_30_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_30_ARESET_N_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_31_ACLK_INVERTED = 1'b0,
+    parameter [0:0] IS_AXI_31_ARESET_N_INVERTED = 1'b0,
+    parameter MC_ENABLE_00 = "FALSE",
+    parameter MC_ENABLE_01 = "FALSE",
+    parameter MC_ENABLE_02 = "FALSE",
+    parameter MC_ENABLE_03 = "FALSE",
+    parameter MC_ENABLE_04 = "FALSE",
+    parameter MC_ENABLE_05 = "FALSE",
+    parameter MC_ENABLE_06 = "FALSE",
+    parameter MC_ENABLE_07 = "FALSE",
+    parameter MC_ENABLE_08 = "FALSE",
+    parameter MC_ENABLE_09 = "FALSE",
+    parameter MC_ENABLE_10 = "FALSE",
+    parameter MC_ENABLE_11 = "FALSE",
+    parameter MC_ENABLE_12 = "FALSE",
+    parameter MC_ENABLE_13 = "FALSE",
+    parameter MC_ENABLE_14 = "FALSE",
+    parameter MC_ENABLE_15 = "FALSE",
+    parameter MC_ENABLE_APB_00 = "FALSE",
+    parameter MC_ENABLE_APB_01 = "FALSE",
+    parameter integer PAGEHIT_PERCENT_00 = 75,
+    parameter integer PAGEHIT_PERCENT_01 = 75,
+    parameter PHY_ENABLE_00 = "FALSE",
+    parameter PHY_ENABLE_01 = "FALSE",
+    parameter PHY_ENABLE_02 = "FALSE",
+    parameter PHY_ENABLE_03 = "FALSE",
+    parameter PHY_ENABLE_04 = "FALSE",
+    parameter PHY_ENABLE_05 = "FALSE",
+    parameter PHY_ENABLE_06 = "FALSE",
+    parameter PHY_ENABLE_07 = "FALSE",
+    parameter PHY_ENABLE_08 = "FALSE",
+    parameter PHY_ENABLE_09 = "FALSE",
+    parameter PHY_ENABLE_10 = "FALSE",
+    parameter PHY_ENABLE_11 = "FALSE",
+    parameter PHY_ENABLE_12 = "FALSE",
+    parameter PHY_ENABLE_13 = "FALSE",
+    parameter PHY_ENABLE_14 = "FALSE",
+    parameter PHY_ENABLE_15 = "FALSE",
+    parameter PHY_ENABLE_16 = "FALSE",
+    parameter PHY_ENABLE_17 = "FALSE",
+    parameter PHY_ENABLE_18 = "FALSE",
+    parameter PHY_ENABLE_19 = "FALSE",
+    parameter PHY_ENABLE_20 = "FALSE",
+    parameter PHY_ENABLE_21 = "FALSE",
+    parameter PHY_ENABLE_22 = "FALSE",
+    parameter PHY_ENABLE_23 = "FALSE",
+    parameter PHY_ENABLE_24 = "FALSE",
+    parameter PHY_ENABLE_25 = "FALSE",
+    parameter PHY_ENABLE_26 = "FALSE",
+    parameter PHY_ENABLE_27 = "FALSE",
+    parameter PHY_ENABLE_28 = "FALSE",
+    parameter PHY_ENABLE_29 = "FALSE",
+    parameter PHY_ENABLE_30 = "FALSE",
+    parameter PHY_ENABLE_31 = "FALSE",
+    parameter PHY_ENABLE_APB_00 = "FALSE",
+    parameter PHY_ENABLE_APB_01 = "FALSE",
+    parameter PHY_PCLK_INVERT_01 = "FALSE",
+    parameter PHY_PCLK_INVERT_02 = "FALSE",
+    parameter integer READ_PERCENT_00 = 50,
+    parameter integer READ_PERCENT_01 = 50,
+    parameter integer READ_PERCENT_02 = 50,
+    parameter integer READ_PERCENT_03 = 50,
+    parameter integer READ_PERCENT_04 = 50,
+    parameter integer READ_PERCENT_05 = 50,
+    parameter integer READ_PERCENT_06 = 50,
+    parameter integer READ_PERCENT_07 = 50,
+    parameter integer READ_PERCENT_08 = 50,
+    parameter integer READ_PERCENT_09 = 50,
+    parameter integer READ_PERCENT_10 = 50,
+    parameter integer READ_PERCENT_11 = 50,
+    parameter integer READ_PERCENT_12 = 50,
+    parameter integer READ_PERCENT_13 = 50,
+    parameter integer READ_PERCENT_14 = 50,
+    parameter integer READ_PERCENT_15 = 50,
+    parameter integer READ_PERCENT_16 = 50,
+    parameter integer READ_PERCENT_17 = 50,
+    parameter integer READ_PERCENT_18 = 50,
+    parameter integer READ_PERCENT_19 = 50,
+    parameter integer READ_PERCENT_20 = 50,
+    parameter integer READ_PERCENT_21 = 50,
+    parameter integer READ_PERCENT_22 = 50,
+    parameter integer READ_PERCENT_23 = 50,
+    parameter integer READ_PERCENT_24 = 50,
+    parameter integer READ_PERCENT_25 = 50,
+    parameter integer READ_PERCENT_26 = 50,
+    parameter integer READ_PERCENT_27 = 50,
+    parameter integer READ_PERCENT_28 = 50,
+    parameter integer READ_PERCENT_29 = 50,
+    parameter integer READ_PERCENT_30 = 50,
+    parameter integer READ_PERCENT_31 = 50,
+    parameter SIM_DEVICE = "ULTRASCALE_PLUS",
+    parameter SWITCH_ENABLE_00 = "FALSE",
+    parameter SWITCH_ENABLE_01 = "FALSE",
+    parameter integer WRITE_PERCENT_00 = 50,
+    parameter integer WRITE_PERCENT_01 = 50,
+    parameter integer WRITE_PERCENT_02 = 50,
+    parameter integer WRITE_PERCENT_03 = 50,
+    parameter integer WRITE_PERCENT_04 = 50,
+    parameter integer WRITE_PERCENT_05 = 50,
+    parameter integer WRITE_PERCENT_06 = 50,
+    parameter integer WRITE_PERCENT_07 = 50,
+    parameter integer WRITE_PERCENT_08 = 50,
+    parameter integer WRITE_PERCENT_09 = 50,
+    parameter integer WRITE_PERCENT_10 = 50,
+    parameter integer WRITE_PERCENT_11 = 50,
+    parameter integer WRITE_PERCENT_12 = 50,
+    parameter integer WRITE_PERCENT_13 = 50,
+    parameter integer WRITE_PERCENT_14 = 50,
+    parameter integer WRITE_PERCENT_15 = 50,
+    parameter integer WRITE_PERCENT_16 = 50,
+    parameter integer WRITE_PERCENT_17 = 50,
+    parameter integer WRITE_PERCENT_18 = 50,
+    parameter integer WRITE_PERCENT_19 = 50,
+    parameter integer WRITE_PERCENT_20 = 50,
+    parameter integer WRITE_PERCENT_21 = 50,
+    parameter integer WRITE_PERCENT_22 = 50,
+    parameter integer WRITE_PERCENT_23 = 50,
+    parameter integer WRITE_PERCENT_24 = 50,
+    parameter integer WRITE_PERCENT_25 = 50,
+    parameter integer WRITE_PERCENT_26 = 50,
+    parameter integer WRITE_PERCENT_27 = 50,
+    parameter integer WRITE_PERCENT_28 = 50,
+    parameter integer WRITE_PERCENT_29 = 50,
+    parameter integer WRITE_PERCENT_30 = 50,
+    parameter integer WRITE_PERCENT_31 = 50
+) (
+    output [ 31:0] APB_0_PRDATA,
+    output         APB_0_PREADY,
+    output         APB_0_PSLVERR,
+    output [ 31:0] APB_1_PRDATA,
+    output         APB_1_PREADY,
+    output         APB_1_PSLVERR,
+    output         AXI_00_ARREADY,
+    output         AXI_00_AWREADY,
+    output [  5:0] AXI_00_BID,
+    output [  1:0] AXI_00_BRESP,
+    output         AXI_00_BVALID,
+    output [  1:0] AXI_00_DFI_AW_AERR_N,
+    output         AXI_00_DFI_CLK_BUF,
+    output [  7:0] AXI_00_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_00_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_00_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_00_DFI_DW_RDDATA_VALID,
+    output         AXI_00_DFI_INIT_COMPLETE,
+    output         AXI_00_DFI_PHYUPD_REQ,
+    output         AXI_00_DFI_PHY_LP_STATE,
+    output         AXI_00_DFI_RST_N_BUF,
+    output [  5:0] AXI_00_MC_STATUS,
+    output [  7:0] AXI_00_PHY_STATUS,
+    output [255:0] AXI_00_RDATA,
+    output [ 31:0] AXI_00_RDATA_PARITY,
+    output [  5:0] AXI_00_RID,
+    output         AXI_00_RLAST,
+    output [  1:0] AXI_00_RRESP,
+    output         AXI_00_RVALID,
+    output         AXI_00_WREADY,
+    output         AXI_01_ARREADY,
+    output         AXI_01_AWREADY,
+    output [  5:0] AXI_01_BID,
+    output [  1:0] AXI_01_BRESP,
+    output         AXI_01_BVALID,
+    output [  1:0] AXI_01_DFI_AW_AERR_N,
+    output         AXI_01_DFI_CLK_BUF,
+    output [  7:0] AXI_01_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_01_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_01_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_01_DFI_DW_RDDATA_VALID,
+    output         AXI_01_DFI_INIT_COMPLETE,
+    output         AXI_01_DFI_PHYUPD_REQ,
+    output         AXI_01_DFI_PHY_LP_STATE,
+    output         AXI_01_DFI_RST_N_BUF,
+    output [255:0] AXI_01_RDATA,
+    output [ 31:0] AXI_01_RDATA_PARITY,
+    output [  5:0] AXI_01_RID,
+    output         AXI_01_RLAST,
+    output [  1:0] AXI_01_RRESP,
+    output         AXI_01_RVALID,
+    output         AXI_01_WREADY,
+    output         AXI_02_ARREADY,
+    output         AXI_02_AWREADY,
+    output [  5:0] AXI_02_BID,
+    output [  1:0] AXI_02_BRESP,
+    output         AXI_02_BVALID,
+    output [  1:0] AXI_02_DFI_AW_AERR_N,
+    output         AXI_02_DFI_CLK_BUF,
+    output [  7:0] AXI_02_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_02_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_02_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_02_DFI_DW_RDDATA_VALID,
+    output         AXI_02_DFI_INIT_COMPLETE,
+    output         AXI_02_DFI_PHYUPD_REQ,
+    output         AXI_02_DFI_PHY_LP_STATE,
+    output         AXI_02_DFI_RST_N_BUF,
+    output [  5:0] AXI_02_MC_STATUS,
+    output [  7:0] AXI_02_PHY_STATUS,
+    output [255:0] AXI_02_RDATA,
+    output [ 31:0] AXI_02_RDATA_PARITY,
+    output [  5:0] AXI_02_RID,
+    output         AXI_02_RLAST,
+    output [  1:0] AXI_02_RRESP,
+    output         AXI_02_RVALID,
+    output         AXI_02_WREADY,
+    output         AXI_03_ARREADY,
+    output         AXI_03_AWREADY,
+    output [  5:0] AXI_03_BID,
+    output [  1:0] AXI_03_BRESP,
+    output         AXI_03_BVALID,
+    output [  1:0] AXI_03_DFI_AW_AERR_N,
+    output         AXI_03_DFI_CLK_BUF,
+    output [  7:0] AXI_03_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_03_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_03_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_03_DFI_DW_RDDATA_VALID,
+    output         AXI_03_DFI_INIT_COMPLETE,
+    output         AXI_03_DFI_PHYUPD_REQ,
+    output         AXI_03_DFI_PHY_LP_STATE,
+    output         AXI_03_DFI_RST_N_BUF,
+    output [255:0] AXI_03_RDATA,
+    output [ 31:0] AXI_03_RDATA_PARITY,
+    output [  5:0] AXI_03_RID,
+    output         AXI_03_RLAST,
+    output [  1:0] AXI_03_RRESP,
+    output         AXI_03_RVALID,
+    output         AXI_03_WREADY,
+    output         AXI_04_ARREADY,
+    output         AXI_04_AWREADY,
+    output [  5:0] AXI_04_BID,
+    output [  1:0] AXI_04_BRESP,
+    output         AXI_04_BVALID,
+    output [  1:0] AXI_04_DFI_AW_AERR_N,
+    output         AXI_04_DFI_CLK_BUF,
+    output [  7:0] AXI_04_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_04_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_04_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_04_DFI_DW_RDDATA_VALID,
+    output         AXI_04_DFI_INIT_COMPLETE,
+    output         AXI_04_DFI_PHYUPD_REQ,
+    output         AXI_04_DFI_PHY_LP_STATE,
+    output         AXI_04_DFI_RST_N_BUF,
+    output [  5:0] AXI_04_MC_STATUS,
+    output [  7:0] AXI_04_PHY_STATUS,
+    output [255:0] AXI_04_RDATA,
+    output [ 31:0] AXI_04_RDATA_PARITY,
+    output [  5:0] AXI_04_RID,
+    output         AXI_04_RLAST,
+    output [  1:0] AXI_04_RRESP,
+    output         AXI_04_RVALID,
+    output         AXI_04_WREADY,
+    output         AXI_05_ARREADY,
+    output         AXI_05_AWREADY,
+    output [  5:0] AXI_05_BID,
+    output [  1:0] AXI_05_BRESP,
+    output         AXI_05_BVALID,
+    output [  1:0] AXI_05_DFI_AW_AERR_N,
+    output         AXI_05_DFI_CLK_BUF,
+    output [  7:0] AXI_05_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_05_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_05_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_05_DFI_DW_RDDATA_VALID,
+    output         AXI_05_DFI_INIT_COMPLETE,
+    output         AXI_05_DFI_PHYUPD_REQ,
+    output         AXI_05_DFI_PHY_LP_STATE,
+    output         AXI_05_DFI_RST_N_BUF,
+    output [255:0] AXI_05_RDATA,
+    output [ 31:0] AXI_05_RDATA_PARITY,
+    output [  5:0] AXI_05_RID,
+    output         AXI_05_RLAST,
+    output [  1:0] AXI_05_RRESP,
+    output         AXI_05_RVALID,
+    output         AXI_05_WREADY,
+    output         AXI_06_ARREADY,
+    output         AXI_06_AWREADY,
+    output [  5:0] AXI_06_BID,
+    output [  1:0] AXI_06_BRESP,
+    output         AXI_06_BVALID,
+    output [  1:0] AXI_06_DFI_AW_AERR_N,
+    output         AXI_06_DFI_CLK_BUF,
+    output [  7:0] AXI_06_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_06_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_06_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_06_DFI_DW_RDDATA_VALID,
+    output         AXI_06_DFI_INIT_COMPLETE,
+    output         AXI_06_DFI_PHYUPD_REQ,
+    output         AXI_06_DFI_PHY_LP_STATE,
+    output         AXI_06_DFI_RST_N_BUF,
+    output [  5:0] AXI_06_MC_STATUS,
+    output [  7:0] AXI_06_PHY_STATUS,
+    output [255:0] AXI_06_RDATA,
+    output [ 31:0] AXI_06_RDATA_PARITY,
+    output [  5:0] AXI_06_RID,
+    output         AXI_06_RLAST,
+    output [  1:0] AXI_06_RRESP,
+    output         AXI_06_RVALID,
+    output         AXI_06_WREADY,
+    output         AXI_07_ARREADY,
+    output         AXI_07_AWREADY,
+    output [  5:0] AXI_07_BID,
+    output [  1:0] AXI_07_BRESP,
+    output         AXI_07_BVALID,
+    output [  1:0] AXI_07_DFI_AW_AERR_N,
+    output         AXI_07_DFI_CLK_BUF,
+    output [  7:0] AXI_07_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_07_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_07_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_07_DFI_DW_RDDATA_VALID,
+    output         AXI_07_DFI_INIT_COMPLETE,
+    output         AXI_07_DFI_PHYUPD_REQ,
+    output         AXI_07_DFI_PHY_LP_STATE,
+    output         AXI_07_DFI_RST_N_BUF,
+    output [255:0] AXI_07_RDATA,
+    output [ 31:0] AXI_07_RDATA_PARITY,
+    output [  5:0] AXI_07_RID,
+    output         AXI_07_RLAST,
+    output [  1:0] AXI_07_RRESP,
+    output         AXI_07_RVALID,
+    output         AXI_07_WREADY,
+    output         AXI_08_ARREADY,
+    output         AXI_08_AWREADY,
+    output [  5:0] AXI_08_BID,
+    output [  1:0] AXI_08_BRESP,
+    output         AXI_08_BVALID,
+    output [  1:0] AXI_08_DFI_AW_AERR_N,
+    output         AXI_08_DFI_CLK_BUF,
+    output [  7:0] AXI_08_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_08_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_08_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_08_DFI_DW_RDDATA_VALID,
+    output         AXI_08_DFI_INIT_COMPLETE,
+    output         AXI_08_DFI_PHYUPD_REQ,
+    output         AXI_08_DFI_PHY_LP_STATE,
+    output         AXI_08_DFI_RST_N_BUF,
+    output [  5:0] AXI_08_MC_STATUS,
+    output [  7:0] AXI_08_PHY_STATUS,
+    output [255:0] AXI_08_RDATA,
+    output [ 31:0] AXI_08_RDATA_PARITY,
+    output [  5:0] AXI_08_RID,
+    output         AXI_08_RLAST,
+    output [  1:0] AXI_08_RRESP,
+    output         AXI_08_RVALID,
+    output         AXI_08_WREADY,
+    output         AXI_09_ARREADY,
+    output         AXI_09_AWREADY,
+    output [  5:0] AXI_09_BID,
+    output [  1:0] AXI_09_BRESP,
+    output         AXI_09_BVALID,
+    output [  1:0] AXI_09_DFI_AW_AERR_N,
+    output         AXI_09_DFI_CLK_BUF,
+    output [  7:0] AXI_09_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_09_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_09_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_09_DFI_DW_RDDATA_VALID,
+    output         AXI_09_DFI_INIT_COMPLETE,
+    output         AXI_09_DFI_PHYUPD_REQ,
+    output         AXI_09_DFI_PHY_LP_STATE,
+    output         AXI_09_DFI_RST_N_BUF,
+    output [255:0] AXI_09_RDATA,
+    output [ 31:0] AXI_09_RDATA_PARITY,
+    output [  5:0] AXI_09_RID,
+    output         AXI_09_RLAST,
+    output [  1:0] AXI_09_RRESP,
+    output         AXI_09_RVALID,
+    output         AXI_09_WREADY,
+    output         AXI_10_ARREADY,
+    output         AXI_10_AWREADY,
+    output [  5:0] AXI_10_BID,
+    output [  1:0] AXI_10_BRESP,
+    output         AXI_10_BVALID,
+    output [  1:0] AXI_10_DFI_AW_AERR_N,
+    output         AXI_10_DFI_CLK_BUF,
+    output [  7:0] AXI_10_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_10_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_10_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_10_DFI_DW_RDDATA_VALID,
+    output         AXI_10_DFI_INIT_COMPLETE,
+    output         AXI_10_DFI_PHYUPD_REQ,
+    output         AXI_10_DFI_PHY_LP_STATE,
+    output         AXI_10_DFI_RST_N_BUF,
+    output [  5:0] AXI_10_MC_STATUS,
+    output [  7:0] AXI_10_PHY_STATUS,
+    output [255:0] AXI_10_RDATA,
+    output [ 31:0] AXI_10_RDATA_PARITY,
+    output [  5:0] AXI_10_RID,
+    output         AXI_10_RLAST,
+    output [  1:0] AXI_10_RRESP,
+    output         AXI_10_RVALID,
+    output         AXI_10_WREADY,
+    output         AXI_11_ARREADY,
+    output         AXI_11_AWREADY,
+    output [  5:0] AXI_11_BID,
+    output [  1:0] AXI_11_BRESP,
+    output         AXI_11_BVALID,
+    output [  1:0] AXI_11_DFI_AW_AERR_N,
+    output         AXI_11_DFI_CLK_BUF,
+    output [  7:0] AXI_11_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_11_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_11_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_11_DFI_DW_RDDATA_VALID,
+    output         AXI_11_DFI_INIT_COMPLETE,
+    output         AXI_11_DFI_PHYUPD_REQ,
+    output         AXI_11_DFI_PHY_LP_STATE,
+    output         AXI_11_DFI_RST_N_BUF,
+    output [255:0] AXI_11_RDATA,
+    output [ 31:0] AXI_11_RDATA_PARITY,
+    output [  5:0] AXI_11_RID,
+    output         AXI_11_RLAST,
+    output [  1:0] AXI_11_RRESP,
+    output         AXI_11_RVALID,
+    output         AXI_11_WREADY,
+    output         AXI_12_ARREADY,
+    output         AXI_12_AWREADY,
+    output [  5:0] AXI_12_BID,
+    output [  1:0] AXI_12_BRESP,
+    output         AXI_12_BVALID,
+    output [  1:0] AXI_12_DFI_AW_AERR_N,
+    output         AXI_12_DFI_CLK_BUF,
+    output [  7:0] AXI_12_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_12_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_12_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_12_DFI_DW_RDDATA_VALID,
+    output         AXI_12_DFI_INIT_COMPLETE,
+    output         AXI_12_DFI_PHYUPD_REQ,
+    output         AXI_12_DFI_PHY_LP_STATE,
+    output         AXI_12_DFI_RST_N_BUF,
+    output [  5:0] AXI_12_MC_STATUS,
+    output [  7:0] AXI_12_PHY_STATUS,
+    output [255:0] AXI_12_RDATA,
+    output [ 31:0] AXI_12_RDATA_PARITY,
+    output [  5:0] AXI_12_RID,
+    output         AXI_12_RLAST,
+    output [  1:0] AXI_12_RRESP,
+    output         AXI_12_RVALID,
+    output         AXI_12_WREADY,
+    output         AXI_13_ARREADY,
+    output         AXI_13_AWREADY,
+    output [  5:0] AXI_13_BID,
+    output [  1:0] AXI_13_BRESP,
+    output         AXI_13_BVALID,
+    output [  1:0] AXI_13_DFI_AW_AERR_N,
+    output         AXI_13_DFI_CLK_BUF,
+    output [  7:0] AXI_13_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_13_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_13_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_13_DFI_DW_RDDATA_VALID,
+    output         AXI_13_DFI_INIT_COMPLETE,
+    output         AXI_13_DFI_PHYUPD_REQ,
+    output         AXI_13_DFI_PHY_LP_STATE,
+    output         AXI_13_DFI_RST_N_BUF,
+    output [255:0] AXI_13_RDATA,
+    output [ 31:0] AXI_13_RDATA_PARITY,
+    output [  5:0] AXI_13_RID,
+    output         AXI_13_RLAST,
+    output [  1:0] AXI_13_RRESP,
+    output         AXI_13_RVALID,
+    output         AXI_13_WREADY,
+    output         AXI_14_ARREADY,
+    output         AXI_14_AWREADY,
+    output [  5:0] AXI_14_BID,
+    output [  1:0] AXI_14_BRESP,
+    output         AXI_14_BVALID,
+    output [  1:0] AXI_14_DFI_AW_AERR_N,
+    output         AXI_14_DFI_CLK_BUF,
+    output [  7:0] AXI_14_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_14_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_14_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_14_DFI_DW_RDDATA_VALID,
+    output         AXI_14_DFI_INIT_COMPLETE,
+    output         AXI_14_DFI_PHYUPD_REQ,
+    output         AXI_14_DFI_PHY_LP_STATE,
+    output         AXI_14_DFI_RST_N_BUF,
+    output [  5:0] AXI_14_MC_STATUS,
+    output [  7:0] AXI_14_PHY_STATUS,
+    output [255:0] AXI_14_RDATA,
+    output [ 31:0] AXI_14_RDATA_PARITY,
+    output [  5:0] AXI_14_RID,
+    output         AXI_14_RLAST,
+    output [  1:0] AXI_14_RRESP,
+    output         AXI_14_RVALID,
+    output         AXI_14_WREADY,
+    output         AXI_15_ARREADY,
+    output         AXI_15_AWREADY,
+    output [  5:0] AXI_15_BID,
+    output [  1:0] AXI_15_BRESP,
+    output         AXI_15_BVALID,
+    output [  1:0] AXI_15_DFI_AW_AERR_N,
+    output         AXI_15_DFI_CLK_BUF,
+    output [  7:0] AXI_15_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_15_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_15_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_15_DFI_DW_RDDATA_VALID,
+    output         AXI_15_DFI_INIT_COMPLETE,
+    output         AXI_15_DFI_PHYUPD_REQ,
+    output         AXI_15_DFI_PHY_LP_STATE,
+    output         AXI_15_DFI_RST_N_BUF,
+    output [255:0] AXI_15_RDATA,
+    output [ 31:0] AXI_15_RDATA_PARITY,
+    output [  5:0] AXI_15_RID,
+    output         AXI_15_RLAST,
+    output [  1:0] AXI_15_RRESP,
+    output         AXI_15_RVALID,
+    output         AXI_15_WREADY,
+    output         AXI_16_ARREADY,
+    output         AXI_16_AWREADY,
+    output [  5:0] AXI_16_BID,
+    output [  1:0] AXI_16_BRESP,
+    output         AXI_16_BVALID,
+    output [  1:0] AXI_16_DFI_AW_AERR_N,
+    output         AXI_16_DFI_CLK_BUF,
+    output [  7:0] AXI_16_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_16_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_16_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_16_DFI_DW_RDDATA_VALID,
+    output         AXI_16_DFI_INIT_COMPLETE,
+    output         AXI_16_DFI_PHYUPD_REQ,
+    output         AXI_16_DFI_PHY_LP_STATE,
+    output         AXI_16_DFI_RST_N_BUF,
+    output [  5:0] AXI_16_MC_STATUS,
+    output [  7:0] AXI_16_PHY_STATUS,
+    output [255:0] AXI_16_RDATA,
+    output [ 31:0] AXI_16_RDATA_PARITY,
+    output [  5:0] AXI_16_RID,
+    output         AXI_16_RLAST,
+    output [  1:0] AXI_16_RRESP,
+    output         AXI_16_RVALID,
+    output         AXI_16_WREADY,
+    output         AXI_17_ARREADY,
+    output         AXI_17_AWREADY,
+    output [  5:0] AXI_17_BID,
+    output [  1:0] AXI_17_BRESP,
+    output         AXI_17_BVALID,
+    output [  1:0] AXI_17_DFI_AW_AERR_N,
+    output         AXI_17_DFI_CLK_BUF,
+    output [  7:0] AXI_17_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_17_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_17_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_17_DFI_DW_RDDATA_VALID,
+    output         AXI_17_DFI_INIT_COMPLETE,
+    output         AXI_17_DFI_PHYUPD_REQ,
+    output         AXI_17_DFI_PHY_LP_STATE,
+    output         AXI_17_DFI_RST_N_BUF,
+    output [255:0] AXI_17_RDATA,
+    output [ 31:0] AXI_17_RDATA_PARITY,
+    output [  5:0] AXI_17_RID,
+    output         AXI_17_RLAST,
+    output [  1:0] AXI_17_RRESP,
+    output         AXI_17_RVALID,
+    output         AXI_17_WREADY,
+    output         AXI_18_ARREADY,
+    output         AXI_18_AWREADY,
+    output [  5:0] AXI_18_BID,
+    output [  1:0] AXI_18_BRESP,
+    output         AXI_18_BVALID,
+    output [  1:0] AXI_18_DFI_AW_AERR_N,
+    output         AXI_18_DFI_CLK_BUF,
+    output [  7:0] AXI_18_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_18_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_18_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_18_DFI_DW_RDDATA_VALID,
+    output         AXI_18_DFI_INIT_COMPLETE,
+    output         AXI_18_DFI_PHYUPD_REQ,
+    output         AXI_18_DFI_PHY_LP_STATE,
+    output         AXI_18_DFI_RST_N_BUF,
+    output [  5:0] AXI_18_MC_STATUS,
+    output [  7:0] AXI_18_PHY_STATUS,
+    output [255:0] AXI_18_RDATA,
+    output [ 31:0] AXI_18_RDATA_PARITY,
+    output [  5:0] AXI_18_RID,
+    output         AXI_18_RLAST,
+    output [  1:0] AXI_18_RRESP,
+    output         AXI_18_RVALID,
+    output         AXI_18_WREADY,
+    output         AXI_19_ARREADY,
+    output         AXI_19_AWREADY,
+    output [  5:0] AXI_19_BID,
+    output [  1:0] AXI_19_BRESP,
+    output         AXI_19_BVALID,
+    output [  1:0] AXI_19_DFI_AW_AERR_N,
+    output         AXI_19_DFI_CLK_BUF,
+    output [  7:0] AXI_19_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_19_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_19_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_19_DFI_DW_RDDATA_VALID,
+    output         AXI_19_DFI_INIT_COMPLETE,
+    output         AXI_19_DFI_PHYUPD_REQ,
+    output         AXI_19_DFI_PHY_LP_STATE,
+    output         AXI_19_DFI_RST_N_BUF,
+    output [255:0] AXI_19_RDATA,
+    output [ 31:0] AXI_19_RDATA_PARITY,
+    output [  5:0] AXI_19_RID,
+    output         AXI_19_RLAST,
+    output [  1:0] AXI_19_RRESP,
+    output         AXI_19_RVALID,
+    output         AXI_19_WREADY,
+    output         AXI_20_ARREADY,
+    output         AXI_20_AWREADY,
+    output [  5:0] AXI_20_BID,
+    output [  1:0] AXI_20_BRESP,
+    output         AXI_20_BVALID,
+    output [  1:0] AXI_20_DFI_AW_AERR_N,
+    output         AXI_20_DFI_CLK_BUF,
+    output [  7:0] AXI_20_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_20_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_20_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_20_DFI_DW_RDDATA_VALID,
+    output         AXI_20_DFI_INIT_COMPLETE,
+    output         AXI_20_DFI_PHYUPD_REQ,
+    output         AXI_20_DFI_PHY_LP_STATE,
+    output         AXI_20_DFI_RST_N_BUF,
+    output [  5:0] AXI_20_MC_STATUS,
+    output [  7:0] AXI_20_PHY_STATUS,
+    output [255:0] AXI_20_RDATA,
+    output [ 31:0] AXI_20_RDATA_PARITY,
+    output [  5:0] AXI_20_RID,
+    output         AXI_20_RLAST,
+    output [  1:0] AXI_20_RRESP,
+    output         AXI_20_RVALID,
+    output         AXI_20_WREADY,
+    output         AXI_21_ARREADY,
+    output         AXI_21_AWREADY,
+    output [  5:0] AXI_21_BID,
+    output [  1:0] AXI_21_BRESP,
+    output         AXI_21_BVALID,
+    output [  1:0] AXI_21_DFI_AW_AERR_N,
+    output         AXI_21_DFI_CLK_BUF,
+    output [  7:0] AXI_21_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_21_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_21_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_21_DFI_DW_RDDATA_VALID,
+    output         AXI_21_DFI_INIT_COMPLETE,
+    output         AXI_21_DFI_PHYUPD_REQ,
+    output         AXI_21_DFI_PHY_LP_STATE,
+    output         AXI_21_DFI_RST_N_BUF,
+    output [255:0] AXI_21_RDATA,
+    output [ 31:0] AXI_21_RDATA_PARITY,
+    output [  5:0] AXI_21_RID,
+    output         AXI_21_RLAST,
+    output [  1:0] AXI_21_RRESP,
+    output         AXI_21_RVALID,
+    output         AXI_21_WREADY,
+    output         AXI_22_ARREADY,
+    output         AXI_22_AWREADY,
+    output [  5:0] AXI_22_BID,
+    output [  1:0] AXI_22_BRESP,
+    output         AXI_22_BVALID,
+    output [  1:0] AXI_22_DFI_AW_AERR_N,
+    output         AXI_22_DFI_CLK_BUF,
+    output [  7:0] AXI_22_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_22_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_22_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_22_DFI_DW_RDDATA_VALID,
+    output         AXI_22_DFI_INIT_COMPLETE,
+    output         AXI_22_DFI_PHYUPD_REQ,
+    output         AXI_22_DFI_PHY_LP_STATE,
+    output         AXI_22_DFI_RST_N_BUF,
+    output [  5:0] AXI_22_MC_STATUS,
+    output [  7:0] AXI_22_PHY_STATUS,
+    output [255:0] AXI_22_RDATA,
+    output [ 31:0] AXI_22_RDATA_PARITY,
+    output [  5:0] AXI_22_RID,
+    output         AXI_22_RLAST,
+    output [  1:0] AXI_22_RRESP,
+    output         AXI_22_RVALID,
+    output         AXI_22_WREADY,
+    output         AXI_23_ARREADY,
+    output         AXI_23_AWREADY,
+    output [  5:0] AXI_23_BID,
+    output [  1:0] AXI_23_BRESP,
+    output         AXI_23_BVALID,
+    output [  1:0] AXI_23_DFI_AW_AERR_N,
+    output         AXI_23_DFI_CLK_BUF,
+    output [  7:0] AXI_23_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_23_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_23_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_23_DFI_DW_RDDATA_VALID,
+    output         AXI_23_DFI_INIT_COMPLETE,
+    output         AXI_23_DFI_PHYUPD_REQ,
+    output         AXI_23_DFI_PHY_LP_STATE,
+    output         AXI_23_DFI_RST_N_BUF,
+    output [255:0] AXI_23_RDATA,
+    output [ 31:0] AXI_23_RDATA_PARITY,
+    output [  5:0] AXI_23_RID,
+    output         AXI_23_RLAST,
+    output [  1:0] AXI_23_RRESP,
+    output         AXI_23_RVALID,
+    output         AXI_23_WREADY,
+    output         AXI_24_ARREADY,
+    output         AXI_24_AWREADY,
+    output [  5:0] AXI_24_BID,
+    output [  1:0] AXI_24_BRESP,
+    output         AXI_24_BVALID,
+    output [  1:0] AXI_24_DFI_AW_AERR_N,
+    output         AXI_24_DFI_CLK_BUF,
+    output [  7:0] AXI_24_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_24_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_24_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_24_DFI_DW_RDDATA_VALID,
+    output         AXI_24_DFI_INIT_COMPLETE,
+    output         AXI_24_DFI_PHYUPD_REQ,
+    output         AXI_24_DFI_PHY_LP_STATE,
+    output         AXI_24_DFI_RST_N_BUF,
+    output [  5:0] AXI_24_MC_STATUS,
+    output [  7:0] AXI_24_PHY_STATUS,
+    output [255:0] AXI_24_RDATA,
+    output [ 31:0] AXI_24_RDATA_PARITY,
+    output [  5:0] AXI_24_RID,
+    output         AXI_24_RLAST,
+    output [  1:0] AXI_24_RRESP,
+    output         AXI_24_RVALID,
+    output         AXI_24_WREADY,
+    output         AXI_25_ARREADY,
+    output         AXI_25_AWREADY,
+    output [  5:0] AXI_25_BID,
+    output [  1:0] AXI_25_BRESP,
+    output         AXI_25_BVALID,
+    output [  1:0] AXI_25_DFI_AW_AERR_N,
+    output         AXI_25_DFI_CLK_BUF,
+    output [  7:0] AXI_25_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_25_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_25_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_25_DFI_DW_RDDATA_VALID,
+    output         AXI_25_DFI_INIT_COMPLETE,
+    output         AXI_25_DFI_PHYUPD_REQ,
+    output         AXI_25_DFI_PHY_LP_STATE,
+    output         AXI_25_DFI_RST_N_BUF,
+    output [255:0] AXI_25_RDATA,
+    output [ 31:0] AXI_25_RDATA_PARITY,
+    output [  5:0] AXI_25_RID,
+    output         AXI_25_RLAST,
+    output [  1:0] AXI_25_RRESP,
+    output         AXI_25_RVALID,
+    output         AXI_25_WREADY,
+    output         AXI_26_ARREADY,
+    output         AXI_26_AWREADY,
+    output [  5:0] AXI_26_BID,
+    output [  1:0] AXI_26_BRESP,
+    output         AXI_26_BVALID,
+    output [  1:0] AXI_26_DFI_AW_AERR_N,
+    output         AXI_26_DFI_CLK_BUF,
+    output [  7:0] AXI_26_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_26_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_26_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_26_DFI_DW_RDDATA_VALID,
+    output         AXI_26_DFI_INIT_COMPLETE,
+    output         AXI_26_DFI_PHYUPD_REQ,
+    output         AXI_26_DFI_PHY_LP_STATE,
+    output         AXI_26_DFI_RST_N_BUF,
+    output [  5:0] AXI_26_MC_STATUS,
+    output [  7:0] AXI_26_PHY_STATUS,
+    output [255:0] AXI_26_RDATA,
+    output [ 31:0] AXI_26_RDATA_PARITY,
+    output [  5:0] AXI_26_RID,
+    output         AXI_26_RLAST,
+    output [  1:0] AXI_26_RRESP,
+    output         AXI_26_RVALID,
+    output         AXI_26_WREADY,
+    output         AXI_27_ARREADY,
+    output         AXI_27_AWREADY,
+    output [  5:0] AXI_27_BID,
+    output [  1:0] AXI_27_BRESP,
+    output         AXI_27_BVALID,
+    output [  1:0] AXI_27_DFI_AW_AERR_N,
+    output         AXI_27_DFI_CLK_BUF,
+    output [  7:0] AXI_27_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_27_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_27_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_27_DFI_DW_RDDATA_VALID,
+    output         AXI_27_DFI_INIT_COMPLETE,
+    output         AXI_27_DFI_PHYUPD_REQ,
+    output         AXI_27_DFI_PHY_LP_STATE,
+    output         AXI_27_DFI_RST_N_BUF,
+    output [255:0] AXI_27_RDATA,
+    output [ 31:0] AXI_27_RDATA_PARITY,
+    output [  5:0] AXI_27_RID,
+    output         AXI_27_RLAST,
+    output [  1:0] AXI_27_RRESP,
+    output         AXI_27_RVALID,
+    output         AXI_27_WREADY,
+    output         AXI_28_ARREADY,
+    output         AXI_28_AWREADY,
+    output [  5:0] AXI_28_BID,
+    output [  1:0] AXI_28_BRESP,
+    output         AXI_28_BVALID,
+    output [  1:0] AXI_28_DFI_AW_AERR_N,
+    output         AXI_28_DFI_CLK_BUF,
+    output [  7:0] AXI_28_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_28_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_28_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_28_DFI_DW_RDDATA_VALID,
+    output         AXI_28_DFI_INIT_COMPLETE,
+    output         AXI_28_DFI_PHYUPD_REQ,
+    output         AXI_28_DFI_PHY_LP_STATE,
+    output         AXI_28_DFI_RST_N_BUF,
+    output [  5:0] AXI_28_MC_STATUS,
+    output [  7:0] AXI_28_PHY_STATUS,
+    output [255:0] AXI_28_RDATA,
+    output [ 31:0] AXI_28_RDATA_PARITY,
+    output [  5:0] AXI_28_RID,
+    output         AXI_28_RLAST,
+    output [  1:0] AXI_28_RRESP,
+    output         AXI_28_RVALID,
+    output         AXI_28_WREADY,
+    output         AXI_29_ARREADY,
+    output         AXI_29_AWREADY,
+    output [  5:0] AXI_29_BID,
+    output [  1:0] AXI_29_BRESP,
+    output         AXI_29_BVALID,
+    output [  1:0] AXI_29_DFI_AW_AERR_N,
+    output         AXI_29_DFI_CLK_BUF,
+    output [  7:0] AXI_29_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_29_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_29_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_29_DFI_DW_RDDATA_VALID,
+    output         AXI_29_DFI_INIT_COMPLETE,
+    output         AXI_29_DFI_PHYUPD_REQ,
+    output         AXI_29_DFI_PHY_LP_STATE,
+    output         AXI_29_DFI_RST_N_BUF,
+    output [255:0] AXI_29_RDATA,
+    output [ 31:0] AXI_29_RDATA_PARITY,
+    output [  5:0] AXI_29_RID,
+    output         AXI_29_RLAST,
+    output [  1:0] AXI_29_RRESP,
+    output         AXI_29_RVALID,
+    output         AXI_29_WREADY,
+    output         AXI_30_ARREADY,
+    output         AXI_30_AWREADY,
+    output [  5:0] AXI_30_BID,
+    output [  1:0] AXI_30_BRESP,
+    output         AXI_30_BVALID,
+    output [  1:0] AXI_30_DFI_AW_AERR_N,
+    output         AXI_30_DFI_CLK_BUF,
+    output [  7:0] AXI_30_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_30_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_30_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_30_DFI_DW_RDDATA_VALID,
+    output         AXI_30_DFI_INIT_COMPLETE,
+    output         AXI_30_DFI_PHYUPD_REQ,
+    output         AXI_30_DFI_PHY_LP_STATE,
+    output         AXI_30_DFI_RST_N_BUF,
+    output [  5:0] AXI_30_MC_STATUS,
+    output [  7:0] AXI_30_PHY_STATUS,
+    output [255:0] AXI_30_RDATA,
+    output [ 31:0] AXI_30_RDATA_PARITY,
+    output [  5:0] AXI_30_RID,
+    output         AXI_30_RLAST,
+    output [  1:0] AXI_30_RRESP,
+    output         AXI_30_RVALID,
+    output         AXI_30_WREADY,
+    output         AXI_31_ARREADY,
+    output         AXI_31_AWREADY,
+    output [  5:0] AXI_31_BID,
+    output [  1:0] AXI_31_BRESP,
+    output         AXI_31_BVALID,
+    output [  1:0] AXI_31_DFI_AW_AERR_N,
+    output         AXI_31_DFI_CLK_BUF,
+    output [  7:0] AXI_31_DFI_DBI_BYTE_DISABLE,
+    output [ 20:0] AXI_31_DFI_DW_RDDATA_DBI,
+    output [  7:0] AXI_31_DFI_DW_RDDATA_DERR,
+    output [  1:0] AXI_31_DFI_DW_RDDATA_VALID,
+    output         AXI_31_DFI_INIT_COMPLETE,
+    output         AXI_31_DFI_PHYUPD_REQ,
+    output         AXI_31_DFI_PHY_LP_STATE,
+    output         AXI_31_DFI_RST_N_BUF,
+    output [255:0] AXI_31_RDATA,
+    output [ 31:0] AXI_31_RDATA_PARITY,
+    output [  5:0] AXI_31_RID,
+    output         AXI_31_RLAST,
+    output [  1:0] AXI_31_RRESP,
+    output         AXI_31_RVALID,
+    output         AXI_31_WREADY,
+    output         DRAM_0_STAT_CATTRIP,
+    output [  2:0] DRAM_0_STAT_TEMP,
+    output         DRAM_1_STAT_CATTRIP,
+    output [  2:0] DRAM_1_STAT_TEMP,
 
-  input [21:0] APB_0_PADDR,
-  input APB_0_PCLK,
-  input APB_0_PENABLE,
-  input APB_0_PRESET_N,
-  input APB_0_PSEL,
-  input [31:0] APB_0_PWDATA,
-  input APB_0_PWRITE,
-  input [21:0] APB_1_PADDR,
-  input APB_1_PCLK,
-  input APB_1_PENABLE,
-  input APB_1_PRESET_N,
-  input APB_1_PSEL,
-  input [31:0] APB_1_PWDATA,
-  input APB_1_PWRITE,
-  input AXI_00_ACLK,
-  input [36:0] AXI_00_ARADDR,
-  input [1:0] AXI_00_ARBURST,
-  input AXI_00_ARESET_N,
-  input [5:0] AXI_00_ARID,
-  input [3:0] AXI_00_ARLEN,
-  input [2:0] AXI_00_ARSIZE,
-  input AXI_00_ARVALID,
-  input [36:0] AXI_00_AWADDR,
-  input [1:0] AXI_00_AWBURST,
-  input [5:0] AXI_00_AWID,
-  input [3:0] AXI_00_AWLEN,
-  input [2:0] AXI_00_AWSIZE,
-  input AXI_00_AWVALID,
-  input AXI_00_BREADY,
-  input AXI_00_DFI_LP_PWR_X_REQ,
-  input AXI_00_RREADY,
-  input [255:0] AXI_00_WDATA,
-  input [31:0] AXI_00_WDATA_PARITY,
-  input AXI_00_WLAST,
-  input [31:0] AXI_00_WSTRB,
-  input AXI_00_WVALID,
-  input AXI_01_ACLK,
-  input [36:0] AXI_01_ARADDR,
-  input [1:0] AXI_01_ARBURST,
-  input AXI_01_ARESET_N,
-  input [5:0] AXI_01_ARID,
-  input [3:0] AXI_01_ARLEN,
-  input [2:0] AXI_01_ARSIZE,
-  input AXI_01_ARVALID,
-  input [36:0] AXI_01_AWADDR,
-  input [1:0] AXI_01_AWBURST,
-  input [5:0] AXI_01_AWID,
-  input [3:0] AXI_01_AWLEN,
-  input [2:0] AXI_01_AWSIZE,
-  input AXI_01_AWVALID,
-  input AXI_01_BREADY,
-  input AXI_01_DFI_LP_PWR_X_REQ,
-  input AXI_01_RREADY,
-  input [255:0] AXI_01_WDATA,
-  input [31:0] AXI_01_WDATA_PARITY,
-  input AXI_01_WLAST,
-  input [31:0] AXI_01_WSTRB,
-  input AXI_01_WVALID,
-  input AXI_02_ACLK,
-  input [36:0] AXI_02_ARADDR,
-  input [1:0] AXI_02_ARBURST,
-  input AXI_02_ARESET_N,
-  input [5:0] AXI_02_ARID,
-  input [3:0] AXI_02_ARLEN,
-  input [2:0] AXI_02_ARSIZE,
-  input AXI_02_ARVALID,
-  input [36:0] AXI_02_AWADDR,
-  input [1:0] AXI_02_AWBURST,
-  input [5:0] AXI_02_AWID,
-  input [3:0] AXI_02_AWLEN,
-  input [2:0] AXI_02_AWSIZE,
-  input AXI_02_AWVALID,
-  input AXI_02_BREADY,
-  input AXI_02_DFI_LP_PWR_X_REQ,
-  input AXI_02_RREADY,
-  input [255:0] AXI_02_WDATA,
-  input [31:0] AXI_02_WDATA_PARITY,
-  input AXI_02_WLAST,
-  input [31:0] AXI_02_WSTRB,
-  input AXI_02_WVALID,
-  input AXI_03_ACLK,
-  input [36:0] AXI_03_ARADDR,
-  input [1:0] AXI_03_ARBURST,
-  input AXI_03_ARESET_N,
-  input [5:0] AXI_03_ARID,
-  input [3:0] AXI_03_ARLEN,
-  input [2:0] AXI_03_ARSIZE,
-  input AXI_03_ARVALID,
-  input [36:0] AXI_03_AWADDR,
-  input [1:0] AXI_03_AWBURST,
-  input [5:0] AXI_03_AWID,
-  input [3:0] AXI_03_AWLEN,
-  input [2:0] AXI_03_AWSIZE,
-  input AXI_03_AWVALID,
-  input AXI_03_BREADY,
-  input AXI_03_DFI_LP_PWR_X_REQ,
-  input AXI_03_RREADY,
-  input [255:0] AXI_03_WDATA,
-  input [31:0] AXI_03_WDATA_PARITY,
-  input AXI_03_WLAST,
-  input [31:0] AXI_03_WSTRB,
-  input AXI_03_WVALID,
-  input AXI_04_ACLK,
-  input [36:0] AXI_04_ARADDR,
-  input [1:0] AXI_04_ARBURST,
-  input AXI_04_ARESET_N,
-  input [5:0] AXI_04_ARID,
-  input [3:0] AXI_04_ARLEN,
-  input [2:0] AXI_04_ARSIZE,
-  input AXI_04_ARVALID,
-  input [36:0] AXI_04_AWADDR,
-  input [1:0] AXI_04_AWBURST,
-  input [5:0] AXI_04_AWID,
-  input [3:0] AXI_04_AWLEN,
-  input [2:0] AXI_04_AWSIZE,
-  input AXI_04_AWVALID,
-  input AXI_04_BREADY,
-  input AXI_04_DFI_LP_PWR_X_REQ,
-  input AXI_04_RREADY,
-  input [255:0] AXI_04_WDATA,
-  input [31:0] AXI_04_WDATA_PARITY,
-  input AXI_04_WLAST,
-  input [31:0] AXI_04_WSTRB,
-  input AXI_04_WVALID,
-  input AXI_05_ACLK,
-  input [36:0] AXI_05_ARADDR,
-  input [1:0] AXI_05_ARBURST,
-  input AXI_05_ARESET_N,
-  input [5:0] AXI_05_ARID,
-  input [3:0] AXI_05_ARLEN,
-  input [2:0] AXI_05_ARSIZE,
-  input AXI_05_ARVALID,
-  input [36:0] AXI_05_AWADDR,
-  input [1:0] AXI_05_AWBURST,
-  input [5:0] AXI_05_AWID,
-  input [3:0] AXI_05_AWLEN,
-  input [2:0] AXI_05_AWSIZE,
-  input AXI_05_AWVALID,
-  input AXI_05_BREADY,
-  input AXI_05_DFI_LP_PWR_X_REQ,
-  input AXI_05_RREADY,
-  input [255:0] AXI_05_WDATA,
-  input [31:0] AXI_05_WDATA_PARITY,
-  input AXI_05_WLAST,
-  input [31:0] AXI_05_WSTRB,
-  input AXI_05_WVALID,
-  input AXI_06_ACLK,
-  input [36:0] AXI_06_ARADDR,
-  input [1:0] AXI_06_ARBURST,
-  input AXI_06_ARESET_N,
-  input [5:0] AXI_06_ARID,
-  input [3:0] AXI_06_ARLEN,
-  input [2:0] AXI_06_ARSIZE,
-  input AXI_06_ARVALID,
-  input [36:0] AXI_06_AWADDR,
-  input [1:0] AXI_06_AWBURST,
-  input [5:0] AXI_06_AWID,
-  input [3:0] AXI_06_AWLEN,
-  input [2:0] AXI_06_AWSIZE,
-  input AXI_06_AWVALID,
-  input AXI_06_BREADY,
-  input AXI_06_DFI_LP_PWR_X_REQ,
-  input AXI_06_RREADY,
-  input [255:0] AXI_06_WDATA,
-  input [31:0] AXI_06_WDATA_PARITY,
-  input AXI_06_WLAST,
-  input [31:0] AXI_06_WSTRB,
-  input AXI_06_WVALID,
-  input AXI_07_ACLK,
-  input [36:0] AXI_07_ARADDR,
-  input [1:0] AXI_07_ARBURST,
-  input AXI_07_ARESET_N,
-  input [5:0] AXI_07_ARID,
-  input [3:0] AXI_07_ARLEN,
-  input [2:0] AXI_07_ARSIZE,
-  input AXI_07_ARVALID,
-  input [36:0] AXI_07_AWADDR,
-  input [1:0] AXI_07_AWBURST,
-  input [5:0] AXI_07_AWID,
-  input [3:0] AXI_07_AWLEN,
-  input [2:0] AXI_07_AWSIZE,
-  input AXI_07_AWVALID,
-  input AXI_07_BREADY,
-  input AXI_07_DFI_LP_PWR_X_REQ,
-  input AXI_07_RREADY,
-  input [255:0] AXI_07_WDATA,
-  input [31:0] AXI_07_WDATA_PARITY,
-  input AXI_07_WLAST,
-  input [31:0] AXI_07_WSTRB,
-  input AXI_07_WVALID,
-  input AXI_08_ACLK,
-  input [36:0] AXI_08_ARADDR,
-  input [1:0] AXI_08_ARBURST,
-  input AXI_08_ARESET_N,
-  input [5:0] AXI_08_ARID,
-  input [3:0] AXI_08_ARLEN,
-  input [2:0] AXI_08_ARSIZE,
-  input AXI_08_ARVALID,
-  input [36:0] AXI_08_AWADDR,
-  input [1:0] AXI_08_AWBURST,
-  input [5:0] AXI_08_AWID,
-  input [3:0] AXI_08_AWLEN,
-  input [2:0] AXI_08_AWSIZE,
-  input AXI_08_AWVALID,
-  input AXI_08_BREADY,
-  input AXI_08_DFI_LP_PWR_X_REQ,
-  input AXI_08_RREADY,
-  input [255:0] AXI_08_WDATA,
-  input [31:0] AXI_08_WDATA_PARITY,
-  input AXI_08_WLAST,
-  input [31:0] AXI_08_WSTRB,
-  input AXI_08_WVALID,
-  input AXI_09_ACLK,
-  input [36:0] AXI_09_ARADDR,
-  input [1:0] AXI_09_ARBURST,
-  input AXI_09_ARESET_N,
-  input [5:0] AXI_09_ARID,
-  input [3:0] AXI_09_ARLEN,
-  input [2:0] AXI_09_ARSIZE,
-  input AXI_09_ARVALID,
-  input [36:0] AXI_09_AWADDR,
-  input [1:0] AXI_09_AWBURST,
-  input [5:0] AXI_09_AWID,
-  input [3:0] AXI_09_AWLEN,
-  input [2:0] AXI_09_AWSIZE,
-  input AXI_09_AWVALID,
-  input AXI_09_BREADY,
-  input AXI_09_DFI_LP_PWR_X_REQ,
-  input AXI_09_RREADY,
-  input [255:0] AXI_09_WDATA,
-  input [31:0] AXI_09_WDATA_PARITY,
-  input AXI_09_WLAST,
-  input [31:0] AXI_09_WSTRB,
-  input AXI_09_WVALID,
-  input AXI_10_ACLK,
-  input [36:0] AXI_10_ARADDR,
-  input [1:0] AXI_10_ARBURST,
-  input AXI_10_ARESET_N,
-  input [5:0] AXI_10_ARID,
-  input [3:0] AXI_10_ARLEN,
-  input [2:0] AXI_10_ARSIZE,
-  input AXI_10_ARVALID,
-  input [36:0] AXI_10_AWADDR,
-  input [1:0] AXI_10_AWBURST,
-  input [5:0] AXI_10_AWID,
-  input [3:0] AXI_10_AWLEN,
-  input [2:0] AXI_10_AWSIZE,
-  input AXI_10_AWVALID,
-  input AXI_10_BREADY,
-  input AXI_10_DFI_LP_PWR_X_REQ,
-  input AXI_10_RREADY,
-  input [255:0] AXI_10_WDATA,
-  input [31:0] AXI_10_WDATA_PARITY,
-  input AXI_10_WLAST,
-  input [31:0] AXI_10_WSTRB,
-  input AXI_10_WVALID,
-  input AXI_11_ACLK,
-  input [36:0] AXI_11_ARADDR,
-  input [1:0] AXI_11_ARBURST,
-  input AXI_11_ARESET_N,
-  input [5:0] AXI_11_ARID,
-  input [3:0] AXI_11_ARLEN,
-  input [2:0] AXI_11_ARSIZE,
-  input AXI_11_ARVALID,
-  input [36:0] AXI_11_AWADDR,
-  input [1:0] AXI_11_AWBURST,
-  input [5:0] AXI_11_AWID,
-  input [3:0] AXI_11_AWLEN,
-  input [2:0] AXI_11_AWSIZE,
-  input AXI_11_AWVALID,
-  input AXI_11_BREADY,
-  input AXI_11_DFI_LP_PWR_X_REQ,
-  input AXI_11_RREADY,
-  input [255:0] AXI_11_WDATA,
-  input [31:0] AXI_11_WDATA_PARITY,
-  input AXI_11_WLAST,
-  input [31:0] AXI_11_WSTRB,
-  input AXI_11_WVALID,
-  input AXI_12_ACLK,
-  input [36:0] AXI_12_ARADDR,
-  input [1:0] AXI_12_ARBURST,
-  input AXI_12_ARESET_N,
-  input [5:0] AXI_12_ARID,
-  input [3:0] AXI_12_ARLEN,
-  input [2:0] AXI_12_ARSIZE,
-  input AXI_12_ARVALID,
-  input [36:0] AXI_12_AWADDR,
-  input [1:0] AXI_12_AWBURST,
-  input [5:0] AXI_12_AWID,
-  input [3:0] AXI_12_AWLEN,
-  input [2:0] AXI_12_AWSIZE,
-  input AXI_12_AWVALID,
-  input AXI_12_BREADY,
-  input AXI_12_DFI_LP_PWR_X_REQ,
-  input AXI_12_RREADY,
-  input [255:0] AXI_12_WDATA,
-  input [31:0] AXI_12_WDATA_PARITY,
-  input AXI_12_WLAST,
-  input [31:0] AXI_12_WSTRB,
-  input AXI_12_WVALID,
-  input AXI_13_ACLK,
-  input [36:0] AXI_13_ARADDR,
-  input [1:0] AXI_13_ARBURST,
-  input AXI_13_ARESET_N,
-  input [5:0] AXI_13_ARID,
-  input [3:0] AXI_13_ARLEN,
-  input [2:0] AXI_13_ARSIZE,
-  input AXI_13_ARVALID,
-  input [36:0] AXI_13_AWADDR,
-  input [1:0] AXI_13_AWBURST,
-  input [5:0] AXI_13_AWID,
-  input [3:0] AXI_13_AWLEN,
-  input [2:0] AXI_13_AWSIZE,
-  input AXI_13_AWVALID,
-  input AXI_13_BREADY,
-  input AXI_13_DFI_LP_PWR_X_REQ,
-  input AXI_13_RREADY,
-  input [255:0] AXI_13_WDATA,
-  input [31:0] AXI_13_WDATA_PARITY,
-  input AXI_13_WLAST,
-  input [31:0] AXI_13_WSTRB,
-  input AXI_13_WVALID,
-  input AXI_14_ACLK,
-  input [36:0] AXI_14_ARADDR,
-  input [1:0] AXI_14_ARBURST,
-  input AXI_14_ARESET_N,
-  input [5:0] AXI_14_ARID,
-  input [3:0] AXI_14_ARLEN,
-  input [2:0] AXI_14_ARSIZE,
-  input AXI_14_ARVALID,
-  input [36:0] AXI_14_AWADDR,
-  input [1:0] AXI_14_AWBURST,
-  input [5:0] AXI_14_AWID,
-  input [3:0] AXI_14_AWLEN,
-  input [2:0] AXI_14_AWSIZE,
-  input AXI_14_AWVALID,
-  input AXI_14_BREADY,
-  input AXI_14_DFI_LP_PWR_X_REQ,
-  input AXI_14_RREADY,
-  input [255:0] AXI_14_WDATA,
-  input [31:0] AXI_14_WDATA_PARITY,
-  input AXI_14_WLAST,
-  input [31:0] AXI_14_WSTRB,
-  input AXI_14_WVALID,
-  input AXI_15_ACLK,
-  input [36:0] AXI_15_ARADDR,
-  input [1:0] AXI_15_ARBURST,
-  input AXI_15_ARESET_N,
-  input [5:0] AXI_15_ARID,
-  input [3:0] AXI_15_ARLEN,
-  input [2:0] AXI_15_ARSIZE,
-  input AXI_15_ARVALID,
-  input [36:0] AXI_15_AWADDR,
-  input [1:0] AXI_15_AWBURST,
-  input [5:0] AXI_15_AWID,
-  input [3:0] AXI_15_AWLEN,
-  input [2:0] AXI_15_AWSIZE,
-  input AXI_15_AWVALID,
-  input AXI_15_BREADY,
-  input AXI_15_DFI_LP_PWR_X_REQ,
-  input AXI_15_RREADY,
-  input [255:0] AXI_15_WDATA,
-  input [31:0] AXI_15_WDATA_PARITY,
-  input AXI_15_WLAST,
-  input [31:0] AXI_15_WSTRB,
-  input AXI_15_WVALID,
-  input AXI_16_ACLK,
-  input [36:0] AXI_16_ARADDR,
-  input [1:0] AXI_16_ARBURST,
-  input AXI_16_ARESET_N,
-  input [5:0] AXI_16_ARID,
-  input [3:0] AXI_16_ARLEN,
-  input [2:0] AXI_16_ARSIZE,
-  input AXI_16_ARVALID,
-  input [36:0] AXI_16_AWADDR,
-  input [1:0] AXI_16_AWBURST,
-  input [5:0] AXI_16_AWID,
-  input [3:0] AXI_16_AWLEN,
-  input [2:0] AXI_16_AWSIZE,
-  input AXI_16_AWVALID,
-  input AXI_16_BREADY,
-  input AXI_16_DFI_LP_PWR_X_REQ,
-  input AXI_16_RREADY,
-  input [255:0] AXI_16_WDATA,
-  input [31:0] AXI_16_WDATA_PARITY,
-  input AXI_16_WLAST,
-  input [31:0] AXI_16_WSTRB,
-  input AXI_16_WVALID,
-  input AXI_17_ACLK,
-  input [36:0] AXI_17_ARADDR,
-  input [1:0] AXI_17_ARBURST,
-  input AXI_17_ARESET_N,
-  input [5:0] AXI_17_ARID,
-  input [3:0] AXI_17_ARLEN,
-  input [2:0] AXI_17_ARSIZE,
-  input AXI_17_ARVALID,
-  input [36:0] AXI_17_AWADDR,
-  input [1:0] AXI_17_AWBURST,
-  input [5:0] AXI_17_AWID,
-  input [3:0] AXI_17_AWLEN,
-  input [2:0] AXI_17_AWSIZE,
-  input AXI_17_AWVALID,
-  input AXI_17_BREADY,
-  input AXI_17_DFI_LP_PWR_X_REQ,
-  input AXI_17_RREADY,
-  input [255:0] AXI_17_WDATA,
-  input [31:0] AXI_17_WDATA_PARITY,
-  input AXI_17_WLAST,
-  input [31:0] AXI_17_WSTRB,
-  input AXI_17_WVALID,
-  input AXI_18_ACLK,
-  input [36:0] AXI_18_ARADDR,
-  input [1:0] AXI_18_ARBURST,
-  input AXI_18_ARESET_N,
-  input [5:0] AXI_18_ARID,
-  input [3:0] AXI_18_ARLEN,
-  input [2:0] AXI_18_ARSIZE,
-  input AXI_18_ARVALID,
-  input [36:0] AXI_18_AWADDR,
-  input [1:0] AXI_18_AWBURST,
-  input [5:0] AXI_18_AWID,
-  input [3:0] AXI_18_AWLEN,
-  input [2:0] AXI_18_AWSIZE,
-  input AXI_18_AWVALID,
-  input AXI_18_BREADY,
-  input AXI_18_DFI_LP_PWR_X_REQ,
-  input AXI_18_RREADY,
-  input [255:0] AXI_18_WDATA,
-  input [31:0] AXI_18_WDATA_PARITY,
-  input AXI_18_WLAST,
-  input [31:0] AXI_18_WSTRB,
-  input AXI_18_WVALID,
-  input AXI_19_ACLK,
-  input [36:0] AXI_19_ARADDR,
-  input [1:0] AXI_19_ARBURST,
-  input AXI_19_ARESET_N,
-  input [5:0] AXI_19_ARID,
-  input [3:0] AXI_19_ARLEN,
-  input [2:0] AXI_19_ARSIZE,
-  input AXI_19_ARVALID,
-  input [36:0] AXI_19_AWADDR,
-  input [1:0] AXI_19_AWBURST,
-  input [5:0] AXI_19_AWID,
-  input [3:0] AXI_19_AWLEN,
-  input [2:0] AXI_19_AWSIZE,
-  input AXI_19_AWVALID,
-  input AXI_19_BREADY,
-  input AXI_19_DFI_LP_PWR_X_REQ,
-  input AXI_19_RREADY,
-  input [255:0] AXI_19_WDATA,
-  input [31:0] AXI_19_WDATA_PARITY,
-  input AXI_19_WLAST,
-  input [31:0] AXI_19_WSTRB,
-  input AXI_19_WVALID,
-  input AXI_20_ACLK,
-  input [36:0] AXI_20_ARADDR,
-  input [1:0] AXI_20_ARBURST,
-  input AXI_20_ARESET_N,
-  input [5:0] AXI_20_ARID,
-  input [3:0] AXI_20_ARLEN,
-  input [2:0] AXI_20_ARSIZE,
-  input AXI_20_ARVALID,
-  input [36:0] AXI_20_AWADDR,
-  input [1:0] AXI_20_AWBURST,
-  input [5:0] AXI_20_AWID,
-  input [3:0] AXI_20_AWLEN,
-  input [2:0] AXI_20_AWSIZE,
-  input AXI_20_AWVALID,
-  input AXI_20_BREADY,
-  input AXI_20_DFI_LP_PWR_X_REQ,
-  input AXI_20_RREADY,
-  input [255:0] AXI_20_WDATA,
-  input [31:0] AXI_20_WDATA_PARITY,
-  input AXI_20_WLAST,
-  input [31:0] AXI_20_WSTRB,
-  input AXI_20_WVALID,
-  input AXI_21_ACLK,
-  input [36:0] AXI_21_ARADDR,
-  input [1:0] AXI_21_ARBURST,
-  input AXI_21_ARESET_N,
-  input [5:0] AXI_21_ARID,
-  input [3:0] AXI_21_ARLEN,
-  input [2:0] AXI_21_ARSIZE,
-  input AXI_21_ARVALID,
-  input [36:0] AXI_21_AWADDR,
-  input [1:0] AXI_21_AWBURST,
-  input [5:0] AXI_21_AWID,
-  input [3:0] AXI_21_AWLEN,
-  input [2:0] AXI_21_AWSIZE,
-  input AXI_21_AWVALID,
-  input AXI_21_BREADY,
-  input AXI_21_DFI_LP_PWR_X_REQ,
-  input AXI_21_RREADY,
-  input [255:0] AXI_21_WDATA,
-  input [31:0] AXI_21_WDATA_PARITY,
-  input AXI_21_WLAST,
-  input [31:0] AXI_21_WSTRB,
-  input AXI_21_WVALID,
-  input AXI_22_ACLK,
-  input [36:0] AXI_22_ARADDR,
-  input [1:0] AXI_22_ARBURST,
-  input AXI_22_ARESET_N,
-  input [5:0] AXI_22_ARID,
-  input [3:0] AXI_22_ARLEN,
-  input [2:0] AXI_22_ARSIZE,
-  input AXI_22_ARVALID,
-  input [36:0] AXI_22_AWADDR,
-  input [1:0] AXI_22_AWBURST,
-  input [5:0] AXI_22_AWID,
-  input [3:0] AXI_22_AWLEN,
-  input [2:0] AXI_22_AWSIZE,
-  input AXI_22_AWVALID,
-  input AXI_22_BREADY,
-  input AXI_22_DFI_LP_PWR_X_REQ,
-  input AXI_22_RREADY,
-  input [255:0] AXI_22_WDATA,
-  input [31:0] AXI_22_WDATA_PARITY,
-  input AXI_22_WLAST,
-  input [31:0] AXI_22_WSTRB,
-  input AXI_22_WVALID,
-  input AXI_23_ACLK,
-  input [36:0] AXI_23_ARADDR,
-  input [1:0] AXI_23_ARBURST,
-  input AXI_23_ARESET_N,
-  input [5:0] AXI_23_ARID,
-  input [3:0] AXI_23_ARLEN,
-  input [2:0] AXI_23_ARSIZE,
-  input AXI_23_ARVALID,
-  input [36:0] AXI_23_AWADDR,
-  input [1:0] AXI_23_AWBURST,
-  input [5:0] AXI_23_AWID,
-  input [3:0] AXI_23_AWLEN,
-  input [2:0] AXI_23_AWSIZE,
-  input AXI_23_AWVALID,
-  input AXI_23_BREADY,
-  input AXI_23_DFI_LP_PWR_X_REQ,
-  input AXI_23_RREADY,
-  input [255:0] AXI_23_WDATA,
-  input [31:0] AXI_23_WDATA_PARITY,
-  input AXI_23_WLAST,
-  input [31:0] AXI_23_WSTRB,
-  input AXI_23_WVALID,
-  input AXI_24_ACLK,
-  input [36:0] AXI_24_ARADDR,
-  input [1:0] AXI_24_ARBURST,
-  input AXI_24_ARESET_N,
-  input [5:0] AXI_24_ARID,
-  input [3:0] AXI_24_ARLEN,
-  input [2:0] AXI_24_ARSIZE,
-  input AXI_24_ARVALID,
-  input [36:0] AXI_24_AWADDR,
-  input [1:0] AXI_24_AWBURST,
-  input [5:0] AXI_24_AWID,
-  input [3:0] AXI_24_AWLEN,
-  input [2:0] AXI_24_AWSIZE,
-  input AXI_24_AWVALID,
-  input AXI_24_BREADY,
-  input AXI_24_DFI_LP_PWR_X_REQ,
-  input AXI_24_RREADY,
-  input [255:0] AXI_24_WDATA,
-  input [31:0] AXI_24_WDATA_PARITY,
-  input AXI_24_WLAST,
-  input [31:0] AXI_24_WSTRB,
-  input AXI_24_WVALID,
-  input AXI_25_ACLK,
-  input [36:0] AXI_25_ARADDR,
-  input [1:0] AXI_25_ARBURST,
-  input AXI_25_ARESET_N,
-  input [5:0] AXI_25_ARID,
-  input [3:0] AXI_25_ARLEN,
-  input [2:0] AXI_25_ARSIZE,
-  input AXI_25_ARVALID,
-  input [36:0] AXI_25_AWADDR,
-  input [1:0] AXI_25_AWBURST,
-  input [5:0] AXI_25_AWID,
-  input [3:0] AXI_25_AWLEN,
-  input [2:0] AXI_25_AWSIZE,
-  input AXI_25_AWVALID,
-  input AXI_25_BREADY,
-  input AXI_25_DFI_LP_PWR_X_REQ,
-  input AXI_25_RREADY,
-  input [255:0] AXI_25_WDATA,
-  input [31:0] AXI_25_WDATA_PARITY,
-  input AXI_25_WLAST,
-  input [31:0] AXI_25_WSTRB,
-  input AXI_25_WVALID,
-  input AXI_26_ACLK,
-  input [36:0] AXI_26_ARADDR,
-  input [1:0] AXI_26_ARBURST,
-  input AXI_26_ARESET_N,
-  input [5:0] AXI_26_ARID,
-  input [3:0] AXI_26_ARLEN,
-  input [2:0] AXI_26_ARSIZE,
-  input AXI_26_ARVALID,
-  input [36:0] AXI_26_AWADDR,
-  input [1:0] AXI_26_AWBURST,
-  input [5:0] AXI_26_AWID,
-  input [3:0] AXI_26_AWLEN,
-  input [2:0] AXI_26_AWSIZE,
-  input AXI_26_AWVALID,
-  input AXI_26_BREADY,
-  input AXI_26_DFI_LP_PWR_X_REQ,
-  input AXI_26_RREADY,
-  input [255:0] AXI_26_WDATA,
-  input [31:0] AXI_26_WDATA_PARITY,
-  input AXI_26_WLAST,
-  input [31:0] AXI_26_WSTRB,
-  input AXI_26_WVALID,
-  input AXI_27_ACLK,
-  input [36:0] AXI_27_ARADDR,
-  input [1:0] AXI_27_ARBURST,
-  input AXI_27_ARESET_N,
-  input [5:0] AXI_27_ARID,
-  input [3:0] AXI_27_ARLEN,
-  input [2:0] AXI_27_ARSIZE,
-  input AXI_27_ARVALID,
-  input [36:0] AXI_27_AWADDR,
-  input [1:0] AXI_27_AWBURST,
-  input [5:0] AXI_27_AWID,
-  input [3:0] AXI_27_AWLEN,
-  input [2:0] AXI_27_AWSIZE,
-  input AXI_27_AWVALID,
-  input AXI_27_BREADY,
-  input AXI_27_DFI_LP_PWR_X_REQ,
-  input AXI_27_RREADY,
-  input [255:0] AXI_27_WDATA,
-  input [31:0] AXI_27_WDATA_PARITY,
-  input AXI_27_WLAST,
-  input [31:0] AXI_27_WSTRB,
-  input AXI_27_WVALID,
-  input AXI_28_ACLK,
-  input [36:0] AXI_28_ARADDR,
-  input [1:0] AXI_28_ARBURST,
-  input AXI_28_ARESET_N,
-  input [5:0] AXI_28_ARID,
-  input [3:0] AXI_28_ARLEN,
-  input [2:0] AXI_28_ARSIZE,
-  input AXI_28_ARVALID,
-  input [36:0] AXI_28_AWADDR,
-  input [1:0] AXI_28_AWBURST,
-  input [5:0] AXI_28_AWID,
-  input [3:0] AXI_28_AWLEN,
-  input [2:0] AXI_28_AWSIZE,
-  input AXI_28_AWVALID,
-  input AXI_28_BREADY,
-  input AXI_28_DFI_LP_PWR_X_REQ,
-  input AXI_28_RREADY,
-  input [255:0] AXI_28_WDATA,
-  input [31:0] AXI_28_WDATA_PARITY,
-  input AXI_28_WLAST,
-  input [31:0] AXI_28_WSTRB,
-  input AXI_28_WVALID,
-  input AXI_29_ACLK,
-  input [36:0] AXI_29_ARADDR,
-  input [1:0] AXI_29_ARBURST,
-  input AXI_29_ARESET_N,
-  input [5:0] AXI_29_ARID,
-  input [3:0] AXI_29_ARLEN,
-  input [2:0] AXI_29_ARSIZE,
-  input AXI_29_ARVALID,
-  input [36:0] AXI_29_AWADDR,
-  input [1:0] AXI_29_AWBURST,
-  input [5:0] AXI_29_AWID,
-  input [3:0] AXI_29_AWLEN,
-  input [2:0] AXI_29_AWSIZE,
-  input AXI_29_AWVALID,
-  input AXI_29_BREADY,
-  input AXI_29_DFI_LP_PWR_X_REQ,
-  input AXI_29_RREADY,
-  input [255:0] AXI_29_WDATA,
-  input [31:0] AXI_29_WDATA_PARITY,
-  input AXI_29_WLAST,
-  input [31:0] AXI_29_WSTRB,
-  input AXI_29_WVALID,
-  input AXI_30_ACLK,
-  input [36:0] AXI_30_ARADDR,
-  input [1:0] AXI_30_ARBURST,
-  input AXI_30_ARESET_N,
-  input [5:0] AXI_30_ARID,
-  input [3:0] AXI_30_ARLEN,
-  input [2:0] AXI_30_ARSIZE,
-  input AXI_30_ARVALID,
-  input [36:0] AXI_30_AWADDR,
-  input [1:0] AXI_30_AWBURST,
-  input [5:0] AXI_30_AWID,
-  input [3:0] AXI_30_AWLEN,
-  input [2:0] AXI_30_AWSIZE,
-  input AXI_30_AWVALID,
-  input AXI_30_BREADY,
-  input AXI_30_DFI_LP_PWR_X_REQ,
-  input AXI_30_RREADY,
-  input [255:0] AXI_30_WDATA,
-  input [31:0] AXI_30_WDATA_PARITY,
-  input AXI_30_WLAST,
-  input [31:0] AXI_30_WSTRB,
-  input AXI_30_WVALID,
-  input AXI_31_ACLK,
-  input [36:0] AXI_31_ARADDR,
-  input [1:0] AXI_31_ARBURST,
-  input AXI_31_ARESET_N,
-  input [5:0] AXI_31_ARID,
-  input [3:0] AXI_31_ARLEN,
-  input [2:0] AXI_31_ARSIZE,
-  input AXI_31_ARVALID,
-  input [36:0] AXI_31_AWADDR,
-  input [1:0] AXI_31_AWBURST,
-  input [5:0] AXI_31_AWID,
-  input [3:0] AXI_31_AWLEN,
-  input [2:0] AXI_31_AWSIZE,
-  input AXI_31_AWVALID,
-  input AXI_31_BREADY,
-  input AXI_31_DFI_LP_PWR_X_REQ,
-  input AXI_31_RREADY,
-  input [255:0] AXI_31_WDATA,
-  input [31:0] AXI_31_WDATA_PARITY,
-  input AXI_31_WLAST,
-  input [31:0] AXI_31_WSTRB,
-  input AXI_31_WVALID,
-  input BSCAN_DRCK_0,
-  input BSCAN_DRCK_1,
-  input BSCAN_TCK_0,
-  input BSCAN_TCK_1,
-  input HBM_REF_CLK_0,
-  input HBM_REF_CLK_1,
-  input MBIST_EN_00,
-  input MBIST_EN_01,
-  input MBIST_EN_02,
-  input MBIST_EN_03,
-  input MBIST_EN_04,
-  input MBIST_EN_05,
-  input MBIST_EN_06,
-  input MBIST_EN_07,
-  input MBIST_EN_08,
-  input MBIST_EN_09,
-  input MBIST_EN_10,
-  input MBIST_EN_11,
-  input MBIST_EN_12,
-  input MBIST_EN_13,
-  input MBIST_EN_14,
-  input MBIST_EN_15
+    input [ 21:0] APB_0_PADDR,
+    input         APB_0_PCLK,
+    input         APB_0_PENABLE,
+    input         APB_0_PRESET_N,
+    input         APB_0_PSEL,
+    input [ 31:0] APB_0_PWDATA,
+    input         APB_0_PWRITE,
+    input [ 21:0] APB_1_PADDR,
+    input         APB_1_PCLK,
+    input         APB_1_PENABLE,
+    input         APB_1_PRESET_N,
+    input         APB_1_PSEL,
+    input [ 31:0] APB_1_PWDATA,
+    input         APB_1_PWRITE,
+    input         AXI_00_ACLK,
+    input [ 36:0] AXI_00_ARADDR,
+    input [  1:0] AXI_00_ARBURST,
+    input         AXI_00_ARESET_N,
+    input [  5:0] AXI_00_ARID,
+    input [  3:0] AXI_00_ARLEN,
+    input [  2:0] AXI_00_ARSIZE,
+    input         AXI_00_ARVALID,
+    input [ 36:0] AXI_00_AWADDR,
+    input [  1:0] AXI_00_AWBURST,
+    input [  5:0] AXI_00_AWID,
+    input [  3:0] AXI_00_AWLEN,
+    input [  2:0] AXI_00_AWSIZE,
+    input         AXI_00_AWVALID,
+    input         AXI_00_BREADY,
+    input         AXI_00_DFI_LP_PWR_X_REQ,
+    input         AXI_00_RREADY,
+    input [255:0] AXI_00_WDATA,
+    input [ 31:0] AXI_00_WDATA_PARITY,
+    input         AXI_00_WLAST,
+    input [ 31:0] AXI_00_WSTRB,
+    input         AXI_00_WVALID,
+    input         AXI_01_ACLK,
+    input [ 36:0] AXI_01_ARADDR,
+    input [  1:0] AXI_01_ARBURST,
+    input         AXI_01_ARESET_N,
+    input [  5:0] AXI_01_ARID,
+    input [  3:0] AXI_01_ARLEN,
+    input [  2:0] AXI_01_ARSIZE,
+    input         AXI_01_ARVALID,
+    input [ 36:0] AXI_01_AWADDR,
+    input [  1:0] AXI_01_AWBURST,
+    input [  5:0] AXI_01_AWID,
+    input [  3:0] AXI_01_AWLEN,
+    input [  2:0] AXI_01_AWSIZE,
+    input         AXI_01_AWVALID,
+    input         AXI_01_BREADY,
+    input         AXI_01_DFI_LP_PWR_X_REQ,
+    input         AXI_01_RREADY,
+    input [255:0] AXI_01_WDATA,
+    input [ 31:0] AXI_01_WDATA_PARITY,
+    input         AXI_01_WLAST,
+    input [ 31:0] AXI_01_WSTRB,
+    input         AXI_01_WVALID,
+    input         AXI_02_ACLK,
+    input [ 36:0] AXI_02_ARADDR,
+    input [  1:0] AXI_02_ARBURST,
+    input         AXI_02_ARESET_N,
+    input [  5:0] AXI_02_ARID,
+    input [  3:0] AXI_02_ARLEN,
+    input [  2:0] AXI_02_ARSIZE,
+    input         AXI_02_ARVALID,
+    input [ 36:0] AXI_02_AWADDR,
+    input [  1:0] AXI_02_AWBURST,
+    input [  5:0] AXI_02_AWID,
+    input [  3:0] AXI_02_AWLEN,
+    input [  2:0] AXI_02_AWSIZE,
+    input         AXI_02_AWVALID,
+    input         AXI_02_BREADY,
+    input         AXI_02_DFI_LP_PWR_X_REQ,
+    input         AXI_02_RREADY,
+    input [255:0] AXI_02_WDATA,
+    input [ 31:0] AXI_02_WDATA_PARITY,
+    input         AXI_02_WLAST,
+    input [ 31:0] AXI_02_WSTRB,
+    input         AXI_02_WVALID,
+    input         AXI_03_ACLK,
+    input [ 36:0] AXI_03_ARADDR,
+    input [  1:0] AXI_03_ARBURST,
+    input         AXI_03_ARESET_N,
+    input [  5:0] AXI_03_ARID,
+    input [  3:0] AXI_03_ARLEN,
+    input [  2:0] AXI_03_ARSIZE,
+    input         AXI_03_ARVALID,
+    input [ 36:0] AXI_03_AWADDR,
+    input [  1:0] AXI_03_AWBURST,
+    input [  5:0] AXI_03_AWID,
+    input [  3:0] AXI_03_AWLEN,
+    input [  2:0] AXI_03_AWSIZE,
+    input         AXI_03_AWVALID,
+    input         AXI_03_BREADY,
+    input         AXI_03_DFI_LP_PWR_X_REQ,
+    input         AXI_03_RREADY,
+    input [255:0] AXI_03_WDATA,
+    input [ 31:0] AXI_03_WDATA_PARITY,
+    input         AXI_03_WLAST,
+    input [ 31:0] AXI_03_WSTRB,
+    input         AXI_03_WVALID,
+    input         AXI_04_ACLK,
+    input [ 36:0] AXI_04_ARADDR,
+    input [  1:0] AXI_04_ARBURST,
+    input         AXI_04_ARESET_N,
+    input [  5:0] AXI_04_ARID,
+    input [  3:0] AXI_04_ARLEN,
+    input [  2:0] AXI_04_ARSIZE,
+    input         AXI_04_ARVALID,
+    input [ 36:0] AXI_04_AWADDR,
+    input [  1:0] AXI_04_AWBURST,
+    input [  5:0] AXI_04_AWID,
+    input [  3:0] AXI_04_AWLEN,
+    input [  2:0] AXI_04_AWSIZE,
+    input         AXI_04_AWVALID,
+    input         AXI_04_BREADY,
+    input         AXI_04_DFI_LP_PWR_X_REQ,
+    input         AXI_04_RREADY,
+    input [255:0] AXI_04_WDATA,
+    input [ 31:0] AXI_04_WDATA_PARITY,
+    input         AXI_04_WLAST,
+    input [ 31:0] AXI_04_WSTRB,
+    input         AXI_04_WVALID,
+    input         AXI_05_ACLK,
+    input [ 36:0] AXI_05_ARADDR,
+    input [  1:0] AXI_05_ARBURST,
+    input         AXI_05_ARESET_N,
+    input [  5:0] AXI_05_ARID,
+    input [  3:0] AXI_05_ARLEN,
+    input [  2:0] AXI_05_ARSIZE,
+    input         AXI_05_ARVALID,
+    input [ 36:0] AXI_05_AWADDR,
+    input [  1:0] AXI_05_AWBURST,
+    input [  5:0] AXI_05_AWID,
+    input [  3:0] AXI_05_AWLEN,
+    input [  2:0] AXI_05_AWSIZE,
+    input         AXI_05_AWVALID,
+    input         AXI_05_BREADY,
+    input         AXI_05_DFI_LP_PWR_X_REQ,
+    input         AXI_05_RREADY,
+    input [255:0] AXI_05_WDATA,
+    input [ 31:0] AXI_05_WDATA_PARITY,
+    input         AXI_05_WLAST,
+    input [ 31:0] AXI_05_WSTRB,
+    input         AXI_05_WVALID,
+    input         AXI_06_ACLK,
+    input [ 36:0] AXI_06_ARADDR,
+    input [  1:0] AXI_06_ARBURST,
+    input         AXI_06_ARESET_N,
+    input [  5:0] AXI_06_ARID,
+    input [  3:0] AXI_06_ARLEN,
+    input [  2:0] AXI_06_ARSIZE,
+    input         AXI_06_ARVALID,
+    input [ 36:0] AXI_06_AWADDR,
+    input [  1:0] AXI_06_AWBURST,
+    input [  5:0] AXI_06_AWID,
+    input [  3:0] AXI_06_AWLEN,
+    input [  2:0] AXI_06_AWSIZE,
+    input         AXI_06_AWVALID,
+    input         AXI_06_BREADY,
+    input         AXI_06_DFI_LP_PWR_X_REQ,
+    input         AXI_06_RREADY,
+    input [255:0] AXI_06_WDATA,
+    input [ 31:0] AXI_06_WDATA_PARITY,
+    input         AXI_06_WLAST,
+    input [ 31:0] AXI_06_WSTRB,
+    input         AXI_06_WVALID,
+    input         AXI_07_ACLK,
+    input [ 36:0] AXI_07_ARADDR,
+    input [  1:0] AXI_07_ARBURST,
+    input         AXI_07_ARESET_N,
+    input [  5:0] AXI_07_ARID,
+    input [  3:0] AXI_07_ARLEN,
+    input [  2:0] AXI_07_ARSIZE,
+    input         AXI_07_ARVALID,
+    input [ 36:0] AXI_07_AWADDR,
+    input [  1:0] AXI_07_AWBURST,
+    input [  5:0] AXI_07_AWID,
+    input [  3:0] AXI_07_AWLEN,
+    input [  2:0] AXI_07_AWSIZE,
+    input         AXI_07_AWVALID,
+    input         AXI_07_BREADY,
+    input         AXI_07_DFI_LP_PWR_X_REQ,
+    input         AXI_07_RREADY,
+    input [255:0] AXI_07_WDATA,
+    input [ 31:0] AXI_07_WDATA_PARITY,
+    input         AXI_07_WLAST,
+    input [ 31:0] AXI_07_WSTRB,
+    input         AXI_07_WVALID,
+    input         AXI_08_ACLK,
+    input [ 36:0] AXI_08_ARADDR,
+    input [  1:0] AXI_08_ARBURST,
+    input         AXI_08_ARESET_N,
+    input [  5:0] AXI_08_ARID,
+    input [  3:0] AXI_08_ARLEN,
+    input [  2:0] AXI_08_ARSIZE,
+    input         AXI_08_ARVALID,
+    input [ 36:0] AXI_08_AWADDR,
+    input [  1:0] AXI_08_AWBURST,
+    input [  5:0] AXI_08_AWID,
+    input [  3:0] AXI_08_AWLEN,
+    input [  2:0] AXI_08_AWSIZE,
+    input         AXI_08_AWVALID,
+    input         AXI_08_BREADY,
+    input         AXI_08_DFI_LP_PWR_X_REQ,
+    input         AXI_08_RREADY,
+    input [255:0] AXI_08_WDATA,
+    input [ 31:0] AXI_08_WDATA_PARITY,
+    input         AXI_08_WLAST,
+    input [ 31:0] AXI_08_WSTRB,
+    input         AXI_08_WVALID,
+    input         AXI_09_ACLK,
+    input [ 36:0] AXI_09_ARADDR,
+    input [  1:0] AXI_09_ARBURST,
+    input         AXI_09_ARESET_N,
+    input [  5:0] AXI_09_ARID,
+    input [  3:0] AXI_09_ARLEN,
+    input [  2:0] AXI_09_ARSIZE,
+    input         AXI_09_ARVALID,
+    input [ 36:0] AXI_09_AWADDR,
+    input [  1:0] AXI_09_AWBURST,
+    input [  5:0] AXI_09_AWID,
+    input [  3:0] AXI_09_AWLEN,
+    input [  2:0] AXI_09_AWSIZE,
+    input         AXI_09_AWVALID,
+    input         AXI_09_BREADY,
+    input         AXI_09_DFI_LP_PWR_X_REQ,
+    input         AXI_09_RREADY,
+    input [255:0] AXI_09_WDATA,
+    input [ 31:0] AXI_09_WDATA_PARITY,
+    input         AXI_09_WLAST,
+    input [ 31:0] AXI_09_WSTRB,
+    input         AXI_09_WVALID,
+    input         AXI_10_ACLK,
+    input [ 36:0] AXI_10_ARADDR,
+    input [  1:0] AXI_10_ARBURST,
+    input         AXI_10_ARESET_N,
+    input [  5:0] AXI_10_ARID,
+    input [  3:0] AXI_10_ARLEN,
+    input [  2:0] AXI_10_ARSIZE,
+    input         AXI_10_ARVALID,
+    input [ 36:0] AXI_10_AWADDR,
+    input [  1:0] AXI_10_AWBURST,
+    input [  5:0] AXI_10_AWID,
+    input [  3:0] AXI_10_AWLEN,
+    input [  2:0] AXI_10_AWSIZE,
+    input         AXI_10_AWVALID,
+    input         AXI_10_BREADY,
+    input         AXI_10_DFI_LP_PWR_X_REQ,
+    input         AXI_10_RREADY,
+    input [255:0] AXI_10_WDATA,
+    input [ 31:0] AXI_10_WDATA_PARITY,
+    input         AXI_10_WLAST,
+    input [ 31:0] AXI_10_WSTRB,
+    input         AXI_10_WVALID,
+    input         AXI_11_ACLK,
+    input [ 36:0] AXI_11_ARADDR,
+    input [  1:0] AXI_11_ARBURST,
+    input         AXI_11_ARESET_N,
+    input [  5:0] AXI_11_ARID,
+    input [  3:0] AXI_11_ARLEN,
+    input [  2:0] AXI_11_ARSIZE,
+    input         AXI_11_ARVALID,
+    input [ 36:0] AXI_11_AWADDR,
+    input [  1:0] AXI_11_AWBURST,
+    input [  5:0] AXI_11_AWID,
+    input [  3:0] AXI_11_AWLEN,
+    input [  2:0] AXI_11_AWSIZE,
+    input         AXI_11_AWVALID,
+    input         AXI_11_BREADY,
+    input         AXI_11_DFI_LP_PWR_X_REQ,
+    input         AXI_11_RREADY,
+    input [255:0] AXI_11_WDATA,
+    input [ 31:0] AXI_11_WDATA_PARITY,
+    input         AXI_11_WLAST,
+    input [ 31:0] AXI_11_WSTRB,
+    input         AXI_11_WVALID,
+    input         AXI_12_ACLK,
+    input [ 36:0] AXI_12_ARADDR,
+    input [  1:0] AXI_12_ARBURST,
+    input         AXI_12_ARESET_N,
+    input [  5:0] AXI_12_ARID,
+    input [  3:0] AXI_12_ARLEN,
+    input [  2:0] AXI_12_ARSIZE,
+    input         AXI_12_ARVALID,
+    input [ 36:0] AXI_12_AWADDR,
+    input [  1:0] AXI_12_AWBURST,
+    input [  5:0] AXI_12_AWID,
+    input [  3:0] AXI_12_AWLEN,
+    input [  2:0] AXI_12_AWSIZE,
+    input         AXI_12_AWVALID,
+    input         AXI_12_BREADY,
+    input         AXI_12_DFI_LP_PWR_X_REQ,
+    input         AXI_12_RREADY,
+    input [255:0] AXI_12_WDATA,
+    input [ 31:0] AXI_12_WDATA_PARITY,
+    input         AXI_12_WLAST,
+    input [ 31:0] AXI_12_WSTRB,
+    input         AXI_12_WVALID,
+    input         AXI_13_ACLK,
+    input [ 36:0] AXI_13_ARADDR,
+    input [  1:0] AXI_13_ARBURST,
+    input         AXI_13_ARESET_N,
+    input [  5:0] AXI_13_ARID,
+    input [  3:0] AXI_13_ARLEN,
+    input [  2:0] AXI_13_ARSIZE,
+    input         AXI_13_ARVALID,
+    input [ 36:0] AXI_13_AWADDR,
+    input [  1:0] AXI_13_AWBURST,
+    input [  5:0] AXI_13_AWID,
+    input [  3:0] AXI_13_AWLEN,
+    input [  2:0] AXI_13_AWSIZE,
+    input         AXI_13_AWVALID,
+    input         AXI_13_BREADY,
+    input         AXI_13_DFI_LP_PWR_X_REQ,
+    input         AXI_13_RREADY,
+    input [255:0] AXI_13_WDATA,
+    input [ 31:0] AXI_13_WDATA_PARITY,
+    input         AXI_13_WLAST,
+    input [ 31:0] AXI_13_WSTRB,
+    input         AXI_13_WVALID,
+    input         AXI_14_ACLK,
+    input [ 36:0] AXI_14_ARADDR,
+    input [  1:0] AXI_14_ARBURST,
+    input         AXI_14_ARESET_N,
+    input [  5:0] AXI_14_ARID,
+    input [  3:0] AXI_14_ARLEN,
+    input [  2:0] AXI_14_ARSIZE,
+    input         AXI_14_ARVALID,
+    input [ 36:0] AXI_14_AWADDR,
+    input [  1:0] AXI_14_AWBURST,
+    input [  5:0] AXI_14_AWID,
+    input [  3:0] AXI_14_AWLEN,
+    input [  2:0] AXI_14_AWSIZE,
+    input         AXI_14_AWVALID,
+    input         AXI_14_BREADY,
+    input         AXI_14_DFI_LP_PWR_X_REQ,
+    input         AXI_14_RREADY,
+    input [255:0] AXI_14_WDATA,
+    input [ 31:0] AXI_14_WDATA_PARITY,
+    input         AXI_14_WLAST,
+    input [ 31:0] AXI_14_WSTRB,
+    input         AXI_14_WVALID,
+    input         AXI_15_ACLK,
+    input [ 36:0] AXI_15_ARADDR,
+    input [  1:0] AXI_15_ARBURST,
+    input         AXI_15_ARESET_N,
+    input [  5:0] AXI_15_ARID,
+    input [  3:0] AXI_15_ARLEN,
+    input [  2:0] AXI_15_ARSIZE,
+    input         AXI_15_ARVALID,
+    input [ 36:0] AXI_15_AWADDR,
+    input [  1:0] AXI_15_AWBURST,
+    input [  5:0] AXI_15_AWID,
+    input [  3:0] AXI_15_AWLEN,
+    input [  2:0] AXI_15_AWSIZE,
+    input         AXI_15_AWVALID,
+    input         AXI_15_BREADY,
+    input         AXI_15_DFI_LP_PWR_X_REQ,
+    input         AXI_15_RREADY,
+    input [255:0] AXI_15_WDATA,
+    input [ 31:0] AXI_15_WDATA_PARITY,
+    input         AXI_15_WLAST,
+    input [ 31:0] AXI_15_WSTRB,
+    input         AXI_15_WVALID,
+    input         AXI_16_ACLK,
+    input [ 36:0] AXI_16_ARADDR,
+    input [  1:0] AXI_16_ARBURST,
+    input         AXI_16_ARESET_N,
+    input [  5:0] AXI_16_ARID,
+    input [  3:0] AXI_16_ARLEN,
+    input [  2:0] AXI_16_ARSIZE,
+    input         AXI_16_ARVALID,
+    input [ 36:0] AXI_16_AWADDR,
+    input [  1:0] AXI_16_AWBURST,
+    input [  5:0] AXI_16_AWID,
+    input [  3:0] AXI_16_AWLEN,
+    input [  2:0] AXI_16_AWSIZE,
+    input         AXI_16_AWVALID,
+    input         AXI_16_BREADY,
+    input         AXI_16_DFI_LP_PWR_X_REQ,
+    input         AXI_16_RREADY,
+    input [255:0] AXI_16_WDATA,
+    input [ 31:0] AXI_16_WDATA_PARITY,
+    input         AXI_16_WLAST,
+    input [ 31:0] AXI_16_WSTRB,
+    input         AXI_16_WVALID,
+    input         AXI_17_ACLK,
+    input [ 36:0] AXI_17_ARADDR,
+    input [  1:0] AXI_17_ARBURST,
+    input         AXI_17_ARESET_N,
+    input [  5:0] AXI_17_ARID,
+    input [  3:0] AXI_17_ARLEN,
+    input [  2:0] AXI_17_ARSIZE,
+    input         AXI_17_ARVALID,
+    input [ 36:0] AXI_17_AWADDR,
+    input [  1:0] AXI_17_AWBURST,
+    input [  5:0] AXI_17_AWID,
+    input [  3:0] AXI_17_AWLEN,
+    input [  2:0] AXI_17_AWSIZE,
+    input         AXI_17_AWVALID,
+    input         AXI_17_BREADY,
+    input         AXI_17_DFI_LP_PWR_X_REQ,
+    input         AXI_17_RREADY,
+    input [255:0] AXI_17_WDATA,
+    input [ 31:0] AXI_17_WDATA_PARITY,
+    input         AXI_17_WLAST,
+    input [ 31:0] AXI_17_WSTRB,
+    input         AXI_17_WVALID,
+    input         AXI_18_ACLK,
+    input [ 36:0] AXI_18_ARADDR,
+    input [  1:0] AXI_18_ARBURST,
+    input         AXI_18_ARESET_N,
+    input [  5:0] AXI_18_ARID,
+    input [  3:0] AXI_18_ARLEN,
+    input [  2:0] AXI_18_ARSIZE,
+    input         AXI_18_ARVALID,
+    input [ 36:0] AXI_18_AWADDR,
+    input [  1:0] AXI_18_AWBURST,
+    input [  5:0] AXI_18_AWID,
+    input [  3:0] AXI_18_AWLEN,
+    input [  2:0] AXI_18_AWSIZE,
+    input         AXI_18_AWVALID,
+    input         AXI_18_BREADY,
+    input         AXI_18_DFI_LP_PWR_X_REQ,
+    input         AXI_18_RREADY,
+    input [255:0] AXI_18_WDATA,
+    input [ 31:0] AXI_18_WDATA_PARITY,
+    input         AXI_18_WLAST,
+    input [ 31:0] AXI_18_WSTRB,
+    input         AXI_18_WVALID,
+    input         AXI_19_ACLK,
+    input [ 36:0] AXI_19_ARADDR,
+    input [  1:0] AXI_19_ARBURST,
+    input         AXI_19_ARESET_N,
+    input [  5:0] AXI_19_ARID,
+    input [  3:0] AXI_19_ARLEN,
+    input [  2:0] AXI_19_ARSIZE,
+    input         AXI_19_ARVALID,
+    input [ 36:0] AXI_19_AWADDR,
+    input [  1:0] AXI_19_AWBURST,
+    input [  5:0] AXI_19_AWID,
+    input [  3:0] AXI_19_AWLEN,
+    input [  2:0] AXI_19_AWSIZE,
+    input         AXI_19_AWVALID,
+    input         AXI_19_BREADY,
+    input         AXI_19_DFI_LP_PWR_X_REQ,
+    input         AXI_19_RREADY,
+    input [255:0] AXI_19_WDATA,
+    input [ 31:0] AXI_19_WDATA_PARITY,
+    input         AXI_19_WLAST,
+    input [ 31:0] AXI_19_WSTRB,
+    input         AXI_19_WVALID,
+    input         AXI_20_ACLK,
+    input [ 36:0] AXI_20_ARADDR,
+    input [  1:0] AXI_20_ARBURST,
+    input         AXI_20_ARESET_N,
+    input [  5:0] AXI_20_ARID,
+    input [  3:0] AXI_20_ARLEN,
+    input [  2:0] AXI_20_ARSIZE,
+    input         AXI_20_ARVALID,
+    input [ 36:0] AXI_20_AWADDR,
+    input [  1:0] AXI_20_AWBURST,
+    input [  5:0] AXI_20_AWID,
+    input [  3:0] AXI_20_AWLEN,
+    input [  2:0] AXI_20_AWSIZE,
+    input         AXI_20_AWVALID,
+    input         AXI_20_BREADY,
+    input         AXI_20_DFI_LP_PWR_X_REQ,
+    input         AXI_20_RREADY,
+    input [255:0] AXI_20_WDATA,
+    input [ 31:0] AXI_20_WDATA_PARITY,
+    input         AXI_20_WLAST,
+    input [ 31:0] AXI_20_WSTRB,
+    input         AXI_20_WVALID,
+    input         AXI_21_ACLK,
+    input [ 36:0] AXI_21_ARADDR,
+    input [  1:0] AXI_21_ARBURST,
+    input         AXI_21_ARESET_N,
+    input [  5:0] AXI_21_ARID,
+    input [  3:0] AXI_21_ARLEN,
+    input [  2:0] AXI_21_ARSIZE,
+    input         AXI_21_ARVALID,
+    input [ 36:0] AXI_21_AWADDR,
+    input [  1:0] AXI_21_AWBURST,
+    input [  5:0] AXI_21_AWID,
+    input [  3:0] AXI_21_AWLEN,
+    input [  2:0] AXI_21_AWSIZE,
+    input         AXI_21_AWVALID,
+    input         AXI_21_BREADY,
+    input         AXI_21_DFI_LP_PWR_X_REQ,
+    input         AXI_21_RREADY,
+    input [255:0] AXI_21_WDATA,
+    input [ 31:0] AXI_21_WDATA_PARITY,
+    input         AXI_21_WLAST,
+    input [ 31:0] AXI_21_WSTRB,
+    input         AXI_21_WVALID,
+    input         AXI_22_ACLK,
+    input [ 36:0] AXI_22_ARADDR,
+    input [  1:0] AXI_22_ARBURST,
+    input         AXI_22_ARESET_N,
+    input [  5:0] AXI_22_ARID,
+    input [  3:0] AXI_22_ARLEN,
+    input [  2:0] AXI_22_ARSIZE,
+    input         AXI_22_ARVALID,
+    input [ 36:0] AXI_22_AWADDR,
+    input [  1:0] AXI_22_AWBURST,
+    input [  5:0] AXI_22_AWID,
+    input [  3:0] AXI_22_AWLEN,
+    input [  2:0] AXI_22_AWSIZE,
+    input         AXI_22_AWVALID,
+    input         AXI_22_BREADY,
+    input         AXI_22_DFI_LP_PWR_X_REQ,
+    input         AXI_22_RREADY,
+    input [255:0] AXI_22_WDATA,
+    input [ 31:0] AXI_22_WDATA_PARITY,
+    input         AXI_22_WLAST,
+    input [ 31:0] AXI_22_WSTRB,
+    input         AXI_22_WVALID,
+    input         AXI_23_ACLK,
+    input [ 36:0] AXI_23_ARADDR,
+    input [  1:0] AXI_23_ARBURST,
+    input         AXI_23_ARESET_N,
+    input [  5:0] AXI_23_ARID,
+    input [  3:0] AXI_23_ARLEN,
+    input [  2:0] AXI_23_ARSIZE,
+    input         AXI_23_ARVALID,
+    input [ 36:0] AXI_23_AWADDR,
+    input [  1:0] AXI_23_AWBURST,
+    input [  5:0] AXI_23_AWID,
+    input [  3:0] AXI_23_AWLEN,
+    input [  2:0] AXI_23_AWSIZE,
+    input         AXI_23_AWVALID,
+    input         AXI_23_BREADY,
+    input         AXI_23_DFI_LP_PWR_X_REQ,
+    input         AXI_23_RREADY,
+    input [255:0] AXI_23_WDATA,
+    input [ 31:0] AXI_23_WDATA_PARITY,
+    input         AXI_23_WLAST,
+    input [ 31:0] AXI_23_WSTRB,
+    input         AXI_23_WVALID,
+    input         AXI_24_ACLK,
+    input [ 36:0] AXI_24_ARADDR,
+    input [  1:0] AXI_24_ARBURST,
+    input         AXI_24_ARESET_N,
+    input [  5:0] AXI_24_ARID,
+    input [  3:0] AXI_24_ARLEN,
+    input [  2:0] AXI_24_ARSIZE,
+    input         AXI_24_ARVALID,
+    input [ 36:0] AXI_24_AWADDR,
+    input [  1:0] AXI_24_AWBURST,
+    input [  5:0] AXI_24_AWID,
+    input [  3:0] AXI_24_AWLEN,
+    input [  2:0] AXI_24_AWSIZE,
+    input         AXI_24_AWVALID,
+    input         AXI_24_BREADY,
+    input         AXI_24_DFI_LP_PWR_X_REQ,
+    input         AXI_24_RREADY,
+    input [255:0] AXI_24_WDATA,
+    input [ 31:0] AXI_24_WDATA_PARITY,
+    input         AXI_24_WLAST,
+    input [ 31:0] AXI_24_WSTRB,
+    input         AXI_24_WVALID,
+    input         AXI_25_ACLK,
+    input [ 36:0] AXI_25_ARADDR,
+    input [  1:0] AXI_25_ARBURST,
+    input         AXI_25_ARESET_N,
+    input [  5:0] AXI_25_ARID,
+    input [  3:0] AXI_25_ARLEN,
+    input [  2:0] AXI_25_ARSIZE,
+    input         AXI_25_ARVALID,
+    input [ 36:0] AXI_25_AWADDR,
+    input [  1:0] AXI_25_AWBURST,
+    input [  5:0] AXI_25_AWID,
+    input [  3:0] AXI_25_AWLEN,
+    input [  2:0] AXI_25_AWSIZE,
+    input         AXI_25_AWVALID,
+    input         AXI_25_BREADY,
+    input         AXI_25_DFI_LP_PWR_X_REQ,
+    input         AXI_25_RREADY,
+    input [255:0] AXI_25_WDATA,
+    input [ 31:0] AXI_25_WDATA_PARITY,
+    input         AXI_25_WLAST,
+    input [ 31:0] AXI_25_WSTRB,
+    input         AXI_25_WVALID,
+    input         AXI_26_ACLK,
+    input [ 36:0] AXI_26_ARADDR,
+    input [  1:0] AXI_26_ARBURST,
+    input         AXI_26_ARESET_N,
+    input [  5:0] AXI_26_ARID,
+    input [  3:0] AXI_26_ARLEN,
+    input [  2:0] AXI_26_ARSIZE,
+    input         AXI_26_ARVALID,
+    input [ 36:0] AXI_26_AWADDR,
+    input [  1:0] AXI_26_AWBURST,
+    input [  5:0] AXI_26_AWID,
+    input [  3:0] AXI_26_AWLEN,
+    input [  2:0] AXI_26_AWSIZE,
+    input         AXI_26_AWVALID,
+    input         AXI_26_BREADY,
+    input         AXI_26_DFI_LP_PWR_X_REQ,
+    input         AXI_26_RREADY,
+    input [255:0] AXI_26_WDATA,
+    input [ 31:0] AXI_26_WDATA_PARITY,
+    input         AXI_26_WLAST,
+    input [ 31:0] AXI_26_WSTRB,
+    input         AXI_26_WVALID,
+    input         AXI_27_ACLK,
+    input [ 36:0] AXI_27_ARADDR,
+    input [  1:0] AXI_27_ARBURST,
+    input         AXI_27_ARESET_N,
+    input [  5:0] AXI_27_ARID,
+    input [  3:0] AXI_27_ARLEN,
+    input [  2:0] AXI_27_ARSIZE,
+    input         AXI_27_ARVALID,
+    input [ 36:0] AXI_27_AWADDR,
+    input [  1:0] AXI_27_AWBURST,
+    input [  5:0] AXI_27_AWID,
+    input [  3:0] AXI_27_AWLEN,
+    input [  2:0] AXI_27_AWSIZE,
+    input         AXI_27_AWVALID,
+    input         AXI_27_BREADY,
+    input         AXI_27_DFI_LP_PWR_X_REQ,
+    input         AXI_27_RREADY,
+    input [255:0] AXI_27_WDATA,
+    input [ 31:0] AXI_27_WDATA_PARITY,
+    input         AXI_27_WLAST,
+    input [ 31:0] AXI_27_WSTRB,
+    input         AXI_27_WVALID,
+    input         AXI_28_ACLK,
+    input [ 36:0] AXI_28_ARADDR,
+    input [  1:0] AXI_28_ARBURST,
+    input         AXI_28_ARESET_N,
+    input [  5:0] AXI_28_ARID,
+    input [  3:0] AXI_28_ARLEN,
+    input [  2:0] AXI_28_ARSIZE,
+    input         AXI_28_ARVALID,
+    input [ 36:0] AXI_28_AWADDR,
+    input [  1:0] AXI_28_AWBURST,
+    input [  5:0] AXI_28_AWID,
+    input [  3:0] AXI_28_AWLEN,
+    input [  2:0] AXI_28_AWSIZE,
+    input         AXI_28_AWVALID,
+    input         AXI_28_BREADY,
+    input         AXI_28_DFI_LP_PWR_X_REQ,
+    input         AXI_28_RREADY,
+    input [255:0] AXI_28_WDATA,
+    input [ 31:0] AXI_28_WDATA_PARITY,
+    input         AXI_28_WLAST,
+    input [ 31:0] AXI_28_WSTRB,
+    input         AXI_28_WVALID,
+    input         AXI_29_ACLK,
+    input [ 36:0] AXI_29_ARADDR,
+    input [  1:0] AXI_29_ARBURST,
+    input         AXI_29_ARESET_N,
+    input [  5:0] AXI_29_ARID,
+    input [  3:0] AXI_29_ARLEN,
+    input [  2:0] AXI_29_ARSIZE,
+    input         AXI_29_ARVALID,
+    input [ 36:0] AXI_29_AWADDR,
+    input [  1:0] AXI_29_AWBURST,
+    input [  5:0] AXI_29_AWID,
+    input [  3:0] AXI_29_AWLEN,
+    input [  2:0] AXI_29_AWSIZE,
+    input         AXI_29_AWVALID,
+    input         AXI_29_BREADY,
+    input         AXI_29_DFI_LP_PWR_X_REQ,
+    input         AXI_29_RREADY,
+    input [255:0] AXI_29_WDATA,
+    input [ 31:0] AXI_29_WDATA_PARITY,
+    input         AXI_29_WLAST,
+    input [ 31:0] AXI_29_WSTRB,
+    input         AXI_29_WVALID,
+    input         AXI_30_ACLK,
+    input [ 36:0] AXI_30_ARADDR,
+    input [  1:0] AXI_30_ARBURST,
+    input         AXI_30_ARESET_N,
+    input [  5:0] AXI_30_ARID,
+    input [  3:0] AXI_30_ARLEN,
+    input [  2:0] AXI_30_ARSIZE,
+    input         AXI_30_ARVALID,
+    input [ 36:0] AXI_30_AWADDR,
+    input [  1:0] AXI_30_AWBURST,
+    input [  5:0] AXI_30_AWID,
+    input [  3:0] AXI_30_AWLEN,
+    input [  2:0] AXI_30_AWSIZE,
+    input         AXI_30_AWVALID,
+    input         AXI_30_BREADY,
+    input         AXI_30_DFI_LP_PWR_X_REQ,
+    input         AXI_30_RREADY,
+    input [255:0] AXI_30_WDATA,
+    input [ 31:0] AXI_30_WDATA_PARITY,
+    input         AXI_30_WLAST,
+    input [ 31:0] AXI_30_WSTRB,
+    input         AXI_30_WVALID,
+    input         AXI_31_ACLK,
+    input [ 36:0] AXI_31_ARADDR,
+    input [  1:0] AXI_31_ARBURST,
+    input         AXI_31_ARESET_N,
+    input [  5:0] AXI_31_ARID,
+    input [  3:0] AXI_31_ARLEN,
+    input [  2:0] AXI_31_ARSIZE,
+    input         AXI_31_ARVALID,
+    input [ 36:0] AXI_31_AWADDR,
+    input [  1:0] AXI_31_AWBURST,
+    input [  5:0] AXI_31_AWID,
+    input [  3:0] AXI_31_AWLEN,
+    input [  2:0] AXI_31_AWSIZE,
+    input         AXI_31_AWVALID,
+    input         AXI_31_BREADY,
+    input         AXI_31_DFI_LP_PWR_X_REQ,
+    input         AXI_31_RREADY,
+    input [255:0] AXI_31_WDATA,
+    input [ 31:0] AXI_31_WDATA_PARITY,
+    input         AXI_31_WLAST,
+    input [ 31:0] AXI_31_WSTRB,
+    input         AXI_31_WVALID,
+    input         BSCAN_DRCK_0,
+    input         BSCAN_DRCK_1,
+    input         BSCAN_TCK_0,
+    input         BSCAN_TCK_1,
+    input         HBM_REF_CLK_0,
+    input         HBM_REF_CLK_1,
+    input         MBIST_EN_00,
+    input         MBIST_EN_01,
+    input         MBIST_EN_02,
+    input         MBIST_EN_03,
+    input         MBIST_EN_04,
+    input         MBIST_EN_05,
+    input         MBIST_EN_06,
+    input         MBIST_EN_07,
+    input         MBIST_EN_08,
+    input         MBIST_EN_09,
+    input         MBIST_EN_10,
+    input         MBIST_EN_11,
+    input         MBIST_EN_12,
+    input         MBIST_EN_13,
+    input         MBIST_EN_14,
+    input         MBIST_EN_15
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "HBM_TWO_STACK_INTF";
-  
-// Parameter encodings and registers
+
+  // Parameter encodings and registers
   localparam PHY_PCLK_INVERT_01_FALSE = 0;
   localparam PHY_PCLK_INVERT_01_TRUE = 1;
   localparam PHY_PCLK_INVERT_02_FALSE = 0;
   localparam PHY_PCLK_INVERT_02_TRUE = 1;
 
   reg trig_attr;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "HBM_TWO_STACK_INTF_dr.v"
 `else
@@ -5408,12 +5406,12 @@ module HBM_TWO_STACK_INTF #(
 
 `ifndef XIL_XECLIB
   initial begin
-  trig_attr = 1'b0;
-  `ifdef XIL_ATTR_TEST
+    trig_attr = 1'b0;
+`ifdef XIL_ATTR_TEST
     attr_test = 1'b1;
-  `else
+`else
     attr_test = 1'b0;
-  `endif
+`endif
     attr_err = 1'b0;
     #1;
     trig_attr = ~trig_attr;
@@ -5421,1370 +5419,1513 @@ module HBM_TWO_STACK_INTF #(
 `endif
 
 `ifndef XIL_XECLIB
-always @ (trig_attr) begin
-  #1;
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_00_REG != "FALSE") &&
-       (CLK_SEL_00_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-109] CLK_SEL_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_01_REG != "FALSE") &&
-       (CLK_SEL_01_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-110] CLK_SEL_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_02_REG != "FALSE") &&
-       (CLK_SEL_02_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-111] CLK_SEL_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_02_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_03_REG != "FALSE") &&
-       (CLK_SEL_03_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-112] CLK_SEL_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_03_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_04_REG != "FALSE") &&
-       (CLK_SEL_04_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-113] CLK_SEL_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_04_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_05_REG != "FALSE") &&
-       (CLK_SEL_05_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-114] CLK_SEL_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_05_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_06_REG != "FALSE") &&
-       (CLK_SEL_06_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-115] CLK_SEL_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_06_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_07_REG != "FALSE") &&
-       (CLK_SEL_07_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-116] CLK_SEL_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_07_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_08_REG != "FALSE") &&
-       (CLK_SEL_08_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-117] CLK_SEL_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_08_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_09_REG != "FALSE") &&
-       (CLK_SEL_09_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-118] CLK_SEL_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_09_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_10_REG != "FALSE") &&
-       (CLK_SEL_10_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-119] CLK_SEL_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_10_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_11_REG != "FALSE") &&
-       (CLK_SEL_11_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-120] CLK_SEL_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_11_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_12_REG != "FALSE") &&
-       (CLK_SEL_12_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-121] CLK_SEL_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_12_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_13_REG != "FALSE") &&
-       (CLK_SEL_13_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-122] CLK_SEL_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_13_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_14_REG != "FALSE") &&
-       (CLK_SEL_14_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-123] CLK_SEL_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_14_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_15_REG != "FALSE") &&
-       (CLK_SEL_15_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-124] CLK_SEL_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_15_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_16_REG != "FALSE") &&
-       (CLK_SEL_16_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-125] CLK_SEL_16 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_16_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_17_REG != "FALSE") &&
-       (CLK_SEL_17_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-126] CLK_SEL_17 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_17_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_18_REG != "FALSE") &&
-       (CLK_SEL_18_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-127] CLK_SEL_18 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_18_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_19_REG != "FALSE") &&
-       (CLK_SEL_19_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-128] CLK_SEL_19 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_19_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_20_REG != "FALSE") &&
-       (CLK_SEL_20_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-129] CLK_SEL_20 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_20_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_21_REG != "FALSE") &&
-       (CLK_SEL_21_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-130] CLK_SEL_21 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_21_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_22_REG != "FALSE") &&
-       (CLK_SEL_22_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-131] CLK_SEL_22 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_22_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_23_REG != "FALSE") &&
-       (CLK_SEL_23_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-132] CLK_SEL_23 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_23_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_24_REG != "FALSE") &&
-       (CLK_SEL_24_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-133] CLK_SEL_24 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_24_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_25_REG != "FALSE") &&
-       (CLK_SEL_25_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-134] CLK_SEL_25 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_25_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_26_REG != "FALSE") &&
-       (CLK_SEL_26_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-135] CLK_SEL_26 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_26_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_27_REG != "FALSE") &&
-       (CLK_SEL_27_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-136] CLK_SEL_27 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_27_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_28_REG != "FALSE") &&
-       (CLK_SEL_28_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-137] CLK_SEL_28 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_28_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_29_REG != "FALSE") &&
-       (CLK_SEL_29_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-138] CLK_SEL_29 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_29_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_30_REG != "FALSE") &&
-       (CLK_SEL_30_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-139] CLK_SEL_30 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_30_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((CLK_SEL_31_REG != "FALSE") &&
-       (CLK_SEL_31_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-140] CLK_SEL_31 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_31_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_00_REG < 50) || (DATARATE_00_REG > 1800))) begin
-    $display("Error: [Unisim %s-141] DATARATE_00 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_01_REG < 50) || (DATARATE_01_REG > 1800))) begin
-    $display("Error: [Unisim %s-142] DATARATE_01 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_02_REG < 50) || (DATARATE_02_REG > 1800))) begin
-    $display("Error: [Unisim %s-143] DATARATE_02 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_02_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_03_REG < 50) || (DATARATE_03_REG > 1800))) begin
-    $display("Error: [Unisim %s-144] DATARATE_03 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_03_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_04_REG < 50) || (DATARATE_04_REG > 1800))) begin
-    $display("Error: [Unisim %s-145] DATARATE_04 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_04_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_05_REG < 50) || (DATARATE_05_REG > 1800))) begin
-    $display("Error: [Unisim %s-146] DATARATE_05 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_05_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_06_REG < 50) || (DATARATE_06_REG > 1800))) begin
-    $display("Error: [Unisim %s-147] DATARATE_06 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_06_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_07_REG < 50) || (DATARATE_07_REG > 1800))) begin
-    $display("Error: [Unisim %s-148] DATARATE_07 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_07_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_08_REG < 50) || (DATARATE_08_REG > 1800))) begin
-    $display("Error: [Unisim %s-149] DATARATE_08 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_08_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_09_REG < 50) || (DATARATE_09_REG > 1800))) begin
-    $display("Error: [Unisim %s-150] DATARATE_09 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_09_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_10_REG < 50) || (DATARATE_10_REG > 1800))) begin
-    $display("Error: [Unisim %s-151] DATARATE_10 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_10_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_11_REG < 50) || (DATARATE_11_REG > 1800))) begin
-    $display("Error: [Unisim %s-152] DATARATE_11 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_11_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_12_REG < 50) || (DATARATE_12_REG > 1800))) begin
-    $display("Error: [Unisim %s-153] DATARATE_12 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_12_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_13_REG < 50) || (DATARATE_13_REG > 1800))) begin
-    $display("Error: [Unisim %s-154] DATARATE_13 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_13_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_14_REG < 50) || (DATARATE_14_REG > 1800))) begin
-    $display("Error: [Unisim %s-155] DATARATE_14 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_14_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DATARATE_15_REG < 50) || (DATARATE_15_REG > 1800))) begin
-    $display("Error: [Unisim %s-156] DATARATE_15 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_15_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DA_LOCKOUT_0_REG != "FALSE") &&
-       (DA_LOCKOUT_0_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-157] DA_LOCKOUT_0 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, DA_LOCKOUT_0_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((DA_LOCKOUT_1_REG != "FALSE") &&
-       (DA_LOCKOUT_1_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-158] DA_LOCKOUT_1 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, DA_LOCKOUT_1_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_00_REG != "FALSE") &&
-       (MC_ENABLE_00_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-253] MC_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_01_REG != "FALSE") &&
-       (MC_ENABLE_01_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-254] MC_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_02_REG != "FALSE") &&
-       (MC_ENABLE_02_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-255] MC_ENABLE_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_02_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_03_REG != "FALSE") &&
-       (MC_ENABLE_03_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-256] MC_ENABLE_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_03_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_04_REG != "FALSE") &&
-       (MC_ENABLE_04_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-257] MC_ENABLE_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_04_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_05_REG != "FALSE") &&
-       (MC_ENABLE_05_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-258] MC_ENABLE_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_05_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_06_REG != "FALSE") &&
-       (MC_ENABLE_06_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-259] MC_ENABLE_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_06_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_07_REG != "FALSE") &&
-       (MC_ENABLE_07_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-260] MC_ENABLE_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_07_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_08_REG != "FALSE") &&
-       (MC_ENABLE_08_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-261] MC_ENABLE_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_08_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_09_REG != "FALSE") &&
-       (MC_ENABLE_09_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-262] MC_ENABLE_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_09_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_10_REG != "FALSE") &&
-       (MC_ENABLE_10_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-263] MC_ENABLE_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_10_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_11_REG != "FALSE") &&
-       (MC_ENABLE_11_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-264] MC_ENABLE_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_11_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_12_REG != "FALSE") &&
-       (MC_ENABLE_12_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-265] MC_ENABLE_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_12_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_13_REG != "FALSE") &&
-       (MC_ENABLE_13_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-266] MC_ENABLE_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_13_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_14_REG != "FALSE") &&
-       (MC_ENABLE_14_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-267] MC_ENABLE_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_14_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_15_REG != "FALSE") &&
-       (MC_ENABLE_15_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-268] MC_ENABLE_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_15_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_APB_00_REG != "FALSE") &&
-       (MC_ENABLE_APB_00_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-269] MC_ENABLE_APB_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_APB_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((MC_ENABLE_APB_01_REG != "FALSE") &&
-       (MC_ENABLE_APB_01_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-270] MC_ENABLE_APB_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_APB_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PAGEHIT_PERCENT_00_REG < 0) || (PAGEHIT_PERCENT_00_REG > 100))) begin
-    $display("Error: [Unisim %s-287] PAGEHIT_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, PAGEHIT_PERCENT_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PAGEHIT_PERCENT_01_REG < 0) || (PAGEHIT_PERCENT_01_REG > 100))) begin
-    $display("Error: [Unisim %s-288] PAGEHIT_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, PAGEHIT_PERCENT_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_00_REG != "FALSE") &&
-       (PHY_ENABLE_00_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-291] PHY_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_01_REG != "FALSE") &&
-       (PHY_ENABLE_01_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-292] PHY_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_02_REG != "FALSE") &&
-       (PHY_ENABLE_02_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-293] PHY_ENABLE_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_02_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_03_REG != "FALSE") &&
-       (PHY_ENABLE_03_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-294] PHY_ENABLE_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_03_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_04_REG != "FALSE") &&
-       (PHY_ENABLE_04_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-295] PHY_ENABLE_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_04_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_05_REG != "FALSE") &&
-       (PHY_ENABLE_05_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-296] PHY_ENABLE_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_05_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_06_REG != "FALSE") &&
-       (PHY_ENABLE_06_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-297] PHY_ENABLE_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_06_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_07_REG != "FALSE") &&
-       (PHY_ENABLE_07_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-298] PHY_ENABLE_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_07_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_08_REG != "FALSE") &&
-       (PHY_ENABLE_08_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-299] PHY_ENABLE_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_08_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_09_REG != "FALSE") &&
-       (PHY_ENABLE_09_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-300] PHY_ENABLE_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_09_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_10_REG != "FALSE") &&
-       (PHY_ENABLE_10_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-301] PHY_ENABLE_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_10_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_11_REG != "FALSE") &&
-       (PHY_ENABLE_11_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-302] PHY_ENABLE_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_11_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_12_REG != "FALSE") &&
-       (PHY_ENABLE_12_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-303] PHY_ENABLE_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_12_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_13_REG != "FALSE") &&
-       (PHY_ENABLE_13_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-304] PHY_ENABLE_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_13_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_14_REG != "FALSE") &&
-       (PHY_ENABLE_14_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-305] PHY_ENABLE_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_14_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_15_REG != "FALSE") &&
-       (PHY_ENABLE_15_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-306] PHY_ENABLE_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_15_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_16_REG != "FALSE") &&
-       (PHY_ENABLE_16_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-307] PHY_ENABLE_16 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_16_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_17_REG != "FALSE") &&
-       (PHY_ENABLE_17_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-308] PHY_ENABLE_17 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_17_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_18_REG != "FALSE") &&
-       (PHY_ENABLE_18_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-309] PHY_ENABLE_18 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_18_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_19_REG != "FALSE") &&
-       (PHY_ENABLE_19_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-310] PHY_ENABLE_19 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_19_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_20_REG != "FALSE") &&
-       (PHY_ENABLE_20_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-311] PHY_ENABLE_20 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_20_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_21_REG != "FALSE") &&
-       (PHY_ENABLE_21_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-312] PHY_ENABLE_21 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_21_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_22_REG != "FALSE") &&
-       (PHY_ENABLE_22_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-313] PHY_ENABLE_22 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_22_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_23_REG != "FALSE") &&
-       (PHY_ENABLE_23_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-314] PHY_ENABLE_23 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_23_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_24_REG != "FALSE") &&
-       (PHY_ENABLE_24_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-315] PHY_ENABLE_24 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_24_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_25_REG != "FALSE") &&
-       (PHY_ENABLE_25_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-316] PHY_ENABLE_25 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_25_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_26_REG != "FALSE") &&
-       (PHY_ENABLE_26_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-317] PHY_ENABLE_26 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_26_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_27_REG != "FALSE") &&
-       (PHY_ENABLE_27_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-318] PHY_ENABLE_27 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_27_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_28_REG != "FALSE") &&
-       (PHY_ENABLE_28_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-319] PHY_ENABLE_28 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_28_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_29_REG != "FALSE") &&
-       (PHY_ENABLE_29_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-320] PHY_ENABLE_29 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_29_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_30_REG != "FALSE") &&
-       (PHY_ENABLE_30_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-321] PHY_ENABLE_30 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_30_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_31_REG != "FALSE") &&
-       (PHY_ENABLE_31_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-322] PHY_ENABLE_31 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_31_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_APB_00_REG != "FALSE") &&
-       (PHY_ENABLE_APB_00_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-323] PHY_ENABLE_APB_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_APB_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_ENABLE_APB_01_REG != "FALSE") &&
-       (PHY_ENABLE_APB_01_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-324] PHY_ENABLE_APB_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_APB_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_PCLK_INVERT_01_REG != "FALSE") &&
-       (PHY_PCLK_INVERT_01_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-325] PHY_PCLK_INVERT_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_PCLK_INVERT_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((PHY_PCLK_INVERT_02_REG != "FALSE") &&
-       (PHY_PCLK_INVERT_02_REG != "TRUE"))) begin
-    $display("Error: [Unisim %s-326] PHY_PCLK_INVERT_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_PCLK_INVERT_02_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_00_REG < 0) || (READ_PERCENT_00_REG > 100))) begin
-    $display("Error: [Unisim %s-329] READ_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_01_REG < 0) || (READ_PERCENT_01_REG > 100))) begin
-    $display("Error: [Unisim %s-330] READ_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_02_REG < 0) || (READ_PERCENT_02_REG > 100))) begin
-    $display("Error: [Unisim %s-331] READ_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_02_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_03_REG < 0) || (READ_PERCENT_03_REG > 100))) begin
-    $display("Error: [Unisim %s-332] READ_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_03_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_04_REG < 0) || (READ_PERCENT_04_REG > 100))) begin
-    $display("Error: [Unisim %s-333] READ_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_04_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_05_REG < 0) || (READ_PERCENT_05_REG > 100))) begin
-    $display("Error: [Unisim %s-334] READ_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_05_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_06_REG < 0) || (READ_PERCENT_06_REG > 100))) begin
-    $display("Error: [Unisim %s-335] READ_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_06_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_07_REG < 0) || (READ_PERCENT_07_REG > 100))) begin
-    $display("Error: [Unisim %s-336] READ_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_07_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_08_REG < 0) || (READ_PERCENT_08_REG > 100))) begin
-    $display("Error: [Unisim %s-337] READ_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_08_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_09_REG < 0) || (READ_PERCENT_09_REG > 100))) begin
-    $display("Error: [Unisim %s-338] READ_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_09_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_10_REG < 0) || (READ_PERCENT_10_REG > 100))) begin
-    $display("Error: [Unisim %s-339] READ_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_10_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_11_REG < 0) || (READ_PERCENT_11_REG > 100))) begin
-    $display("Error: [Unisim %s-340] READ_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_11_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_12_REG < 0) || (READ_PERCENT_12_REG > 100))) begin
-    $display("Error: [Unisim %s-341] READ_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_12_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_13_REG < 0) || (READ_PERCENT_13_REG > 100))) begin
-    $display("Error: [Unisim %s-342] READ_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_13_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_14_REG < 0) || (READ_PERCENT_14_REG > 100))) begin
-    $display("Error: [Unisim %s-343] READ_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_14_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_15_REG < 0) || (READ_PERCENT_15_REG > 100))) begin
-    $display("Error: [Unisim %s-344] READ_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_15_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_16_REG < 0) || (READ_PERCENT_16_REG > 100))) begin
-    $display("Error: [Unisim %s-345] READ_PERCENT_16 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_16_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_17_REG < 0) || (READ_PERCENT_17_REG > 100))) begin
-    $display("Error: [Unisim %s-346] READ_PERCENT_17 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_17_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_18_REG < 0) || (READ_PERCENT_18_REG > 100))) begin
-    $display("Error: [Unisim %s-347] READ_PERCENT_18 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_18_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_19_REG < 0) || (READ_PERCENT_19_REG > 100))) begin
-    $display("Error: [Unisim %s-348] READ_PERCENT_19 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_19_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_20_REG < 0) || (READ_PERCENT_20_REG > 100))) begin
-    $display("Error: [Unisim %s-349] READ_PERCENT_20 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_20_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_21_REG < 0) || (READ_PERCENT_21_REG > 100))) begin
-    $display("Error: [Unisim %s-350] READ_PERCENT_21 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_21_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_22_REG < 0) || (READ_PERCENT_22_REG > 100))) begin
-    $display("Error: [Unisim %s-351] READ_PERCENT_22 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_22_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_23_REG < 0) || (READ_PERCENT_23_REG > 100))) begin
-    $display("Error: [Unisim %s-352] READ_PERCENT_23 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_23_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_24_REG < 0) || (READ_PERCENT_24_REG > 100))) begin
-    $display("Error: [Unisim %s-353] READ_PERCENT_24 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_24_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_25_REG < 0) || (READ_PERCENT_25_REG > 100))) begin
-    $display("Error: [Unisim %s-354] READ_PERCENT_25 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_25_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_26_REG < 0) || (READ_PERCENT_26_REG > 100))) begin
-    $display("Error: [Unisim %s-355] READ_PERCENT_26 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_26_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_27_REG < 0) || (READ_PERCENT_27_REG > 100))) begin
-    $display("Error: [Unisim %s-356] READ_PERCENT_27 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_27_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_28_REG < 0) || (READ_PERCENT_28_REG > 100))) begin
-    $display("Error: [Unisim %s-357] READ_PERCENT_28 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_28_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_29_REG < 0) || (READ_PERCENT_29_REG > 100))) begin
-    $display("Error: [Unisim %s-358] READ_PERCENT_29 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_29_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_30_REG < 0) || (READ_PERCENT_30_REG > 100))) begin
-    $display("Error: [Unisim %s-359] READ_PERCENT_30 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_30_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((READ_PERCENT_31_REG < 0) || (READ_PERCENT_31_REG > 100))) begin
-    $display("Error: [Unisim %s-360] READ_PERCENT_31 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_31_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-        ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
-         (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1") &&
-         (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES2"))) begin
-      $display("Error: [Unisim %s-361] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+  always @(trig_attr) begin
+    #1;
+    if ((attr_test == 1'b1) || ((CLK_SEL_00_REG != "FALSE") && (CLK_SEL_00_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-109] CLK_SEL_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_00_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-      ((SWITCH_ENABLE_00_REG != "FALSE") &&
-       (SWITCH_ENABLE_00_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-363] SWITCH_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, SWITCH_ENABLE_00_REG);
-    attr_err = 1'b1;
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_01_REG != "FALSE") && (CLK_SEL_01_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-110] CLK_SEL_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_02_REG != "FALSE") && (CLK_SEL_02_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-111] CLK_SEL_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_02_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_03_REG != "FALSE") && (CLK_SEL_03_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-112] CLK_SEL_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_03_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_04_REG != "FALSE") && (CLK_SEL_04_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-113] CLK_SEL_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_04_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_05_REG != "FALSE") && (CLK_SEL_05_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-114] CLK_SEL_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_05_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_06_REG != "FALSE") && (CLK_SEL_06_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-115] CLK_SEL_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_06_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_07_REG != "FALSE") && (CLK_SEL_07_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-116] CLK_SEL_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_07_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_08_REG != "FALSE") && (CLK_SEL_08_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-117] CLK_SEL_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_08_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_09_REG != "FALSE") && (CLK_SEL_09_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-118] CLK_SEL_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_09_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_10_REG != "FALSE") && (CLK_SEL_10_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-119] CLK_SEL_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_10_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_11_REG != "FALSE") && (CLK_SEL_11_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-120] CLK_SEL_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_11_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_12_REG != "FALSE") && (CLK_SEL_12_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-121] CLK_SEL_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_12_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_13_REG != "FALSE") && (CLK_SEL_13_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-122] CLK_SEL_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_13_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_14_REG != "FALSE") && (CLK_SEL_14_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-123] CLK_SEL_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_14_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_15_REG != "FALSE") && (CLK_SEL_15_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-124] CLK_SEL_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_15_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_16_REG != "FALSE") && (CLK_SEL_16_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-125] CLK_SEL_16 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_16_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_17_REG != "FALSE") && (CLK_SEL_17_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-126] CLK_SEL_17 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_17_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_18_REG != "FALSE") && (CLK_SEL_18_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-127] CLK_SEL_18 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_18_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_19_REG != "FALSE") && (CLK_SEL_19_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-128] CLK_SEL_19 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_19_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_20_REG != "FALSE") && (CLK_SEL_20_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-129] CLK_SEL_20 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_20_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_21_REG != "FALSE") && (CLK_SEL_21_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-130] CLK_SEL_21 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_21_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_22_REG != "FALSE") && (CLK_SEL_22_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-131] CLK_SEL_22 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_22_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_23_REG != "FALSE") && (CLK_SEL_23_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-132] CLK_SEL_23 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_23_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_24_REG != "FALSE") && (CLK_SEL_24_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-133] CLK_SEL_24 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_24_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_25_REG != "FALSE") && (CLK_SEL_25_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-134] CLK_SEL_25 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_25_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_26_REG != "FALSE") && (CLK_SEL_26_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-135] CLK_SEL_26 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_26_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_27_REG != "FALSE") && (CLK_SEL_27_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-136] CLK_SEL_27 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_27_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_28_REG != "FALSE") && (CLK_SEL_28_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-137] CLK_SEL_28 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_28_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_29_REG != "FALSE") && (CLK_SEL_29_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-138] CLK_SEL_29 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_29_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_30_REG != "FALSE") && (CLK_SEL_30_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-139] CLK_SEL_30 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_30_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((CLK_SEL_31_REG != "FALSE") && (CLK_SEL_31_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-140] CLK_SEL_31 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, CLK_SEL_31_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_00_REG < 50) || (DATARATE_00_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-141] DATARATE_00 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_01_REG < 50) || (DATARATE_01_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-142] DATARATE_01 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_02_REG < 50) || (DATARATE_02_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-143] DATARATE_02 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_02_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_03_REG < 50) || (DATARATE_03_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-144] DATARATE_03 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_03_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_04_REG < 50) || (DATARATE_04_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-145] DATARATE_04 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_04_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_05_REG < 50) || (DATARATE_05_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-146] DATARATE_05 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_05_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_06_REG < 50) || (DATARATE_06_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-147] DATARATE_06 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_06_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_07_REG < 50) || (DATARATE_07_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-148] DATARATE_07 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_07_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_08_REG < 50) || (DATARATE_08_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-149] DATARATE_08 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_08_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_09_REG < 50) || (DATARATE_09_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-150] DATARATE_09 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_09_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_10_REG < 50) || (DATARATE_10_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-151] DATARATE_10 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_10_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_11_REG < 50) || (DATARATE_11_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-152] DATARATE_11 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_11_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_12_REG < 50) || (DATARATE_12_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-153] DATARATE_12 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_12_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_13_REG < 50) || (DATARATE_13_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-154] DATARATE_13 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_13_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_14_REG < 50) || (DATARATE_14_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-155] DATARATE_14 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_14_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DATARATE_15_REG < 50) || (DATARATE_15_REG > 1800))) begin
+      $display(
+          "Error: [Unisim %s-156] DATARATE_15 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m"
+              , MODULE_NAME, DATARATE_15_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DA_LOCKOUT_0_REG != "FALSE") && (DA_LOCKOUT_0_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-157] DA_LOCKOUT_0 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, DA_LOCKOUT_0_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((DA_LOCKOUT_1_REG != "FALSE") && (DA_LOCKOUT_1_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-158] DA_LOCKOUT_1 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, DA_LOCKOUT_1_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_00_REG != "FALSE") && (MC_ENABLE_00_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-253] MC_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_01_REG != "FALSE") && (MC_ENABLE_01_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-254] MC_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_02_REG != "FALSE") && (MC_ENABLE_02_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-255] MC_ENABLE_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_02_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_03_REG != "FALSE") && (MC_ENABLE_03_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-256] MC_ENABLE_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_03_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_04_REG != "FALSE") && (MC_ENABLE_04_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-257] MC_ENABLE_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_04_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_05_REG != "FALSE") && (MC_ENABLE_05_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-258] MC_ENABLE_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_05_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_06_REG != "FALSE") && (MC_ENABLE_06_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-259] MC_ENABLE_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_06_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_07_REG != "FALSE") && (MC_ENABLE_07_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-260] MC_ENABLE_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_07_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_08_REG != "FALSE") && (MC_ENABLE_08_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-261] MC_ENABLE_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_08_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_09_REG != "FALSE") && (MC_ENABLE_09_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-262] MC_ENABLE_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_09_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_10_REG != "FALSE") && (MC_ENABLE_10_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-263] MC_ENABLE_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_10_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_11_REG != "FALSE") && (MC_ENABLE_11_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-264] MC_ENABLE_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_11_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_12_REG != "FALSE") && (MC_ENABLE_12_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-265] MC_ENABLE_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_12_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_13_REG != "FALSE") && (MC_ENABLE_13_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-266] MC_ENABLE_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_13_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_14_REG != "FALSE") && (MC_ENABLE_14_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-267] MC_ENABLE_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_14_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((MC_ENABLE_15_REG != "FALSE") && (MC_ENABLE_15_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-268] MC_ENABLE_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_15_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((MC_ENABLE_APB_00_REG != "FALSE") && (MC_ENABLE_APB_00_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-269] MC_ENABLE_APB_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_APB_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((MC_ENABLE_APB_01_REG != "FALSE") && (MC_ENABLE_APB_01_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-270] MC_ENABLE_APB_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, MC_ENABLE_APB_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PAGEHIT_PERCENT_00_REG < 0) || (PAGEHIT_PERCENT_00_REG > 100))
+        ) begin
+      $display(
+          "Error: [Unisim %s-287] PAGEHIT_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, PAGEHIT_PERCENT_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PAGEHIT_PERCENT_01_REG < 0) || (PAGEHIT_PERCENT_01_REG > 100))
+        ) begin
+      $display(
+          "Error: [Unisim %s-288] PAGEHIT_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, PAGEHIT_PERCENT_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_00_REG != "FALSE") && (PHY_ENABLE_00_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-291] PHY_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_01_REG != "FALSE") && (PHY_ENABLE_01_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-292] PHY_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_02_REG != "FALSE") && (PHY_ENABLE_02_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-293] PHY_ENABLE_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_02_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_03_REG != "FALSE") && (PHY_ENABLE_03_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-294] PHY_ENABLE_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_03_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_04_REG != "FALSE") && (PHY_ENABLE_04_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-295] PHY_ENABLE_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_04_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_05_REG != "FALSE") && (PHY_ENABLE_05_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-296] PHY_ENABLE_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_05_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_06_REG != "FALSE") && (PHY_ENABLE_06_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-297] PHY_ENABLE_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_06_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_07_REG != "FALSE") && (PHY_ENABLE_07_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-298] PHY_ENABLE_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_07_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_08_REG != "FALSE") && (PHY_ENABLE_08_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-299] PHY_ENABLE_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_08_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_09_REG != "FALSE") && (PHY_ENABLE_09_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-300] PHY_ENABLE_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_09_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_10_REG != "FALSE") && (PHY_ENABLE_10_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-301] PHY_ENABLE_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_10_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_11_REG != "FALSE") && (PHY_ENABLE_11_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-302] PHY_ENABLE_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_11_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_12_REG != "FALSE") && (PHY_ENABLE_12_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-303] PHY_ENABLE_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_12_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_13_REG != "FALSE") && (PHY_ENABLE_13_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-304] PHY_ENABLE_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_13_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_14_REG != "FALSE") && (PHY_ENABLE_14_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-305] PHY_ENABLE_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_14_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_15_REG != "FALSE") && (PHY_ENABLE_15_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-306] PHY_ENABLE_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_15_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_16_REG != "FALSE") && (PHY_ENABLE_16_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-307] PHY_ENABLE_16 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_16_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_17_REG != "FALSE") && (PHY_ENABLE_17_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-308] PHY_ENABLE_17 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_17_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_18_REG != "FALSE") && (PHY_ENABLE_18_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-309] PHY_ENABLE_18 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_18_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_19_REG != "FALSE") && (PHY_ENABLE_19_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-310] PHY_ENABLE_19 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_19_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_20_REG != "FALSE") && (PHY_ENABLE_20_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-311] PHY_ENABLE_20 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_20_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_21_REG != "FALSE") && (PHY_ENABLE_21_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-312] PHY_ENABLE_21 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_21_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_22_REG != "FALSE") && (PHY_ENABLE_22_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-313] PHY_ENABLE_22 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_22_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_23_REG != "FALSE") && (PHY_ENABLE_23_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-314] PHY_ENABLE_23 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_23_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_24_REG != "FALSE") && (PHY_ENABLE_24_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-315] PHY_ENABLE_24 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_24_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_25_REG != "FALSE") && (PHY_ENABLE_25_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-316] PHY_ENABLE_25 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_25_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_26_REG != "FALSE") && (PHY_ENABLE_26_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-317] PHY_ENABLE_26 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_26_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_27_REG != "FALSE") && (PHY_ENABLE_27_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-318] PHY_ENABLE_27 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_27_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_28_REG != "FALSE") && (PHY_ENABLE_28_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-319] PHY_ENABLE_28 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_28_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_29_REG != "FALSE") && (PHY_ENABLE_29_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-320] PHY_ENABLE_29 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_29_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_30_REG != "FALSE") && (PHY_ENABLE_30_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-321] PHY_ENABLE_30 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_30_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((PHY_ENABLE_31_REG != "FALSE") && (PHY_ENABLE_31_REG != "TRUE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-322] PHY_ENABLE_31 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_31_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((PHY_ENABLE_APB_00_REG != "FALSE") && (PHY_ENABLE_APB_00_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-323] PHY_ENABLE_APB_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_APB_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((PHY_ENABLE_APB_01_REG != "FALSE") && (PHY_ENABLE_APB_01_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-324] PHY_ENABLE_APB_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_ENABLE_APB_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((PHY_PCLK_INVERT_01_REG != "FALSE") && (PHY_PCLK_INVERT_01_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-325] PHY_PCLK_INVERT_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_PCLK_INVERT_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((PHY_PCLK_INVERT_02_REG != "FALSE") && (PHY_PCLK_INVERT_02_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-326] PHY_PCLK_INVERT_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, PHY_PCLK_INVERT_02_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_00_REG < 0) || (READ_PERCENT_00_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-329] READ_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_01_REG < 0) || (READ_PERCENT_01_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-330] READ_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_02_REG < 0) || (READ_PERCENT_02_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-331] READ_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_02_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_03_REG < 0) || (READ_PERCENT_03_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-332] READ_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_03_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_04_REG < 0) || (READ_PERCENT_04_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-333] READ_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_04_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_05_REG < 0) || (READ_PERCENT_05_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-334] READ_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_05_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_06_REG < 0) || (READ_PERCENT_06_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-335] READ_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_06_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_07_REG < 0) || (READ_PERCENT_07_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-336] READ_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_07_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_08_REG < 0) || (READ_PERCENT_08_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-337] READ_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_08_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_09_REG < 0) || (READ_PERCENT_09_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-338] READ_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_09_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_10_REG < 0) || (READ_PERCENT_10_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-339] READ_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_10_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_11_REG < 0) || (READ_PERCENT_11_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-340] READ_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_11_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_12_REG < 0) || (READ_PERCENT_12_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-341] READ_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_12_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_13_REG < 0) || (READ_PERCENT_13_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-342] READ_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_13_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_14_REG < 0) || (READ_PERCENT_14_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-343] READ_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_14_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_15_REG < 0) || (READ_PERCENT_15_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-344] READ_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_15_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_16_REG < 0) || (READ_PERCENT_16_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-345] READ_PERCENT_16 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_16_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_17_REG < 0) || (READ_PERCENT_17_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-346] READ_PERCENT_17 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_17_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_18_REG < 0) || (READ_PERCENT_18_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-347] READ_PERCENT_18 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_18_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_19_REG < 0) || (READ_PERCENT_19_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-348] READ_PERCENT_19 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_19_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_20_REG < 0) || (READ_PERCENT_20_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-349] READ_PERCENT_20 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_20_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_21_REG < 0) || (READ_PERCENT_21_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-350] READ_PERCENT_21 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_21_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_22_REG < 0) || (READ_PERCENT_22_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-351] READ_PERCENT_22 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_22_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_23_REG < 0) || (READ_PERCENT_23_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-352] READ_PERCENT_23 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_23_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_24_REG < 0) || (READ_PERCENT_24_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-353] READ_PERCENT_24 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_24_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_25_REG < 0) || (READ_PERCENT_25_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-354] READ_PERCENT_25 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_25_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_26_REG < 0) || (READ_PERCENT_26_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-355] READ_PERCENT_26 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_26_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_27_REG < 0) || (READ_PERCENT_27_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-356] READ_PERCENT_27 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_27_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_28_REG < 0) || (READ_PERCENT_28_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-357] READ_PERCENT_28 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_28_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_29_REG < 0) || (READ_PERCENT_29_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-358] READ_PERCENT_29 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_29_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_30_REG < 0) || (READ_PERCENT_30_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-359] READ_PERCENT_30 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_30_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((READ_PERCENT_31_REG < 0) || (READ_PERCENT_31_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-360] READ_PERCENT_31 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, READ_PERCENT_31_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") && (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1"
+              ) && (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES2"))) begin
+      $display(
+          "Error: [Unisim %s-361] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m"
+              , MODULE_NAME, SIM_DEVICE_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((SWITCH_ENABLE_00_REG != "FALSE") && (SWITCH_ENABLE_00_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-363] SWITCH_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, SWITCH_ENABLE_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1
+        ) || ((SWITCH_ENABLE_01_REG != "FALSE") && (SWITCH_ENABLE_01_REG != "TRUE"))) begin
+      $display(
+          "Error: [Unisim %s-364] SWITCH_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m"
+              , MODULE_NAME, SWITCH_ENABLE_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_00_REG < 0) || (WRITE_PERCENT_00_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-368] WRITE_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_00_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_01_REG < 0) || (WRITE_PERCENT_01_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-369] WRITE_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_01_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_02_REG < 0) || (WRITE_PERCENT_02_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-370] WRITE_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_02_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_03_REG < 0) || (WRITE_PERCENT_03_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-371] WRITE_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_03_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_04_REG < 0) || (WRITE_PERCENT_04_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-372] WRITE_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_04_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_05_REG < 0) || (WRITE_PERCENT_05_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-373] WRITE_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_05_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_06_REG < 0) || (WRITE_PERCENT_06_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-374] WRITE_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_06_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_07_REG < 0) || (WRITE_PERCENT_07_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-375] WRITE_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_07_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_08_REG < 0) || (WRITE_PERCENT_08_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-376] WRITE_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_08_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_09_REG < 0) || (WRITE_PERCENT_09_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-377] WRITE_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_09_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_10_REG < 0) || (WRITE_PERCENT_10_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-378] WRITE_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_10_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_11_REG < 0) || (WRITE_PERCENT_11_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-379] WRITE_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_11_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_12_REG < 0) || (WRITE_PERCENT_12_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-380] WRITE_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_12_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_13_REG < 0) || (WRITE_PERCENT_13_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-381] WRITE_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_13_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_14_REG < 0) || (WRITE_PERCENT_14_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-382] WRITE_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_14_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_15_REG < 0) || (WRITE_PERCENT_15_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-383] WRITE_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_15_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_16_REG < 0) || (WRITE_PERCENT_16_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-384] WRITE_PERCENT_16 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_16_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_17_REG < 0) || (WRITE_PERCENT_17_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-385] WRITE_PERCENT_17 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_17_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_18_REG < 0) || (WRITE_PERCENT_18_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-386] WRITE_PERCENT_18 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_18_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_19_REG < 0) || (WRITE_PERCENT_19_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-387] WRITE_PERCENT_19 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_19_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_20_REG < 0) || (WRITE_PERCENT_20_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-388] WRITE_PERCENT_20 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_20_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_21_REG < 0) || (WRITE_PERCENT_21_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-389] WRITE_PERCENT_21 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_21_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_22_REG < 0) || (WRITE_PERCENT_22_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-390] WRITE_PERCENT_22 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_22_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_23_REG < 0) || (WRITE_PERCENT_23_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-391] WRITE_PERCENT_23 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_23_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_24_REG < 0) || (WRITE_PERCENT_24_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-392] WRITE_PERCENT_24 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_24_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_25_REG < 0) || (WRITE_PERCENT_25_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-393] WRITE_PERCENT_25 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_25_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_26_REG < 0) || (WRITE_PERCENT_26_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-394] WRITE_PERCENT_26 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_26_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_27_REG < 0) || (WRITE_PERCENT_27_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-395] WRITE_PERCENT_27 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_27_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_28_REG < 0) || (WRITE_PERCENT_28_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-396] WRITE_PERCENT_28 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_28_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_29_REG < 0) || (WRITE_PERCENT_29_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-397] WRITE_PERCENT_29 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_29_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_30_REG < 0) || (WRITE_PERCENT_30_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-398] WRITE_PERCENT_30 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_30_REG);
+      attr_err = 1'b1;
+    end
+
+    if ((attr_test == 1'b1) || ((WRITE_PERCENT_31_REG < 0) || (WRITE_PERCENT_31_REG > 100))) begin
+      $display(
+          "Error: [Unisim %s-399] WRITE_PERCENT_31 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m"
+              , MODULE_NAME, WRITE_PERCENT_31_REG);
+      attr_err = 1'b1;
+    end
+
+    if (attr_err == 1'b1) #1 $finish;
   end
-  
-  if ((attr_test == 1'b1) ||
-      ((SWITCH_ENABLE_01_REG != "FALSE") &&
-       (SWITCH_ENABLE_01_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-364] SWITCH_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, SWITCH_ENABLE_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_00_REG < 0) || (WRITE_PERCENT_00_REG > 100))) begin
-      $display("Error: [Unisim %s-368] WRITE_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_00_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_01_REG < 0) || (WRITE_PERCENT_01_REG > 100))) begin
-      $display("Error: [Unisim %s-369] WRITE_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_01_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_02_REG < 0) || (WRITE_PERCENT_02_REG > 100))) begin
-      $display("Error: [Unisim %s-370] WRITE_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_02_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_03_REG < 0) || (WRITE_PERCENT_03_REG > 100))) begin
-      $display("Error: [Unisim %s-371] WRITE_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_03_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_04_REG < 0) || (WRITE_PERCENT_04_REG > 100))) begin
-      $display("Error: [Unisim %s-372] WRITE_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_04_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_05_REG < 0) || (WRITE_PERCENT_05_REG > 100))) begin
-      $display("Error: [Unisim %s-373] WRITE_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_05_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_06_REG < 0) || (WRITE_PERCENT_06_REG > 100))) begin
-      $display("Error: [Unisim %s-374] WRITE_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_06_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_07_REG < 0) || (WRITE_PERCENT_07_REG > 100))) begin
-      $display("Error: [Unisim %s-375] WRITE_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_07_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_08_REG < 0) || (WRITE_PERCENT_08_REG > 100))) begin
-      $display("Error: [Unisim %s-376] WRITE_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_08_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_09_REG < 0) || (WRITE_PERCENT_09_REG > 100))) begin
-      $display("Error: [Unisim %s-377] WRITE_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_09_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_10_REG < 0) || (WRITE_PERCENT_10_REG > 100))) begin
-      $display("Error: [Unisim %s-378] WRITE_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_10_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_11_REG < 0) || (WRITE_PERCENT_11_REG > 100))) begin
-      $display("Error: [Unisim %s-379] WRITE_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_11_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_12_REG < 0) || (WRITE_PERCENT_12_REG > 100))) begin
-      $display("Error: [Unisim %s-380] WRITE_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_12_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_13_REG < 0) || (WRITE_PERCENT_13_REG > 100))) begin
-      $display("Error: [Unisim %s-381] WRITE_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_13_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_14_REG < 0) || (WRITE_PERCENT_14_REG > 100))) begin
-      $display("Error: [Unisim %s-382] WRITE_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_14_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_15_REG < 0) || (WRITE_PERCENT_15_REG > 100))) begin
-      $display("Error: [Unisim %s-383] WRITE_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_15_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_16_REG < 0) || (WRITE_PERCENT_16_REG > 100))) begin
-      $display("Error: [Unisim %s-384] WRITE_PERCENT_16 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_16_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_17_REG < 0) || (WRITE_PERCENT_17_REG > 100))) begin
-      $display("Error: [Unisim %s-385] WRITE_PERCENT_17 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_17_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_18_REG < 0) || (WRITE_PERCENT_18_REG > 100))) begin
-      $display("Error: [Unisim %s-386] WRITE_PERCENT_18 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_18_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_19_REG < 0) || (WRITE_PERCENT_19_REG > 100))) begin
-      $display("Error: [Unisim %s-387] WRITE_PERCENT_19 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_19_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_20_REG < 0) || (WRITE_PERCENT_20_REG > 100))) begin
-      $display("Error: [Unisim %s-388] WRITE_PERCENT_20 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_20_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_21_REG < 0) || (WRITE_PERCENT_21_REG > 100))) begin
-      $display("Error: [Unisim %s-389] WRITE_PERCENT_21 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_21_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_22_REG < 0) || (WRITE_PERCENT_22_REG > 100))) begin
-      $display("Error: [Unisim %s-390] WRITE_PERCENT_22 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_22_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_23_REG < 0) || (WRITE_PERCENT_23_REG > 100))) begin
-      $display("Error: [Unisim %s-391] WRITE_PERCENT_23 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_23_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_24_REG < 0) || (WRITE_PERCENT_24_REG > 100))) begin
-      $display("Error: [Unisim %s-392] WRITE_PERCENT_24 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_24_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_25_REG < 0) || (WRITE_PERCENT_25_REG > 100))) begin
-      $display("Error: [Unisim %s-393] WRITE_PERCENT_25 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_25_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_26_REG < 0) || (WRITE_PERCENT_26_REG > 100))) begin
-      $display("Error: [Unisim %s-394] WRITE_PERCENT_26 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_26_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_27_REG < 0) || (WRITE_PERCENT_27_REG > 100))) begin
-      $display("Error: [Unisim %s-395] WRITE_PERCENT_27 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_27_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_28_REG < 0) || (WRITE_PERCENT_28_REG > 100))) begin
-      $display("Error: [Unisim %s-396] WRITE_PERCENT_28 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_28_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_29_REG < 0) || (WRITE_PERCENT_29_REG > 100))) begin
-      $display("Error: [Unisim %s-397] WRITE_PERCENT_29 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_29_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_30_REG < 0) || (WRITE_PERCENT_30_REG > 100))) begin
-      $display("Error: [Unisim %s-398] WRITE_PERCENT_30 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_30_REG);
-    attr_err = 1'b1;
-  end
-  
-  if ((attr_test == 1'b1) ||
-      ((WRITE_PERCENT_31_REG < 0) || (WRITE_PERCENT_31_REG > 100))) begin
-      $display("Error: [Unisim %s-399] WRITE_PERCENT_31 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_31_REG);
-    attr_err = 1'b1;
-  end
-  
-  if (attr_err == 1'b1) #1 $finish;
-end
 `endif
 
 
 
-assign ANALOG_HBM_SEL_00_in = 1'b1; // tie off
-assign ANALOG_HBM_SEL_01_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_00_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_01_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_02_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_03_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_04_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_05_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_06_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_07_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_08_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_09_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_10_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_11_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_12_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_13_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_14_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_15_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_16_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_17_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_18_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_19_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_20_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_21_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_22_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_23_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_24_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_25_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_26_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_27_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_28_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_29_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_30_in = 1'b1; // tie off
-assign BLI_SCAN_ENABLE_31_in = 1'b1; // tie off
-assign BLI_SCAN_IN_00_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_01_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_02_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_03_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_04_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_05_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_06_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_07_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_08_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_09_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_10_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_11_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_12_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_13_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_14_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_15_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_16_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_17_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_18_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_19_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_20_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_21_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_22_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_23_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_24_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_25_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_26_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_27_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_28_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_29_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_30_in = 8'b11111111; // tie off
-assign BLI_SCAN_IN_31_in = 8'b11111111; // tie off
-assign DBG_IN_00_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_01_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_02_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_03_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_04_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_05_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_06_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_07_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_08_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_09_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_10_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_11_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_12_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_13_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_14_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_15_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_16_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_17_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_18_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_19_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_20_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_21_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_22_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_23_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_24_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_25_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_26_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_27_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_28_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_29_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_30_in = 24'b111111111111111111111111; // tie off
-assign DBG_IN_31_in = 24'b111111111111111111111111; // tie off
-assign DLL_SCAN_CK_00_in = 1'b1; // tie off
-assign DLL_SCAN_CK_01_in = 1'b1; // tie off
-assign DLL_SCAN_ENABLE_00_in = 1'b1; // tie off
-assign DLL_SCAN_ENABLE_01_in = 1'b1; // tie off
-assign DLL_SCAN_IN_00_in = 2'b11; // tie off
-assign DLL_SCAN_IN_01_in = 2'b11; // tie off
-assign DLL_SCAN_MODE_00_in = 1'b1; // tie off
-assign DLL_SCAN_MODE_01_in = 1'b1; // tie off
-assign DLL_SCAN_RST_N_00_in = 1'b1; // tie off
-assign DLL_SCAN_RST_N_01_in = 1'b1; // tie off
-assign IO_SCAN_CK_00_in = 1'b1; // tie off
-assign IO_SCAN_CK_01_in = 1'b1; // tie off
-assign IO_SCAN_ENABLE_00_in = 1'b1; // tie off
-assign IO_SCAN_ENABLE_01_in = 1'b1; // tie off
-assign IO_SCAN_IN_00_in = 2'b11; // tie off
-assign IO_SCAN_IN_01_in = 2'b11; // tie off
-assign IO_SCAN_MODE_00_in = 1'b1; // tie off
-assign IO_SCAN_MODE_01_in = 1'b1; // tie off
-assign IO_SCAN_RST_N_00_in = 1'b1; // tie off
-assign IO_SCAN_RST_N_01_in = 1'b1; // tie off
-assign MC_SCAN_CK_00_in = 1'b1; // tie off
-assign MC_SCAN_CK_01_in = 1'b1; // tie off
-assign MC_SCAN_CK_02_in = 1'b1; // tie off
-assign MC_SCAN_CK_03_in = 1'b1; // tie off
-assign MC_SCAN_CK_04_in = 1'b1; // tie off
-assign MC_SCAN_CK_05_in = 1'b1; // tie off
-assign MC_SCAN_CK_06_in = 1'b1; // tie off
-assign MC_SCAN_CK_07_in = 1'b1; // tie off
-assign MC_SCAN_CK_08_in = 1'b1; // tie off
-assign MC_SCAN_CK_09_in = 1'b1; // tie off
-assign MC_SCAN_CK_10_in = 1'b1; // tie off
-assign MC_SCAN_CK_11_in = 1'b1; // tie off
-assign MC_SCAN_CK_12_in = 1'b1; // tie off
-assign MC_SCAN_CK_13_in = 1'b1; // tie off
-assign MC_SCAN_CK_14_in = 1'b1; // tie off
-assign MC_SCAN_CK_15_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_00_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_01_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_02_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_03_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_04_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_05_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_06_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_07_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_08_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_09_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_10_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_11_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_12_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_13_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_14_in = 1'b1; // tie off
-assign MC_SCAN_ENABLE_15_in = 1'b1; // tie off
-assign MC_SCAN_IN_00_in = 2'b11; // tie off
-assign MC_SCAN_IN_01_in = 2'b11; // tie off
-assign MC_SCAN_IN_02_in = 2'b11; // tie off
-assign MC_SCAN_IN_03_in = 2'b11; // tie off
-assign MC_SCAN_IN_04_in = 2'b11; // tie off
-assign MC_SCAN_IN_05_in = 2'b11; // tie off
-assign MC_SCAN_IN_06_in = 2'b11; // tie off
-assign MC_SCAN_IN_07_in = 2'b11; // tie off
-assign MC_SCAN_IN_08_in = 2'b11; // tie off
-assign MC_SCAN_IN_09_in = 2'b11; // tie off
-assign MC_SCAN_IN_10_in = 2'b11; // tie off
-assign MC_SCAN_IN_11_in = 2'b11; // tie off
-assign MC_SCAN_IN_12_in = 2'b11; // tie off
-assign MC_SCAN_IN_13_in = 2'b11; // tie off
-assign MC_SCAN_IN_14_in = 2'b11; // tie off
-assign MC_SCAN_IN_15_in = 2'b11; // tie off
-assign MC_SCAN_MODE_00_in = 1'b1; // tie off
-assign MC_SCAN_MODE_01_in = 1'b1; // tie off
-assign MC_SCAN_MODE_02_in = 1'b1; // tie off
-assign MC_SCAN_MODE_03_in = 1'b1; // tie off
-assign MC_SCAN_MODE_04_in = 1'b1; // tie off
-assign MC_SCAN_MODE_05_in = 1'b1; // tie off
-assign MC_SCAN_MODE_06_in = 1'b1; // tie off
-assign MC_SCAN_MODE_07_in = 1'b1; // tie off
-assign MC_SCAN_MODE_08_in = 1'b1; // tie off
-assign MC_SCAN_MODE_09_in = 1'b1; // tie off
-assign MC_SCAN_MODE_10_in = 1'b1; // tie off
-assign MC_SCAN_MODE_11_in = 1'b1; // tie off
-assign MC_SCAN_MODE_12_in = 1'b1; // tie off
-assign MC_SCAN_MODE_13_in = 1'b1; // tie off
-assign MC_SCAN_MODE_14_in = 1'b1; // tie off
-assign MC_SCAN_MODE_15_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_00_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_01_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_02_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_03_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_04_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_05_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_06_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_07_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_08_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_09_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_10_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_11_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_12_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_13_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_14_in = 1'b1; // tie off
-assign MC_SCAN_RST_N_15_in = 1'b1; // tie off
-assign PHY_SCAN_CK_00_in = 1'b1; // tie off
-assign PHY_SCAN_CK_01_in = 1'b1; // tie off
-assign PHY_SCAN_ENABLE_00_in = 1'b1; // tie off
-assign PHY_SCAN_ENABLE_01_in = 1'b1; // tie off
-assign PHY_SCAN_IN_00_in = 2'b11; // tie off
-assign PHY_SCAN_IN_01_in = 2'b11; // tie off
-assign PHY_SCAN_MODE_00_in = 1'b1; // tie off
-assign PHY_SCAN_MODE_01_in = 1'b1; // tie off
-assign PHY_SCAN_RST_N_00_in = 1'b1; // tie off
-assign PHY_SCAN_RST_N_01_in = 1'b1; // tie off
-assign SW_SCAN_CK_00_in = 1'b1; // tie off
-assign SW_SCAN_CK_01_in = 1'b1; // tie off
-assign SW_SCAN_ENABLE_00_in = 1'b1; // tie off
-assign SW_SCAN_ENABLE_01_in = 1'b1; // tie off
-assign SW_SCAN_IN_00_in = 2'b11; // tie off
-assign SW_SCAN_IN_01_in = 2'b11; // tie off
-assign SW_SCAN_IN_02_in = 2'b11; // tie off
-assign SW_SCAN_IN_03_in = 2'b11; // tie off
-assign SW_SCAN_IN_04_in = 2'b11; // tie off
-assign SW_SCAN_IN_05_in = 2'b11; // tie off
-assign SW_SCAN_IN_06_in = 2'b11; // tie off
-assign SW_SCAN_IN_07_in = 2'b11; // tie off
-assign SW_SCAN_MODE_00_in = 1'b1; // tie off
-assign SW_SCAN_MODE_01_in = 1'b1; // tie off
-assign SW_SCAN_RST_N_00_in = 1'b1; // tie off
-assign SW_SCAN_RST_N_01_in = 1'b1; // tie off
+  assign ANALOG_HBM_SEL_00_in = 1'b1;  // tie off
+  assign ANALOG_HBM_SEL_01_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_00_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_01_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_02_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_03_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_04_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_05_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_06_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_07_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_08_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_09_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_10_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_11_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_12_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_13_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_14_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_15_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_16_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_17_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_18_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_19_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_20_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_21_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_22_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_23_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_24_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_25_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_26_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_27_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_28_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_29_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_30_in = 1'b1;  // tie off
+  assign BLI_SCAN_ENABLE_31_in = 1'b1;  // tie off
+  assign BLI_SCAN_IN_00_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_01_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_02_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_03_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_04_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_05_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_06_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_07_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_08_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_09_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_10_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_11_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_12_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_13_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_14_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_15_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_16_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_17_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_18_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_19_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_20_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_21_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_22_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_23_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_24_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_25_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_26_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_27_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_28_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_29_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_30_in = 8'b11111111;  // tie off
+  assign BLI_SCAN_IN_31_in = 8'b11111111;  // tie off
+  assign DBG_IN_00_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_01_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_02_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_03_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_04_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_05_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_06_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_07_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_08_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_09_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_10_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_11_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_12_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_13_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_14_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_15_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_16_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_17_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_18_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_19_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_20_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_21_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_22_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_23_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_24_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_25_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_26_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_27_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_28_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_29_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_30_in = 24'b111111111111111111111111;  // tie off
+  assign DBG_IN_31_in = 24'b111111111111111111111111;  // tie off
+  assign DLL_SCAN_CK_00_in = 1'b1;  // tie off
+  assign DLL_SCAN_CK_01_in = 1'b1;  // tie off
+  assign DLL_SCAN_ENABLE_00_in = 1'b1;  // tie off
+  assign DLL_SCAN_ENABLE_01_in = 1'b1;  // tie off
+  assign DLL_SCAN_IN_00_in = 2'b11;  // tie off
+  assign DLL_SCAN_IN_01_in = 2'b11;  // tie off
+  assign DLL_SCAN_MODE_00_in = 1'b1;  // tie off
+  assign DLL_SCAN_MODE_01_in = 1'b1;  // tie off
+  assign DLL_SCAN_RST_N_00_in = 1'b1;  // tie off
+  assign DLL_SCAN_RST_N_01_in = 1'b1;  // tie off
+  assign IO_SCAN_CK_00_in = 1'b1;  // tie off
+  assign IO_SCAN_CK_01_in = 1'b1;  // tie off
+  assign IO_SCAN_ENABLE_00_in = 1'b1;  // tie off
+  assign IO_SCAN_ENABLE_01_in = 1'b1;  // tie off
+  assign IO_SCAN_IN_00_in = 2'b11;  // tie off
+  assign IO_SCAN_IN_01_in = 2'b11;  // tie off
+  assign IO_SCAN_MODE_00_in = 1'b1;  // tie off
+  assign IO_SCAN_MODE_01_in = 1'b1;  // tie off
+  assign IO_SCAN_RST_N_00_in = 1'b1;  // tie off
+  assign IO_SCAN_RST_N_01_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_00_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_01_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_02_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_03_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_04_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_05_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_06_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_07_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_08_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_09_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_10_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_11_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_12_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_13_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_14_in = 1'b1;  // tie off
+  assign MC_SCAN_CK_15_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_00_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_01_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_02_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_03_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_04_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_05_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_06_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_07_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_08_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_09_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_10_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_11_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_12_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_13_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_14_in = 1'b1;  // tie off
+  assign MC_SCAN_ENABLE_15_in = 1'b1;  // tie off
+  assign MC_SCAN_IN_00_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_01_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_02_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_03_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_04_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_05_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_06_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_07_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_08_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_09_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_10_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_11_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_12_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_13_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_14_in = 2'b11;  // tie off
+  assign MC_SCAN_IN_15_in = 2'b11;  // tie off
+  assign MC_SCAN_MODE_00_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_01_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_02_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_03_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_04_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_05_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_06_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_07_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_08_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_09_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_10_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_11_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_12_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_13_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_14_in = 1'b1;  // tie off
+  assign MC_SCAN_MODE_15_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_00_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_01_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_02_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_03_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_04_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_05_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_06_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_07_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_08_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_09_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_10_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_11_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_12_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_13_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_14_in = 1'b1;  // tie off
+  assign MC_SCAN_RST_N_15_in = 1'b1;  // tie off
+  assign PHY_SCAN_CK_00_in = 1'b1;  // tie off
+  assign PHY_SCAN_CK_01_in = 1'b1;  // tie off
+  assign PHY_SCAN_ENABLE_00_in = 1'b1;  // tie off
+  assign PHY_SCAN_ENABLE_01_in = 1'b1;  // tie off
+  assign PHY_SCAN_IN_00_in = 2'b11;  // tie off
+  assign PHY_SCAN_IN_01_in = 2'b11;  // tie off
+  assign PHY_SCAN_MODE_00_in = 1'b1;  // tie off
+  assign PHY_SCAN_MODE_01_in = 1'b1;  // tie off
+  assign PHY_SCAN_RST_N_00_in = 1'b1;  // tie off
+  assign PHY_SCAN_RST_N_01_in = 1'b1;  // tie off
+  assign SW_SCAN_CK_00_in = 1'b1;  // tie off
+  assign SW_SCAN_CK_01_in = 1'b1;  // tie off
+  assign SW_SCAN_ENABLE_00_in = 1'b1;  // tie off
+  assign SW_SCAN_ENABLE_01_in = 1'b1;  // tie off
+  assign SW_SCAN_IN_00_in = 2'b11;  // tie off
+  assign SW_SCAN_IN_01_in = 2'b11;  // tie off
+  assign SW_SCAN_IN_02_in = 2'b11;  // tie off
+  assign SW_SCAN_IN_03_in = 2'b11;  // tie off
+  assign SW_SCAN_IN_04_in = 2'b11;  // tie off
+  assign SW_SCAN_IN_05_in = 2'b11;  // tie off
+  assign SW_SCAN_IN_06_in = 2'b11;  // tie off
+  assign SW_SCAN_IN_07_in = 2'b11;  // tie off
+  assign SW_SCAN_MODE_00_in = 1'b1;  // tie off
+  assign SW_SCAN_MODE_01_in = 1'b1;  // tie off
+  assign SW_SCAN_RST_N_00_in = 1'b1;  // tie off
+  assign SW_SCAN_RST_N_01_in = 1'b1;  // tie off
 
-SIP_HBM_TWO_STACK_INTF SIP_HBM_TWO_STACK_INTF_INST (
+  SIP_HBM_TWO_STACK_INTF SIP_HBM_TWO_STACK_INTF_INST (
   .ANALOG_MUX_SEL_0 (ANALOG_MUX_SEL_0_REG),
   .ANALOG_MUX_SEL_1 (ANALOG_MUX_SEL_1_REG),
   .APB_BYPASS_EN_0 (APB_BYPASS_EN_0_REG),

@@ -29,24 +29,23 @@
 //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
 // End Revision
 
-`timescale  1 ps / 1 ps
+`timescale 1 ps / 1 ps `celldefine
 
-
-`celldefine
-
-module VCC(P);
+module VCC (
+    P
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
 
-    output P;
+  output P;
 
-    assign P = 1'b1;
+  assign P = 1'b1;
 
 endmodule
 

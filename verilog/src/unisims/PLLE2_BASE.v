@@ -29,23 +29,21 @@
 //    03/23/10 - Change CLKFBOUT_MULT default from 1 to 5.
 ///////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module PLLE2_BASE (
-  CLKFBOUT,
-  CLKOUT0,
-  CLKOUT1,
-  CLKOUT2,
-  CLKOUT3,
-  CLKOUT4,
-  CLKOUT5,
-  LOCKED,
-  CLKFBIN,
-  CLKIN1,
-  PWRDWN,
-  RST
+    CLKFBOUT,
+    CLKOUT0,
+    CLKOUT1,
+    CLKOUT2,
+    CLKOUT3,
+    CLKOUT4,
+    CLKOUT5,
+    LOCKED,
+    CLKFBIN,
+    CLKIN1,
+    PWRDWN,
+    RST
 );
 
   parameter BANDWIDTH = "OPTIMIZED";
@@ -74,11 +72,11 @@ module PLLE2_BASE (
   parameter real REF_JITTER1 = 0.010;
   parameter STARTUP_WAIT = "FALSE";
 
-  `ifdef XIL_TIMING
+`ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
-  `endif //
+`endif  //
 
   output CLKFBOUT;
   output CLKOUT0;

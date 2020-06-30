@@ -28,27 +28,26 @@
 //    05/23/07 - Changed timescale to 1 ps / 1 ps.
 //    05/23/07 - Added wire declaration for internal signals.
 
-`timescale  1 ps / 1 ps
+`timescale 1 ps / 1 ps `celldefine
 
-
-`celldefine
-
-module PULLDOWN (O);
+module PULLDOWN (
+    O
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
 
-    output O;
+  output O;
 
-    wire A;
+  wire A;
 
-    pulldown (A);
-    buf (weak0,weak1) #(100,100) (O,A);
+  pulldown (A);
+  buf (weak0, weak1) #(100, 100) (O, A);
 
 endmodule
 

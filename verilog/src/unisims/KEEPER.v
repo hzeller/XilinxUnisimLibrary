@@ -27,31 +27,29 @@
 //    03/23/04 - Initial version.
 //    05/23/07 - Changed timescale to 1 ps / 1 ps.
 
-`timescale  1 ps / 1 ps
+`timescale 1 ps / 1 ps `celldefine
 
-`celldefine
+module KEEPER (
+    O
+);
 
-module KEEPER (O);
+  inout O;
 
-    inout O;
-    
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
-    
-    reg   in;
 
-    always @(O)
-	if (O)
-	    in <= 1;
-	else
-	    in <= 0;
+  reg in;
 
-    buf (pull1, pull0) B1 (O, in);
+  always @(O)
+    if (O) in <= 1;
+    else in <= 0;
+
+  buf (pull1, pull0) B1 (O, in);
 
 endmodule
 

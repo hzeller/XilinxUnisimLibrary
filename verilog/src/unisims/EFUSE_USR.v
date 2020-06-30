@@ -28,12 +28,10 @@
 //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
 // End Revision
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module EFUSE_USR (
-  EFUSEUSR
+    EFUSEUSR
 );
 
   parameter [31:0] SIM_EFUSE_VALUE = 32'h00000000;
@@ -44,16 +42,12 @@ module EFUSE_USR (
 
 `endif
 
-    
+
   output [31:0] EFUSEUSR;
 
   assign EFUSEUSR = SIM_EFUSE_VALUE;
 
-  specify
-
-      specparam PATHPULSE$ = 0;
-
-  endspecify
+  specify specparam PATHPULSE$ = 0; endspecify
 
 endmodule
 

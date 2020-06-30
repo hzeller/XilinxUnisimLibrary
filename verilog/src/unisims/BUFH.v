@@ -30,37 +30,34 @@
 //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
 // End Revision
 
-`timescale  1 ps / 1 ps
+`timescale 1 ps / 1 ps `celldefine
 
-
-`celldefine
-
-module BUFH (O, I);
+module BUFH (
+    O,
+    I
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = " UNPLACED";
-    reg notifier;
+  parameter LOC = " UNPLACED";
+  reg notifier;
 
 `endif
 
 
-    output O;
-    input  I;
+  output O;
+  input I;
 
-    buf B1 (O, I);
+  buf B1 (O, I);
 
 `ifdef XIL_TIMING
-    
-    specify
-        (I => O) = (0:0:0, 0:0:0);
-	$period (posedge I, 0:0:0, notifier);
-        specparam PATHPULSE$ = 0;
-    endspecify
-    
+
+  specify (I => O) = (0: 0: 0, 0: 0: 0); $period (posedge I, 0: 0: 0, notifier);
+      specparam PATHPULSE$ = 0; endspecify
+
 `endif
-    
+
 endmodule
 
 `endcelldefine

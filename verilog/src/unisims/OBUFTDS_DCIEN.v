@@ -31,46 +31,44 @@
 //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
 // End Revision
 
-`timescale  1 ps / 1 ps
+`timescale 1 ps / 1 ps `celldefine
 
-`celldefine
+module OBUFTDS_DCIEN (
+    O,
+    OB,
+    DCITERMDISABLE,
+    I,
+    T
+);
 
-module OBUFTDS_DCIEN (O, OB, DCITERMDISABLE, I, T);
-
-    parameter IOSTANDARD = "DEFAULT";
+  parameter IOSTANDARD = "DEFAULT";
 `ifdef XIL_TIMING
-    parameter LOC = "UNPLACED";
-`endif // `ifdef XIL_TIMING
-    parameter SLEW = "SLOW";
-   
-    output O;
-    output OB;
+  parameter LOC = "UNPLACED";
+`endif  // `ifdef XIL_TIMING
+  parameter SLEW = "SLOW";
 
-    input  DCITERMDISABLE;
-    input  I;
-    input  T;
+  output O;
+  output OB;
 
-    wire ts;
+  input DCITERMDISABLE;
+  input I;
+  input T;
 
-    tri0 GTS = glbl.GTS;
+  wire ts;
 
-    or O1 (ts, GTS, T);
-    bufif0 B1 (O, I, ts);
-    notif0 N1 (OB, I, ts);
+  tri0 GTS = glbl.GTS;
+
+  or O1 (ts, GTS, T);
+  bufif0 B1 (O, I, ts);
+  notif0 N1 (OB, I, ts);
 
 
 `ifdef XIL_TIMING
-    specify
-        (DCITERMDISABLE => O)   = (0:0:0,  0:0:0);
-        (DCITERMDISABLE => OB)  = (0:0:0,  0:0:0);
-        (I => O)                = (0:0:0,  0:0:0);
-        (I => OB)               = (0:0:0,  0:0:0);
-        (T => O)                = (0:0:0,  0:0:0);
-        (T => OB)               = (0:0:0,  0:0:0);
-        specparam PATHPULSE$ = 0;
-    endspecify
-`endif // `ifdef XIL_TIMING
-    
+  specify (DCITERMDISABLE => O) = (0: 0: 0, 0: 0: 0); (DCITERMDISABLE => OB) = (0: 0: 0, 0: 0: 0);
+      (I => O) = (0: 0: 0, 0: 0: 0); (I => OB) = (0: 0: 0, 0: 0: 0); (T => O) = (0: 0: 0, 0: 0: 0);
+      (T => OB) = (0: 0: 0, 0: 0: 0); specparam PATHPULSE$ = 0; endspecify
+`endif  // `ifdef XIL_TIMING
+
 endmodule
 
 `endcelldefine

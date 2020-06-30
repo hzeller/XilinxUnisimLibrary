@@ -28,58 +28,57 @@
 //    02/22/06 - CR#226003 - Added integer, real parameter type
 //    05/23/07 - Changed timescale to 1 ps / 1 ps.
 
-`timescale  1 ps / 1 ps
+`timescale 1 ps / 1 ps `celldefine
 
+module OBUF (
+    O,
+    I
+);
 
-`celldefine
-
-module OBUF (O, I);
-
-    parameter CAPACITANCE = "DONT_CARE";
-    parameter integer DRIVE = 12;
-    parameter IOSTANDARD = "DEFAULT";
+  parameter CAPACITANCE = "DONT_CARE";
+  parameter integer DRIVE = 12;
+  parameter IOSTANDARD = "DEFAULT";
 
 `ifdef XIL_TIMING
 
-    parameter LOC = " UNPLACED";
+  parameter LOC = " UNPLACED";
 
 `endif
 
-    parameter SLEW = "SLOW";
-   
-    output O;
+  parameter SLEW = "SLOW";
 
-    input  I;
+  output O;
 
-    tri0 GTS = glbl.GTS;
+  input I;
 
-    bufif0 B1 (O, I, GTS);
+  tri0 GTS = glbl.GTS;
 
-    initial begin
-	
-        case (CAPACITANCE)
+  bufif0 B1 (O, I, GTS);
 
-            "LOW", "NORMAL", "DONT_CARE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute CAPACITANCE on OBUF instance %m is set to %s.  Legal values for this attribute are DONT_CARE, LOW or NORMAL.", CAPACITANCE);
-                          #1 $finish;
-                      end
+  initial begin
 
-        endcase
+    case (CAPACITANCE)
 
-    end
+      "LOW", "NORMAL", "DONT_CARE": ;
+      default: begin
+        $display(
+            "Attribute Syntax Error : The attribute CAPACITANCE on OBUF instance %m is set to %s.  Legal values for this attribute are DONT_CARE, LOW or NORMAL."
+                , CAPACITANCE);
+        #1 $finish;
+      end
 
-    
+    endcase
+
+  end
+
+
 `ifdef XIL_TIMING
-    
-    specify
-        (I => O) = (0:0:0, 0:0:0);
-        specparam PATHPULSE$ = 0;
-    endspecify
+
+  specify (I => O) = (0: 0: 0, 0: 0: 0); specparam PATHPULSE$ = 0; endspecify
 
 `endif
 
-    
+
 endmodule
 
 `endcelldefine

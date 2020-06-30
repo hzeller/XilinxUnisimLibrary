@@ -33,40 +33,34 @@
 // End Revision
 ///////////////////////////////////////////////////////////////////////////////
 
-`timescale  1 ps / 1 ps
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module OR2L #(
-  `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
-  `endif
-  parameter [0:0] IS_SRI_INVERTED = 1'b0
-)(
-  output O,
-  
-  input DI,
-  input SRI
+`ifdef XIL_TIMING
+    parameter LOC = "UNPLACED",
+`endif
+    parameter [0:0] IS_SRI_INVERTED = 1'b0
+) (
+    output O,
+
+    input DI,
+    input SRI
 );
-  
-    tri0 GSR = glbl.GSR;
 
-    wire SRI_in;
+  tri0 GSR = glbl.GSR;
 
-    assign SRI_in = IS_SRI_INVERTED ^ SRI;
+  wire SRI_in;
 
-    assign O = ~GSR && (DI || SRI_in);
+  assign SRI_in = IS_SRI_INVERTED ^ SRI;
+
+  assign O = ~GSR && (DI || SRI_in);
 
 `ifdef XIL_TIMING
   reg notifier;
 
-  specify
-  (DI => O) = (0:0:0, 0:0:0);
-  (SRI => O) = (0:0:0, 0:0:0);
-    $width (negedge SRI, 0:0:0, 0, notifier);
-    $width (posedge SRI, 0:0:0, 0, notifier);
-    specparam PATHPULSE$ = 0;
-  endspecify
+  specify (DI => O) = (0: 0: 0, 0: 0: 0); (SRI => O) = (0: 0: 0, 0: 0: 0);
+      $width (negedge SRI, 0: 0: 0, 0, notifier); $width (posedge SRI, 0: 0: 0, 0, notifier);
+      specparam PATHPULSE$ = 0; endspecify
 `endif
 
 endmodule

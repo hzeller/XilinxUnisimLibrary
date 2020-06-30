@@ -29,29 +29,27 @@
 //  End Revision:
 ///////////////////////////////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module MMCME2_BASE (
-  CLKFBOUT,
-  CLKFBOUTB,
-  CLKOUT0,
-  CLKOUT0B,
-  CLKOUT1,
-  CLKOUT1B,
-  CLKOUT2,
-  CLKOUT2B,
-  CLKOUT3,
-  CLKOUT3B,
-  CLKOUT4,
-  CLKOUT5,
-  CLKOUT6,
-  LOCKED,
-  CLKFBIN,
-  CLKIN1,
-  PWRDWN,
-  RST
+    CLKFBOUT,
+    CLKFBOUTB,
+    CLKOUT0,
+    CLKOUT0B,
+    CLKOUT1,
+    CLKOUT1B,
+    CLKOUT2,
+    CLKOUT2B,
+    CLKOUT3,
+    CLKOUT3B,
+    CLKOUT4,
+    CLKOUT5,
+    CLKOUT6,
+    LOCKED,
+    CLKFBIN,
+    CLKIN1,
+    PWRDWN,
+    RST
 );
 
   parameter BANDWIDTH = "OPTIMIZED";
@@ -84,11 +82,11 @@ module MMCME2_BASE (
   parameter real REF_JITTER1 = 0.010;
   parameter STARTUP_WAIT = "FALSE";
 
-  `ifdef XIL_TIMING
+`ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
-  `endif
+`endif
 
   output CLKFBOUT;
   output CLKFBOUTB;
@@ -110,7 +108,7 @@ module MMCME2_BASE (
   input PWRDWN;
   input RST;
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "MMCME2_BASE";
 
   wire OPEN_DRDY;

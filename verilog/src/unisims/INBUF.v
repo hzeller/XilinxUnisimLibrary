@@ -30,30 +30,28 @@
 //  End Revision:
 ///////////////////////////////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module INBUF #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter IBUF_LOW_PWR = "TRUE",
-  parameter ISTANDARD = "UNUSED",
-  parameter integer SIM_INPUT_BUFFER_OFFSET = 0
-)(
-  output O,
+    parameter IBUF_LOW_PWR = "TRUE",
+    parameter ISTANDARD = "UNUSED",
+    parameter integer SIM_INPUT_BUFFER_OFFSET = 0
+) (
+    output O,
 
-  input [3:0] OSC,
-  input OSC_EN,
-  input PAD,
-  input VREF
+    input [3:0] OSC,
+    input       OSC_EN,
+    input       PAD,
+    input       VREF
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "INBUF";
 
-// Parameter encodings and registers
+  // Parameter encodings and registers
   localparam IBUF_LOW_PWR_FALSE = 1;
   localparam IBUF_LOW_PWR_TRUE = 0;
 
@@ -81,7 +79,7 @@ module INBUF #(
 `endif
 
   reg O_OSC_in;
-  integer OSC_int = 0; 
+  integer OSC_int = 0;
 
   assign O = (OSC_EN_in === 1'b1) ? O_OSC_in : PAD;
 
@@ -93,14 +91,14 @@ module INBUF #(
   assign OSC_in = OSC;
 `endif
 
-  assign IBUF_LOW_PWR_BIN =
-      (IBUF_LOW_PWR_REG == "TRUE") ? IBUF_LOW_PWR_TRUE :
-      (IBUF_LOW_PWR_REG == "FALSE") ? IBUF_LOW_PWR_FALSE :
-       IBUF_LOW_PWR_TRUE;
-  
+  assign IBUF_LOW_PWR_BIN = (IBUF_LOW_PWR_REG == "TRUE") ?
+      IBUF_LOW_PWR_TRUE : (IBUF_LOW_PWR_REG == "FALSE") ? IBUF_LOW_PWR_FALSE : IBUF_LOW_PWR_TRUE;
+
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-106] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-106] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m"
+            , MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -109,66 +107,64 @@ module INBUF #(
     #1;
     trig_attr = ~trig_attr;
   end
-  
-  always @ (trig_attr) begin
+
+  always @(trig_attr) begin
     #1;
-    if ((attr_test == 1'b1) ||
-        ((SIM_INPUT_BUFFER_OFFSET_REG < -50) || (SIM_INPUT_BUFFER_OFFSET_REG > 50))) begin
-      $display("Error: [Unisim %s-111] SIM_INPUT_BUFFER_OFFSET attribute is set to %d.  Legal values for this attribute are -50 to 50. Instance: %m", MODULE_NAME, SIM_INPUT_BUFFER_OFFSET_REG);
+    if ((attr_test == 1'b1
+        ) || ((SIM_INPUT_BUFFER_OFFSET_REG < -50) || (SIM_INPUT_BUFFER_OFFSET_REG > 50))) begin
+      $display(
+          "Error: [Unisim %s-111] SIM_INPUT_BUFFER_OFFSET attribute is set to %d.  Legal values for this attribute are -50 to 50. Instance: %m"
+              , MODULE_NAME, SIM_INPUT_BUFFER_OFFSET_REG);
       attr_err = 1'b1;
     end
 
-    if ((attr_test == 1'b1) ||
-        ((IBUF_LOW_PWR_REG != "TRUE") &&
-         (IBUF_LOW_PWR_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-104] IBUF_LOW_PWR attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, IBUF_LOW_PWR_REG);
+    if ((attr_test == 1'b1) || ((IBUF_LOW_PWR_REG != "TRUE") && (IBUF_LOW_PWR_REG != "FALSE"))
+        ) begin
+      $display(
+          "Error: [Unisim %s-104] IBUF_LOW_PWR attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m"
+              , MODULE_NAME, IBUF_LOW_PWR_REG);
       attr_err = 1'b1;
     end
-    
+
     if (attr_err == 1'b1) #1 $finish;
   end
 
-  always @ (OSC_in or OSC_EN_in) begin
-   OSC_int = OSC_in[2:0] * 5;
-   if (OSC_in[3] == 1'b0 )
-      OSC_int =  -1*OSC_int;
+  always @(OSC_in or OSC_EN_in) begin
+    OSC_int = OSC_in[2:0] * 5;
+    if (OSC_in[3] == 1'b0) OSC_int = -1 * OSC_int;
 
-   if(OSC_EN_in === 1'b1) begin
-    if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0) begin
+    if (OSC_EN_in === 1'b1) begin
+      if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0) begin
         O_OSC_in <= 1'b0;
-    end else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0) begin  
+      end else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0) begin
         O_OSC_in <= 1'b1;
-    end else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0) begin
+      end else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0) begin
         O_OSC_in <= ~O_OSC_in;
-    end  
-   end
+      end
+    end
   end
 
   initial begin
-// if (OSC_EN_in === 1'b1) begin
+    // if (OSC_EN_in === 1'b1) begin
     if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0) begin
-        O_OSC_in <= 1'b0;
-    end else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0) begin  
-        O_OSC_in <= 1'b1;
+      O_OSC_in <= 1'b0;
+    end else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0) begin
+      O_OSC_in <= 1'b1;
     end else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0) begin
-        O_OSC_in <= 1'bx;
-    end  
+      O_OSC_in <= 1'bx;
+    end
   end
 
 `ifdef XIL_TIMING
   reg notifier;
 `endif
-
-  specify
-    (OSC *> O) = (0:0:0, 0:0:0);
-    (OSC_EN => O) = (0:0:0, 0:0:0);
-    (PAD => O) = (0:0:0, 0:0:0);
+    specify (OSC *> O) = (0: 0: 0, 0: 0: 0); (OSC_EN => O) = (0: 0: 0, 0: 0: 0);
+    (PAD => O) = (0: 0: 0, 0: 0: 0);
 `ifdef XIL_TIMING
-    $setuphold (negedge OSC_EN, negedge OSC, 0:0:0, 0:0:0, notifier, , , OSC_EN_delay, OSC_delay);
-    $setuphold (negedge OSC_EN, posedge OSC, 0:0:0, 0:0:0, notifier, , , OSC_EN_delay, OSC_delay);
+    $setuphold (negedge OSC_EN, negedge OSC, 0: 0: 0, 0: 0: 0, notifier,,, OSC_EN_delay, OSC_delay);
+    $setuphold (negedge OSC_EN, posedge OSC, 0: 0: 0, 0: 0: 0, notifier,,, OSC_EN_delay, OSC_delay);
 `endif
-    specparam PATHPULSE$ = 0;
-  endspecify
+    specparam PATHPULSE$ = 0; endspecify
 
 endmodule
 

@@ -32,27 +32,25 @@
 //  End Revision:
 ///////////////////////////////////////////////////////////////////////////////
 
-`timescale  1 ps / 1 ps
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module AND2B1L #(
-  `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
-  `endif
-  parameter [0:0] IS_SRI_INVERTED = 1'b0
-)(
-  output O,
-  
-  input DI,
-  input SRI
+`ifdef XIL_TIMING
+    parameter LOC = "UNPLACED",
+`endif
+    parameter [0:0] IS_SRI_INVERTED = 1'b0
+) (
+    output O,
+
+    input DI,
+    input SRI
 );
-  
-// define constants
+
+  // define constants
   localparam MODULE_NAME = "AND2B1L";
-  
+
   reg trig_attr;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "AND2B1L_dr.v"
 `else
@@ -75,21 +73,17 @@ module AND2B1L #(
   reg notifier;
 `endif
 
-// begin behavioral model
+  // begin behavioral model
 
-    assign O = ~glblGSR && DI_in && ~SRI_in;
+  assign O = ~glblGSR && DI_in && ~SRI_in;
 
-// end behavioral model
+  // end behavioral model
 
 `ifndef XIL_XECLIB
 `ifdef XIL_TIMING
-  specify
-  (DI => O) = (0:0:0, 0:0:0);
-  (SRI => O) = (0:0:0, 0:0:0);
-    $width (negedge SRI, 0:0:0, 0, notifier);
-    $width (posedge SRI, 0:0:0, 0, notifier);
-    specparam PATHPULSE$ = 0;
-  endspecify
+  specify (DI => O) = (0: 0: 0, 0: 0: 0); (SRI => O) = (0: 0: 0, 0: 0: 0);
+      $width (negedge SRI, 0: 0: 0, 0, notifier); $width (posedge SRI, 0: 0: 0, 0, notifier);
+      specparam PATHPULSE$ = 0; endspecify
 `endif
 `endif
 endmodule
