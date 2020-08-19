@@ -22,28 +22,26 @@
 // /___/   /\     Filename : GND.v
 // \   \  /  \    Timestamp : Thu Mar 25 16:42:19 PST 2004
 //  \___\/\___\
-//
-// Revision:
-//    03/23/04 - Initial version.
-//    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    //
+    // Revision:
+    //    03/23/04 - Initial version.
+    //    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale  1 ps / 1 ps
-
-
-`celldefine
-
-module GND(G);
+module GND (
+    G
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
-    output G;
+  output G;
 
-    assign G = 1'b0;
+  assign G = 1'b0;
 
 endmodule
 

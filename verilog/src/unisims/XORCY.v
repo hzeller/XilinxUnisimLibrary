@@ -22,44 +22,39 @@
 // /___/   /\     Filename : XORCY.v
 // \   \  /  \    Timestamp : Thu Mar 25 16:43:42 PST 2004
 //  \___\/\___\
-//
-// Revision:
-//    03/23/04 - Initial version.
-//    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    //
+    // Revision:
+    //    03/23/04 - Initial version.
+    //    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale  1 ps / 1 ps
+module XORCY (
+    O,
+    CI,
+    LI
+);
 
-
-`celldefine
-
-module XORCY (O, CI, LI);
-
-
-`ifdef XIL_TIMING
-
-    parameter LOC = "UNPLACED";
-
-`endif
-
-    
-    output O;
-
-    input  CI, LI;
-
-	xor X1 (O, CI, LI);
 
 `ifdef XIL_TIMING
 
-    specify
-        
-        (CI => O) = (0:0:0, 0:0:0);
-        (LI => O) = (0:0:0, 0:0:0);
-        specparam PATHPULSE$ = 0;
-        
-    endspecify
+  parameter LOC = "UNPLACED";
 
 `endif
-    
+
+
+  output O;
+
+  input CI, LI;
+
+  xor X1 (O, CI, LI);
+
+`ifdef XIL_TIMING
+
+  specify (CI => O) = (0: 0: 0, 0: 0: 0); (LI => O) = (0: 0: 0, 0: 0: 0); specparam PATHPULSE$ = 0;
+      endspecify
+
+`endif
+
 endmodule
 
 `endcelldefine

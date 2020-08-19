@@ -21,61 +21,58 @@
 //  /   /                  6-Bit Look-Up Table
 // /___/   /\     Filename : LUT6.v
 // \   \  /  \
-//  \___\/\___\
-//
-///////////////////////////////////////////////////////////////////////////////
-//  Revision:
-//    03/23/04 - Initial version.
-//    02/04/05 - Replace primitive with function; Remove buf.
-//    01/07/06 - 222733 - Add LOC Parameter
-//    06/04/07 - Add wire declaration to internal signal.
-//    12/13/11 - 524859 - Added `celldefine and `endcelldefine
-//    09/12/16 - ANSI ports, speed improvements
-//  End Revision:
-///////////////////////////////////////////////////////////////////////////////
-
-`timescale 1 ps/1 ps
-
-`celldefine
+    //  \___\/\___\
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+    //  Revision:
+    //    03/23/04 - Initial version.
+    //    02/04/05 - Replace primitive with function; Remove buf.
+    //    01/07/06 - 222733 - Add LOC Parameter
+    //    06/04/07 - Add wire declaration to internal signal.
+    //    12/13/11 - 524859 - Added `celldefine and `endcelldefine
+    //    09/12/16 - ANSI ports, speed improvements
+    //  End Revision:
+    ///////////////////////////////////////////////////////////////////////////////
+    `timescale 1 ps / 1 ps `celldefine
 
 module LUT6 #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter [63:0] INIT = 64'h0000000000000000
-)(
-  output O,
+    parameter [63:0] INIT = 64'h0000000000000000
+) (
+    output O,
 
-  input I0,
-  input I1,
-  input I2,
-  input I3,
-  input I4,
-  input I5
+    input I0,
+    input I1,
+    input I2,
+    input I3,
+    input I4,
+    input I5
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "LUT6";
 
   reg trig_attr = 1'b0;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "LUT6_dr.v"
 `else
   reg [63:0] INIT_REG = INIT;
 `endif
 
-// begin behavioral model
+  // begin behavioral model
 
   reg O_out;
 
   assign O = O_out;
 
   function lut_mux8_f;
-  input [7:0] d;
-  input [2:0] s;
-  begin
-    if (((s[2]^s[1]^s[0]) === 1'b1) || ((s[2]^s[1]^s[0]) === 1'b0))
+    input [7:0] d;
+    input [2:0] s;
+    begin
+      if (((s[2]^s[1]^s[0]) === 1'b1) || ((s[2]^s[1]^s[0]) === 1'b0))
       lut_mux8_f = d[s];
     else if ( ~(|d) || &d)
       lut_mux8_f = d[0];
@@ -105,10 +102,10 @@ module LUT6 #(
       lut_mux8_f = d[{s[2],1'b0,1'b0}];
     else
       lut_mux8_f = 1'bx;
-  end
+    end
   endfunction
 
- always @(I0 or I1 or I2 or I3 or I4 or I5)  begin
+  always @(I0 or I1 or I2 or I3 or I4 or I5)  begin
    if ( (I0 ^ I1  ^ I2 ^ I3 ^ I4 ^ I5) === 1'b0 || (I0 ^ I1  ^ I2 ^ I3 ^ I4 ^ I5) === 1'b1)
      O_out = INIT_REG[{I5, I4, I3, I2, I1, I0}];
    else if ( ~(|INIT_REG) || &INIT_REG )
@@ -124,18 +121,12 @@ module LUT6 #(
                       lut_mux8_f (  INIT_REG[7:0], {I2, I1, I0})}, {I5, I4, I3});
  end
 
-// end behavioral model
+  // end behavioral model
 
 `ifdef XIL_TIMING
-  specify
-	(I0 => O) = (0:0:0, 0:0:0);
-	(I1 => O) = (0:0:0, 0:0:0);
-	(I2 => O) = (0:0:0, 0:0:0);
-	(I3 => O) = (0:0:0, 0:0:0);
-	(I4 => O) = (0:0:0, 0:0:0);
-	(I5 => O) = (0:0:0, 0:0:0);
-	specparam PATHPULSE$ = 0;
-  endspecify
+  specify (I0 => O) = (0: 0: 0, 0: 0: 0); (I1 => O) = (0: 0: 0, 0: 0: 0); (
+      I2 => O) = (0: 0: 0, 0: 0: 0); (I3 => O) = (0: 0: 0, 0: 0: 0); (I4 => O) = (0: 0: 0, 0: 0: 0);
+      (I5 => O) = (0: 0: 0, 0: 0: 0); specparam PATHPULSE$ = 0; endspecify
 `endif
 
 endmodule

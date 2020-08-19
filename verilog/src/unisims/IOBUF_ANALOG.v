@@ -21,39 +21,36 @@
 //  /   /                        Analog Auxiliary SYSMON Input Output Buffer
 // /___/   /\      Filename    : IOBUF_ANALOG.v
 // \   \  /  \
-//  \___\/\___\
-//
-///////////////////////////////////////////////////////////////////////////////
-//  Revision:
-//
-//  End Revision:
-///////////////////////////////////////////////////////////////////////////////
-
-`timescale 1 ps / 1 ps
-
-`celldefine
+    //  \___\/\___\
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+    //  Revision:
+    //
+    //  End Revision:
+    ///////////////////////////////////////////////////////////////////////////////
+    `timescale 1 ps / 1 ps `celldefine
 
 module IOBUF_ANALOG #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter integer DRIVE = 12,
-  parameter IBUF_LOW_PWR = "TRUE",
-  parameter IOSTANDARD = "DEFAULT",
-  parameter SLEW = "SLOW"
-)(
-  output O,
+    parameter integer DRIVE = 12,
+    parameter IBUF_LOW_PWR = "TRUE",
+    parameter IOSTANDARD = "DEFAULT",
+    parameter SLEW = "SLOW"
+) (
+    output O,
 
-  inout IO,
+    inout IO,
 
-  input I,
-  input T
+    input I,
+    input T
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "IOBUF_ANALOG";
 
-// Parameter encodings and registers
+  // Parameter encodings and registers
   localparam IBUF_LOW_PWR_FALSE = 1;
   localparam IBUF_LOW_PWR_TRUE = 0;
   localparam IOSTANDARD_DEFAULT = 0;
@@ -61,7 +58,7 @@ module IOBUF_ANALOG #(
   localparam SLEW_SLOW = 0;
 
   reg trig_attr = 1'b0;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "IOBUF_ANALOG_dr.v"
 `else
@@ -76,38 +73,34 @@ module IOBUF_ANALOG #(
 `else
   reg attr_test = 1'b0;
 `endif
-  reg attr_err = 1'b0;
+  reg                      attr_err = 1'b0;
   tri0 glblGSR = glbl.GSR;
 
-  wire I_in;
-  wire T_in;
+  wire                     I_in;
+  wire                     T_in;
 
-  assign I_in = (I === 1'bz) || I; // rv 1
-  assign T_in = (T === 1'bz) || T; // rv 1
+  assign I_in = (I === 1'bz) || I;  // rv 1
+  assign T_in = (T === 1'bz) || T;  // rv 1
 
   initial begin
     #1;
     trig_attr = ~trig_attr;
   end
-  
-  always @ (trig_attr) begin
+
+  always @(trig_attr) begin
     #1;
-    if ((attr_test == 1'b1) ||
-        ((DRIVE_REG < 2) || (DRIVE_REG > 24))) begin
+    if ((attr_test == 1'b1) || ((DRIVE_REG < 2) || (DRIVE_REG > 24))) begin
       $display("Error: [Unisim %s-101] DRIVE attribute is set to %d.  Legal values for this attribute are 2 to 24. Instance: %m", MODULE_NAME, DRIVE_REG);
       attr_err = 1'b1;
     end
 
-    if ((attr_test == 1'b1) ||
-        ((IBUF_LOW_PWR_REG != "TRUE") &&
-         (IBUF_LOW_PWR_REG != "FALSE"))) begin
+    if ((attr_test == 1'b1) || ((IBUF_LOW_PWR_REG != "TRUE") && (IBUF_LOW_PWR_REG != "FALSE"))
+        ) begin
       $display("Error: [Unisim %s-104] IBUF_LOW_PWR attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, IBUF_LOW_PWR_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-        ((SLEW_REG != "SLOW") &&
-         (SLEW_REG != "FAST"))) begin
+
+    if ((attr_test == 1'b1) || ((SLEW_REG != "SLOW") && (SLEW_REG != "FAST"))) begin
       $display("Error: [Unisim %s-109] SLEW attribute is set to %s.  Legal values for this attribute are SLOW or FAST. Instance: %m", MODULE_NAME, SLEW_REG);
       attr_err = 1'b1;
     end
@@ -118,12 +111,8 @@ module IOBUF_ANALOG #(
   assign O = IO;
   assign IO = ~T_in ? I_in : 1'bz;
 
-specify
-  (I => IO) = (0:0:0, 0:0:0);
-  (IO => O) = (0:0:0, 0:0:0);
-  (T => IO) = (0:0:0, 0:0:0);
-  specparam PATHPULSE$ = 0;
-endspecify
+  specify (I => IO) = (0: 0: 0, 0: 0: 0); (IO => O) = (0: 0: 0, 0: 0: 0);
+      (T => IO) = (0: 0: 0, 0: 0: 0); specparam PATHPULSE$ = 0; endspecify
 
 endmodule
 

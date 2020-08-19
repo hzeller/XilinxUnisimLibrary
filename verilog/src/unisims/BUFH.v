@@ -22,45 +22,41 @@
 // /___/   /\     Filename : BUFH.v
 // \   \  /  \    Timestamp :
 //  \___\/\___\
-//
-// Revision:
-//    04/08/08 - Initial version.
-//    09//9/08 - Change to use BUFHCE according to yaml.
-//    11/11/08 - Change to not use BUFHCE.
-//    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
-// End Revision
+    //
+    // Revision:
+    //    04/08/08 - Initial version.
+    //    09//9/08 - Change to use BUFHCE according to yaml.
+    //    11/11/08 - Change to not use BUFHCE.
+    //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
+    // End Revision
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale  1 ps / 1 ps
-
-
-`celldefine
-
-module BUFH (O, I);
+module BUFH (
+    O,
+    I
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = " UNPLACED";
-    reg notifier;
+  parameter LOC = " UNPLACED";
+  reg notifier;
 
 `endif
 
 
-    output O;
-    input  I;
+  output O;
+  input I;
 
-    buf B1 (O, I);
+  buf B1 (O, I);
 
 `ifdef XIL_TIMING
-    
-    specify
-        (I => O) = (0:0:0, 0:0:0);
-	$period (posedge I, 0:0:0, notifier);
-        specparam PATHPULSE$ = 0;
-    endspecify
-    
+
+  specify (I => O) = (0: 0: 0, 0: 0: 0); $period (posedge I, 0: 0: 0, notifier);
+      specparam PATHPULSE$ = 0; endspecify
+
 `endif
-    
+
 endmodule
 
 `endcelldefine

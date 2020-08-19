@@ -22,18 +22,18 @@
 // /___/   /\     Filename : INV.v
 // \   \  /  \    Timestamp : Thu Mar 25 16:43:55 PST 2004
 //  \___\/\___\
-//
-// Revision:
-//    03/23/04 - Initial version.
-//    03/11/05 - Add LOC paramter;
-//    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
-// End Revision
+    //
+    // Revision:
+    //    03/23/04 - Initial version.
+    //    03/11/05 - Add LOC paramter;
+    //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
+    // End Revision
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale 1 ps/1 ps
-
-`celldefine
-
-module INV (O, I);
+module INV (
+    O,
+    I
+);
 
 
 `ifdef XIL_TIMING
@@ -49,12 +49,7 @@ module INV (O, I);
 
 `ifdef XIL_TIMING
 
-  specify
-
-	(I => O) = (0:0:0, 0:0:0);
-	specparam PATHPULSE$ = 0;
-
-  endspecify
+  specify (I => O) = (0: 0: 0, 0: 0: 0); specparam PATHPULSE$ = 0; endspecify
 
 `endif
 

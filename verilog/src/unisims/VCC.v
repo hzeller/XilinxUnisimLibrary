@@ -22,31 +22,29 @@
 // /___/   /\     Filename : VCC.v
 // \   \  /  \    Timestamp : Thu Mar 25 16:43:41 PST 2004
 //  \___\/\___\
-//
-// Revision:
-//    03/23/04 - Initial version.
-//    05/23/07 - Changed timescale to 1 ps / 1 ps.
-//    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
-// End Revision
+    //
+    // Revision:
+    //    03/23/04 - Initial version.
+    //    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
+    // End Revision
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale  1 ps / 1 ps
-
-
-`celldefine
-
-module VCC(P);
+module VCC (
+    P
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
 
-    output P;
+  output P;
 
-    assign P = 1'b1;
+  assign P = 1'b1;
 
 endmodule
 

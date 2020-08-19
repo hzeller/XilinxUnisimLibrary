@@ -21,46 +21,43 @@
 //  /   /                        _no_description_
 // /___/   /\      Filename    : IBUFCTRL.v
 // \   \  /  \
-//  \___\/\___\
-//
-///////////////////////////////////////////////////////////////////////////////
-//  Revision:
-//
-//    10/22/14 - Added #1 to $finish (CR 808642).
-//  End Revision:
-///////////////////////////////////////////////////////////////////////////////
-
-`timescale 1 ps / 1 ps
-
-`celldefine
+    //  \___\/\___\
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+    //  Revision:
+    //
+    //    10/22/14 - Added #1 to $finish (CR 808642).
+    //  End Revision:
+    ///////////////////////////////////////////////////////////////////////////////
+    `timescale 1 ps / 1 ps `celldefine
 
 module IBUFCTRL #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter ISTANDARD = "UNUSED",
-  parameter USE_IBUFDISABLE = "FALSE"
-)(
-  output O,
+    parameter ISTANDARD = "UNUSED",
+    parameter USE_IBUFDISABLE = "FALSE"
+) (
+    output O,
 
-  input I,
-  input IBUFDISABLE,
-  input INTERMDISABLE,
-  input T
+    input I,
+    input IBUFDISABLE,
+    input INTERMDISABLE,
+    input T
 );
-  
-// define constants
-  localparam MODULE_NAME = "IBUFCTRL";
-  localparam in_delay    = 0;
-  localparam out_delay   = 0;
-  localparam inclk_delay    = 0;
-  localparam outclk_delay   = 0;
 
-// Parameter encodings and registers
+  // define constants
+  localparam MODULE_NAME = "IBUFCTRL";
+  localparam in_delay = 0;
+  localparam out_delay = 0;
+  localparam inclk_delay = 0;
+  localparam outclk_delay = 0;
+
+  // Parameter encodings and registers
   localparam USE_IBUFDISABLE_FALSE = 0;
   localparam USE_IBUFDISABLE_TRUE = 1;
 
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
   reg trig_attr = 1'b0;
   localparam [40:1] USE_IBUFDISABLE_REG = USE_IBUFDISABLE;
 
@@ -71,28 +68,28 @@ module IBUFCTRL #(
 `else
   reg attr_test = 1'b0;
 `endif
-  reg attr_err = 1'b0;
+  reg                      attr_err = 1'b0;
   tri0 glblGSR = glbl.GSR;
 
-  wire O_out;
+  wire                     O_out;
 
-  wire O_delay;
+  wire                     O_delay;
 
-  wire IBUFDISABLE_in;
-  wire INTERMDISABLE_in;
-  wire I_in;
-  wire T_in;
+  wire                     IBUFDISABLE_in;
+  wire                     INTERMDISABLE_in;
+  wire                     I_in;
+  wire                     T_in;
 
-  wire IBUFDISABLE_delay;
-  wire INTERMDISABLE_delay;
-  wire I_delay;
-  wire T_delay;
-  wire NOT_T_OR_IBUFDISABLE;
+  wire                     IBUFDISABLE_delay;
+  wire                     INTERMDISABLE_delay;
+  wire                     I_delay;
+  wire                     T_delay;
+  wire                     NOT_T_OR_IBUFDISABLE;
 
   assign #(out_delay) O = O_delay;
 
 
-// inputs with no timing checks
+  // inputs with no timing checks
   assign #(in_delay) IBUFDISABLE_delay = IBUFDISABLE;
   assign #(in_delay) INTERMDISABLE_delay = INTERMDISABLE;
   assign #(in_delay) I_delay = I;
@@ -105,10 +102,8 @@ module IBUFCTRL #(
   assign I_in = I_delay;
   assign T_in = T_delay;
 
-  assign USE_IBUFDISABLE_BIN =
-    (USE_IBUFDISABLE_REG == "FALSE") ? USE_IBUFDISABLE_FALSE :
-    (USE_IBUFDISABLE_REG == "TRUE") ? USE_IBUFDISABLE_TRUE :
-     USE_IBUFDISABLE_FALSE;
+  assign USE_IBUFDISABLE_BIN = (USE_IBUFDISABLE_REG == "FALSE") ? USE_IBUFDISABLE_FALSE
+      : (USE_IBUFDISABLE_REG == "TRUE") ? USE_IBUFDISABLE_TRUE : USE_IBUFDISABLE_FALSE;
 
 `ifndef XIL_TIMING
   initial begin
@@ -122,11 +117,10 @@ module IBUFCTRL #(
     trig_attr = ~trig_attr;
   end
 
-  always @ (trig_attr) begin
-  #1;
-    if ((attr_test == 1'b1) ||
-        ((USE_IBUFDISABLE_REG != "FALSE") &&
-         (USE_IBUFDISABLE_REG != "TRUE"))) begin
+  always @(trig_attr) begin
+    #1;
+    if ((attr_test == 1'b1) || ((USE_IBUFDISABLE_REG != "FALSE") && (USE_IBUFDISABLE_REG != "TRUE"))
+        ) begin
       $display("Error: [Unisim %s-104] USE_IBUFDISABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, USE_IBUFDISABLE_REG);
       attr_err = 1'b1;
     end
@@ -135,24 +129,21 @@ module IBUFCTRL #(
   end
 
   generate
-       case (USE_IBUFDISABLE)
-          "TRUE" :  begin
-              assign NOT_T_OR_IBUFDISABLE = ~T_in || IBUFDISABLE_in;
-              assign O_out = (NOT_T_OR_IBUFDISABLE == 0)? I_in : (NOT_T_OR_IBUFDISABLE == 1)? 1'b0  : 1'bx;
-              end
-          "FALSE"  : begin
+    case (USE_IBUFDISABLE)
+      "TRUE": begin
+        assign NOT_T_OR_IBUFDISABLE = ~T_in || IBUFDISABLE_in;
+        assign
+            O_out = (NOT_T_OR_IBUFDISABLE == 0) ? I_in : (NOT_T_OR_IBUFDISABLE == 1) ? 1'b0 : 1'bx;
+      end
+      "FALSE"  : begin
               assign O_out = I_in;
-              end   
-       endcase
-  endgenerate       
+              end
+    endcase
+  endgenerate
 
-  specify
-    (I => O) = (0:0:0, 0:0:0);
-    (IBUFDISABLE => O) = (0:0:0, 0:0:0);
-    (INTERMDISABLE => O) = (0:0:0, 0:0:0);
-    (T => O) = (0:0:0, 0:0:0);
-    specparam PATHPULSE$ = 0;
-  endspecify
+  specify (I => O) = (0: 0: 0, 0: 0: 0); (IBUFDISABLE => O) = (0: 0: 0, 0: 0: 0);
+      (INTERMDISABLE => O) = (0: 0: 0, 0: 0: 0); (T => O) = (0: 0: 0, 0: 0: 0);
+      specparam PATHPULSE$ = 0; endspecify
 
 endmodule
 

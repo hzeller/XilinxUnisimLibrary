@@ -31,62 +31,60 @@
 //  End Revision:
 ///////////////////////////////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 module HPIO_VREF #(
-  `ifdef XIL_TIMING //Simprim 
-  parameter LOC = "UNPLACED",  
-  `endif
-  parameter VREF_CNTR = "OFF"
-)(
-  output VREF,
+`ifdef XIL_TIMING  //Simprim 
+    parameter LOC = "UNPLACED",
+`endif
+    parameter VREF_CNTR = "OFF"
+) (
+    output VREF,
 
-  input [6:0] FABRIC_VREF_TUNE
+    input [6:0] FABRIC_VREF_TUNE
 );
-  
-// define constants
-  localparam MODULE_NAME = "HPIO_VREF";
-  localparam in_delay    = 0;
-  localparam out_delay   = 0;
-  localparam inclk_delay    = 0;
-  localparam outclk_delay   = 0;
 
-// Parameter encodings and registers
+  // define constants
+  localparam MODULE_NAME = "HPIO_VREF";
+  localparam in_delay = 0;
+  localparam out_delay = 0;
+  localparam inclk_delay = 0;
+  localparam outclk_delay = 0;
+
+  // Parameter encodings and registers
   localparam VREF_CNTR_FABRIC_RANGE1 = 1;
   localparam VREF_CNTR_FABRIC_RANGE2 = 2;
   localparam VREF_CNTR_OFF = 0;
 
   localparam [104:1] VREF_CNTR_REG = VREF_CNTR;
 
-  wire [1:0] VREF_CNTR_BIN;
+  wire                     [1:0] VREF_CNTR_BIN;
 
   tri0 glblGSR = glbl.GSR;
 
-  `ifdef XIL_TIMING //Simprim 
+`ifdef XIL_TIMING  //Simprim 
   reg notifier;
-  `endif
+`endif
   reg trig_attr = 1'b0;
 `ifdef XIL_ATTR_TEST
   reg attr_test = 1'b1;
 `else
   reg attr_test = 1'b0;
 `endif
-  reg attr_err = 1'b0;
-  
+  reg                         attr_err = 1'b0;
+
   wire VREF_out = 1'b1;
 
-  wire VREF_delay;
+  wire                        VREF_delay;
 
-  wire [6:0] FABRIC_VREF_TUNE_in;
+  wire                  [6:0] FABRIC_VREF_TUNE_in;
 
-  wire [6:0] FABRIC_VREF_TUNE_delay;
+  wire                  [6:0] FABRIC_VREF_TUNE_delay;
 
-  
+
   assign #(out_delay) VREF = VREF_delay;
-  
 
-// inputs with no timing checks
+
+  // inputs with no timing checks
 
   assign #(in_delay) FABRIC_VREF_TUNE_delay = FABRIC_VREF_TUNE;
 
@@ -99,12 +97,10 @@ module HPIO_VREF #(
     trig_attr = ~trig_attr;
   end
 
-  always @ (trig_attr) begin
-  #1;
-    if ((attr_test == 1'b1) ||
-        ((VREF_CNTR_REG != "OFF") &&
-         (VREF_CNTR_REG != "FABRIC_RANGE1") &&
-         (VREF_CNTR_REG != "FABRIC_RANGE2"))) begin
+  always @(trig_attr) begin
+    #1;
+    if ((attr_test == 1'b1) || ((VREF_CNTR_REG != "OFF") && (VREF_CNTR_REG != "FABRIC_RANGE1") && (
+                                VREF_CNTR_REG != "FABRIC_RANGE2"))) begin
       $display("Error: [Unisim %s-101] VREF_CNTR attribute is set to %s.  Legal values for this attribute are OFF, FABRIC_RANGE1 or FABRIC_RANGE2. Instance: %m", MODULE_NAME, VREF_CNTR_REG);
       attr_err = 1'b1;
     end
@@ -112,16 +108,14 @@ module HPIO_VREF #(
     if (attr_err == 1'b1) #1 $finish;
   end
 
-  assign VREF_CNTR_BIN = 
-    (VREF_CNTR_REG == "OFF") ? VREF_CNTR_OFF :
-    (VREF_CNTR_REG == "FABRIC_RANGE1") ? VREF_CNTR_FABRIC_RANGE1 :
-    (VREF_CNTR_REG == "FABRIC_RANGE2") ? VREF_CNTR_FABRIC_RANGE2 :
-    VREF_CNTR_OFF;
+  assign VREF_CNTR_BIN = (VREF_CNTR_REG == "OFF") ?
+      VREF_CNTR_OFF : (VREF_CNTR_REG == "FABRIC_RANGE1") ? VREF_CNTR_FABRIC_RANGE1
+      : (VREF_CNTR_REG == "FABRIC_RANGE2") ? VREF_CNTR_FABRIC_RANGE2 : VREF_CNTR_OFF;
 
   always @ (FABRIC_VREF_TUNE_in) begin
      $display("Info: [Unisim %s-1] Fabric Tune Value changed to %b. Instance: %m",MODULE_NAME, FABRIC_VREF_TUNE_in);
   end
-  
-  endmodule
+
+endmodule
 
 `endcelldefine

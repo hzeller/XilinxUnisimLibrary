@@ -22,36 +22,35 @@
 // /___/   /\     Filename : KEEPER.v
 // \   \  /  \    Timestamp : Thu Mar 25 16:42:51 PST 2004
 //  \___\/\___\
-//
-// Revision:
-//    03/23/04 - Initial version.
-//    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    //
+    // Revision:
+    //    03/23/04 - Initial version.
+    //    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale  1 ps / 1 ps
+module KEEPER (
+    O
+);
 
-`celldefine
+  inout O;
 
-module KEEPER (O);
-
-    inout O;
-    
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
-    
-    reg   in;
 
-    always @(O)
+  reg in;
+
+  always @(O)
 	if (O)
 	    in <= 1;
 	else
 	    in <= 0;
 
-    buf (pull1, pull0) B1 (O, in);
+  buf (pull1, pull0) B1 (O, in);
 
 endmodule
 

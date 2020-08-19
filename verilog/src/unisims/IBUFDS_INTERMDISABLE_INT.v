@@ -21,26 +21,29 @@
 //  /   /                  Differential Signaling Input Buffer
 // /___/   /\     Filename : IBUFDS_INTERMDISABLE_INT.v
 // \   \  /  \
-//  \___\/\___\
-//
-// Revision:
-//    11/09/11 - Initial -- added due to CR 631983 fix - for timing netlist only
-//    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
-//    07/10/12 - 669215 - add parameter DQS_BIAS
-//    08/29/12 - 675511 - add DQS_BIAS functionality
-//    09/11/12 - 677753 - remove X glitch on O
-//    10/22/14 - Added #1 to $finish (CR 808642).
-// End Revision
+    //  \___\/\___\
+    //
+    // Revision:
+    //    11/09/11 - Initial -- added due to CR 631983 fix - for timing netlist only
+    //    12/13/11 - Added `celldefine and `endcelldefine (CR 524859).
+    //    07/10/12 - 669215 - add parameter DQS_BIAS
+    //    08/29/12 - 675511 - add DQS_BIAS functionality
+    //    09/11/12 - 677753 - remove X glitch on O
+    //    10/22/14 - Added #1 to $finish (CR 808642).
+    // End Revision
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale 1 ps / 1 ps
-
-`celldefine
-
-module IBUFDS_INTERMDISABLE_INT (O, I, IB, IBUFDISABLE, INTERMDISABLE);
+module IBUFDS_INTERMDISABLE_INT (
+    O,
+    I,
+    IB,
+    IBUFDISABLE,
+    INTERMDISABLE
+);
 
 `ifdef XIL_TIMING
   parameter LOC = "UNPLACED";
-`endif // `ifdef XIL_TIMING
+`endif  // `ifdef XIL_TIMING
   parameter DIFF_TERM = "FALSE";
   parameter DQS_BIAS = "FALSE";
   parameter IBUF_LOW_PWR = "TRUE";
@@ -50,74 +53,74 @@ module IBUFDS_INTERMDISABLE_INT (O, I, IB, IBUFDISABLE, INTERMDISABLE);
   localparam MODULE_NAME = "IBUFDS_INTERMDISABLE_INT";
 
 
-    output O;
+  output O;
 
-    input  I;
-    input  IB;
-    input  IBUFDISABLE;
-    input  INTERMDISABLE;
+  input I;
+  input IB;
+  input IBUFDISABLE;
+  input INTERMDISABLE;
 
-    wire i_in, ib_in, ibufdisable_in, intermdisable_in;
-    reg o_out;
+  wire i_in, ib_in, ibufdisable_in, intermdisable_in;
+  reg o_out;
 
-    reg DQS_BIAS_BINARY = 1'b0;
-    reg USE_IBUFDISABLE_BINARY = 1'b0;
+  reg DQS_BIAS_BINARY = 1'b0;
+  reg USE_IBUFDISABLE_BINARY = 1'b0;
 
-    assign O =  (USE_IBUFDISABLE_BINARY == 1'b0) ? o_out :
-                ((ibufdisable_in === 1'b1) ? 1'b1 : ((ibufdisable_in === 1'b0) ? o_out : 1'bx));
+  assign O = (USE_IBUFDISABLE_BINARY == 1'b0) ?
+      o_out : ((ibufdisable_in === 1'b1) ? 1'b1 : ((ibufdisable_in === 1'b0) ? o_out : 1'bx));
 
-    assign i_in = I;
-    assign ib_in = IB;
-    assign ibufdisable_in = IBUFDISABLE;
-    assign intermdisable_in = INTERMDISABLE;
+  assign i_in = I;
+  assign ib_in = IB;
+  assign ibufdisable_in = IBUFDISABLE;
+  assign intermdisable_in = INTERMDISABLE;
 
-    initial begin
+  initial begin
 
-        case (DQS_BIAS)
+    case (DQS_BIAS)
 
-            "TRUE"  : DQS_BIAS_BINARY <= #1 1'b1;
-            "FALSE" : DQS_BIAS_BINARY <= #1 1'b0;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
-                          #1 $finish;
-                      end
+      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
+      default: begin
+        $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-	case (DIFF_TERM)
+    case (DIFF_TERM)
 
-            "TRUE", "FALSE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
-                          #1 $finish;
-                      end
+      "TRUE", "FALSE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
+        #1 $finish;
+      end
 
-	endcase // case(DIFF_TERM)
+    endcase  // case(DIFF_TERM)
 
-        case (IBUF_LOW_PWR)
+    case (IBUF_LOW_PWR)
 
-            "FALSE", "TRUE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
-                          #1 $finish;
-                      end
+      "FALSE", "TRUE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-        case (USE_IBUFDISABLE)
+    case (USE_IBUFDISABLE)
 
-            "TRUE"  : USE_IBUFDISABLE_BINARY <= #1 1'b1;
-            "FALSE" : USE_IBUFDISABLE_BINARY <= #1 1'b0;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, USE_IBUFDISABLE);
-                          #1 $finish;
-                      end
+      "TRUE": USE_IBUFDISABLE_BINARY <= #1 1'b1;
+      "FALSE": USE_IBUFDISABLE_BINARY <= #1 1'b0;
+      default: begin
+        $display("Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, USE_IBUFDISABLE);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-    end
+  end
 
-    always @(i_in or ib_in or DQS_BIAS_BINARY) begin
+  always @(i_in or ib_in or DQS_BIAS_BINARY) begin
         if (i_in == 1'b1 && ib_in == 1'b0)
           o_out <= 1'b1;
         else if (i_in == 1'b0 && ib_in == 1'b1)
@@ -132,14 +135,10 @@ module IBUFDS_INTERMDISABLE_INT (O, I, IB, IBUFDISABLE, INTERMDISABLE);
         end
 
 `ifdef XIL_TIMING
-    specify
-        (I => O)                = (0:0:0,  0:0:0);
-        (IB => O)               = (0:0:0,  0:0:0);
-        (IBUFDISABLE => O)      = (0:0:0,  0:0:0);
-        (INTERMDISABLE => O)    = (0:0:0,  0:0:0);
-        specparam PATHPULSE$ = 0;
-    endspecify
-`endif // `ifdef XIL_TIMING
+  specify (I => O) = (0: 0: 0, 0: 0: 0); (IB => O) = (0: 0: 0, 0: 0: 0);
+      (IBUFDISABLE => O) = (0: 0: 0, 0: 0: 0); (INTERMDISABLE => O) = (0: 0: 0, 0: 0: 0);
+      specparam PATHPULSE$ = 0; endspecify
+`endif  // `ifdef XIL_TIMING
 
 endmodule
 

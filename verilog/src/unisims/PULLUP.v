@@ -22,33 +22,31 @@
 // /___/   /\     Filename : PULLUP.v
 // \   \  /  \    Timestamp : Thu Mar 25 16:43:32 PST 2004
 //  \___\/\___\
-//
-// Revision:
-//    03/23/04 - Initial version.
-//    05/23/07 - Changed timescale to 1 ps / 1 ps.
-//    05/23/07 - Added wire declaration for internal signals.
+    //
+    // Revision:
+    //    03/23/04 - Initial version.
+    //    05/23/07 - Changed timescale to 1 ps / 1 ps.
+    //    05/23/07 - Added wire declaration for internal signals.
+    `timescale 1 ps / 1 ps `celldefine
 
-`timescale  1 ps / 1 ps
-
-
-`celldefine
-
-module PULLUP (O);
+module PULLUP (
+    O
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
-  
-    output O;
 
-    wire A;
+  output O;
 
-    pullup (A);
-    buf (weak0,weak1) #(100,100) (O,A);
+  wire A;
+
+  pullup (A);
+  buf (weak0, weak1) #(100, 100) (O, A);
 
 endmodule
 
