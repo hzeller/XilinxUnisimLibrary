@@ -41,106 +41,114 @@
 
 `celldefine
 
-module IOBUFDS_DCIEN (O, IO, IOB, DCITERMDISABLE, I, IBUFDISABLE, T);
+module IOBUFDS_DCIEN (
+    O,
+    IO,
+    IOB,
+    DCITERMDISABLE,
+    I,
+    IBUFDISABLE,
+    T
+);
 
 `ifdef XIL_TIMING
-    parameter LOC = "UNPLACED";
-`endif // `ifdef XIL_TIMING
-    parameter DIFF_TERM = "FALSE";
-    parameter DQS_BIAS = "FALSE";
-    parameter IBUF_LOW_PWR = "TRUE";
-    parameter IOSTANDARD = "DEFAULT";
-    parameter SIM_DEVICE = "7SERIES";
-    parameter SLEW = "SLOW";
-    parameter USE_IBUFDISABLE = "TRUE";
+  parameter LOC = "UNPLACED";
+`endif  // `ifdef XIL_TIMING
+  parameter DIFF_TERM = "FALSE";
+  parameter DQS_BIAS = "FALSE";
+  parameter IBUF_LOW_PWR = "TRUE";
+  parameter IOSTANDARD = "DEFAULT";
+  parameter SIM_DEVICE = "7SERIES";
+  parameter SLEW = "SLOW";
+  parameter USE_IBUFDISABLE = "TRUE";
 
   localparam MODULE_NAME = "IOBUFDS_DCIEN";
 
 
-    output O;
-    inout  IO;
-    inout  IOB;
-    input  DCITERMDISABLE;
-    input  I;
-    input  IBUFDISABLE;
-    input  T;
+  output O;
+  inout IO;
+  inout IOB;
+  input DCITERMDISABLE;
+  input I;
+  input IBUFDISABLE;
+  input T;
 
-    wire i_in, io_in, iob_in, ibufdisable_in, dcitermdisable_in, t_in, out_val;
-    reg o_out, io_out, iob_out;
-    reg O_int;
+  wire i_in, io_in, iob_in, ibufdisable_in, dcitermdisable_in, t_in, out_val;
+  reg o_out, io_out, iob_out;
+  reg O_int;
 
-    reg DQS_BIAS_BINARY = 1'b0;
-    reg USE_IBUFDISABLE_BINARY = 1'b0;
+  reg DQS_BIAS_BINARY = 1'b0;
+  reg USE_IBUFDISABLE_BINARY = 1'b0;
 
-    wire t_or_gts;
-    wire not_t_or_ibufdisable;
+  wire t_or_gts;
+  wire not_t_or_ibufdisable;
 
-    tri0 GTS = glbl.GTS;
+  tri0 GTS = glbl.GTS;
 
-    assign O =  (USE_IBUFDISABLE_BINARY == 1'b0) ? o_out :
+  assign O =  (USE_IBUFDISABLE_BINARY == 1'b0) ? o_out :
                 ((not_t_or_ibufdisable === 1'b1) ? out_val : ((not_t_or_ibufdisable === 1'b0) ? o_out : 1'bx));
 
-    assign dcitermdisable_in = DCITERMDISABLE;
-    assign i_in = I;
-    assign ibufdisable_in = IBUFDISABLE;
-    assign t_in = T;
-    assign io_in = IO;
-    assign iob_in = IOB;
+  assign dcitermdisable_in = DCITERMDISABLE;
+  assign i_in = I;
+  assign ibufdisable_in = IBUFDISABLE;
+  assign t_in = T;
+  assign io_in = IO;
+  assign iob_in = IOB;
 
-    assign t_or_gts = GTS || t_in;
-    assign IO  = t_or_gts ? 1'bz :  i_in;
-    assign IOB = t_or_gts ? 1'bz : ~i_in;
+  assign t_or_gts = GTS || t_in;
+  assign IO = t_or_gts ? 1'bz : i_in;
+  assign IOB = t_or_gts ? 1'bz : ~i_in;
 
-    assign not_t_or_ibufdisable = ~t_in || ibufdisable_in;
+  assign not_t_or_ibufdisable = ~t_in || ibufdisable_in;
 
 
-    initial begin
+  initial begin
 
-        case (DQS_BIAS)
+    case (DQS_BIAS)
 
-            "TRUE"  : DQS_BIAS_BINARY <= #1 1'b1;
-            "FALSE" : DQS_BIAS_BINARY <= #1 1'b0;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
-                          #1 $finish;
-                      end
+      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
+      default: begin
+        $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-	case (DIFF_TERM)
+    case (DIFF_TERM)
 
-            "TRUE", "FALSE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
-                          #1 $finish;
-                      end
+      "TRUE", "FALSE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
+        #1 $finish;
+      end
 
-	endcase // case(DIFF_TERM)
+    endcase  // case(DIFF_TERM)
 
-        case (IBUF_LOW_PWR)
+    case (IBUF_LOW_PWR)
 
-            "FALSE", "TRUE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
-                          #1 $finish;
-                      end
+      "FALSE", "TRUE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-      if((IOSTANDARD == "LVDS_25") || (IOSTANDARD == "LVDSEXT_25")) begin
-            $display("DRC Warning : The IOSTANDARD attribute on IOBUFDS_DCIEN instance %m is set to %s.  LVDS_25 is a fixed impedance structure optimized to 100ohm differential. If the intended usage is a bus architecture, please use BLVDS. This is only intended to be used in point to point transmissions that do not have turn around timing requirements", IOSTANDARD);
-        end
+    if ((IOSTANDARD == "LVDS_25") || (IOSTANDARD == "LVDSEXT_25")) begin
+      $display("DRC Warning : The IOSTANDARD attribute on IOBUFDS_DCIEN instance %m is set to %s.  LVDS_25 is a fixed impedance structure optimized to 100ohm differential. If the intended usage is a bus architecture, please use BLVDS. This is only intended to be used in point to point transmissions that do not have turn around timing requirements", IOSTANDARD);
+    end
 
-        case (USE_IBUFDISABLE)
+    case (USE_IBUFDISABLE)
 
-            "TRUE"  : USE_IBUFDISABLE_BINARY <= #1 1'b1;
-            "FALSE" : USE_IBUFDISABLE_BINARY <= #1 1'b0;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, USE_IBUFDISABLE);
-                          #1 $finish;
-                      end
+      "TRUE": USE_IBUFDISABLE_BINARY <= #1 1'b1;
+      "FALSE": USE_IBUFDISABLE_BINARY <= #1 1'b0;
+      default: begin
+        $display("Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, USE_IBUFDISABLE);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
     if ((SIM_DEVICE != "7SERIES") &&
          (SIM_DEVICE != "ULTRASCALE") &&
@@ -163,22 +171,23 @@ module IOBUFDS_DCIEN (O, IO, IOB, DCITERMDISABLE, I, IBUFDISABLE, T);
          (SIM_DEVICE != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES2")) begin
       $display("Error: [Unisim %s-106] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE);
-         #1 $finish;
+      #1 $finish;
     end
 
-    end
-   generate
-       case (SIM_DEVICE)
-         "7SERIES" : begin
+  end
+  generate
+    case (SIM_DEVICE)
+      "7SERIES" : begin
                         assign out_val = 1'b1;
                      end
-         default : begin
-                        assign out_val = 1'b0;
-                     end
-        endcase
-   endgenerate
+      default:
+      begin
+        assign out_val = 1'b0;
+      end
+    endcase
+  endgenerate
 
-    always @(io_in or iob_in or DQS_BIAS_BINARY) begin
+  always @(io_in or iob_in or DQS_BIAS_BINARY) begin
         if (io_in == 1'b1 && iob_in == 1'b0)
           o_out <= 1'b1;
         else if (io_in == 1'b0 && iob_in == 1'b1)
@@ -194,26 +203,26 @@ module IOBUFDS_DCIEN (O, IO, IOB, DCITERMDISABLE, I, IBUFDISABLE, T);
 
 
 `ifdef XIL_TIMING
-    specify
-        (DCITERMDISABLE => O)   = (0:0:0,  0:0:0);
-        (DCITERMDISABLE => IO)  = (0:0:0,  0:0:0);
-        (DCITERMDISABLE => IOB) = (0:0:0,  0:0:0);
-        (I => O)                = (0:0:0,  0:0:0);
-        (I => IO)               = (0:0:0,  0:0:0);
-        (I => IOB)              = (0:0:0,  0:0:0);
-        (IO => O)               = (0:0:0,  0:0:0);
-        (IO => IOB)             = (0:0:0,  0:0:0);
-        (IOB => O)              = (0:0:0,  0:0:0);
-        (IOB => IO)             = (0:0:0,  0:0:0);
-        (IBUFDISABLE => O)      = (0:0:0,  0:0:0);
-        (IBUFDISABLE => IO)     = (0:0:0,  0:0:0);
-        (IBUFDISABLE => IOB)    = (0:0:0,  0:0:0);
-        (T => O)                = (0:0:0,  0:0:0);
-        (T => IO)               = (0:0:0,  0:0:0);
-        (T => IOB)              = (0:0:0,  0:0:0);
-        specparam PATHPULSE$ = 0;
-    endspecify
-`endif // `ifdef XIL_TIMING
+  specify
+    (DCITERMDISABLE => O) = (0: 0: 0, 0: 0: 0);
+    (DCITERMDISABLE => IO) = (0: 0: 0, 0: 0: 0);
+    (DCITERMDISABLE => IOB) = (0: 0: 0, 0: 0: 0);
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    (I => IO) = (0: 0: 0, 0: 0: 0);
+    (I => IOB) = (0: 0: 0, 0: 0: 0);
+    (IO => O) = (0: 0: 0, 0: 0: 0);
+    (IO => IOB) = (0: 0: 0, 0: 0: 0);
+    (IOB => O) = (0: 0: 0, 0: 0: 0);
+    (IOB => IO) = (0: 0: 0, 0: 0: 0);
+    (IBUFDISABLE => O) = (0: 0: 0, 0: 0: 0);
+    (IBUFDISABLE => IO) = (0: 0: 0, 0: 0: 0);
+    (IBUFDISABLE => IOB) = (0: 0: 0, 0: 0: 0);
+    (T => O) = (0: 0: 0, 0: 0: 0);
+    (T => IO) = (0: 0: 0, 0: 0: 0);
+    (T => IOB) = (0: 0: 0, 0: 0: 0);
+    specparam PATHPULSE$ = 0;
+  endspecify
+`endif  // `ifdef XIL_TIMING
 
 endmodule
 

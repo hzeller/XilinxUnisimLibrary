@@ -40,41 +40,39 @@
 //  16FEB2012 645871 add conditions to RDEN -> Q delays
 ///////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module OUT_FIFO (
-  ALMOSTEMPTY,
-  ALMOSTFULL,
-  EMPTY,
-  FULL,
-  Q0,
-  Q1,
-  Q2,
-  Q3,
-  Q4,
-  Q5,
-  Q6,
-  Q7,
-  Q8,
-  Q9,
+    ALMOSTEMPTY,
+    ALMOSTFULL,
+    EMPTY,
+    FULL,
+    Q0,
+    Q1,
+    Q2,
+    Q3,
+    Q4,
+    Q5,
+    Q6,
+    Q7,
+    Q8,
+    Q9,
 
-  D0,
-  D1,
-  D2,
-  D3,
-  D4,
-  D5,
-  D6,
-  D7,
-  D8,
-  D9,
-  RDCLK,
-  RDEN,
-  RESET,
-  WRCLK,
-  WREN
+    D0,
+    D1,
+    D2,
+    D3,
+    D4,
+    D5,
+    D6,
+    D7,
+    D8,
+    D9,
+    RDCLK,
+    RDEN,
+    RESET,
+    WRCLK,
+    WREN
 );
 
 `ifdef XIL_TIMING
@@ -85,7 +83,7 @@ module OUT_FIFO (
   parameter ARRAY_MODE = "ARRAY_MODE_8_X_4";
   parameter OUTPUT_DISABLE = "FALSE";
   parameter SYNCHRONOUS_MODE = "FALSE";
-  
+
 `ifdef XIL_TIMING
   localparam in_delay = 0;
   localparam out_delay = 0;
@@ -144,36 +142,36 @@ module OUT_FIFO (
 
   initial begin
     case (ALMOST_EMPTY_VALUE)
-      1 : ALMOST_EMPTY_VALUE_BINARY <= 8'b01000001;
-      2 : ALMOST_EMPTY_VALUE_BINARY <= 8'b01100011;
-      default : begin
+      1: ALMOST_EMPTY_VALUE_BINARY <= 8'b01000001;
+      2: ALMOST_EMPTY_VALUE_BINARY <= 8'b01100011;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ALMOST_EMPTY_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.", MODULE_NAME, ALMOST_EMPTY_VALUE);
         #1 $finish;
       end
     endcase
 
     case (ALMOST_FULL_VALUE)
-      1 : ALMOST_FULL_VALUE_BINARY <= 8'b01000001;
-      2 : ALMOST_FULL_VALUE_BINARY <= 8'b01100011;
-      default : begin
+      1: ALMOST_FULL_VALUE_BINARY <= 8'b01000001;
+      2: ALMOST_FULL_VALUE_BINARY <= 8'b01100011;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ALMOST_FULL_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.", MODULE_NAME, ALMOST_FULL_VALUE);
         #1 $finish;
       end
     endcase
 
     case (ARRAY_MODE)
-      "ARRAY_MODE_8_X_4" : ARRAY_MODE_BINARY <= 1'b1;
-      "ARRAY_MODE_4_X_4" : ARRAY_MODE_BINARY <= 1'b0;
-      default : begin
+      "ARRAY_MODE_8_X_4": ARRAY_MODE_BINARY <= 1'b1;
+      "ARRAY_MODE_4_X_4": ARRAY_MODE_BINARY <= 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ARRAY_MODE on %s instance %m is set to %s.  Legal values for this attribute are ARRAY_MODE_8_X_4 or ARRAY_MODE_4_X_4.", MODULE_NAME, ARRAY_MODE);
         #1 $finish;
       end
     endcase
 
     case (OUTPUT_DISABLE)
-      "FALSE" : OUTPUT_DISABLE_BINARY <= 1'b0;
-      "TRUE" : OUTPUT_DISABLE_BINARY <= 1'b1;
-      default : begin
+      "FALSE": OUTPUT_DISABLE_BINARY <= 1'b0;
+      "TRUE": OUTPUT_DISABLE_BINARY <= 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute OUTPUT_DISABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, OUTPUT_DISABLE);
         #1 $finish;
       end
@@ -184,8 +182,8 @@ module OUT_FIFO (
     SPARE_BINARY <= 4'b0;
 
     case (SYNCHRONOUS_MODE)
-      "FALSE" : SYNCHRONOUS_MODE_BINARY <= 1'b0;
-      default : begin
+      "FALSE": SYNCHRONOUS_MODE_BINARY <= 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SYNCHRONOUS_MODE on %s instance %m is set to %s.  The legal value for this attribute is FALSE.", MODULE_NAME, SYNCHRONOUS_MODE);
         #1 $finish;
       end
@@ -269,117 +267,117 @@ module OUT_FIFO (
   assign delay_GSR = GSR;
 
   SIP_OUT_FIFO OUT_FIFO_INST (
-    .ALMOST_EMPTY_VALUE (ALMOST_EMPTY_VALUE_BINARY),
-    .ALMOST_FULL_VALUE (ALMOST_FULL_VALUE_BINARY),
-    .ARRAY_MODE (ARRAY_MODE_BINARY),
-    .OUTPUT_DISABLE (OUTPUT_DISABLE_BINARY),
-    .SLOW_RD_CLK (SLOW_RD_CLK_BINARY),
-    .SLOW_WR_CLK (SLOW_WR_CLK_BINARY),
-    .SPARE (SPARE_BINARY),
-    .SYNCHRONOUS_MODE (SYNCHRONOUS_MODE_BINARY),
+      .ALMOST_EMPTY_VALUE(ALMOST_EMPTY_VALUE_BINARY),
+      .ALMOST_FULL_VALUE(ALMOST_FULL_VALUE_BINARY),
+      .ARRAY_MODE(ARRAY_MODE_BINARY),
+      .OUTPUT_DISABLE(OUTPUT_DISABLE_BINARY),
+      .SLOW_RD_CLK(SLOW_RD_CLK_BINARY),
+      .SLOW_WR_CLK(SLOW_WR_CLK_BINARY),
+      .SPARE(SPARE_BINARY),
+      .SYNCHRONOUS_MODE(SYNCHRONOUS_MODE_BINARY),
 
-    .ALMOSTEMPTY (delay_ALMOSTEMPTY),
-    .ALMOSTFULL (delay_ALMOSTFULL),
-    .EMPTY (delay_EMPTY),
-    .FULL (delay_FULL),
-    .Q0 (delay_Q0),
-    .Q1 (delay_Q1),
-    .Q2 (delay_Q2),
-    .Q3 (delay_Q3),
-    .Q4 (delay_Q4),
-    .Q5 (delay_Q5),
-    .Q6 (delay_Q6),
-    .Q7 (delay_Q7),
-    .Q8 (delay_Q8),
-    .Q9 (delay_Q9),
-    .SCANOUT (delay_SCANOUT),
-    .D0 (delay_D0),
-    .D1 (delay_D1),
-    .D2 (delay_D2),
-    .D3 (delay_D3),
-    .D4 (delay_D4),
-    .D5 (delay_D5),
-    .D6 (delay_D6),
-    .D7 (delay_D7),
-    .D8 (delay_D8),
-    .D9 (delay_D9),
-    .RDCLK (delay_RDCLK),
-    .RDEN (delay_RDEN),
-    .RESET (delay_RESET),
-    .SCANENB (delay_SCANENB),
-    .SCANIN (delay_SCANIN),
-    .TESTMODEB (delay_TESTMODEB),
-    .TESTREADDISB (delay_TESTREADDISB),
-    .TESTWRITEDISB (delay_TESTWRITEDISB),
-    .WRCLK (delay_WRCLK),
-    .WREN (delay_WREN),
-    .GSR (delay_GSR)
+      .ALMOSTEMPTY(delay_ALMOSTEMPTY),
+      .ALMOSTFULL(delay_ALMOSTFULL),
+      .EMPTY(delay_EMPTY),
+      .FULL(delay_FULL),
+      .Q0(delay_Q0),
+      .Q1(delay_Q1),
+      .Q2(delay_Q2),
+      .Q3(delay_Q3),
+      .Q4(delay_Q4),
+      .Q5(delay_Q5),
+      .Q6(delay_Q6),
+      .Q7(delay_Q7),
+      .Q8(delay_Q8),
+      .Q9(delay_Q9),
+      .SCANOUT(delay_SCANOUT),
+      .D0(delay_D0),
+      .D1(delay_D1),
+      .D2(delay_D2),
+      .D3(delay_D3),
+      .D4(delay_D4),
+      .D5(delay_D5),
+      .D6(delay_D6),
+      .D7(delay_D7),
+      .D8(delay_D8),
+      .D9(delay_D9),
+      .RDCLK(delay_RDCLK),
+      .RDEN(delay_RDEN),
+      .RESET(delay_RESET),
+      .SCANENB(delay_SCANENB),
+      .SCANIN(delay_SCANIN),
+      .TESTMODEB(delay_TESTMODEB),
+      .TESTREADDISB(delay_TESTREADDISB),
+      .TESTWRITEDISB(delay_TESTWRITEDISB),
+      .WRCLK(delay_WRCLK),
+      .WREN(delay_WREN),
+      .GSR(delay_GSR)
   );
 
 `ifdef XIL_TIMING
   specify
-    $period (negedge RDCLK, 0:0:0, notifier);
-    $period (negedge WRCLK, 0:0:0, notifier);
-    $period (posedge RDCLK, 0:0:0, notifier);
-    $period (posedge WRCLK, 0:0:0, notifier);
+    $period(negedge RDCLK, 0: 0: 0, notifier);
+    $period(negedge WRCLK, 0: 0: 0, notifier);
+    $period(posedge RDCLK, 0: 0: 0, notifier);
+    $period(posedge WRCLK, 0: 0: 0, notifier);
     $setuphold (posedge RDCLK, negedge RDEN, 0:0:0, 0:0:0, notifier,,, delay_RDCLK, delay_RDEN);
     $setuphold (posedge RDCLK, posedge RDEN, 0:0:0, 0:0:0, notifier,,, delay_RDCLK, delay_RDEN);
-    $setuphold (posedge WRCLK, negedge D0, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D0);
-    $setuphold (posedge WRCLK, negedge D1, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D1);
-    $setuphold (posedge WRCLK, negedge D2, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D2);
-    $setuphold (posedge WRCLK, negedge D3, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D3);
-    $setuphold (posedge WRCLK, negedge D4, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D4);
-    $setuphold (posedge WRCLK, negedge D5, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D5);
-    $setuphold (posedge WRCLK, negedge D6, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D6);
-    $setuphold (posedge WRCLK, negedge D7, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D7);
-    $setuphold (posedge WRCLK, negedge D8, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D8);
-    $setuphold (posedge WRCLK, negedge D9, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D9);
+    $setuphold(posedge WRCLK, negedge D0, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D0);
+    $setuphold(posedge WRCLK, negedge D1, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D1);
+    $setuphold(posedge WRCLK, negedge D2, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D2);
+    $setuphold(posedge WRCLK, negedge D3, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D3);
+    $setuphold(posedge WRCLK, negedge D4, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D4);
+    $setuphold(posedge WRCLK, negedge D5, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D5);
+    $setuphold(posedge WRCLK, negedge D6, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D6);
+    $setuphold(posedge WRCLK, negedge D7, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D7);
+    $setuphold(posedge WRCLK, negedge D8, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D8);
+    $setuphold(posedge WRCLK, negedge D9, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D9);
     $setuphold (posedge WRCLK, negedge WREN, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_WREN);
-    $setuphold (posedge WRCLK, posedge D0, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D0);
-    $setuphold (posedge WRCLK, posedge D1, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D1);
-    $setuphold (posedge WRCLK, posedge D2, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D2);
-    $setuphold (posedge WRCLK, posedge D3, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D3);
-    $setuphold (posedge WRCLK, posedge D4, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D4);
-    $setuphold (posedge WRCLK, posedge D5, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D5);
-    $setuphold (posedge WRCLK, posedge D6, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D6);
-    $setuphold (posedge WRCLK, posedge D7, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D7);
-    $setuphold (posedge WRCLK, posedge D8, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D8);
-    $setuphold (posedge WRCLK, posedge D9, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_D9);
+    $setuphold(posedge WRCLK, posedge D0, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D0);
+    $setuphold(posedge WRCLK, posedge D1, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D1);
+    $setuphold(posedge WRCLK, posedge D2, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D2);
+    $setuphold(posedge WRCLK, posedge D3, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D3);
+    $setuphold(posedge WRCLK, posedge D4, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D4);
+    $setuphold(posedge WRCLK, posedge D5, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D5);
+    $setuphold(posedge WRCLK, posedge D6, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D6);
+    $setuphold(posedge WRCLK, posedge D7, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D7);
+    $setuphold(posedge WRCLK, posedge D8, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D8);
+    $setuphold(posedge WRCLK, posedge D9, 0: 0: 0, 0: 0: 0, notifier,,, delay_WRCLK, delay_D9);
     $setuphold (posedge WRCLK, posedge WREN, 0:0:0, 0:0:0, notifier,,, delay_WRCLK, delay_WREN);
-    $width (negedge RDCLK, 0:0:0, 0, notifier);
-    $width (negedge RESET, 0:0:0, 0, notifier);
-    $width (negedge WRCLK, 0:0:0, 0, notifier);
-    $width (posedge RDCLK, 0:0:0, 0, notifier);
-    $width (posedge RESET, 0:0:0, 0, notifier);
-    $width (posedge WRCLK, 0:0:0, 0, notifier);
-    ( RDCLK *> ALMOSTEMPTY) = (10:10:10, 10:10:10);
-    ( RDCLK *> EMPTY) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q0) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q1) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q2) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q3) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q4) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q5) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q6) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q7) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q8) = (10:10:10, 10:10:10);
-    ( RDCLK *> Q9) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q0) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q1) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q2) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q3) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q4) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q5) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q6) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q7) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q8) = (10:10:10, 10:10:10);
-    if (OUTPUT_DISABLE_BINARY) ( RDEN *> Q9) = (10:10:10, 10:10:10);
-    ( WRCLK *> ALMOSTFULL) = (10:10:10, 10:10:10);
-    ( WRCLK *> FULL) = (10:10:10, 10:10:10);
+    $width(negedge RDCLK, 0: 0: 0, 0, notifier);
+    $width(negedge RESET, 0: 0: 0, 0, notifier);
+    $width(negedge WRCLK, 0: 0: 0, 0, notifier);
+    $width(posedge RDCLK, 0: 0: 0, 0, notifier);
+    $width(posedge RESET, 0: 0: 0, 0, notifier);
+    $width(posedge WRCLK, 0: 0: 0, 0, notifier);
+    (RDCLK *> ALMOSTEMPTY) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> EMPTY) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q0) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q1) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q2) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q3) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q4) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q5) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q6) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q7) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q8) = (10: 10: 10, 10: 10: 10);
+    (RDCLK *> Q9) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q0) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q1) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q2) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q3) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q4) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q5) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q6) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q7) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q8) = (10: 10: 10, 10: 10: 10);
+    if (OUTPUT_DISABLE_BINARY) (RDEN *> Q9) = (10: 10: 10, 10: 10: 10);
+    (WRCLK *> ALMOSTFULL) = (10: 10: 10, 10: 10: 10);
+    (WRCLK *> FULL) = (10: 10: 10, 10: 10: 10);
 
     specparam PATHPULSE$ = 0;
   endspecify
 `endif
-endmodule // OUT_FIFO
+endmodule  // OUT_FIFO
 
 `endcelldefine

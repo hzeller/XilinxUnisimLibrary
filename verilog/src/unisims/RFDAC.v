@@ -35,96 +35,96 @@
 
 module RFDAC #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter integer OPT_CLK_DIST = 0,
-  parameter SIM_DEVICE = "ULTRASCALE_PLUS",
-  parameter integer XPA_ACTIVE_DUTYCYCLE = 100,
-  parameter integer XPA_CFG0 = 0,
-  parameter integer XPA_CFG1 = 0,
-  parameter integer XPA_CFG2 = 0,
-  parameter integer XPA_NUM_DACS = 0,
-  parameter integer XPA_NUM_DUCS = 0,
-  parameter XPA_PLL_USED = "EXTERNAL",
-  parameter integer XPA_SAMPLE_RATE_MSPS = 0
-)(
-  output CLK_DAC,
-  output CLK_DIST_OUT_NORTH,
-  output CLK_DIST_OUT_SOUTH,
-  output [15:0] DOUT,
-  output DRDY,
-  output PLL_DMON_OUT,
-  output PLL_REFCLK_OUT,
-  output [23:0] STATUS_COMMON,
-  output [23:0] STATUS_DAC0,
-  output [23:0] STATUS_DAC1,
-  output [23:0] STATUS_DAC2,
-  output [23:0] STATUS_DAC3,
-  output SYSREF_OUT_NORTH,
-  output SYSREF_OUT_SOUTH,
-  output T1_ALLOWED_SOUTH,
-  output VOUT0_N,
-  output VOUT0_P,
-  output VOUT1_N,
-  output VOUT1_P,
-  output VOUT2_N,
-  output VOUT2_P,
-  output VOUT3_N,
-  output VOUT3_P,
+    parameter integer OPT_CLK_DIST = 0,
+    parameter SIM_DEVICE = "ULTRASCALE_PLUS",
+    parameter integer XPA_ACTIVE_DUTYCYCLE = 100,
+    parameter integer XPA_CFG0 = 0,
+    parameter integer XPA_CFG1 = 0,
+    parameter integer XPA_CFG2 = 0,
+    parameter integer XPA_NUM_DACS = 0,
+    parameter integer XPA_NUM_DUCS = 0,
+    parameter XPA_PLL_USED = "EXTERNAL",
+    parameter integer XPA_SAMPLE_RATE_MSPS = 0
+) (
+    output CLK_DAC,
+    output CLK_DIST_OUT_NORTH,
+    output CLK_DIST_OUT_SOUTH,
+    output [15:0] DOUT,
+    output DRDY,
+    output PLL_DMON_OUT,
+    output PLL_REFCLK_OUT,
+    output [23:0] STATUS_COMMON,
+    output [23:0] STATUS_DAC0,
+    output [23:0] STATUS_DAC1,
+    output [23:0] STATUS_DAC2,
+    output [23:0] STATUS_DAC3,
+    output SYSREF_OUT_NORTH,
+    output SYSREF_OUT_SOUTH,
+    output T1_ALLOWED_SOUTH,
+    output VOUT0_N,
+    output VOUT0_P,
+    output VOUT1_N,
+    output VOUT1_P,
+    output VOUT2_N,
+    output VOUT2_P,
+    output VOUT3_N,
+    output VOUT3_P,
 
-  input CLK_DIST_IN_NORTH,
-  input CLK_DIST_IN_SOUTH,
-  input CLK_FIFO_LM,
-  input [15:0] CONTROL_COMMON,
-  input [15:0] CONTROL_DAC0,
-  input [15:0] CONTROL_DAC1,
-  input [15:0] CONTROL_DAC2,
-  input [15:0] CONTROL_DAC3,
-  input DAC_CLK_N,
-  input DAC_CLK_P,
-  input [11:0] DADDR,
-  input [255:0] DATA_DAC0,
-  input [255:0] DATA_DAC1,
-  input [255:0] DATA_DAC2,
-  input [255:0] DATA_DAC3,
-  input DCLK,
-  input DEN,
-  input [15:0] DI,
-  input DWE,
-  input FABRIC_CLK,
-  input PLL_MONCLK,
-  input PLL_REFCLK_IN,
-  input SYSREF_IN_NORTH,
-  input SYSREF_IN_SOUTH,
-  input SYSREF_N,
-  input SYSREF_P,
-  input T1_ALLOWED_NORTH
+    input CLK_DIST_IN_NORTH,
+    input CLK_DIST_IN_SOUTH,
+    input CLK_FIFO_LM,
+    input [15:0] CONTROL_COMMON,
+    input [15:0] CONTROL_DAC0,
+    input [15:0] CONTROL_DAC1,
+    input [15:0] CONTROL_DAC2,
+    input [15:0] CONTROL_DAC3,
+    input DAC_CLK_N,
+    input DAC_CLK_P,
+    input [11:0] DADDR,
+    input [255:0] DATA_DAC0,
+    input [255:0] DATA_DAC1,
+    input [255:0] DATA_DAC2,
+    input [255:0] DATA_DAC3,
+    input DCLK,
+    input DEN,
+    input [15:0] DI,
+    input DWE,
+    input FABRIC_CLK,
+    input PLL_MONCLK,
+    input PLL_REFCLK_IN,
+    input SYSREF_IN_NORTH,
+    input SYSREF_IN_SOUTH,
+    input SYSREF_N,
+    input SYSREF_P,
+    input T1_ALLOWED_NORTH
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "RFDAC";
-  
+
   reg trig_attr;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "RFDAC_dr.v"
 `else
-  reg [15:0] OPT_CLK_DIST_REG = OPT_CLK_DIST;
+  reg [ 15:0] OPT_CLK_DIST_REG = OPT_CLK_DIST;
   reg [152:1] SIM_DEVICE_REG = SIM_DEVICE;
-  reg [6:0] XPA_ACTIVE_DUTYCYCLE_REG = XPA_ACTIVE_DUTYCYCLE;
-  reg [15:0] XPA_CFG0_REG = XPA_CFG0;
-  reg [15:0] XPA_CFG1_REG = XPA_CFG1;
-  reg [15:0] XPA_CFG2_REG = XPA_CFG2;
-  reg [2:0] XPA_NUM_DACS_REG = XPA_NUM_DACS;
-  reg [2:0] XPA_NUM_DUCS_REG = XPA_NUM_DUCS;
+  reg [  6:0] XPA_ACTIVE_DUTYCYCLE_REG = XPA_ACTIVE_DUTYCYCLE;
+  reg [ 15:0] XPA_CFG0_REG = XPA_CFG0;
+  reg [ 15:0] XPA_CFG1_REG = XPA_CFG1;
+  reg [ 15:0] XPA_CFG2_REG = XPA_CFG2;
+  reg [  2:0] XPA_NUM_DACS_REG = XPA_NUM_DACS;
+  reg [  2:0] XPA_NUM_DUCS_REG = XPA_NUM_DUCS;
   reg [112:1] XPA_PLL_USED_REG = XPA_PLL_USED;
-  reg [13:0] XPA_SAMPLE_RATE_MSPS_REG = XPA_SAMPLE_RATE_MSPS;
+  reg [ 13:0] XPA_SAMPLE_RATE_MSPS_REG = XPA_SAMPLE_RATE_MSPS;
 `endif
 
 `ifdef XIL_XECLIB
-reg glblGSR = 1'b0;
+  reg glblGSR = 1'b0;
 `else
-tri0 glblGSR = glbl.GSR;
+  tri0 glblGSR = glbl.GSR;
 `endif
 
   wire CLK_DAC_SPARE_out;
@@ -220,7 +220,7 @@ tri0 glblGSR = glbl.GSR;
   real VOUT2_P_real;
   real VOUT3_N_real;
   real VOUT3_P_real;
-  
+
   assign CLK_DAC = CLK_DAC_out;
   assign CLK_DIST_OUT_NORTH = CLK_DIST_OUT_NORTH_out;
   assign CLK_DIST_OUT_SOUTH = CLK_DIST_OUT_SOUTH_out;
@@ -295,14 +295,14 @@ tri0 glblGSR = glbl.GSR;
 `ifndef XIL_XECLIB
   reg attr_test;
   reg attr_err;
-  
+
   initial begin
-  trig_attr = 1'b0;
-  `ifdef XIL_ATTR_TEST
+    trig_attr = 1'b0;
+`ifdef XIL_ATTR_TEST
     attr_test = 1'b1;
-  `else
+`else
     attr_test = 1'b0;
-  `endif
+`endif
     attr_err = 1'b0;
     #1;
     trig_attr = ~trig_attr;
@@ -310,14 +310,13 @@ tri0 glblGSR = glbl.GSR;
 `endif
 
 `ifndef XIL_XECLIB
-  always @ (trig_attr) begin
+  always @(trig_attr) begin
     #1;
-    if ((attr_test == 1'b1) ||
-        ((OPT_CLK_DIST_REG < 0) || (OPT_CLK_DIST_REG > 65535))) begin
+    if ((attr_test == 1'b1) || ((OPT_CLK_DIST_REG < 0) || (OPT_CLK_DIST_REG > 65535))) begin
       $display("Error: [Unisim %s-101] OPT_CLK_DIST attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, OPT_CLK_DIST_REG);
       attr_err = 1'b1;
     end
-    
+
     if ((attr_test == 1'b1) ||
         ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1") &&
@@ -325,43 +324,38 @@ tri0 glblGSR = glbl.GSR;
       $display("Error: [Unisim %s-102] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
-    
+
     if ((attr_test == 1'b1) ||
         ((XPA_ACTIVE_DUTYCYCLE_REG < 0) || (XPA_ACTIVE_DUTYCYCLE_REG > 100))) begin
       $display("Error: [Unisim %s-103] XPA_ACTIVE_DUTYCYCLE attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, XPA_ACTIVE_DUTYCYCLE_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-        ((XPA_CFG0_REG < 0) || (XPA_CFG0_REG > 65535))) begin
+
+    if ((attr_test == 1'b1) || ((XPA_CFG0_REG < 0) || (XPA_CFG0_REG > 65535))) begin
       $display("Error: [Unisim %s-104] XPA_CFG0 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, XPA_CFG0_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-        ((XPA_CFG1_REG < 0) || (XPA_CFG1_REG > 65535))) begin
+
+    if ((attr_test == 1'b1) || ((XPA_CFG1_REG < 0) || (XPA_CFG1_REG > 65535))) begin
       $display("Error: [Unisim %s-105] XPA_CFG1 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, XPA_CFG1_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-        ((XPA_CFG2_REG < 0) || (XPA_CFG2_REG > 65535))) begin
+
+    if ((attr_test == 1'b1) || ((XPA_CFG2_REG < 0) || (XPA_CFG2_REG > 65535))) begin
       $display("Error: [Unisim %s-106] XPA_CFG2 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, XPA_CFG2_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-        ((XPA_NUM_DACS_REG < 0) || (XPA_NUM_DACS_REG > 4))) begin
+
+    if ((attr_test == 1'b1) || ((XPA_NUM_DACS_REG < 0) || (XPA_NUM_DACS_REG > 4))) begin
       $display("Error: [Unisim %s-107] XPA_NUM_DACS attribute is set to %d.  Legal values for this attribute are 0 to 4. Instance: %m", MODULE_NAME, XPA_NUM_DACS_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-        ((XPA_NUM_DUCS_REG < 0) || (XPA_NUM_DUCS_REG > 4))) begin
+
+    if ((attr_test == 1'b1) || ((XPA_NUM_DUCS_REG < 0) || (XPA_NUM_DUCS_REG > 4))) begin
       $display("Error: [Unisim %s-108] XPA_NUM_DUCS attribute is set to %d.  Legal values for this attribute are 0 to 4. Instance: %m", MODULE_NAME, XPA_NUM_DUCS_REG);
       attr_err = 1'b1;
     end
-    
+
     if ((attr_test == 1'b1) ||
         ((XPA_PLL_USED_REG != "EXTERNAL") &&
          (XPA_PLL_USED_REG != "DISTRIBUTED_T1") &&
@@ -369,108 +363,108 @@ tri0 glblGSR = glbl.GSR;
       $display("Error: [Unisim %s-109] XPA_PLL_USED attribute is set to %s.  Legal values for this attribute are EXTERNAL, DISTRIBUTED_T1 or INTERNAL_PLL. Instance: %m", MODULE_NAME, XPA_PLL_USED_REG);
       attr_err = 1'b1;
     end
-    
+
     if ((attr_test == 1'b1) ||
         ((XPA_SAMPLE_RATE_MSPS_REG < 0) || (XPA_SAMPLE_RATE_MSPS_REG > 10000))) begin
       $display("Error: [Unisim %s-110] XPA_SAMPLE_RATE_MSPS attribute is set to %d.  Legal values for this attribute are 0 to 10000. Instance: %m", MODULE_NAME, XPA_SAMPLE_RATE_MSPS_REG);
       attr_err = 1'b1;
     end
-    
+
     if (attr_err == 1'b1) #1 $finish;
   end
 `endif
 
 
-assign PLL_SCAN_CLK_FD_in = 2'b11; // tie off
-assign TEST_SCAN_CLK_in = 5'b11111; // tie off
+  assign PLL_SCAN_CLK_FD_in = 2'b11;  // tie off
+  assign TEST_SCAN_CLK_in = 5'b11111;  // tie off
 
-assign PLL_SCAN_EN_B_FD_in = 1'b1; // tie off
-assign PLL_SCAN_IN_FD_in = 2'b11; // tie off
-assign PLL_SCAN_MODE_B_FD_in = 1'b1; // tie off
-assign PLL_SCAN_RST_EN_FD_in = 1'b1; // tie off
-assign TEST_SCAN_CTRL_in = 16'b1111111111111111; // tie off
-assign TEST_SCAN_MODE_B_in = 1'b1; // tie off
-assign TEST_SCAN_RESET_in = 1'b1; // tie off
-assign TEST_SE_B_in = 1'b1; // tie off
-assign TEST_SI_in = 300'b111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111; // tie off
+  assign PLL_SCAN_EN_B_FD_in = 1'b1;  // tie off
+  assign PLL_SCAN_IN_FD_in = 2'b11;  // tie off
+  assign PLL_SCAN_MODE_B_FD_in = 1'b1;  // tie off
+  assign PLL_SCAN_RST_EN_FD_in = 1'b1;  // tie off
+  assign TEST_SCAN_CTRL_in = 16'b1111111111111111;  // tie off
+  assign TEST_SCAN_MODE_B_in = 1'b1;  // tie off
+  assign TEST_SCAN_RESET_in = 1'b1;  // tie off
+  assign TEST_SE_B_in = 1'b1;  // tie off
+  assign TEST_SI_in = 300'b111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111; // tie off
 
   SIP_RFDAC SIP_RFDAC_INST (
-    .OPT_CLK_DIST (OPT_CLK_DIST_REG),
-    .SIM_DEVICE (SIM_DEVICE_REG),
-    .XPA_ACTIVE_DUTYCYCLE (XPA_ACTIVE_DUTYCYCLE_REG),
-    .XPA_CFG0 (XPA_CFG0_REG),
-    .XPA_CFG1 (XPA_CFG1_REG),
-    .XPA_CFG2 (XPA_CFG2_REG),
-    .XPA_NUM_DACS (XPA_NUM_DACS_REG),
-    .XPA_NUM_DUCS (XPA_NUM_DUCS_REG),
-    .XPA_PLL_USED (XPA_PLL_USED_REG),
-    .XPA_SAMPLE_RATE_MSPS (XPA_SAMPLE_RATE_MSPS_REG),
-    .CLK_DAC (CLK_DAC_out),
-    .CLK_DAC_SPARE (CLK_DAC_SPARE_out),
-    .CLK_DIST_OUT_NORTH (CLK_DIST_OUT_NORTH_out),
-    .CLK_DIST_OUT_SOUTH (CLK_DIST_OUT_SOUTH_out),
-    .DOUT (DOUT_out),
-    .DRDY (DRDY_out),
-    .PLL_DMON_OUT (PLL_DMON_OUT_out),
-    .PLL_REFCLK_OUT (PLL_REFCLK_OUT_out),
-    .PLL_SCAN_OUT_B_FD (PLL_SCAN_OUT_B_FD_out),
-    .STATUS_COMMON (STATUS_COMMON_out),
-    .STATUS_DAC0 (STATUS_DAC0_out),
-    .STATUS_DAC1 (STATUS_DAC1_out),
-    .STATUS_DAC2 (STATUS_DAC2_out),
-    .STATUS_DAC3 (STATUS_DAC3_out),
-    .SYSREF_OUT_NORTH (SYSREF_OUT_NORTH_out),
-    .SYSREF_OUT_SOUTH (SYSREF_OUT_SOUTH_out),
-    .T1_ALLOWED_SOUTH (T1_ALLOWED_SOUTH_out),
-    .TEST_SO (TEST_SO_out),
-    .TEST_STATUS (TEST_STATUS_out),
-    .VOUT0_N (VOUT0_N_real),
-    .VOUT0_P (VOUT0_P_real),
-    .VOUT1_N (VOUT1_N_real),
-    .VOUT1_P (VOUT1_P_real),
-    .VOUT2_N (VOUT2_N_real),
-    .VOUT2_P (VOUT2_P_real),
-    .VOUT3_N (VOUT3_N_real),
-    .VOUT3_P (VOUT3_P_real),
-    .CLK_DIST_IN_NORTH (CLK_DIST_IN_NORTH_in),
-    .CLK_DIST_IN_SOUTH (CLK_DIST_IN_SOUTH_in),
-    .CLK_FIFO_LM (CLK_FIFO_LM_in),
-    .CONTROL_COMMON (CONTROL_COMMON_in),
-    .CONTROL_DAC0 (CONTROL_DAC0_in),
-    .CONTROL_DAC1 (CONTROL_DAC1_in),
-    .CONTROL_DAC2 (CONTROL_DAC2_in),
-    .CONTROL_DAC3 (CONTROL_DAC3_in),
-    .DAC_CLK_N (DAC_CLK_N_in),
-    .DAC_CLK_P (DAC_CLK_P_in),
-    .DADDR (DADDR_in),
-    .DATA_DAC0 (DATA_DAC0_in),
-    .DATA_DAC1 (DATA_DAC1_in),
-    .DATA_DAC2 (DATA_DAC2_in),
-    .DATA_DAC3 (DATA_DAC3_in),
-    .DCLK (DCLK_in),
-    .DEN (DEN_in),
-    .DI (DI_in),
-    .DWE (DWE_in),
-    .FABRIC_CLK (FABRIC_CLK_in),
-    .PLL_MONCLK (PLL_MONCLK_in),
-    .PLL_REFCLK_IN (PLL_REFCLK_IN_in),
-    .PLL_SCAN_CLK_FD (PLL_SCAN_CLK_FD_in),
-    .PLL_SCAN_EN_B_FD (PLL_SCAN_EN_B_FD_in),
-    .PLL_SCAN_IN_FD (PLL_SCAN_IN_FD_in),
-    .PLL_SCAN_MODE_B_FD (PLL_SCAN_MODE_B_FD_in),
-    .PLL_SCAN_RST_EN_FD (PLL_SCAN_RST_EN_FD_in),
-    .SYSREF_IN_NORTH (SYSREF_IN_NORTH_in),
-    .SYSREF_IN_SOUTH (SYSREF_IN_SOUTH_in),
-    .SYSREF_N (SYSREF_N_in),
-    .SYSREF_P (SYSREF_P_in),
-    .T1_ALLOWED_NORTH (T1_ALLOWED_NORTH_in),
-    .TEST_SCAN_CLK (TEST_SCAN_CLK_in),
-    .TEST_SCAN_CTRL (TEST_SCAN_CTRL_in),
-    .TEST_SCAN_MODE_B (TEST_SCAN_MODE_B_in),
-    .TEST_SCAN_RESET (TEST_SCAN_RESET_in),
-    .TEST_SE_B (TEST_SE_B_in),
-    .TEST_SI (TEST_SI_in),
-    .GSR (glblGSR)
+      .OPT_CLK_DIST(OPT_CLK_DIST_REG),
+      .SIM_DEVICE(SIM_DEVICE_REG),
+      .XPA_ACTIVE_DUTYCYCLE(XPA_ACTIVE_DUTYCYCLE_REG),
+      .XPA_CFG0(XPA_CFG0_REG),
+      .XPA_CFG1(XPA_CFG1_REG),
+      .XPA_CFG2(XPA_CFG2_REG),
+      .XPA_NUM_DACS(XPA_NUM_DACS_REG),
+      .XPA_NUM_DUCS(XPA_NUM_DUCS_REG),
+      .XPA_PLL_USED(XPA_PLL_USED_REG),
+      .XPA_SAMPLE_RATE_MSPS(XPA_SAMPLE_RATE_MSPS_REG),
+      .CLK_DAC(CLK_DAC_out),
+      .CLK_DAC_SPARE(CLK_DAC_SPARE_out),
+      .CLK_DIST_OUT_NORTH(CLK_DIST_OUT_NORTH_out),
+      .CLK_DIST_OUT_SOUTH(CLK_DIST_OUT_SOUTH_out),
+      .DOUT(DOUT_out),
+      .DRDY(DRDY_out),
+      .PLL_DMON_OUT(PLL_DMON_OUT_out),
+      .PLL_REFCLK_OUT(PLL_REFCLK_OUT_out),
+      .PLL_SCAN_OUT_B_FD(PLL_SCAN_OUT_B_FD_out),
+      .STATUS_COMMON(STATUS_COMMON_out),
+      .STATUS_DAC0(STATUS_DAC0_out),
+      .STATUS_DAC1(STATUS_DAC1_out),
+      .STATUS_DAC2(STATUS_DAC2_out),
+      .STATUS_DAC3(STATUS_DAC3_out),
+      .SYSREF_OUT_NORTH(SYSREF_OUT_NORTH_out),
+      .SYSREF_OUT_SOUTH(SYSREF_OUT_SOUTH_out),
+      .T1_ALLOWED_SOUTH(T1_ALLOWED_SOUTH_out),
+      .TEST_SO(TEST_SO_out),
+      .TEST_STATUS(TEST_STATUS_out),
+      .VOUT0_N(VOUT0_N_real),
+      .VOUT0_P(VOUT0_P_real),
+      .VOUT1_N(VOUT1_N_real),
+      .VOUT1_P(VOUT1_P_real),
+      .VOUT2_N(VOUT2_N_real),
+      .VOUT2_P(VOUT2_P_real),
+      .VOUT3_N(VOUT3_N_real),
+      .VOUT3_P(VOUT3_P_real),
+      .CLK_DIST_IN_NORTH(CLK_DIST_IN_NORTH_in),
+      .CLK_DIST_IN_SOUTH(CLK_DIST_IN_SOUTH_in),
+      .CLK_FIFO_LM(CLK_FIFO_LM_in),
+      .CONTROL_COMMON(CONTROL_COMMON_in),
+      .CONTROL_DAC0(CONTROL_DAC0_in),
+      .CONTROL_DAC1(CONTROL_DAC1_in),
+      .CONTROL_DAC2(CONTROL_DAC2_in),
+      .CONTROL_DAC3(CONTROL_DAC3_in),
+      .DAC_CLK_N(DAC_CLK_N_in),
+      .DAC_CLK_P(DAC_CLK_P_in),
+      .DADDR(DADDR_in),
+      .DATA_DAC0(DATA_DAC0_in),
+      .DATA_DAC1(DATA_DAC1_in),
+      .DATA_DAC2(DATA_DAC2_in),
+      .DATA_DAC3(DATA_DAC3_in),
+      .DCLK(DCLK_in),
+      .DEN(DEN_in),
+      .DI(DI_in),
+      .DWE(DWE_in),
+      .FABRIC_CLK(FABRIC_CLK_in),
+      .PLL_MONCLK(PLL_MONCLK_in),
+      .PLL_REFCLK_IN(PLL_REFCLK_IN_in),
+      .PLL_SCAN_CLK_FD(PLL_SCAN_CLK_FD_in),
+      .PLL_SCAN_EN_B_FD(PLL_SCAN_EN_B_FD_in),
+      .PLL_SCAN_IN_FD(PLL_SCAN_IN_FD_in),
+      .PLL_SCAN_MODE_B_FD(PLL_SCAN_MODE_B_FD_in),
+      .PLL_SCAN_RST_EN_FD(PLL_SCAN_RST_EN_FD_in),
+      .SYSREF_IN_NORTH(SYSREF_IN_NORTH_in),
+      .SYSREF_IN_SOUTH(SYSREF_IN_SOUTH_in),
+      .SYSREF_N(SYSREF_N_in),
+      .SYSREF_P(SYSREF_P_in),
+      .T1_ALLOWED_NORTH(T1_ALLOWED_NORTH_in),
+      .TEST_SCAN_CLK(TEST_SCAN_CLK_in),
+      .TEST_SCAN_CTRL(TEST_SCAN_CTRL_in),
+      .TEST_SCAN_MODE_B(TEST_SCAN_MODE_B_in),
+      .TEST_SCAN_RESET(TEST_SCAN_RESET_in),
+      .TEST_SE_B(TEST_SE_B_in),
+      .TEST_SI(TEST_SI_in),
+      .GSR(glblGSR)
   );
 
 `ifdef XIL_TIMING
@@ -479,59 +473,59 @@ assign TEST_SI_in = 300'b1111111111111111111111111111111111111111111111111111111
 
 `ifndef XIL_XECLIB
   specify
-    (DCLK => DOUT[0]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[10]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[11]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[12]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[13]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[14]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[15]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[1]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[2]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[3]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[4]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[5]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[6]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[7]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[8]) = (100:100:100, 100:100:100);
-    (DCLK => DOUT[9]) = (100:100:100, 100:100:100);
-    (DCLK => DRDY) = (100:100:100, 100:100:100);
-    (DCLK => STATUS_COMMON[6]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC0[10]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC0[11]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC0[12]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC0[8]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC0[9]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC1[10]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC1[11]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC1[12]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC1[8]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC1[9]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC2[10]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC2[11]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC2[12]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC2[8]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC2[9]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC3[10]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC3[11]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC3[12]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC3[8]) = (100:100:100, 100:100:100);
-    (FABRIC_CLK => STATUS_DAC3[9]) = (100:100:100, 100:100:100);
+    (DCLK => DOUT[0]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[10]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[11]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[12]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[13]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[14]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[15]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[1]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[2]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[3]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[4]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[5]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[6]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[7]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[8]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DOUT[9]) = (100: 100: 100, 100: 100: 100);
+    (DCLK => DRDY) = (100: 100: 100, 100: 100: 100);
+    (DCLK => STATUS_COMMON[6]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC0[10]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC0[11]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC0[12]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC0[8]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC0[9]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC1[10]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC1[11]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC1[12]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC1[8]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC1[9]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC2[10]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC2[11]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC2[12]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC2[8]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC2[9]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC3[10]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC3[11]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC3[12]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC3[8]) = (100: 100: 100, 100: 100: 100);
+    (FABRIC_CLK => STATUS_DAC3[9]) = (100: 100: 100, 100: 100: 100);
 `ifdef XIL_TIMING
-    $period (negedge CLK_DAC, 0:0:0, notifier);
-    $period (negedge DCLK, 0:0:0, notifier);
-    $period (negedge FABRIC_CLK, 0:0:0, notifier);
-    $period (negedge PLL_DMON_OUT, 0:0:0, notifier);
-    $period (negedge PLL_MONCLK, 0:0:0, notifier);
-    $period (negedge PLL_REFCLK_IN, 0:0:0, notifier);
-    $period (negedge PLL_REFCLK_OUT, 0:0:0, notifier);
-    $period (posedge CLK_DAC, 0:0:0, notifier);
-    $period (posedge DCLK, 0:0:0, notifier);
-    $period (posedge FABRIC_CLK, 0:0:0, notifier);
-    $period (posedge PLL_DMON_OUT, 0:0:0, notifier);
-    $period (posedge PLL_MONCLK, 0:0:0, notifier);
-    $period (posedge PLL_REFCLK_IN, 0:0:0, notifier);
-    $period (posedge PLL_REFCLK_OUT, 0:0:0, notifier);
+    $period(negedge CLK_DAC, 0: 0: 0, notifier);
+    $period(negedge DCLK, 0: 0: 0, notifier);
+    $period(negedge FABRIC_CLK, 0: 0: 0, notifier);
+    $period(negedge PLL_DMON_OUT, 0: 0: 0, notifier);
+    $period(negedge PLL_MONCLK, 0: 0: 0, notifier);
+    $period(negedge PLL_REFCLK_IN, 0: 0: 0, notifier);
+    $period(negedge PLL_REFCLK_OUT, 0: 0: 0, notifier);
+    $period(posedge CLK_DAC, 0: 0: 0, notifier);
+    $period(posedge DCLK, 0: 0: 0, notifier);
+    $period(posedge FABRIC_CLK, 0: 0: 0, notifier);
+    $period(posedge PLL_DMON_OUT, 0: 0: 0, notifier);
+    $period(posedge PLL_MONCLK, 0: 0: 0, notifier);
+    $period(posedge PLL_REFCLK_IN, 0: 0: 0, notifier);
+    $period(posedge PLL_REFCLK_OUT, 0: 0: 0, notifier);
     $setuphold (posedge DCLK, negedge CONTROL_COMMON[3], 0:0:0, 0:0:0, notifier, , , DCLK_delay, CONTROL_COMMON_delay[3]);
     $setuphold (posedge DCLK, negedge CONTROL_DAC0[13], 0:0:0, 0:0:0, notifier, , , DCLK_delay, CONTROL_DAC0_delay[13]);
     $setuphold (posedge DCLK, negedge CONTROL_DAC0[14], 0:0:0, 0:0:0, notifier, , , DCLK_delay, CONTROL_DAC0_delay[14]);
@@ -552,7 +546,7 @@ assign TEST_SI_in = 300'b1111111111111111111111111111111111111111111111111111111
     $setuphold (posedge DCLK, negedge DADDR[7], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DADDR_delay[7]);
     $setuphold (posedge DCLK, negedge DADDR[8], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DADDR_delay[8]);
     $setuphold (posedge DCLK, negedge DADDR[9], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DADDR_delay[9]);
-    $setuphold (posedge DCLK, negedge DEN, 0:0:0, 0:0:0, notifier, , , DCLK_delay, DEN_delay);
+    $setuphold(posedge DCLK, negedge DEN, 0: 0: 0, 0: 0: 0, notifier,,, DCLK_delay, DEN_delay);
     $setuphold (posedge DCLK, negedge DI[0], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[0]);
     $setuphold (posedge DCLK, negedge DI[10], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[10]);
     $setuphold (posedge DCLK, negedge DI[11], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[11]);
@@ -569,7 +563,7 @@ assign TEST_SI_in = 300'b1111111111111111111111111111111111111111111111111111111
     $setuphold (posedge DCLK, negedge DI[7], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[7]);
     $setuphold (posedge DCLK, negedge DI[8], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[8]);
     $setuphold (posedge DCLK, negedge DI[9], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[9]);
-    $setuphold (posedge DCLK, negedge DWE, 0:0:0, 0:0:0, notifier, , , DCLK_delay, DWE_delay);
+    $setuphold(posedge DCLK, negedge DWE, 0: 0: 0, 0: 0: 0, notifier,,, DCLK_delay, DWE_delay);
     $setuphold (posedge DCLK, posedge CONTROL_COMMON[3], 0:0:0, 0:0:0, notifier, , , DCLK_delay, CONTROL_COMMON_delay[3]);
     $setuphold (posedge DCLK, posedge CONTROL_DAC0[13], 0:0:0, 0:0:0, notifier, , , DCLK_delay, CONTROL_DAC0_delay[13]);
     $setuphold (posedge DCLK, posedge CONTROL_DAC0[14], 0:0:0, 0:0:0, notifier, , , DCLK_delay, CONTROL_DAC0_delay[14]);
@@ -590,7 +584,7 @@ assign TEST_SI_in = 300'b1111111111111111111111111111111111111111111111111111111
     $setuphold (posedge DCLK, posedge DADDR[7], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DADDR_delay[7]);
     $setuphold (posedge DCLK, posedge DADDR[8], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DADDR_delay[8]);
     $setuphold (posedge DCLK, posedge DADDR[9], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DADDR_delay[9]);
-    $setuphold (posedge DCLK, posedge DEN, 0:0:0, 0:0:0, notifier, , , DCLK_delay, DEN_delay);
+    $setuphold(posedge DCLK, posedge DEN, 0: 0: 0, 0: 0: 0, notifier,,, DCLK_delay, DEN_delay);
     $setuphold (posedge DCLK, posedge DI[0], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[0]);
     $setuphold (posedge DCLK, posedge DI[10], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[10]);
     $setuphold (posedge DCLK, posedge DI[11], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[11]);
@@ -607,7 +601,7 @@ assign TEST_SI_in = 300'b1111111111111111111111111111111111111111111111111111111
     $setuphold (posedge DCLK, posedge DI[7], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[7]);
     $setuphold (posedge DCLK, posedge DI[8], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[8]);
     $setuphold (posedge DCLK, posedge DI[9], 0:0:0, 0:0:0, notifier, , , DCLK_delay, DI_delay[9]);
-    $setuphold (posedge DCLK, posedge DWE, 0:0:0, 0:0:0, notifier, , , DCLK_delay, DWE_delay);
+    $setuphold(posedge DCLK, posedge DWE, 0: 0: 0, 0: 0: 0, notifier,,, DCLK_delay, DWE_delay);
     $setuphold (posedge FABRIC_CLK, negedge CONTROL_COMMON[0], 0:0:0, 0:0:0, notifier, , , FABRIC_CLK_delay, CONTROL_COMMON_delay[0]);
     $setuphold (posedge FABRIC_CLK, negedge CONTROL_COMMON[15], 0:0:0, 0:0:0, notifier, , , FABRIC_CLK_delay, CONTROL_COMMON_delay[15]);
     $setuphold (posedge FABRIC_CLK, negedge DATA_DAC0[0], 0:0:0, 0:0:0, notifier, , , FABRIC_CLK_delay, DATA_DAC0_delay[0]);
@@ -2660,14 +2654,14 @@ assign TEST_SI_in = 300'b1111111111111111111111111111111111111111111111111111111
     $setuphold (posedge FABRIC_CLK, posedge DATA_DAC3[98], 0:0:0, 0:0:0, notifier, , , FABRIC_CLK_delay, DATA_DAC3_delay[98]);
     $setuphold (posedge FABRIC_CLK, posedge DATA_DAC3[99], 0:0:0, 0:0:0, notifier, , , FABRIC_CLK_delay, DATA_DAC3_delay[99]);
     $setuphold (posedge FABRIC_CLK, posedge DATA_DAC3[9], 0:0:0, 0:0:0, notifier, , , FABRIC_CLK_delay, DATA_DAC3_delay[9]);
-    $width (negedge DCLK, 0:0:0, 0, notifier);
-    $width (negedge FABRIC_CLK, 0:0:0, 0, notifier);
-    $width (negedge PLL_MONCLK, 0:0:0, 0, notifier);
-    $width (negedge PLL_REFCLK_IN, 0:0:0, 0, notifier);
-    $width (posedge DCLK, 0:0:0, 0, notifier);
-    $width (posedge FABRIC_CLK, 0:0:0, 0, notifier);
-    $width (posedge PLL_MONCLK, 0:0:0, 0, notifier);
-    $width (posedge PLL_REFCLK_IN, 0:0:0, 0, notifier);
+    $width(negedge DCLK, 0: 0: 0, 0, notifier);
+    $width(negedge FABRIC_CLK, 0: 0: 0, 0, notifier);
+    $width(negedge PLL_MONCLK, 0: 0: 0, 0, notifier);
+    $width(negedge PLL_REFCLK_IN, 0: 0: 0, 0, notifier);
+    $width(posedge DCLK, 0: 0: 0, 0, notifier);
+    $width(posedge FABRIC_CLK, 0: 0: 0, 0, notifier);
+    $width(posedge PLL_MONCLK, 0: 0: 0, 0, notifier);
+    $width(posedge PLL_REFCLK_IN, 0: 0: 0, 0, notifier);
 `endif
     specparam PATHPULSE$ = 0;
   endspecify

@@ -32,18 +32,20 @@
 
 `celldefine
 
-module GND(G);
+module GND (
+    G
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
-    output G;
+  output G;
 
-    assign G = 1'b0;
+  assign G = 1'b0;
 
 endmodule
 

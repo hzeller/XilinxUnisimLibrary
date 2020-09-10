@@ -33,7 +33,10 @@
 
 `celldefine
 
-module INV (O, I);
+module INV (
+    O,
+    I
+);
 
 
 `ifdef XIL_TIMING
@@ -51,8 +54,8 @@ module INV (O, I);
 
   specify
 
-	(I => O) = (0:0:0, 0:0:0);
-	specparam PATHPULSE$ = 0;
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    specparam PATHPULSE$ = 0;
 
   endspecify
 

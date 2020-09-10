@@ -36,11 +36,16 @@
 
 `celldefine
 
-module IBUFDS_IBUFDISABLE_INT (O, I, IB, IBUFDISABLE);
+module IBUFDS_IBUFDISABLE_INT (
+    O,
+    I,
+    IB,
+    IBUFDISABLE
+);
 
 `ifdef XIL_TIMING
   parameter LOC = "UNPLACED";
-`endif // `ifdef XIL_TIMING
+`endif  // `ifdef XIL_TIMING
   parameter DIFF_TERM = "FALSE";
   parameter DQS_BIAS = "FALSE";
   parameter IBUF_LOW_PWR = "TRUE";
@@ -50,72 +55,72 @@ module IBUFDS_IBUFDISABLE_INT (O, I, IB, IBUFDISABLE);
   localparam MODULE_NAME = "IBUFDS_IBUFDISABLE_INT";
 
 
-    output O;
+  output O;
 
-    input  I;
-    input  IB;
-    input  IBUFDISABLE;
+  input I;
+  input IB;
+  input IBUFDISABLE;
 
-    wire i_in, ib_in, ibufdisable_in;
-    reg o_out;
+  wire i_in, ib_in, ibufdisable_in;
+  reg o_out;
 
-    reg DQS_BIAS_BINARY = 1'b0;
-    reg USE_IBUFDISABLE_BINARY = 1'b0;
+  reg DQS_BIAS_BINARY = 1'b0;
+  reg USE_IBUFDISABLE_BINARY = 1'b0;
 
-    assign O =  (USE_IBUFDISABLE_BINARY == 1'b0) ? o_out :
+  assign O =  (USE_IBUFDISABLE_BINARY == 1'b0) ? o_out :
                 ((ibufdisable_in === 1'b1) ? 1'b1 : ((ibufdisable_in === 1'b0) ? o_out : 1'bx));
 
-    assign i_in = I;
-    assign ib_in = IB;
-    assign ibufdisable_in = IBUFDISABLE;
+  assign i_in = I;
+  assign ib_in = IB;
+  assign ibufdisable_in = IBUFDISABLE;
 
-    initial begin
+  initial begin
 
-        case (DQS_BIAS)
+    case (DQS_BIAS)
 
-            "TRUE"  : DQS_BIAS_BINARY <= #1 1'b1;
-            "FALSE" : DQS_BIAS_BINARY <= #1 1'b0;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
-                          #1 $finish;
-                      end
+      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
+      default: begin
+        $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-	case (DIFF_TERM)
+    case (DIFF_TERM)
 
-            "TRUE", "FALSE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
-                          #1 $finish;
-                      end
+      "TRUE", "FALSE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
+        #1 $finish;
+      end
 
-	endcase // case(DIFF_TERM)
+    endcase  // case(DIFF_TERM)
 
-        case (IBUF_LOW_PWR)
+    case (IBUF_LOW_PWR)
 
-            "FALSE", "TRUE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
-                          #1 $finish;
-                      end
+      "FALSE", "TRUE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-        case (USE_IBUFDISABLE)
+    case (USE_IBUFDISABLE)
 
-            "TRUE"  : USE_IBUFDISABLE_BINARY <= #1 1'b1;
-            "FALSE" : USE_IBUFDISABLE_BINARY <= #1 1'b0;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, USE_IBUFDISABLE);
-                          #1 $finish;
-                      end
+      "TRUE": USE_IBUFDISABLE_BINARY <= #1 1'b1;
+      "FALSE": USE_IBUFDISABLE_BINARY <= #1 1'b0;
+      default: begin
+        $display("Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, USE_IBUFDISABLE);
+        #1 $finish;
+      end
 
-        endcase
+    endcase
 
-    end
+  end
 
-    always @(i_in or ib_in or DQS_BIAS_BINARY) begin
+  always @(i_in or ib_in or DQS_BIAS_BINARY) begin
         if (i_in == 1'b1 && ib_in == 1'b0)
           o_out <= 1'b1;
         else if (i_in == 1'b0 && ib_in == 1'b1)
@@ -130,13 +135,13 @@ module IBUFDS_IBUFDISABLE_INT (O, I, IB, IBUFDISABLE);
         end
 
 `ifdef XIL_TIMING
-    specify
-        (I => O)                = (0:0:0,  0:0:0);
-        (IB => O)               = (0:0:0,  0:0:0);
-        (IBUFDISABLE => O)      = (0:0:0,  0:0:0);
-        specparam PATHPULSE$ = 0;
-    endspecify
-`endif // `ifdef XIL_TIMING
+  specify
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    (IB => O) = (0: 0: 0, 0: 0: 0);
+    (IBUFDISABLE => O) = (0: 0: 0, 0: 0: 0);
+    specparam PATHPULSE$ = 0;
+  endspecify
+`endif  // `ifdef XIL_TIMING
 
 endmodule
 

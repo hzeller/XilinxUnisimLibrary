@@ -37,33 +37,33 @@
 
 module BUFCE_LEAF #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter CE_TYPE = "SYNC",
-  parameter [0:0] IS_CE_INVERTED = 1'b0,
-  parameter [0:0] IS_I_INVERTED = 1'b0
-)(
-  output O,
+    parameter CE_TYPE = "SYNC",
+    parameter [0:0] IS_CE_INVERTED = 1'b0,
+    parameter [0:0] IS_I_INVERTED = 1'b0
+) (
+    output O,
 
-  input CE,
-  input I
+    input CE,
+    input I
 );
-  
-// define constants
+
+  // define constants
   localparam MODULE_NAME = "BUFCE_LEAF";
 
-// Parameter encodings and registers
+  // Parameter encodings and registers
   localparam CE_TYPE_ASYNC = 1;
   localparam CE_TYPE_SYNC = 0;
 
   reg trig_attr;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "BUFCE_LEAF_dr.v"
 `else
   reg [40:1] CE_TYPE_REG = CE_TYPE;
-  reg [0:0] IS_CE_INVERTED_REG = IS_CE_INVERTED;
-  reg [0:0] IS_I_INVERTED_REG = IS_I_INVERTED;
+  reg [ 0:0] IS_CE_INVERTED_REG = IS_CE_INVERTED;
+  reg [ 0:0] IS_I_INVERTED_REG = IS_I_INVERTED;
 `endif
 
 `ifdef XIL_XECLIB
@@ -89,21 +89,21 @@ module BUFCE_LEAF #(
 `endif
 
 `ifdef XIL_TIMING
-  assign CE_in = (CE === 1'bz) || (CE_delay ^ IS_CE_INVERTED_REG); // rv 1
+  assign CE_in = (CE === 1'bz) || (CE_delay ^ IS_CE_INVERTED_REG);  // rv 1
   assign I_in = I_delay ^ IS_I_INVERTED_REG;
 `else
-  assign CE_in = (CE === 1'bz) || (CE ^ IS_CE_INVERTED_REG); // rv 1
+  assign CE_in = (CE === 1'bz) || (CE ^ IS_CE_INVERTED_REG);  // rv 1
   assign I_in = I ^ IS_I_INVERTED_REG;
 `endif
 
 `ifndef XIL_XECLIB
   initial begin
     trig_attr = 1'b0;
-  `ifdef XIL_ATTR_TEST
+`ifdef XIL_ATTR_TEST
     attr_test = 1'b1;
-  `else
+`else
     attr_test = 1'b0;
-  `endif
+`endif
     attr_err = 1'b0;
     #1;
     trig_attr = ~trig_attr;
@@ -117,7 +117,7 @@ module BUFCE_LEAF #(
      CE_TYPE_SYNC;
 
 `else
-  always @ (trig_attr) begin
+  always @(trig_attr) begin
     #1;
     CE_TYPE_BIN =
       (CE_TYPE_REG == "SYNC") ? CE_TYPE_SYNC :
@@ -128,11 +128,9 @@ module BUFCE_LEAF #(
 `endif
 
 `ifndef XIL_XECLIB
-  always @ (trig_attr) begin
-  #1;
-    if ((attr_test == 1'b1) ||
-        ((CE_TYPE_REG != "SYNC") &&
-         (CE_TYPE_REG != "ASYNC"))) begin
+  always @(trig_attr) begin
+    #1;
+    if ((attr_test == 1'b1) || ((CE_TYPE_REG != "SYNC") && (CE_TYPE_REG != "ASYNC"))) begin
       $display("Error: [Unisim %s-101] CE_TYPE attribute is set to %s.  Legal values for this attribute are SYNC or ASYNC. Instance: %m", MODULE_NAME, CE_TYPE_REG);
       attr_err = 1'b1;
     end
@@ -145,7 +143,7 @@ module BUFCE_LEAF #(
   reg notifier;
 `endif
 
-// begin behavioral model
+  // begin behavioral model
 
   reg enable_clk = 1'b1;
 
@@ -158,7 +156,7 @@ module BUFCE_LEAF #(
 
   assign O = enable_clk & I_in;
 
-// end behavioral model
+  // end behavioral model
 
 `ifndef XIL_XECLIB
 `ifdef XIL_TIMING
@@ -172,16 +170,16 @@ module BUFCE_LEAF #(
 
 `ifdef XIL_TIMING
   specify
-    (CE => O) = (0:0:0, 0:0:0);
-    (I => O) = (0:0:0, 0:0:0);
-    $period (negedge I, 0:0:0, notifier);
-    $period (posedge I, 0:0:0, notifier);
+    (CE => O) = (0: 0: 0, 0: 0: 0);
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    $period(negedge I, 0: 0: 0, notifier);
+    $period(posedge I, 0: 0: 0, notifier);
     $setuphold (negedge I, negedge CE, 0:0:0, 0:0:0, notifier, i_en_n, i_en_n, I_delay, CE_delay);
     $setuphold (negedge I, posedge CE, 0:0:0, 0:0:0, notifier, i_en_n, i_en_n, I_delay, CE_delay);
     $setuphold (posedge I, negedge CE, 0:0:0, 0:0:0, notifier, i_en_p, i_en_p, I_delay, CE_delay);
     $setuphold (posedge I, posedge CE, 0:0:0, 0:0:0, notifier, i_en_p, i_en_p, I_delay, CE_delay);
-    $width (negedge CE, 0:0:0, 0, notifier);
-    $width (posedge CE, 0:0:0, 0, notifier);
+    $width(negedge CE, 0: 0: 0, 0, notifier);
+    $width(posedge CE, 0: 0: 0, 0, notifier);
     specparam PATHPULSE$ = 0;
   endspecify
 `endif

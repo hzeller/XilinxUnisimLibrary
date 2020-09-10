@@ -29,30 +29,28 @@
 //  End Revision:
 ///////////////////////////////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module OBUFDS_GTE4_ADV #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",  
+    parameter LOC = "UNPLACED",
 `endif
-  parameter [0:0] REFCLK_EN_TX_PATH = 1'b0,
-  parameter [4:0] REFCLK_ICNTL_TX = 5'b00000
-)(
-  output O,
-  output OB,
+    parameter [0:0] REFCLK_EN_TX_PATH = 1'b0,
+    parameter [4:0] REFCLK_ICNTL_TX = 5'b00000
+) (
+    output O,
+    output OB,
 
-  input CEB,
-  input [3:0] I,
-  input [1:0] RXRECCLK_SEL
+    input       CEB,
+    input [3:0] I,
+    input [1:0] RXRECCLK_SEL
 );
-  
-// define constants
+
+  // define constants
   localparam MODULE_NAME = "OBUFDS_GTE4_ADV";
 
   reg trig_attr;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "OBUFDS_GTE4_ADV_dr.v"
 `else
@@ -69,32 +67,32 @@ module OBUFDS_GTE4_ADV #(
 `endif
 
   reg attr_err = 1'b0;
-   
-//  wire CEB_in;
-//  wire [1:0] RXRECCLK_SEL_in;
-//  wire [3:0] I_in;
 
-//  assign CEB_in = (CEB !== 1'bz) && CEB; // rv 0
-//  assign I_in = I;
-//  assign RXRECCLK_SEL_in = RXRECCLK_SEL;
+  //  wire CEB_in;
+  //  wire [1:0] RXRECCLK_SEL_in;
+  //  wire [3:0] I_in;
 
-  reg  I_sel = 1'b0;
-// =====================
-// Generate I_sel
-// =====================
+  //  assign CEB_in = (CEB !== 1'bz) && CEB; // rv 0
+  //  assign I_in = I;
+  //  assign RXRECCLK_SEL_in = RXRECCLK_SEL;
+
+  reg I_sel = 1'b0;
+  // =====================
+  // Generate I_sel
+  // =====================
   always @(*) begin
     case (RXRECCLK_SEL)
       2'b00: I_sel <= I[0];
       2'b01: I_sel <= I[1];
       2'b10: I_sel <= I[2];
       2'b11: I_sel <= I[3];
-      default : I_sel <= I[0];
-     endcase
-   end
+      default: I_sel <= I[0];
+    endcase
+  end
 
-// =====================
-// Generate O
-// =====================
+  // =====================
+  // Generate O
+  // =====================
 
   assign O = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : I_sel;
   assign OB = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : ~I_sel;
@@ -102,16 +100,16 @@ module OBUFDS_GTE4_ADV #(
 `ifndef XIL_XECLIB
 `ifdef XIL_TIMING
   specify
-    (CEB => O) = (0:0:0, 0:0:0);
-    (CEB => OB) = (0:0:0, 0:0:0);
-    (I[0] => O) = (0:0:0, 0:0:0);
-    (I[0] => OB) = (0:0:0, 0:0:0);
-    (I[1] => O) = (0:0:0, 0:0:0);
-    (I[1] => OB) = (0:0:0, 0:0:0);
-    (I[2] => O) = (0:0:0, 0:0:0);
-    (I[2] => OB) = (0:0:0, 0:0:0);
-    (I[3] => O) = (0:0:0, 0:0:0);
-    (I[3] => OB) = (0:0:0, 0:0:0);
+    (CEB => O) = (0: 0: 0, 0: 0: 0);
+    (CEB => OB) = (0: 0: 0, 0: 0: 0);
+    (I[0] => O) = (0: 0: 0, 0: 0: 0);
+    (I[0] => OB) = (0: 0: 0, 0: 0: 0);
+    (I[1] => O) = (0: 0: 0, 0: 0: 0);
+    (I[1] => OB) = (0: 0: 0, 0: 0: 0);
+    (I[2] => O) = (0: 0: 0, 0: 0: 0);
+    (I[2] => OB) = (0: 0: 0, 0: 0: 0);
+    (I[3] => O) = (0: 0: 0, 0: 0: 0);
+    (I[3] => OB) = (0: 0: 0, 0: 0: 0);
     specparam PATHPULSE$ = 0;
   endspecify
 `endif

@@ -27,21 +27,19 @@
 //  Revision:		1.0
 ///////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module USR_ACCESSE2 (
-  CFGCLK,
-  DATA,
-  DATAVALID
+    CFGCLK,
+    DATA,
+    DATAVALID
 );
 
-  `ifdef XIL_TIMING
+`ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
-  `endif //
+`endif  //
 
   output CFGCLK;
   output DATAVALID;

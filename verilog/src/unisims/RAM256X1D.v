@@ -45,13 +45,13 @@ module RAM256X1D #(
     output SPO,
 
     input [7:0] A,
-    input D,
+    input       D,
     input [7:0] DPRA,
-    input WCLK,
-    input WE
+    input       WCLK,
+    input       WE
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "RAM256X1D";
 
   reg trig_attr = 1'b0;
@@ -78,7 +78,7 @@ module RAM256X1D #(
   wire WCLK_dly;
   wire WE_dly;
   wire [7:0] A_dly;
-    
+
   reg notifier;
 
   wire sh_clk_en_p;
@@ -89,98 +89,96 @@ module RAM256X1D #(
   assign A_in = A_dly;
   assign D_in = D_dly;
   assign WCLK_in = WCLK_dly ^ IS_WCLK_INVERTED_BIN;
-  assign WE_in = (WE === 1'bz) || WE_dly; // rv 1
+  assign WE_in = (WE === 1'bz) || WE_dly;  // rv 1
 `else
   assign A_in = A;
   assign D_in = D;
   assign WCLK_in = WCLK ^ IS_WCLK_INVERTED_BIN;
-  assign WE_in = (WE === 1'bz) || WE; // rv 1
+  assign WE_in = (WE === 1'bz) || WE;  // rv 1
 `endif
   assign DPRA_in = DPRA;
-    
-  reg  [255:0] mem;
 
-  initial 
-    mem = INIT;
+  reg [255:0] mem;
+
+  initial mem = INIT;
 
   assign DPO = mem[DPRA_in];
   assign SPO = mem[A_in];
 
-  always @(posedge WCLK_in) 
-    if (WE_in == 1'b1) mem[A_in] <= #100 D_in;
-    
+  always @(posedge WCLK_in) if (WE_in == 1'b1) mem[A_in] <= #100 D_in;
+
 `ifdef XIL_TIMING
   always @(notifier) mem[A_in] <= 1'bx;
   assign sh_clk_en_p = ~IS_WCLK_INVERTED_BIN;
   assign sh_clk_en_n = IS_WCLK_INVERTED_BIN;
   assign sh_we_clk_en_p = WE_in && ~IS_WCLK_INVERTED_BIN;
   assign sh_we_clk_en_n = WE_in && IS_WCLK_INVERTED_BIN;
-    
+
   specify
-  (WCLK => DPO) = (0:0:0, 0:0:0);
-  (WCLK => SPO) = (0:0:0, 0:0:0);
-  (A[0] => SPO) = (0:0:0, 0:0:0);
-  (A[1] => SPO) = (0:0:0, 0:0:0);
-  (A[2] => SPO) = (0:0:0, 0:0:0);
-  (A[3] => SPO) = (0:0:0, 0:0:0);
-  (A[4] => SPO) = (0:0:0, 0:0:0);
-  (A[5] => SPO) = (0:0:0, 0:0:0);
-  (A[6] => SPO) = (0:0:0, 0:0:0);
-  (A[7] => SPO) = (0:0:0, 0:0:0);
-  (DPRA[0] => DPO) = (0:0:0, 0:0:0);
-  (DPRA[1] => DPO) = (0:0:0, 0:0:0);
-  (DPRA[2] => DPO) = (0:0:0, 0:0:0);
-  (DPRA[3] => DPO) = (0:0:0, 0:0:0);
-  (DPRA[4] => DPO) = (0:0:0, 0:0:0);
-  (DPRA[5] => DPO) = (0:0:0, 0:0:0);
-  (DPRA[6] => DPO) = (0:0:0, 0:0:0);
-  (DPRA[7] => DPO) = (0:0:0, 0:0:0);
-  $period (negedge WCLK &&& WE, 0:0:0, notifier);
-  $period (posedge WCLK &&& WE, 0:0:0, notifier);
-  $setuphold (negedge WCLK, negedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[0]);
-  $setuphold (negedge WCLK, negedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[1]);
-  $setuphold (negedge WCLK, negedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[2]);
-  $setuphold (negedge WCLK, negedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[3]);
-  $setuphold (negedge WCLK, negedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[4]);
-  $setuphold (negedge WCLK, negedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[5]);
-  $setuphold (negedge WCLK, negedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[6]);
-  $setuphold (negedge WCLK, negedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[7]);
-  $setuphold (negedge WCLK, negedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,D_dly);
-  $setuphold (negedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
-  $setuphold (negedge WCLK, posedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[0]);
-  $setuphold (negedge WCLK, posedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[1]);
-  $setuphold (negedge WCLK, posedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[2]);
-  $setuphold (negedge WCLK, posedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[3]);
-  $setuphold (negedge WCLK, posedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[4]);
-  $setuphold (negedge WCLK, posedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[5]);
-  $setuphold (negedge WCLK, posedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[6]);
-  $setuphold (negedge WCLK, posedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[7]);
-  $setuphold (negedge WCLK, posedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,D_dly);
-  $setuphold (negedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
-  $setuphold (posedge WCLK, negedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[0]);
-  $setuphold (posedge WCLK, negedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[1]);
-  $setuphold (posedge WCLK, negedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[2]);
-  $setuphold (posedge WCLK, negedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[3]);
-  $setuphold (posedge WCLK, negedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[4]);
-  $setuphold (posedge WCLK, negedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[5]);
-  $setuphold (posedge WCLK, negedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[6]);
-  $setuphold (posedge WCLK, negedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[7]);
-  $setuphold (posedge WCLK, negedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,D_dly);
-  $setuphold (posedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
-  $setuphold (posedge WCLK, posedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[0]);
-  $setuphold (posedge WCLK, posedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[1]);
-  $setuphold (posedge WCLK, posedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[2]);
-  $setuphold (posedge WCLK, posedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[3]);
-  $setuphold (posedge WCLK, posedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[4]);
-  $setuphold (posedge WCLK, posedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[5]);
-  $setuphold (posedge WCLK, posedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[6]);
-  $setuphold (posedge WCLK, posedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[7]);
-  $setuphold (posedge WCLK, posedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,D_dly);
-  $setuphold (posedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
-   specparam PATHPULSE$ = 0;
+    (WCLK => DPO) = (0: 0: 0, 0: 0: 0);
+    (WCLK => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[0] => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[1] => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[2] => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[3] => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[4] => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[5] => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[6] => SPO) = (0: 0: 0, 0: 0: 0);
+    (A[7] => SPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[0] => DPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[1] => DPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[2] => DPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[3] => DPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[4] => DPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[5] => DPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[6] => DPO) = (0: 0: 0, 0: 0: 0);
+    (DPRA[7] => DPO) = (0: 0: 0, 0: 0: 0);
+    $period(negedge WCLK &&& WE, 0: 0: 0, notifier);
+    $period(posedge WCLK &&& WE, 0: 0: 0, notifier);
+    $setuphold (negedge WCLK, negedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[0]);
+    $setuphold (negedge WCLK, negedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[1]);
+    $setuphold (negedge WCLK, negedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[2]);
+    $setuphold (negedge WCLK, negedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[3]);
+    $setuphold (negedge WCLK, negedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[4]);
+    $setuphold (negedge WCLK, negedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[5]);
+    $setuphold (negedge WCLK, negedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[6]);
+    $setuphold (negedge WCLK, negedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[7]);
+    $setuphold (negedge WCLK, negedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,D_dly);
+    $setuphold (negedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
+    $setuphold (negedge WCLK, posedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[0]);
+    $setuphold (negedge WCLK, posedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[1]);
+    $setuphold (negedge WCLK, posedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[2]);
+    $setuphold (negedge WCLK, posedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[3]);
+    $setuphold (negedge WCLK, posedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[4]);
+    $setuphold (negedge WCLK, posedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[5]);
+    $setuphold (negedge WCLK, posedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[6]);
+    $setuphold (negedge WCLK, posedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,A_dly[7]);
+    $setuphold (negedge WCLK, posedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,D_dly);
+    $setuphold (negedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
+    $setuphold (posedge WCLK, negedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[0]);
+    $setuphold (posedge WCLK, negedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[1]);
+    $setuphold (posedge WCLK, negedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[2]);
+    $setuphold (posedge WCLK, negedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[3]);
+    $setuphold (posedge WCLK, negedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[4]);
+    $setuphold (posedge WCLK, negedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[5]);
+    $setuphold (posedge WCLK, negedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[6]);
+    $setuphold (posedge WCLK, negedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[7]);
+    $setuphold (posedge WCLK, negedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,D_dly);
+    $setuphold (posedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
+    $setuphold (posedge WCLK, posedge A[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[0]);
+    $setuphold (posedge WCLK, posedge A[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[1]);
+    $setuphold (posedge WCLK, posedge A[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[2]);
+    $setuphold (posedge WCLK, posedge A[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[3]);
+    $setuphold (posedge WCLK, posedge A[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[4]);
+    $setuphold (posedge WCLK, posedge A[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[5]);
+    $setuphold (posedge WCLK, posedge A[6], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[6]);
+    $setuphold (posedge WCLK, posedge A[7], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,A_dly[7]);
+    $setuphold (posedge WCLK, posedge D, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,D_dly);
+    $setuphold (posedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
+    specparam PATHPULSE$ = 0;
   endspecify
 `endif
-    
+
 endmodule
 
 `endcelldefine

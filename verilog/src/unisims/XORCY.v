@@ -32,34 +32,38 @@
 
 `celldefine
 
-module XORCY (O, CI, LI);
+module XORCY (
+    O,
+    CI,
+    LI
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
-    
-    output O;
 
-    input  CI, LI;
+  output O;
 
-	xor X1 (O, CI, LI);
+  input CI, LI;
+
+  xor X1 (O, CI, LI);
 
 `ifdef XIL_TIMING
 
-    specify
-        
-        (CI => O) = (0:0:0, 0:0:0);
-        (LI => O) = (0:0:0, 0:0:0);
-        specparam PATHPULSE$ = 0;
-        
-    endspecify
+  specify
+
+    (CI => O) = (0: 0: 0, 0: 0: 0);
+    (LI => O) = (0: 0: 0, 0: 0: 0);
+    specparam PATHPULSE$ = 0;
+
+  endspecify
 
 `endif
-    
+
 endmodule
 
 `endcelldefine

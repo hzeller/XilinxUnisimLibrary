@@ -37,48 +37,48 @@
 
 module RAM64M8 #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter [63:0] INIT_A = 64'h0000000000000000,
-  parameter [63:0] INIT_B = 64'h0000000000000000,
-  parameter [63:0] INIT_C = 64'h0000000000000000,
-  parameter [63:0] INIT_D = 64'h0000000000000000,
-  parameter [63:0] INIT_E = 64'h0000000000000000,
-  parameter [63:0] INIT_F = 64'h0000000000000000,
-  parameter [63:0] INIT_G = 64'h0000000000000000,
-  parameter [63:0] INIT_H = 64'h0000000000000000,
-  parameter [0:0] IS_WCLK_INVERTED = 1'b0
-)(
-  output DOA,
-  output DOB,
-  output DOC,
-  output DOD,
-  output DOE,
-  output DOF,
-  output DOG,
-  output DOH,
+    parameter [63:0] INIT_A = 64'h0000000000000000,
+    parameter [63:0] INIT_B = 64'h0000000000000000,
+    parameter [63:0] INIT_C = 64'h0000000000000000,
+    parameter [63:0] INIT_D = 64'h0000000000000000,
+    parameter [63:0] INIT_E = 64'h0000000000000000,
+    parameter [63:0] INIT_F = 64'h0000000000000000,
+    parameter [63:0] INIT_G = 64'h0000000000000000,
+    parameter [63:0] INIT_H = 64'h0000000000000000,
+    parameter [0:0] IS_WCLK_INVERTED = 1'b0
+) (
+    output DOA,
+    output DOB,
+    output DOC,
+    output DOD,
+    output DOE,
+    output DOF,
+    output DOG,
+    output DOH,
 
-  input [5:0] ADDRA,
-  input [5:0] ADDRB,
-  input [5:0] ADDRC,
-  input [5:0] ADDRD,
-  input [5:0] ADDRE,
-  input [5:0] ADDRF,
-  input [5:0] ADDRG,
-  input [5:0] ADDRH,
-  input DIA,
-  input DIB,
-  input DIC,
-  input DID,
-  input DIE,
-  input DIF,
-  input DIG,
-  input DIH,
-  input WCLK,
-  input WE
+    input [5:0] ADDRA,
+    input [5:0] ADDRB,
+    input [5:0] ADDRC,
+    input [5:0] ADDRD,
+    input [5:0] ADDRE,
+    input [5:0] ADDRF,
+    input [5:0] ADDRG,
+    input [5:0] ADDRH,
+    input       DIA,
+    input       DIB,
+    input       DIC,
+    input       DID,
+    input       DIE,
+    input       DIF,
+    input       DIG,
+    input       DIH,
+    input       WCLK,
+    input       WE
 );
-  
-// define constants
+
+  // define constants
   localparam MODULE_NAME = "RAM64M8";
 
   reg trig_attr = 1'b0;
@@ -134,7 +134,7 @@ module RAM64M8 #(
   assign DIG_in = DIG_dly;
   assign DIH_in = DIH_dly;
   assign WCLK_in = WCLK_dly ^ IS_WCLK_INVERTED_BIN;
-  assign WE_in = (WE === 1'bz) || WE_dly; // rv 1
+  assign WE_in = (WE === 1'bz) || WE_dly;  // rv 1
 `else
   assign ADDRH_in = ADDRH;
   assign DIA_in = DIA;
@@ -146,7 +146,7 @@ module RAM64M8 #(
   assign DIG_in = DIG;
   assign DIH_in = DIH;
   assign WCLK_in = WCLK ^ IS_WCLK_INVERTED_BIN;
-  assign WE_in = (WE === 1'bz) || WE; // rv 1
+  assign WE_in = (WE === 1'bz) || WE;  // rv 1
 `endif
 
   assign IS_WCLK_INVERTED_BIN = IS_WCLK_INVERTED;
@@ -175,27 +175,27 @@ module RAM64M8 #(
       mem_f[ADDRH_in] <= #100 DIF_in;
       mem_g[ADDRH_in] <= #100 DIG_in;
       mem_h[ADDRH_in] <= #100 DIH_in;
-  end
+    end
 
-   assign  DOA = mem_a[ADDRA];
-   assign  DOB = mem_b[ADDRB];
-   assign  DOC = mem_c[ADDRC];
-   assign  DOD = mem_d[ADDRD];
-   assign  DOE = mem_e[ADDRE];
-   assign  DOF = mem_f[ADDRF];
-   assign  DOG = mem_g[ADDRG];
-   assign  DOH = mem_h[ADDRH_in];
+  assign DOA = mem_a[ADDRA];
+  assign DOB = mem_b[ADDRB];
+  assign DOC = mem_c[ADDRC];
+  assign DOD = mem_d[ADDRD];
+  assign DOE = mem_e[ADDRE];
+  assign DOF = mem_f[ADDRF];
+  assign DOG = mem_g[ADDRG];
+  assign DOH = mem_h[ADDRH_in];
 
 `ifdef XIL_TIMING
   always @(notifier) begin
-      mem_a[ADDRH_in] <= 1'bx;
-      mem_b[ADDRH_in] <= 1'bx;
-      mem_c[ADDRH_in] <= 1'bx;
-      mem_d[ADDRH_in] <= 1'bx;
-      mem_e[ADDRH_in] <= 1'bx;
-      mem_f[ADDRH_in] <= 1'bx;
-      mem_g[ADDRH_in] <= 1'bx;
-      mem_h[ADDRH_in] <= 1'bx;
+    mem_a[ADDRH_in] <= 1'bx;
+    mem_b[ADDRH_in] <= 1'bx;
+    mem_c[ADDRH_in] <= 1'bx;
+    mem_d[ADDRH_in] <= 1'bx;
+    mem_e[ADDRH_in] <= 1'bx;
+    mem_f[ADDRH_in] <= 1'bx;
+    mem_g[ADDRH_in] <= 1'bx;
+    mem_h[ADDRH_in] <= 1'bx;
   end
 
   assign sh_clk_en_p = ~IS_WCLK_INVERTED_BIN;
@@ -204,85 +204,85 @@ module RAM64M8 #(
   assign sh_we_clk_en_n = WE_in && IS_WCLK_INVERTED_BIN;
 
   specify
-   (WCLK => DOA) = (0:0:0, 0:0:0);
-   (WCLK => DOB) = (0:0:0, 0:0:0);
-   (WCLK => DOC) = (0:0:0, 0:0:0);
-   (WCLK => DOD) = (0:0:0, 0:0:0);
-   (WCLK => DOE) = (0:0:0, 0:0:0);
-   (WCLK => DOF) = (0:0:0, 0:0:0);
-   (WCLK => DOG) = (0:0:0, 0:0:0);
-   (WCLK => DOH) = (0:0:0, 0:0:0);
-   (ADDRA *> DOA) = (0:0:0, 0:0:0);
-   (ADDRB *> DOB) = (0:0:0, 0:0:0);
-   (ADDRC *> DOC) = (0:0:0, 0:0:0);
-   (ADDRD *> DOD) = (0:0:0, 0:0:0);
-   (ADDRE *> DOE) = (0:0:0, 0:0:0);
-   (ADDRF *> DOF) = (0:0:0, 0:0:0);
-   (ADDRG *> DOG) = (0:0:0, 0:0:0);
-   (ADDRH *> DOH) = (0:0:0, 0:0:0);
-   $period (negedge WCLK &&& WE, 0:0:0, notifier);
-   $period (posedge WCLK &&& WE, 0:0:0, notifier);
-   $setuphold (negedge WCLK, negedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[0]);
-   $setuphold (negedge WCLK, negedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[1]);
-   $setuphold (negedge WCLK, negedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[2]);
-   $setuphold (negedge WCLK, negedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[3]);
-   $setuphold (negedge WCLK, negedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[4]);
-   $setuphold (negedge WCLK, negedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[5]);
-   $setuphold (negedge WCLK, negedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIA_dly);
-   $setuphold (negedge WCLK, negedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIB_dly);
-   $setuphold (negedge WCLK, negedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIC_dly);
-   $setuphold (negedge WCLK, negedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DID_dly);
-   $setuphold (negedge WCLK, negedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIE_dly);
-   $setuphold (negedge WCLK, negedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIF_dly);
-   $setuphold (negedge WCLK, negedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIG_dly);
-   $setuphold (negedge WCLK, negedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIH_dly);
-   $setuphold (negedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
-   $setuphold (negedge WCLK, posedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[0]);
-   $setuphold (negedge WCLK, posedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[1]);
-   $setuphold (negedge WCLK, posedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[2]);
-   $setuphold (negedge WCLK, posedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[3]);
-   $setuphold (negedge WCLK, posedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[4]);
-   $setuphold (negedge WCLK, posedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[5]);
-   $setuphold (negedge WCLK, posedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIA_dly);
-   $setuphold (negedge WCLK, posedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIB_dly);
-   $setuphold (negedge WCLK, posedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIC_dly);
-   $setuphold (negedge WCLK, posedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DID_dly);
-   $setuphold (negedge WCLK, posedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIE_dly);
-   $setuphold (negedge WCLK, posedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIF_dly);
-   $setuphold (negedge WCLK, posedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIG_dly);
-   $setuphold (negedge WCLK, posedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIH_dly);
-   $setuphold (negedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
-   $setuphold (posedge WCLK, negedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[0]);
-   $setuphold (posedge WCLK, negedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[1]);
-   $setuphold (posedge WCLK, negedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[2]);
-   $setuphold (posedge WCLK, negedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[3]);
-   $setuphold (posedge WCLK, negedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[4]);
-   $setuphold (posedge WCLK, negedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[5]);
-   $setuphold (posedge WCLK, negedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIA_dly);
-   $setuphold (posedge WCLK, negedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIB_dly);
-   $setuphold (posedge WCLK, negedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIC_dly);
-   $setuphold (posedge WCLK, negedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DID_dly);
-   $setuphold (posedge WCLK, negedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIE_dly);
-   $setuphold (posedge WCLK, negedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIF_dly);
-   $setuphold (posedge WCLK, negedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIG_dly);
-   $setuphold (posedge WCLK, negedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIH_dly);
-   $setuphold (posedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
-   $setuphold (posedge WCLK, posedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[0]);
-   $setuphold (posedge WCLK, posedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[1]);
-   $setuphold (posedge WCLK, posedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[2]);
-   $setuphold (posedge WCLK, posedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[3]);
-   $setuphold (posedge WCLK, posedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[4]);
-   $setuphold (posedge WCLK, posedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[5]);
-   $setuphold (posedge WCLK, posedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIA_dly);
-   $setuphold (posedge WCLK, posedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIB_dly);
-   $setuphold (posedge WCLK, posedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIC_dly);
-   $setuphold (posedge WCLK, posedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DID_dly);
-   $setuphold (posedge WCLK, posedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIE_dly);
-   $setuphold (posedge WCLK, posedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIF_dly);
-   $setuphold (posedge WCLK, posedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIG_dly);
-   $setuphold (posedge WCLK, posedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIH_dly);
-   $setuphold (posedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
-   specparam PATHPULSE$ = 0;
+    (WCLK => DOA) = (0: 0: 0, 0: 0: 0);
+    (WCLK => DOB) = (0: 0: 0, 0: 0: 0);
+    (WCLK => DOC) = (0: 0: 0, 0: 0: 0);
+    (WCLK => DOD) = (0: 0: 0, 0: 0: 0);
+    (WCLK => DOE) = (0: 0: 0, 0: 0: 0);
+    (WCLK => DOF) = (0: 0: 0, 0: 0: 0);
+    (WCLK => DOG) = (0: 0: 0, 0: 0: 0);
+    (WCLK => DOH) = (0: 0: 0, 0: 0: 0);
+    (ADDRA *> DOA) = (0: 0: 0, 0: 0: 0);
+    (ADDRB *> DOB) = (0: 0: 0, 0: 0: 0);
+    (ADDRC *> DOC) = (0: 0: 0, 0: 0: 0);
+    (ADDRD *> DOD) = (0: 0: 0, 0: 0: 0);
+    (ADDRE *> DOE) = (0: 0: 0, 0: 0: 0);
+    (ADDRF *> DOF) = (0: 0: 0, 0: 0: 0);
+    (ADDRG *> DOG) = (0: 0: 0, 0: 0: 0);
+    (ADDRH *> DOH) = (0: 0: 0, 0: 0: 0);
+    $period(negedge WCLK &&& WE, 0: 0: 0, notifier);
+    $period(posedge WCLK &&& WE, 0: 0: 0, notifier);
+    $setuphold (negedge WCLK, negedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[0]);
+    $setuphold (negedge WCLK, negedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[1]);
+    $setuphold (negedge WCLK, negedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[2]);
+    $setuphold (negedge WCLK, negedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[3]);
+    $setuphold (negedge WCLK, negedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[4]);
+    $setuphold (negedge WCLK, negedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[5]);
+    $setuphold (negedge WCLK, negedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIA_dly);
+    $setuphold (negedge WCLK, negedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIB_dly);
+    $setuphold (negedge WCLK, negedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIC_dly);
+    $setuphold (negedge WCLK, negedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DID_dly);
+    $setuphold (negedge WCLK, negedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIE_dly);
+    $setuphold (negedge WCLK, negedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIF_dly);
+    $setuphold (negedge WCLK, negedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIG_dly);
+    $setuphold (negedge WCLK, negedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIH_dly);
+    $setuphold (negedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
+    $setuphold (negedge WCLK, posedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[0]);
+    $setuphold (negedge WCLK, posedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[1]);
+    $setuphold (negedge WCLK, posedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[2]);
+    $setuphold (negedge WCLK, posedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[3]);
+    $setuphold (negedge WCLK, posedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[4]);
+    $setuphold (negedge WCLK, posedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,ADDRH_dly[5]);
+    $setuphold (negedge WCLK, posedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIA_dly);
+    $setuphold (negedge WCLK, posedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIB_dly);
+    $setuphold (negedge WCLK, posedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIC_dly);
+    $setuphold (negedge WCLK, posedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DID_dly);
+    $setuphold (negedge WCLK, posedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIE_dly);
+    $setuphold (negedge WCLK, posedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIF_dly);
+    $setuphold (negedge WCLK, posedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIG_dly);
+    $setuphold (negedge WCLK, posedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_n,sh_we_clk_en_n,WCLK_dly,DIH_dly);
+    $setuphold (negedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_n,sh_clk_en_n,WCLK_dly,WE_dly);
+    $setuphold (posedge WCLK, negedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[0]);
+    $setuphold (posedge WCLK, negedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[1]);
+    $setuphold (posedge WCLK, negedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[2]);
+    $setuphold (posedge WCLK, negedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[3]);
+    $setuphold (posedge WCLK, negedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[4]);
+    $setuphold (posedge WCLK, negedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[5]);
+    $setuphold (posedge WCLK, negedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIA_dly);
+    $setuphold (posedge WCLK, negedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIB_dly);
+    $setuphold (posedge WCLK, negedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIC_dly);
+    $setuphold (posedge WCLK, negedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DID_dly);
+    $setuphold (posedge WCLK, negedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIE_dly);
+    $setuphold (posedge WCLK, negedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIF_dly);
+    $setuphold (posedge WCLK, negedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIG_dly);
+    $setuphold (posedge WCLK, negedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIH_dly);
+    $setuphold (posedge WCLK, negedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
+    $setuphold (posedge WCLK, posedge ADDRH[0], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[0]);
+    $setuphold (posedge WCLK, posedge ADDRH[1], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[1]);
+    $setuphold (posedge WCLK, posedge ADDRH[2], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[2]);
+    $setuphold (posedge WCLK, posedge ADDRH[3], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[3]);
+    $setuphold (posedge WCLK, posedge ADDRH[4], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[4]);
+    $setuphold (posedge WCLK, posedge ADDRH[5], 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,ADDRH_dly[5]);
+    $setuphold (posedge WCLK, posedge DIA, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIA_dly);
+    $setuphold (posedge WCLK, posedge DIB, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIB_dly);
+    $setuphold (posedge WCLK, posedge DIC, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIC_dly);
+    $setuphold (posedge WCLK, posedge DID, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DID_dly);
+    $setuphold (posedge WCLK, posedge DIE, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIE_dly);
+    $setuphold (posedge WCLK, posedge DIF, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIF_dly);
+    $setuphold (posedge WCLK, posedge DIG, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIG_dly);
+    $setuphold (posedge WCLK, posedge DIH, 0:0:0, 0:0:0, notifier,sh_we_clk_en_p,sh_we_clk_en_p,WCLK_dly,DIH_dly);
+    $setuphold (posedge WCLK, posedge WE, 0:0:0, 0:0:0, notifier,sh_clk_en_p,sh_clk_en_p,WCLK_dly,WE_dly);
+    specparam PATHPULSE$ = 0;
   endspecify
 `endif
 

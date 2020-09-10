@@ -31,27 +31,29 @@
 
 `celldefine
 
-module KEEPER (O);
+module KEEPER (
+    O
+);
 
-    inout O;
-    
+  inout O;
+
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
-    
-    reg   in;
 
-    always @(O)
+  reg in;
+
+  always @(O)
 	if (O)
 	    in <= 1;
 	else
 	    in <= 0;
 
-    buf (pull1, pull0) B1 (O, in);
+  buf (pull1, pull0) B1 (O, in);
 
 endmodule
 

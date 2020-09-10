@@ -33,22 +33,24 @@
 
 `celldefine
 
-module PULLDOWN (O);
+module PULLDOWN (
+    O
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
 
-    output O;
+  output O;
 
-    wire A;
+  wire A;
 
-    pulldown (A);
-    buf (weak0,weak1) #(100,100) (O,A);
+  pulldown (A);
+  buf (weak0, weak1) #(100, 100) (O, A);
 
 endmodule
 

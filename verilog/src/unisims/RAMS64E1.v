@@ -36,41 +36,41 @@
 
 module RAMS64E1 #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter [63:0] INIT = 64'h0000000000000000,
-  parameter [0:0] IS_CLK_INVERTED = 1'b0,
-  parameter [2:0] RAM_ADDRESS_MASK = 3'b000,
-  parameter [2:0] RAM_ADDRESS_SPACE = 3'b000
-)(
-  output O,
+    parameter [63:0] INIT = 64'h0000000000000000,
+    parameter [0:0] IS_CLK_INVERTED = 1'b0,
+    parameter [2:0] RAM_ADDRESS_MASK = 3'b000,
+    parameter [2:0] RAM_ADDRESS_SPACE = 3'b000
+) (
+    output O,
 
-  input ADR0,
-  input ADR1,
-  input ADR2,
-  input ADR3,
-  input ADR4,
-  input ADR5,
-  input CLK,
-  input I,
-  input WADR6,
-  input WADR7,
-  input WADR8,
-  input WE
+    input ADR0,
+    input ADR1,
+    input ADR2,
+    input ADR3,
+    input ADR4,
+    input ADR5,
+    input CLK,
+    input I,
+    input WADR6,
+    input WADR7,
+    input WADR8,
+    input WE
 );
-  
-// define constants
+
+  // define constants
   localparam MODULE_NAME = "RAMS64E1";
 
   reg trig_attr = 1'b0;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "RAMS64E1_dr.v"
 `else
   reg [63:0] INIT_REG = INIT;
-  reg [0:0] IS_CLK_INVERTED_REG = IS_CLK_INVERTED;
-  reg [2:0] RAM_ADDRESS_MASK_REG = RAM_ADDRESS_MASK;
-  reg [2:0] RAM_ADDRESS_SPACE_REG = RAM_ADDRESS_SPACE;
+  reg [ 0:0] IS_CLK_INVERTED_REG = IS_CLK_INVERTED;
+  reg [ 2:0] RAM_ADDRESS_MASK_REG = RAM_ADDRESS_MASK;
+  reg [ 2:0] RAM_ADDRESS_SPACE_REG = RAM_ADDRESS_SPACE;
 `endif
 
 `ifdef XIL_XECLIB
@@ -84,7 +84,7 @@ module RAMS64E1 #(
 `else
   reg attr_test = 1'b0;
 `endif
-  reg attr_err = 1'b0;
+  reg  attr_err = 1'b0;
 
   wire ADR0_in;
   wire ADR1_in;
@@ -126,7 +126,7 @@ module RAMS64E1 #(
   assign WADR6_in = WADR6_delay;
   assign WADR7_in = WADR7_delay;
   assign WADR8_in = WADR8_delay;
-  assign WE_in = (WE === 1'bz) || WE_delay; // rv 1
+  assign WE_in = (WE === 1'bz) || WE_delay;  // rv 1
 `else
   assign ADR0_in = ADR0;
   assign ADR1_in = ADR1;
@@ -139,7 +139,7 @@ module RAMS64E1 #(
   assign WADR6_in = WADR6;
   assign WADR7_in = WADR7;
   assign WADR8_in = WADR8;
-  assign WE_in = (WE === 1'bz) || WE; // rv 1
+  assign WE_in = (WE === 1'bz) || WE;  // rv 1
 `endif
 
 `ifndef XIL_XECLIB
@@ -151,11 +151,11 @@ module RAMS64E1 #(
 
 `ifdef XIL_XECLIB
   assign IS_CLK_INVERTED_BIN = IS_CLK_INVERTED_REG;
-  
+
 `else
-  always @ (trig_attr) begin
-  #1;
-  IS_CLK_INVERTED_BIN = IS_CLK_INVERTED_REG;
+  always @(trig_attr) begin
+    #1;
+    IS_CLK_INVERTED_BIN = IS_CLK_INVERTED_REG;
 
   end
 `endif
@@ -171,10 +171,10 @@ module RAMS64E1 #(
   reg notifier;
 `endif
 
-// begin behavioral model
+  // begin behavioral model
 
   reg [63:0] mem;
-  reg O_out;
+  reg        O_out;
 
   assign O = O_out;
 
@@ -193,7 +193,7 @@ module RAMS64E1 #(
       mem[{ADR5_in, ADR4_in, ADR3_in, ADR2_in, ADR1_in, ADR0_in}] = I_in;
     end
 
-   always @ (*) begin
+  always @ (*) begin
      O_out = mem[{ADR5_in, ADR4_in, ADR3_in, ADR2_in, ADR1_in, ADR0_in}];
    end
 
@@ -201,7 +201,7 @@ module RAMS64E1 #(
   always @(notifier) mem[{ADR5_in, ADR4_in, ADR3_in, ADR2_in, ADR1_in, ADR0_in}] <= 1'bx;
 `endif
 
-// end behavioral model
+  // end behavioral model
 
 `ifndef XIL_XECLIB
   wire clk_en_n;
@@ -215,16 +215,16 @@ module RAMS64E1 #(
   assign we_clk_en_p = WE_in && ~IS_CLK_INVERTED_BIN;
 
   specify
-    (ADR0 => O) = (0:0:0, 0:0:0);
-    (ADR1 => O) = (0:0:0, 0:0:0);
-    (ADR2 => O) = (0:0:0, 0:0:0);
-    (ADR3 => O) = (0:0:0, 0:0:0);
-    (ADR4 => O) = (0:0:0, 0:0:0);
-    (ADR5 => O) = (0:0:0, 0:0:0);
-    (CLK => O) = (100:100:100, 100:100:100);
+    (ADR0 => O) = (0: 0: 0, 0: 0: 0);
+    (ADR1 => O) = (0: 0: 0, 0: 0: 0);
+    (ADR2 => O) = (0: 0: 0, 0: 0: 0);
+    (ADR3 => O) = (0: 0: 0, 0: 0: 0);
+    (ADR4 => O) = (0: 0: 0, 0: 0: 0);
+    (ADR5 => O) = (0: 0: 0, 0: 0: 0);
+    (CLK => O) = (100: 100: 100, 100: 100: 100);
 `ifdef XIL_TIMING
-    $period (negedge CLK &&& WE, 0:0:0, notifier);
-    $period (posedge CLK &&& WE, 0:0:0, notifier);
+    $period(negedge CLK &&& WE, 0: 0: 0, notifier);
+    $period(posedge CLK &&& WE, 0: 0: 0, notifier);
     $setuphold (negedge CLK, negedge ADR0, 0:0:0, 0:0:0, notifier, we_clk_en_n, we_clk_en_n, CLK_delay, ADR0_delay);
     $setuphold (negedge CLK, negedge ADR1, 0:0:0, 0:0:0, notifier, we_clk_en_n, we_clk_en_n, CLK_delay, ADR1_delay);
     $setuphold (negedge CLK, negedge ADR2, 0:0:0, 0:0:0, notifier, we_clk_en_n, we_clk_en_n, CLK_delay, ADR2_delay);
@@ -269,8 +269,8 @@ module RAMS64E1 #(
     $setuphold (posedge CLK, posedge WADR7, 0:0:0, 0:0:0, notifier, we_clk_en_p, we_clk_en_p, CLK_delay, WADR7_delay);
     $setuphold (posedge CLK, posedge WADR8, 0:0:0, 0:0:0, notifier, we_clk_en_p, we_clk_en_p, CLK_delay, WADR8_delay);
     $setuphold (posedge CLK, posedge WE, 0:0:0, 0:0:0, notifier, clk_en_p, clk_en_p, CLK_delay, WE_delay);
-    $width (negedge CLK, 0:0:0, 0, notifier);
-    $width (posedge CLK, 0:0:0, 0, notifier);
+    $width(negedge CLK, 0: 0: 0, 0, notifier);
+    $width(posedge CLK, 0: 0: 0, 0, notifier);
 `endif
     specparam PATHPULSE$ = 0;
   endspecify

@@ -35,20 +35,20 @@
 
 module BUFG_PS #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter SIM_DEVICE = "ULTRASCALE_PLUS",
-  parameter STARTUP_SYNC = "FALSE"
-)(
-  output O,
+    parameter SIM_DEVICE = "ULTRASCALE_PLUS",
+    parameter STARTUP_SYNC = "FALSE"
+) (
+    output O,
 
-  input I
+    input I
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "BUFG_PS";
-  
-// Parameter encodings and registers
+
+  // Parameter encodings and registers
   localparam SIM_DEVICE_ULTRASCALE_PLUS = 0;
   localparam SIM_DEVICE_VERSAL_AI_CORE = 2;
   localparam SIM_DEVICE_VERSAL_AI_CORE_ES1 = 3;
@@ -72,12 +72,12 @@ module BUFG_PS #(
   localparam STARTUP_SYNC_TRUE = 1;
 
   reg trig_attr;
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
 `ifdef XIL_DR
   `include "BUFG_PS_dr.v"
 `else
   reg [144:1] SIM_DEVICE_REG = SIM_DEVICE;
-  reg [40:1] STARTUP_SYNC_REG = STARTUP_SYNC;
+  reg [ 40:1] STARTUP_SYNC_REG = STARTUP_SYNC;
 `endif
 
 `ifdef XIL_XECLIB
@@ -89,22 +89,22 @@ module BUFG_PS #(
 `endif
 
 `ifdef XIL_XECLIB
-reg glblGSR = 1'b0;
+  reg glblGSR = 1'b0;
 `else
-tri0 glblGSR = glbl.GSR;
+  tri0 glblGSR = glbl.GSR;
 `endif
 
 `ifndef XIL_XECLIB
   reg attr_test;
   reg attr_err;
-  
+
   initial begin
-  trig_attr = 1'b0;
-  `ifdef XIL_ATTR_TEST
+    trig_attr = 1'b0;
+`ifdef XIL_ATTR_TEST
     attr_test = 1'b1;
-  `else
+`else
     attr_test = 1'b0;
-  `endif
+`endif
     attr_err = 1'b0;
     #1;
     trig_attr = ~trig_attr;
@@ -133,16 +133,16 @@ tri0 glblGSR = glbl.GSR;
       (SIM_DEVICE_REG == "VERSAL_PRIME_ES1") ? SIM_DEVICE_VERSAL_PRIME_ES1 :
       (SIM_DEVICE_REG == "VERSAL_PRIME_ES2") ? SIM_DEVICE_VERSAL_PRIME_ES2 :
        SIM_DEVICE_ULTRASCALE_PLUS;
-  
+
   assign STARTUP_SYNC_BIN =
       (STARTUP_SYNC_REG == "FALSE") ? STARTUP_SYNC_FALSE :
       (STARTUP_SYNC_REG == "TRUE") ? STARTUP_SYNC_TRUE :
        STARTUP_SYNC_FALSE;
-  
+
 `else
-  always @ (trig_attr) begin
-  #1;
-  SIM_DEVICE_BIN =
+  always @(trig_attr) begin
+    #1;
+    SIM_DEVICE_BIN =
       (SIM_DEVICE_REG == "ULTRASCALE_PLUS") ? SIM_DEVICE_ULTRASCALE_PLUS :
       (SIM_DEVICE_REG == "VERSAL_AI_CORE") ? SIM_DEVICE_VERSAL_AI_CORE :
       (SIM_DEVICE_REG == "VERSAL_AI_CORE_ES1") ? SIM_DEVICE_VERSAL_AI_CORE_ES1 :
@@ -163,17 +163,17 @@ tri0 glblGSR = glbl.GSR;
       (SIM_DEVICE_REG == "VERSAL_PRIME_ES1") ? SIM_DEVICE_VERSAL_PRIME_ES1 :
       (SIM_DEVICE_REG == "VERSAL_PRIME_ES2") ? SIM_DEVICE_VERSAL_PRIME_ES2 :
        SIM_DEVICE_ULTRASCALE_PLUS;
-  
-  STARTUP_SYNC_BIN =
+
+    STARTUP_SYNC_BIN =
       (STARTUP_SYNC_REG == "FALSE") ? STARTUP_SYNC_FALSE :
       (STARTUP_SYNC_REG == "TRUE") ? STARTUP_SYNC_TRUE :
        STARTUP_SYNC_FALSE;
-  
+
   end
 `endif
 
 `ifndef XIL_XECLIB
-  always @ (trig_attr) begin
+  always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) ||
         ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
@@ -198,19 +198,19 @@ tri0 glblGSR = glbl.GSR;
       $display("Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
-    
+
     if ((attr_test == 1'b1) ||
         ((STARTUP_SYNC_REG != "FALSE") &&
          (STARTUP_SYNC_REG != "TRUE"))) begin
       $display("Error: [Unisim %s-102] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, STARTUP_SYNC_REG);
       attr_err = 1'b1;
     end
-    
+
     if (attr_err == 1'b1) #1 $finish;
 
-  end //always
+  end  //always
 
-  always @ (trig_attr) begin
+  always @(trig_attr) begin
     #1;
     if (((SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_AI_CORE      ) &&
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_AI_CORE_ES1  ) &&
@@ -232,9 +232,9 @@ tri0 glblGSR = glbl.GSR;
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES2    )) &&
         (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE)) begin
       $display("Warning: [Unisim %s-200] SIM_DEVICE attribute is set to %s and STARTUP_SYNC is set to %s. STARTUP_SYNC functionality is not supported for this DEVICE. Instance: %m", MODULE_NAME, SIM_DEVICE_REG, STARTUP_SYNC_REG);
-      STARTUP_SYNC_BIN = STARTUP_SYNC_FALSE; //force correct
+      STARTUP_SYNC_BIN = STARTUP_SYNC_FALSE;  //force correct
     end
-  end //always
+  end  //always
 
 `endif
 
@@ -242,19 +242,19 @@ tri0 glblGSR = glbl.GSR;
   reg notifier;
 `endif
 
-// begin behavioral model
+  // begin behavioral model
 
-  reg       enable_clk;
-  reg [2:0] gwe_sync;
-  wire      gwe_muxed_sync;
-  reg       gwe_latch;
-  wire      I_in;
-  reg       O_out;
+  reg        enable_clk;
+  reg  [2:0] gwe_sync;
+  wire       gwe_muxed_sync;
+  reg        gwe_latch;
+  wire       I_in;
+  reg        O_out;
 
-  assign    I_in = I;
+  assign I_in = I;
 
   initial begin
-    gwe_sync   = 3'b000;
+    gwe_sync = 3'b000;
     enable_clk = 1'b0;
   end
 
@@ -263,28 +263,27 @@ tri0 glblGSR = glbl.GSR;
       gwe_sync <= {gwe_sync[1:0], ~glblGSR};
   end
 
-  assign gwe_muxed_sync = (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE) ? gwe_sync[2] :  ~glblGSR;
+  assign gwe_muxed_sync = (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE) ? gwe_sync[2] : ~glblGSR;
 
   always @(*) begin
     if(~I_in)
       gwe_latch <= gwe_muxed_sync;
   end
 
-  always @(*)
-    O_out = gwe_latch && I_in;
+  always @(*) O_out = gwe_latch && I_in;
 
   assign O = O_out;
 
-// end behavioral model
+  // end behavioral model
 
 `ifndef XIL_XECLIB
 `ifdef XIL_TIMING
   specify
-    (I => O) = (0:0:0, 0:0:0);
-    $period (negedge I, 0:0:0, notifier);
-    $period (posedge I, 0:0:0, notifier);
-    $width (negedge I, 0:0:0, 0, notifier);
-    $width (posedge I, 0:0:0, 0, notifier);
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    $period(negedge I, 0: 0: 0, notifier);
+    $period(posedge I, 0: 0: 0, notifier);
+    $width(negedge I, 0: 0: 0, 0, notifier);
+    $width(posedge I, 0: 0: 0, 0, notifier);
     specparam PATHPULSE$ = 0;
   endspecify
 `endif

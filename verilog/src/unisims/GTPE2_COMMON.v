@@ -30,63 +30,62 @@
 //  08/29/14 - 821138 - add negedge specify section for IS_INVERTED*CLK*
 ///////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 module GTPE2_COMMON (
-  DMONITOROUT,
-  DRPDO,
-  DRPRDY,
-  PLL0FBCLKLOST,
-  PLL0LOCK,
-  PLL0OUTCLK,
-  PLL0OUTREFCLK,
-  PLL0REFCLKLOST,
-  PLL1FBCLKLOST,
-  PLL1LOCK,
-  PLL1OUTCLK,
-  PLL1OUTREFCLK,
-  PLL1REFCLKLOST,
-  PMARSVDOUT,
-  REFCLKOUTMONITOR0,
-  REFCLKOUTMONITOR1,
+    DMONITOROUT,
+    DRPDO,
+    DRPRDY,
+    PLL0FBCLKLOST,
+    PLL0LOCK,
+    PLL0OUTCLK,
+    PLL0OUTREFCLK,
+    PLL0REFCLKLOST,
+    PLL1FBCLKLOST,
+    PLL1LOCK,
+    PLL1OUTCLK,
+    PLL1OUTREFCLK,
+    PLL1REFCLKLOST,
+    PMARSVDOUT,
+    REFCLKOUTMONITOR0,
+    REFCLKOUTMONITOR1,
 
-  BGBYPASSB,
-  BGMONITORENB,
-  BGPDB,
-  BGRCALOVRD,
-  BGRCALOVRDENB,
-  DRPADDR,
-  DRPCLK,
-  DRPDI,
-  DRPEN,
-  DRPWE,
-  GTEASTREFCLK0,
-  GTEASTREFCLK1,
-  GTGREFCLK0,
-  GTGREFCLK1,
-  GTREFCLK0,
-  GTREFCLK1,
-  GTWESTREFCLK0,
-  GTWESTREFCLK1,
-  PLL0LOCKDETCLK,
-  PLL0LOCKEN,
-  PLL0PD,
-  PLL0REFCLKSEL,
-  PLL0RESET,
-  PLL1LOCKDETCLK,
-  PLL1LOCKEN,
-  PLL1PD,
-  PLL1REFCLKSEL,
-  PLL1RESET,
-  PLLRSVD1,
-  PLLRSVD2,
-  PMARSVD,
-  RCALENB
+    BGBYPASSB,
+    BGMONITORENB,
+    BGPDB,
+    BGRCALOVRD,
+    BGRCALOVRDENB,
+    DRPADDR,
+    DRPCLK,
+    DRPDI,
+    DRPEN,
+    DRPWE,
+    GTEASTREFCLK0,
+    GTEASTREFCLK1,
+    GTGREFCLK0,
+    GTGREFCLK1,
+    GTREFCLK0,
+    GTREFCLK1,
+    GTWESTREFCLK0,
+    GTWESTREFCLK1,
+    PLL0LOCKDETCLK,
+    PLL0LOCKEN,
+    PLL0PD,
+    PLL0REFCLKSEL,
+    PLL0RESET,
+    PLL1LOCKDETCLK,
+    PLL1LOCKEN,
+    PLL1PD,
+    PLL1REFCLKSEL,
+    PLL1RESET,
+    PLLRSVD1,
+    PLLRSVD2,
+    PMARSVD,
+    RCALENB
 );
 
-  `ifdef XIL_TIMING //Simprim 
+`ifdef XIL_TIMING  //Simprim 
   parameter LOC = "UNPLACED";
-  `endif
+`endif
   parameter [63:0] BIAS_CFG = 64'h0000000000000000;
   parameter [31:0] COMMON_CFG = 32'h00000000;
   parameter [0:0] IS_DRPCLK_INVERTED = 1'b0;
@@ -190,123 +189,121 @@ module GTPE2_COMMON (
 
   initial begin
     case (PLL0_FBDIV)
-      4 : PLL0_FBDIV_BINARY = 6'b000010;
-      1 : PLL0_FBDIV_BINARY = 6'b010000;
-      2 : PLL0_FBDIV_BINARY = 6'b000000;
-      3 : PLL0_FBDIV_BINARY = 6'b000001;
-      5 : PLL0_FBDIV_BINARY = 6'b000011;
-      6 : PLL0_FBDIV_BINARY = 6'b000101;
-      8 : PLL0_FBDIV_BINARY = 6'b000110;
-      10 : PLL0_FBDIV_BINARY = 6'b000111;
-      12 : PLL0_FBDIV_BINARY = 6'b001101;
-      16 : PLL0_FBDIV_BINARY = 6'b001110;
-      20 : PLL0_FBDIV_BINARY = 6'b001111;
-      default : begin
+      4: PLL0_FBDIV_BINARY = 6'b000010;
+      1: PLL0_FBDIV_BINARY = 6'b010000;
+      2: PLL0_FBDIV_BINARY = 6'b000000;
+      3: PLL0_FBDIV_BINARY = 6'b000001;
+      5: PLL0_FBDIV_BINARY = 6'b000011;
+      6: PLL0_FBDIV_BINARY = 6'b000101;
+      8: PLL0_FBDIV_BINARY = 6'b000110;
+      10: PLL0_FBDIV_BINARY = 6'b000111;
+      12: PLL0_FBDIV_BINARY = 6'b001101;
+      16: PLL0_FBDIV_BINARY = 6'b001110;
+      20: PLL0_FBDIV_BINARY = 6'b001111;
+      default: begin
         $display("Attribute Syntax Error : The Attribute PLL0_FBDIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL0_FBDIV, 4);
         #1 $finish;
       end
     endcase
 
     case (PLL0_FBDIV_45)
-      5 : PLL0_FBDIV_45_BINARY = 1'b1;
-      4 : PLL0_FBDIV_45_BINARY = 1'b0;
-      default : begin
+      5: PLL0_FBDIV_45_BINARY = 1'b1;
+      4: PLL0_FBDIV_45_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute PLL0_FBDIV_45 on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 4 to 5.", PLL0_FBDIV_45, 5);
         #1 $finish;
       end
     endcase
 
     case (PLL0_REFCLK_DIV)
-      1 : PLL0_REFCLK_DIV_BINARY = 5'b10000;
-      2 : PLL0_REFCLK_DIV_BINARY = 5'b00000;
-      3 : PLL0_REFCLK_DIV_BINARY = 5'b00001;
-      4 : PLL0_REFCLK_DIV_BINARY = 5'b00010;
-      5 : PLL0_REFCLK_DIV_BINARY = 5'b00011;
-      6 : PLL0_REFCLK_DIV_BINARY = 5'b00101;
-      8 : PLL0_REFCLK_DIV_BINARY = 5'b00110;
-      10 : PLL0_REFCLK_DIV_BINARY = 5'b00111;
-      12 : PLL0_REFCLK_DIV_BINARY = 5'b01101;
-      16 : PLL0_REFCLK_DIV_BINARY = 5'b01110;
-      20 : PLL0_REFCLK_DIV_BINARY = 5'b01111;
-      default : begin
+      1: PLL0_REFCLK_DIV_BINARY = 5'b10000;
+      2: PLL0_REFCLK_DIV_BINARY = 5'b00000;
+      3: PLL0_REFCLK_DIV_BINARY = 5'b00001;
+      4: PLL0_REFCLK_DIV_BINARY = 5'b00010;
+      5: PLL0_REFCLK_DIV_BINARY = 5'b00011;
+      6: PLL0_REFCLK_DIV_BINARY = 5'b00101;
+      8: PLL0_REFCLK_DIV_BINARY = 5'b00110;
+      10: PLL0_REFCLK_DIV_BINARY = 5'b00111;
+      12: PLL0_REFCLK_DIV_BINARY = 5'b01101;
+      16: PLL0_REFCLK_DIV_BINARY = 5'b01110;
+      20: PLL0_REFCLK_DIV_BINARY = 5'b01111;
+      default: begin
         $display("Attribute Syntax Error : The Attribute PLL0_REFCLK_DIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL0_REFCLK_DIV, 1);
         #1 $finish;
       end
     endcase
 
     case (PLL1_FBDIV)
-      4 : PLL1_FBDIV_BINARY = 6'b000010;
-      1 : PLL1_FBDIV_BINARY = 6'b010000;
-      2 : PLL1_FBDIV_BINARY = 6'b000000;
-      3 : PLL1_FBDIV_BINARY = 6'b000001;
-      5 : PLL1_FBDIV_BINARY = 6'b000011;
-      6 : PLL1_FBDIV_BINARY = 6'b000101;
-      8 : PLL1_FBDIV_BINARY = 6'b000110;
-      10 : PLL1_FBDIV_BINARY = 6'b000111;
-      12 : PLL1_FBDIV_BINARY = 6'b001101;
-      16 : PLL1_FBDIV_BINARY = 6'b001110;
-      20 : PLL1_FBDIV_BINARY = 6'b001111;
-      default : begin
+      4: PLL1_FBDIV_BINARY = 6'b000010;
+      1: PLL1_FBDIV_BINARY = 6'b010000;
+      2: PLL1_FBDIV_BINARY = 6'b000000;
+      3: PLL1_FBDIV_BINARY = 6'b000001;
+      5: PLL1_FBDIV_BINARY = 6'b000011;
+      6: PLL1_FBDIV_BINARY = 6'b000101;
+      8: PLL1_FBDIV_BINARY = 6'b000110;
+      10: PLL1_FBDIV_BINARY = 6'b000111;
+      12: PLL1_FBDIV_BINARY = 6'b001101;
+      16: PLL1_FBDIV_BINARY = 6'b001110;
+      20: PLL1_FBDIV_BINARY = 6'b001111;
+      default: begin
         $display("Attribute Syntax Error : The Attribute PLL1_FBDIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL1_FBDIV, 4);
         #1 $finish;
       end
     endcase
 
     case (PLL1_FBDIV_45)
-      5 : PLL1_FBDIV_45_BINARY = 1'b1;
-      4 : PLL1_FBDIV_45_BINARY = 1'b0;
-      default : begin
+      5: PLL1_FBDIV_45_BINARY = 1'b1;
+      4: PLL1_FBDIV_45_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute PLL1_FBDIV_45 on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 4 to 5.", PLL1_FBDIV_45, 5);
         #1 $finish;
       end
     endcase
 
     case (PLL1_REFCLK_DIV)
-      1 : PLL1_REFCLK_DIV_BINARY = 5'b10000;
-      2 : PLL1_REFCLK_DIV_BINARY = 5'b00000;
-      3 : PLL1_REFCLK_DIV_BINARY = 5'b00001;
-      4 : PLL1_REFCLK_DIV_BINARY = 5'b00010;
-      5 : PLL1_REFCLK_DIV_BINARY = 5'b00011;
-      6 : PLL1_REFCLK_DIV_BINARY = 5'b00101;
-      8 : PLL1_REFCLK_DIV_BINARY = 5'b00110;
-      10 : PLL1_REFCLK_DIV_BINARY = 5'b00111;
-      12 : PLL1_REFCLK_DIV_BINARY = 5'b01101;
-      16 : PLL1_REFCLK_DIV_BINARY = 5'b01110;
-      20 : PLL1_REFCLK_DIV_BINARY = 5'b01111;
-      default : begin
+      1: PLL1_REFCLK_DIV_BINARY = 5'b10000;
+      2: PLL1_REFCLK_DIV_BINARY = 5'b00000;
+      3: PLL1_REFCLK_DIV_BINARY = 5'b00001;
+      4: PLL1_REFCLK_DIV_BINARY = 5'b00010;
+      5: PLL1_REFCLK_DIV_BINARY = 5'b00011;
+      6: PLL1_REFCLK_DIV_BINARY = 5'b00101;
+      8: PLL1_REFCLK_DIV_BINARY = 5'b00110;
+      10: PLL1_REFCLK_DIV_BINARY = 5'b00111;
+      12: PLL1_REFCLK_DIV_BINARY = 5'b01101;
+      16: PLL1_REFCLK_DIV_BINARY = 5'b01110;
+      20: PLL1_REFCLK_DIV_BINARY = 5'b01111;
+      default: begin
         $display("Attribute Syntax Error : The Attribute PLL1_REFCLK_DIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL1_REFCLK_DIV, 1);
         #1 $finish;
       end
     endcase
 
     case (SIM_RESET_SPEEDUP)
-      "TRUE" : SIM_RESET_SPEEDUP_BINARY = 0;
-      "FALSE" : SIM_RESET_SPEEDUP_BINARY = 0;
-      default : begin
+      "TRUE": SIM_RESET_SPEEDUP_BINARY = 0;
+      "FALSE": SIM_RESET_SPEEDUP_BINARY = 0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on X_GTPE2_COMMON instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SIM_RESET_SPEEDUP);
         #1 $finish;
       end
     endcase
 
     case (SIM_VERSION)
-      "1.0" : SIM_VERSION_BINARY = 0;
-      "1.1" : SIM_VERSION_BINARY = 0;
-      "2.0" : SIM_VERSION_BINARY = 0;
-      default : begin
+      "1.0": SIM_VERSION_BINARY = 0;
+      "1.1": SIM_VERSION_BINARY = 0;
+      "2.0": SIM_VERSION_BINARY = 0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SIM_VERSION on X_GTPE2_COMMON instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, or 2.0.", SIM_VERSION);
         #1 $finish;
       end
     endcase
 
-    if ((PLL0_DMON_CFG >= 1'b0) && (PLL0_DMON_CFG <= 1'b1))
-      PLL0_DMON_CFG_BINARY = PLL0_DMON_CFG;
+    if ((PLL0_DMON_CFG >= 1'b0) && (PLL0_DMON_CFG <= 1'b1)) PLL0_DMON_CFG_BINARY = PLL0_DMON_CFG;
     else begin
       $display("Attribute Syntax Error : The Attribute PLL0_DMON_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", PLL0_DMON_CFG);
       #1 $finish;
     end
 
-    if ((PLL1_DMON_CFG >= 1'b0) && (PLL1_DMON_CFG <= 1'b1))
-      PLL1_DMON_CFG_BINARY = PLL1_DMON_CFG;
+    if ((PLL1_DMON_CFG >= 1'b0) && (PLL1_DMON_CFG <= 1'b1)) PLL1_DMON_CFG_BINARY = PLL1_DMON_CFG;
     else begin
       $display("Attribute Syntax Error : The Attribute PLL1_DMON_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", PLL1_DMON_CFG);
       #1 $finish;
@@ -386,92 +383,83 @@ module GTPE2_COMMON (
   wire delay_RCALENB;
 
 
-   //drp monitor
-   reg drpen_r1 = 1'b0;
-   reg drpen_r2 = 1'b0;
-   reg drpwe_r1 = 1'b0;
-   reg drpwe_r2 = 1'b0;
-   
-   reg [1:0] sfsm = 2'b01;
-    
-   localparam FSM_IDLE = 2'b01;  
-   localparam FSM_WAIT = 2'b10;
-  
+  //drp monitor
+  reg drpen_r1 = 1'b0;
+  reg drpen_r2 = 1'b0;
+  reg drpwe_r1 = 1'b0;
+  reg drpwe_r2 = 1'b0;
 
-   always @(posedge delay_DRPCLK)
-     begin
-	// pipeline the DRPEN and DRPWE
-        drpen_r1 <= delay_DRPEN;
-        drpwe_r1 <= delay_DRPWE;
-	drpen_r2 <= drpen_r1;
-        drpwe_r2 <= drpwe_r1;
+  reg [1:0] sfsm = 2'b01;
 
-	
-	// Check -  if DRPEN or DRPWE is more than 1 DCLK
-	if ((drpen_r1 == 1'b1) && (drpen_r2 == 1'b1)) 
-	  begin
-	     $display("DRC Error : DRPEN is high for more than 1 DRPCLK on %m instance");
-	     $finish; 
-          end
-	
-	if ((drpwe_r1 == 1'b1) && (drpwe_r2 == 1'b1))
-	  begin
-             $display("DRC Error : DRPWE is high for more than 1 DRPCLK on %m instance");
-             $finish;
-          end
+  localparam FSM_IDLE = 2'b01;
+  localparam FSM_WAIT = 2'b10;
 
 
-	//After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
-	case (sfsm)
-          FSM_IDLE:   
+  always @(posedge delay_DRPCLK) begin
+    // pipeline the DRPEN and DRPWE
+    drpen_r1 <= delay_DRPEN;
+    drpwe_r1 <= delay_DRPWE;
+    drpen_r2 <= drpen_r1;
+    drpwe_r2 <= drpwe_r1;
+
+
+    // Check -  if DRPEN or DRPWE is more than 1 DCLK
+    if ((drpen_r1 == 1'b1) && (drpen_r2 == 1'b1)) begin
+      $display("DRC Error : DRPEN is high for more than 1 DRPCLK on %m instance");
+      $finish;
+    end
+
+    if ((drpwe_r1 == 1'b1) && (drpwe_r2 == 1'b1)) begin
+      $display("DRC Error : DRPWE is high for more than 1 DRPCLK on %m instance");
+      $finish;
+    end
+
+
+    //After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
+    case (sfsm)
+      FSM_IDLE:   
             begin
                if(delay_DRPEN == 1'b1)
 		 sfsm <= FSM_WAIT;  
             end
-          
-          FSM_WAIT:
-            begin
-               // After the 1st DRPEN, 4 cases can happen
-               // DRPEN DRPRDY NEXT STATE
-               // 0     0      FSM_WAIT - wait for DRPRDY
-               // 0     1      FSM_IDLE - normal operation
-               // 1     0      FSM_WAIT - display error and wait for DRPRDY
-               // 1     1      FSM_WAIT - normal operation. Per UG470, DRPEN and DRPRDY can be at the same cycle.
-               
-               //Add the check for another DPREN pulse
-               if(delay_DRPEN === 1'b1 && delay_DRPRDY === 1'b0) 
-		 begin
-		    $display("DRC Error : DRPEN is enabled before DRPRDY returns on %m instance");  
-		    $finish;
-		 end
 
-               //Add the check for another DRPWE pulse
-               if ((delay_DRPWE === 1'b1) && (delay_DRPEN === 1'b0))
-		 begin
-		    $display("DRC Error : DRPWE is enabled before DRPRDY returns on %m instance");
-		    $finish;
-		 end
-                    
-               if ((delay_DRPRDY === 1'b1) && (delay_DRPEN === 1'b0))
-		 begin
-		    sfsm <= FSM_IDLE;
-		 end  
-               
-               if ((delay_DRPRDY === 1'b1)&& (delay_DRPEN === 1'b1))
-		 begin
-		    sfsm <= FSM_WAIT;
-		 end  
-            end
-        
-          default:                  
-            begin
-               $display("DRC Error : Default state in DRP FSM.");
-               $finish;
-            end
-	endcase
+      FSM_WAIT: begin
+        // After the 1st DRPEN, 4 cases can happen
+        // DRPEN DRPRDY NEXT STATE
+        // 0     0      FSM_WAIT - wait for DRPRDY
+        // 0     1      FSM_IDLE - normal operation
+        // 1     0      FSM_WAIT - display error and wait for DRPRDY
+        // 1     1      FSM_WAIT - normal operation. Per UG470, DRPEN and DRPRDY can be at the same cycle.
 
-     end // always @ (posedge delay_DRPCLK)
-   //end drp monitor      
+        //Add the check for another DPREN pulse
+        if (delay_DRPEN === 1'b1 && delay_DRPRDY === 1'b0) begin
+          $display("DRC Error : DRPEN is enabled before DRPRDY returns on %m instance");
+          $finish;
+        end
+
+        //Add the check for another DRPWE pulse
+        if ((delay_DRPWE === 1'b1) && (delay_DRPEN === 1'b0)) begin
+          $display("DRC Error : DRPWE is enabled before DRPRDY returns on %m instance");
+          $finish;
+        end
+
+        if ((delay_DRPRDY === 1'b1) && (delay_DRPEN === 1'b0)) begin
+          sfsm <= FSM_IDLE;
+        end
+
+        if ((delay_DRPRDY === 1'b1) && (delay_DRPEN === 1'b1)) begin
+          sfsm <= FSM_WAIT;
+        end
+      end
+
+      default: begin
+        $display("DRC Error : Default state in DRP FSM.");
+        $finish;
+      end
+    endcase
+
+  end  // always @ (posedge delay_DRPCLK)
+  //end drp monitor      
 
   reg [0:0] IS_DRPCLK_INVERTED_REG = IS_DRPCLK_INVERTED;
   reg [0:0] IS_GTGREFCLK0_INVERTED_REG = IS_GTGREFCLK0_INVERTED;
@@ -496,11 +484,11 @@ module GTPE2_COMMON (
   assign #(out_delay) PLL1OUTREFCLK = delay_PLL1OUTREFCLK;
   assign #(out_delay) PLL1REFCLKLOST = delay_PLL1REFCLKLOST;
   assign #(out_delay) PMARSVDOUT = delay_PMARSVDOUT;
-  
-`ifndef XIL_TIMING // unisim
+
+`ifndef XIL_TIMING  // unisim
   assign #(INCLK_DELAY) delay_DRPCLK = DRPCLK ^ IS_DRPCLK_INVERTED_REG;
   assign #(INCLK_DELAY) delay_GTEASTREFCLK0 = GTEASTREFCLK0 ^ IS_GTGREFCLK0_INVERTED_REG;
-  assign #(INCLK_DELAY) delay_GTEASTREFCLK1 = GTEASTREFCLK1  ^ IS_GTGREFCLK1_INVERTED_REG;
+  assign #(INCLK_DELAY) delay_GTEASTREFCLK1 = GTEASTREFCLK1 ^ IS_GTGREFCLK1_INVERTED_REG;
   assign #(INCLK_DELAY) delay_GTGREFCLK0 = GTGREFCLK0;
   assign #(INCLK_DELAY) delay_GTGREFCLK1 = GTGREFCLK1;
   assign #(INCLK_DELAY) delay_GTREFCLK0 = GTREFCLK0;
@@ -508,7 +496,7 @@ module GTPE2_COMMON (
   assign #(INCLK_DELAY) delay_GTWESTREFCLK0 = GTWESTREFCLK0;
   assign #(INCLK_DELAY) delay_GTWESTREFCLK1 = GTWESTREFCLK1;
   assign #(INCLK_DELAY) delay_PLL0LOCKDETCLK = PLL0LOCKDETCLK ^ IS_PLL0LOCKDETCLK_INVERTED_REG;
-  assign #(INCLK_DELAY) delay_PLL1LOCKDETCLK = PLL1LOCKDETCLK^ IS_PLL1LOCKDETCLK_INVERTED_REG;
+  assign #(INCLK_DELAY) delay_PLL1LOCKDETCLK = PLL1LOCKDETCLK ^ IS_PLL1LOCKDETCLK_INVERTED_REG;
 
   assign #(in_delay) delay_BGBYPASSB = BGBYPASSB;
   assign #(in_delay) delay_BGMONITORENB = BGMONITORENB;
@@ -531,9 +519,9 @@ module GTPE2_COMMON (
   assign #(in_delay) delay_PLLRSVD2 = PLLRSVD2;
   assign #(in_delay) delay_PMARSVD = PMARSVD;
   assign #(in_delay) delay_RCALENB = RCALENB;
-`endif //  `ifndef XIL_TIMING
+`endif  //  `ifndef XIL_TIMING
 
-`ifdef XIL_TIMING //Simprim
+`ifdef XIL_TIMING  //Simprim
   assign delay_BGBYPASSB = BGBYPASSB;
   assign delay_BGMONITORENB = BGMONITORENB;
   assign delay_BGPDB = BGPDB;
@@ -570,104 +558,103 @@ module GTPE2_COMMON (
 `endif
 
   B_GTPE2_COMMON #(
-    .BIAS_CFG (BIAS_CFG),
-    .COMMON_CFG (COMMON_CFG),
-    .PLL0_CFG (PLL0_CFG),
-    .PLL0_DMON_CFG (PLL0_DMON_CFG),
-    .PLL0_FBDIV (PLL0_FBDIV),
-    .PLL0_FBDIV_45 (PLL0_FBDIV_45),
-    .PLL0_INIT_CFG (PLL0_INIT_CFG),
-    .PLL0_LOCK_CFG (PLL0_LOCK_CFG),
-    .PLL0_REFCLK_DIV (PLL0_REFCLK_DIV),
-    .PLL1_CFG (PLL1_CFG),
-    .PLL1_DMON_CFG (PLL1_DMON_CFG),
-    .PLL1_FBDIV (PLL1_FBDIV),
-    .PLL1_FBDIV_45 (PLL1_FBDIV_45),
-    .PLL1_INIT_CFG (PLL1_INIT_CFG),
-    .PLL1_LOCK_CFG (PLL1_LOCK_CFG),
-    .PLL1_REFCLK_DIV (PLL1_REFCLK_DIV),
-    .PLL_CLKOUT_CFG (PLL_CLKOUT_CFG),
-    .RSVD_ATTR0 (RSVD_ATTR0),
-    .RSVD_ATTR1 (RSVD_ATTR1),
-    .SIM_PLL0REFCLK_SEL (SIM_PLL0REFCLK_SEL),
-    .SIM_PLL1REFCLK_SEL (SIM_PLL1REFCLK_SEL),
-    .SIM_RESET_SPEEDUP (SIM_RESET_SPEEDUP),
-    .SIM_VERSION (SIM_VERSION))
-
-    B_GTPE2_COMMON_INST (
-    .DMONITOROUT (delay_DMONITOROUT),
-    .DRPDO (delay_DRPDO),
-    .DRPRDY (delay_DRPRDY),
-    .PLL0FBCLKLOST (delay_PLL0FBCLKLOST),
-    .PLL0LOCK (delay_PLL0LOCK),
-    .PLL0OUTCLK (delay_PLL0OUTCLK),
-    .PLL0OUTREFCLK (delay_PLL0OUTREFCLK),
-    .PLL0REFCLKLOST (delay_PLL0REFCLKLOST),
-    .PLL1FBCLKLOST (delay_PLL1FBCLKLOST),
-    .PLL1LOCK (delay_PLL1LOCK),
-    .PLL1OUTCLK (delay_PLL1OUTCLK),
-    .PLL1OUTREFCLK (delay_PLL1OUTREFCLK),
-    .PLL1REFCLKLOST (delay_PLL1REFCLKLOST),
-    .PMARSVDOUT (delay_PMARSVDOUT),
-    .REFCLKOUTMONITOR0 (delay_REFCLKOUTMONITOR0),
-    .REFCLKOUTMONITOR1 (delay_REFCLKOUTMONITOR1),
-    .BGBYPASSB (delay_BGBYPASSB),
-    .BGMONITORENB (delay_BGMONITORENB),
-    .BGPDB (delay_BGPDB),
-    .BGRCALOVRD (delay_BGRCALOVRD),
-    .BGRCALOVRDENB (delay_BGRCALOVRDENB),
-    .DRPADDR (delay_DRPADDR),
-    .DRPCLK (delay_DRPCLK),
-    .DRPDI (delay_DRPDI),
-    .DRPEN (delay_DRPEN),
-    .DRPWE (delay_DRPWE),
-    .GTEASTREFCLK0 (delay_GTEASTREFCLK0),
-    .GTEASTREFCLK1 (delay_GTEASTREFCLK1),
-    .GTGREFCLK0 (delay_GTGREFCLK0),
-    .GTGREFCLK1 (delay_GTGREFCLK1),
-    .GTREFCLK0 (delay_GTREFCLK0),
-    .GTREFCLK1 (delay_GTREFCLK1),
-    .GTWESTREFCLK0 (delay_GTWESTREFCLK0),
-    .GTWESTREFCLK1 (delay_GTWESTREFCLK1),
-    .PLL0LOCKDETCLK (delay_PLL0LOCKDETCLK),
-    .PLL0LOCKEN (delay_PLL0LOCKEN),
-    .PLL0PD (delay_PLL0PD),
-    .PLL0REFCLKSEL (delay_PLL0REFCLKSEL),
-    .PLL0RESET (delay_PLL0RESET),
-    .PLL1LOCKDETCLK (delay_PLL1LOCKDETCLK),
-    .PLL1LOCKEN (delay_PLL1LOCKEN),
-    .PLL1PD (delay_PLL1PD),
-    .PLL1REFCLKSEL (delay_PLL1REFCLKSEL),
-    .PLL1RESET (delay_PLL1RESET),
-    .PLLRSVD1 (delay_PLLRSVD1),
-    .PLLRSVD2 (delay_PLLRSVD2),
-    .PMARSVD (delay_PMARSVD),
-    .RCALENB (delay_RCALENB),
-    .GSR (GSR)
+      .BIAS_CFG(BIAS_CFG),
+      .COMMON_CFG(COMMON_CFG),
+      .PLL0_CFG(PLL0_CFG),
+      .PLL0_DMON_CFG(PLL0_DMON_CFG),
+      .PLL0_FBDIV(PLL0_FBDIV),
+      .PLL0_FBDIV_45(PLL0_FBDIV_45),
+      .PLL0_INIT_CFG(PLL0_INIT_CFG),
+      .PLL0_LOCK_CFG(PLL0_LOCK_CFG),
+      .PLL0_REFCLK_DIV(PLL0_REFCLK_DIV),
+      .PLL1_CFG(PLL1_CFG),
+      .PLL1_DMON_CFG(PLL1_DMON_CFG),
+      .PLL1_FBDIV(PLL1_FBDIV),
+      .PLL1_FBDIV_45(PLL1_FBDIV_45),
+      .PLL1_INIT_CFG(PLL1_INIT_CFG),
+      .PLL1_LOCK_CFG(PLL1_LOCK_CFG),
+      .PLL1_REFCLK_DIV(PLL1_REFCLK_DIV),
+      .PLL_CLKOUT_CFG(PLL_CLKOUT_CFG),
+      .RSVD_ATTR0(RSVD_ATTR0),
+      .RSVD_ATTR1(RSVD_ATTR1),
+      .SIM_PLL0REFCLK_SEL(SIM_PLL0REFCLK_SEL),
+      .SIM_PLL1REFCLK_SEL(SIM_PLL1REFCLK_SEL),
+      .SIM_RESET_SPEEDUP(SIM_RESET_SPEEDUP),
+      .SIM_VERSION(SIM_VERSION)
+  ) B_GTPE2_COMMON_INST (
+      .DMONITOROUT(delay_DMONITOROUT),
+      .DRPDO(delay_DRPDO),
+      .DRPRDY(delay_DRPRDY),
+      .PLL0FBCLKLOST(delay_PLL0FBCLKLOST),
+      .PLL0LOCK(delay_PLL0LOCK),
+      .PLL0OUTCLK(delay_PLL0OUTCLK),
+      .PLL0OUTREFCLK(delay_PLL0OUTREFCLK),
+      .PLL0REFCLKLOST(delay_PLL0REFCLKLOST),
+      .PLL1FBCLKLOST(delay_PLL1FBCLKLOST),
+      .PLL1LOCK(delay_PLL1LOCK),
+      .PLL1OUTCLK(delay_PLL1OUTCLK),
+      .PLL1OUTREFCLK(delay_PLL1OUTREFCLK),
+      .PLL1REFCLKLOST(delay_PLL1REFCLKLOST),
+      .PMARSVDOUT(delay_PMARSVDOUT),
+      .REFCLKOUTMONITOR0(delay_REFCLKOUTMONITOR0),
+      .REFCLKOUTMONITOR1(delay_REFCLKOUTMONITOR1),
+      .BGBYPASSB(delay_BGBYPASSB),
+      .BGMONITORENB(delay_BGMONITORENB),
+      .BGPDB(delay_BGPDB),
+      .BGRCALOVRD(delay_BGRCALOVRD),
+      .BGRCALOVRDENB(delay_BGRCALOVRDENB),
+      .DRPADDR(delay_DRPADDR),
+      .DRPCLK(delay_DRPCLK),
+      .DRPDI(delay_DRPDI),
+      .DRPEN(delay_DRPEN),
+      .DRPWE(delay_DRPWE),
+      .GTEASTREFCLK0(delay_GTEASTREFCLK0),
+      .GTEASTREFCLK1(delay_GTEASTREFCLK1),
+      .GTGREFCLK0(delay_GTGREFCLK0),
+      .GTGREFCLK1(delay_GTGREFCLK1),
+      .GTREFCLK0(delay_GTREFCLK0),
+      .GTREFCLK1(delay_GTREFCLK1),
+      .GTWESTREFCLK0(delay_GTWESTREFCLK0),
+      .GTWESTREFCLK1(delay_GTWESTREFCLK1),
+      .PLL0LOCKDETCLK(delay_PLL0LOCKDETCLK),
+      .PLL0LOCKEN(delay_PLL0LOCKEN),
+      .PLL0PD(delay_PLL0PD),
+      .PLL0REFCLKSEL(delay_PLL0REFCLKSEL),
+      .PLL0RESET(delay_PLL0RESET),
+      .PLL1LOCKDETCLK(delay_PLL1LOCKDETCLK),
+      .PLL1LOCKEN(delay_PLL1LOCKEN),
+      .PLL1PD(delay_PLL1PD),
+      .PLL1REFCLKSEL(delay_PLL1REFCLKSEL),
+      .PLL1RESET(delay_PLL1RESET),
+      .PLLRSVD1(delay_PLLRSVD1),
+      .PLLRSVD2(delay_PLLRSVD2),
+      .PMARSVD(delay_PMARSVD),
+      .RCALENB(delay_RCALENB),
+      .GSR(GSR)
   );
 
   specify
-`ifdef XIL_TIMING // Simprim
-    $period (posedge DRPCLK, 0:0:0, notifier);
-    $period (negedge DRPCLK, 0:0:0, notifier);
-    $period (posedge GTEASTREFCLK0, 0:0:0, notifier);
-    $period (posedge GTEASTREFCLK1, 0:0:0, notifier);
-    $period (posedge GTGREFCLK0, 0:0:0, notifier);
-    $period (negedge GTGREFCLK0, 0:0:0, notifier);
-    $period (posedge GTGREFCLK1, 0:0:0, notifier);
-    $period (negedge GTGREFCLK1, 0:0:0, notifier);
-    $period (posedge GTREFCLK0, 0:0:0, notifier);
-    $period (posedge GTREFCLK1, 0:0:0, notifier);
-    $period (posedge GTWESTREFCLK0, 0:0:0, notifier);
-    $period (posedge GTWESTREFCLK1, 0:0:0, notifier);
-    $period (posedge PLL0LOCKDETCLK, 0:0:0, notifier);
-    $period (negedge PLL0LOCKDETCLK, 0:0:0, notifier);
-    $period (posedge PLL0OUTCLK, 0:0:0, notifier);
-    $period (posedge PLL1LOCKDETCLK, 0:0:0, notifier);
-    $period (negedge PLL1LOCKDETCLK, 0:0:0, notifier);
-    $period (posedge PLL1OUTCLK, 0:0:0, notifier);
-    $period (posedge REFCLKOUTMONITOR0, 0:0:0, notifier);
-    $period (posedge REFCLKOUTMONITOR1, 0:0:0, notifier);
+`ifdef XIL_TIMING  // Simprim
+    $period(posedge DRPCLK, 0: 0: 0, notifier);
+    $period(negedge DRPCLK, 0: 0: 0, notifier);
+    $period(posedge GTEASTREFCLK0, 0: 0: 0, notifier);
+    $period(posedge GTEASTREFCLK1, 0: 0: 0, notifier);
+    $period(posedge GTGREFCLK0, 0: 0: 0, notifier);
+    $period(negedge GTGREFCLK0, 0: 0: 0, notifier);
+    $period(posedge GTGREFCLK1, 0: 0: 0, notifier);
+    $period(negedge GTGREFCLK1, 0: 0: 0, notifier);
+    $period(posedge GTREFCLK0, 0: 0: 0, notifier);
+    $period(posedge GTREFCLK1, 0: 0: 0, notifier);
+    $period(posedge GTWESTREFCLK0, 0: 0: 0, notifier);
+    $period(posedge GTWESTREFCLK1, 0: 0: 0, notifier);
+    $period(posedge PLL0LOCKDETCLK, 0: 0: 0, notifier);
+    $period(negedge PLL0LOCKDETCLK, 0: 0: 0, notifier);
+    $period(posedge PLL0OUTCLK, 0: 0: 0, notifier);
+    $period(posedge PLL1LOCKDETCLK, 0: 0: 0, notifier);
+    $period(negedge PLL1LOCKDETCLK, 0: 0: 0, notifier);
+    $period(posedge PLL1OUTCLK, 0: 0: 0, notifier);
+    $period(posedge REFCLKOUTMONITOR0, 0: 0: 0, notifier);
+    $period(posedge REFCLKOUTMONITOR1, 0: 0: 0, notifier);
     $setuphold (posedge DRPCLK, negedge DRPADDR, 0:0:0, 0:0:0, notifier, drpclk_en_p, drpclk_en_p, delay_DRPCLK, delay_DRPADDR);
     $setuphold (posedge DRPCLK, negedge DRPDI, 0:0:0, 0:0:0, notifier, drpclk_en_p, drpclk_en_p, delay_DRPCLK, delay_DRPDI);
     $setuphold (posedge DRPCLK, negedge DRPEN, 0:0:0, 0:0:0, notifier, drpclk_en_p, drpclk_en_p, delay_DRPCLK, delay_DRPEN);
@@ -686,16 +673,16 @@ module GTPE2_COMMON (
     $setuphold (negedge DRPCLK, posedge DRPWE, 0:0:0, 0:0:0, notifier, drpclk_en_n, drpclk_en_n, delay_DRPCLK, delay_DRPWE);
 `endif
 
-    ( DRPCLK *> DRPDO) = (0, 0);
-    ( DRPCLK *> DRPRDY) = (0, 0);
-    ( GTGREFCLK0 *> REFCLKOUTMONITOR0) = (0, 0);
-    ( GTGREFCLK0 *> REFCLKOUTMONITOR1) = (0, 0);
-    ( GTGREFCLK1 *> REFCLKOUTMONITOR0) = (0, 0);
-    ( GTGREFCLK1 *> REFCLKOUTMONITOR1) = (0, 0);
-    ( GTREFCLK0 *> REFCLKOUTMONITOR0) = (0, 0);
-    ( GTREFCLK0 *> REFCLKOUTMONITOR1) = (0, 0);
-    ( GTREFCLK1 *> REFCLKOUTMONITOR0) = (0, 0);
-    ( GTREFCLK1 *> REFCLKOUTMONITOR1) = (0, 0);
+    (DRPCLK *> DRPDO) = (0, 0);
+    (DRPCLK *> DRPRDY) = (0, 0);
+    (GTGREFCLK0 *> REFCLKOUTMONITOR0) = (0, 0);
+    (GTGREFCLK0 *> REFCLKOUTMONITOR1) = (0, 0);
+    (GTGREFCLK1 *> REFCLKOUTMONITOR0) = (0, 0);
+    (GTGREFCLK1 *> REFCLKOUTMONITOR1) = (0, 0);
+    (GTREFCLK0 *> REFCLKOUTMONITOR0) = (0, 0);
+    (GTREFCLK0 *> REFCLKOUTMONITOR1) = (0, 0);
+    (GTREFCLK1 *> REFCLKOUTMONITOR0) = (0, 0);
+    (GTREFCLK1 *> REFCLKOUTMONITOR1) = (0, 0);
 
     specparam PATHPULSE$ = 0;
   endspecify

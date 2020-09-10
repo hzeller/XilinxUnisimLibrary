@@ -36,31 +36,31 @@
 
 module IBUFCTRL #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter ISTANDARD = "UNUSED",
-  parameter USE_IBUFDISABLE = "FALSE"
-)(
-  output O,
+    parameter ISTANDARD = "UNUSED",
+    parameter USE_IBUFDISABLE = "FALSE"
+) (
+    output O,
 
-  input I,
-  input IBUFDISABLE,
-  input INTERMDISABLE,
-  input T
+    input I,
+    input IBUFDISABLE,
+    input INTERMDISABLE,
+    input T
 );
-  
-// define constants
-  localparam MODULE_NAME = "IBUFCTRL";
-  localparam in_delay    = 0;
-  localparam out_delay   = 0;
-  localparam inclk_delay    = 0;
-  localparam outclk_delay   = 0;
 
-// Parameter encodings and registers
+  // define constants
+  localparam MODULE_NAME = "IBUFCTRL";
+  localparam in_delay = 0;
+  localparam out_delay = 0;
+  localparam inclk_delay = 0;
+  localparam outclk_delay = 0;
+
+  // Parameter encodings and registers
   localparam USE_IBUFDISABLE_FALSE = 0;
   localparam USE_IBUFDISABLE_TRUE = 1;
 
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
   reg trig_attr = 1'b0;
   localparam [40:1] USE_IBUFDISABLE_REG = USE_IBUFDISABLE;
 
@@ -92,7 +92,7 @@ module IBUFCTRL #(
   assign #(out_delay) O = O_delay;
 
 
-// inputs with no timing checks
+  // inputs with no timing checks
   assign #(in_delay) IBUFDISABLE_delay = IBUFDISABLE;
   assign #(in_delay) INTERMDISABLE_delay = INTERMDISABLE;
   assign #(in_delay) I_delay = I;
@@ -122,8 +122,8 @@ module IBUFCTRL #(
     trig_attr = ~trig_attr;
   end
 
-  always @ (trig_attr) begin
-  #1;
+  always @(trig_attr) begin
+    #1;
     if ((attr_test == 1'b1) ||
         ((USE_IBUFDISABLE_REG != "FALSE") &&
          (USE_IBUFDISABLE_REG != "TRUE"))) begin
@@ -135,22 +135,22 @@ module IBUFCTRL #(
   end
 
   generate
-       case (USE_IBUFDISABLE)
-          "TRUE" :  begin
-              assign NOT_T_OR_IBUFDISABLE = ~T_in || IBUFDISABLE_in;
-              assign O_out = (NOT_T_OR_IBUFDISABLE == 0)? I_in : (NOT_T_OR_IBUFDISABLE == 1)? 1'b0  : 1'bx;
-              end
-          "FALSE"  : begin
+    case (USE_IBUFDISABLE)
+      "TRUE": begin
+        assign NOT_T_OR_IBUFDISABLE = ~T_in || IBUFDISABLE_in;
+        assign O_out = (NOT_T_OR_IBUFDISABLE == 0)? I_in : (NOT_T_OR_IBUFDISABLE == 1)? 1'b0  : 1'bx;
+      end
+      "FALSE"  : begin
               assign O_out = I_in;
-              end   
-       endcase
-  endgenerate       
+              end
+    endcase
+  endgenerate
 
   specify
-    (I => O) = (0:0:0, 0:0:0);
-    (IBUFDISABLE => O) = (0:0:0, 0:0:0);
-    (INTERMDISABLE => O) = (0:0:0, 0:0:0);
-    (T => O) = (0:0:0, 0:0:0);
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    (IBUFDISABLE => O) = (0: 0: 0, 0: 0: 0);
+    (INTERMDISABLE => O) = (0: 0: 0, 0: 0: 0);
+    (T => O) = (0: 0: 0, 0: 0: 0);
     specparam PATHPULSE$ = 0;
   endspecify
 

@@ -31,22 +31,20 @@
 //     End Revision
 ///////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module CAPTUREE2 (
-  CAP,
-  CLK
+    CAP,
+    CLK
 );
 
   parameter ONESHOT = "TRUE";
 
-  `ifdef XIL_TIMING
+`ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
-  `endif
+`endif
 
 
   input CAP;
@@ -65,9 +63,9 @@ module CAPTUREE2 (
 
   initial begin
     case (ONESHOT)
-      "TRUE" : ONESHOT_BINARY = 1'b1;
-      "FALSE" : ONESHOT_BINARY = 1'b0;
-      default : begin
+      "TRUE": ONESHOT_BINARY = 1'b1;
+      "FALSE": ONESHOT_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ONESHOT on CAPTUREE2 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ONESHOT);
         #1 $finish;
       end
@@ -81,12 +79,12 @@ module CAPTUREE2 (
 
   specify
 
-  `ifdef XIL_TIMING
-    $period (posedge CLK, 0:0:0, notifier);
-    $setuphold (posedge CLK, negedge CAP, 0:0:0, 0:0:0, notifier,,, delay_CLK, delay_CAP);
-    $setuphold (posedge CLK, posedge CAP, 0:0:0, 0:0:0, notifier,,, delay_CLK, delay_CAP);
+`ifdef XIL_TIMING
+    $period(posedge CLK, 0: 0: 0, notifier);
+    $setuphold(posedge CLK, negedge CAP, 0: 0: 0, 0: 0: 0, notifier,,, delay_CLK, delay_CAP);
+    $setuphold(posedge CLK, posedge CAP, 0: 0: 0, 0: 0: 0, notifier,,, delay_CLK, delay_CAP);
 
-  `endif //  `ifdef XIL_TIMING
+`endif  //  `ifdef XIL_TIMING
 
     specparam PATHPULSE$ = 0;
   endspecify

@@ -32,63 +32,64 @@
 
 `celldefine
 
-module OBUFTDS (O, OB, I, T);
+module OBUFTDS (
+    O,
+    OB,
+    I,
+    T
+);
 
-    parameter CAPACITANCE = "DONT_CARE";
-    parameter IOSTANDARD = "DEFAULT";
-    
+  parameter CAPACITANCE = "DONT_CARE";
+  parameter IOSTANDARD = "DEFAULT";
+
 `ifdef XIL_TIMING
 
-    parameter LOC = " UNPLACED";
+  parameter LOC = " UNPLACED";
 
 `endif
 
-    parameter SLEW = "SLOW";
+  parameter SLEW = "SLOW";
 
-    
-    output O, OB;
-    input  I, T;
 
-    wire ts;
+  output O, OB;
+  input I, T;
 
-    tri0 GTS = glbl.GTS;
+  wire ts;
 
-    or O1 (ts, GTS, T);
-    bufif0 B1 (O, I, ts);
-    notif0 N1 (OB, I, ts);
+  tri0 GTS = glbl.GTS;
 
-    initial begin
-	
-        case (CAPACITANCE)
+  or O1 (ts, GTS, T);
+  bufif0 B1 (O, I, ts);
+  notif0 N1 (OB, I, ts);
 
-            "LOW", "NORMAL", "DONT_CARE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute CAPACITANCE on OBUFTDS instance %m is set to %s.  Legal values for this attribute are DONT_CARE, LOW or NORMAL.", CAPACITANCE);
-                          #1 $finish;
-                      end
+  initial begin
 
-        endcase
+    case (CAPACITANCE)
 
-    end
+      "LOW", "NORMAL", "DONT_CARE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute CAPACITANCE on OBUFTDS instance %m is set to %s.  Legal values for this attribute are DONT_CARE, LOW or NORMAL.", CAPACITANCE);
+        #1 $finish;
+      end
+
+    endcase
+
+  end
 
 
 `ifdef XIL_TIMING
- 
-    specify
-        (I => O)  = (0:0:0, 0:0:0);
-        (I => OB) = (0:0:0, 0:0:0);
-        (T => O)  = (0:0:0, 0:0:0,
-                     0:0:0, 0:0:0,
-                     0:0:0, 0:0:0);
-        (T => OB) = (0:0:0, 0:0:0,
-                     0:0:0, 0:0:0,
-                     0:0:0, 0:0:0);
-        specparam PATHPULSE$ = 0;
-    endspecify
+
+  specify
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    (I => OB) = (0: 0: 0, 0: 0: 0);
+    (T => O) = (0: 0: 0, 0: 0: 0, 0: 0: 0, 0: 0: 0, 0: 0: 0, 0: 0: 0);
+    (T => OB) = (0: 0: 0, 0: 0: 0, 0: 0: 0, 0: 0: 0, 0: 0: 0, 0: 0: 0);
+    specparam PATHPULSE$ = 0;
+  endspecify
 
 `endif
 
-    
+
 endmodule
 
 `endcelldefine

@@ -35,39 +35,39 @@
 
 module RIU_OR #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter SIM_DEVICE = "ULTRASCALE",
-  parameter real SIM_VERSION = 2.0
-)(
-  output [15:0] RIU_RD_DATA,
-  output RIU_RD_VALID,
+    parameter SIM_DEVICE = "ULTRASCALE",
+    parameter real SIM_VERSION = 2.0
+) (
+    output [15:0] RIU_RD_DATA,
+    output RIU_RD_VALID,
 
-  input [15:0] RIU_RD_DATA_LOW,
-  input [15:0] RIU_RD_DATA_UPP,
-  input RIU_RD_VALID_LOW,
-  input RIU_RD_VALID_UPP
+    input [15:0] RIU_RD_DATA_LOW,
+    input [15:0] RIU_RD_DATA_UPP,
+    input RIU_RD_VALID_LOW,
+    input RIU_RD_VALID_UPP
 );
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "RIU_OR";
 
-// Parameter encodings and registers
+  // Parameter encodings and registers
   localparam SIM_DEVICE_ULTRASCALE = 0;
   localparam SIM_DEVICE_ULTRASCALE_PLUS = 1;
   localparam SIM_DEVICE_ULTRASCALE_PLUS_ES1 = 2;
   localparam SIM_DEVICE_ULTRASCALE_PLUS_ES2 = 3;
 
   reg trig_attr = 1'b0;
-// include dynamic registers - XILINX test only
-//`ifdef XIL_DR
-//  `include "RIU_OR_dr.v"
-//`else
+  // include dynamic registers - XILINX test only
+  //`ifdef XIL_DR
+  //  `include "RIU_OR_dr.v"
+  //`else
   localparam [152:1] SIM_DEVICE_REG = SIM_DEVICE;
   localparam real SIM_VERSION_REG = SIM_VERSION;
-//`endif
+  //`endif
 
-  wire [1:0] SIM_DEVICE_BIN;
+  wire [ 1:0] SIM_DEVICE_BIN;
   wire [63:0] SIM_VERSION_BIN;
 
 `ifdef XIL_ATTR_TEST
@@ -75,16 +75,16 @@ module RIU_OR #(
 `else
   reg attr_test = 1'b0;
 `endif
-  reg attr_err = 1'b0;
+  reg                             attr_err = 1'b0;
   tri0 glblGSR = glbl.GSR;
 
-  wire RIU_RD_VALID_out;
-  wire [15:0] RIU_RD_DATA_out;
+  wire                            RIU_RD_VALID_out;
+  wire                     [15:0] RIU_RD_DATA_out;
 
-  wire RIU_RD_VALID_LOW_in;
-  wire RIU_RD_VALID_UPP_in;
-  wire [15:0] RIU_RD_DATA_LOW_in;
-  wire [15:0] RIU_RD_DATA_UPP_in;
+  wire                            RIU_RD_VALID_LOW_in;
+  wire                            RIU_RD_VALID_UPP_in;
+  wire                     [15:0] RIU_RD_DATA_LOW_in;
+  wire                     [15:0] RIU_RD_DATA_UPP_in;
 
   assign RIU_RD_DATA = RIU_RD_DATA_out;
   assign RIU_RD_VALID = RIU_RD_VALID_out;
@@ -100,15 +100,15 @@ module RIU_OR #(
       (SIM_DEVICE_REG == "ULTRASCALE_PLUS_ES1") ? SIM_DEVICE_ULTRASCALE_PLUS_ES1 :
       (SIM_DEVICE_REG == "ULTRASCALE_PLUS_ES2") ? SIM_DEVICE_ULTRASCALE_PLUS_ES2 :
        SIM_DEVICE_ULTRASCALE;
-  
+
   assign SIM_VERSION_BIN = SIM_VERSION_REG * 1000;
-  
+
   initial begin
     #1;
     trig_attr = ~trig_attr;
   end
-  
-  always @ (trig_attr) begin
+
+  always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) ||
         ((SIM_DEVICE_REG != "ULTRASCALE") &&
@@ -118,25 +118,23 @@ module RIU_OR #(
       $display("Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
-    
-    if ((attr_test == 1'b1) ||
-       ((SIM_VERSION_REG != 2.0) &&
-        (SIM_VERSION_REG != 1.0))) begin
+
+    if ((attr_test == 1'b1) || ((SIM_VERSION_REG != 2.0) && (SIM_VERSION_REG != 1.0))) begin
       $display("Error: [Unisim %s-102] SIM_VERSION attribute is set to %f.  Legal values for this attribute are 2.0 or 1.0. Instance: %m", MODULE_NAME, SIM_VERSION_REG);
       attr_err = 1'b1;
     end
-    
+
     if (attr_err == 1'b1) #1 $finish;
   end
 
   assign RIU_RD_DATA_out = RIU_RD_DATA_UPP_in | RIU_RD_DATA_LOW_in;
-  assign RIU_RD_VALID_out =   RIU_RD_VALID_UPP_in & RIU_RD_VALID_LOW_in;
+  assign RIU_RD_VALID_out = RIU_RD_VALID_UPP_in & RIU_RD_VALID_LOW_in;
 
   specify
-    (RIU_RD_DATA_LOW *> RIU_RD_DATA) = (0:0:0, 0:0:0);
-    (RIU_RD_DATA_UPP *> RIU_RD_DATA) = (0:0:0, 0:0:0);
-    (RIU_RD_VALID_LOW => RIU_RD_VALID) = (0:0:0, 0:0:0);
-    (RIU_RD_VALID_UPP => RIU_RD_VALID) = (0:0:0, 0:0:0);
+    (RIU_RD_DATA_LOW *> RIU_RD_DATA) = (0: 0: 0, 0: 0: 0);
+    (RIU_RD_DATA_UPP *> RIU_RD_DATA) = (0: 0: 0, 0: 0: 0);
+    (RIU_RD_VALID_LOW => RIU_RD_VALID) = (0: 0: 0, 0: 0: 0);
+    (RIU_RD_VALID_UPP => RIU_RD_VALID) = (0: 0: 0, 0: 0: 0);
     specparam PATHPULSE$ = 0;
   endspecify
 

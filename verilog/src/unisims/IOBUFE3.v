@@ -36,36 +36,36 @@
 
 module IOBUFE3 #(
 `ifdef XIL_TIMING
-  parameter LOC = "UNPLACED",
+    parameter LOC = "UNPLACED",
 `endif
-  parameter integer DRIVE = 12,
-  parameter IBUF_LOW_PWR = "TRUE",
-  parameter IOSTANDARD = "DEFAULT",
-  parameter SIM_DEVICE = "ULTRASCALE",
-  parameter integer SIM_INPUT_BUFFER_OFFSET = 0,
-  parameter USE_IBUFDISABLE = "FALSE"
-)(
-  output O,
+    parameter integer DRIVE = 12,
+    parameter IBUF_LOW_PWR = "TRUE",
+    parameter IOSTANDARD = "DEFAULT",
+    parameter SIM_DEVICE = "ULTRASCALE",
+    parameter integer SIM_INPUT_BUFFER_OFFSET = 0,
+    parameter USE_IBUFDISABLE = "FALSE"
+) (
+    output O,
 
-  inout IO,
+    inout IO,
 
-  input DCITERMDISABLE,
-  input I,
-  input IBUFDISABLE,
-  input [3:0] OSC,
-  input OSC_EN,
-  input T,
-  input VREF
+    input       DCITERMDISABLE,
+    input       I,
+    input       IBUFDISABLE,
+    input [3:0] OSC,
+    input       OSC_EN,
+    input       T,
+    input       VREF
 );
-  
-// define constants
-  localparam MODULE_NAME = "IOBUFE3";
-  localparam in_delay    = 0;
-  localparam out_delay   = 0;
-  localparam inclk_delay    = 0;
-  localparam outclk_delay   = 0;
 
-// Parameter encodings and registers
+  // define constants
+  localparam MODULE_NAME = "IOBUFE3";
+  localparam in_delay = 0;
+  localparam out_delay = 0;
+  localparam inclk_delay = 0;
+  localparam outclk_delay = 0;
+
+  // Parameter encodings and registers
   localparam IBUF_LOW_PWR_FALSE = 1;
   localparam IBUF_LOW_PWR_TRUE = 0;
   localparam SIM_DEVICE_ULTRASCALE = 0;
@@ -91,7 +91,7 @@ module IOBUFE3 #(
   localparam USE_IBUFDISABLE_FALSE = 0;
   localparam USE_IBUFDISABLE_TRUE = 1;
 
-// include dynamic registers - XILINX test only
+  // include dynamic registers - XILINX test only
   reg trig_attr = 1'b0;
   localparam [4:0] DRIVE_REG = DRIVE;
   localparam [40:1] IBUF_LOW_PWR_REG = IBUF_LOW_PWR;
@@ -140,12 +140,12 @@ module IOBUFE3 #(
   assign #(out_delay) O = O_delay;
 
 
-// inputs with no timing checks
+  // inputs with no timing checks
   assign #(in_delay) DCITERMDISABLE_delay = DCITERMDISABLE;
   assign #(in_delay) IBUFDISABLE_delay = IBUFDISABLE;
   assign #(in_delay) I_delay = I;
   assign #(in_delay) IO_delay_I = IO;
-  assign #(in_delay) IO = IO_delay_O; 
+  assign #(in_delay) IO = IO_delay_O;
   assign #(in_delay) OSC_EN_delay = OSC_EN;
   assign #(in_delay) OSC_delay = OSC;
   assign #(in_delay) T_delay = T;
@@ -157,7 +157,7 @@ module IOBUFE3 #(
   assign DCITERMDISABLE_in = DCITERMDISABLE_delay;
   assign IBUFDISABLE_in = IBUFDISABLE_delay;
   assign I_in = I_delay;
-  assign IO_in = IO_delay_I;    
+  assign IO_in = IO_delay_I;
   assign OSC_EN_in = OSC_EN_delay;
   assign OSC_in = OSC_delay;
   assign T_in = T_delay;
@@ -171,7 +171,7 @@ module IOBUFE3 #(
   or O1 (ts, GTS, T_in);
   bufif0 T1 (IO_out, I_in, ts);
 
- 
+
   assign DRIVE_BIN = DRIVE_REG;
 
   assign IBUF_LOW_PWR_BIN =
@@ -201,22 +201,21 @@ module IOBUFE3 #(
       (SIM_DEVICE_REG == "VERSAL_PRIME_ES1") ? SIM_DEVICE_VERSAL_PRIME_ES1 :
       (SIM_DEVICE_REG == "VERSAL_PRIME_ES2") ? SIM_DEVICE_VERSAL_PRIME_ES2 :
        SIM_DEVICE_ULTRASCALE;
-  
+
   assign USE_IBUFDISABLE_BIN =
     (USE_IBUFDISABLE_REG == "FALSE") ? USE_IBUFDISABLE_FALSE :
     (USE_IBUFDISABLE_REG == "TRUE") ? USE_IBUFDISABLE_TRUE :
      USE_IBUFDISABLE_FALSE;
- 
+
 
   initial begin
     #1;
     trig_attr = ~trig_attr;
   end
 
-  always @ (trig_attr) begin
-  #1;
-    if ((attr_test == 1'b1) ||
-         ((DRIVE_REG < 2) || (DRIVE_REG > 24))) begin
+  always @(trig_attr) begin
+    #1;
+    if ((attr_test == 1'b1) || ((DRIVE_REG < 2) || (DRIVE_REG > 24))) begin
       $display("Error: [Unisim %s-101] DRIVE attribute is set to %d.  Legal values for this attribute are 2 to 24. Instance: %m", MODULE_NAME, DRIVE_REG);
       attr_err = 1'b1;
     end
@@ -269,7 +268,7 @@ module IOBUFE3 #(
     if (attr_err == 1'b1) #1 $finish;
   end
 
-// begin behavioral model
+  // begin behavioral model
   wire not_t_or_ibufdisable;
   wire versal_or_later;
   wire OSC_EN_in_muxed;
@@ -278,7 +277,7 @@ module IOBUFE3 #(
   assign versal_or_later = ( SIM_DEVICE_BIN == SIM_DEVICE_ULTRASCALE || 
                              SIM_DEVICE_BIN == SIM_DEVICE_ULTRASCALE_PLUS ) ? 1'b0 : 1'b1;
 
-  assign OSC_in_muxed    = versal_or_later ? 4'd0 : OSC_in;
+  assign OSC_in_muxed = versal_or_later ? 4'd0 : OSC_in;
   assign OSC_EN_in_muxed = versal_or_later ? 1'b0 : OSC_EN_in;
 
 
@@ -289,37 +288,36 @@ module IOBUFE3 #(
         O_OSC_in <= 1'b1;
     else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0)
         O_OSC_in <= 1'bx;
-  end 
+  end
 
   assign not_t_or_ibufdisable = ~T_in || IBUFDISABLE_in;
 
   generate
-       case (USE_IBUFDISABLE_REG)
-          "TRUE" :  begin
+    case (USE_IBUFDISABLE_REG)
+      "TRUE" :  begin
               assign O_out = (not_t_or_ibufdisable == 0)? (OSC_EN_in_muxed) ? O_OSC_in : IO_in : (not_t_or_ibufdisable == 1 && OSC_EN_in_muxed != 1)? 1'b0  : 1'bx;
               end
-          "FALSE"  : begin
+      "FALSE"  : begin
   	      assign O_out = (OSC_EN_in_muxed) ? O_OSC_in : IO_in;
               end
-       endcase
+    endcase
   endgenerate
- 
-  always @ (OSC_in_muxed or OSC_EN_in_muxed) begin
-      OSC_int = OSC_in_muxed[2:0] * 5;
-  if (OSC_in_muxed[3] == 1'b0 )
-      OSC_int =  -1*OSC_int;
-  
-   if(OSC_EN_in_muxed == 1'b1) begin
-    if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0)
+
+  always @(OSC_in_muxed or OSC_EN_in_muxed) begin
+    OSC_int = OSC_in_muxed[2:0] * 5;
+    if (OSC_in_muxed[3] == 1'b0) OSC_int = -1 * OSC_int;
+
+    if (OSC_EN_in_muxed == 1'b1) begin
+      if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0)
         O_OSC_in <= 1'b0;
     else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0)  
         O_OSC_in <= 1'b1;
     else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0)
         O_OSC_in <= ~O_OSC_in;
-   end
+    end
   end
 
-// end behavioral model
+  // end behavioral model
 
 endmodule
 

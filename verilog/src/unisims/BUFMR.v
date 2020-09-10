@@ -28,22 +28,20 @@
 //  05/24/12 - 661573 - Remove 100 ps delay
 ///////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 
 module BUFMR (
-  O,
+    O,
 
-  I
+    I
 );
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
-    reg notifier;
+  parameter LOC = "UNPLACED";
+  reg notifier;
 
-`endif 
+`endif
 
   output O;
 
@@ -54,15 +52,15 @@ module BUFMR (
 
   specify
 
-  ( I => O) = (0:0:0, 0:0:0);
+    (I => O) = (0: 0: 0, 0: 0: 0);
 
 `ifdef XIL_TIMING
 
-  $period (posedge I, 0:0:0, notifier);
+    $period(posedge I, 0: 0: 0, notifier);
 
-`endif 
+`endif
 
-  specparam PATHPULSE$ = 0;
+    specparam PATHPULSE$ = 0;
   endspecify
 
 endmodule

@@ -34,19 +34,21 @@
 
 `celldefine
 
-module VCC(P);
+module VCC (
+    P
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
 
-    output P;
+  output P;
 
-    assign P = 1'b1;
+  assign P = 1'b1;
 
 endmodule
 

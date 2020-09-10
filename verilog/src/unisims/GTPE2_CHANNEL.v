@@ -29,243 +29,242 @@
 //  08/29/14 - 821138 - add negedge specify section for IS_INVERTED*CLK*
 ///////////////////////////////////////////////////////
 
-`timescale 1 ps / 1 ps 
-`celldefine
+`timescale 1 ps / 1 ps `celldefine
 module GTPE2_CHANNEL (
-  DMONITOROUT,
-  DRPDO,
-  DRPRDY,
-  EYESCANDATAERROR,
-  GTPTXN,
-  GTPTXP,
-  PCSRSVDOUT,
-  PHYSTATUS,
-  PMARSVDOUT0,
-  PMARSVDOUT1,
-  RXBUFSTATUS,
-  RXBYTEISALIGNED,
-  RXBYTEREALIGN,
-  RXCDRLOCK,
-  RXCHANBONDSEQ,
-  RXCHANISALIGNED,
-  RXCHANREALIGN,
-  RXCHARISCOMMA,
-  RXCHARISK,
-  RXCHBONDO,
-  RXCLKCORCNT,
-  RXCOMINITDET,
-  RXCOMMADET,
-  RXCOMSASDET,
-  RXCOMWAKEDET,
-  RXDATA,
-  RXDATAVALID,
-  RXDISPERR,
-  RXDLYSRESETDONE,
-  RXELECIDLE,
-  RXHEADER,
-  RXHEADERVALID,
-  RXNOTINTABLE,
-  RXOSINTDONE,
-  RXOSINTSTARTED,
-  RXOSINTSTROBEDONE,
-  RXOSINTSTROBESTARTED,
-  RXOUTCLK,
-  RXOUTCLKFABRIC,
-  RXOUTCLKPCS,
-  RXPHALIGNDONE,
-  RXPHMONITOR,
-  RXPHSLIPMONITOR,
-  RXPMARESETDONE,
-  RXPRBSERR,
-  RXRATEDONE,
-  RXRESETDONE,
-  RXSTARTOFSEQ,
-  RXSTATUS,
-  RXSYNCDONE,
-  RXSYNCOUT,
-  RXVALID,
-  TXBUFSTATUS,
-  TXCOMFINISH,
-  TXDLYSRESETDONE,
-  TXGEARBOXREADY,
-  TXOUTCLK,
-  TXOUTCLKFABRIC,
-  TXOUTCLKPCS,
-  TXPHALIGNDONE,
-  TXPHINITDONE,
-  TXPMARESETDONE,
-  TXRATEDONE,
-  TXRESETDONE,
-  TXSYNCDONE,
-  TXSYNCOUT,
+    DMONITOROUT,
+    DRPDO,
+    DRPRDY,
+    EYESCANDATAERROR,
+    GTPTXN,
+    GTPTXP,
+    PCSRSVDOUT,
+    PHYSTATUS,
+    PMARSVDOUT0,
+    PMARSVDOUT1,
+    RXBUFSTATUS,
+    RXBYTEISALIGNED,
+    RXBYTEREALIGN,
+    RXCDRLOCK,
+    RXCHANBONDSEQ,
+    RXCHANISALIGNED,
+    RXCHANREALIGN,
+    RXCHARISCOMMA,
+    RXCHARISK,
+    RXCHBONDO,
+    RXCLKCORCNT,
+    RXCOMINITDET,
+    RXCOMMADET,
+    RXCOMSASDET,
+    RXCOMWAKEDET,
+    RXDATA,
+    RXDATAVALID,
+    RXDISPERR,
+    RXDLYSRESETDONE,
+    RXELECIDLE,
+    RXHEADER,
+    RXHEADERVALID,
+    RXNOTINTABLE,
+    RXOSINTDONE,
+    RXOSINTSTARTED,
+    RXOSINTSTROBEDONE,
+    RXOSINTSTROBESTARTED,
+    RXOUTCLK,
+    RXOUTCLKFABRIC,
+    RXOUTCLKPCS,
+    RXPHALIGNDONE,
+    RXPHMONITOR,
+    RXPHSLIPMONITOR,
+    RXPMARESETDONE,
+    RXPRBSERR,
+    RXRATEDONE,
+    RXRESETDONE,
+    RXSTARTOFSEQ,
+    RXSTATUS,
+    RXSYNCDONE,
+    RXSYNCOUT,
+    RXVALID,
+    TXBUFSTATUS,
+    TXCOMFINISH,
+    TXDLYSRESETDONE,
+    TXGEARBOXREADY,
+    TXOUTCLK,
+    TXOUTCLKFABRIC,
+    TXOUTCLKPCS,
+    TXPHALIGNDONE,
+    TXPHINITDONE,
+    TXPMARESETDONE,
+    TXRATEDONE,
+    TXRESETDONE,
+    TXSYNCDONE,
+    TXSYNCOUT,
 
-  CFGRESET,
-  CLKRSVD0,
-  CLKRSVD1,
-  DMONFIFORESET,
-  DMONITORCLK,
-  DRPADDR,
-  DRPCLK,
-  DRPDI,
-  DRPEN,
-  DRPWE,
-  EYESCANMODE,
-  EYESCANRESET,
-  EYESCANTRIGGER,
-  GTPRXN,
-  GTPRXP,
-  GTRESETSEL,
-  GTRSVD,
-  GTRXRESET,
-  GTTXRESET,
-  LOOPBACK,
-  PCSRSVDIN,
-  PLL0CLK,
-  PLL0REFCLK,
-  PLL1CLK,
-  PLL1REFCLK,
-  PMARSVDIN0,
-  PMARSVDIN1,
-  PMARSVDIN2,
-  PMARSVDIN3,
-  PMARSVDIN4,
-  RESETOVRD,
-  RX8B10BEN,
-  RXADAPTSELTEST,
-  RXBUFRESET,
-  RXCDRFREQRESET,
-  RXCDRHOLD,
-  RXCDROVRDEN,
-  RXCDRRESET,
-  RXCDRRESETRSV,
-  RXCHBONDEN,
-  RXCHBONDI,
-  RXCHBONDLEVEL,
-  RXCHBONDMASTER,
-  RXCHBONDSLAVE,
-  RXCOMMADETEN,
-  RXDDIEN,
-  RXDFEXYDEN,
-  RXDLYBYPASS,
-  RXDLYEN,
-  RXDLYOVRDEN,
-  RXDLYSRESET,
-  RXELECIDLEMODE,
-  RXGEARBOXSLIP,
-  RXLPMHFHOLD,
-  RXLPMHFOVRDEN,
-  RXLPMLFHOLD,
-  RXLPMLFOVRDEN,
-  RXLPMOSINTNTRLEN,
-  RXLPMRESET,
-  RXMCOMMAALIGNEN,
-  RXOOBRESET,
-  RXOSCALRESET,
-  RXOSHOLD,
-  RXOSINTCFG,
-  RXOSINTEN,
-  RXOSINTHOLD,
-  RXOSINTID0,
-  RXOSINTNTRLEN,
-  RXOSINTOVRDEN,
-  RXOSINTPD,
-  RXOSINTSTROBE,
-  RXOSINTTESTOVRDEN,
-  RXOSOVRDEN,
-  RXOUTCLKSEL,
-  RXPCOMMAALIGNEN,
-  RXPCSRESET,
-  RXPD,
-  RXPHALIGN,
-  RXPHALIGNEN,
-  RXPHDLYPD,
-  RXPHDLYRESET,
-  RXPHOVRDEN,
-  RXPMARESET,
-  RXPOLARITY,
-  RXPRBSCNTRESET,
-  RXPRBSSEL,
-  RXRATE,
-  RXRATEMODE,
-  RXSLIDE,
-  RXSYNCALLIN,
-  RXSYNCIN,
-  RXSYNCMODE,
-  RXSYSCLKSEL,
-  RXUSERRDY,
-  RXUSRCLK,
-  RXUSRCLK2,
-  SETERRSTATUS,
-  SIGVALIDCLK,
-  TSTIN,
-  TX8B10BBYPASS,
-  TX8B10BEN,
-  TXBUFDIFFCTRL,
-  TXCHARDISPMODE,
-  TXCHARDISPVAL,
-  TXCHARISK,
-  TXCOMINIT,
-  TXCOMSAS,
-  TXCOMWAKE,
-  TXDATA,
-  TXDEEMPH,
-  TXDETECTRX,
-  TXDIFFCTRL,
-  TXDIFFPD,
-  TXDLYBYPASS,
-  TXDLYEN,
-  TXDLYHOLD,
-  TXDLYOVRDEN,
-  TXDLYSRESET,
-  TXDLYUPDOWN,
-  TXELECIDLE,
-  TXHEADER,
-  TXINHIBIT,
-  TXMAINCURSOR,
-  TXMARGIN,
-  TXOUTCLKSEL,
-  TXPCSRESET,
-  TXPD,
-  TXPDELECIDLEMODE,
-  TXPHALIGN,
-  TXPHALIGNEN,
-  TXPHDLYPD,
-  TXPHDLYRESET,
-  TXPHDLYTSTCLK,
-  TXPHINIT,
-  TXPHOVRDEN,
-  TXPIPPMEN,
-  TXPIPPMOVRDEN,
-  TXPIPPMPD,
-  TXPIPPMSEL,
-  TXPIPPMSTEPSIZE,
-  TXPISOPD,
-  TXPMARESET,
-  TXPOLARITY,
-  TXPOSTCURSOR,
-  TXPOSTCURSORINV,
-  TXPRBSFORCEERR,
-  TXPRBSSEL,
-  TXPRECURSOR,
-  TXPRECURSORINV,
-  TXRATE,
-  TXRATEMODE,
-  TXSEQUENCE,
-  TXSTARTSEQ,
-  TXSWING,
-  TXSYNCALLIN,
-  TXSYNCIN,
-  TXSYNCMODE,
-  TXSYSCLKSEL,
-  TXUSERRDY,
-  TXUSRCLK,
-  TXUSRCLK2
+    CFGRESET,
+    CLKRSVD0,
+    CLKRSVD1,
+    DMONFIFORESET,
+    DMONITORCLK,
+    DRPADDR,
+    DRPCLK,
+    DRPDI,
+    DRPEN,
+    DRPWE,
+    EYESCANMODE,
+    EYESCANRESET,
+    EYESCANTRIGGER,
+    GTPRXN,
+    GTPRXP,
+    GTRESETSEL,
+    GTRSVD,
+    GTRXRESET,
+    GTTXRESET,
+    LOOPBACK,
+    PCSRSVDIN,
+    PLL0CLK,
+    PLL0REFCLK,
+    PLL1CLK,
+    PLL1REFCLK,
+    PMARSVDIN0,
+    PMARSVDIN1,
+    PMARSVDIN2,
+    PMARSVDIN3,
+    PMARSVDIN4,
+    RESETOVRD,
+    RX8B10BEN,
+    RXADAPTSELTEST,
+    RXBUFRESET,
+    RXCDRFREQRESET,
+    RXCDRHOLD,
+    RXCDROVRDEN,
+    RXCDRRESET,
+    RXCDRRESETRSV,
+    RXCHBONDEN,
+    RXCHBONDI,
+    RXCHBONDLEVEL,
+    RXCHBONDMASTER,
+    RXCHBONDSLAVE,
+    RXCOMMADETEN,
+    RXDDIEN,
+    RXDFEXYDEN,
+    RXDLYBYPASS,
+    RXDLYEN,
+    RXDLYOVRDEN,
+    RXDLYSRESET,
+    RXELECIDLEMODE,
+    RXGEARBOXSLIP,
+    RXLPMHFHOLD,
+    RXLPMHFOVRDEN,
+    RXLPMLFHOLD,
+    RXLPMLFOVRDEN,
+    RXLPMOSINTNTRLEN,
+    RXLPMRESET,
+    RXMCOMMAALIGNEN,
+    RXOOBRESET,
+    RXOSCALRESET,
+    RXOSHOLD,
+    RXOSINTCFG,
+    RXOSINTEN,
+    RXOSINTHOLD,
+    RXOSINTID0,
+    RXOSINTNTRLEN,
+    RXOSINTOVRDEN,
+    RXOSINTPD,
+    RXOSINTSTROBE,
+    RXOSINTTESTOVRDEN,
+    RXOSOVRDEN,
+    RXOUTCLKSEL,
+    RXPCOMMAALIGNEN,
+    RXPCSRESET,
+    RXPD,
+    RXPHALIGN,
+    RXPHALIGNEN,
+    RXPHDLYPD,
+    RXPHDLYRESET,
+    RXPHOVRDEN,
+    RXPMARESET,
+    RXPOLARITY,
+    RXPRBSCNTRESET,
+    RXPRBSSEL,
+    RXRATE,
+    RXRATEMODE,
+    RXSLIDE,
+    RXSYNCALLIN,
+    RXSYNCIN,
+    RXSYNCMODE,
+    RXSYSCLKSEL,
+    RXUSERRDY,
+    RXUSRCLK,
+    RXUSRCLK2,
+    SETERRSTATUS,
+    SIGVALIDCLK,
+    TSTIN,
+    TX8B10BBYPASS,
+    TX8B10BEN,
+    TXBUFDIFFCTRL,
+    TXCHARDISPMODE,
+    TXCHARDISPVAL,
+    TXCHARISK,
+    TXCOMINIT,
+    TXCOMSAS,
+    TXCOMWAKE,
+    TXDATA,
+    TXDEEMPH,
+    TXDETECTRX,
+    TXDIFFCTRL,
+    TXDIFFPD,
+    TXDLYBYPASS,
+    TXDLYEN,
+    TXDLYHOLD,
+    TXDLYOVRDEN,
+    TXDLYSRESET,
+    TXDLYUPDOWN,
+    TXELECIDLE,
+    TXHEADER,
+    TXINHIBIT,
+    TXMAINCURSOR,
+    TXMARGIN,
+    TXOUTCLKSEL,
+    TXPCSRESET,
+    TXPD,
+    TXPDELECIDLEMODE,
+    TXPHALIGN,
+    TXPHALIGNEN,
+    TXPHDLYPD,
+    TXPHDLYRESET,
+    TXPHDLYTSTCLK,
+    TXPHINIT,
+    TXPHOVRDEN,
+    TXPIPPMEN,
+    TXPIPPMOVRDEN,
+    TXPIPPMPD,
+    TXPIPPMSEL,
+    TXPIPPMSTEPSIZE,
+    TXPISOPD,
+    TXPMARESET,
+    TXPOLARITY,
+    TXPOSTCURSOR,
+    TXPOSTCURSORINV,
+    TXPRBSFORCEERR,
+    TXPRBSSEL,
+    TXPRECURSOR,
+    TXPRECURSORINV,
+    TXRATE,
+    TXRATEMODE,
+    TXSEQUENCE,
+    TXSTARTSEQ,
+    TXSWING,
+    TXSYNCALLIN,
+    TXSYNCIN,
+    TXSYNCMODE,
+    TXSYSCLKSEL,
+    TXUSERRDY,
+    TXUSRCLK,
+    TXUSRCLK2
 );
 
-  `ifdef XIL_TIMING //Simprim 
+`ifdef XIL_TIMING  //Simprim 
   parameter LOC = "UNPLACED";
-  `endif
-    parameter [0:0] ACJTAG_DEBUG_MODE = 1'b0;
+`endif
+  parameter [0:0] ACJTAG_DEBUG_MODE = 1'b0;
   parameter [0:0] ACJTAG_MODE = 1'b0;
   parameter [0:0] ACJTAG_RESET = 1'b0;
   parameter [19:0] ADAPT_CFG0 = 20'b00000000000000000000;
@@ -956,579 +955,579 @@ module GTPE2_CHANNEL (
 
   initial begin
     case (ALIGN_COMMA_DOUBLE)
-      "FALSE" : ALIGN_COMMA_DOUBLE_BINARY = 1'b0;
-      "TRUE" : ALIGN_COMMA_DOUBLE_BINARY = 1'b1;
-      default : begin
+      "FALSE": ALIGN_COMMA_DOUBLE_BINARY = 1'b0;
+      "TRUE": ALIGN_COMMA_DOUBLE_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ALIGN_COMMA_DOUBLE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ALIGN_COMMA_DOUBLE);
         #1 $finish;
       end
     endcase
 
     case (ALIGN_MCOMMA_DET)
-      "TRUE" : ALIGN_MCOMMA_DET_BINARY = 1'b1;
-      "FALSE" : ALIGN_MCOMMA_DET_BINARY = 1'b0;
-      default : begin
+      "TRUE": ALIGN_MCOMMA_DET_BINARY = 1'b1;
+      "FALSE": ALIGN_MCOMMA_DET_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ALIGN_MCOMMA_DET on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ALIGN_MCOMMA_DET);
         #1 $finish;
       end
     endcase
 
     case (ALIGN_PCOMMA_DET)
-      "TRUE" : ALIGN_PCOMMA_DET_BINARY = 1'b1;
-      "FALSE" : ALIGN_PCOMMA_DET_BINARY = 1'b0;
-      default : begin
+      "TRUE": ALIGN_PCOMMA_DET_BINARY = 1'b1;
+      "FALSE": ALIGN_PCOMMA_DET_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ALIGN_PCOMMA_DET on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ALIGN_PCOMMA_DET);
         #1 $finish;
       end
     endcase
 
     case (CBCC_DATA_SOURCE_SEL)
-      "DECODED" : CBCC_DATA_SOURCE_SEL_BINARY = 1'b1;
-      "ENCODED" : CBCC_DATA_SOURCE_SEL_BINARY = 1'b0;
-      default : begin
+      "DECODED": CBCC_DATA_SOURCE_SEL_BINARY = 1'b1;
+      "ENCODED": CBCC_DATA_SOURCE_SEL_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CBCC_DATA_SOURCE_SEL on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are DECODED, or ENCODED.", CBCC_DATA_SOURCE_SEL);
         #1 $finish;
       end
     endcase
 
     case (CHAN_BOND_KEEP_ALIGN)
-      "FALSE" : CHAN_BOND_KEEP_ALIGN_BINARY = 1'b0;
-      "TRUE" : CHAN_BOND_KEEP_ALIGN_BINARY = 1'b1;
-      default : begin
+      "FALSE": CHAN_BOND_KEEP_ALIGN_BINARY = 1'b0;
+      "TRUE": CHAN_BOND_KEEP_ALIGN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CHAN_BOND_KEEP_ALIGN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CHAN_BOND_KEEP_ALIGN);
         #1 $finish;
       end
     endcase
 
     case (CHAN_BOND_SEQ_2_USE)
-      "FALSE" : CHAN_BOND_SEQ_2_USE_BINARY = 1'b0;
-      "TRUE" : CHAN_BOND_SEQ_2_USE_BINARY = 1'b1;
-      default : begin
+      "FALSE": CHAN_BOND_SEQ_2_USE_BINARY = 1'b0;
+      "TRUE": CHAN_BOND_SEQ_2_USE_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_USE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CHAN_BOND_SEQ_2_USE);
         #1 $finish;
       end
     endcase
 
     case (CHAN_BOND_SEQ_LEN)
-      1 : CHAN_BOND_SEQ_LEN_BINARY = 2'b00;
-      2 : CHAN_BOND_SEQ_LEN_BINARY = 2'b01;
-      3 : CHAN_BOND_SEQ_LEN_BINARY = 2'b10;
-      4 : CHAN_BOND_SEQ_LEN_BINARY = 2'b11;
-      default : begin
+      1: CHAN_BOND_SEQ_LEN_BINARY = 2'b00;
+      2: CHAN_BOND_SEQ_LEN_BINARY = 2'b01;
+      3: CHAN_BOND_SEQ_LEN_BINARY = 2'b10;
+      4: CHAN_BOND_SEQ_LEN_BINARY = 2'b11;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_LEN on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.", CHAN_BOND_SEQ_LEN, 1);
         #1 $finish;
       end
     endcase
 
     case (CLK_CORRECT_USE)
-      "TRUE" : CLK_CORRECT_USE_BINARY = 1'b1;
-      "FALSE" : CLK_CORRECT_USE_BINARY = 1'b0;
-      default : begin
+      "TRUE": CLK_CORRECT_USE_BINARY = 1'b1;
+      "FALSE": CLK_CORRECT_USE_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CLK_CORRECT_USE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", CLK_CORRECT_USE);
         #1 $finish;
       end
     endcase
 
     case (CLK_COR_KEEP_IDLE)
-      "FALSE" : CLK_COR_KEEP_IDLE_BINARY = 1'b0;
-      "TRUE" : CLK_COR_KEEP_IDLE_BINARY = 1'b1;
-      default : begin
+      "FALSE": CLK_COR_KEEP_IDLE_BINARY = 1'b0;
+      "TRUE": CLK_COR_KEEP_IDLE_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CLK_COR_KEEP_IDLE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CLK_COR_KEEP_IDLE);
         #1 $finish;
       end
     endcase
 
     case (CLK_COR_PRECEDENCE)
-      "TRUE" : CLK_COR_PRECEDENCE_BINARY = 1'b1;
-      "FALSE" : CLK_COR_PRECEDENCE_BINARY = 1'b0;
-      default : begin
+      "TRUE": CLK_COR_PRECEDENCE_BINARY = 1'b1;
+      "FALSE": CLK_COR_PRECEDENCE_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CLK_COR_PRECEDENCE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", CLK_COR_PRECEDENCE);
         #1 $finish;
       end
     endcase
 
     case (CLK_COR_SEQ_2_USE)
-      "FALSE" : CLK_COR_SEQ_2_USE_BINARY = 1'b0;
-      "TRUE" : CLK_COR_SEQ_2_USE_BINARY = 1'b1;
-      default : begin
+      "FALSE": CLK_COR_SEQ_2_USE_BINARY = 1'b0;
+      "TRUE": CLK_COR_SEQ_2_USE_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_USE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CLK_COR_SEQ_2_USE);
         #1 $finish;
       end
     endcase
 
     case (CLK_COR_SEQ_LEN)
-      1 : CLK_COR_SEQ_LEN_BINARY = 2'b00;
-      2 : CLK_COR_SEQ_LEN_BINARY = 2'b01;
-      3 : CLK_COR_SEQ_LEN_BINARY = 2'b10;
-      4 : CLK_COR_SEQ_LEN_BINARY = 2'b11;
-      default : begin
+      1: CLK_COR_SEQ_LEN_BINARY = 2'b00;
+      2: CLK_COR_SEQ_LEN_BINARY = 2'b01;
+      3: CLK_COR_SEQ_LEN_BINARY = 2'b10;
+      4: CLK_COR_SEQ_LEN_BINARY = 2'b11;
+      default: begin
         $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_LEN on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.", CLK_COR_SEQ_LEN, 1);
         #1 $finish;
       end
     endcase
 
     case (DEC_MCOMMA_DETECT)
-      "TRUE" : DEC_MCOMMA_DETECT_BINARY = 1'b1;
-      "FALSE" : DEC_MCOMMA_DETECT_BINARY = 1'b0;
-      default : begin
+      "TRUE": DEC_MCOMMA_DETECT_BINARY = 1'b1;
+      "FALSE": DEC_MCOMMA_DETECT_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute DEC_MCOMMA_DETECT on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEC_MCOMMA_DETECT);
         #1 $finish;
       end
     endcase
 
     case (DEC_PCOMMA_DETECT)
-      "TRUE" : DEC_PCOMMA_DETECT_BINARY = 1'b1;
-      "FALSE" : DEC_PCOMMA_DETECT_BINARY = 1'b0;
-      default : begin
+      "TRUE": DEC_PCOMMA_DETECT_BINARY = 1'b1;
+      "FALSE": DEC_PCOMMA_DETECT_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute DEC_PCOMMA_DETECT on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEC_PCOMMA_DETECT);
         #1 $finish;
       end
     endcase
 
     case (DEC_VALID_COMMA_ONLY)
-      "TRUE" : DEC_VALID_COMMA_ONLY_BINARY = 1'b1;
-      "FALSE" : DEC_VALID_COMMA_ONLY_BINARY = 1'b0;
-      default : begin
+      "TRUE": DEC_VALID_COMMA_ONLY_BINARY = 1'b1;
+      "FALSE": DEC_VALID_COMMA_ONLY_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute DEC_VALID_COMMA_ONLY on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEC_VALID_COMMA_ONLY);
         #1 $finish;
       end
     endcase
 
     case (ES_ERRDET_EN)
-      "FALSE" : ES_ERRDET_EN_BINARY = 1'b0;
-      "TRUE" : ES_ERRDET_EN_BINARY = 1'b1;
-      default : begin
+      "FALSE": ES_ERRDET_EN_BINARY = 1'b0;
+      "TRUE": ES_ERRDET_EN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ES_ERRDET_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ES_ERRDET_EN);
         #1 $finish;
       end
     endcase
 
     case (ES_EYE_SCAN_EN)
-      "FALSE" : ES_EYE_SCAN_EN_BINARY = 1'b0;
-      "TRUE" : ES_EYE_SCAN_EN_BINARY = 1'b1;
-      default : begin
+      "FALSE": ES_EYE_SCAN_EN_BINARY = 1'b0;
+      "TRUE": ES_EYE_SCAN_EN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute ES_EYE_SCAN_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ES_EYE_SCAN_EN);
         #1 $finish;
       end
     endcase
 
     case (FTS_LANE_DESKEW_EN)
-      "FALSE" : FTS_LANE_DESKEW_EN_BINARY = 1'b0;
-      "TRUE" : FTS_LANE_DESKEW_EN_BINARY = 1'b1;
-      default : begin
+      "FALSE": FTS_LANE_DESKEW_EN_BINARY = 1'b0;
+      "TRUE": FTS_LANE_DESKEW_EN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute FTS_LANE_DESKEW_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", FTS_LANE_DESKEW_EN);
         #1 $finish;
       end
     endcase
 
     case (PCS_PCIE_EN)
-      "FALSE" : PCS_PCIE_EN_BINARY = 1'b0;
-      "TRUE" : PCS_PCIE_EN_BINARY = 1'b1;
-      default : begin
+      "FALSE": PCS_PCIE_EN_BINARY = 1'b0;
+      "TRUE": PCS_PCIE_EN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute PCS_PCIE_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PCS_PCIE_EN);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_ADDR_MODE)
-      "FULL" : RXBUF_ADDR_MODE_BINARY = 1'b0;
-      "FAST" : RXBUF_ADDR_MODE_BINARY = 1'b1;
-      default : begin
+      "FULL": RXBUF_ADDR_MODE_BINARY = 1'b0;
+      "FAST": RXBUF_ADDR_MODE_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXBUF_ADDR_MODE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FULL, or FAST.", RXBUF_ADDR_MODE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_EN)
-      "TRUE" : RXBUF_EN_BINARY = 1'b1;
-      "FALSE" : RXBUF_EN_BINARY = 1'b0;
-      default : begin
+      "TRUE": RXBUF_EN_BINARY = 1'b1;
+      "FALSE": RXBUF_EN_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXBUF_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RXBUF_EN);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_CB_CHANGE)
-      "TRUE" : RXBUF_RESET_ON_CB_CHANGE_BINARY = 1'b1;
-      "FALSE" : RXBUF_RESET_ON_CB_CHANGE_BINARY = 1'b0;
-      default : begin
+      "TRUE": RXBUF_RESET_ON_CB_CHANGE_BINARY = 1'b1;
+      "FALSE": RXBUF_RESET_ON_CB_CHANGE_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_CB_CHANGE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RXBUF_RESET_ON_CB_CHANGE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_COMMAALIGN)
-      "FALSE" : RXBUF_RESET_ON_COMMAALIGN_BINARY = 1'b0;
-      "TRUE" : RXBUF_RESET_ON_COMMAALIGN_BINARY = 1'b1;
-      default : begin
+      "FALSE": RXBUF_RESET_ON_COMMAALIGN_BINARY = 1'b0;
+      "TRUE": RXBUF_RESET_ON_COMMAALIGN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_COMMAALIGN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXBUF_RESET_ON_COMMAALIGN);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_EIDLE)
-      "FALSE" : RXBUF_RESET_ON_EIDLE_BINARY = 1'b0;
-      "TRUE" : RXBUF_RESET_ON_EIDLE_BINARY = 1'b1;
-      default : begin
+      "FALSE": RXBUF_RESET_ON_EIDLE_BINARY = 1'b0;
+      "TRUE": RXBUF_RESET_ON_EIDLE_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_EIDLE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXBUF_RESET_ON_EIDLE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_RATE_CHANGE)
-      "TRUE" : RXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
-      "FALSE" : RXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b0;
-      default : begin
+      "TRUE": RXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
+      "FALSE": RXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_RATE_CHANGE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RXBUF_RESET_ON_RATE_CHANGE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_THRESH_OVRD)
-      "FALSE" : RXBUF_THRESH_OVRD_BINARY = 1'b0;
-      "TRUE" : RXBUF_THRESH_OVRD_BINARY = 1'b1;
-      default : begin
+      "FALSE": RXBUF_THRESH_OVRD_BINARY = 1'b0;
+      "TRUE": RXBUF_THRESH_OVRD_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXBUF_THRESH_OVRD on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXBUF_THRESH_OVRD);
         #1 $finish;
       end
     endcase
 
     case (RXGEARBOX_EN)
-      "FALSE" : RXGEARBOX_EN_BINARY = 1'b0;
-      "TRUE" : RXGEARBOX_EN_BINARY = 1'b1;
-      default : begin
+      "FALSE": RXGEARBOX_EN_BINARY = 1'b0;
+      "TRUE": RXGEARBOX_EN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXGEARBOX_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXGEARBOX_EN);
         #1 $finish;
       end
     endcase
 
     case (RXOOB_CLK_CFG)
-      "PMA" : RXOOB_CLK_CFG_BINARY = 1'b0;
-      "FABRIC" : RXOOB_CLK_CFG_BINARY = 1'b1;
-      default : begin
+      "PMA": RXOOB_CLK_CFG_BINARY = 1'b0;
+      "FABRIC": RXOOB_CLK_CFG_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXOOB_CLK_CFG on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are PMA, or FABRIC.", RXOOB_CLK_CFG);
         #1 $finish;
       end
     endcase
 
     case (RXOUT_DIV)
-      2 : RXOUT_DIV_BINARY = 3'b001;
-      1 : RXOUT_DIV_BINARY = 3'b000;
-      4 : RXOUT_DIV_BINARY = 3'b010;
-      8 : RXOUT_DIV_BINARY = 3'b011;
-      16 : RXOUT_DIV_BINARY = 3'b100;
-      default : begin
+      2: RXOUT_DIV_BINARY = 3'b001;
+      1: RXOUT_DIV_BINARY = 3'b000;
+      4: RXOUT_DIV_BINARY = 3'b010;
+      8: RXOUT_DIV_BINARY = 3'b011;
+      16: RXOUT_DIV_BINARY = 3'b100;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXOUT_DIV on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 16.", RXOUT_DIV, 2);
         #1 $finish;
       end
     endcase
 
     case (RXSLIDE_MODE)
-      "OFF" : RXSLIDE_MODE_BINARY = 2'b00;
-      "AUTO" : RXSLIDE_MODE_BINARY = 2'b01;
-      "PCS" : RXSLIDE_MODE_BINARY = 2'b10;
-      "PMA" : RXSLIDE_MODE_BINARY = 2'b11;
-      default : begin
+      "OFF": RXSLIDE_MODE_BINARY = 2'b00;
+      "AUTO": RXSLIDE_MODE_BINARY = 2'b01;
+      "PCS": RXSLIDE_MODE_BINARY = 2'b10;
+      "PMA": RXSLIDE_MODE_BINARY = 2'b11;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RXSLIDE_MODE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are OFF, AUTO, PCS, or PMA.", RXSLIDE_MODE);
         #1 $finish;
       end
     endcase
 
     case (RX_CLK25_DIV)
-      7 : RX_CLK25_DIV_BINARY = 5'b00110;
-      1 : RX_CLK25_DIV_BINARY = 5'b00000;
-      2 : RX_CLK25_DIV_BINARY = 5'b00001;
-      3 : RX_CLK25_DIV_BINARY = 5'b00010;
-      4 : RX_CLK25_DIV_BINARY = 5'b00011;
-      5 : RX_CLK25_DIV_BINARY = 5'b00100;
-      6 : RX_CLK25_DIV_BINARY = 5'b00101;
-      8 : RX_CLK25_DIV_BINARY = 5'b00111;
-      9 : RX_CLK25_DIV_BINARY = 5'b01000;
-      10 : RX_CLK25_DIV_BINARY = 5'b01001;
-      11 : RX_CLK25_DIV_BINARY = 5'b01010;
-      12 : RX_CLK25_DIV_BINARY = 5'b01011;
-      13 : RX_CLK25_DIV_BINARY = 5'b01100;
-      14 : RX_CLK25_DIV_BINARY = 5'b01101;
-      15 : RX_CLK25_DIV_BINARY = 5'b01110;
-      16 : RX_CLK25_DIV_BINARY = 5'b01111;
-      17 : RX_CLK25_DIV_BINARY = 5'b10000;
-      18 : RX_CLK25_DIV_BINARY = 5'b10001;
-      19 : RX_CLK25_DIV_BINARY = 5'b10010;
-      20 : RX_CLK25_DIV_BINARY = 5'b10011;
-      21 : RX_CLK25_DIV_BINARY = 5'b10100;
-      22 : RX_CLK25_DIV_BINARY = 5'b10101;
-      23 : RX_CLK25_DIV_BINARY = 5'b10110;
-      24 : RX_CLK25_DIV_BINARY = 5'b10111;
-      25 : RX_CLK25_DIV_BINARY = 5'b11000;
-      26 : RX_CLK25_DIV_BINARY = 5'b11001;
-      27 : RX_CLK25_DIV_BINARY = 5'b11010;
-      28 : RX_CLK25_DIV_BINARY = 5'b11011;
-      29 : RX_CLK25_DIV_BINARY = 5'b11100;
-      30 : RX_CLK25_DIV_BINARY = 5'b11101;
-      31 : RX_CLK25_DIV_BINARY = 5'b11110;
-      32 : RX_CLK25_DIV_BINARY = 5'b11111;
-      default : begin
+      7: RX_CLK25_DIV_BINARY = 5'b00110;
+      1: RX_CLK25_DIV_BINARY = 5'b00000;
+      2: RX_CLK25_DIV_BINARY = 5'b00001;
+      3: RX_CLK25_DIV_BINARY = 5'b00010;
+      4: RX_CLK25_DIV_BINARY = 5'b00011;
+      5: RX_CLK25_DIV_BINARY = 5'b00100;
+      6: RX_CLK25_DIV_BINARY = 5'b00101;
+      8: RX_CLK25_DIV_BINARY = 5'b00111;
+      9: RX_CLK25_DIV_BINARY = 5'b01000;
+      10: RX_CLK25_DIV_BINARY = 5'b01001;
+      11: RX_CLK25_DIV_BINARY = 5'b01010;
+      12: RX_CLK25_DIV_BINARY = 5'b01011;
+      13: RX_CLK25_DIV_BINARY = 5'b01100;
+      14: RX_CLK25_DIV_BINARY = 5'b01101;
+      15: RX_CLK25_DIV_BINARY = 5'b01110;
+      16: RX_CLK25_DIV_BINARY = 5'b01111;
+      17: RX_CLK25_DIV_BINARY = 5'b10000;
+      18: RX_CLK25_DIV_BINARY = 5'b10001;
+      19: RX_CLK25_DIV_BINARY = 5'b10010;
+      20: RX_CLK25_DIV_BINARY = 5'b10011;
+      21: RX_CLK25_DIV_BINARY = 5'b10100;
+      22: RX_CLK25_DIV_BINARY = 5'b10101;
+      23: RX_CLK25_DIV_BINARY = 5'b10110;
+      24: RX_CLK25_DIV_BINARY = 5'b10111;
+      25: RX_CLK25_DIV_BINARY = 5'b11000;
+      26: RX_CLK25_DIV_BINARY = 5'b11001;
+      27: RX_CLK25_DIV_BINARY = 5'b11010;
+      28: RX_CLK25_DIV_BINARY = 5'b11011;
+      29: RX_CLK25_DIV_BINARY = 5'b11100;
+      30: RX_CLK25_DIV_BINARY = 5'b11101;
+      31: RX_CLK25_DIV_BINARY = 5'b11110;
+      32: RX_CLK25_DIV_BINARY = 5'b11111;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RX_CLK25_DIV on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.", RX_CLK25_DIV, 7);
         #1 $finish;
       end
     endcase
 
     case (RX_DATA_WIDTH)
-      20 : RX_DATA_WIDTH_BINARY = 3'b011;
-      16 : RX_DATA_WIDTH_BINARY = 3'b010;
-      32 : RX_DATA_WIDTH_BINARY = 3'b100;
-      40 : RX_DATA_WIDTH_BINARY = 3'b101;
-      default : begin
+      20: RX_DATA_WIDTH_BINARY = 3'b011;
+      16: RX_DATA_WIDTH_BINARY = 3'b010;
+      32: RX_DATA_WIDTH_BINARY = 3'b100;
+      40: RX_DATA_WIDTH_BINARY = 3'b101;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RX_DATA_WIDTH on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 16 to 40.", RX_DATA_WIDTH, 20);
         #1 $finish;
       end
     endcase
 
     case (RX_DEFER_RESET_BUF_EN)
-      "TRUE" : RX_DEFER_RESET_BUF_EN_BINARY = 1'b1;
-      "FALSE" : RX_DEFER_RESET_BUF_EN_BINARY = 1'b0;
-      default : begin
+      "TRUE": RX_DEFER_RESET_BUF_EN_BINARY = 1'b1;
+      "FALSE": RX_DEFER_RESET_BUF_EN_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RX_DEFER_RESET_BUF_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RX_DEFER_RESET_BUF_EN);
         #1 $finish;
       end
     endcase
 
     case (RX_DISPERR_SEQ_MATCH)
-      "TRUE" : RX_DISPERR_SEQ_MATCH_BINARY = 1'b1;
-      "FALSE" : RX_DISPERR_SEQ_MATCH_BINARY = 1'b0;
-      default : begin
+      "TRUE": RX_DISPERR_SEQ_MATCH_BINARY = 1'b1;
+      "FALSE": RX_DISPERR_SEQ_MATCH_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RX_DISPERR_SEQ_MATCH on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RX_DISPERR_SEQ_MATCH);
         #1 $finish;
       end
     endcase
 
     case (RX_SIG_VALID_DLY)
-      10 : RX_SIG_VALID_DLY_BINARY = 5'b01001;
-      1 : RX_SIG_VALID_DLY_BINARY = 5'b00000;
-      2 : RX_SIG_VALID_DLY_BINARY = 5'b00001;
-      3 : RX_SIG_VALID_DLY_BINARY = 5'b00010;
-      4 : RX_SIG_VALID_DLY_BINARY = 5'b00011;
-      5 : RX_SIG_VALID_DLY_BINARY = 5'b00100;
-      6 : RX_SIG_VALID_DLY_BINARY = 5'b00101;
-      7 : RX_SIG_VALID_DLY_BINARY = 5'b00110;
-      8 : RX_SIG_VALID_DLY_BINARY = 5'b00111;
-      9 : RX_SIG_VALID_DLY_BINARY = 5'b01000;
-      11 : RX_SIG_VALID_DLY_BINARY = 5'b01010;
-      12 : RX_SIG_VALID_DLY_BINARY = 5'b01011;
-      13 : RX_SIG_VALID_DLY_BINARY = 5'b01100;
-      14 : RX_SIG_VALID_DLY_BINARY = 5'b01101;
-      15 : RX_SIG_VALID_DLY_BINARY = 5'b01110;
-      16 : RX_SIG_VALID_DLY_BINARY = 5'b01111;
-      17 : RX_SIG_VALID_DLY_BINARY = 5'b10000;
-      18 : RX_SIG_VALID_DLY_BINARY = 5'b10001;
-      19 : RX_SIG_VALID_DLY_BINARY = 5'b10010;
-      20 : RX_SIG_VALID_DLY_BINARY = 5'b10011;
-      21 : RX_SIG_VALID_DLY_BINARY = 5'b10100;
-      22 : RX_SIG_VALID_DLY_BINARY = 5'b10101;
-      23 : RX_SIG_VALID_DLY_BINARY = 5'b10110;
-      24 : RX_SIG_VALID_DLY_BINARY = 5'b10111;
-      25 : RX_SIG_VALID_DLY_BINARY = 5'b11000;
-      26 : RX_SIG_VALID_DLY_BINARY = 5'b11001;
-      27 : RX_SIG_VALID_DLY_BINARY = 5'b11010;
-      28 : RX_SIG_VALID_DLY_BINARY = 5'b11011;
-      29 : RX_SIG_VALID_DLY_BINARY = 5'b11100;
-      30 : RX_SIG_VALID_DLY_BINARY = 5'b11101;
-      31 : RX_SIG_VALID_DLY_BINARY = 5'b11110;
-      32 : RX_SIG_VALID_DLY_BINARY = 5'b11111;
-      default : begin
+      10: RX_SIG_VALID_DLY_BINARY = 5'b01001;
+      1: RX_SIG_VALID_DLY_BINARY = 5'b00000;
+      2: RX_SIG_VALID_DLY_BINARY = 5'b00001;
+      3: RX_SIG_VALID_DLY_BINARY = 5'b00010;
+      4: RX_SIG_VALID_DLY_BINARY = 5'b00011;
+      5: RX_SIG_VALID_DLY_BINARY = 5'b00100;
+      6: RX_SIG_VALID_DLY_BINARY = 5'b00101;
+      7: RX_SIG_VALID_DLY_BINARY = 5'b00110;
+      8: RX_SIG_VALID_DLY_BINARY = 5'b00111;
+      9: RX_SIG_VALID_DLY_BINARY = 5'b01000;
+      11: RX_SIG_VALID_DLY_BINARY = 5'b01010;
+      12: RX_SIG_VALID_DLY_BINARY = 5'b01011;
+      13: RX_SIG_VALID_DLY_BINARY = 5'b01100;
+      14: RX_SIG_VALID_DLY_BINARY = 5'b01101;
+      15: RX_SIG_VALID_DLY_BINARY = 5'b01110;
+      16: RX_SIG_VALID_DLY_BINARY = 5'b01111;
+      17: RX_SIG_VALID_DLY_BINARY = 5'b10000;
+      18: RX_SIG_VALID_DLY_BINARY = 5'b10001;
+      19: RX_SIG_VALID_DLY_BINARY = 5'b10010;
+      20: RX_SIG_VALID_DLY_BINARY = 5'b10011;
+      21: RX_SIG_VALID_DLY_BINARY = 5'b10100;
+      22: RX_SIG_VALID_DLY_BINARY = 5'b10101;
+      23: RX_SIG_VALID_DLY_BINARY = 5'b10110;
+      24: RX_SIG_VALID_DLY_BINARY = 5'b10111;
+      25: RX_SIG_VALID_DLY_BINARY = 5'b11000;
+      26: RX_SIG_VALID_DLY_BINARY = 5'b11001;
+      27: RX_SIG_VALID_DLY_BINARY = 5'b11010;
+      28: RX_SIG_VALID_DLY_BINARY = 5'b11011;
+      29: RX_SIG_VALID_DLY_BINARY = 5'b11100;
+      30: RX_SIG_VALID_DLY_BINARY = 5'b11101;
+      31: RX_SIG_VALID_DLY_BINARY = 5'b11110;
+      32: RX_SIG_VALID_DLY_BINARY = 5'b11111;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RX_SIG_VALID_DLY on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.", RX_SIG_VALID_DLY, 10);
         #1 $finish;
       end
     endcase
 
     case (RX_XCLK_SEL)
-      "RXREC" : RX_XCLK_SEL_BINARY = 1'b0;
-      "RXUSR" : RX_XCLK_SEL_BINARY = 1'b1;
-      default : begin
+      "RXREC": RX_XCLK_SEL_BINARY = 1'b0;
+      "RXUSR": RX_XCLK_SEL_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute RX_XCLK_SEL on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are RXREC, or RXUSR.", RX_XCLK_SEL);
         #1 $finish;
       end
     endcase
 
     case (SATA_PLL_CFG)
-      "VCO_3000MHZ" : SATA_PLL_CFG_BINARY = 2'b00;
-      "VCO_750MHZ" : SATA_PLL_CFG_BINARY = 2'b10;
-      "VCO_1500MHZ" : SATA_PLL_CFG_BINARY = 2'b01;
-      default : begin
+      "VCO_3000MHZ": SATA_PLL_CFG_BINARY = 2'b00;
+      "VCO_750MHZ": SATA_PLL_CFG_BINARY = 2'b10;
+      "VCO_1500MHZ": SATA_PLL_CFG_BINARY = 2'b01;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SATA_PLL_CFG on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are VCO_3000MHZ, VCO_750MHZ, or VCO_1500MHZ.", SATA_PLL_CFG);
         #1 $finish;
       end
     endcase
 
     case (SHOW_REALIGN_COMMA)
-      "TRUE" : SHOW_REALIGN_COMMA_BINARY = 1'b1;
-      "FALSE" : SHOW_REALIGN_COMMA_BINARY = 1'b0;
-      default : begin
+      "TRUE": SHOW_REALIGN_COMMA_BINARY = 1'b1;
+      "FALSE": SHOW_REALIGN_COMMA_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SHOW_REALIGN_COMMA on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SHOW_REALIGN_COMMA);
         #1 $finish;
       end
     endcase
 
     case (SIM_RECEIVER_DETECT_PASS)
-      "TRUE" : SIM_RECEIVER_DETECT_PASS_BINARY = 0;
-      "FALSE" : SIM_RECEIVER_DETECT_PASS_BINARY = 0;
-      default : begin
+      "TRUE": SIM_RECEIVER_DETECT_PASS_BINARY = 0;
+      "FALSE": SIM_RECEIVER_DETECT_PASS_BINARY = 0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SIM_RECEIVER_DETECT_PASS on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SIM_RECEIVER_DETECT_PASS);
         #1 $finish;
       end
     endcase
 
     case (SIM_RESET_SPEEDUP)
-      "TRUE" : SIM_RESET_SPEEDUP_BINARY = 0;
-      "FALSE" : SIM_RESET_SPEEDUP_BINARY = 0;
-      default : begin
+      "TRUE": SIM_RESET_SPEEDUP_BINARY = 0;
+      "FALSE": SIM_RESET_SPEEDUP_BINARY = 0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SIM_RESET_SPEEDUP);
         #1 $finish;
       end
     endcase
 
     case (SIM_TX_EIDLE_DRIVE_LEVEL)
-      "X" : SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
-      "0" : SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
-      "1" : SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
-      "Z" : SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
-      default : begin
+      "X": SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
+      "0": SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
+      "1": SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
+      "Z": SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SIM_TX_EIDLE_DRIVE_LEVEL on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are X, 0, 1, or Z.", SIM_TX_EIDLE_DRIVE_LEVEL);
         #1 $finish;
       end
     endcase
 
     case (SIM_VERSION)
-      "1.0" : SIM_VERSION_BINARY = 0;
-      "1.1" : SIM_VERSION_BINARY = 0;
-      "2.0" : SIM_VERSION_BINARY = 0;
-      default : begin
+      "1.0": SIM_VERSION_BINARY = 0;
+      "1.1": SIM_VERSION_BINARY = 0;
+      "2.0": SIM_VERSION_BINARY = 0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute SIM_VERSION on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, or 2.0.", SIM_VERSION);
         #1 $finish;
       end
     endcase
 
     case (TXBUF_EN)
-      "TRUE" : TXBUF_EN_BINARY = 1'b1;
-      "FALSE" : TXBUF_EN_BINARY = 1'b0;
-      default : begin
+      "TRUE": TXBUF_EN_BINARY = 1'b1;
+      "FALSE": TXBUF_EN_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TXBUF_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", TXBUF_EN);
         #1 $finish;
       end
     endcase
 
     case (TXBUF_RESET_ON_RATE_CHANGE)
-      "FALSE" : TXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b0;
-      "TRUE" : TXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
-      default : begin
+      "FALSE": TXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b0;
+      "TRUE": TXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TXBUF_RESET_ON_RATE_CHANGE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TXBUF_RESET_ON_RATE_CHANGE);
         #1 $finish;
       end
     endcase
 
     case (TXGEARBOX_EN)
-      "FALSE" : TXGEARBOX_EN_BINARY = 1'b0;
-      "TRUE" : TXGEARBOX_EN_BINARY = 1'b1;
-      default : begin
+      "FALSE": TXGEARBOX_EN_BINARY = 1'b0;
+      "TRUE": TXGEARBOX_EN_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TXGEARBOX_EN on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TXGEARBOX_EN);
         #1 $finish;
       end
     endcase
 
     case (TXOUT_DIV)
-      2 : TXOUT_DIV_BINARY = 3'b001;
-      1 : TXOUT_DIV_BINARY = 3'b000;
-      4 : TXOUT_DIV_BINARY = 3'b010;
-      8 : TXOUT_DIV_BINARY = 3'b011;
-      16 : TXOUT_DIV_BINARY = 3'b100;
-      default : begin
+      2: TXOUT_DIV_BINARY = 3'b001;
+      1: TXOUT_DIV_BINARY = 3'b000;
+      4: TXOUT_DIV_BINARY = 3'b010;
+      8: TXOUT_DIV_BINARY = 3'b011;
+      16: TXOUT_DIV_BINARY = 3'b100;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TXOUT_DIV on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 16.", TXOUT_DIV, 2);
         #1 $finish;
       end
     endcase
 
     case (TXPI_PPMCLK_SEL)
-      "TXUSRCLK2" : TXPI_PPMCLK_SEL_BINARY = 1'b1;
-      "TXUSRCLK" : TXPI_PPMCLK_SEL_BINARY = 1'b0;
-      default : begin
+      "TXUSRCLK2": TXPI_PPMCLK_SEL_BINARY = 1'b1;
+      "TXUSRCLK": TXPI_PPMCLK_SEL_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TXPI_PPMCLK_SEL on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TXUSRCLK2, or TXUSRCLK.", TXPI_PPMCLK_SEL);
         #1 $finish;
       end
     endcase
 
     case (TX_CLK25_DIV)
-      7 : TX_CLK25_DIV_BINARY = 5'b00110;
-      1 : TX_CLK25_DIV_BINARY = 5'b00000;
-      2 : TX_CLK25_DIV_BINARY = 5'b00001;
-      3 : TX_CLK25_DIV_BINARY = 5'b00010;
-      4 : TX_CLK25_DIV_BINARY = 5'b00011;
-      5 : TX_CLK25_DIV_BINARY = 5'b00100;
-      6 : TX_CLK25_DIV_BINARY = 5'b00101;
-      8 : TX_CLK25_DIV_BINARY = 5'b00111;
-      9 : TX_CLK25_DIV_BINARY = 5'b01000;
-      10 : TX_CLK25_DIV_BINARY = 5'b01001;
-      11 : TX_CLK25_DIV_BINARY = 5'b01010;
-      12 : TX_CLK25_DIV_BINARY = 5'b01011;
-      13 : TX_CLK25_DIV_BINARY = 5'b01100;
-      14 : TX_CLK25_DIV_BINARY = 5'b01101;
-      15 : TX_CLK25_DIV_BINARY = 5'b01110;
-      16 : TX_CLK25_DIV_BINARY = 5'b01111;
-      17 : TX_CLK25_DIV_BINARY = 5'b10000;
-      18 : TX_CLK25_DIV_BINARY = 5'b10001;
-      19 : TX_CLK25_DIV_BINARY = 5'b10010;
-      20 : TX_CLK25_DIV_BINARY = 5'b10011;
-      21 : TX_CLK25_DIV_BINARY = 5'b10100;
-      22 : TX_CLK25_DIV_BINARY = 5'b10101;
-      23 : TX_CLK25_DIV_BINARY = 5'b10110;
-      24 : TX_CLK25_DIV_BINARY = 5'b10111;
-      25 : TX_CLK25_DIV_BINARY = 5'b11000;
-      26 : TX_CLK25_DIV_BINARY = 5'b11001;
-      27 : TX_CLK25_DIV_BINARY = 5'b11010;
-      28 : TX_CLK25_DIV_BINARY = 5'b11011;
-      29 : TX_CLK25_DIV_BINARY = 5'b11100;
-      30 : TX_CLK25_DIV_BINARY = 5'b11101;
-      31 : TX_CLK25_DIV_BINARY = 5'b11110;
-      32 : TX_CLK25_DIV_BINARY = 5'b11111;
-      default : begin
+      7: TX_CLK25_DIV_BINARY = 5'b00110;
+      1: TX_CLK25_DIV_BINARY = 5'b00000;
+      2: TX_CLK25_DIV_BINARY = 5'b00001;
+      3: TX_CLK25_DIV_BINARY = 5'b00010;
+      4: TX_CLK25_DIV_BINARY = 5'b00011;
+      5: TX_CLK25_DIV_BINARY = 5'b00100;
+      6: TX_CLK25_DIV_BINARY = 5'b00101;
+      8: TX_CLK25_DIV_BINARY = 5'b00111;
+      9: TX_CLK25_DIV_BINARY = 5'b01000;
+      10: TX_CLK25_DIV_BINARY = 5'b01001;
+      11: TX_CLK25_DIV_BINARY = 5'b01010;
+      12: TX_CLK25_DIV_BINARY = 5'b01011;
+      13: TX_CLK25_DIV_BINARY = 5'b01100;
+      14: TX_CLK25_DIV_BINARY = 5'b01101;
+      15: TX_CLK25_DIV_BINARY = 5'b01110;
+      16: TX_CLK25_DIV_BINARY = 5'b01111;
+      17: TX_CLK25_DIV_BINARY = 5'b10000;
+      18: TX_CLK25_DIV_BINARY = 5'b10001;
+      19: TX_CLK25_DIV_BINARY = 5'b10010;
+      20: TX_CLK25_DIV_BINARY = 5'b10011;
+      21: TX_CLK25_DIV_BINARY = 5'b10100;
+      22: TX_CLK25_DIV_BINARY = 5'b10101;
+      23: TX_CLK25_DIV_BINARY = 5'b10110;
+      24: TX_CLK25_DIV_BINARY = 5'b10111;
+      25: TX_CLK25_DIV_BINARY = 5'b11000;
+      26: TX_CLK25_DIV_BINARY = 5'b11001;
+      27: TX_CLK25_DIV_BINARY = 5'b11010;
+      28: TX_CLK25_DIV_BINARY = 5'b11011;
+      29: TX_CLK25_DIV_BINARY = 5'b11100;
+      30: TX_CLK25_DIV_BINARY = 5'b11101;
+      31: TX_CLK25_DIV_BINARY = 5'b11110;
+      32: TX_CLK25_DIV_BINARY = 5'b11111;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TX_CLK25_DIV on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.", TX_CLK25_DIV, 7);
         #1 $finish;
       end
     endcase
 
     case (TX_DATA_WIDTH)
-      20 : TX_DATA_WIDTH_BINARY = 3'b011;
-      16 : TX_DATA_WIDTH_BINARY = 3'b010;
-      32 : TX_DATA_WIDTH_BINARY = 3'b100;
-      40 : TX_DATA_WIDTH_BINARY = 3'b101;
-      default : begin
+      20: TX_DATA_WIDTH_BINARY = 3'b011;
+      16: TX_DATA_WIDTH_BINARY = 3'b010;
+      32: TX_DATA_WIDTH_BINARY = 3'b100;
+      40: TX_DATA_WIDTH_BINARY = 3'b101;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TX_DATA_WIDTH on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 16 to 40.", TX_DATA_WIDTH, 20);
         #1 $finish;
       end
     endcase
 
     case (TX_DRIVE_MODE)
-      "DIRECT" : TX_DRIVE_MODE_BINARY = 5'b00000;
-      "PIPE" : TX_DRIVE_MODE_BINARY = 5'b00001;
-      "PIPEGEN3" : TX_DRIVE_MODE_BINARY = 5'b00010;
-      default : begin
+      "DIRECT": TX_DRIVE_MODE_BINARY = 5'b00000;
+      "PIPE": TX_DRIVE_MODE_BINARY = 5'b00001;
+      "PIPEGEN3": TX_DRIVE_MODE_BINARY = 5'b00010;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TX_DRIVE_MODE on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are DIRECT, PIPE, or PIPEGEN3.", TX_DRIVE_MODE);
         #1 $finish;
       end
     endcase
 
     case (TX_LOOPBACK_DRIVE_HIZ)
-      "FALSE" : TX_LOOPBACK_DRIVE_HIZ_BINARY = 1'b0;
-      "TRUE" : TX_LOOPBACK_DRIVE_HIZ_BINARY = 1'b1;
-      default : begin
+      "FALSE": TX_LOOPBACK_DRIVE_HIZ_BINARY = 1'b0;
+      "TRUE": TX_LOOPBACK_DRIVE_HIZ_BINARY = 1'b1;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TX_LOOPBACK_DRIVE_HIZ on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TX_LOOPBACK_DRIVE_HIZ);
         #1 $finish;
       end
     endcase
 
     case (TX_XCLK_SEL)
-      "TXUSR" : TX_XCLK_SEL_BINARY = 1'b1;
-      "TXOUT" : TX_XCLK_SEL_BINARY = 1'b0;
-      default : begin
+      "TXUSR": TX_XCLK_SEL_BINARY = 1'b1;
+      "TXOUT": TX_XCLK_SEL_BINARY = 1'b0;
+      default: begin
         $display("Attribute Syntax Error : The Attribute TX_XCLK_SEL on X_GTPE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TXUSR, or TXOUT.", TX_XCLK_SEL);
         #1 $finish;
       end
@@ -1541,15 +1540,13 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((ACJTAG_MODE >= 1'b0) && (ACJTAG_MODE <= 1'b1))
-      ACJTAG_MODE_BINARY = ACJTAG_MODE;
+    if ((ACJTAG_MODE >= 1'b0) && (ACJTAG_MODE <= 1'b1)) ACJTAG_MODE_BINARY = ACJTAG_MODE;
     else begin
       $display("Attribute Syntax Error : The Attribute ACJTAG_MODE on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", ACJTAG_MODE);
       #1 $finish;
     end
 
-    if ((ACJTAG_RESET >= 1'b0) && (ACJTAG_RESET <= 1'b1))
-      ACJTAG_RESET_BINARY = ACJTAG_RESET;
+    if ((ACJTAG_RESET >= 1'b0) && (ACJTAG_RESET <= 1'b1)) ACJTAG_RESET_BINARY = ACJTAG_RESET;
     else begin
       $display("Attribute Syntax Error : The Attribute ACJTAG_RESET on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", ACJTAG_RESET);
       #1 $finish;
@@ -1597,36 +1594,31 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((CFOK_CFG2 >= 7'b0000000) && (CFOK_CFG2 <= 7'b1111111))
-      CFOK_CFG2_BINARY = CFOK_CFG2;
+    if ((CFOK_CFG2 >= 7'b0000000) && (CFOK_CFG2 <= 7'b1111111)) CFOK_CFG2_BINARY = CFOK_CFG2;
     else begin
       $display("Attribute Syntax Error : The Attribute CFOK_CFG2 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", CFOK_CFG2);
       #1 $finish;
     end
 
-    if ((CFOK_CFG3 >= 7'b0000000) && (CFOK_CFG3 <= 7'b1111111))
-      CFOK_CFG3_BINARY = CFOK_CFG3;
+    if ((CFOK_CFG3 >= 7'b0000000) && (CFOK_CFG3 <= 7'b1111111)) CFOK_CFG3_BINARY = CFOK_CFG3;
     else begin
       $display("Attribute Syntax Error : The Attribute CFOK_CFG3 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", CFOK_CFG3);
       #1 $finish;
     end
 
-    if ((CFOK_CFG4 >= 1'b0) && (CFOK_CFG4 <= 1'b1))
-      CFOK_CFG4_BINARY = CFOK_CFG4;
+    if ((CFOK_CFG4 >= 1'b0) && (CFOK_CFG4 <= 1'b1)) CFOK_CFG4_BINARY = CFOK_CFG4;
     else begin
       $display("Attribute Syntax Error : The Attribute CFOK_CFG4 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", CFOK_CFG4);
       #1 $finish;
     end
 
-    if ((CFOK_CFG5 >= 2'b00) && (CFOK_CFG5 <= 2'b11))
-      CFOK_CFG5_BINARY = CFOK_CFG5;
+    if ((CFOK_CFG5 >= 2'b00) && (CFOK_CFG5 <= 2'b11)) CFOK_CFG5_BINARY = CFOK_CFG5;
     else begin
       $display("Attribute Syntax Error : The Attribute CFOK_CFG5 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", CFOK_CFG5);
       #1 $finish;
     end
 
-    if ((CFOK_CFG6 >= 4'b0000) && (CFOK_CFG6 <= 4'b1111))
-      CFOK_CFG6_BINARY = CFOK_CFG6;
+    if ((CFOK_CFG6 >= 4'b0000) && (CFOK_CFG6 <= 4'b1111)) CFOK_CFG6_BINARY = CFOK_CFG6;
     else begin
       $display("Attribute Syntax Error : The Attribute CFOK_CFG6 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", CFOK_CFG6);
       #1 $finish;
@@ -1716,15 +1708,13 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((CLK_COR_MAX_LAT >= 3) && (CLK_COR_MAX_LAT <= 60))
-      CLK_COR_MAX_LAT_BINARY = CLK_COR_MAX_LAT;
+    if ((CLK_COR_MAX_LAT >= 3) && (CLK_COR_MAX_LAT <= 60)) CLK_COR_MAX_LAT_BINARY = CLK_COR_MAX_LAT;
     else begin
       $display("Attribute Syntax Error : The Attribute CLK_COR_MAX_LAT on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  3 to 60.", CLK_COR_MAX_LAT);
       #1 $finish;
     end
 
-    if ((CLK_COR_MIN_LAT >= 3) && (CLK_COR_MIN_LAT <= 60))
-      CLK_COR_MIN_LAT_BINARY = CLK_COR_MIN_LAT;
+    if ((CLK_COR_MIN_LAT >= 3) && (CLK_COR_MIN_LAT <= 60)) CLK_COR_MIN_LAT_BINARY = CLK_COR_MIN_LAT;
     else begin
       $display("Attribute Syntax Error : The Attribute CLK_COR_MIN_LAT on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  3 to 60.", CLK_COR_MIN_LAT);
       #1 $finish;
@@ -1814,8 +1804,7 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((ES_CONTROL >= 6'b000000) && (ES_CONTROL <= 6'b111111))
-      ES_CONTROL_BINARY = ES_CONTROL;
+    if ((ES_CONTROL >= 6'b000000) && (ES_CONTROL <= 6'b111111)) ES_CONTROL_BINARY = ES_CONTROL;
     else begin
       $display("Attribute Syntax Error : The Attribute ES_CONTROL on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", ES_CONTROL);
       #1 $finish;
@@ -1828,8 +1817,7 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((ES_PRESCALE >= 5'b00000) && (ES_PRESCALE <= 5'b11111))
-      ES_PRESCALE_BINARY = ES_PRESCALE;
+    if ((ES_PRESCALE >= 5'b00000) && (ES_PRESCALE <= 5'b11111)) ES_PRESCALE_BINARY = ES_PRESCALE;
     else begin
       $display("Attribute Syntax Error : The Attribute ES_PRESCALE on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", ES_PRESCALE);
       #1 $finish;
@@ -1856,15 +1844,13 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((GEARBOX_MODE >= 3'b000) && (GEARBOX_MODE <= 3'b111))
-      GEARBOX_MODE_BINARY = GEARBOX_MODE;
+    if ((GEARBOX_MODE >= 3'b000) && (GEARBOX_MODE <= 3'b111)) GEARBOX_MODE_BINARY = GEARBOX_MODE;
     else begin
       $display("Attribute Syntax Error : The Attribute GEARBOX_MODE on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", GEARBOX_MODE);
       #1 $finish;
     end
 
-    if ((LOOPBACK_CFG >= 1'b0) && (LOOPBACK_CFG <= 1'b1))
-      LOOPBACK_CFG_BINARY = LOOPBACK_CFG;
+    if ((LOOPBACK_CFG >= 1'b0) && (LOOPBACK_CFG <= 1'b1)) LOOPBACK_CFG_BINARY = LOOPBACK_CFG;
     else begin
       $display("Attribute Syntax Error : The Attribute LOOPBACK_CFG on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", LOOPBACK_CFG);
       #1 $finish;
@@ -1884,36 +1870,31 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((PMA_RSV3 >= 2'b00) && (PMA_RSV3 <= 2'b11))
-      PMA_RSV3_BINARY = PMA_RSV3;
+    if ((PMA_RSV3 >= 2'b00) && (PMA_RSV3 <= 2'b11)) PMA_RSV3_BINARY = PMA_RSV3;
     else begin
       $display("Attribute Syntax Error : The Attribute PMA_RSV3 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", PMA_RSV3);
       #1 $finish;
     end
 
-    if ((PMA_RSV4 >= 4'b0000) && (PMA_RSV4 <= 4'b1111))
-      PMA_RSV4_BINARY = PMA_RSV4;
+    if ((PMA_RSV4 >= 4'b0000) && (PMA_RSV4 <= 4'b1111)) PMA_RSV4_BINARY = PMA_RSV4;
     else begin
       $display("Attribute Syntax Error : The Attribute PMA_RSV4 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", PMA_RSV4);
       #1 $finish;
     end
 
-    if ((PMA_RSV5 >= 1'b0) && (PMA_RSV5 <= 1'b1))
-      PMA_RSV5_BINARY = PMA_RSV5;
+    if ((PMA_RSV5 >= 1'b0) && (PMA_RSV5 <= 1'b1)) PMA_RSV5_BINARY = PMA_RSV5;
     else begin
       $display("Attribute Syntax Error : The Attribute PMA_RSV5 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", PMA_RSV5);
       #1 $finish;
     end
 
-    if ((PMA_RSV6 >= 1'b0) && (PMA_RSV6 <= 1'b1))
-      PMA_RSV6_BINARY = PMA_RSV6;
+    if ((PMA_RSV6 >= 1'b0) && (PMA_RSV6 <= 1'b1)) PMA_RSV6_BINARY = PMA_RSV6;
     else begin
       $display("Attribute Syntax Error : The Attribute PMA_RSV6 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", PMA_RSV6);
       #1 $finish;
     end
 
-    if ((PMA_RSV7 >= 1'b0) && (PMA_RSV7 <= 1'b1))
-      PMA_RSV7_BINARY = PMA_RSV7;
+    if ((PMA_RSV7 >= 1'b0) && (PMA_RSV7 <= 1'b1)) PMA_RSV7_BINARY = PMA_RSV7;
     else begin
       $display("Attribute Syntax Error : The Attribute PMA_RSV7 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", PMA_RSV7);
       #1 $finish;
@@ -2017,22 +1998,19 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((RXLPM_CFG >= 4'b0000) && (RXLPM_CFG <= 4'b1111))
-      RXLPM_CFG_BINARY = RXLPM_CFG;
+    if ((RXLPM_CFG >= 4'b0000) && (RXLPM_CFG <= 4'b1111)) RXLPM_CFG_BINARY = RXLPM_CFG;
     else begin
       $display("Attribute Syntax Error : The Attribute RXLPM_CFG on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RXLPM_CFG);
       #1 $finish;
     end
 
-    if ((RXLPM_CFG1 >= 1'b0) && (RXLPM_CFG1 <= 1'b1))
-      RXLPM_CFG1_BINARY = RXLPM_CFG1;
+    if ((RXLPM_CFG1 >= 1'b0) && (RXLPM_CFG1 <= 1'b1)) RXLPM_CFG1_BINARY = RXLPM_CFG1;
     else begin
       $display("Attribute Syntax Error : The Attribute RXLPM_CFG1 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXLPM_CFG1);
       #1 $finish;
     end
 
-    if ((RXLPM_CM_CFG >= 1'b0) && (RXLPM_CM_CFG <= 1'b1))
-      RXLPM_CM_CFG_BINARY = RXLPM_CM_CFG;
+    if ((RXLPM_CM_CFG >= 1'b0) && (RXLPM_CM_CFG <= 1'b1)) RXLPM_CM_CFG_BINARY = RXLPM_CM_CFG;
     else begin
       $display("Attribute Syntax Error : The Attribute RXLPM_CM_CFG on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXLPM_CM_CFG);
       #1 $finish;
@@ -2115,8 +2093,7 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((RXOOB_CFG >= 7'b0000000) && (RXOOB_CFG <= 7'b1111111))
-      RXOOB_CFG_BINARY = RXOOB_CFG;
+    if ((RXOOB_CFG >= 7'b0000000) && (RXOOB_CFG <= 7'b1111111)) RXOOB_CFG_BINARY = RXOOB_CFG;
     else begin
       $display("Attribute Syntax Error : The Attribute RXOOB_CFG on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", RXOOB_CFG);
       #1 $finish;
@@ -2150,22 +2127,19 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((RXPI_CFG0 >= 3'b000) && (RXPI_CFG0 <= 3'b111))
-      RXPI_CFG0_BINARY = RXPI_CFG0;
+    if ((RXPI_CFG0 >= 3'b000) && (RXPI_CFG0 <= 3'b111)) RXPI_CFG0_BINARY = RXPI_CFG0;
     else begin
       $display("Attribute Syntax Error : The Attribute RXPI_CFG0 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", RXPI_CFG0);
       #1 $finish;
     end
 
-    if ((RXPI_CFG1 >= 1'b0) && (RXPI_CFG1 <= 1'b1))
-      RXPI_CFG1_BINARY = RXPI_CFG1;
+    if ((RXPI_CFG1 >= 1'b0) && (RXPI_CFG1 <= 1'b1)) RXPI_CFG1_BINARY = RXPI_CFG1;
     else begin
       $display("Attribute Syntax Error : The Attribute RXPI_CFG1 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXPI_CFG1);
       #1 $finish;
     end
 
-    if ((RXPI_CFG2 >= 1'b0) && (RXPI_CFG2 <= 1'b1))
-      RXPI_CFG2_BINARY = RXPI_CFG2;
+    if ((RXPI_CFG2 >= 1'b0) && (RXPI_CFG2 <= 1'b1)) RXPI_CFG2_BINARY = RXPI_CFG2;
     else begin
       $display("Attribute Syntax Error : The Attribute RXPI_CFG2 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXPI_CFG2);
       #1 $finish;
@@ -2199,8 +2173,7 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((RXSYNC_OVRD >= 1'b0) && (RXSYNC_OVRD <= 1'b1))
-      RXSYNC_OVRD_BINARY = RXSYNC_OVRD;
+    if ((RXSYNC_OVRD >= 1'b0) && (RXSYNC_OVRD <= 1'b1)) RXSYNC_OVRD_BINARY = RXSYNC_OVRD;
     else begin
       $display("Attribute Syntax Error : The Attribute RXSYNC_OVRD on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXSYNC_OVRD);
       #1 $finish;
@@ -2227,29 +2200,25 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((RX_CLKMUX_EN >= 1'b0) && (RX_CLKMUX_EN <= 1'b1))
-      RX_CLKMUX_EN_BINARY = RX_CLKMUX_EN;
+    if ((RX_CLKMUX_EN >= 1'b0) && (RX_CLKMUX_EN <= 1'b1)) RX_CLKMUX_EN_BINARY = RX_CLKMUX_EN;
     else begin
       $display("Attribute Syntax Error : The Attribute RX_CLKMUX_EN on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_CLKMUX_EN);
       #1 $finish;
     end
 
-    if ((RX_CM_SEL >= 2'b00) && (RX_CM_SEL <= 2'b11))
-      RX_CM_SEL_BINARY = RX_CM_SEL;
+    if ((RX_CM_SEL >= 2'b00) && (RX_CM_SEL <= 2'b11)) RX_CM_SEL_BINARY = RX_CM_SEL;
     else begin
       $display("Attribute Syntax Error : The Attribute RX_CM_SEL on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RX_CM_SEL);
       #1 $finish;
     end
 
-    if ((RX_CM_TRIM >= 4'b0000) && (RX_CM_TRIM <= 4'b1111))
-      RX_CM_TRIM_BINARY = RX_CM_TRIM;
+    if ((RX_CM_TRIM >= 4'b0000) && (RX_CM_TRIM <= 4'b1111)) RX_CM_TRIM_BINARY = RX_CM_TRIM;
     else begin
       $display("Attribute Syntax Error : The Attribute RX_CM_TRIM on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RX_CM_TRIM);
       #1 $finish;
     end
 
-    if ((RX_DDI_SEL >= 6'b000000) && (RX_DDI_SEL <= 6'b111111))
-      RX_DDI_SEL_BINARY = RX_DDI_SEL;
+    if ((RX_DDI_SEL >= 6'b000000) && (RX_DDI_SEL <= 6'b111111)) RX_DDI_SEL_BINARY = RX_DDI_SEL;
     else begin
       $display("Attribute Syntax Error : The Attribute RX_DDI_SEL on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", RX_DDI_SEL);
       #1 $finish;
@@ -2269,15 +2238,13 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((SAS_MAX_COM >= 1) && (SAS_MAX_COM <= 127))
-      SAS_MAX_COM_BINARY = SAS_MAX_COM;
+    if ((SAS_MAX_COM >= 1) && (SAS_MAX_COM <= 127)) SAS_MAX_COM_BINARY = SAS_MAX_COM;
     else begin
       $display("Attribute Syntax Error : The Attribute SAS_MAX_COM on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 127.", SAS_MAX_COM);
       #1 $finish;
     end
 
-    if ((SAS_MIN_COM >= 1) && (SAS_MIN_COM <= 63))
-      SAS_MIN_COM_BINARY = SAS_MIN_COM;
+    if ((SAS_MIN_COM >= 1) && (SAS_MIN_COM <= 63)) SAS_MIN_COM_BINARY = SAS_MIN_COM;
     else begin
       $display("Attribute Syntax Error : The Attribute SAS_MIN_COM on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SAS_MIN_COM);
       #1 $finish;
@@ -2304,43 +2271,37 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((SATA_MAX_BURST >= 1) && (SATA_MAX_BURST <= 63))
-      SATA_MAX_BURST_BINARY = SATA_MAX_BURST;
+    if ((SATA_MAX_BURST >= 1) && (SATA_MAX_BURST <= 63)) SATA_MAX_BURST_BINARY = SATA_MAX_BURST;
     else begin
       $display("Attribute Syntax Error : The Attribute SATA_MAX_BURST on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MAX_BURST);
       #1 $finish;
     end
 
-    if ((SATA_MAX_INIT >= 1) && (SATA_MAX_INIT <= 63))
-      SATA_MAX_INIT_BINARY = SATA_MAX_INIT;
+    if ((SATA_MAX_INIT >= 1) && (SATA_MAX_INIT <= 63)) SATA_MAX_INIT_BINARY = SATA_MAX_INIT;
     else begin
       $display("Attribute Syntax Error : The Attribute SATA_MAX_INIT on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MAX_INIT);
       #1 $finish;
     end
 
-    if ((SATA_MAX_WAKE >= 1) && (SATA_MAX_WAKE <= 63))
-      SATA_MAX_WAKE_BINARY = SATA_MAX_WAKE;
+    if ((SATA_MAX_WAKE >= 1) && (SATA_MAX_WAKE <= 63)) SATA_MAX_WAKE_BINARY = SATA_MAX_WAKE;
     else begin
       $display("Attribute Syntax Error : The Attribute SATA_MAX_WAKE on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MAX_WAKE);
       #1 $finish;
     end
 
-    if ((SATA_MIN_BURST >= 1) && (SATA_MIN_BURST <= 61))
-      SATA_MIN_BURST_BINARY = SATA_MIN_BURST;
+    if ((SATA_MIN_BURST >= 1) && (SATA_MIN_BURST <= 61)) SATA_MIN_BURST_BINARY = SATA_MIN_BURST;
     else begin
       $display("Attribute Syntax Error : The Attribute SATA_MIN_BURST on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 61.", SATA_MIN_BURST);
       #1 $finish;
     end
 
-    if ((SATA_MIN_INIT >= 1) && (SATA_MIN_INIT <= 63))
-      SATA_MIN_INIT_BINARY = SATA_MIN_INIT;
+    if ((SATA_MIN_INIT >= 1) && (SATA_MIN_INIT <= 63)) SATA_MIN_INIT_BINARY = SATA_MIN_INIT;
     else begin
       $display("Attribute Syntax Error : The Attribute SATA_MIN_INIT on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MIN_INIT);
       #1 $finish;
     end
 
-    if ((SATA_MIN_WAKE >= 1) && (SATA_MIN_WAKE <= 63))
-      SATA_MIN_WAKE_BINARY = SATA_MIN_WAKE;
+    if ((SATA_MIN_WAKE >= 1) && (SATA_MIN_WAKE <= 63)) SATA_MIN_WAKE_BINARY = SATA_MIN_WAKE;
     else begin
       $display("Attribute Syntax Error : The Attribute SATA_MIN_WAKE on X_GTPE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MIN_WAKE);
       #1 $finish;
@@ -2360,8 +2321,7 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((TXOOB_CFG >= 1'b0) && (TXOOB_CFG <= 1'b1))
-      TXOOB_CFG_BINARY = TXOOB_CFG;
+    if ((TXOOB_CFG >= 1'b0) && (TXOOB_CFG <= 1'b1)) TXOOB_CFG_BINARY = TXOOB_CFG;
     else begin
       $display("Attribute Syntax Error : The Attribute TXOOB_CFG on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXOOB_CFG);
       #1 $finish;
@@ -2381,50 +2341,43 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((TXPI_CFG0 >= 2'b00) && (TXPI_CFG0 <= 2'b11))
-      TXPI_CFG0_BINARY = TXPI_CFG0;
+    if ((TXPI_CFG0 >= 2'b00) && (TXPI_CFG0 <= 2'b11)) TXPI_CFG0_BINARY = TXPI_CFG0;
     else begin
       $display("Attribute Syntax Error : The Attribute TXPI_CFG0 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", TXPI_CFG0);
       #1 $finish;
     end
 
-    if ((TXPI_CFG1 >= 2'b00) && (TXPI_CFG1 <= 2'b11))
-      TXPI_CFG1_BINARY = TXPI_CFG1;
+    if ((TXPI_CFG1 >= 2'b00) && (TXPI_CFG1 <= 2'b11)) TXPI_CFG1_BINARY = TXPI_CFG1;
     else begin
       $display("Attribute Syntax Error : The Attribute TXPI_CFG1 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", TXPI_CFG1);
       #1 $finish;
     end
 
-    if ((TXPI_CFG2 >= 2'b00) && (TXPI_CFG2 <= 2'b11))
-      TXPI_CFG2_BINARY = TXPI_CFG2;
+    if ((TXPI_CFG2 >= 2'b00) && (TXPI_CFG2 <= 2'b11)) TXPI_CFG2_BINARY = TXPI_CFG2;
     else begin
       $display("Attribute Syntax Error : The Attribute TXPI_CFG2 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", TXPI_CFG2);
       #1 $finish;
     end
 
-    if ((TXPI_CFG3 >= 1'b0) && (TXPI_CFG3 <= 1'b1))
-      TXPI_CFG3_BINARY = TXPI_CFG3;
+    if ((TXPI_CFG3 >= 1'b0) && (TXPI_CFG3 <= 1'b1)) TXPI_CFG3_BINARY = TXPI_CFG3;
     else begin
       $display("Attribute Syntax Error : The Attribute TXPI_CFG3 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXPI_CFG3);
       #1 $finish;
     end
 
-    if ((TXPI_CFG4 >= 1'b0) && (TXPI_CFG4 <= 1'b1))
-      TXPI_CFG4_BINARY = TXPI_CFG4;
+    if ((TXPI_CFG4 >= 1'b0) && (TXPI_CFG4 <= 1'b1)) TXPI_CFG4_BINARY = TXPI_CFG4;
     else begin
       $display("Attribute Syntax Error : The Attribute TXPI_CFG4 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXPI_CFG4);
       #1 $finish;
     end
 
-    if ((TXPI_CFG5 >= 3'b000) && (TXPI_CFG5 <= 3'b111))
-      TXPI_CFG5_BINARY = TXPI_CFG5;
+    if ((TXPI_CFG5 >= 3'b000) && (TXPI_CFG5 <= 3'b111)) TXPI_CFG5_BINARY = TXPI_CFG5;
     else begin
       $display("Attribute Syntax Error : The Attribute TXPI_CFG5 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", TXPI_CFG5);
       #1 $finish;
     end
 
-    if ((TXPI_GREY_SEL >= 1'b0) && (TXPI_GREY_SEL <= 1'b1))
-      TXPI_GREY_SEL_BINARY = TXPI_GREY_SEL;
+    if ((TXPI_GREY_SEL >= 1'b0) && (TXPI_GREY_SEL <= 1'b1)) TXPI_GREY_SEL_BINARY = TXPI_GREY_SEL;
     else begin
       $display("Attribute Syntax Error : The Attribute TXPI_GREY_SEL on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXPI_GREY_SEL);
       #1 $finish;
@@ -2465,8 +2418,7 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((TXSYNC_OVRD >= 1'b0) && (TXSYNC_OVRD <= 1'b1))
-      TXSYNC_OVRD_BINARY = TXSYNC_OVRD;
+    if ((TXSYNC_OVRD >= 1'b0) && (TXSYNC_OVRD <= 1'b1)) TXSYNC_OVRD_BINARY = TXSYNC_OVRD;
     else begin
       $display("Attribute Syntax Error : The Attribute TXSYNC_OVRD on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXSYNC_OVRD);
       #1 $finish;
@@ -2479,22 +2431,19 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((TX_CLKMUX_EN >= 1'b0) && (TX_CLKMUX_EN <= 1'b1))
-      TX_CLKMUX_EN_BINARY = TX_CLKMUX_EN;
+    if ((TX_CLKMUX_EN >= 1'b0) && (TX_CLKMUX_EN <= 1'b1)) TX_CLKMUX_EN_BINARY = TX_CLKMUX_EN;
     else begin
       $display("Attribute Syntax Error : The Attribute TX_CLKMUX_EN on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TX_CLKMUX_EN);
       #1 $finish;
     end
 
-    if ((TX_DEEMPH0 >= 6'b000000) && (TX_DEEMPH0 <= 6'b111111))
-      TX_DEEMPH0_BINARY = TX_DEEMPH0;
+    if ((TX_DEEMPH0 >= 6'b000000) && (TX_DEEMPH0 <= 6'b111111)) TX_DEEMPH0_BINARY = TX_DEEMPH0;
     else begin
       $display("Attribute Syntax Error : The Attribute TX_DEEMPH0 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", TX_DEEMPH0);
       #1 $finish;
     end
 
-    if ((TX_DEEMPH1 >= 6'b000000) && (TX_DEEMPH1 <= 6'b111111))
-      TX_DEEMPH1_BINARY = TX_DEEMPH1;
+    if ((TX_DEEMPH1 >= 6'b000000) && (TX_DEEMPH1 <= 6'b111111)) TX_DEEMPH1_BINARY = TX_DEEMPH1;
     else begin
       $display("Attribute Syntax Error : The Attribute TX_DEEMPH1 on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", TX_DEEMPH1);
       #1 $finish;
@@ -2605,8 +2554,7 @@ module GTPE2_CHANNEL (
       #1 $finish;
     end
 
-    if ((UCODEER_CLR >= 1'b0) && (UCODEER_CLR <= 1'b1))
-      UCODEER_CLR_BINARY = UCODEER_CLR;
+    if ((UCODEER_CLR >= 1'b0) && (UCODEER_CLR <= 1'b1)) UCODEER_CLR_BINARY = UCODEER_CLR;
     else begin
       $display("Attribute Syntax Error : The Attribute UCODEER_CLR on X_GTPE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", UCODEER_CLR);
       #1 $finish;
@@ -2850,93 +2798,84 @@ module GTPE2_CHANNEL (
   wire delay_TXUSRCLK2;
   wire delay_TXUSRCLK;
 
-   
-   //drp monitor
-   reg drpen_r1 = 1'b0;
-   reg drpen_r2 = 1'b0;
-   reg drpwe_r1 = 1'b0;
-   reg drpwe_r2 = 1'b0;
-   
-   reg [1:0] sfsm = 2'b01;
-    
-   localparam FSM_IDLE = 2'b01;  
-   localparam FSM_WAIT = 2'b10;
-  
 
-   always @(posedge DRPCLK)
-     begin
-	// pipeline the DRPEN and DRPWE
-        drpen_r1 <= DRPEN;
-        drpwe_r1 <= DRPWE;
-	drpen_r2 <= drpen_r1;
-        drpwe_r2 <= drpwe_r1;
+  //drp monitor
+  reg drpen_r1 = 1'b0;
+  reg drpen_r2 = 1'b0;
+  reg drpwe_r1 = 1'b0;
+  reg drpwe_r2 = 1'b0;
 
-	
-	// Check -  if DRPEN or DRPWE is more than 1 DCLK
-	if ((drpen_r1 == 1'b1) && (drpen_r2 == 1'b1)) 
-	  begin
-	     $display("DRC Error : DRPEN is high for more than 1 DRPCLK on %m instance");
-	     $finish; 
-          end
-	
-	if ((drpwe_r1 == 1'b1) && (drpwe_r2 == 1'b1))
-	  begin
-             $display("DRC Error : DRPWE is high for more than 1 DRPCLK on %m instance");
-             $finish;
-          end
+  reg [1:0] sfsm = 2'b01;
+
+  localparam FSM_IDLE = 2'b01;
+  localparam FSM_WAIT = 2'b10;
 
 
-	//After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
-	case (sfsm)
-          FSM_IDLE:   
+  always @(posedge DRPCLK) begin
+    // pipeline the DRPEN and DRPWE
+    drpen_r1 <= DRPEN;
+    drpwe_r1 <= DRPWE;
+    drpen_r2 <= drpen_r1;
+    drpwe_r2 <= drpwe_r1;
+
+
+    // Check -  if DRPEN or DRPWE is more than 1 DCLK
+    if ((drpen_r1 == 1'b1) && (drpen_r2 == 1'b1)) begin
+      $display("DRC Error : DRPEN is high for more than 1 DRPCLK on %m instance");
+      $finish;
+    end
+
+    if ((drpwe_r1 == 1'b1) && (drpwe_r2 == 1'b1)) begin
+      $display("DRC Error : DRPWE is high for more than 1 DRPCLK on %m instance");
+      $finish;
+    end
+
+
+    //After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
+    case (sfsm)
+      FSM_IDLE:   
             begin
                if(DRPEN == 1'b1)
 		 sfsm <= FSM_WAIT;  
             end
-          
-          FSM_WAIT:
-            begin
-               // After the 1st DRPEN, 4 cases can happen
-               // DRPEN DRPRDY NEXT STATE
-               // 0     0      FSM_WAIT - wait for DRPRDY
-               // 0     1      FSM_IDLE - normal operation
-               // 1     0      FSM_WAIT - display error and wait for DRPRDY
-               // 1     1      FSM_WAIT - normal operation. Per UG470, DRPEN and DRPRDY can be at the same cycle.
-               
-               //Add the check for another DPREN pulse
-               if(DRPEN === 1'b1 && delay_DRPRDY === 1'b0) 
-		 begin
-		    $display("DRC Error : DRPEN is enabled before DRPRDY returns on %m instance");  
-		    $finish;
-		 end
 
-               //Add the check for another DRPWE pulse
-               if ((DRPWE === 1'b1) && (DRPEN === 1'b0))
-		 begin
-		    $display("DRC Error : DRPWE is enabled before DRPRDY returns on %m instance");
-		    $finish;
-		 end
-                    
-               if ((delay_DRPRDY === 1'b1) && (DRPEN === 1'b0))
-		 begin
-		    sfsm <= FSM_IDLE;
-		 end  
-               
-               if ((delay_DRPRDY === 1'b1)&& (DRPEN === 1'b1))
-		 begin
-		    sfsm <= FSM_WAIT;
-		 end  
-            end
-        
-          default:                  
-            begin
-               $display("DRC Error : Default state in DRP FSM.");
-               $finish;
-            end
-	endcase
+      FSM_WAIT: begin
+        // After the 1st DRPEN, 4 cases can happen
+        // DRPEN DRPRDY NEXT STATE
+        // 0     0      FSM_WAIT - wait for DRPRDY
+        // 0     1      FSM_IDLE - normal operation
+        // 1     0      FSM_WAIT - display error and wait for DRPRDY
+        // 1     1      FSM_WAIT - normal operation. Per UG470, DRPEN and DRPRDY can be at the same cycle.
 
-     end // always @ (posedge DRPCLK)
-   //end drp monitor
+        //Add the check for another DPREN pulse
+        if (DRPEN === 1'b1 && delay_DRPRDY === 1'b0) begin
+          $display("DRC Error : DRPEN is enabled before DRPRDY returns on %m instance");
+          $finish;
+        end
+
+        //Add the check for another DRPWE pulse
+        if ((DRPWE === 1'b1) && (DRPEN === 1'b0)) begin
+          $display("DRC Error : DRPWE is enabled before DRPRDY returns on %m instance");
+          $finish;
+        end
+
+        if ((delay_DRPRDY === 1'b1) && (DRPEN === 1'b0)) begin
+          sfsm <= FSM_IDLE;
+        end
+
+        if ((delay_DRPRDY === 1'b1) && (DRPEN === 1'b1)) begin
+          sfsm <= FSM_WAIT;
+        end
+      end
+
+      default: begin
+        $display("DRC Error : Default state in DRP FSM.");
+        $finish;
+      end
+    endcase
+
+  end  // always @ (posedge DRPCLK)
+  //end drp monitor
 
   reg [0:0] IS_CLKRSVD0_INVERTED_REG = IS_CLKRSVD0_INVERTED;
   reg [0:0] IS_CLKRSVD1_INVERTED_REG = IS_CLKRSVD1_INVERTED;
@@ -2948,7 +2887,7 @@ module GTPE2_CHANNEL (
   reg [0:0] IS_TXPHDLYTSTCLK_INVERTED_REG = IS_TXPHDLYTSTCLK_INVERTED;
   reg [0:0] IS_TXUSRCLK2_INVERTED_REG = IS_TXUSRCLK2_INVERTED;
   reg [0:0] IS_TXUSRCLK_INVERTED_REG = IS_TXUSRCLK_INVERTED;
-   
+
   assign #(OUTCLK_DELAY) RXOUTCLK = delay_RXOUTCLK;
   assign #(OUTCLK_DELAY) TXOUTCLK = delay_TXOUTCLK;
 
@@ -3016,8 +2955,8 @@ module GTPE2_CHANNEL (
   assign #(out_delay) TXRESETDONE = delay_TXRESETDONE;
   assign #(out_delay) TXSYNCDONE = delay_TXSYNCDONE;
   assign #(out_delay) TXSYNCOUT = delay_TXSYNCOUT;
-  
-`ifndef XIL_TIMING // unisim
+
+`ifndef XIL_TIMING  // unisim
   assign #(INCLK_DELAY) delay_CLKRSVD0 = CLKRSVD0 ^ IS_CLKRSVD0_INVERTED_REG;
   assign #(INCLK_DELAY) delay_CLKRSVD1 = CLKRSVD1 ^ IS_CLKRSVD1_INVERTED_REG;
   assign #(INCLK_DELAY) delay_DMONITORCLK = DMONITORCLK ^ IS_DMONITORCLK_INVERTED_REG;
@@ -3026,7 +2965,7 @@ module GTPE2_CHANNEL (
   assign #(INCLK_DELAY) delay_PLL1CLK = PLL1CLK;
   assign #(INCLK_DELAY) delay_RXUSRCLK = RXUSRCLK ^ IS_RXUSRCLK2_INVERTED_REG;
   assign #(INCLK_DELAY) delay_RXUSRCLK2 = RXUSRCLK2 ^ IS_RXUSRCLK2_INVERTED_REG;
-  assign #(INCLK_DELAY) delay_SIGVALIDCLK = SIGVALIDCLK^  IS_SIGVALIDCLK_INVERTED_REG;
+  assign #(INCLK_DELAY) delay_SIGVALIDCLK = SIGVALIDCLK ^ IS_SIGVALIDCLK_INVERTED_REG;
   assign #(INCLK_DELAY) delay_TXPHDLYTSTCLK = TXPHDLYTSTCLK ^ IS_TXPHDLYTSTCLK_INVERTED_REG;
   assign #(INCLK_DELAY) delay_TXUSRCLK = TXUSRCLK;
   assign #(INCLK_DELAY) delay_TXUSRCLK2 = TXUSRCLK2;
@@ -3180,9 +3119,9 @@ module GTPE2_CHANNEL (
   assign #(in_delay) delay_TXSYNCMODE = TXSYNCMODE;
   assign #(in_delay) delay_TXSYSCLKSEL = TXSYSCLKSEL;
   assign #(in_delay) delay_TXUSERRDY = TXUSERRDY;
-`endif //  `ifndef XIL_TIMING
+`endif  //  `ifndef XIL_TIMING
 
-`ifdef XIL_TIMING //Simprim
+`ifdef XIL_TIMING  //Simprim
   assign delay_CFGRESET = CFGRESET;
   assign delay_CLKRSVD0 = CLKRSVD0;
   assign delay_CLKRSVD1 = CLKRSVD1;
@@ -3324,500 +3263,499 @@ module GTPE2_CHANNEL (
 `endif
 
   B_GTPE2_CHANNEL #(
-    .ACJTAG_DEBUG_MODE (ACJTAG_DEBUG_MODE),
-    .ACJTAG_MODE (ACJTAG_MODE),
-    .ACJTAG_RESET (ACJTAG_RESET),
-    .ADAPT_CFG0 (ADAPT_CFG0),
-    .ALIGN_COMMA_DOUBLE (ALIGN_COMMA_DOUBLE),
-    .ALIGN_COMMA_ENABLE (ALIGN_COMMA_ENABLE),
-    .ALIGN_COMMA_WORD (ALIGN_COMMA_WORD),
-    .ALIGN_MCOMMA_DET (ALIGN_MCOMMA_DET),
-    .ALIGN_MCOMMA_VALUE (ALIGN_MCOMMA_VALUE),
-    .ALIGN_PCOMMA_DET (ALIGN_PCOMMA_DET),
-    .ALIGN_PCOMMA_VALUE (ALIGN_PCOMMA_VALUE),
-    .CBCC_DATA_SOURCE_SEL (CBCC_DATA_SOURCE_SEL),
-    .CFOK_CFG (CFOK_CFG),
-    .CFOK_CFG2 (CFOK_CFG2),
-    .CFOK_CFG3 (CFOK_CFG3),
-    .CFOK_CFG4 (CFOK_CFG4),
-    .CFOK_CFG5 (CFOK_CFG5),
-    .CFOK_CFG6 (CFOK_CFG6),
-    .CHAN_BOND_KEEP_ALIGN (CHAN_BOND_KEEP_ALIGN),
-    .CHAN_BOND_MAX_SKEW (CHAN_BOND_MAX_SKEW),
-    .CHAN_BOND_SEQ_1_1 (CHAN_BOND_SEQ_1_1),
-    .CHAN_BOND_SEQ_1_2 (CHAN_BOND_SEQ_1_2),
-    .CHAN_BOND_SEQ_1_3 (CHAN_BOND_SEQ_1_3),
-    .CHAN_BOND_SEQ_1_4 (CHAN_BOND_SEQ_1_4),
-    .CHAN_BOND_SEQ_1_ENABLE (CHAN_BOND_SEQ_1_ENABLE),
-    .CHAN_BOND_SEQ_2_1 (CHAN_BOND_SEQ_2_1),
-    .CHAN_BOND_SEQ_2_2 (CHAN_BOND_SEQ_2_2),
-    .CHAN_BOND_SEQ_2_3 (CHAN_BOND_SEQ_2_3),
-    .CHAN_BOND_SEQ_2_4 (CHAN_BOND_SEQ_2_4),
-    .CHAN_BOND_SEQ_2_ENABLE (CHAN_BOND_SEQ_2_ENABLE),
-    .CHAN_BOND_SEQ_2_USE (CHAN_BOND_SEQ_2_USE),
-    .CHAN_BOND_SEQ_LEN (CHAN_BOND_SEQ_LEN),
-    .CLK_COMMON_SWING (CLK_COMMON_SWING),
-    .CLK_CORRECT_USE (CLK_CORRECT_USE),
-    .CLK_COR_KEEP_IDLE (CLK_COR_KEEP_IDLE),
-    .CLK_COR_MAX_LAT (CLK_COR_MAX_LAT),
-    .CLK_COR_MIN_LAT (CLK_COR_MIN_LAT),
-    .CLK_COR_PRECEDENCE (CLK_COR_PRECEDENCE),
-    .CLK_COR_REPEAT_WAIT (CLK_COR_REPEAT_WAIT),
-    .CLK_COR_SEQ_1_1 (CLK_COR_SEQ_1_1),
-    .CLK_COR_SEQ_1_2 (CLK_COR_SEQ_1_2),
-    .CLK_COR_SEQ_1_3 (CLK_COR_SEQ_1_3),
-    .CLK_COR_SEQ_1_4 (CLK_COR_SEQ_1_4),
-    .CLK_COR_SEQ_1_ENABLE (CLK_COR_SEQ_1_ENABLE),
-    .CLK_COR_SEQ_2_1 (CLK_COR_SEQ_2_1),
-    .CLK_COR_SEQ_2_2 (CLK_COR_SEQ_2_2),
-    .CLK_COR_SEQ_2_3 (CLK_COR_SEQ_2_3),
-    .CLK_COR_SEQ_2_4 (CLK_COR_SEQ_2_4),
-    .CLK_COR_SEQ_2_ENABLE (CLK_COR_SEQ_2_ENABLE),
-    .CLK_COR_SEQ_2_USE (CLK_COR_SEQ_2_USE),
-    .CLK_COR_SEQ_LEN (CLK_COR_SEQ_LEN),
-    .DEC_MCOMMA_DETECT (DEC_MCOMMA_DETECT),
-    .DEC_PCOMMA_DETECT (DEC_PCOMMA_DETECT),
-    .DEC_VALID_COMMA_ONLY (DEC_VALID_COMMA_ONLY),
-    .DMONITOR_CFG (DMONITOR_CFG),
-    .ES_CLK_PHASE_SEL (ES_CLK_PHASE_SEL),
-    .ES_CONTROL (ES_CONTROL),
-    .ES_ERRDET_EN (ES_ERRDET_EN),
-    .ES_EYE_SCAN_EN (ES_EYE_SCAN_EN),
-    .ES_HORZ_OFFSET (ES_HORZ_OFFSET),
-    .ES_PMA_CFG (ES_PMA_CFG),
-    .ES_PRESCALE (ES_PRESCALE),
-    .ES_QUALIFIER (ES_QUALIFIER),
-    .ES_QUAL_MASK (ES_QUAL_MASK),
-    .ES_SDATA_MASK (ES_SDATA_MASK),
-    .ES_VERT_OFFSET (ES_VERT_OFFSET),
-    .FTS_DESKEW_SEQ_ENABLE (FTS_DESKEW_SEQ_ENABLE),
-    .FTS_LANE_DESKEW_CFG (FTS_LANE_DESKEW_CFG),
-    .FTS_LANE_DESKEW_EN (FTS_LANE_DESKEW_EN),
-    .GEARBOX_MODE (GEARBOX_MODE),
-    .LOOPBACK_CFG (LOOPBACK_CFG),
-    .OUTREFCLK_SEL_INV (OUTREFCLK_SEL_INV),
-    .PCS_PCIE_EN (PCS_PCIE_EN),
-    .PCS_RSVD_ATTR (PCS_RSVD_ATTR),
-    .PD_TRANS_TIME_FROM_P2 (PD_TRANS_TIME_FROM_P2),
-    .PD_TRANS_TIME_NONE_P2 (PD_TRANS_TIME_NONE_P2),
-    .PD_TRANS_TIME_TO_P2 (PD_TRANS_TIME_TO_P2),
-    .PMA_LOOPBACK_CFG (PMA_LOOPBACK_CFG),
-    .PMA_RSV (PMA_RSV),
-    .PMA_RSV2 (PMA_RSV2),
-    .PMA_RSV3 (PMA_RSV3),
-    .PMA_RSV4 (PMA_RSV4),
-    .PMA_RSV5 (PMA_RSV5),
-    .PMA_RSV6 (PMA_RSV6),
-    .PMA_RSV7 (PMA_RSV7),
-    .RXBUFRESET_TIME (RXBUFRESET_TIME),
-    .RXBUF_ADDR_MODE (RXBUF_ADDR_MODE),
-    .RXBUF_EIDLE_HI_CNT (RXBUF_EIDLE_HI_CNT),
-    .RXBUF_EIDLE_LO_CNT (RXBUF_EIDLE_LO_CNT),
-    .RXBUF_EN (RXBUF_EN),
-    .RXBUF_RESET_ON_CB_CHANGE (RXBUF_RESET_ON_CB_CHANGE),
-    .RXBUF_RESET_ON_COMMAALIGN (RXBUF_RESET_ON_COMMAALIGN),
-    .RXBUF_RESET_ON_EIDLE (RXBUF_RESET_ON_EIDLE),
-    .RXBUF_RESET_ON_RATE_CHANGE (RXBUF_RESET_ON_RATE_CHANGE),
-    .RXBUF_THRESH_OVFLW (RXBUF_THRESH_OVFLW),
-    .RXBUF_THRESH_OVRD (RXBUF_THRESH_OVRD),
-    .RXBUF_THRESH_UNDFLW (RXBUF_THRESH_UNDFLW),
-    .RXCDRFREQRESET_TIME (RXCDRFREQRESET_TIME),
-    .RXCDRPHRESET_TIME (RXCDRPHRESET_TIME),
-    .RXCDR_CFG (RXCDR_CFG),
-    .RXCDR_FR_RESET_ON_EIDLE (RXCDR_FR_RESET_ON_EIDLE),
-    .RXCDR_HOLD_DURING_EIDLE (RXCDR_HOLD_DURING_EIDLE),
-    .RXCDR_LOCK_CFG (RXCDR_LOCK_CFG),
-    .RXCDR_PH_RESET_ON_EIDLE (RXCDR_PH_RESET_ON_EIDLE),
-    .RXDLY_CFG (RXDLY_CFG),
-    .RXDLY_LCFG (RXDLY_LCFG),
-    .RXDLY_TAP_CFG (RXDLY_TAP_CFG),
-    .RXGEARBOX_EN (RXGEARBOX_EN),
-    .RXISCANRESET_TIME (RXISCANRESET_TIME),
-    .RXLPMRESET_TIME (RXLPMRESET_TIME),
-    .RXLPM_BIAS_STARTUP_DISABLE (RXLPM_BIAS_STARTUP_DISABLE),
-    .RXLPM_CFG (RXLPM_CFG),
-    .RXLPM_CFG1 (RXLPM_CFG1),
-    .RXLPM_CM_CFG (RXLPM_CM_CFG),
-    .RXLPM_GC_CFG (RXLPM_GC_CFG),
-    .RXLPM_GC_CFG2 (RXLPM_GC_CFG2),
-    .RXLPM_HF_CFG (RXLPM_HF_CFG),
-    .RXLPM_HF_CFG2 (RXLPM_HF_CFG2),
-    .RXLPM_HF_CFG3 (RXLPM_HF_CFG3),
-    .RXLPM_HOLD_DURING_EIDLE (RXLPM_HOLD_DURING_EIDLE),
-    .RXLPM_INCM_CFG (RXLPM_INCM_CFG),
-    .RXLPM_IPCM_CFG (RXLPM_IPCM_CFG),
-    .RXLPM_LF_CFG (RXLPM_LF_CFG),
-    .RXLPM_LF_CFG2 (RXLPM_LF_CFG2),
-    .RXLPM_OSINT_CFG (RXLPM_OSINT_CFG),
-    .RXOOB_CFG (RXOOB_CFG),
-    .RXOOB_CLK_CFG (RXOOB_CLK_CFG),
-    .RXOSCALRESET_TIME (RXOSCALRESET_TIME),
-    .RXOSCALRESET_TIMEOUT (RXOSCALRESET_TIMEOUT),
-    .RXOUT_DIV (RXOUT_DIV),
-    .RXPCSRESET_TIME (RXPCSRESET_TIME),
-    .RXPHDLY_CFG (RXPHDLY_CFG),
-    .RXPH_CFG (RXPH_CFG),
-    .RXPH_MONITOR_SEL (RXPH_MONITOR_SEL),
-    .RXPI_CFG0 (RXPI_CFG0),
-    .RXPI_CFG1 (RXPI_CFG1),
-    .RXPI_CFG2 (RXPI_CFG2),
-    .RXPMARESET_TIME (RXPMARESET_TIME),
-    .RXPRBS_ERR_LOOPBACK (RXPRBS_ERR_LOOPBACK),
-    .RXSLIDE_AUTO_WAIT (RXSLIDE_AUTO_WAIT),
-    .RXSLIDE_MODE (RXSLIDE_MODE),
-    .RXSYNC_MULTILANE (RXSYNC_MULTILANE),
-    .RXSYNC_OVRD (RXSYNC_OVRD),
-    .RXSYNC_SKIP_DA (RXSYNC_SKIP_DA),
-    .RX_BIAS_CFG (RX_BIAS_CFG),
-    .RX_BUFFER_CFG (RX_BUFFER_CFG),
-    .RX_CLK25_DIV (RX_CLK25_DIV),
-    .RX_CLKMUX_EN (RX_CLKMUX_EN),
-    .RX_CM_SEL (RX_CM_SEL),
-    .RX_CM_TRIM (RX_CM_TRIM),
-    .RX_DATA_WIDTH (RX_DATA_WIDTH),
-    .RX_DDI_SEL (RX_DDI_SEL),
-    .RX_DEBUG_CFG (RX_DEBUG_CFG),
-    .RX_DEFER_RESET_BUF_EN (RX_DEFER_RESET_BUF_EN),
-    .RX_DISPERR_SEQ_MATCH (RX_DISPERR_SEQ_MATCH),
-    .RX_OS_CFG (RX_OS_CFG),
-    .RX_SIG_VALID_DLY (RX_SIG_VALID_DLY),
-    .RX_XCLK_SEL (RX_XCLK_SEL),
-    .SAS_MAX_COM (SAS_MAX_COM),
-    .SAS_MIN_COM (SAS_MIN_COM),
-    .SATA_BURST_SEQ_LEN (SATA_BURST_SEQ_LEN),
-    .SATA_BURST_VAL (SATA_BURST_VAL),
-    .SATA_EIDLE_VAL (SATA_EIDLE_VAL),
-    .SATA_MAX_BURST (SATA_MAX_BURST),
-    .SATA_MAX_INIT (SATA_MAX_INIT),
-    .SATA_MAX_WAKE (SATA_MAX_WAKE),
-    .SATA_MIN_BURST (SATA_MIN_BURST),
-    .SATA_MIN_INIT (SATA_MIN_INIT),
-    .SATA_MIN_WAKE (SATA_MIN_WAKE),
-    .SATA_PLL_CFG (SATA_PLL_CFG),
-    .SHOW_REALIGN_COMMA (SHOW_REALIGN_COMMA),
-    .SIM_RECEIVER_DETECT_PASS (SIM_RECEIVER_DETECT_PASS),
-    .SIM_RESET_SPEEDUP (SIM_RESET_SPEEDUP),
-    .SIM_TX_EIDLE_DRIVE_LEVEL (SIM_TX_EIDLE_DRIVE_LEVEL),
-    .SIM_VERSION (SIM_VERSION),
-    .TERM_RCAL_CFG (TERM_RCAL_CFG),
-    .TERM_RCAL_OVRD (TERM_RCAL_OVRD),
-    .TRANS_TIME_RATE (TRANS_TIME_RATE),
-    .TST_RSV (TST_RSV),
-    .TXBUF_EN (TXBUF_EN),
-    .TXBUF_RESET_ON_RATE_CHANGE (TXBUF_RESET_ON_RATE_CHANGE),
-    .TXDLY_CFG (TXDLY_CFG),
-    .TXDLY_LCFG (TXDLY_LCFG),
-    .TXDLY_TAP_CFG (TXDLY_TAP_CFG),
-    .TXGEARBOX_EN (TXGEARBOX_EN),
-    .TXOOB_CFG (TXOOB_CFG),
-    .TXOUT_DIV (TXOUT_DIV),
-    .TXPCSRESET_TIME (TXPCSRESET_TIME),
-    .TXPHDLY_CFG (TXPHDLY_CFG),
-    .TXPH_CFG (TXPH_CFG),
-    .TXPH_MONITOR_SEL (TXPH_MONITOR_SEL),
-    .TXPI_CFG0 (TXPI_CFG0),
-    .TXPI_CFG1 (TXPI_CFG1),
-    .TXPI_CFG2 (TXPI_CFG2),
-    .TXPI_CFG3 (TXPI_CFG3),
-    .TXPI_CFG4 (TXPI_CFG4),
-    .TXPI_CFG5 (TXPI_CFG5),
-    .TXPI_GREY_SEL (TXPI_GREY_SEL),
-    .TXPI_INVSTROBE_SEL (TXPI_INVSTROBE_SEL),
-    .TXPI_PPMCLK_SEL (TXPI_PPMCLK_SEL),
-    .TXPI_PPM_CFG (TXPI_PPM_CFG),
-    .TXPI_SYNFREQ_PPM (TXPI_SYNFREQ_PPM),
-    .TXPMARESET_TIME (TXPMARESET_TIME),
-    .TXSYNC_MULTILANE (TXSYNC_MULTILANE),
-    .TXSYNC_OVRD (TXSYNC_OVRD),
-    .TXSYNC_SKIP_DA (TXSYNC_SKIP_DA),
-    .TX_CLK25_DIV (TX_CLK25_DIV),
-    .TX_CLKMUX_EN (TX_CLKMUX_EN),
-    .TX_DATA_WIDTH (TX_DATA_WIDTH),
-    .TX_DEEMPH0 (TX_DEEMPH0),
-    .TX_DEEMPH1 (TX_DEEMPH1),
-    .TX_DRIVE_MODE (TX_DRIVE_MODE),
-    .TX_EIDLE_ASSERT_DELAY (TX_EIDLE_ASSERT_DELAY),
-    .TX_EIDLE_DEASSERT_DELAY (TX_EIDLE_DEASSERT_DELAY),
-    .TX_LOOPBACK_DRIVE_HIZ (TX_LOOPBACK_DRIVE_HIZ),
-    .TX_MAINCURSOR_SEL (TX_MAINCURSOR_SEL),
-    .TX_MARGIN_FULL_0 (TX_MARGIN_FULL_0),
-    .TX_MARGIN_FULL_1 (TX_MARGIN_FULL_1),
-    .TX_MARGIN_FULL_2 (TX_MARGIN_FULL_2),
-    .TX_MARGIN_FULL_3 (TX_MARGIN_FULL_3),
-    .TX_MARGIN_FULL_4 (TX_MARGIN_FULL_4),
-    .TX_MARGIN_LOW_0 (TX_MARGIN_LOW_0),
-    .TX_MARGIN_LOW_1 (TX_MARGIN_LOW_1),
-    .TX_MARGIN_LOW_2 (TX_MARGIN_LOW_2),
-    .TX_MARGIN_LOW_3 (TX_MARGIN_LOW_3),
-    .TX_MARGIN_LOW_4 (TX_MARGIN_LOW_4),
-    .TX_PREDRIVER_MODE (TX_PREDRIVER_MODE),
-    .TX_RXDETECT_CFG (TX_RXDETECT_CFG),
-    .TX_RXDETECT_REF (TX_RXDETECT_REF),
-    .TX_XCLK_SEL (TX_XCLK_SEL),
-    .UCODEER_CLR (UCODEER_CLR),
-    .USE_PCS_CLK_PHASE_SEL (USE_PCS_CLK_PHASE_SEL))
-
-    B_GTPE2_CHANNEL_INST (
-    .DMONITOROUT (delay_DMONITOROUT),
-    .DRPDO (delay_DRPDO),
-    .DRPRDY (delay_DRPRDY),
-    .EYESCANDATAERROR (delay_EYESCANDATAERROR),
-    .GTPTXN (delay_GTPTXN),
-    .GTPTXP (delay_GTPTXP),
-    .PCSRSVDOUT (delay_PCSRSVDOUT),
-    .PHYSTATUS (delay_PHYSTATUS),
-    .PMARSVDOUT0 (delay_PMARSVDOUT0),
-    .PMARSVDOUT1 (delay_PMARSVDOUT1),
-    .RXBUFSTATUS (delay_RXBUFSTATUS),
-    .RXBYTEISALIGNED (delay_RXBYTEISALIGNED),
-    .RXBYTEREALIGN (delay_RXBYTEREALIGN),
-    .RXCDRLOCK (delay_RXCDRLOCK),
-    .RXCHANBONDSEQ (delay_RXCHANBONDSEQ),
-    .RXCHANISALIGNED (delay_RXCHANISALIGNED),
-    .RXCHANREALIGN (delay_RXCHANREALIGN),
-    .RXCHARISCOMMA (delay_RXCHARISCOMMA),
-    .RXCHARISK (delay_RXCHARISK),
-    .RXCHBONDO (delay_RXCHBONDO),
-    .RXCLKCORCNT (delay_RXCLKCORCNT),
-    .RXCOMINITDET (delay_RXCOMINITDET),
-    .RXCOMMADET (delay_RXCOMMADET),
-    .RXCOMSASDET (delay_RXCOMSASDET),
-    .RXCOMWAKEDET (delay_RXCOMWAKEDET),
-    .RXDATA (delay_RXDATA),
-    .RXDATAVALID (delay_RXDATAVALID),
-    .RXDISPERR (delay_RXDISPERR),
-    .RXDLYSRESETDONE (delay_RXDLYSRESETDONE),
-    .RXELECIDLE (delay_RXELECIDLE),
-    .RXHEADER (delay_RXHEADER),
-    .RXHEADERVALID (delay_RXHEADERVALID),
-    .RXNOTINTABLE (delay_RXNOTINTABLE),
-    .RXOSINTDONE (delay_RXOSINTDONE),
-    .RXOSINTSTARTED (delay_RXOSINTSTARTED),
-    .RXOSINTSTROBEDONE (delay_RXOSINTSTROBEDONE),
-    .RXOSINTSTROBESTARTED (delay_RXOSINTSTROBESTARTED),
-    .RXOUTCLK (delay_RXOUTCLK),
-    .RXOUTCLKFABRIC (delay_RXOUTCLKFABRIC),
-    .RXOUTCLKPCS (delay_RXOUTCLKPCS),
-    .RXPHALIGNDONE (delay_RXPHALIGNDONE),
-    .RXPHMONITOR (delay_RXPHMONITOR),
-    .RXPHSLIPMONITOR (delay_RXPHSLIPMONITOR),
-    .RXPMARESETDONE (delay_RXPMARESETDONE),
-    .RXPRBSERR (delay_RXPRBSERR),
-    .RXRATEDONE (delay_RXRATEDONE),
-    .RXRESETDONE (delay_RXRESETDONE),
-    .RXSTARTOFSEQ (delay_RXSTARTOFSEQ),
-    .RXSTATUS (delay_RXSTATUS),
-    .RXSYNCDONE (delay_RXSYNCDONE),
-    .RXSYNCOUT (delay_RXSYNCOUT),
-    .RXVALID (delay_RXVALID),
-    .TXBUFSTATUS (delay_TXBUFSTATUS),
-    .TXCOMFINISH (delay_TXCOMFINISH),
-    .TXDLYSRESETDONE (delay_TXDLYSRESETDONE),
-    .TXGEARBOXREADY (delay_TXGEARBOXREADY),
-    .TXOUTCLK (delay_TXOUTCLK),
-    .TXOUTCLKFABRIC (delay_TXOUTCLKFABRIC),
-    .TXOUTCLKPCS (delay_TXOUTCLKPCS),
-    .TXPHALIGNDONE (delay_TXPHALIGNDONE),
-    .TXPHINITDONE (delay_TXPHINITDONE),
-    .TXPMARESETDONE (delay_TXPMARESETDONE),
-    .TXRATEDONE (delay_TXRATEDONE),
-    .TXRESETDONE (delay_TXRESETDONE),
-    .TXSYNCDONE (delay_TXSYNCDONE),
-    .TXSYNCOUT (delay_TXSYNCOUT),
-    .CFGRESET (delay_CFGRESET),
-    .CLKRSVD0 (delay_CLKRSVD0),
-    .CLKRSVD1 (delay_CLKRSVD1),
-    .DMONFIFORESET (delay_DMONFIFORESET),
-    .DMONITORCLK (delay_DMONITORCLK),
-    .DRPADDR (delay_DRPADDR),
-    .DRPCLK (delay_DRPCLK),
-    .DRPDI (delay_DRPDI),
-    .DRPEN (delay_DRPEN),
-    .DRPWE (delay_DRPWE),
-    .EYESCANMODE (delay_EYESCANMODE),
-    .EYESCANRESET (delay_EYESCANRESET),
-    .EYESCANTRIGGER (delay_EYESCANTRIGGER),
-    .GTPRXN (delay_GTPRXN),
-    .GTPRXP (delay_GTPRXP),
-    .GTRESETSEL (delay_GTRESETSEL),
-    .GTRSVD (delay_GTRSVD),
-    .GTRXRESET (delay_GTRXRESET),
-    .GTTXRESET (delay_GTTXRESET),
-    .LOOPBACK (delay_LOOPBACK),
-    .PCSRSVDIN (delay_PCSRSVDIN),
-    .PLL0CLK (delay_PLL0CLK),
-    .PLL0REFCLK (delay_PLL0REFCLK),
-    .PLL1CLK (delay_PLL1CLK),
-    .PLL1REFCLK (delay_PLL1REFCLK),
-    .PMARSVDIN0 (delay_PMARSVDIN0),
-    .PMARSVDIN1 (delay_PMARSVDIN1),
-    .PMARSVDIN2 (delay_PMARSVDIN2),
-    .PMARSVDIN3 (delay_PMARSVDIN3),
-    .PMARSVDIN4 (delay_PMARSVDIN4),
-    .RESETOVRD (delay_RESETOVRD),
-    .RX8B10BEN (delay_RX8B10BEN),
-    .RXADAPTSELTEST (delay_RXADAPTSELTEST),
-    .RXBUFRESET (delay_RXBUFRESET),
-    .RXCDRFREQRESET (delay_RXCDRFREQRESET),
-    .RXCDRHOLD (delay_RXCDRHOLD),
-    .RXCDROVRDEN (delay_RXCDROVRDEN),
-    .RXCDRRESET (delay_RXCDRRESET),
-    .RXCDRRESETRSV (delay_RXCDRRESETRSV),
-    .RXCHBONDEN (delay_RXCHBONDEN),
-    .RXCHBONDI (delay_RXCHBONDI),
-    .RXCHBONDLEVEL (delay_RXCHBONDLEVEL),
-    .RXCHBONDMASTER (delay_RXCHBONDMASTER),
-    .RXCHBONDSLAVE (delay_RXCHBONDSLAVE),
-    .RXCOMMADETEN (delay_RXCOMMADETEN),
-    .RXDDIEN (delay_RXDDIEN),
-    .RXDFEXYDEN (delay_RXDFEXYDEN),
-    .RXDLYBYPASS (delay_RXDLYBYPASS),
-    .RXDLYEN (delay_RXDLYEN),
-    .RXDLYOVRDEN (delay_RXDLYOVRDEN),
-    .RXDLYSRESET (delay_RXDLYSRESET),
-    .RXELECIDLEMODE (delay_RXELECIDLEMODE),
-    .RXGEARBOXSLIP (delay_RXGEARBOXSLIP),
-    .RXLPMHFHOLD (delay_RXLPMHFHOLD),
-    .RXLPMHFOVRDEN (delay_RXLPMHFOVRDEN),
-    .RXLPMLFHOLD (delay_RXLPMLFHOLD),
-    .RXLPMLFOVRDEN (delay_RXLPMLFOVRDEN),
-    .RXLPMOSINTNTRLEN (delay_RXLPMOSINTNTRLEN),
-    .RXLPMRESET (delay_RXLPMRESET),
-    .RXMCOMMAALIGNEN (delay_RXMCOMMAALIGNEN),
-    .RXOOBRESET (delay_RXOOBRESET),
-    .RXOSCALRESET (delay_RXOSCALRESET),
-    .RXOSHOLD (delay_RXOSHOLD),
-    .RXOSINTCFG (delay_RXOSINTCFG),
-    .RXOSINTEN (delay_RXOSINTEN),
-    .RXOSINTHOLD (delay_RXOSINTHOLD),
-    .RXOSINTID0 (delay_RXOSINTID0),
-    .RXOSINTNTRLEN (delay_RXOSINTNTRLEN),
-    .RXOSINTOVRDEN (delay_RXOSINTOVRDEN),
-    .RXOSINTPD (delay_RXOSINTPD),
-    .RXOSINTSTROBE (delay_RXOSINTSTROBE),
-    .RXOSINTTESTOVRDEN (delay_RXOSINTTESTOVRDEN),
-    .RXOSOVRDEN (delay_RXOSOVRDEN),
-    .RXOUTCLKSEL (delay_RXOUTCLKSEL),
-    .RXPCOMMAALIGNEN (delay_RXPCOMMAALIGNEN),
-    .RXPCSRESET (delay_RXPCSRESET),
-    .RXPD (delay_RXPD),
-    .RXPHALIGN (delay_RXPHALIGN),
-    .RXPHALIGNEN (delay_RXPHALIGNEN),
-    .RXPHDLYPD (delay_RXPHDLYPD),
-    .RXPHDLYRESET (delay_RXPHDLYRESET),
-    .RXPHOVRDEN (delay_RXPHOVRDEN),
-    .RXPMARESET (delay_RXPMARESET),
-    .RXPOLARITY (delay_RXPOLARITY),
-    .RXPRBSCNTRESET (delay_RXPRBSCNTRESET),
-    .RXPRBSSEL (delay_RXPRBSSEL),
-    .RXRATE (delay_RXRATE),
-    .RXRATEMODE (delay_RXRATEMODE),
-    .RXSLIDE (delay_RXSLIDE),
-    .RXSYNCALLIN (delay_RXSYNCALLIN),
-    .RXSYNCIN (delay_RXSYNCIN),
-    .RXSYNCMODE (delay_RXSYNCMODE),
-    .RXSYSCLKSEL (delay_RXSYSCLKSEL),
-    .RXUSERRDY (delay_RXUSERRDY),
-    .RXUSRCLK (delay_RXUSRCLK),
-    .RXUSRCLK2 (delay_RXUSRCLK2),
-    .SETERRSTATUS (delay_SETERRSTATUS),
-    .SIGVALIDCLK (delay_SIGVALIDCLK),
-    .TSTIN (delay_TSTIN),
-    .TX8B10BBYPASS (delay_TX8B10BBYPASS),
-    .TX8B10BEN (delay_TX8B10BEN),
-    .TXBUFDIFFCTRL (delay_TXBUFDIFFCTRL),
-    .TXCHARDISPMODE (delay_TXCHARDISPMODE),
-    .TXCHARDISPVAL (delay_TXCHARDISPVAL),
-    .TXCHARISK (delay_TXCHARISK),
-    .TXCOMINIT (delay_TXCOMINIT),
-    .TXCOMSAS (delay_TXCOMSAS),
-    .TXCOMWAKE (delay_TXCOMWAKE),
-    .TXDATA (delay_TXDATA),
-    .TXDEEMPH (delay_TXDEEMPH),
-    .TXDETECTRX (delay_TXDETECTRX),
-    .TXDIFFCTRL (delay_TXDIFFCTRL),
-    .TXDIFFPD (delay_TXDIFFPD),
-    .TXDLYBYPASS (delay_TXDLYBYPASS),
-    .TXDLYEN (delay_TXDLYEN),
-    .TXDLYHOLD (delay_TXDLYHOLD),
-    .TXDLYOVRDEN (delay_TXDLYOVRDEN),
-    .TXDLYSRESET (delay_TXDLYSRESET),
-    .TXDLYUPDOWN (delay_TXDLYUPDOWN),
-    .TXELECIDLE (delay_TXELECIDLE),
-    .TXHEADER (delay_TXHEADER),
-    .TXINHIBIT (delay_TXINHIBIT),
-    .TXMAINCURSOR (delay_TXMAINCURSOR),
-    .TXMARGIN (delay_TXMARGIN),
-    .TXOUTCLKSEL (delay_TXOUTCLKSEL),
-    .TXPCSRESET (delay_TXPCSRESET),
-    .TXPD (delay_TXPD),
-    .TXPDELECIDLEMODE (delay_TXPDELECIDLEMODE),
-    .TXPHALIGN (delay_TXPHALIGN),
-    .TXPHALIGNEN (delay_TXPHALIGNEN),
-    .TXPHDLYPD (delay_TXPHDLYPD),
-    .TXPHDLYRESET (delay_TXPHDLYRESET),
-    .TXPHDLYTSTCLK (delay_TXPHDLYTSTCLK),
-    .TXPHINIT (delay_TXPHINIT),
-    .TXPHOVRDEN (delay_TXPHOVRDEN),
-    .TXPIPPMEN (delay_TXPIPPMEN),
-    .TXPIPPMOVRDEN (delay_TXPIPPMOVRDEN),
-    .TXPIPPMPD (delay_TXPIPPMPD),
-    .TXPIPPMSEL (delay_TXPIPPMSEL),
-    .TXPIPPMSTEPSIZE (delay_TXPIPPMSTEPSIZE),
-    .TXPISOPD (delay_TXPISOPD),
-    .TXPMARESET (delay_TXPMARESET),
-    .TXPOLARITY (delay_TXPOLARITY),
-    .TXPOSTCURSOR (delay_TXPOSTCURSOR),
-    .TXPOSTCURSORINV (delay_TXPOSTCURSORINV),
-    .TXPRBSFORCEERR (delay_TXPRBSFORCEERR),
-    .TXPRBSSEL (delay_TXPRBSSEL),
-    .TXPRECURSOR (delay_TXPRECURSOR),
-    .TXPRECURSORINV (delay_TXPRECURSORINV),
-    .TXRATE (delay_TXRATE),
-    .TXRATEMODE (delay_TXRATEMODE),
-    .TXSEQUENCE (delay_TXSEQUENCE),
-    .TXSTARTSEQ (delay_TXSTARTSEQ),
-    .TXSWING (delay_TXSWING),
-    .TXSYNCALLIN (delay_TXSYNCALLIN),
-    .TXSYNCIN (delay_TXSYNCIN),
-    .TXSYNCMODE (delay_TXSYNCMODE),
-    .TXSYSCLKSEL (delay_TXSYSCLKSEL),
-    .TXUSERRDY (delay_TXUSERRDY),
-    .TXUSRCLK (delay_TXUSRCLK),
-    .TXUSRCLK2 (delay_TXUSRCLK2),
-    .GSR (GSR)
+      .ACJTAG_DEBUG_MODE(ACJTAG_DEBUG_MODE),
+      .ACJTAG_MODE(ACJTAG_MODE),
+      .ACJTAG_RESET(ACJTAG_RESET),
+      .ADAPT_CFG0(ADAPT_CFG0),
+      .ALIGN_COMMA_DOUBLE(ALIGN_COMMA_DOUBLE),
+      .ALIGN_COMMA_ENABLE(ALIGN_COMMA_ENABLE),
+      .ALIGN_COMMA_WORD(ALIGN_COMMA_WORD),
+      .ALIGN_MCOMMA_DET(ALIGN_MCOMMA_DET),
+      .ALIGN_MCOMMA_VALUE(ALIGN_MCOMMA_VALUE),
+      .ALIGN_PCOMMA_DET(ALIGN_PCOMMA_DET),
+      .ALIGN_PCOMMA_VALUE(ALIGN_PCOMMA_VALUE),
+      .CBCC_DATA_SOURCE_SEL(CBCC_DATA_SOURCE_SEL),
+      .CFOK_CFG(CFOK_CFG),
+      .CFOK_CFG2(CFOK_CFG2),
+      .CFOK_CFG3(CFOK_CFG3),
+      .CFOK_CFG4(CFOK_CFG4),
+      .CFOK_CFG5(CFOK_CFG5),
+      .CFOK_CFG6(CFOK_CFG6),
+      .CHAN_BOND_KEEP_ALIGN(CHAN_BOND_KEEP_ALIGN),
+      .CHAN_BOND_MAX_SKEW(CHAN_BOND_MAX_SKEW),
+      .CHAN_BOND_SEQ_1_1(CHAN_BOND_SEQ_1_1),
+      .CHAN_BOND_SEQ_1_2(CHAN_BOND_SEQ_1_2),
+      .CHAN_BOND_SEQ_1_3(CHAN_BOND_SEQ_1_3),
+      .CHAN_BOND_SEQ_1_4(CHAN_BOND_SEQ_1_4),
+      .CHAN_BOND_SEQ_1_ENABLE(CHAN_BOND_SEQ_1_ENABLE),
+      .CHAN_BOND_SEQ_2_1(CHAN_BOND_SEQ_2_1),
+      .CHAN_BOND_SEQ_2_2(CHAN_BOND_SEQ_2_2),
+      .CHAN_BOND_SEQ_2_3(CHAN_BOND_SEQ_2_3),
+      .CHAN_BOND_SEQ_2_4(CHAN_BOND_SEQ_2_4),
+      .CHAN_BOND_SEQ_2_ENABLE(CHAN_BOND_SEQ_2_ENABLE),
+      .CHAN_BOND_SEQ_2_USE(CHAN_BOND_SEQ_2_USE),
+      .CHAN_BOND_SEQ_LEN(CHAN_BOND_SEQ_LEN),
+      .CLK_COMMON_SWING(CLK_COMMON_SWING),
+      .CLK_CORRECT_USE(CLK_CORRECT_USE),
+      .CLK_COR_KEEP_IDLE(CLK_COR_KEEP_IDLE),
+      .CLK_COR_MAX_LAT(CLK_COR_MAX_LAT),
+      .CLK_COR_MIN_LAT(CLK_COR_MIN_LAT),
+      .CLK_COR_PRECEDENCE(CLK_COR_PRECEDENCE),
+      .CLK_COR_REPEAT_WAIT(CLK_COR_REPEAT_WAIT),
+      .CLK_COR_SEQ_1_1(CLK_COR_SEQ_1_1),
+      .CLK_COR_SEQ_1_2(CLK_COR_SEQ_1_2),
+      .CLK_COR_SEQ_1_3(CLK_COR_SEQ_1_3),
+      .CLK_COR_SEQ_1_4(CLK_COR_SEQ_1_4),
+      .CLK_COR_SEQ_1_ENABLE(CLK_COR_SEQ_1_ENABLE),
+      .CLK_COR_SEQ_2_1(CLK_COR_SEQ_2_1),
+      .CLK_COR_SEQ_2_2(CLK_COR_SEQ_2_2),
+      .CLK_COR_SEQ_2_3(CLK_COR_SEQ_2_3),
+      .CLK_COR_SEQ_2_4(CLK_COR_SEQ_2_4),
+      .CLK_COR_SEQ_2_ENABLE(CLK_COR_SEQ_2_ENABLE),
+      .CLK_COR_SEQ_2_USE(CLK_COR_SEQ_2_USE),
+      .CLK_COR_SEQ_LEN(CLK_COR_SEQ_LEN),
+      .DEC_MCOMMA_DETECT(DEC_MCOMMA_DETECT),
+      .DEC_PCOMMA_DETECT(DEC_PCOMMA_DETECT),
+      .DEC_VALID_COMMA_ONLY(DEC_VALID_COMMA_ONLY),
+      .DMONITOR_CFG(DMONITOR_CFG),
+      .ES_CLK_PHASE_SEL(ES_CLK_PHASE_SEL),
+      .ES_CONTROL(ES_CONTROL),
+      .ES_ERRDET_EN(ES_ERRDET_EN),
+      .ES_EYE_SCAN_EN(ES_EYE_SCAN_EN),
+      .ES_HORZ_OFFSET(ES_HORZ_OFFSET),
+      .ES_PMA_CFG(ES_PMA_CFG),
+      .ES_PRESCALE(ES_PRESCALE),
+      .ES_QUALIFIER(ES_QUALIFIER),
+      .ES_QUAL_MASK(ES_QUAL_MASK),
+      .ES_SDATA_MASK(ES_SDATA_MASK),
+      .ES_VERT_OFFSET(ES_VERT_OFFSET),
+      .FTS_DESKEW_SEQ_ENABLE(FTS_DESKEW_SEQ_ENABLE),
+      .FTS_LANE_DESKEW_CFG(FTS_LANE_DESKEW_CFG),
+      .FTS_LANE_DESKEW_EN(FTS_LANE_DESKEW_EN),
+      .GEARBOX_MODE(GEARBOX_MODE),
+      .LOOPBACK_CFG(LOOPBACK_CFG),
+      .OUTREFCLK_SEL_INV(OUTREFCLK_SEL_INV),
+      .PCS_PCIE_EN(PCS_PCIE_EN),
+      .PCS_RSVD_ATTR(PCS_RSVD_ATTR),
+      .PD_TRANS_TIME_FROM_P2(PD_TRANS_TIME_FROM_P2),
+      .PD_TRANS_TIME_NONE_P2(PD_TRANS_TIME_NONE_P2),
+      .PD_TRANS_TIME_TO_P2(PD_TRANS_TIME_TO_P2),
+      .PMA_LOOPBACK_CFG(PMA_LOOPBACK_CFG),
+      .PMA_RSV(PMA_RSV),
+      .PMA_RSV2(PMA_RSV2),
+      .PMA_RSV3(PMA_RSV3),
+      .PMA_RSV4(PMA_RSV4),
+      .PMA_RSV5(PMA_RSV5),
+      .PMA_RSV6(PMA_RSV6),
+      .PMA_RSV7(PMA_RSV7),
+      .RXBUFRESET_TIME(RXBUFRESET_TIME),
+      .RXBUF_ADDR_MODE(RXBUF_ADDR_MODE),
+      .RXBUF_EIDLE_HI_CNT(RXBUF_EIDLE_HI_CNT),
+      .RXBUF_EIDLE_LO_CNT(RXBUF_EIDLE_LO_CNT),
+      .RXBUF_EN(RXBUF_EN),
+      .RXBUF_RESET_ON_CB_CHANGE(RXBUF_RESET_ON_CB_CHANGE),
+      .RXBUF_RESET_ON_COMMAALIGN(RXBUF_RESET_ON_COMMAALIGN),
+      .RXBUF_RESET_ON_EIDLE(RXBUF_RESET_ON_EIDLE),
+      .RXBUF_RESET_ON_RATE_CHANGE(RXBUF_RESET_ON_RATE_CHANGE),
+      .RXBUF_THRESH_OVFLW(RXBUF_THRESH_OVFLW),
+      .RXBUF_THRESH_OVRD(RXBUF_THRESH_OVRD),
+      .RXBUF_THRESH_UNDFLW(RXBUF_THRESH_UNDFLW),
+      .RXCDRFREQRESET_TIME(RXCDRFREQRESET_TIME),
+      .RXCDRPHRESET_TIME(RXCDRPHRESET_TIME),
+      .RXCDR_CFG(RXCDR_CFG),
+      .RXCDR_FR_RESET_ON_EIDLE(RXCDR_FR_RESET_ON_EIDLE),
+      .RXCDR_HOLD_DURING_EIDLE(RXCDR_HOLD_DURING_EIDLE),
+      .RXCDR_LOCK_CFG(RXCDR_LOCK_CFG),
+      .RXCDR_PH_RESET_ON_EIDLE(RXCDR_PH_RESET_ON_EIDLE),
+      .RXDLY_CFG(RXDLY_CFG),
+      .RXDLY_LCFG(RXDLY_LCFG),
+      .RXDLY_TAP_CFG(RXDLY_TAP_CFG),
+      .RXGEARBOX_EN(RXGEARBOX_EN),
+      .RXISCANRESET_TIME(RXISCANRESET_TIME),
+      .RXLPMRESET_TIME(RXLPMRESET_TIME),
+      .RXLPM_BIAS_STARTUP_DISABLE(RXLPM_BIAS_STARTUP_DISABLE),
+      .RXLPM_CFG(RXLPM_CFG),
+      .RXLPM_CFG1(RXLPM_CFG1),
+      .RXLPM_CM_CFG(RXLPM_CM_CFG),
+      .RXLPM_GC_CFG(RXLPM_GC_CFG),
+      .RXLPM_GC_CFG2(RXLPM_GC_CFG2),
+      .RXLPM_HF_CFG(RXLPM_HF_CFG),
+      .RXLPM_HF_CFG2(RXLPM_HF_CFG2),
+      .RXLPM_HF_CFG3(RXLPM_HF_CFG3),
+      .RXLPM_HOLD_DURING_EIDLE(RXLPM_HOLD_DURING_EIDLE),
+      .RXLPM_INCM_CFG(RXLPM_INCM_CFG),
+      .RXLPM_IPCM_CFG(RXLPM_IPCM_CFG),
+      .RXLPM_LF_CFG(RXLPM_LF_CFG),
+      .RXLPM_LF_CFG2(RXLPM_LF_CFG2),
+      .RXLPM_OSINT_CFG(RXLPM_OSINT_CFG),
+      .RXOOB_CFG(RXOOB_CFG),
+      .RXOOB_CLK_CFG(RXOOB_CLK_CFG),
+      .RXOSCALRESET_TIME(RXOSCALRESET_TIME),
+      .RXOSCALRESET_TIMEOUT(RXOSCALRESET_TIMEOUT),
+      .RXOUT_DIV(RXOUT_DIV),
+      .RXPCSRESET_TIME(RXPCSRESET_TIME),
+      .RXPHDLY_CFG(RXPHDLY_CFG),
+      .RXPH_CFG(RXPH_CFG),
+      .RXPH_MONITOR_SEL(RXPH_MONITOR_SEL),
+      .RXPI_CFG0(RXPI_CFG0),
+      .RXPI_CFG1(RXPI_CFG1),
+      .RXPI_CFG2(RXPI_CFG2),
+      .RXPMARESET_TIME(RXPMARESET_TIME),
+      .RXPRBS_ERR_LOOPBACK(RXPRBS_ERR_LOOPBACK),
+      .RXSLIDE_AUTO_WAIT(RXSLIDE_AUTO_WAIT),
+      .RXSLIDE_MODE(RXSLIDE_MODE),
+      .RXSYNC_MULTILANE(RXSYNC_MULTILANE),
+      .RXSYNC_OVRD(RXSYNC_OVRD),
+      .RXSYNC_SKIP_DA(RXSYNC_SKIP_DA),
+      .RX_BIAS_CFG(RX_BIAS_CFG),
+      .RX_BUFFER_CFG(RX_BUFFER_CFG),
+      .RX_CLK25_DIV(RX_CLK25_DIV),
+      .RX_CLKMUX_EN(RX_CLKMUX_EN),
+      .RX_CM_SEL(RX_CM_SEL),
+      .RX_CM_TRIM(RX_CM_TRIM),
+      .RX_DATA_WIDTH(RX_DATA_WIDTH),
+      .RX_DDI_SEL(RX_DDI_SEL),
+      .RX_DEBUG_CFG(RX_DEBUG_CFG),
+      .RX_DEFER_RESET_BUF_EN(RX_DEFER_RESET_BUF_EN),
+      .RX_DISPERR_SEQ_MATCH(RX_DISPERR_SEQ_MATCH),
+      .RX_OS_CFG(RX_OS_CFG),
+      .RX_SIG_VALID_DLY(RX_SIG_VALID_DLY),
+      .RX_XCLK_SEL(RX_XCLK_SEL),
+      .SAS_MAX_COM(SAS_MAX_COM),
+      .SAS_MIN_COM(SAS_MIN_COM),
+      .SATA_BURST_SEQ_LEN(SATA_BURST_SEQ_LEN),
+      .SATA_BURST_VAL(SATA_BURST_VAL),
+      .SATA_EIDLE_VAL(SATA_EIDLE_VAL),
+      .SATA_MAX_BURST(SATA_MAX_BURST),
+      .SATA_MAX_INIT(SATA_MAX_INIT),
+      .SATA_MAX_WAKE(SATA_MAX_WAKE),
+      .SATA_MIN_BURST(SATA_MIN_BURST),
+      .SATA_MIN_INIT(SATA_MIN_INIT),
+      .SATA_MIN_WAKE(SATA_MIN_WAKE),
+      .SATA_PLL_CFG(SATA_PLL_CFG),
+      .SHOW_REALIGN_COMMA(SHOW_REALIGN_COMMA),
+      .SIM_RECEIVER_DETECT_PASS(SIM_RECEIVER_DETECT_PASS),
+      .SIM_RESET_SPEEDUP(SIM_RESET_SPEEDUP),
+      .SIM_TX_EIDLE_DRIVE_LEVEL(SIM_TX_EIDLE_DRIVE_LEVEL),
+      .SIM_VERSION(SIM_VERSION),
+      .TERM_RCAL_CFG(TERM_RCAL_CFG),
+      .TERM_RCAL_OVRD(TERM_RCAL_OVRD),
+      .TRANS_TIME_RATE(TRANS_TIME_RATE),
+      .TST_RSV(TST_RSV),
+      .TXBUF_EN(TXBUF_EN),
+      .TXBUF_RESET_ON_RATE_CHANGE(TXBUF_RESET_ON_RATE_CHANGE),
+      .TXDLY_CFG(TXDLY_CFG),
+      .TXDLY_LCFG(TXDLY_LCFG),
+      .TXDLY_TAP_CFG(TXDLY_TAP_CFG),
+      .TXGEARBOX_EN(TXGEARBOX_EN),
+      .TXOOB_CFG(TXOOB_CFG),
+      .TXOUT_DIV(TXOUT_DIV),
+      .TXPCSRESET_TIME(TXPCSRESET_TIME),
+      .TXPHDLY_CFG(TXPHDLY_CFG),
+      .TXPH_CFG(TXPH_CFG),
+      .TXPH_MONITOR_SEL(TXPH_MONITOR_SEL),
+      .TXPI_CFG0(TXPI_CFG0),
+      .TXPI_CFG1(TXPI_CFG1),
+      .TXPI_CFG2(TXPI_CFG2),
+      .TXPI_CFG3(TXPI_CFG3),
+      .TXPI_CFG4(TXPI_CFG4),
+      .TXPI_CFG5(TXPI_CFG5),
+      .TXPI_GREY_SEL(TXPI_GREY_SEL),
+      .TXPI_INVSTROBE_SEL(TXPI_INVSTROBE_SEL),
+      .TXPI_PPMCLK_SEL(TXPI_PPMCLK_SEL),
+      .TXPI_PPM_CFG(TXPI_PPM_CFG),
+      .TXPI_SYNFREQ_PPM(TXPI_SYNFREQ_PPM),
+      .TXPMARESET_TIME(TXPMARESET_TIME),
+      .TXSYNC_MULTILANE(TXSYNC_MULTILANE),
+      .TXSYNC_OVRD(TXSYNC_OVRD),
+      .TXSYNC_SKIP_DA(TXSYNC_SKIP_DA),
+      .TX_CLK25_DIV(TX_CLK25_DIV),
+      .TX_CLKMUX_EN(TX_CLKMUX_EN),
+      .TX_DATA_WIDTH(TX_DATA_WIDTH),
+      .TX_DEEMPH0(TX_DEEMPH0),
+      .TX_DEEMPH1(TX_DEEMPH1),
+      .TX_DRIVE_MODE(TX_DRIVE_MODE),
+      .TX_EIDLE_ASSERT_DELAY(TX_EIDLE_ASSERT_DELAY),
+      .TX_EIDLE_DEASSERT_DELAY(TX_EIDLE_DEASSERT_DELAY),
+      .TX_LOOPBACK_DRIVE_HIZ(TX_LOOPBACK_DRIVE_HIZ),
+      .TX_MAINCURSOR_SEL(TX_MAINCURSOR_SEL),
+      .TX_MARGIN_FULL_0(TX_MARGIN_FULL_0),
+      .TX_MARGIN_FULL_1(TX_MARGIN_FULL_1),
+      .TX_MARGIN_FULL_2(TX_MARGIN_FULL_2),
+      .TX_MARGIN_FULL_3(TX_MARGIN_FULL_3),
+      .TX_MARGIN_FULL_4(TX_MARGIN_FULL_4),
+      .TX_MARGIN_LOW_0(TX_MARGIN_LOW_0),
+      .TX_MARGIN_LOW_1(TX_MARGIN_LOW_1),
+      .TX_MARGIN_LOW_2(TX_MARGIN_LOW_2),
+      .TX_MARGIN_LOW_3(TX_MARGIN_LOW_3),
+      .TX_MARGIN_LOW_4(TX_MARGIN_LOW_4),
+      .TX_PREDRIVER_MODE(TX_PREDRIVER_MODE),
+      .TX_RXDETECT_CFG(TX_RXDETECT_CFG),
+      .TX_RXDETECT_REF(TX_RXDETECT_REF),
+      .TX_XCLK_SEL(TX_XCLK_SEL),
+      .UCODEER_CLR(UCODEER_CLR),
+      .USE_PCS_CLK_PHASE_SEL(USE_PCS_CLK_PHASE_SEL)
+  ) B_GTPE2_CHANNEL_INST (
+      .DMONITOROUT(delay_DMONITOROUT),
+      .DRPDO(delay_DRPDO),
+      .DRPRDY(delay_DRPRDY),
+      .EYESCANDATAERROR(delay_EYESCANDATAERROR),
+      .GTPTXN(delay_GTPTXN),
+      .GTPTXP(delay_GTPTXP),
+      .PCSRSVDOUT(delay_PCSRSVDOUT),
+      .PHYSTATUS(delay_PHYSTATUS),
+      .PMARSVDOUT0(delay_PMARSVDOUT0),
+      .PMARSVDOUT1(delay_PMARSVDOUT1),
+      .RXBUFSTATUS(delay_RXBUFSTATUS),
+      .RXBYTEISALIGNED(delay_RXBYTEISALIGNED),
+      .RXBYTEREALIGN(delay_RXBYTEREALIGN),
+      .RXCDRLOCK(delay_RXCDRLOCK),
+      .RXCHANBONDSEQ(delay_RXCHANBONDSEQ),
+      .RXCHANISALIGNED(delay_RXCHANISALIGNED),
+      .RXCHANREALIGN(delay_RXCHANREALIGN),
+      .RXCHARISCOMMA(delay_RXCHARISCOMMA),
+      .RXCHARISK(delay_RXCHARISK),
+      .RXCHBONDO(delay_RXCHBONDO),
+      .RXCLKCORCNT(delay_RXCLKCORCNT),
+      .RXCOMINITDET(delay_RXCOMINITDET),
+      .RXCOMMADET(delay_RXCOMMADET),
+      .RXCOMSASDET(delay_RXCOMSASDET),
+      .RXCOMWAKEDET(delay_RXCOMWAKEDET),
+      .RXDATA(delay_RXDATA),
+      .RXDATAVALID(delay_RXDATAVALID),
+      .RXDISPERR(delay_RXDISPERR),
+      .RXDLYSRESETDONE(delay_RXDLYSRESETDONE),
+      .RXELECIDLE(delay_RXELECIDLE),
+      .RXHEADER(delay_RXHEADER),
+      .RXHEADERVALID(delay_RXHEADERVALID),
+      .RXNOTINTABLE(delay_RXNOTINTABLE),
+      .RXOSINTDONE(delay_RXOSINTDONE),
+      .RXOSINTSTARTED(delay_RXOSINTSTARTED),
+      .RXOSINTSTROBEDONE(delay_RXOSINTSTROBEDONE),
+      .RXOSINTSTROBESTARTED(delay_RXOSINTSTROBESTARTED),
+      .RXOUTCLK(delay_RXOUTCLK),
+      .RXOUTCLKFABRIC(delay_RXOUTCLKFABRIC),
+      .RXOUTCLKPCS(delay_RXOUTCLKPCS),
+      .RXPHALIGNDONE(delay_RXPHALIGNDONE),
+      .RXPHMONITOR(delay_RXPHMONITOR),
+      .RXPHSLIPMONITOR(delay_RXPHSLIPMONITOR),
+      .RXPMARESETDONE(delay_RXPMARESETDONE),
+      .RXPRBSERR(delay_RXPRBSERR),
+      .RXRATEDONE(delay_RXRATEDONE),
+      .RXRESETDONE(delay_RXRESETDONE),
+      .RXSTARTOFSEQ(delay_RXSTARTOFSEQ),
+      .RXSTATUS(delay_RXSTATUS),
+      .RXSYNCDONE(delay_RXSYNCDONE),
+      .RXSYNCOUT(delay_RXSYNCOUT),
+      .RXVALID(delay_RXVALID),
+      .TXBUFSTATUS(delay_TXBUFSTATUS),
+      .TXCOMFINISH(delay_TXCOMFINISH),
+      .TXDLYSRESETDONE(delay_TXDLYSRESETDONE),
+      .TXGEARBOXREADY(delay_TXGEARBOXREADY),
+      .TXOUTCLK(delay_TXOUTCLK),
+      .TXOUTCLKFABRIC(delay_TXOUTCLKFABRIC),
+      .TXOUTCLKPCS(delay_TXOUTCLKPCS),
+      .TXPHALIGNDONE(delay_TXPHALIGNDONE),
+      .TXPHINITDONE(delay_TXPHINITDONE),
+      .TXPMARESETDONE(delay_TXPMARESETDONE),
+      .TXRATEDONE(delay_TXRATEDONE),
+      .TXRESETDONE(delay_TXRESETDONE),
+      .TXSYNCDONE(delay_TXSYNCDONE),
+      .TXSYNCOUT(delay_TXSYNCOUT),
+      .CFGRESET(delay_CFGRESET),
+      .CLKRSVD0(delay_CLKRSVD0),
+      .CLKRSVD1(delay_CLKRSVD1),
+      .DMONFIFORESET(delay_DMONFIFORESET),
+      .DMONITORCLK(delay_DMONITORCLK),
+      .DRPADDR(delay_DRPADDR),
+      .DRPCLK(delay_DRPCLK),
+      .DRPDI(delay_DRPDI),
+      .DRPEN(delay_DRPEN),
+      .DRPWE(delay_DRPWE),
+      .EYESCANMODE(delay_EYESCANMODE),
+      .EYESCANRESET(delay_EYESCANRESET),
+      .EYESCANTRIGGER(delay_EYESCANTRIGGER),
+      .GTPRXN(delay_GTPRXN),
+      .GTPRXP(delay_GTPRXP),
+      .GTRESETSEL(delay_GTRESETSEL),
+      .GTRSVD(delay_GTRSVD),
+      .GTRXRESET(delay_GTRXRESET),
+      .GTTXRESET(delay_GTTXRESET),
+      .LOOPBACK(delay_LOOPBACK),
+      .PCSRSVDIN(delay_PCSRSVDIN),
+      .PLL0CLK(delay_PLL0CLK),
+      .PLL0REFCLK(delay_PLL0REFCLK),
+      .PLL1CLK(delay_PLL1CLK),
+      .PLL1REFCLK(delay_PLL1REFCLK),
+      .PMARSVDIN0(delay_PMARSVDIN0),
+      .PMARSVDIN1(delay_PMARSVDIN1),
+      .PMARSVDIN2(delay_PMARSVDIN2),
+      .PMARSVDIN3(delay_PMARSVDIN3),
+      .PMARSVDIN4(delay_PMARSVDIN4),
+      .RESETOVRD(delay_RESETOVRD),
+      .RX8B10BEN(delay_RX8B10BEN),
+      .RXADAPTSELTEST(delay_RXADAPTSELTEST),
+      .RXBUFRESET(delay_RXBUFRESET),
+      .RXCDRFREQRESET(delay_RXCDRFREQRESET),
+      .RXCDRHOLD(delay_RXCDRHOLD),
+      .RXCDROVRDEN(delay_RXCDROVRDEN),
+      .RXCDRRESET(delay_RXCDRRESET),
+      .RXCDRRESETRSV(delay_RXCDRRESETRSV),
+      .RXCHBONDEN(delay_RXCHBONDEN),
+      .RXCHBONDI(delay_RXCHBONDI),
+      .RXCHBONDLEVEL(delay_RXCHBONDLEVEL),
+      .RXCHBONDMASTER(delay_RXCHBONDMASTER),
+      .RXCHBONDSLAVE(delay_RXCHBONDSLAVE),
+      .RXCOMMADETEN(delay_RXCOMMADETEN),
+      .RXDDIEN(delay_RXDDIEN),
+      .RXDFEXYDEN(delay_RXDFEXYDEN),
+      .RXDLYBYPASS(delay_RXDLYBYPASS),
+      .RXDLYEN(delay_RXDLYEN),
+      .RXDLYOVRDEN(delay_RXDLYOVRDEN),
+      .RXDLYSRESET(delay_RXDLYSRESET),
+      .RXELECIDLEMODE(delay_RXELECIDLEMODE),
+      .RXGEARBOXSLIP(delay_RXGEARBOXSLIP),
+      .RXLPMHFHOLD(delay_RXLPMHFHOLD),
+      .RXLPMHFOVRDEN(delay_RXLPMHFOVRDEN),
+      .RXLPMLFHOLD(delay_RXLPMLFHOLD),
+      .RXLPMLFOVRDEN(delay_RXLPMLFOVRDEN),
+      .RXLPMOSINTNTRLEN(delay_RXLPMOSINTNTRLEN),
+      .RXLPMRESET(delay_RXLPMRESET),
+      .RXMCOMMAALIGNEN(delay_RXMCOMMAALIGNEN),
+      .RXOOBRESET(delay_RXOOBRESET),
+      .RXOSCALRESET(delay_RXOSCALRESET),
+      .RXOSHOLD(delay_RXOSHOLD),
+      .RXOSINTCFG(delay_RXOSINTCFG),
+      .RXOSINTEN(delay_RXOSINTEN),
+      .RXOSINTHOLD(delay_RXOSINTHOLD),
+      .RXOSINTID0(delay_RXOSINTID0),
+      .RXOSINTNTRLEN(delay_RXOSINTNTRLEN),
+      .RXOSINTOVRDEN(delay_RXOSINTOVRDEN),
+      .RXOSINTPD(delay_RXOSINTPD),
+      .RXOSINTSTROBE(delay_RXOSINTSTROBE),
+      .RXOSINTTESTOVRDEN(delay_RXOSINTTESTOVRDEN),
+      .RXOSOVRDEN(delay_RXOSOVRDEN),
+      .RXOUTCLKSEL(delay_RXOUTCLKSEL),
+      .RXPCOMMAALIGNEN(delay_RXPCOMMAALIGNEN),
+      .RXPCSRESET(delay_RXPCSRESET),
+      .RXPD(delay_RXPD),
+      .RXPHALIGN(delay_RXPHALIGN),
+      .RXPHALIGNEN(delay_RXPHALIGNEN),
+      .RXPHDLYPD(delay_RXPHDLYPD),
+      .RXPHDLYRESET(delay_RXPHDLYRESET),
+      .RXPHOVRDEN(delay_RXPHOVRDEN),
+      .RXPMARESET(delay_RXPMARESET),
+      .RXPOLARITY(delay_RXPOLARITY),
+      .RXPRBSCNTRESET(delay_RXPRBSCNTRESET),
+      .RXPRBSSEL(delay_RXPRBSSEL),
+      .RXRATE(delay_RXRATE),
+      .RXRATEMODE(delay_RXRATEMODE),
+      .RXSLIDE(delay_RXSLIDE),
+      .RXSYNCALLIN(delay_RXSYNCALLIN),
+      .RXSYNCIN(delay_RXSYNCIN),
+      .RXSYNCMODE(delay_RXSYNCMODE),
+      .RXSYSCLKSEL(delay_RXSYSCLKSEL),
+      .RXUSERRDY(delay_RXUSERRDY),
+      .RXUSRCLK(delay_RXUSRCLK),
+      .RXUSRCLK2(delay_RXUSRCLK2),
+      .SETERRSTATUS(delay_SETERRSTATUS),
+      .SIGVALIDCLK(delay_SIGVALIDCLK),
+      .TSTIN(delay_TSTIN),
+      .TX8B10BBYPASS(delay_TX8B10BBYPASS),
+      .TX8B10BEN(delay_TX8B10BEN),
+      .TXBUFDIFFCTRL(delay_TXBUFDIFFCTRL),
+      .TXCHARDISPMODE(delay_TXCHARDISPMODE),
+      .TXCHARDISPVAL(delay_TXCHARDISPVAL),
+      .TXCHARISK(delay_TXCHARISK),
+      .TXCOMINIT(delay_TXCOMINIT),
+      .TXCOMSAS(delay_TXCOMSAS),
+      .TXCOMWAKE(delay_TXCOMWAKE),
+      .TXDATA(delay_TXDATA),
+      .TXDEEMPH(delay_TXDEEMPH),
+      .TXDETECTRX(delay_TXDETECTRX),
+      .TXDIFFCTRL(delay_TXDIFFCTRL),
+      .TXDIFFPD(delay_TXDIFFPD),
+      .TXDLYBYPASS(delay_TXDLYBYPASS),
+      .TXDLYEN(delay_TXDLYEN),
+      .TXDLYHOLD(delay_TXDLYHOLD),
+      .TXDLYOVRDEN(delay_TXDLYOVRDEN),
+      .TXDLYSRESET(delay_TXDLYSRESET),
+      .TXDLYUPDOWN(delay_TXDLYUPDOWN),
+      .TXELECIDLE(delay_TXELECIDLE),
+      .TXHEADER(delay_TXHEADER),
+      .TXINHIBIT(delay_TXINHIBIT),
+      .TXMAINCURSOR(delay_TXMAINCURSOR),
+      .TXMARGIN(delay_TXMARGIN),
+      .TXOUTCLKSEL(delay_TXOUTCLKSEL),
+      .TXPCSRESET(delay_TXPCSRESET),
+      .TXPD(delay_TXPD),
+      .TXPDELECIDLEMODE(delay_TXPDELECIDLEMODE),
+      .TXPHALIGN(delay_TXPHALIGN),
+      .TXPHALIGNEN(delay_TXPHALIGNEN),
+      .TXPHDLYPD(delay_TXPHDLYPD),
+      .TXPHDLYRESET(delay_TXPHDLYRESET),
+      .TXPHDLYTSTCLK(delay_TXPHDLYTSTCLK),
+      .TXPHINIT(delay_TXPHINIT),
+      .TXPHOVRDEN(delay_TXPHOVRDEN),
+      .TXPIPPMEN(delay_TXPIPPMEN),
+      .TXPIPPMOVRDEN(delay_TXPIPPMOVRDEN),
+      .TXPIPPMPD(delay_TXPIPPMPD),
+      .TXPIPPMSEL(delay_TXPIPPMSEL),
+      .TXPIPPMSTEPSIZE(delay_TXPIPPMSTEPSIZE),
+      .TXPISOPD(delay_TXPISOPD),
+      .TXPMARESET(delay_TXPMARESET),
+      .TXPOLARITY(delay_TXPOLARITY),
+      .TXPOSTCURSOR(delay_TXPOSTCURSOR),
+      .TXPOSTCURSORINV(delay_TXPOSTCURSORINV),
+      .TXPRBSFORCEERR(delay_TXPRBSFORCEERR),
+      .TXPRBSSEL(delay_TXPRBSSEL),
+      .TXPRECURSOR(delay_TXPRECURSOR),
+      .TXPRECURSORINV(delay_TXPRECURSORINV),
+      .TXRATE(delay_TXRATE),
+      .TXRATEMODE(delay_TXRATEMODE),
+      .TXSEQUENCE(delay_TXSEQUENCE),
+      .TXSTARTSEQ(delay_TXSTARTSEQ),
+      .TXSWING(delay_TXSWING),
+      .TXSYNCALLIN(delay_TXSYNCALLIN),
+      .TXSYNCIN(delay_TXSYNCIN),
+      .TXSYNCMODE(delay_TXSYNCMODE),
+      .TXSYSCLKSEL(delay_TXSYSCLKSEL),
+      .TXUSERRDY(delay_TXUSERRDY),
+      .TXUSRCLK(delay_TXUSRCLK),
+      .TXUSRCLK2(delay_TXUSRCLK2),
+      .GSR(GSR)
   );
 
   specify
-`ifdef XIL_TIMING // Simprim
-    $period (posedge CLKRSVD0, 0:0:0, notifier);
-    $period (negedge CLKRSVD0, 0:0:0, notifier);
-    $period (posedge CLKRSVD1, 0:0:0, notifier);
-    $period (negedge CLKRSVD1, 0:0:0, notifier);
-    $period (posedge DMONITORCLK, 0:0:0, notifier);
-    $period (negedge DMONITORCLK, 0:0:0, notifier);
-    $period (posedge DRPCLK, 0:0:0, notifier);
-    $period (negedge DRPCLK, 0:0:0, notifier);
-    $period (posedge PLL0CLK, 0:0:0, notifier);
-    $period (posedge PLL1CLK, 0:0:0, notifier);
-    $period (posedge RXOUTCLK, 0:0:0, notifier);
-    $period (posedge RXOUTCLKFABRIC, 0:0:0, notifier);
-    $period (posedge RXOUTCLKPCS, 0:0:0, notifier);
-    $period (posedge RXUSRCLK, 0:0:0, notifier);
-    $period (negedge RXUSRCLK, 0:0:0, notifier);
-    $period (posedge RXUSRCLK2, 0:0:0, notifier);
-    $period (negedge RXUSRCLK2, 0:0:0, notifier);
-    $period (posedge SIGVALIDCLK, 0:0:0, notifier);
-    $period (negedge SIGVALIDCLK, 0:0:0, notifier);
-    $period (posedge TXOUTCLK, 0:0:0, notifier);
-    $period (posedge TXOUTCLKFABRIC, 0:0:0, notifier);
-    $period (posedge TXOUTCLKPCS, 0:0:0, notifier);
-    $period (posedge TXPHDLYTSTCLK, 0:0:0, notifier);
-    $period (negedge TXPHDLYTSTCLK, 0:0:0, notifier);
-    $period (posedge TXUSRCLK, 0:0:0, notifier);
-    $period (negedge TXUSRCLK, 0:0:0, notifier);
-    $period (posedge TXUSRCLK2, 0:0:0, notifier);
-    $period (negedge TXUSRCLK2, 0:0:0, notifier);
+`ifdef XIL_TIMING  // Simprim
+    $period(posedge CLKRSVD0, 0: 0: 0, notifier);
+    $period(negedge CLKRSVD0, 0: 0: 0, notifier);
+    $period(posedge CLKRSVD1, 0: 0: 0, notifier);
+    $period(negedge CLKRSVD1, 0: 0: 0, notifier);
+    $period(posedge DMONITORCLK, 0: 0: 0, notifier);
+    $period(negedge DMONITORCLK, 0: 0: 0, notifier);
+    $period(posedge DRPCLK, 0: 0: 0, notifier);
+    $period(negedge DRPCLK, 0: 0: 0, notifier);
+    $period(posedge PLL0CLK, 0: 0: 0, notifier);
+    $period(posedge PLL1CLK, 0: 0: 0, notifier);
+    $period(posedge RXOUTCLK, 0: 0: 0, notifier);
+    $period(posedge RXOUTCLKFABRIC, 0: 0: 0, notifier);
+    $period(posedge RXOUTCLKPCS, 0: 0: 0, notifier);
+    $period(posedge RXUSRCLK, 0: 0: 0, notifier);
+    $period(negedge RXUSRCLK, 0: 0: 0, notifier);
+    $period(posedge RXUSRCLK2, 0: 0: 0, notifier);
+    $period(negedge RXUSRCLK2, 0: 0: 0, notifier);
+    $period(posedge SIGVALIDCLK, 0: 0: 0, notifier);
+    $period(negedge SIGVALIDCLK, 0: 0: 0, notifier);
+    $period(posedge TXOUTCLK, 0: 0: 0, notifier);
+    $period(posedge TXOUTCLKFABRIC, 0: 0: 0, notifier);
+    $period(posedge TXOUTCLKPCS, 0: 0: 0, notifier);
+    $period(posedge TXPHDLYTSTCLK, 0: 0: 0, notifier);
+    $period(negedge TXPHDLYTSTCLK, 0: 0: 0, notifier);
+    $period(posedge TXUSRCLK, 0: 0: 0, notifier);
+    $period(negedge TXUSRCLK, 0: 0: 0, notifier);
+    $period(posedge TXUSRCLK2, 0: 0: 0, notifier);
+    $period(negedge TXUSRCLK2, 0: 0: 0, notifier);
 
     $setuphold (posedge DRPCLK, negedge DRPADDR, 0:0:0, 0:0:0, notifier, drpclk_en_p, drpclk_en_p, delay_DRPCLK, delay_DRPADDR);
     $setuphold (posedge DRPCLK, negedge DRPDI, 0:0:0, 0:0:0, notifier, drpclk_en_p, drpclk_en_p, delay_DRPCLK, delay_DRPDI);
@@ -4009,42 +3947,42 @@ module GTPE2_CHANNEL (
     $setuphold (negedge TXUSRCLK2, posedge TXSTARTSEQ, 0:0:0, 0:0:0, notifier, txusrclk2_en_n, txusrclk2_en_n, delay_TXUSRCLK2, delay_TXSTARTSEQ);
 `endif
 
-    ( DMONITORCLK *> DMONITOROUT) = (0, 0);
-    ( DRPCLK *> DRPDO) = (0, 0);
-    ( DRPCLK *> DRPRDY) = (0, 0);
-    ( RXUSRCLK2 *> PHYSTATUS) = (0, 0);
-    ( RXUSRCLK2 *> RXBUFSTATUS) = (0, 0);
-    ( RXUSRCLK2 *> RXBYTEISALIGNED) = (0, 0);
-    ( RXUSRCLK2 *> RXBYTEREALIGN) = (0, 0);
-    ( RXUSRCLK2 *> RXCHANBONDSEQ) = (0, 0);
-    ( RXUSRCLK2 *> RXCHANISALIGNED) = (0, 0);
-    ( RXUSRCLK2 *> RXCHANREALIGN) = (0, 0);
-    ( RXUSRCLK2 *> RXCHARISCOMMA) = (0, 0);
-    ( RXUSRCLK2 *> RXCHARISK) = (0, 0);
-    ( RXUSRCLK2 *> RXCHBONDO) = (0, 0);
-    ( RXUSRCLK *> RXCHBONDO) = (0, 0);
-    ( RXUSRCLK2 *> RXCLKCORCNT) = (0, 0);
-    ( RXUSRCLK2 *> RXCOMINITDET) = (0, 0);
-    ( RXUSRCLK2 *> RXCOMMADET) = (0, 0);
-    ( RXUSRCLK2 *> RXCOMSASDET) = (0, 0);
-    ( RXUSRCLK2 *> RXCOMWAKEDET) = (0, 0);
-    ( RXUSRCLK2 *> RXDATA) = (0, 0);
-    ( RXUSRCLK2 *> RXDATAVALID) = (0, 0);
-    ( RXUSRCLK2 *> RXDISPERR) = (0, 0);
-    ( RXUSRCLK2 *> RXHEADER) = (0, 0);
-    ( RXUSRCLK2 *> RXHEADERVALID) = (0, 0);
-    ( RXUSRCLK2 *> RXNOTINTABLE) = (0, 0);
-    ( RXUSRCLK2 *> RXPRBSERR) = (0, 0);
-    ( RXUSRCLK2 *> RXRATEDONE) = (0, 0);
-    ( RXUSRCLK2 *> RXRESETDONE) = (0, 0);
-    ( RXUSRCLK2 *> RXSTARTOFSEQ) = (0, 0);
-    ( RXUSRCLK2 *> RXSTATUS) = (0, 0);
-    ( RXUSRCLK2 *> RXVALID) = (0, 0);
-    ( TXUSRCLK2 *> TXBUFSTATUS) = (0, 0);
-    ( TXUSRCLK2 *> TXCOMFINISH) = (0, 0);
-    ( TXUSRCLK2 *> TXGEARBOXREADY) = (0, 0);
-    ( TXUSRCLK2 *> TXRATEDONE) = (0, 0);
-    ( TXUSRCLK2 *> TXRESETDONE) = (0, 0);
+    (DMONITORCLK *> DMONITOROUT) = (0, 0);
+    (DRPCLK *> DRPDO) = (0, 0);
+    (DRPCLK *> DRPRDY) = (0, 0);
+    (RXUSRCLK2 *> PHYSTATUS) = (0, 0);
+    (RXUSRCLK2 *> RXBUFSTATUS) = (0, 0);
+    (RXUSRCLK2 *> RXBYTEISALIGNED) = (0, 0);
+    (RXUSRCLK2 *> RXBYTEREALIGN) = (0, 0);
+    (RXUSRCLK2 *> RXCHANBONDSEQ) = (0, 0);
+    (RXUSRCLK2 *> RXCHANISALIGNED) = (0, 0);
+    (RXUSRCLK2 *> RXCHANREALIGN) = (0, 0);
+    (RXUSRCLK2 *> RXCHARISCOMMA) = (0, 0);
+    (RXUSRCLK2 *> RXCHARISK) = (0, 0);
+    (RXUSRCLK2 *> RXCHBONDO) = (0, 0);
+    (RXUSRCLK *> RXCHBONDO) = (0, 0);
+    (RXUSRCLK2 *> RXCLKCORCNT) = (0, 0);
+    (RXUSRCLK2 *> RXCOMINITDET) = (0, 0);
+    (RXUSRCLK2 *> RXCOMMADET) = (0, 0);
+    (RXUSRCLK2 *> RXCOMSASDET) = (0, 0);
+    (RXUSRCLK2 *> RXCOMWAKEDET) = (0, 0);
+    (RXUSRCLK2 *> RXDATA) = (0, 0);
+    (RXUSRCLK2 *> RXDATAVALID) = (0, 0);
+    (RXUSRCLK2 *> RXDISPERR) = (0, 0);
+    (RXUSRCLK2 *> RXHEADER) = (0, 0);
+    (RXUSRCLK2 *> RXHEADERVALID) = (0, 0);
+    (RXUSRCLK2 *> RXNOTINTABLE) = (0, 0);
+    (RXUSRCLK2 *> RXPRBSERR) = (0, 0);
+    (RXUSRCLK2 *> RXRATEDONE) = (0, 0);
+    (RXUSRCLK2 *> RXRESETDONE) = (0, 0);
+    (RXUSRCLK2 *> RXSTARTOFSEQ) = (0, 0);
+    (RXUSRCLK2 *> RXSTATUS) = (0, 0);
+    (RXUSRCLK2 *> RXVALID) = (0, 0);
+    (TXUSRCLK2 *> TXBUFSTATUS) = (0, 0);
+    (TXUSRCLK2 *> TXCOMFINISH) = (0, 0);
+    (TXUSRCLK2 *> TXGEARBOXREADY) = (0, 0);
+    (TXUSRCLK2 *> TXRATEDONE) = (0, 0);
+    (TXUSRCLK2 *> TXRESETDONE) = (0, 0);
 
     specparam PATHPULSE$ = 0;
   endspecify

@@ -38,51 +38,58 @@
 
 `celldefine
 
-module IOBUF_INTERMDISABLE (O, IO, I, IBUFDISABLE, INTERMDISABLE, T);
+module IOBUF_INTERMDISABLE (
+    O,
+    IO,
+    I,
+    IBUFDISABLE,
+    INTERMDISABLE,
+    T
+);
 
-    parameter integer DRIVE = 12;
-    parameter IBUF_LOW_PWR = "TRUE";
-    parameter IOSTANDARD = "DEFAULT";
-    parameter SIM_DEVICE = "7SERIES";
-    parameter SLEW = "SLOW";
-    parameter USE_IBUFDISABLE = "TRUE";
+  parameter integer DRIVE = 12;
+  parameter IBUF_LOW_PWR = "TRUE";
+  parameter IOSTANDARD = "DEFAULT";
+  parameter SIM_DEVICE = "7SERIES";
+  parameter SLEW = "SLOW";
+  parameter USE_IBUFDISABLE = "TRUE";
 `ifdef XIL_TIMING
-    parameter LOC = "UNPLACED";
-`endif // `ifdef XIL_TIMING
+  parameter LOC = "UNPLACED";
+`endif  // `ifdef XIL_TIMING
 
-    output O;
-    inout  IO;
-    input  I;
-    input  IBUFDISABLE;
-    input  INTERMDISABLE;
-    input  T;
+  output O;
+  inout IO;
+  input I;
+  input IBUFDISABLE;
+  input INTERMDISABLE;
+  input T;
 
-// define constants
+  // define constants
   localparam MODULE_NAME = "IOBUF_INTERMDISABLE";
 
-    wire ts,out_val;
-    wire T_OR_IBUFDISABLE;
+  wire ts, out_val;
+  wire T_OR_IBUFDISABLE;
 
-    tri0 GTS = glbl.GTS;
+  tri0 GTS = glbl.GTS;
 
-    or O1 (ts, GTS, T);
-    bufif0 T1 (IO, I, ts);
+  or O1 (ts, GTS, T);
+  bufif0 T1 (IO, I, ts);
 
-//    buf B1 (O, IO);
+  //    buf B1 (O, IO);
 
-    initial begin
-	
+  initial begin
 
-        case (IBUF_LOW_PWR)
 
-            "FALSE", "TRUE" : ;
-            default : begin
-                          $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on IOBUF_INTERMDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", IBUF_LOW_PWR);
-                          #1 $finish;
-                      end
+    case (IBUF_LOW_PWR)
 
-        endcase
- if ((SIM_DEVICE != "7SERIES") &&
+      "FALSE", "TRUE": ;
+      default: begin
+        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on IOBUF_INTERMDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", IBUF_LOW_PWR);
+        #1 $finish;
+      end
+
+    endcase
+    if ((SIM_DEVICE != "7SERIES") &&
          (SIM_DEVICE != "ULTRASCALE") &&
          (SIM_DEVICE != "VERSAL_AI_CORE") &&
          (SIM_DEVICE != "VERSAL_AI_CORE_ES1") &&
@@ -103,49 +110,50 @@ module IOBUF_INTERMDISABLE (O, IO, I, IBUFDISABLE, INTERMDISABLE, T);
          (SIM_DEVICE != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES2")) begin
       $display("Error: [Unisim %s-104] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE);
-         #1 $finish;
+      #1 $finish;
     end
 
 
-    end // initial begin
-    generate
-       case (SIM_DEVICE)
-         "7SERIES" : begin
+  end  // initial begin
+  generate
+    case (SIM_DEVICE)
+      "7SERIES" : begin
                         assign out_val = 1'b1;
                      end
-         default : begin
-                        assign out_val = 1'b0;
-                     end
-        endcase
-   endgenerate
- 
-    generate
-       case (USE_IBUFDISABLE)
-          "TRUE" :  begin
-                       assign T_OR_IBUFDISABLE = ~T || IBUFDISABLE;
-                       assign O = (T_OR_IBUFDISABLE == 1'b1) ? out_val : (T_OR_IBUFDISABLE == 1'b0) ? IO : 1'bx;
-                    end
-          "FALSE" : begin
+      default:
+      begin
+        assign out_val = 1'b0;
+      end
+    endcase
+  endgenerate
+
+  generate
+    case (USE_IBUFDISABLE)
+      "TRUE": begin
+        assign T_OR_IBUFDISABLE = ~T || IBUFDISABLE;
+        assign O = (T_OR_IBUFDISABLE == 1'b1) ? out_val : (T_OR_IBUFDISABLE == 1'b0) ? IO : 1'bx;
+      end
+      "FALSE" : begin
                         assign O = IO;
                     end
-       endcase
-    endgenerate
+    endcase
+  endgenerate
 
 `ifdef XIL_TIMING
-    specify
+  specify
 
-        (I => O)               = (0:0:0,  0:0:0);
-        (I => IO)              = (0:0:0,  0:0:0);
-        (IO => O)              = (0:0:0,  0:0:0);
-        (IBUFDISABLE => O)     = (0:0:0,  0:0:0);
-        (IBUFDISABLE => IO)    = (0:0:0,  0:0:0);
-        (INTERMDISABLE => O)   = (0:0:0,  0:0:0);
-        (INTERMDISABLE => IO)  = (0:0:0,  0:0:0);
-        (T => O)               = (0:0:0,  0:0:0);
-        (T => IO)              = (0:0:0,  0:0:0);
-        specparam PATHPULSE$ = 0;
-    endspecify
-`endif // `ifdef XIL_TIMING
+    (I => O) = (0: 0: 0, 0: 0: 0);
+    (I => IO) = (0: 0: 0, 0: 0: 0);
+    (IO => O) = (0: 0: 0, 0: 0: 0);
+    (IBUFDISABLE => O) = (0: 0: 0, 0: 0: 0);
+    (IBUFDISABLE => IO) = (0: 0: 0, 0: 0: 0);
+    (INTERMDISABLE => O) = (0: 0: 0, 0: 0: 0);
+    (INTERMDISABLE => IO) = (0: 0: 0, 0: 0: 0);
+    (T => O) = (0: 0: 0, 0: 0: 0);
+    (T => IO) = (0: 0: 0, 0: 0: 0);
+    specparam PATHPULSE$ = 0;
+  endspecify
+`endif  // `ifdef XIL_TIMING
 
 endmodule
 

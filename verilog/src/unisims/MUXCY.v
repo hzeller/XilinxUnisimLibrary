@@ -36,39 +36,44 @@
 
 `celldefine
 
-module MUXCY (O, CI, DI, S);
+module MUXCY (
+    O,
+    CI,
+    DI,
+    S
+);
 
 
 `ifdef XIL_TIMING
 
-    parameter LOC = "UNPLACED";
+  parameter LOC = "UNPLACED";
 
 `endif
 
 
-    output O;
-    input CI, DI, S;
-    
-    reg O_out;
+  output O;
+  input CI, DI, S;
 
-	always @(CI or DI or S) 
+  reg O_out;
+
+  always @(CI or DI or S) 
 	    if (S)
 		O_out = CI;
 	    else
 		O_out = DI;
 
-    assign O = O_out;
-    
+  assign O = O_out;
+
 `ifdef XIL_TIMING
 
-    specify
-                                                                                 
-        (CI => O) = (0:0:0, 0:0:0);
-        (DI => O) = (0:0:0, 0:0:0);
-	(S => O) = (0:0:0, 0:0:0);
-        specparam PATHPULSE$ = 0;
-                                                                                 
-    endspecify
+  specify
+
+    (CI => O) = (0: 0: 0, 0: 0: 0);
+    (DI => O) = (0: 0: 0, 0: 0: 0);
+    (S => O) = (0: 0: 0, 0: 0: 0);
+    specparam PATHPULSE$ = 0;
+
+  endspecify
 
 `endif
 
