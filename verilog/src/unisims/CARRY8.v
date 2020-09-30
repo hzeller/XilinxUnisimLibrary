@@ -135,7 +135,9 @@ module CARRY8 #(
     if ((attr_test == 1'b1) ||
         ((CARRY_TYPE_REG != "SINGLE_CY8") &&
          (CARRY_TYPE_REG != "DUAL_CY4"))) begin
-      $display("Error: [Unisim %s-101] CARRY_TYPE attribute is set to %s.  Legal values for this attribute are SINGLE_CY8 or DUAL_CY4. Instance: %m", MODULE_NAME, CARRY_TYPE_REG);
+      $display(
+          "Error: [Unisim %s-101] CARRY_TYPE attribute is set to %s.  Legal values for this attribute are SINGLE_CY8 or DUAL_CY4. Instance: %m",
+          MODULE_NAME, CARRY_TYPE_REG);
       attr_err = 1'b1;
     end
 

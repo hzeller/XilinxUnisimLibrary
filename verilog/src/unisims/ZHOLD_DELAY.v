@@ -132,7 +132,9 @@ module ZHOLD_DELAY #(
       "30": idelay_count = 30;
       "31": idelay_count = 31;
       default: begin
-        $display("Attribute Syntax Error : The attribute ZHOLD_FABRIC on %s instance %m is set to %s.  Legal values for this attribute are \"DEFAULT\", \"0\", \"1\" ..... \"31\"",MODULE_NAME,ZHOLD_FABRIC);
+        $display(
+            "Attribute Syntax Error : The attribute ZHOLD_FABRIC on %s instance %m is set to %s.  Legal values for this attribute are \"DEFAULT\", \"0\", \"1\" ..... \"31\"",
+            MODULE_NAME, ZHOLD_FABRIC);
         #1 $finish;
       end
     endcase
@@ -173,7 +175,9 @@ module ZHOLD_DELAY #(
       "30": iff_idelay_count = 30;
       "31": iff_idelay_count = 31;
       default: begin
-        $display("Attribute Syntax Error : The attribute ZHOLD_IFF on %s instance %m is set to %s.  Legal values for this attribute are \"DEFAULT\", \"0\", \"1\"...\"31\"",MODULE_NAME,ZHOLD_IFF);
+        $display(
+            "Attribute Syntax Error : The attribute ZHOLD_IFF on %s instance %m is set to %s.  Legal values for this attribute are \"DEFAULT\", \"0\", \"1\"...\"31\"",
+            MODULE_NAME, ZHOLD_IFF);
         #1 $finish;
       end
     endcase

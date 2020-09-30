@@ -149,7 +149,9 @@ module DSP_MULTIPLIER #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -158,12 +160,16 @@ module DSP_MULTIPLIER #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((AMULTSEL_REG != "A") && (AMULTSEL_REG != "AD"))) begin
-      $display("Error: [Unisim %s-101] AMULTSEL attribute is set to %s.  Legal values for this attribute are A or AD. Instance: %m", MODULE_NAME, AMULTSEL_REG);
+      $display(
+          "Error: [Unisim %s-101] AMULTSEL attribute is set to %s.  Legal values for this attribute are A or AD. Instance: %m",
+          MODULE_NAME, AMULTSEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((BMULTSEL_REG != "B") && (BMULTSEL_REG != "AD"))) begin
-      $display("Error: [Unisim %s-102] BMULTSEL attribute is set to %s.  Legal values for this attribute are B or AD. Instance: %m", MODULE_NAME, BMULTSEL_REG);
+      $display(
+          "Error: [Unisim %s-102] BMULTSEL attribute is set to %s.  Legal values for this attribute are B or AD. Instance: %m",
+          MODULE_NAME, BMULTSEL_REG);
       attr_err = 1'b1;
     end
 
@@ -171,7 +177,9 @@ module DSP_MULTIPLIER #(
         ((USE_MULT_REG != "MULTIPLY") &&
          (USE_MULT_REG != "DYNAMIC") &&
          (USE_MULT_REG != "NONE"))) begin
-      $display("Error: [Unisim %s-103] USE_MULT attribute is set to %s.  Legal values for this attribute are MULTIPLY, DYNAMIC or NONE. Instance: %m", MODULE_NAME, USE_MULT_REG);
+      $display(
+          "Error: [Unisim %s-103] USE_MULT attribute is set to %s.  Legal values for this attribute are MULTIPLY, DYNAMIC or NONE. Instance: %m",
+          MODULE_NAME, USE_MULT_REG);
       attr_err = 1'b1;
     end
 
@@ -197,13 +205,13 @@ module DSP_MULTIPLIER #(
 `endif
 
   always @(*) begin
-  if (AMULTSEL_BIN == AMULTSEL_A) a_mult_mux = A2A1;
-  else a_mult_mux = AD_DATA;
-end
+    if (AMULTSEL_BIN == AMULTSEL_A) a_mult_mux = A2A1;
+    else a_mult_mux = AD_DATA;
+  end
   always @(*) begin
-  if (BMULTSEL_BIN == BMULTSEL_B) b_mult_mux = B2B1;
-  else b_mult_mux = AD_DATA;
-end
+    if (BMULTSEL_BIN == BMULTSEL_B) b_mult_mux = B2B1;
+    else b_mult_mux = AD_DATA;
+  end
 
   assign AMULT26 = a_mult_mux[26];
   assign BMULT17 = b_mult_mux[17];
@@ -212,9 +220,9 @@ end
   assign V = {~mult[44], mult[43:0] & ps_v_mask};
 
   always @(*) begin
-  if (USE_MULT_BIN == USE_MULT_NONE) mult = 45'b0;
-  else mult = ({{18{a_mult_mux[26]}},a_mult_mux} * {{27{b_mult_mux[17]}},b_mult_mux});
-end
+    if (USE_MULT_BIN == USE_MULT_NONE) mult = 45'b0;
+    else mult = ({{18{a_mult_mux[26]}}, a_mult_mux} * {{27{b_mult_mux[17]}}, b_mult_mux});
+  end
 
   // end behavioral model
 

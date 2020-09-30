@@ -70,7 +70,9 @@ module IBUFDS_DIFF_OUT (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DIFF_TERM on IBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DIFF_TERM);
+        $display(
+            "Attribute Syntax Error : The attribute DIFF_TERM on IBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DIFF_TERM);
         #1 $finish;
       end
 
@@ -80,17 +82,21 @@ module IBUFDS_DIFF_OUT (
 
       "FALSE", "TRUE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on IBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", IBUF_LOW_PWR);
+        $display(
+            "Attribute Syntax Error : The attribute IBUF_LOW_PWR on IBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            IBUF_LOW_PWR);
         #1 $finish;
       end
 
     endcase
     case (DQS_BIAS)
 
-      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "TRUE":  DQS_BIAS_BINARY <= #1 1'b1;
       "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The attribute DQS_BIAS on IBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DQS_BIAS);
+        $display(
+            "Attribute Syntax Error : The attribute DQS_BIAS on IBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DQS_BIAS);
         #1 $finish;
       end
 
@@ -101,18 +107,13 @@ module IBUFDS_DIFF_OUT (
 
 
   always @(I or IB or DQS_BIAS_BINARY) begin
-	if (I == 1'b1 && IB == 1'b0)
-	    o_out <= I;
-	else if (I == 1'b0 && IB == 1'b1)
-	    o_out <= I;
- 	else if ((I === 1'bz || I == 1'b0) && (IB === 1'bz || IB == 1'b1))
-          if (DQS_BIAS_BINARY == 1'b1)
-            o_out <= 1'b0;
-          else
-            o_out <= 1'bx;
-        else if (I == 1'bx || IB == 1'bx)
-            o_out <= 1'bx;
-    end
+    if (I == 1'b1 && IB == 1'b0) o_out <= I;
+    else if (I == 1'b0 && IB == 1'b1) o_out <= I;
+    else if ((I === 1'bz || I == 1'b0) && (IB === 1'bz || IB == 1'b1))
+      if (DQS_BIAS_BINARY == 1'b1) o_out <= 1'b0;
+      else o_out <= 1'bx;
+    else if (I == 1'bx || IB == 1'bx) o_out <= 1'bx;
+  end
 
 `ifdef XIL_TIMING
 

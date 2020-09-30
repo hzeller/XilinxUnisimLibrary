@@ -141,7 +141,9 @@ module IN_FIFO (
       1: ALMOST_EMPTY_VALUE_BINARY <= 8'b01000001;
       2: ALMOST_EMPTY_VALUE_BINARY <= 8'b01100011;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALMOST_EMPTY_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.", MODULE_NAME, ALMOST_EMPTY_VALUE);
+        $display(
+            "Attribute Syntax Error : The Attribute ALMOST_EMPTY_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.",
+            MODULE_NAME, ALMOST_EMPTY_VALUE);
         #1 $finish;
       end
     endcase
@@ -150,7 +152,9 @@ module IN_FIFO (
       1: ALMOST_FULL_VALUE_BINARY <= 8'b01000001;
       2: ALMOST_FULL_VALUE_BINARY <= 8'b01100011;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALMOST_FULL_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.", MODULE_NAME, ALMOST_FULL_VALUE);
+        $display(
+            "Attribute Syntax Error : The Attribute ALMOST_FULL_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.",
+            MODULE_NAME, ALMOST_FULL_VALUE);
         #1 $finish;
       end
     endcase
@@ -159,7 +163,9 @@ module IN_FIFO (
       "ARRAY_MODE_4_X_8": ARRAY_MODE_BINARY <= 1'b1;
       "ARRAY_MODE_4_X_4": ARRAY_MODE_BINARY <= 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ARRAY_MODE on %s instance %m is set to %s.  Legal values for this attribute are ARRAY_MODE_4_X_8 or ARRAY_MODE_4_X_4.", MODULE_NAME, ARRAY_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute ARRAY_MODE on %s instance %m is set to %s.  Legal values for this attribute are ARRAY_MODE_4_X_8 or ARRAY_MODE_4_X_4.",
+            MODULE_NAME, ARRAY_MODE);
         #1 $finish;
       end
     endcase
@@ -171,7 +177,9 @@ module IN_FIFO (
     case (SYNCHRONOUS_MODE)
       "FALSE": SYNCHRONOUS_MODE_BINARY <= 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SYNCHRONOUS_MODE on %s instance %m is set to %s.  The legal value for this attribute is FALSE.", MODULE_NAME, SYNCHRONOUS_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute SYNCHRONOUS_MODE on %s instance %m is set to %s.  The legal value for this attribute is FALSE.",
+            MODULE_NAME, SYNCHRONOUS_MODE);
         #1 $finish;
       end
     endcase

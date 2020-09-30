@@ -263,39 +263,41 @@ module DCM_ADV (
   integer clkfx_multiply_drp, clkfx_divide_drp;
   reg [7:0] clkfx_m_reg, clkfx_d_reg;
   reg [15:0] clkfx_md_reg, dfs_mode_reg, dll_mode_reg, clkin_div2_reg;
-  reg inc_dec;
+  reg  inc_dec;
 
   real clock_stopped_factor;
 
 
-  reg notifier;
+  reg  notifier;
 
   initial begin
     #1;
     if ($realtime == 0) begin
-      $display ("Simulator Resolution Error : Simulator resolution is set to a value greater than 1 ps.");
-      $display ("In order to simulate the DCM_ADV, the simulator resolution must be set to 1ps or smaller.");
+      $display(
+          "Simulator Resolution Error : Simulator resolution is set to a value greater than 1 ps.");
+      $display(
+          "In order to simulate the DCM_ADV, the simulator resolution must be set to 1ps or smaller.");
       #1 $finish;
     end
   end
 
   initial begin
     case (CLKDV_DIVIDE)
-      1.5: divide_type = 'd3;
-      2.0: divide_type = 'd4;
-      2.5: divide_type = 'd5;
-      3.0: divide_type = 'd6;
-      3.5: divide_type = 'd7;
-      4.0: divide_type = 'd8;
-      4.5: divide_type = 'd9;
-      5.0: divide_type = 'd10;
-      5.5: divide_type = 'd11;
-      6.0: divide_type = 'd12;
-      6.5: divide_type = 'd13;
-      7.0: divide_type = 'd14;
-      7.5: divide_type = 'd15;
-      8.0: divide_type = 'd16;
-      9.0: divide_type = 'd18;
+      1.5:  divide_type = 'd3;
+      2.0:  divide_type = 'd4;
+      2.5:  divide_type = 'd5;
+      3.0:  divide_type = 'd6;
+      3.5:  divide_type = 'd7;
+      4.0:  divide_type = 'd8;
+      4.5:  divide_type = 'd9;
+      5.0:  divide_type = 'd10;
+      5.5:  divide_type = 'd11;
+      6.0:  divide_type = 'd12;
+      6.5:  divide_type = 'd13;
+      7.0:  divide_type = 'd14;
+      7.5:  divide_type = 'd15;
+      8.0:  divide_type = 'd16;
+      9.0:  divide_type = 'd18;
       10.0: divide_type = 'd20;
       11.0: divide_type = 'd22;
       12.0: divide_type = 'd24;
@@ -304,7 +306,9 @@ module DCM_ADV (
       15.0: divide_type = 'd30;
       16.0: divide_type = 'd32;
       default: begin
-        $display("Attribute Syntax Error : The attribute CLKDV_DIVIDE on DCM_ADV instance %m is set to %0.1f.  Legal values for this attribute are 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, or 16.0.", CLKDV_DIVIDE);
+        $display(
+            "Attribute Syntax Error : The attribute CLKDV_DIVIDE on DCM_ADV instance %m is set to %0.1f.  Legal values for this attribute are 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, or 16.0.",
+            CLKDV_DIVIDE);
         #1 $finish;
       end
     endcase
@@ -316,7 +320,9 @@ module DCM_ADV (
     //       end
     //    else
     if ((CLKFX_DIVIDE <= 0) || (32 < CLKFX_DIVIDE)) begin
-      $display("Attribute Syntax Error : The attribute CLKFX_DIVIDE on DCM_ADV instance %m is set to %d.  Legal values for this attribute are 1 ... 32.", CLKFX_DIVIDE);
+      $display(
+          "Attribute Syntax Error : The attribute CLKFX_DIVIDE on DCM_ADV instance %m is set to %d.  Legal values for this attribute are 1 ... 32.",
+          CLKFX_DIVIDE);
       #1 $finish;
     end
 
@@ -327,7 +333,9 @@ module DCM_ADV (
     //       end
     //    else 
     if ((CLKFX_MULTIPLY <= 1) || (32 < CLKFX_MULTIPLY)) begin
-      $display("Attribute Syntax Error : The attribute CLKFX_MULTIPLY on DCM_ADV instance %m is set to %d.  Legal values for this attribute are 2 ... 32.", CLKFX_MULTIPLY);
+      $display(
+          "Attribute Syntax Error : The attribute CLKFX_MULTIPLY on DCM_ADV instance %m is set to %d.  Legal values for this attribute are 2 ... 32.",
+          CLKFX_MULTIPLY);
       #1 $finish;
     end
 
@@ -341,81 +349,87 @@ module DCM_ADV (
         clock_stopped_factor = 1.5;
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute CLKIN_DIVIDE_BY_2 on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", CLKIN_DIVIDE_BY_2);
+        $display(
+            "Attribute Syntax Error : The attribute CLKIN_DIVIDE_BY_2 on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            CLKIN_DIVIDE_BY_2);
         #1 $finish;
       end
     endcase
 
     case (CLKOUT_PHASE_SHIFT)
       "NONE": begin
-        ps_in = 0 + 256;
+        ps_in   = 0 + 256;
         ps_type = 3'b000;
       end
       "FIXED": begin
-        ps_in = PHASE_SHIFT + 256;
-        ps_max = 255 + 256;
-        ps_min = -255 + 256;
+        ps_in   = PHASE_SHIFT + 256;
+        ps_max  = 255 + 256;
+        ps_min  = -255 + 256;
         ps_type = 3'b001;
-        if ( DCM_PERFORMANCE_MODE == "MAX_RANGE" )
-               FINE_SHIFT_RANGE = 10000;
-            else
-               FINE_SHIFT_RANGE = 7000;
+        if (DCM_PERFORMANCE_MODE == "MAX_RANGE") FINE_SHIFT_RANGE = 10000;
+        else FINE_SHIFT_RANGE = 7000;
         if ((PHASE_SHIFT < -255) || (PHASE_SHIFT > 255)) begin
-          $display("Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute are -255 ... 255.", PHASE_SHIFT);
+          $display(
+              "Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute are -255 ... 255.",
+              PHASE_SHIFT);
           $display("Error : PHASE_SHIFT = %d is not -255 ... 255.", PHASE_SHIFT);
           #1 $finish;
         end
       end
       "VARIABLE_POSITIVE": begin
-        ps_in = PHASE_SHIFT + 256;
-        ps_max = 255 + 256;
-        ps_min = 0 + 256;
+        ps_in   = PHASE_SHIFT + 256;
+        ps_max  = 255 + 256;
+        ps_min  = 0 + 256;
         ps_type = 3'b011;
-        if ( DCM_PERFORMANCE_MODE == "MAX_RANGE" )
-               FINE_SHIFT_RANGE = 10000;
-            else
-               FINE_SHIFT_RANGE = 7000;
+        if (DCM_PERFORMANCE_MODE == "MAX_RANGE") FINE_SHIFT_RANGE = 10000;
+        else FINE_SHIFT_RANGE = 7000;
         if ((PHASE_SHIFT < 0) || (PHASE_SHIFT > 255)) begin
-          $display("Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute are 0 ... 255.", PHASE_SHIFT);
+          $display(
+              "Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute are 0 ... 255.",
+              PHASE_SHIFT);
           $display("Error : PHASE_SHIFT = %d is not 0 ... 255.", PHASE_SHIFT);
           #1 $finish;
         end
       end
       "VARIABLE_CENTER": begin
-        ps_in = PHASE_SHIFT + 256;
-        ps_max = 255 + 256;
-        ps_min = -255 + 256;
+        ps_in   = PHASE_SHIFT + 256;
+        ps_max  = 255 + 256;
+        ps_min  = -255 + 256;
         ps_type = 3'b100;
-        if ( DCM_PERFORMANCE_MODE == "MAX_RANGE" )
-               FINE_SHIFT_RANGE = 5000;
-            else
-               FINE_SHIFT_RANGE = 3500;
+        if (DCM_PERFORMANCE_MODE == "MAX_RANGE") FINE_SHIFT_RANGE = 5000;
+        else FINE_SHIFT_RANGE = 3500;
         if ((PHASE_SHIFT < -255) || (PHASE_SHIFT > 255)) begin
-          $display("Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute are -255 ... 255.", PHASE_SHIFT);
+          $display(
+              "Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute are -255 ... 255.",
+              PHASE_SHIFT);
           $display("Error : PHASE_SHIFT = %d is not -255 ... 255.", PHASE_SHIFT);
           #1 $finish;
         end
       end
       "DIRECT": begin
-        ps_in = PHASE_SHIFT;
-        ps_max = 1023;
-        ps_min = 0;
+        ps_in   = PHASE_SHIFT;
+        ps_max  = 1023;
+        ps_min  = 0;
         ps_type = 3'b101;
         if (DCM_PERFORMANCE_MODE == "MAX_RANGE") begin
-          tap_delay_step = 18;
+          tap_delay_step   = 18;
           FINE_SHIFT_RANGE = 10000;
         end else begin
-          tap_delay_step = 11;
+          tap_delay_step   = 11;
           FINE_SHIFT_RANGE = 7000;
         end
         if ((PHASE_SHIFT < 0) || (PHASE_SHIFT > 1023)) begin
-          $display("Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute is 0 to 1023.", PHASE_SHIFT);
+          $display(
+              "Attribute Syntax Error : The attribute PHASE_SHIFT on DCM_ADV instance %m is set to %d.  Legal values for this attribute is 0 to 1023.",
+              PHASE_SHIFT);
           $display("Error : PHASE_SHIFT = %d is not 0 to 1023.", PHASE_SHIFT);
           #1 $finish;
         end
       end
       default: begin
-        $display("Attribute Syntax Error : The Attribute CLKOUT_PHASE_SHIFT on DCM_ADV instance %m is set to %s.  Legal values for this attribute are NONE, FIXED, VARIABLE_POSITIVE, VARIABLE_CENTER or DIRECT.", CLKOUT_PHASE_SHIFT);
+        $display(
+            "Attribute Syntax Error : The Attribute CLKOUT_PHASE_SHIFT on DCM_ADV instance %m is set to %s.  Legal values for this attribute are NONE, FIXED, VARIABLE_POSITIVE, VARIABLE_CENTER or DIRECT.",
+            CLKOUT_PHASE_SHIFT);
         #1 $finish;
       end
     endcase
@@ -428,11 +442,14 @@ module DCM_ADV (
       "NONE": begin
         clkfb_type = 0;
         $display("Attribute CLK_FEEDBACK is set to value NONE.");
-        $display("In this mode, the output ports CLK0, CLK180, CLK270, CLK2X, CLK2X180, CLK90 and  CLKDV can have any random phase relation w.r.t. input port CLKIN");
+        $display(
+            "In this mode, the output ports CLK0, CLK180, CLK270, CLK2X, CLK2X180, CLK90 and  CLKDV can have any random phase relation w.r.t. input port CLKIN");
       end
       "1X": clkfb_type = 1;
       default: begin
-        $display("Attribute Syntax Error : The attribute CLK_FEEDBACK on DCM_ADV instance %m is set to %s.  Legal values for this attribute are NONE or 1X.", CLK_FEEDBACK);
+        $display(
+            "Attribute Syntax Error : The attribute CLK_FEEDBACK on DCM_ADV instance %m is set to %s.  Legal values for this attribute are NONE or 1X.",
+            CLK_FEEDBACK);
         #1 $finish;
       end
     endcase
@@ -441,7 +458,9 @@ module DCM_ADV (
       "MAX_SPEED": ;
       "MAX_RANGE": ;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DCM_PERFORMANCE_MODE on DCM_ADV instance %m is set to %s.  Legal values for this attribute are MAX_SPEED or MAX_RANGE.", DCM_PERFORMANCE_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute DCM_PERFORMANCE_MODE on DCM_ADV instance %m is set to %s.  Legal values for this attribute are MAX_SPEED or MAX_RANGE.",
+            DCM_PERFORMANCE_MODE);
         #1 $finish;
       end
     endcase
@@ -482,61 +501,76 @@ module DCM_ADV (
       "30": deskew_adjust_mode = 30;
       "31": deskew_adjust_mode = 31;
       default: begin
-        $display("Attribute Syntax Error : The attribute DESKEW_ADJUST on DCM_ADV instance %m is set to %s.  Legal values for this attribute are SOURCE_SYNCHRONOUS, SYSTEM_SYNCHRONOUS or 0 ... 15.", DESKEW_ADJUST);
+        $display(
+            "Attribute Syntax Error : The attribute DESKEW_ADJUST on DCM_ADV instance %m is set to %s.  Legal values for this attribute are SOURCE_SYNCHRONOUS, SYSTEM_SYNCHRONOUS or 0 ... 15.",
+            DESKEW_ADJUST);
         #1 $finish;
       end
     endcase
 
     case (DFS_FREQUENCY_MODE)
       "HIGH": dfs_mode_type_i = 1;
-      "LOW": dfs_mode_type_i = 0;
+      "LOW":  dfs_mode_type_i = 0;
       default: begin
-        $display(" Attribute Syntax Error : The attribute DFS_FREQUENCY_MODE on DCM_ADV instance %m is set to %s. Legal values for this attribute are HIGH or LOW.", DFS_FREQUENCY_MODE);
+        $display(
+            " Attribute Syntax Error : The attribute DFS_FREQUENCY_MODE on DCM_ADV instance %m is set to %s. Legal values for this attribute are HIGH or LOW.",
+            DFS_FREQUENCY_MODE);
         #1 $finish;
       end
     endcase
 
     period_jitter = SIM_CLKIN_PERIOD_JITTER;
-    cycle_jitter = SIM_CLKIN_CYCLE_JITTER;
+    cycle_jitter  = SIM_CLKIN_CYCLE_JITTER;
 
     case (DLL_FREQUENCY_MODE)
       "HIGH": dll_mode_type_i = 2'b11;
-      "LOW": dll_mode_type_i = 2'b00;
+      "LOW":  dll_mode_type_i = 2'b00;
       default: begin
-        $display("Attribute Syntax Error : The attribute DLL_FREQUENCY_MODE on DCM_ADV instance %m is set to %s.  Legal values for this attribute are HIGH or LOW.", DLL_FREQUENCY_MODE);
+        $display(
+            "Attribute Syntax Error : The attribute DLL_FREQUENCY_MODE on DCM_ADV instance %m is set to %s.  Legal values for this attribute are HIGH or LOW.",
+            DLL_FREQUENCY_MODE);
         #1 $finish;
       end
     endcase
 
     case (FACTORY_JF)
       16'hF0F0: ;
-      default : 
-	    $display("Attribute Syntax Warning : The attribute FACTORY_JF on DCM_ADV instance %m is set to %h.  Legal value is F0F0.", FACTORY_JF);
+      default:
+      $display(
+          "Attribute Syntax Warning : The attribute FACTORY_JF on DCM_ADV instance %m is set to %h.  Legal value is F0F0.",
+          FACTORY_JF);
     endcase
 
     case (DUTY_CYCLE_CORRECTION)
-      "FALSE": if (SIM_DEVICE=="VIRTEX4") clk1x_type = 0; else clk1x_type = 1;
-      "TRUE": clk1x_type = 1;
+      "FALSE": if (SIM_DEVICE == "VIRTEX4") clk1x_type = 0;
+ else clk1x_type = 1;
+      "TRUE":  clk1x_type = 1;
       default: begin
-        $display("Attribute Syntax Error : The attribute DUTY_CYCLE_CORRECTION on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DUTY_CYCLE_CORRECTION);
+        $display(
+            "Attribute Syntax Error : The attribute DUTY_CYCLE_CORRECTION on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DUTY_CYCLE_CORRECTION);
         #1 $finish;
       end
     endcase
 
     case (STARTUP_WAIT)
       "FALSE": ;
-      "TRUE": ;
+      "TRUE":  ;
       default: begin
-        $display("Attribute Syntax Error : The attribute STARTUP_WAIT on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", STARTUP_WAIT);
+        $display(
+            "Attribute Syntax Error : The attribute STARTUP_WAIT on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            STARTUP_WAIT);
         #1 $finish;
       end
     endcase
 
     case (DCM_AUTOCALIBRATION)
       "FALSE": ;
-      "TRUE": ;
+      "TRUE":  ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DCM_AUTOCALIBRATION on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DCM_AUTOCALIBRATION);
+        $display(
+            "Attribute Syntax Error : The attribute DCM_AUTOCALIBRATION on DCM_ADV instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DCM_AUTOCALIBRATION);
         #1 $finish;
       end
     endcase
@@ -545,7 +579,9 @@ module DCM_ADV (
       "VIRTEX5": sim_device_type = 1;
       "VIRTEX4": sim_device_type = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_DEVICE on DCM_ADV instance %m is set to %s.  Legal values for this attribute are VIRTEX5 or VIRTEX4.", SIM_DEVICE);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_DEVICE on DCM_ADV instance %m is set to %s.  Legal values for this attribute are VIRTEX5 or VIRTEX4.",
+            SIM_DEVICE);
         #1 $finish;
       end
     endcase
@@ -654,16 +690,12 @@ module DCM_ADV (
   always @(clkin_ps or lock_fb) clkin_fb = clkin_ps & lock_fb;
 
   always @(posedge clkin_fb or posedge chk_rst)
-    if (chk_rst)
-       clkin_chkin <= 0;
-    else
-       clkin_chkin <= 1;
+    if (chk_rst) clkin_chkin <= 0;
+    else clkin_chkin <= 1;
 
   always @(posedge clkfb_in or posedge chk_rst)
-    if (chk_rst)
-       clkfb_chkin <= 0;
-    else
-       clkfb_chkin <= 1;
+    if (chk_rst) clkfb_chkin <= 0;
+    else clkfb_chkin <= 1;
 
   assign chk_rst = (rst_in == 1 || clock_stopped == 1) ? 1 : 0;
   assign chk_enable = (clkin_chkin == 1 && clkfb_chkin == 1 &&
@@ -675,10 +707,8 @@ module DCM_ADV (
       clkin_div_edge <= 0;
     end else if (clkin_div == 1) begin
       clkin_div_edge <= $time;
-      if (($time - clkin_div_edge) <= (1.5 * period_div))
-	period_div <= $time - clkin_div_edge;
-    else if ((period_div == 0) && (clkin_div_edge != 0))
-	period_div <= $time - clkin_div_edge;
+      if (($time - clkin_div_edge) <= (1.5 * period_div)) period_div <= $time - clkin_div_edge;
+      else if ((period_div == 0) && (clkin_div_edge != 0)) period_div <= $time - clkin_div_edge;
     end
 
 
@@ -688,10 +718,8 @@ module DCM_ADV (
       clkin_ps_edge <= 0;
     end else if (clkin_ps == 1) begin
       clkin_ps_edge <= $time;
-      if (($time - clkin_ps_edge) <= (1.5 * period_ps))
-	period_ps <= $time - clkin_ps_edge;
-    else if ((period_ps == 0) && (clkin_ps_edge != 0))
-	period_ps <= $time - clkin_ps_edge;
+      if (($time - clkin_ps_edge) <= (1.5 * period_ps)) period_ps <= $time - clkin_ps_edge;
+      else if ((period_ps == 0) && (clkin_ps_edge != 0)) period_ps <= $time - clkin_ps_edge;
     end
 
   always @(posedge clkin_ps) begin
@@ -701,10 +729,8 @@ module DCM_ADV (
   end
 
   always @(period or fb_delay)
-  if (fb_delay ==0)
-    clkout_delay = 0;
-  else
-    clkout_delay = period - fb_delay;
+    if (fb_delay == 0) clkout_delay = 0;
+    else clkout_delay = period - fb_delay;
 
   //
   // generate master reset signal
@@ -837,19 +863,27 @@ module DCM_ADV (
     if ((ps_type == 3'b000) || (ps_type == 3'b001) || (ps_type == 3'b011) || (ps_type == 3'b100))  begin
       if (PHASE_SHIFT > 0) begin
         if ((ps_in * period_orig / 256) > period_orig + FINE_SHIFT_RANGE) begin
-          $display("Function Error : Instance %m Requested Phase Shift = PHASE_SHIFT * PERIOD / 256 = %d * %1.3f / 256 = %1.3f. This exceeds the FINE_SHIFT_RANGE of %1.3f ns.", PHASE_SHIFT, period_orig / 1000.0, PHASE_SHIFT * period_orig/ 256 / 1000.0, FINE_SHIFT_RANGE / 1000.0);
+          $display(
+              "Function Error : Instance %m Requested Phase Shift = PHASE_SHIFT * PERIOD / 256 = %d * %1.3f / 256 = %1.3f. This exceeds the FINE_SHIFT_RANGE of %1.3f ns.",
+              PHASE_SHIFT, period_orig / 1000.0, PHASE_SHIFT * period_orig / 256 / 1000.0,
+              FINE_SHIFT_RANGE / 1000.0);
           $finish;
         end
       end else if (PHASE_SHIFT < 0) begin
         if ((period_orig > FINE_SHIFT_RANGE) &&
 	    ((ps_in * period_orig / 256) < period_orig - FINE_SHIFT_RANGE)) begin
-          $display("Function Error : Instance %m Requested Phase Shift = PHASE_SHIFT * PERIOD / 256 = %d * %1.3f / 256 = %1.3f. This exceeds the FINE_SHIFT_RANGE of %1.3f ns.", PHASE_SHIFT, period_orig / 1000.0, -(PHASE_SHIFT) * period_orig / 256 / 1000.0, FINE_SHIFT_RANGE / 1000.0);
+          $display(
+              "Function Error : Instance %m Requested Phase Shift = PHASE_SHIFT * PERIOD / 256 = %d * %1.3f / 256 = %1.3f. This exceeds the FINE_SHIFT_RANGE of %1.3f ns.",
+              PHASE_SHIFT, period_orig / 1000.0, -(PHASE_SHIFT) * period_orig / 256 / 1000.0,
+              FINE_SHIFT_RANGE / 1000.0);
           $finish;
         end
       end
     end else if (ps_type == 3'b101) begin
       if ((ps_in * tap_delay_step) > FINE_SHIFT_RANGE) begin
-        $display(" Phase shift Error : Allowed phase shift range on instance %m is between 0 to  %d. ", FINE_SHIFT_RANGE / tap_delay_step);
+        $display(
+            " Phase shift Error : Allowed phase shift range on instance %m is between 0 to  %d. ",
+            FINE_SHIFT_RANGE / tap_delay_step);
         $finish;
       end
     end
@@ -858,23 +892,22 @@ module DCM_ADV (
   always @(posedge lock_period_pulse or posedge rst_in or ps_delay_ps or ps_delay_drp or ps_in_ps
           or ps_in_psdrp)
     if (rst_in) begin
-      ps_delay <= 0;
+      ps_delay   <= 0;
       ps_in_curr <= ps_in;
     end else if (lock_period_pulse) begin
       if ((ps_type == 3'b000) || (ps_type == 3'b001) || (ps_type == 3'b011) || (ps_type == 3'b100))
-          ps_delay <= (ps_in * period_div / 256);
-     else if (ps_type == 3'b101) 
-          ps_delay <= ps_in * tap_delay_step;
+        ps_delay <= (ps_in * period_div / 256);
+      else if (ps_type == 3'b101) ps_delay <= ps_in * tap_delay_step;
     end else begin
       if (((ps_type == 3'b011) || (ps_type == 3'b100))) begin
         ps_in_curr = ps_in_ps;
-        ps_delay = (ps_in_ps * period_div / 256);
+        ps_delay   = (ps_in_ps * period_div / 256);
       end else if ((ps_type == 3'b101) && (ps_lock == 1)) begin
         ps_in_curr = ps_in_ps;
-        ps_delay = ps_in_ps * tap_delay_step;
+        ps_delay   = ps_in_ps * tap_delay_step;
       end else if ((ps_type == 3'b101) && (ps_drp_lock == 1)) begin
         ps_in_curr = ps_in_psdrp;
-        ps_delay = ps_delay_drp;
+        ps_delay   = ps_delay_drp;
       end
     end
 
@@ -890,11 +923,11 @@ module DCM_ADV (
       if ((ps_type == 3'b011) || (ps_type == 3'b100)) begin
         if (psen_in)
           if (ps_lock == 1)
-		  $display(" Warning : Please wait for PSDONE signal before adjusting the Phase Shift.");
+            $display(" Warning : Please wait for PSDONE signal before adjusting the Phase Shift.");
           else if (psincdec_in == 1) begin
             if (ps_in_ps == ps_max) ps_overflow_out <= 1;
             else if (((ps_in_ps + 1) * period_orig / 256) > period_orig + FINE_SHIFT_RANGE)
-		    ps_overflow_out <= 1;
+              ps_overflow_out <= 1;
             else begin
               ps_in_ps <= ps_in_ps + 1;
               ps_overflow_out <= 0;
@@ -904,7 +937,7 @@ module DCM_ADV (
             if (ps_in_ps == ps_min) ps_overflow_out <= 1;
             else if ((period_orig > FINE_SHIFT_RANGE) &&
 		     (((ps_in_ps - 1) * period_orig / 256) < period_orig - FINE_SHIFT_RANGE))
-		      ps_overflow_out <= 1;
+              ps_overflow_out <= 1;
             else begin
               ps_in_ps <= ps_in_ps - 1;
               ps_overflow_out <= 0;
@@ -974,24 +1007,24 @@ module DCM_ADV (
     end
 
   always @(single_step_lock or clkin_ps) begin
-    @( posedge single_step_lock)
-      @( posedge clkin_ps)
-      @( posedge clkin_ps)
-      @( posedge clkin_ps)
-         single_step_lock_tmp <= 1;
+    @(posedge single_step_lock)
+      @(posedge clkin_ps)
+        @(posedge clkin_ps)
+          @(posedge clkin_ps)
+            single_step_lock_tmp <= 1;
     @(posedge clkin_ps) single_step_lock_tmp <= 0;
   end
 
   always @(ps_kick_off_cmd or dclk_in or clkin_in or ps_drp_lock) begin
     @(posedge ps_kick_off_cmd)
-      @( posedge dclk_in)
-      @( posedge dclk_in)
-      @( posedge clkin_in)
-      @( posedge clkin_in)
-      @( posedge clkin_in)
-      @( posedge clkin_in)
-      @( posedge clkin_in)
-         ps_drp_lock_tmp <= 1;
+      @(posedge dclk_in)
+        @(posedge dclk_in)
+          @(posedge clkin_in)
+            @(posedge clkin_in)
+              @(posedge clkin_in)
+                @(posedge clkin_in)
+                  @(posedge clkin_in)
+                    ps_drp_lock_tmp <= 1;
     @(posedge ps_drp_lock) ps_drp_lock_tmp <= 0;
   end
 
@@ -1062,7 +1095,9 @@ module DCM_ADV (
         end
       end else if (lock_period == 1'b1) begin
         if (100000000 < (clkin_period[0] / 1000)) begin
-          $display(" Warning : CLKIN stopped toggling on instance %m exceeds %d ms.  Current CLKIN Period = %1.3f ns.", 10000, clkin_period[0] / 1000.0);
+          $display(
+              " Warning : CLKIN stopped toggling on instance %m exceeds %d ms.  Current CLKIN Period = %1.3f ns.",
+              10000, clkin_period[0] / 1000.0);
           lock_period <= 0;
           @(negedge rst_reg[2]);
         end
@@ -1074,13 +1109,17 @@ module DCM_ADV (
         end
 	else if ((clkin_period[0] < period_orig - period_jitter) ||
 		(period_orig + period_jitter < clkin_period[0])) begin
-          $display(" Warning : Input Clock Period Jitter on instance %m exceeds %1.3f ns.  Locked CLKIN Period = %1.3f.  Current CLKIN Period = %1.3f.", period_jitter / 1000.0, period_orig / 1000.0, clkin_period[0] / 1000.0);
+          $display(
+              " Warning : Input Clock Period Jitter on instance %m exceeds %1.3f ns.  Locked CLKIN Period = %1.3f.  Current CLKIN Period = %1.3f.",
+              period_jitter / 1000.0, period_orig / 1000.0, clkin_period[0] / 1000.0);
           lock_period <= 0;
           @(negedge rst_reg[2]);
         end
 	else if ((clkin_period[0] < clkin_period[1] - cycle_jitter) ||
 		(clkin_period[1] + cycle_jitter < clkin_period[0])) begin
-          $display(" Warning : Input Clock Cycle-Cycle Jitter on instance %m exceeds %1.3f ns.  Previous CLKIN Period = %1.3f.  Current CLKIN Period = %1.3f.", cycle_jitter / 1000.0, clkin_period[1] / 1000.0, clkin_period[0] / 1000.0);
+          $display(
+              " Warning : Input Clock Cycle-Cycle Jitter on instance %m exceeds %1.3f ns.  Previous CLKIN Period = %1.3f.  Current CLKIN Period = %1.3f.",
+              cycle_jitter / 1000.0, clkin_period[1] / 1000.0, clkin_period[0] / 1000.0);
           lock_period <= 0;
           @(negedge rst_reg[2]);
         end else begin
@@ -1092,10 +1131,8 @@ module DCM_ADV (
     end
 
   always @(posedge clkin_div or posedge rst_in)
-  if (rst_in)
-     lock_period_dly <= 0;
-  else
-     lock_period_dly <= lock_period;
+    if (rst_in) lock_period_dly <= 0;
+    else lock_period_dly <= lock_period;
 
   //  assign #(period_50) lock_period_dly = lock_period;
   assign lock_period_pulse = (lock_period == 1 && lock_period_dly == 0) ? 1 : 0;
@@ -1148,11 +1185,9 @@ module DCM_ADV (
     if (rst_in) lock_clkin <= 0;
     else begin
       #1
-    if ((clkfb_window && fb_delay_found ) || (clkin_lost_out == 1'b0 && lock_out[0]==1'b1))
-	lock_clkin <= 1;
-    else
-      if (chk_enable ==1 && ps_lock == 0)
-	lock_clkin <= 0;
+        if ((clkfb_window && fb_delay_found) || (clkin_lost_out == 1'b0 && lock_out[0] == 1'b1))
+          lock_clkin <= 1;
+        else if (chk_enable == 1 && ps_lock == 0) lock_clkin <= 0;
     end
   end
 
@@ -1160,20 +1195,16 @@ module DCM_ADV (
     if (rst_in) lock_clkfb <= 0;
     else begin
       #1
-    if ((clkin_window && fb_delay_found) || (clkin_lost_out == 1'b0 && lock_out[0]==1'b1)) 
-	lock_clkfb <= 1;
-    else
-      if (chk_enable ==1 && ps_lock == 0)
-	lock_clkfb <= 0;
+        if ((clkin_window && fb_delay_found) || (clkin_lost_out == 1'b0 && lock_out[0] == 1'b1))
+          lock_clkfb <= 1;
+        else if (chk_enable == 1 && ps_lock == 0) lock_clkfb <= 0;
     end
   end
 
   always @(negedge clkin_fb or posedge rst_in) begin
-  if (rst_in)
-    lock_delay <= 0;
-  else
-    lock_delay <= lock_clkin || lock_clkfb;
-end
+    if (rst_in) lock_delay <= 0;
+    else lock_delay <= lock_clkin || lock_clkfb;
+  end
 
   //
   // generate lock signal
@@ -1183,22 +1214,18 @@ end
 
   always @(posedge clkin_ps or posedge rst_in)
     if (rst_in) begin
-      lock_out <= 2'b00;
+      lock_out   <= 2'b00;
       locked_out <= 0;
     end else begin
-      if (clkfb_type == 0)
-        lock_out[0] <= lock_period;
-    else
-        lock_out[0] <= lock_period & lock_delay & lock_fb;
+      if (clkfb_type == 0) lock_out[0] <= lock_period;
+      else lock_out[0] <= lock_period & lock_delay & lock_fb;
       lock_out[1] <= lock_out[0];
-      locked_out <= lock_out[1];
+      locked_out  <= lock_out[1];
     end
 
   always @(negedge clkin_ps or posedge rst_in)
-  if (rst_in)
-    lock_out1_neg <= 0;
-  else
-    lock_out1_neg <= lock_out[1];
+    if (rst_in) lock_out1_neg <= 0;
+    else lock_out1_neg <= lock_out[1];
 
 
   //
@@ -1219,7 +1246,7 @@ end
         clk0_out <= 0;
       end else clk0_out <= 1;
     else if (clkin_ps == 0 && ((clk1x_type && lock_out[0]) == 0 || (lock_out[0] ==1 && lock_out[1] == 0)))
-          clk0_out <= 0;
+      clk0_out <= 0;
 
   //
   // generate the clk2x_out
@@ -1249,18 +1276,12 @@ end
       clkdv_out <= 1'b0;
       clkdv_cnt <= 0;
     end else if (lock_out1_neg) begin
-      if (clkdv_cnt >= divide_type -1)
-           clkdv_cnt <= 0;
-      else
-           clkdv_cnt <= clkdv_cnt + 1;
+      if (clkdv_cnt >= divide_type - 1) clkdv_cnt <= 0;
+      else clkdv_cnt <= clkdv_cnt + 1;
 
-      if (clkdv_cnt < divide_type /2)
-          clkdv_out <= 1'b1;
-      else
-         if ( (divide_type[0] == 1'b1) && dll_mode_type == 2'b00)
-             clkdv_out <= #(period/4) 1'b0;
-         else
-            clkdv_out <= 1'b0;
+      if (clkdv_cnt < divide_type / 2) clkdv_out <= 1'b1;
+      else if ((divide_type[0] == 1'b1) && dll_mode_type == 2'b00) clkdv_out <= #(period / 4) 1'b0;
+      else clkdv_out <= 1'b0;
     end
 
   //
@@ -1268,7 +1289,7 @@ end
   //
   always @(rst_in or clkfx_multiply_drp or clkfx_divide_drp) begin
     if (rst_in == 1) begin
-      numerator = clkfx_multiply_drp;
+      numerator   = clkfx_multiply_drp;
       denominator = clkfx_divide_drp;
     end
   end
@@ -1277,8 +1298,8 @@ end
   // generate fx output signal
   //
 
-  always @(lock_period or period_fxtmp or denominator or numerator )
-    if (lock_period == 1'b1) 
+  always @(lock_period or period_fxtmp or denominator or numerator)
+    if (lock_period == 1'b1)
       period_fxavg = (period_fxtmp * denominator) / (numerator * 2);
 
 
@@ -1295,18 +1316,14 @@ end
     end
 
   always @(clkfx_out_avg or clkfx_out_ph)
-  if (DFS_OSCILLATOR_MODE == "AVE_FREQ_LOCK")
-     clkfx_out = clkfx_out_avg;
-  else
-     clkfx_out = clkfx_out_ph;
+    if (DFS_OSCILLATOR_MODE == "AVE_FREQ_LOCK") clkfx_out = clkfx_out_avg;
+    else clkfx_out = clkfx_out_ph;
 
 
-  always @(locked_out or posedge rst_in or clkfx_out_avg )
-      if (rst_in == 1) 
-         clkfx_out_avg  <= 0;
-      else if (locked_out == 1) 
-         if (DFS_OSCILLATOR_MODE == "AVE_FREQ_LOCK")
-            clkfx_out_avg  <= #(period_fxavg) ~clkfx_out_avg;
+  always @(locked_out or posedge rst_in or clkfx_out_avg)
+    if (rst_in == 1) clkfx_out_avg <= 0;
+    else if (locked_out == 1)
+      if (DFS_OSCILLATOR_MODE == "AVE_FREQ_LOCK") clkfx_out_avg <= #(period_fxavg) ~clkfx_out_avg;
 
   always @(posedge clkin_ps or posedge clkin_lost_out or posedge rst_in)
     if (rst_in == 1) clkfx_out_ph = 0;
@@ -1344,10 +1361,8 @@ end
   assign do_out = (do_stat_en == 0) ? do_out_drp1 : do_out_s;
 
   always @(posedge rst_in or posedge LOCKED)
-  if (rst_in == 1)
-      en_status <= 0;
-   else
-      en_status <= 1;
+    if (rst_in == 1) en_status <= 0;
+    else en_status <= 1;
 
   //
   // drp process
@@ -1366,7 +1381,9 @@ end
       valid_daddr = addr_is_valid(daddr_in);
       if (DEN == 1) begin
         if (drp_lock == 1)
-          $display(" Warning : DEN is high at DCM_ADV instance %m at time %t. Please wait for DRDY signal before next read/write operation through DRP. ", $time);
+          $display(
+              " Warning : DEN is high at DCM_ADV instance %m at time %t. Please wait for DRDY signal before next read/write operation through DRP. ",
+              $time);
         else begin
           drp_lock <= 1;
 
@@ -1374,16 +1391,11 @@ end
             if (daddr_in == `DCM_DEFAULT_STATUS_ADDR) do_stat_en <= 1;
             else begin
               do_stat_en <= 0;
-              if (daddr_in == `DFS_FREQ_MODE_ADDR)
-                   do_out_drp <= dfs_mode_reg;
-               else if (daddr_in == `DLL_FREQ_MODE_ADDR)
-                   do_out_drp <= dll_mode_reg;
-               else if (daddr_in == `CLKFX_MULTIPLY_ADDR)
-                   do_out_drp <= clkfx_md_reg;
-               else if (daddr_in == `CLKIN_DIV_BY2_ADDR)
-                   do_out_drp <= clkin_div2_reg;
-               else 
-                   do_out_drp <= 16'b0;
+              if (daddr_in == `DFS_FREQ_MODE_ADDR) do_out_drp <= dfs_mode_reg;
+              else if (daddr_in == `DLL_FREQ_MODE_ADDR) do_out_drp <= dll_mode_reg;
+              else if (daddr_in == `CLKFX_MULTIPLY_ADDR) do_out_drp <= clkfx_md_reg;
+              else if (daddr_in == `CLKIN_DIV_BY2_ADDR) do_out_drp <= clkin_div2_reg;
+              else do_out_drp <= 16'b0;
             end
           end
 
@@ -1403,10 +1415,8 @@ end
                 if (ps_kick_off_cmd == 0) begin
                   ps_kick_off_cmd <= 1;
                   ps_in_drp <= ps_drp;
-                  if (ps_in < ps_drp) 
-                      inc_dec <= 1;
-                    else if (ps_in > ps_drp) 
-                      inc_dec <= 0;
+                  if (ps_in < ps_drp) inc_dec <= 1;
+                  else if (ps_in > ps_drp) inc_dec <= 0;
                 end
               end else if (daddr_in == `DFS_FREQ_MODE_ADDR && sim_device_type == 1) begin
                 dfs_mode_reg <= di_in;
@@ -1414,9 +1424,10 @@ end
                 dll_mode_reg <= di_in;
               end else if (daddr_in == `CLKIN_DIV_BY2_ADDR && sim_device_type == 1) begin
                 clkin_div2_reg <= di_in;
-              end
-             else 
-                $display(" Warning : Address DADDR=%b is unsupported at DCM_ADV instance %m at time %t.  ",  daddr_in, $time);
+              end else
+                $display(
+                    " Warning : Address DADDR=%b is unsupported at DCM_ADV instance %m at time %t.  ",
+                    daddr_in, $time);
 
             end
           end
@@ -1451,9 +1462,8 @@ end
     input [6:0] daddr_funcin;
     begin
       addr_is_valid = 1;
-      for (i=0; i<=6; i=i+1)
-    if ( daddr_funcin[i] != 0 && daddr_funcin[i] != 1)
-       addr_is_valid = 0;
+      for (i = 0; i <= 6; i = i + 1)
+        if (daddr_funcin[i] != 0 && daddr_funcin[i] != 1) addr_is_valid = 0;
     end
   endfunction
 
@@ -1500,8 +1510,8 @@ end
     end
 
   always @(clk0_out) begin
-    CLK0 <= #(clkout_delay) clk0_out;
-    CLK90 <= #(clkout_delay + period / 4) clk0_out;
+    CLK0   <= #(clkout_delay) clk0_out;
+    CLK90  <= #(clkout_delay + period / 4) clk0_out;
     CLK180 <= #(clkout_delay + period / 2) clk0_out;
     CLK270 <= #(clkout_delay + period / 4) ~clk0_out;
   end
@@ -1516,12 +1526,10 @@ end
 
   always @(clkfx_out) CLKFX <= #(clkout_delay) clkfx_out;
 
-  always @( clkfx_out or  first_time_locked or locked_out) begin
-  if ( ~first_time_locked)
-     CLKFX180 <= 0;
-  else
-    CLKFX180 <=  #(clkout_delay) ~clkfx_out;
-end
+  always @(clkfx_out or first_time_locked or locked_out) begin
+    if (~first_time_locked) CLKFX180 <= 0;
+    else CLKFX180 <= #(clkout_delay) ~clkfx_out;
+  end
 
   specify
     (CLKIN => LOCKED) = (100: 100: 100, 100: 100: 100);
@@ -1630,7 +1638,7 @@ module dcm_adv_clock_divide_by_2 (
   wire clk_src;
 
   initial begin
-    clock_out = 1'b0;
+    clock_out  = 1'b0;
     clock_div2 = 1'b0;
   end
 
@@ -1668,15 +1676,17 @@ module dcm_adv_maximum_period_check (
   time clock_period;
 
   initial begin
-    clock_edge = 0;
+    clock_edge   = 0;
     clock_period = 0;
   end
 
   always @(posedge clock) begin
-    clock_edge <= $time;
+    clock_edge   <= $time;
     clock_period <= $time - clock_edge;
     if (clock_period > maximum_period && rst == 0) begin
-      $display(" Warning : Input clock period of, %1.3f ns, on the %s port of instance %m exceeds allowed value of %1.3f ns at simulation time %1.3f ns.", clock_period/1000.0, clock_name, maximum_period/1000.0, $time/1000.0);
+      $display(
+          " Warning : Input clock period of, %1.3f ns, on the %s port of instance %m exceeds allowed value of %1.3f ns at simulation time %1.3f ns.",
+          clock_period / 1000.0, clock_name, maximum_period / 1000.0, $time / 1000.0);
     end
   end
 endmodule
@@ -1734,12 +1744,9 @@ module dcm_adv_clock_lost (
     end else begin
       clock_edge <= $time;
       period_tmp = $time - clock_edge;
-      if (period != 0 && (period_tmp <= period_tmp_win))
-        period <= period_tmp;
-    else if (period != 0 && (period_tmp > period_tmp_win))
-        period <= 0;
-    else if ((period == 0) && (clock_edge != 0) && clock_second_pos == 1)
-        period <= period_tmp;
+      if (period != 0 && (period_tmp <= period_tmp_win)) period <= period_tmp;
+      else if (period != 0 && (period_tmp > period_tmp_win)) period <= 0;
+      else if ((period == 0) && (clock_edge != 0) && clock_second_pos == 1) period <= period_tmp;
     end
 
   always @(period) begin
@@ -1752,11 +1759,9 @@ module dcm_adv_clock_lost (
     else begin
       clock_edge_neg <= $time;
       period_neg_tmp = $time - clock_edge_neg;
-      if (period_neg != 0 && ( period_neg_tmp <=  period_neg_tmp_win))
-        period_neg <= period_neg_tmp;
-    else if (period_neg != 0 && (period_neg_tmp > period_neg_tmp_win))
-        period_neg <= 0;
-    else if ((period_neg == 0) && (clock_edge_neg != 0) && clock_second_neg == 1)
+      if (period_neg != 0 && (period_neg_tmp <= period_neg_tmp_win)) period_neg <= period_neg_tmp;
+      else if (period_neg != 0 && (period_neg_tmp > period_neg_tmp_win)) period_neg <= 0;
+      else if ((period_neg == 0) && (clock_edge_neg != 0) && clock_second_neg == 1)
         period_neg <= period_neg_tmp;
     end
 
@@ -1777,16 +1782,14 @@ module dcm_adv_clock_lost (
       if (enable == 1 && clock_second_neg == 1) begin
         if (period != 0) lost_f <= 0;
         #(period_chk_win)
-      if ((clock_high != 1) && (clock_negedge != 1) && rst == 0 && (period <= period_neg))
-        lost_f <= 1;
+          if ((clock_high != 1) && (clock_negedge != 1) && rst == 0 && (period <= period_neg))
+            lost_f <= 1;
       end
     end
 
-  always @( lost_r or  lost_f or enable)
-  if (enable == 1) 
-         lost = lost_r | lost_f;
-  else
-        lost = 0;
+  always @(lost_r or lost_f or enable)
+    if (enable == 1) lost = lost_r | lost_f;
+    else lost = 0;
 
   always @(posedge clock or negedge clock or posedge rst)
     if (rst == 1) begin

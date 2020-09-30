@@ -346,7 +346,9 @@ module DSP_ALU #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -355,27 +357,37 @@ module DSP_ALU #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((ALUMODEREG_REG != 1) && (ALUMODEREG_REG != 0))) begin
-      $display("Error: [Unisim %s-101] ALUMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, ALUMODEREG_REG);
+      $display(
+          "Error: [Unisim %s-101] ALUMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, ALUMODEREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CARRYINREG_REG != 1) && (CARRYINREG_REG != 0))) begin
-      $display("Error: [Unisim %s-102] CARRYINREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, CARRYINREG_REG);
+      $display(
+          "Error: [Unisim %s-102] CARRYINREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, CARRYINREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CARRYINSELREG_REG != 1) && (CARRYINSELREG_REG != 0))) begin
-      $display("Error: [Unisim %s-103] CARRYINSELREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, CARRYINSELREG_REG);
+      $display(
+          "Error: [Unisim %s-103] CARRYINSELREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, CARRYINSELREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MREG_REG != 1) && (MREG_REG != 0))) begin
-      $display("Error: [Unisim %s-111] MREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, MREG_REG);
+      $display(
+          "Error: [Unisim %s-111] MREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, MREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((OPMODEREG_REG != 1) && (OPMODEREG_REG != 0))) begin
-      $display("Error: [Unisim %s-112] OPMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, OPMODEREG_REG);
+      $display(
+          "Error: [Unisim %s-112] OPMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, OPMODEREG_REG);
       attr_err = 1'b1;
     end
 
@@ -383,17 +395,23 @@ module DSP_ALU #(
         ((USE_SIMD_REG != "ONE48") &&
          (USE_SIMD_REG != "FOUR12") &&
          (USE_SIMD_REG != "TWO24"))) begin
-      $display("Error: [Unisim %s-114] USE_SIMD attribute is set to %s.  Legal values for this attribute are ONE48, FOUR12 or TWO24. Instance: %m", MODULE_NAME, USE_SIMD_REG);
+      $display(
+          "Error: [Unisim %s-114] USE_SIMD attribute is set to %s.  Legal values for this attribute are ONE48, FOUR12 or TWO24. Instance: %m",
+          MODULE_NAME, USE_SIMD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((USE_WIDEXOR_REG != "FALSE") && (USE_WIDEXOR_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-115] USE_WIDEXOR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, USE_WIDEXOR_REG);
+      $display(
+          "Error: [Unisim %s-115] USE_WIDEXOR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, USE_WIDEXOR_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((XORSIMD_REG != "XOR24_48_96") && (XORSIMD_REG != "XOR12"))) begin
-      $display("Error: [Unisim %s-116] XORSIMD attribute is set to %s.  Legal values for this attribute are XOR24_48_96 or XOR12. Instance: %m", MODULE_NAME, XORSIMD_REG);
+      $display(
+          "Error: [Unisim %s-116] XORSIMD attribute is set to %s.  Legal values for this attribute are XOR24_48_96 or XOR12. Instance: %m",
+          MODULE_NAME, XORSIMD_REG);
       attr_err = 1'b1;
     end
 
@@ -516,10 +534,10 @@ module DSP_ALU #(
   //*** W mux NB
   always @(OPMODE_mux[8:7] or P_FDBK_in or RND_REG or C_DATA_in)
     case (OPMODE_mux[8:7])
-      2'b00: wmux = 48'b0;
-      2'b01: wmux = P_FDBK_in;
-      2'b10: wmux = RND_REG;
-      2'b11: wmux = C_DATA_in;
+      2'b00:   wmux = 48'b0;
+      2'b01:   wmux = P_FDBK_in;
+      2'b10:   wmux = RND_REG;
+      2'b11:   wmux = C_DATA_in;
       default: wmux = {48{1'bx}};
     endcase
 
@@ -529,33 +547,33 @@ module DSP_ALU #(
   //*** X mux NB
   always @(U_DATA_in or P_FDBK_in or A_ALU_in or B_ALU_in or OPMODE_mux[1:0] or x_mac_cascd)
     case (OPMODE_mux[1:0])
-      2'b00: xmux = x_mac_cascd;
-      2'b01: xmux = {{3{U_DATA_in[44]}}, U_DATA_in};
-      2'b10: xmux = P_FDBK_in;
-      2'b11: xmux = {A_ALU_in, B_ALU_in};
+      2'b00:   xmux = x_mac_cascd;
+      2'b01:   xmux = {{3{U_DATA_in[44]}}, U_DATA_in};
+      2'b10:   xmux = P_FDBK_in;
+      2'b11:   xmux = {A_ALU_in, B_ALU_in};
       default: xmux = {48{1'bx}};
     endcase
 
   //*** Y mux NB
   always @(OPMODE_mux[3:2] or V_DATA_in or C_DATA_in)
     case (OPMODE_mux[3:2])
-      2'b00: ymux = 48'b0;
-      2'b01: ymux = {{3{1'b0}}, V_DATA_in};
-      2'b10: ymux = {48{1'b1}};
-      2'b11: ymux = C_DATA_in;
+      2'b00:   ymux = 48'b0;
+      2'b01:   ymux = {{3{1'b0}}, V_DATA_in};
+      2'b10:   ymux = {48{1'b1}};
+      2'b11:   ymux = C_DATA_in;
       default: ymux = {48{1'bx}};
     endcase
 
   //*** Z mux NB
   always @(OPMODE_mux[6:4] or PCIN_in or P_FDBK_in or C_DATA_in or P_FDBK_47_in)
     casex (OPMODE_mux[6:4])
-      3'b000: zmux = 48'b0;
-      3'b001: zmux = PCIN_in;
-      3'b010: zmux = P_FDBK_in;
-      3'b011: zmux = C_DATA_in;
-      3'b100: zmux = P_FDBK_in;
-      3'b101: zmux = {{9{PCIN_in[47]}}, {8{PCIN_in[47]}}, PCIN_in[47:17]};
-      3'b11x: zmux = {{9{P_FDBK_47_in}}, {8{P_FDBK_in[47]}}, P_FDBK_in[47:17]};
+      3'b000:  zmux = 48'b0;
+      3'b001:  zmux = PCIN_in;
+      3'b010:  zmux = P_FDBK_in;
+      3'b011:  zmux = C_DATA_in;
+      3'b100:  zmux = P_FDBK_in;
+      3'b101:  zmux = {{9{PCIN_in[47]}}, {8{PCIN_in[47]}}, PCIN_in[47:17]};
+      3'b11x:  zmux = {{9{P_FDBK_47_in}}, {8{P_FDBK_in[47]}}, P_FDBK_in[47:17]};
       default: zmux = {48{1'bx}};
     endcase
 
@@ -581,25 +599,33 @@ module DSP_ALU #(
   always @(*) CARRYINSEL_mux = (CARRYINSELREG_BIN == 1'b1) ? CARRYINSEL_reg : CARRYINSEL_in;
 
   always @(*) begin
-      if (OPMODEREG_BIN == 1'b1) OPMODE_mux = OPMODE_reg;
-      else OPMODE_mux = OPMODE_in;
-    end
+    if (OPMODEREG_BIN == 1'b1) OPMODE_mux = OPMODE_reg;
+    else OPMODE_mux = OPMODE_in;
+  end
 
   always @(CARRYINSEL_mux or CARRYCASCIN_in or MULTSIGNIN_in or OPMODE_mux) begin
     if (CARRYINSEL_mux == 3'b010) begin
       if (!((MULTSIGNIN_in === 1'bx) || (cci_drc_msg == 1'b1) ||
              ((OPMODE_mux == 9'b001001000) && !(MULTSIGNIN_in === 1'bx)) ||
              ((MULTSIGNIN_in == 1'b0) && (CARRYCASCIN_in == 1'b0)))) begin
-        $display("DRC warning : [Unisim %s-7] CARRYCASCIN can only be used in the current %s if the previous %s is performing a two input ADD or SUBRTACT operation or the current %s is configured in the MAC extend opmode 7'b1001000 at %.3f ns. Instance %m\n", MODULE_NAME, MODULE_NAME, MODULE_NAME, MODULE_NAME, $time/1000.0);
+        $display(
+            "DRC warning : [Unisim %s-7] CARRYCASCIN can only be used in the current %s if the previous %s is performing a two input ADD or SUBRTACT operation or the current %s is configured in the MAC extend opmode 7'b1001000 at %.3f ns. Instance %m\n",
+            MODULE_NAME, MODULE_NAME, MODULE_NAME, MODULE_NAME, $time / 1000.0);
         // CR 619940 -- Enhanced DRC warning
-        $display("The simulation model does not know the placement of the %s slices used, so it cannot fully confirm the above warning. It is necessary to view the placement of the %s slices and ensure that these warnings are not being breached\n", MODULE_NAME, MODULE_NAME);
+        $display(
+            "The simulation model does not know the placement of the %s slices used, so it cannot fully confirm the above warning. It is necessary to view the placement of the %s slices and ensure that these warnings are not being breached\n",
+            MODULE_NAME, MODULE_NAME);
         cci_drc_msg = 1'b1;
       end
       if (!((MULTSIGNIN_in === 1'bx) || (OPMODE_mux[3:0] != 4'b0101))) begin
-        $display("DRC warning : [Unisim %s-10] CARRYINSEL is set to 010 with OPMODE set to multiplication (xxx0101). This is an illegal mode and may show deviation between simulation results and hardware behavior. %s instance %m at %.3f ns.", MODULE_NAME, MODULE_NAME, $time/1000.0);
+        $display(
+            "DRC warning : [Unisim %s-10] CARRYINSEL is set to 010 with OPMODE set to multiplication (xxx0101). This is an illegal mode and may show deviation between simulation results and hardware behavior. %s instance %m at %.3f ns.",
+            MODULE_NAME, MODULE_NAME, $time / 1000.0);
       end
       if (!((MULTSIGNIN_in === 1'bx) || (cis_drc_msg == 1'b1) || (OPMODEREG_BIN == 1'b1))) begin
-        $display("DRC warning : [Unisim %s-11] CARRYINSEL is set to 010 with OPMODEREG set to 0. This causes unknown values after reset occurs. It is suggested to use OPMODEREG = 1 when cascading large adders. %s instance %m at %.3f ns.", MODULE_NAME, MODULE_NAME, $time/1000.0);
+        $display(
+            "DRC warning : [Unisim %s-11] CARRYINSEL is set to 010 with OPMODEREG set to 0. This causes unknown values after reset occurs. It is suggested to use OPMODEREG = 1 when cascading large adders. %s instance %m at %.3f ns.",
+            MODULE_NAME, MODULE_NAME, $time / 1000.0);
         cis_drc_msg = 1'b1;
       end
     end
@@ -609,11 +635,9 @@ module DSP_ALU #(
   //*** ALUMODE with 1 level of register
   //*********************************************************
   always @(posedge CLK_in) begin
-	    if (RSTALUMODE_in || glblGSR)
-          ALUMODE_reg <= 4'b0;
-	    else if (CEALUMODE_in)
-          ALUMODE_reg <= ALUMODE_in;
-       end
+    if (RSTALUMODE_in || glblGSR) ALUMODE_reg <= 4'b0;
+    else if (CEALUMODE_in) ALUMODE_reg <= ALUMODE_in;
+  end
 
   always @(*) ALUMODE_DATA = (ALUMODEREG_BIN == 1'b1) ? ALUMODE_reg : ALUMODE_in;
 
@@ -646,21 +670,23 @@ module DSP_ALU #(
   // Carry mux to handle SIMD mode 
   // SIMD must be used here since addition of W requires carry propogation
   assign comux4simd = {
-              comux[47:36],
-              comux[35]&&(USE_SIMD_BIN != USE_SIMD_FOUR12),
-              comux[34:24],
-              comux[23]&&(USE_SIMD_BIN == USE_SIMD_ONE48),
-              comux[22:12],
-              comux[11]&&(USE_SIMD_BIN != USE_SIMD_FOUR12),
-              comux[10:0]
-            };
+    comux[47:36],
+    comux[35] && (USE_SIMD_BIN != USE_SIMD_FOUR12),
+    comux[34:24],
+    comux[23] && (USE_SIMD_BIN == USE_SIMD_ONE48),
+    comux[22:12],
+    comux[11] && (USE_SIMD_BIN != USE_SIMD_FOUR12),
+    comux[10:0]
+  };
 
   // FA to combine W-mux with s and co
   // comux must be shifted to properly reflect carry operation
   assign smux_w = smux ^ {comux4simd[46:0], 1'b0} ^ wmux;
-  assign comux_w = ((smux & {comux4simd[46:0],1'b0}) |
-                    (wmux & {comux4simd[46:0],1'b0}) |
-                    (smux & wmux));
+  assign comux_w = ((smux & {
+    comux4simd[46:0], 1'b0
+  }) | (wmux & {
+    comux4simd[46:0], 1'b0
+  }) | (smux & wmux));
 
   // alumode10 indicates a subtraction, used to correct carryout polarity
   assign ALUMODE10 = (ALUMODE_DATA[0] & ALUMODE_DATA[1]);
@@ -729,7 +755,9 @@ module DSP_ALU #(
   assign COUT[1] = (USE_SIMD_BIN != USE_SIMD_ONE48) ? cout_1 : 1'bx;
   assign COUT[0] = (USE_SIMD_BIN == USE_SIMD_FOUR12) ? cout_0 : 1'bx;
   assign MULTSIGN_ALU = s3[13];
-  assign #1 ALU_OUT = {48{ALUMODE_DATA[1]}} ^ {s3[11:0],s2[11:0],s1[11:0],s0[11:0]}; // break 0 delay feedback
+  assign #1 ALU_OUT = {48{ALUMODE_DATA[1]}} ^ {
+    s3[11:0], s2[11:0], s1[11:0], s0[11:0]
+  };  // break 0 delay feedback
   assign XOR_MX[0] = XORSIMD_BIN ? xor_12a : xor_24a;
   assign XOR_MX[1] = XORSIMD_BIN ? xor_12b : xor_48a;
   assign XOR_MX[2] = XORSIMD_BIN ? xor_12c : xor_24b;
@@ -747,11 +775,9 @@ module DSP_ALU #(
 
   //-------  input 0
   always @(posedge CLK_in) begin
-	    if (RSTALLCARRYIN_in || glblGSR)
-          CARRYIN_reg <= 1'b0;
-	    else if (CECARRYIN_in)
-          CARRYIN_reg <= CARRYIN_in;
-       end
+    if (RSTALLCARRYIN_in || glblGSR) CARRYIN_reg <= 1'b0;
+    else if (CECARRYIN_in) CARRYIN_reg <= CARRYIN_in;
+  end
 
   assign CARRYIN_mux = (CARRYINREG_BIN == 1'b1) ? CARRYIN_reg : CARRYIN_in;
 
@@ -765,10 +791,8 @@ module DSP_ALU #(
   assign dr_carryin_int = rst_carryin_g ? 0 : d_carryin_int;
 
   always @(posedge CLK_in) begin
-    if (glblGSR)
-       qmultcarryin <= 1'b0;
-    else
-       qmultcarryin <= dr_carryin_int;
+    if (glblGSR) qmultcarryin <= 1'b0;
+    else qmultcarryin <= dr_carryin_int;
   end
 
   // bypass register mux
@@ -777,14 +801,14 @@ module DSP_ALU #(
   //NB
   always @(CARRYINSEL_mux or CARRYIN_mux or PCIN_in[47] or CARRYCASCIN_in or CCOUT_in or P_FDBK_in[47] or multcarryin_data) begin
     case (CARRYINSEL_mux)
-      3'b000: cin_b = ~CARRYIN_mux;
-      3'b001: cin_b = PCIN_in[47];
-      3'b010: cin_b = ~CARRYCASCIN_in;
-      3'b011: cin_b = ~PCIN_in[47];
-      3'b100: cin_b = ~CCOUT_in;
-      3'b101: cin_b = P_FDBK_in[47];
-      3'b110: cin_b = ~multcarryin_data;
-      3'b111: cin_b = ~P_FDBK_in[47];
+      3'b000:  cin_b = ~CARRYIN_mux;
+      3'b001:  cin_b = PCIN_in[47];
+      3'b010:  cin_b = ~CARRYCASCIN_in;
+      3'b011:  cin_b = ~PCIN_in[47];
+      3'b100:  cin_b = ~CCOUT_in;
+      3'b101:  cin_b = P_FDBK_in[47];
+      3'b110:  cin_b = ~multcarryin_data;
+      3'b111:  cin_b = ~P_FDBK_in[47];
       default: cin_b = 1'bx;
     endcase
   end

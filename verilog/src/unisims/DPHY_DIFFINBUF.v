@@ -105,7 +105,9 @@ module DPHY_DIFFINBUF #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-103] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-103] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1;
     $finish;
   end
@@ -119,7 +121,9 @@ module DPHY_DIFFINBUF #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((DIFF_TERM_REG != "TRUE") && (DIFF_TERM_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-101] DIFF_TERM attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, DIFF_TERM_REG);
+      $display(
+          "Error: [Unisim %s-101] DIFF_TERM attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, DIFF_TERM_REG);
       attr_err = 1'b1;
     end
 
@@ -155,13 +159,10 @@ module DPHY_DIFFINBUF #(
   assign LPRX_O_N_out = (LPRX_DISABLE_in === 1'b0) ? lp_out[1] : (LPRX_DISABLE_in === 1'bx || LPRX_DISABLE_in === 1'bz) ? 1'bx : 1'b0;
   assign LPRX_O_P_out = (LPRX_DISABLE_in === 1'b0) ? lp_out[0] : (LPRX_DISABLE_in === 1'bx || LPRX_DISABLE_in === 1'bz) ? 1'bx : 1'b0;
 
-  always @ (I_in or IB_in) begin
-    if (I_in == 1'b1 && IB_in == 1'b0)
-      o_out <= 1'b1;
-    else if (I_in == 1'b0 && IB_in == 1'b1)
-      o_out <= 1'b0;
-    else if ((I_in === 1'bx) || (IB_in === 1'bx) || I_in === 1'bz || IB_in === 1'bz )
-      o_out <= 1'bx;
+  always @(I_in or IB_in) begin
+    if (I_in == 1'b1 && IB_in == 1'b0) o_out <= 1'b1;
+    else if (I_in == 1'b0 && IB_in == 1'b1) o_out <= 1'b0;
+    else if ((I_in === 1'bx) || (IB_in === 1'bx) || I_in === 1'bz || IB_in === 1'bz) o_out <= 1'bx;
   end
 
   specify

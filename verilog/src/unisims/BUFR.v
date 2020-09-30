@@ -121,7 +121,9 @@ module BUFR (
         half_period_toggle = 8;
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute BUFR_DIVIDE on BUFR instance %m is set to %s.  Legal values for this attribute are BYPASS, 1, 2, 3, 4, 5, 6, 7 or 8.", BUFR_DIVIDE);
+        $display(
+            "Attribute Syntax Error : The attribute BUFR_DIVIDE on BUFR instance %m is set to %s.  Legal values for this attribute are BYPASS, 1, 2, 3, 4, 5, 6, 7 or 8.",
+            BUFR_DIVIDE);
         #1 $finish;
       end
     endcase  // case(BUFR_DIVIDE)
@@ -132,7 +134,9 @@ module BUFR (
       "VIRTEX6": ;
       "7SERIES": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute SIM_DEVICE on BUFR instance %m is set to %s.  Legal values for this attribute are VIRTEX4 or VIRTEX5 or VIRTEX6 or 7SERIES.", SIM_DEVICE);
+        $display(
+            "Attribute Syntax Error : The attribute SIM_DEVICE on BUFR instance %m is set to %s.  Legal values for this attribute are VIRTEX4 or VIRTEX5 or VIRTEX6 or 7SERIES.",
+            SIM_DEVICE);
         #1 $finish;
       end
     endcase
@@ -184,7 +188,7 @@ module BUFR (
           if (ce_en == 1'b1) begin
             if (i_in == 1'b1 && first_rise == 1'b1) begin
               o_out_divide = 1'b1;
-              first_rise = 1'b0;
+              first_rise   = 1'b0;
             end else if (count == half_period_toggle && half_period_done == 1'b0) begin
               o_out_divide = ~o_out_divide;
               half_period_done = 1'b1;
@@ -206,7 +210,7 @@ module BUFR (
         always @(i_ce) begin
           if (i_ce == 1'b1 && first_rise == 1'b1) begin
             o_out_divide = 1'b1;
-            first_rise = 1'b0;
+            first_rise   = 1'b0;
           end else if (count == half_period_toggle && half_period_done == 1'b0) begin
             o_out_divide = ~o_out_divide;
             half_period_done = 1'b1;
@@ -232,8 +236,8 @@ module BUFR (
   //*** Timing Checks Start here
 
   always @(notifier) begin
-  o_out_divide <= 1'bx;
-    end
+    o_out_divide <= 1'bx;
+  end
 
 `ifdef XIL_TIMING
   specify

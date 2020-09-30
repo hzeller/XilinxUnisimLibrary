@@ -89,13 +89,14 @@ module JTAG_SIME2 (
   localparam IRLengthMax = 24;
   localparam IDLength = 32;
 
-  reg [IRLengthMax-1:0] IR_CAPTURE_VAL  = 24'b010001010001010001010001,
-                      BYPASS_INSTR      = 24'b111111111111111111111111,
-                      IDCODE_INSTR      = 24'b001001001001001001001001,
-                      USER1_INSTR       = 24'b000010100100100100100100,
-                      USER2_INSTR       = 24'b000011100100100100100100,
-                      USER3_INSTR       = 24'b100010100100100100100100,
-                      USER4_INSTR       = 24'b100011100100100100100100;
+  reg [IRLengthMax-1:0]
+      IR_CAPTURE_VAL = 24'b010001010001010001010001,
+      BYPASS_INSTR = 24'b111111111111111111111111,
+      IDCODE_INSTR = 24'b001001001001001001001001,
+      USER1_INSTR = 24'b000010100100100100100100,
+      USER2_INSTR = 24'b000011100100100100100100,
+      USER3_INSTR = 24'b100010100100100100100100,
+      USER4_INSTR = 24'b100011100100100100100100;
 
   //  localparam IRLength = 10;
   localparam IRLength = ( 
@@ -194,9 +195,14 @@ module JTAG_SIME2 (
 
   reg [IDLength-1:0] IDCODEval_sig;
 
-  reg  BypassReg = 0, BYPASS_sig = 0, IDCODE_sig = 0, 
-       USER1_sig = 0, USER2_sig = 0,
-       USER3_sig = 0, USER4_sig = 0;
+  reg
+      BypassReg = 0,
+      BYPASS_sig = 0,
+      IDCODE_sig = 0,
+      USER1_sig = 0,
+      USER2_sig = 0,
+      USER3_sig = 0,
+      USER4_sig = 0;
 
   reg TDO_latch;
 
@@ -302,10 +308,12 @@ module JTAG_SIME2 (
       "XCVU13P", "xcvu13p": IDCODEval_sig <= 32'h04B51093;
 
 
-      default : begin
+      default: begin
 
-                        $display("Attribute Syntax Error : The attribute PART_NAME on JTAG_SIME2 instance %m is set to %s. The legal values for this attributes are 7A15T, 7A35T, 7A50T, 7A75T, 7A100T, 7A200T, 7K70T, 7K160T, 7K325T, 7K355T, 7K410T, 7K420T, 7K480T, 7V585T, 7S15, 7S100, 7A25T, 7V2000T, 7VH580T, 7VH870T, 7VX330T, 7VX415T, 7VX485T, 7VX550T, 7VX690T, 7VX980T, 7VX1140T, 7Z010, 7Z015, 7Z020, 7Z030, 7Z035, 7Z045, 7Z100, 7Z007S, 7Z012S, 7Z014S, KU025, KU035, KU040, KU060, KU095, KU115, VU065, VU080, VU095, VU125, VU160, VU190, VU440, XCKU3P, XCKU9P, XCKU11P, XCKU13EG, XCKU15P, XCKU5P, XCVU3P, XCZU9EG, XCVU5P, XCVU7P, XCZU3EG, XCZU4EG, XCZU5EG, XCZU7EG, XCZU2CG, XCZU3CG, XCZU4CG, XCZU5CG, XCZU6CG, XCZU7CG, XCZU9CG, XCZU5EV, XCZU11EG, XCZU15EG, XCZU19EG, XCZU7EV, XCZU2EG, XCZU4EV, XCZU6EG, XCZU17EG, XCVU9P, XCVU11P or XCVU13P.",  PART_NAME);
-         end
+        $display(
+            "Attribute Syntax Error : The attribute PART_NAME on JTAG_SIME2 instance %m is set to %s. The legal values for this attributes are 7A15T, 7A35T, 7A50T, 7A75T, 7A100T, 7A200T, 7K70T, 7K160T, 7K325T, 7K355T, 7K410T, 7K420T, 7K480T, 7V585T, 7S15, 7S100, 7A25T, 7V2000T, 7VH580T, 7VH870T, 7VX330T, 7VX415T, 7VX485T, 7VX550T, 7VX690T, 7VX980T, 7VX1140T, 7Z010, 7Z015, 7Z020, 7Z030, 7Z035, 7Z045, 7Z100, 7Z007S, 7Z012S, 7Z014S, KU025, KU035, KU040, KU060, KU095, KU115, VU065, VU080, VU095, VU125, VU160, VU190, VU440, XCKU3P, XCKU9P, XCKU11P, XCKU13EG, XCKU15P, XCKU5P, XCVU3P, XCZU9EG, XCVU5P, XCVU7P, XCZU3EG, XCZU4EG, XCZU5EG, XCZU7EG, XCZU2CG, XCZU3CG, XCZU4CG, XCZU5CG, XCZU6CG, XCZU7CG, XCZU9CG, XCZU5EV, XCZU11EG, XCZU15EG, XCZU19EG, XCZU7EV, XCZU2EG, XCZU4EV, XCZU6EG, XCZU17EG, XCVU9P, XCVU11P or XCVU13P.",
+            PART_NAME);
+      end
     endcase  // case(PART_NAME)
 
     ir_int <= IR_CAPTURE_VAL[IRLength-1:0];
@@ -357,8 +365,8 @@ module JTAG_SIME2 (
         end
 
         ShiftDR: begin
-          if(IRcontent_sig == BYPASS_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]) 
-                      BypassReg <= TDI;
+          if (IRcontent_sig == BYPASS_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)])
+            BypassReg <= TDI;
 
           if (TMS == 1) begin
             CurrentState <= Exit1DR;
@@ -586,10 +594,9 @@ module JTAG_SIME2 (
     ClkUpdateIR_sig = UpdateIR_sig & ~TCK;
   end  // always
 
-  always@(TCK)
-  begin
-       ClkID_sig = IDCODE_sig & TCK;
-  end // always
+  always @(TCK) begin
+    ClkID_sig = IDCODE_sig & TCK;
+  end  // always
 
   //-------------- TCK  NEGATIVE EDGE activities ----------
   always @(negedge TCK) begin
@@ -622,7 +629,7 @@ module JTAG_SIME2 (
   //--------------------------------------------------------
   always @(posedge ClkUpdateIR_sig or posedge TlrstN_sig or posedge TRST) begin
     if ((TRST == 1) || (TlrstN_sig == 1)) begin
-      IRcontent_sig = IDCODE_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)];
+      IRcontent_sig   = IDCODE_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)];
       IRegLastBit_sig = ir_int[0];
     end else if ((TRST == 0) && (TlrstN_sig == 0)) begin
       IRcontent_sig = ir_int;
@@ -645,10 +652,10 @@ module JTAG_SIME2 (
         // if BYPASS instruction, set BYPASS signal to 1
         BYPASS_sig <= 1;
         IDCODE_sig <= 0;
-        USER1_sig <= 0;
-        USER2_sig <= 0;
-        USER3_sig <= 0;
-        USER4_sig <= 0;
+        USER1_sig  <= 0;
+        USER2_sig  <= 0;
+        USER3_sig  <= 0;
+        USER4_sig  <= 0;
       end
 
       IDCODE_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]: begin
@@ -656,10 +663,10 @@ module JTAG_SIME2 (
         // if IDCODE instruction, set IDCODE signal to 1
         BYPASS_sig <= 0;
         IDCODE_sig <= 1;
-        USER1_sig <= 0;
-        USER2_sig <= 0;
-        USER3_sig <= 0;
-        USER4_sig <= 0;
+        USER1_sig  <= 0;
+        USER2_sig  <= 0;
+        USER3_sig  <= 0;
+        USER4_sig  <= 0;
       end
 
       USER1_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]: begin
@@ -667,10 +674,10 @@ module JTAG_SIME2 (
         // if USER1 instruction, set USER1 signal to 1 
         BYPASS_sig <= 0;
         IDCODE_sig <= 0;
-        USER1_sig <= 1;
-        USER2_sig <= 0;
-        USER3_sig <= 0;
-        USER4_sig <= 0;
+        USER1_sig  <= 1;
+        USER2_sig  <= 0;
+        USER3_sig  <= 0;
+        USER4_sig  <= 0;
       end
 
       USER2_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]: begin
@@ -678,21 +685,21 @@ module JTAG_SIME2 (
         // if USER2 instruction, set USER2 signal to 1 
         BYPASS_sig <= 0;
         IDCODE_sig <= 0;
-        USER1_sig <= 0;
-        USER2_sig <= 1;
-        USER3_sig <= 0;
-        USER4_sig <= 0;
+        USER1_sig  <= 0;
+        USER2_sig  <= 1;
+        USER3_sig  <= 0;
+        USER4_sig  <= 0;
       end
 
       USER3_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]: begin
         jtag_instruction_name = "USER3";
         // if USER3 instruction, set USER3 signal to 1 
         BYPASS_sig <= 0;
-        USER1_sig <= 0;
-        USER2_sig <= 0;
+        USER1_sig  <= 0;
+        USER2_sig  <= 0;
         IDCODE_sig <= 0;
-        USER3_sig <= 1;
-        USER4_sig <= 0;
+        USER3_sig  <= 1;
+        USER4_sig  <= 0;
       end
 
       USER4_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]: begin
@@ -700,20 +707,20 @@ module JTAG_SIME2 (
         // if USER4 instruction, set USER4 signal to 1 
         BYPASS_sig <= 0;
         IDCODE_sig <= 0;
-        USER1_sig <= 0;
-        USER2_sig <= 0;
-        USER3_sig <= 0;
-        USER4_sig <= 1;
+        USER1_sig  <= 0;
+        USER2_sig  <= 0;
+        USER3_sig  <= 0;
+        USER4_sig  <= 1;
       end
       default: begin
         jtag_instruction_name = "UNKNOWN";
         // if UNKNOWN instruction, set all signals to 0 
         BYPASS_sig <= 0;
         IDCODE_sig <= 0;
-        USER1_sig <= 0;
-        USER2_sig <= 0;
-        USER3_sig <= 0;
-        USER4_sig <= 0;
+        USER1_sig  <= 0;
+        USER2_sig  <= 0;
+        USER3_sig  <= 0;
+        USER4_sig  <= 0;
       end
 
     endcase
@@ -785,28 +792,27 @@ module JTAG_SIME2 (
           glbl.JTAG_USER_TDO4_GLBL) 
   begin
     case (CurrentState)
-      ShiftIR:  begin
-                      TDO_latch <= IRegLastBit_sig;
-                   end
-      ShiftDR:  begin
-                      if(IRcontent_sig == IDCODE_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]) 
-                          TDO_latch <= IDregLastBit_sig;
-                      else if(IRcontent_sig == BYPASS_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]) 
-                          TDO_latch <= BypassReg; 
-                      else if(IRcontent_sig == USER1_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]) 
-                          TDO_latch <= glbl.JTAG_USER_TDO1_GLBL; 
-                      else if(IRcontent_sig == USER2_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]) 
-                          TDO_latch <= glbl.JTAG_USER_TDO2_GLBL; 
-                      else if(IRcontent_sig == USER3_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]) 
-                          TDO_latch <= glbl.JTAG_USER_TDO3_GLBL; 
-                      else if(IRcontent_sig == USER4_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)]) 
-                          TDO_latch <= glbl.JTAG_USER_TDO4_GLBL; 
-                      else
-                          TDO_latch <= 1'bz;
-                      end
-      default : begin
-                          TDO_latch <= 1'bz;
-                   end
+      ShiftIR: begin
+        TDO_latch <= IRegLastBit_sig;
+      end
+      ShiftDR: begin
+        if (IRcontent_sig == IDCODE_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)])
+          TDO_latch <= IDregLastBit_sig;
+        else if (IRcontent_sig == BYPASS_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)])
+          TDO_latch <= BypassReg;
+        else if (IRcontent_sig == USER1_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)])
+          TDO_latch <= glbl.JTAG_USER_TDO1_GLBL;
+        else if (IRcontent_sig == USER2_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)])
+          TDO_latch <= glbl.JTAG_USER_TDO2_GLBL;
+        else if (IRcontent_sig == USER3_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)])
+          TDO_latch <= glbl.JTAG_USER_TDO3_GLBL;
+        else if (IRcontent_sig == USER4_INSTR[IRLengthMax - 1 : (IRLengthMax - IRLength)])
+          TDO_latch <= glbl.JTAG_USER_TDO4_GLBL;
+        else TDO_latch <= 1'bz;
+      end
+      default: begin
+        TDO_latch <= 1'bz;
+      end
     endcase  // case(PART_NAME)
   end  // always
 

@@ -84,34 +84,36 @@ module DNA_PORTE2 #(
   assign DOUT = dout_out;
 
 `ifdef XIL_TIMING  // inputs with timing checks
-  assign clk_in = clk_delay;
-  assign din_in = din_delay;
-  assign read_in = read_delay;
+  assign clk_in   = clk_delay;
+  assign din_in   = din_delay;
+  assign read_in  = read_delay;
   assign shift_in = shift_delay;
 `endif  //  `ifdef XIL_TIMING
 
 `ifndef XIL_TIMING  // inputs with timing checks
-  assign clk_in = CLK;
-  assign din_in = DIN;
-  assign read_in = READ;
+  assign clk_in   = CLK;
+  assign din_in   = DIN;
+  assign read_in  = READ;
   assign shift_in = SHIFT;
 `endif  //  `ifndef XIL_TIMING
 
   initial
     if ((SIM_DNA_VALUE_reg < 96'h000000000000000000000000) || (SIM_DNA_VALUE_reg > 96'hFFFFFFFFFFFFFFFFFFFFFFFD)) begin
-      $display("Error: [Unisim %s-101] SIM_DNA_VALUE attribute is set to %h.  Legal values for this attribute are 96'h000000000000000000000000 to 96'hFFFFFFFFFFFFFFFFFFFFFFFD. Instance: %m", MODULE_NAME, SIM_DNA_VALUE_reg);
+      $display(
+          "Error: [Unisim %s-101] SIM_DNA_VALUE attribute is set to %h.  Legal values for this attribute are 96'h000000000000000000000000 to 96'hFFFFFFFFFFFFFFFFFFFFFFFD. Instance: %m",
+          MODULE_NAME, SIM_DNA_VALUE_reg);
       #1 $finish;
     end
 
 
   always @(posedge clk_in) begin
     if (read_in == 1'b1) begin
-      dna_val = SIM_DNA_VALUE_reg;
+      dna_val  = SIM_DNA_VALUE_reg;
       dout_out = SIM_DNA_VALUE_reg[0];
     end // read_in == 1'b1
       else if(read_in == 1'b0)
       if (shift_in == 1'b1) begin
-        dna_val = {din_in, dna_val[MSB_DNA_BITS : 1]};
+        dna_val  = {din_in, dna_val[MSB_DNA_BITS : 1]};
         dout_out = dna_val[0];
       end  // shift_in == 1'b1
   end  // always @ (posedge clk_in)

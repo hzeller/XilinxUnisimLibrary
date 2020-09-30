@@ -148,9 +148,9 @@ module ISERDESE2 (
 
   reg data_in = 0;
   reg o_out_pre_fb = 0, o_delay_pre_fb = 0;
-  reg o_out = 0;
+  reg  o_out = 0;
 
-  reg notifier;
+  reg  notifier;
 
   wire O_OUT;
   wire Q1_OUT;
@@ -353,8 +353,11 @@ module ISERDESE2 (
   //----------------------------------------------------------
   task INTERFACE_TYPE_msg;
     begin
-      $display("DRC  Warning : The combination of INTERFACE_TYPE, DATA_RATE and DATA_WIDTH values on instance %m is not recommended.\n");
-      $display("The current settings are : INTERFACE_TYPE = %s, DATA_RATE = %s and DATA_WIDTH = %d\n", INTERFACE_TYPE, DATA_RATE, DATA_WIDTH);
+      $display(
+          "DRC  Warning : The combination of INTERFACE_TYPE, DATA_RATE and DATA_WIDTH values on instance %m is not recommended.\n");
+      $display(
+          "The current settings are : INTERFACE_TYPE = %s, DATA_RATE = %s and DATA_WIDTH = %d\n",
+          INTERFACE_TYPE, DATA_RATE, DATA_WIDTH);
       $display("The recommended combinations of values are :\n");
       $display("NETWORKING SDR 2, 3, 4, 5, 6, 7, 8\n");
       $display("NETWORKING DDR 4, 6, 8, 10, 14\n");
@@ -364,8 +367,11 @@ module ISERDESE2 (
 
   task OVERSAMPLE_DDR_SDR_msg;
     begin
-      $display("DRC  Warning : The combination of INTERFACE_TYPE, DATA_RATE and DATA_WIDTH values on instance %m is not recommended.\n");
-      $display("The current settings are : INTERFACE_TYPE = %s, DATA_RATE = %s and DATA_WIDTH = %d\n", INTERFACE_TYPE, DATA_RATE, DATA_WIDTH);
+      $display(
+          "DRC  Warning : The combination of INTERFACE_TYPE, DATA_RATE and DATA_WIDTH values on instance %m is not recommended.\n");
+      $display(
+          "The current settings are : INTERFACE_TYPE = %s, DATA_RATE = %s and DATA_WIDTH = %d\n",
+          INTERFACE_TYPE, DATA_RATE, DATA_WIDTH);
       $display("The recommended combinations of values are :\n");
       $display("OVERSAMPLE SDR 4\n");
       $display("OVERSAMPLE DDR 4\n");
@@ -382,7 +388,9 @@ module ISERDESE2 (
     case (DATA_RATE)
       "SDR", "DDR": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DATA_RATE on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are SDR or DDR", DATA_RATE);
+        $display(
+            "Attribute Syntax Error : The attribute DATA_RATE on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are SDR or DDR",
+            DATA_RATE);
         #1 $finish;
       end
     endcase  // case(DATA_RATE)
@@ -394,7 +402,9 @@ module ISERDESE2 (
 
       2, 3, 4, 5, 6, 7, 8, 10, 14: ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DATA_WIDTH on ISERDESE2 instance %m is set to %d.  Legal values for this attribute are 2, 3, 4, 5, 6, 7, 8, 10 or 14", DATA_WIDTH);
+        $display(
+            "Attribute Syntax Error : The attribute DATA_WIDTH on ISERDESE2 instance %m is set to %d.  Legal values for this attribute are 2, 3, 4, 5, 6, 7, 8, 10 or 14",
+            DATA_WIDTH);
         #1 $finish;
       end
     endcase  // case(DATA_WIDTH)
@@ -407,7 +417,9 @@ module ISERDESE2 (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DYN_CLKDIV_INV_EN on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE", DYN_CLKDIV_INV_EN);
+        $display(
+            "Attribute Syntax Error : The attribute DYN_CLKDIV_INV_EN on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE",
+            DYN_CLKDIV_INV_EN);
         #1 $finish;
       end
 
@@ -420,7 +432,9 @@ module ISERDESE2 (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DYN_CLK_INV_EN on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE", DYN_CLK_INV_EN);
+        $display(
+            "Attribute Syntax Error : The attribute DYN_CLK_INV_EN on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE",
+            DYN_CLK_INV_EN);
         #1 $finish;
       end
 
@@ -432,7 +446,9 @@ module ISERDESE2 (
     case (IOBDELAY)
       "NONE", "IBUF", "IFD", "BOTH": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IOBDELAY on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are NONE, IBUF, IFD or BOTH", IOBDELAY);
+        $display(
+            "Attribute Syntax Error : The attribute IOBDELAY on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are NONE, IBUF, IFD or BOTH",
+            IOBDELAY);
         #1 $finish;
       end
     endcase  // case(IOBDELAY)
@@ -444,7 +460,9 @@ module ISERDESE2 (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute OFB_USED on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE", OFB_USED);
+        $display(
+            "Attribute Syntax Error : The attribute OFB_USED on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE",
+            OFB_USED);
         #1 $finish;
       end
 
@@ -456,7 +474,9 @@ module ISERDESE2 (
 
       1, 2: ;
       default: begin
-        $display("Attribute Syntax Error : The attribute NUM_CE on ISERDESE2 instance %m is set to %d.  Legal values for this attribute are 1 or 2", NUM_CE);
+        $display(
+            "Attribute Syntax Error : The attribute NUM_CE on ISERDESE2 instance %m is set to %d.  Legal values for this attribute are 1 or 2",
+            NUM_CE);
         #1 $finish;
       end
 
@@ -469,11 +489,8 @@ module ISERDESE2 (
     case (INTERFACE_TYPE)
       "MEMORY": begin
         case (DATA_RATE)
-          "DDR":
-          case (DATA_WIDTH)
-            4: ;
-            default: INTERFACE_TYPE_msg;
-          endcase  // DATA_WIDTH
+          "DDR":   case (DATA_WIDTH)   4: ; default: INTERFACE_TYPE_msg;
+ endcase  // DATA_WIDTH
           default: INTERFACE_TYPE_msg;
         endcase  // DATA_RATE
       end
@@ -493,25 +510,21 @@ module ISERDESE2 (
         endcase  // DATA_RATE
       end
       "MEMORY_DDR3": ;
-      "MEMORY_QDR": ;
+      "MEMORY_QDR":  ;
       "OVERSAMPLE": begin
         case (DATA_RATE)
-          "SDR":
-          case (DATA_WIDTH)
-            4: ;
-            default: OVERSAMPLE_DDR_SDR_msg;
-          endcase  // DATA_WIDTH
-          "DDR":
-          case (DATA_WIDTH)
-            4: ;
-            default: OVERSAMPLE_DDR_SDR_msg;
-          endcase  // DATA_WIDTH
+          "SDR":   case (DATA_WIDTH) 4: ; default: OVERSAMPLE_DDR_SDR_msg;
+ endcase  // DATA_WIDTH
+          "DDR":   case (DATA_WIDTH) 4: ; default: OVERSAMPLE_DDR_SDR_msg;
+ endcase  // DATA_WIDTH
           default: ;
         endcase  // DATA_RATE
       end
 
       default: begin
-        $display("Attribute Syntax Error : The attribute INTERFACE_TYPE on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are MEMORY, NETWORKING, MEMORY_QDR, MEMORY_DDR3 or OVERSAMPLE", INTERFACE_TYPE);
+        $display(
+            "Attribute Syntax Error : The attribute INTERFACE_TYPE on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are MEMORY, NETWORKING, MEMORY_QDR, MEMORY_DDR3 or OVERSAMPLE",
+            INTERFACE_TYPE);
         #1 $finish;
       end
     endcase  // INTERFACE_TYPE
@@ -522,7 +535,9 @@ module ISERDESE2 (
     case (SERDES_MODE)
       "MASTER", "SLAVE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute SERDES_MODE on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are MASTER or SLAVE", SERDES_MODE);
+        $display(
+            "Attribute Syntax Error : The attribute SERDES_MODE on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are MASTER or SLAVE",
+            SERDES_MODE);
         #1 $finish;
       end
     endcase  // case(SERDES_MODE)
@@ -541,24 +556,26 @@ module ISERDESE2 (
     case (IOBDELAY)
 
       "NONE": begin
-        o_out_pre_fb <= D_in;
+        o_out_pre_fb   <= D_in;
         o_delay_pre_fb <= D_in;
 
       end
       "IBUF": begin
-        o_out_pre_fb <= DDLY_in;
+        o_out_pre_fb   <= DDLY_in;
         o_delay_pre_fb <= D_in;
       end
       "IFD": begin
-        o_out_pre_fb <= D_in;
+        o_out_pre_fb   <= D_in;
         o_delay_pre_fb <= DDLY_in;
       end
       "BOTH": begin
-        o_out_pre_fb <= DDLY_in;
+        o_out_pre_fb   <= DDLY_in;
         o_delay_pre_fb <= DDLY_in;
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute IOBDELAY on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are NONE, IBUF, IFD or BOTH", IOBDELAY);
+        $display(
+            "Attribute Syntax Error : The attribute IOBDELAY on ISERDESE2 instance %m is set to %s.  Legal values for this attribute are NONE, IBUF, IFD or BOTH",
+            IOBDELAY);
         $finish;
       end
 
@@ -570,7 +587,7 @@ module ISERDESE2 (
     case (OFB_USED)
       "TRUE":
       always @(OFB_in) begin
-        o_out <= OFB_in;
+        o_out   <= OFB_in;
         data_in <= OFB_in;
       end
       "FALSE": begin

@@ -363,14 +363,10 @@ module SIM_CONFIGE2 #(
   localparam MODULE_NAME = "SIM_CONFIGE2";
 
   initial begin
-    if (DEVICE_ID == "036A2093" || DEVICE_ID == "03702093")
-       bout_en = 4'b0011;
-    else if (DEVICE_ID == "036A4093" || DEVICE_ID == "03704093")
-       bout_en = 4'b0111;
-    else if (DEVICE_ID == "036A6093")
-       bout_en = 4'b1111;
-    else
-       bout_en = 4'b0001;
+    if (DEVICE_ID == "036A2093" || DEVICE_ID == "03702093") bout_en = 4'b0011;
+    else if (DEVICE_ID == "036A4093" || DEVICE_ID == "03704093") bout_en = 4'b0111;
+    else if (DEVICE_ID == "036A6093") bout_en = 4'b1111;
+    else bout_en = 4'b0001;
   end
 
 
@@ -596,7 +592,7 @@ module SIM_CONFIGE2 #(
 
     case (ICAP_SUPPORT)
       "FALSE": icap_on = 0;
-      "TRUE": icap_on = 1;
+      "TRUE":  icap_on = 1;
       default: icap_on = 0;
     endcase
 
@@ -647,25 +643,20 @@ module SIM_CONFIGE2 #(
 
 
   always @(posedge cclk_in) begin
-    outbus_dly <= outbus_dly1;
+    outbus_dly  <= outbus_dly1;
     outbus_dly1 <= outbus;
   end
 
   always @(posedge cclk_in or csi_b_in)
     if (csi_b_in == 1) csi_b_ins <= csi_b_in;
     else begin
-      if (cclk_in != 1)
-          csi_b_ins <= csi_b_in;
-        else
-          @(negedge cclk_in)
-           csi_b_ins <= csi_b_in;
+      if (cclk_in != 1) csi_b_ins <= csi_b_in;
+      else @(negedge cclk_in) csi_b_ins <= csi_b_in;
     end
 
-  always @(abort_out_en or csi_b_in or rdwr_b_in && rd_flag[ib] )
-    if (abort_out_en == 1)
-       d_o_en = 1;
-    else
-       d_o_en = rdwr_b_in & ~csi_b_in & rd_flag[ib];
+  always @(abort_out_en or csi_b_in or rdwr_b_in && rd_flag[ib])
+    if (abort_out_en == 1) d_o_en = 1;
+    else d_o_en = rdwr_b_in & ~csi_b_in & rd_flag[ib];
 
 
   assign init_b_t = init_b_in & i_init_b_cmd_t;
@@ -693,10 +684,8 @@ module SIM_CONFIGE2 #(
     if (icap_on == 0) begin
       if (init_rst == 1) init_b_out <= 0;
       else begin
-        if ((prog_b_in == 0 ) && (rst_en == 1) || (iprog_b_t == 0))
-         init_b_out <= 0;
-     else if ((prog_b_in == 1 ) && (rst_en == 1) || (iprog_b_t == 1))
-         init_b_out <= #(cfg_Tpl) 1;
+        if ((prog_b_in == 0) && (rst_en == 1) || (iprog_b_t == 0)) init_b_out <= 0;
+        else if ((prog_b_in == 1) && (rst_en == 1) || (iprog_b_t == 1)) init_b_out <= #(cfg_Tpl) 1;
       end
     end
 
@@ -731,28 +720,36 @@ module SIM_CONFIGE2 #(
         mode_pin_in <= m_in;
         if (m_in !== 3'b110) begin
           mode_sample_flag <= 0;
-          if ( icap_on == 0) 
-               $display("Error: [Unisim %s-2] Input M is %h. Only Slave SelectMAP mode M=110 is supported. Instance %m.", MODULE_NAME, m_in);
+          if (icap_on == 0)
+            $display(
+                "Error: [Unisim %s-2] Input M is %h. Only Slave SelectMAP mode M=110 is supported. Instance %m.",
+                MODULE_NAME, m_in);
         end else mode_sample_flag <= #1 1;
       end
     end
 
-  always @(posedge init_b_t ) 
-       if (prog_b_t != 1)  begin
-            if ($time != 0 && icap_on == 0)
-       $display("Error: [Unisim %s-3] PROGB is not high when INITB goes high at time %t. Instance %m.", MODULE_NAME, $time);
+  always @(posedge init_b_t)
+    if (prog_b_t != 1) begin
+      if ($time != 0 && icap_on == 0)
+        $display(
+            "Error: [Unisim %s-3] PROGB is not high when INITB goes high at time %t. Instance %m.",
+            MODULE_NAME, $time);
     end
 
   always @(m_in)
     if (mode_sample_flag == 1 && persist_en[0] == 1 && icap_on == 0)
-       $display("Error: [Unisim %s-4] Mode pine M[2:0] changed after rising edge of INITB at time %t. Instance %m.", MODULE_NAME, $time);
+      $display(
+          "Error: [Unisim %s-4] Mode pine M[2:0] changed after rising edge of INITB at time %t. Instance %m.",
+          MODULE_NAME, $time);
 
   always @(posedge prog_b_in or negedge prog_b_in)
     if (prog_b_in == 0) prog_pulse_low_edge <= $time;
     else if (prog_b_in == 1 && $time > 0) begin
       prog_pulse_low = $time - prog_pulse_low_edge;
-      if (prog_pulse_low < cfg_Tprog  && icap_on == 0)
-        $display("Error: [Unisim %s-5] Low time of PROGB is less than required minimum Tprogram time %d at time %t. Instance %m.", MODULE_NAME, cfg_Tprog, $time);
+      if (prog_pulse_low < cfg_Tprog && icap_on == 0)
+        $display(
+            "Error: [Unisim %s-5] Low time of PROGB is less than required minimum Tprogram time %d at time %t. Instance %m.",
+            MODULE_NAME, cfg_Tprog, $time);
     end
 
   assign bus_en = (mode_sample_flag == 1 && csi_b_in == 0) ? 1 : 0;
@@ -772,22 +769,26 @@ module SIM_CONFIGE2 #(
           if (tmp_byte == 8'hBB) buswid_flag_init[ib] <= 1;
         end else begin
           if (tmp_byte == 8'h11) begin  // x8
-            buswid_flag[ib] <= 1;
+            buswid_flag[ib]  <= 1;
             buswidth_tmp[ib] <= 2'b01;
           end else if (tmp_byte == 8'h22) begin  // x16
-            buswid_flag[ib] <= 1;
+            buswid_flag[ib]  <= 1;
             buswidth_tmp[ib] <= 2'b10;
           end else if (tmp_byte == 8'h44) begin  // x32
-            buswid_flag[ib] <= 1;
+            buswid_flag[ib]  <= 1;
             buswidth_tmp[ib] <= 2'b11;
           end else begin
             buswid_flag[ib] <= 0;
             buswidth_tmp[ib] <= 2'b00;
             buswid_flag_init[ib] <= 0;
             if (icap_on == 0)
-                         $display("Error: [Unisim %s-6] BUS Width Auto Dection did not find 0x11 or 0x22 or 0x44 on D[7:0] followed 0xBB at time %t. Instance %m.", MODULE_NAME, $time);
-                         else 
-                         $display("Error: [Unisim %s-7] BUS Width Auto Dection did not find 0x11 or 0x22 or 0x44 on dix[7:0] followed 0xBB on ICAPE3 instance at time %t. Instance %m.", MODULE_NAME, $time);
+              $display(
+                  "Error: [Unisim %s-6] BUS Width Auto Dection did not find 0x11 or 0x22 or 0x44 on D[7:0] followed 0xBB at time %t. Instance %m.",
+                  MODULE_NAME, $time);
+            else
+              $display(
+                  "Error: [Unisim %s-7] BUS Width Auto Dection did not find 0x11 or 0x22 or 0x44 on dix[7:0] followed 0xBB on ICAPE3 instance at time %t. Instance %m.",
+                  MODULE_NAME, $time);
 
           end
         end
@@ -844,7 +845,7 @@ module SIM_CONFIGE2 #(
 
   always @(posedge cclk_in or posedge desync_flag_t or negedge csi_b_in) begin
     if (desync_flag[ib] == 1) begin
-      pack_in_reg_tmp0 = 32'b0;
+      pack_in_reg_tmp0  = 32'b0;
       pack_in_reg_tmps0 = 32'b0;
     end
     if (desync_flag[0] == 1) begin
@@ -892,7 +893,7 @@ module SIM_CONFIGE2 #(
         wr_cnt[3] <= 0;
         wr_flag <= 4'b0;
         rd_flag <= 4'b0;
-        pack_in_reg_tmp0 = 32'b0;
+        pack_in_reg_tmp0  = 32'b0;
         pack_in_reg_tmps0 = 32'b0;
       end else if (rw_en[ib] == 1 && desync_flag[ib] == 0) begin
         if (rdwr_b_in == 0) begin
@@ -910,8 +911,8 @@ module SIM_CONFIGE2 #(
               end else begin
                 pack_in_reg_tmp0[31:24] = pack_in_reg_tmp0[23:16];
                 pack_in_reg_tmp0[23:16] = pack_in_reg_tmp0[15:8];
-                pack_in_reg_tmp0[15:8] = pack_in_reg_tmp0[7:0];
-                pack_in_reg_tmp0[7:0] = tmp_byte;
+                pack_in_reg_tmp0[15:8]  = pack_in_reg_tmp0[7:0];
+                pack_in_reg_tmp0[7:0]   = tmp_byte;
                 pack_in_reg_tmps0 <= pack_in_reg_tmp0;
               end
             end else begin
@@ -951,7 +952,7 @@ module SIM_CONFIGE2 #(
                 new_data_in_flag[ib] <= 0;
               end else begin
                 pack_in_reg_tmp0[31:16] = pack_in_reg_tmp0[15:0];
-                pack_in_reg_tmp0[15:0] = tmp_word;
+                pack_in_reg_tmp0[15:0]  = tmp_word;
                 pack_in_reg_tmps0 <= pack_in_reg_tmp0;
                 new_data_in_flag[ib] <= 0;
                 wr_cnt[ib] <= 0;
@@ -971,9 +972,13 @@ module SIM_CONFIGE2 #(
               end
             end
           end else if (buswidth[ib] == 2'b11) begin
-            tmp_dword = {bit_revers8(d_in[31:24]), bit_revers8(d_in[23:16]), bit_revers8(d_in[15:8]),
-                          bit_revers8(d_in[7:0])};
-            pack_in_reg_tmp0 <= tmp_dword;
+            tmp_dword = {
+              bit_revers8(d_in[31:24]),
+              bit_revers8(d_in[23:16]),
+              bit_revers8(d_in[15:8]),
+              bit_revers8(d_in[7:0])
+            };
+            pack_in_reg_tmp0  <= tmp_dword;
             pack_in_reg_tmps0 <= tmp_dword;
             if (bus_sync_flag[ib] == 0) begin
               if (tmp_dword == 32'hAA995566) begin
@@ -1008,9 +1013,8 @@ module SIM_CONFIGE2 #(
 
     if (ib == 0 && desync_flag[0] == 0 && icap_clr == 0) begin
       pack_in_reg[0] = pack_in_reg_tmps0;
-    end
-     else if (ib == 1 && desync_flag[1] == 0 && icap_clr == 0)
-        pack_in_reg[1] = pack_in_reg_tmps0;
+    end else if (ib == 1 && desync_flag[1] == 0 && icap_clr == 0)
+      pack_in_reg[1] = pack_in_reg_tmps0;
     else if (ib == 2 && desync_flag[2] == 0 && icap_clr == 0) pack_in_reg[2] = pack_in_reg_tmps0;
     else if (ib == 3 && desync_flag[3] == 0 && icap_clr == 0) pack_in_reg[3] = pack_in_reg_tmps0;
   end
@@ -1040,7 +1044,7 @@ module SIM_CONFIGE2 #(
       rst_pack_dec(1);
       rst_pack_dec(2);
       rst_pack_dec(3);
-      bout_flag <= 4'b0;
+      bout_flag   <= 4'b0;
       bout_cnt[0] <= 0;
       bout_cnt[1] <= 0;
       bout_cnt[2] <= 0;
@@ -1051,40 +1055,40 @@ module SIM_CONFIGE2 #(
         rst_pack_dec(1);
         rst_pack_dec(2);
         rst_pack_dec(3);
-        bout_flag <= 4'b0;
+        bout_flag   <= 4'b0;
         bout_cnt[0] <= 0;
         bout_cnt[1] <= 0;
         bout_cnt[2] <= 0;
         bout_cnt[3] <= 0;
       end
       if (crc_reset[ib] == 1) begin
-        crc_reg[ib] <= 32'b0;
-        crc_ck[ib] <= 0;
+        crc_reg[ib]  <= 32'b0;
+        crc_ck[ib]   <= 0;
         crc_curr[ib] <= 32'b0;
       end
       if (crc_ck[ib] == 1) begin
         crc_curr[ib] <= 32'b0;
-        crc_ck[ib] <= 0;
+        crc_ck[ib]   <= 0;
       end
 
       if (desynch_set1[0] == 1 || crc_err_flag[0] == 1) begin
         bout_flag[0] <= 0;
-        bout_cnt[0] <= 0;
+        bout_cnt[0]  <= 0;
         rst_pack_dec(0);
       end
       if (desynch_set1[1] == 1 || crc_err_flag[1] == 1) begin
         bout_flag[1] <= 0;
-        bout_cnt[1] <= 0;
+        bout_cnt[1]  <= 0;
         rst_pack_dec(1);
       end
       if (desynch_set1[2] == 1 || crc_err_flag[2] == 1) begin
         bout_flag[2] <= 0;
-        bout_cnt[2] <= 0;
+        bout_cnt[2]  <= 0;
         rst_pack_dec(2);
       end
       if (desynch_set1[3] == 1 || crc_err_flag[3] == 1) begin
         bout_flag[3] <= 0;
-        bout_cnt[3] <= 0;
+        bout_cnt[3]  <= 0;
         rst_pack_dec(3);
       end
       if (new_data_in_flag[ib] == 1 && wr_flag[ib] == 1 && csi_b_ins == 0
@@ -1096,13 +1100,14 @@ module SIM_CONFIGE2 #(
             5'b00000: begin
               crc_reg[ib] <= pack_in_reg[ib];
               crc_reg_tmp <= pack_in_reg[ib];
-              crc_ck[ib] <= 1;
+              crc_ck[ib]  <= 1;
             end
             5'b00001: far_reg[ib] <= {6'b0, pack_in_reg_tmp[25:0]};
 
             5'b00010: fdri_reg[ib] <= pack_in_reg[ib];
             5'b00100: cmd_reg[ib] <= pack_in_reg_tmp[4:0];
-            5'b00101 : ctl0_reg[ib] <= (pack_in_reg[ib] & mask_reg[ib]) | (ctl0_reg[ib] & ~mask_reg[ib]);
+            5'b00101:
+            ctl0_reg[ib] <= (pack_in_reg[ib] & mask_reg[ib]) | (ctl0_reg[ib] & ~mask_reg[ib]);
             5'b00110: mask_reg[ib] <= pack_in_reg[ib];
             5'b01000: lout_reg[ib] <= pack_in_reg[ib];
             5'b01001: cor0_reg[ib] <= pack_in_reg[ib];
@@ -1113,9 +1118,13 @@ module SIM_CONFIGE2 #(
               if (pack_in_reg_tmp[27:0] != DEVICE_ID[27:0]) begin
                 id_error_flag[ib] <= 1;
                 if (icap_on == 0)
-                               $display("Error: [Unisim %s-8] Written value to IDCODE register is %h which does not match with DEVICE ID %h on %s at time %t. Instance %m", MODULE_NAME, pack_in_reg[ib], DEVICE_ID, MODULE_NAME, $time);
-                             else
-                               $display("Error: [Unisim %s-9] Written value to IDCODE register is %h which does not match with DEVICE ID %h on ICAPE3 at time %t. Instance %m", MODULE_NAME, pack_in_reg[ib], DEVICE_ID, $time);
+                  $display(
+                      "Error: [Unisim %s-8] Written value to IDCODE register is %h which does not match with DEVICE ID %h on %s at time %t. Instance %m",
+                      MODULE_NAME, pack_in_reg[ib], DEVICE_ID, MODULE_NAME, $time);
+                else
+                  $display(
+                      "Error: [Unisim %s-9] Written value to IDCODE register is %h which does not match with DEVICE ID %h on ICAPE3 at time %t. Instance %m",
+                      MODULE_NAME, pack_in_reg[ib], DEVICE_ID, $time);
               end else id_error_flag[ib] <= 0;
             end
             5'b01101: axss_reg[ib] <= pack_in_reg[ib];
@@ -1125,7 +1134,8 @@ module SIM_CONFIGE2 #(
             5'b10001: timer_reg[ib] <= pack_in_reg[ib];
             5'b10011: rbcrc_sw_reg[ib] <= pack_in_reg[ib];
             5'b10111: testmode_reg[ib] <= pack_in_reg[ib];
-            5'b11000 : ctl1_reg[ib] <= (pack_in_reg[ib] & mask_reg[ib]) | (ctl1_reg[ib] & ~mask_reg[ib]);
+            5'b11000:
+            ctl1_reg[ib] <= (pack_in_reg[ib] & mask_reg[ib]) | (ctl1_reg[ib] & ~mask_reg[ib]);
             5'b11001: memrd_param_reg[ib] <= {4'b0, pack_in_reg_tmp[27:0]};
             5'b11010: dwc_reg[ib] <= {4'b0, pack_in_reg_tmp[27:0]};
             5'b11011: trim_reg[ib] <= pack_in_reg[ib];
@@ -1135,10 +1145,8 @@ module SIM_CONFIGE2 #(
 
           if (reg_addr[ib] != 5'b00000) crc_ck[ib] <= 0;
 
-          if (reg_addr_tmp == 5'b00100)
-                  cmd_reg_new_flag[ib] <= 1;
-             else
-                 cmd_reg_new_flag[ib] <= 0;
+          if (reg_addr_tmp == 5'b00100) cmd_reg_new_flag[ib] <= 1;
+          else cmd_reg_new_flag[ib] <= 0;
 
           if (crc_en[ib] == 1) begin
             if (reg_addr[ib] == 5'h04 && pack_in_reg_tmp[4:0] == 5'b00111) crc_curr[ib] = 32'b0;
@@ -1171,7 +1179,7 @@ module SIM_CONFIGE2 #(
               end
               if (frame_data_wen == 1 && icap_init_done == 0) begin
                 rbcrc_input[36:0] = {5'b00011, pack_in_reg[ib]};
-                rbcrc_new[31:0] = bcc_next(rbcrc_curr[ib], rbcrc_input);
+                rbcrc_new[31:0]   = bcc_next(rbcrc_curr[ib], rbcrc_input);
                 rbcrc_curr[ib] <= rbcrc_new;
                 $fwriteh(frame_data_fd, far_addr);
                 $fwriteh(frame_data_fd, "\t");
@@ -1226,7 +1234,7 @@ module SIM_CONFIGE2 #(
                 cmd_wr_flag[ib] <= 1;
                 conti_data_cnt[ib] <= 5'b0;
               end else if (pack_in_reg_tmp[17:13] == 5'b11110) begin  // bout reg
-                bout_reg[ib] <= pack_in_reg_tmp;
+                bout_reg[ib]   <= pack_in_reg_tmp;
                 bout_flags[ib] <= 1;
                 conti_data_flag[ib] = 0;
                 reg_addr[ib] <= pack_in_reg_tmp[17:13];
@@ -1263,14 +1271,14 @@ module SIM_CONFIGE2 #(
 
         if (bout_cnt[0] != 0 && bout_flag[0] == 1) begin
           if (bout_cnt[0] == 1) begin
-            bout_cnt[0] <= 0;
+            bout_cnt[0]  <= 0;
             bout_flag[0] <= 0;
           end else bout_cnt[0] <= bout_cnt[0] - 1;
         end
 
         if (bout_cnt[1] != 0 && bout_flag[1] == 1) begin
           if (bout_cnt[1] == 1) begin
-            bout_cnt[1] <= 0;
+            bout_cnt[1]  <= 0;
             bout_flag[1] <= 0;
           end else bout_cnt[1] <= bout_cnt[1] - 1;
         end
@@ -1278,14 +1286,14 @@ module SIM_CONFIGE2 #(
         if (bout_cnt[2] != 0 && bout_flag[2] == 1) begin
           bout_cnt[2] <= bout_cnt[2] - 1;
           if (bout_cnt[2] == 1) begin
-            bout_cnt[2] <= 0;
+            bout_cnt[2]  <= 0;
             bout_flag[2] <= 0;
           end else bout_cnt[2] <= bout_cnt[2] - 1;
         end
 
         if (bout_cnt[3] != 0 && bout_flag[3] == 1) begin
           if (bout_cnt[3] == 1) begin
-            bout_cnt[3] <= 0;
+            bout_cnt[3]  <= 0;
             bout_flag[3] <= 0;
           end else bout_cnt[3] <= bout_cnt[3] - 1;
         end
@@ -1299,12 +1307,11 @@ module SIM_CONFIGE2 #(
         if (rd_data_cnt[ib] == 1 && rd_flag[ib] == 1) rd_data_cnt[ib] <= 0;
         else if (rd_data_cnt[ib] == 0 && rd_flag[ib] == 1) begin
           cmd_rd_flag[ib] <= 0;
-        end
-         else if (cmd_rd_flag[ib] ==1  && rd_flag[ib] == 1)
-             rd_data_cnt[ib] <= rd_data_cnt[ib] - 1;
+        end else if (cmd_rd_flag[ib] == 1 && rd_flag[ib] == 1)
+          rd_data_cnt[ib] <= rd_data_cnt[ib] - 1;
 
         if (downcont_cnt >= 1 && conti_data_flag[ib] == 0 && new_data_in_flag[ib] == 1 && wr_flag[ib] == 1)
-              downcont_cnt <= downcont_cnt - 1;
+          downcont_cnt <= downcont_cnt - 1;
       end
 
 
@@ -1338,144 +1345,98 @@ module SIM_CONFIGE2 #(
     end else begin
       if (cmd_rd_flag[ib] == 1 && rdwr_b_in == 1 && csi_b_in == 0) begin
         case (rd_reg_addr[ib])
-          5'b00000 : if (buswidth[ib] == 2'b01) 
-                             rdbk_byte(crc_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(crc_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11) 
-                             rdbk_2wd(crc_reg[ib], rd_data_cnt[ib]);
-          5'b00001 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(far_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(far_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(far_reg[ib], rd_data_cnt[ib]);
-          5'b00011 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(fdro_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(fdro_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(fdro_reg[ib], rd_data_cnt[ib]);
-          5'b00100 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(cmd_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(cmd_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(cmd_reg[ib], rd_data_cnt[ib]);
-          5'b00101 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(ctl0_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(ctl0_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(ctl0_reg[ib], rd_data_cnt[ib]);
-          5'b00110 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(mask_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(mask_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(mask_reg[ib], rd_data_cnt[ib]);
-          5'b00111 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(stat_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(stat_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11) 
-                             rdbk_2wd(stat_reg[ib], rd_data_cnt[ib]);
-          5'b01001 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(cor0_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(cor0_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(cor0_reg[ib], rd_data_cnt[ib]);
-          5'b01100 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(DEVICE_ID, rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(DEVICE_ID, rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(DEVICE_ID, rd_data_cnt[ib]);
-          5'b01101 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(axss_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(axss_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(axss_reg[ib], rd_data_cnt[ib]);
-          5'b01110 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(cor1_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(cor1_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(cor1_reg[ib], rd_data_cnt[ib]);
-          5'b10000 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(wbstar_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(wbstar_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(wbstar_reg[ib], rd_data_cnt[ib]);
-          5'b10001 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(timer_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(timer_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(timer_reg[ib], rd_data_cnt[ib]);
-          5'b10010 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(rbcrc_hw_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(rbcrc_hw_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(rbcrc_hw_reg[ib], rd_data_cnt[ib]);
-          5'b10011 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(rbcrc_sw_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(rbcrc_sw_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(rbcrc_sw_reg[ib], rd_data_cnt[ib]);
-          5'b10100 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(rbcrc_live_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(rbcrc_live_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(rbcrc_live_reg[ib], rd_data_cnt[ib]);
-          5'b10101 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(efar_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(efar_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(efar_reg[ib], rd_data_cnt[ib]);
-          5'b10110 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(bootsts_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(bootsts_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(bootsts_reg[ib], rd_data_cnt[ib]);
-          5'b11000 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(ctl1_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(ctl1_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(ctl1_reg[ib], rd_data_cnt[ib]);
-          5'b11001 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(memrd_param_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(memrd_param_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(memrd_param_reg[ib], rd_data_cnt[ib]);
-          5'b11010 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte( dwc_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd( dwc_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(dwc_reg[ib], rd_data_cnt[ib]);
-          5'b11011 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(trim_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(trim_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(trim_reg[ib], rd_data_cnt[ib]);
-          5'b11111 : if (buswidth[ib] == 2'b01)
-                             rdbk_byte(bspi_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b10)
-                             rdbk_wd(bspi_reg[ib], rd_data_cnt[ib]);
-                          else if (buswidth[ib] == 2'b11)
-                             rdbk_2wd(bspi_reg[ib], rd_data_cnt[ib]);
+          5'b00000:
+          if (buswidth[ib] == 2'b01) rdbk_byte(crc_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(crc_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(crc_reg[ib], rd_data_cnt[ib]);
+          5'b00001:
+          if (buswidth[ib] == 2'b01) rdbk_byte(far_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(far_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(far_reg[ib], rd_data_cnt[ib]);
+          5'b00011:
+          if (buswidth[ib] == 2'b01) rdbk_byte(fdro_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(fdro_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(fdro_reg[ib], rd_data_cnt[ib]);
+          5'b00100:
+          if (buswidth[ib] == 2'b01) rdbk_byte(cmd_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(cmd_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(cmd_reg[ib], rd_data_cnt[ib]);
+          5'b00101:
+          if (buswidth[ib] == 2'b01) rdbk_byte(ctl0_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(ctl0_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(ctl0_reg[ib], rd_data_cnt[ib]);
+          5'b00110:
+          if (buswidth[ib] == 2'b01) rdbk_byte(mask_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(mask_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(mask_reg[ib], rd_data_cnt[ib]);
+          5'b00111:
+          if (buswidth[ib] == 2'b01) rdbk_byte(stat_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(stat_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(stat_reg[ib], rd_data_cnt[ib]);
+          5'b01001:
+          if (buswidth[ib] == 2'b01) rdbk_byte(cor0_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(cor0_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(cor0_reg[ib], rd_data_cnt[ib]);
+          5'b01100:
+          if (buswidth[ib] == 2'b01) rdbk_byte(DEVICE_ID, rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(DEVICE_ID, rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(DEVICE_ID, rd_data_cnt[ib]);
+          5'b01101:
+          if (buswidth[ib] == 2'b01) rdbk_byte(axss_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(axss_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(axss_reg[ib], rd_data_cnt[ib]);
+          5'b01110:
+          if (buswidth[ib] == 2'b01) rdbk_byte(cor1_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(cor1_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(cor1_reg[ib], rd_data_cnt[ib]);
+          5'b10000:
+          if (buswidth[ib] == 2'b01) rdbk_byte(wbstar_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(wbstar_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(wbstar_reg[ib], rd_data_cnt[ib]);
+          5'b10001:
+          if (buswidth[ib] == 2'b01) rdbk_byte(timer_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(timer_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(timer_reg[ib], rd_data_cnt[ib]);
+          5'b10010:
+          if (buswidth[ib] == 2'b01) rdbk_byte(rbcrc_hw_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(rbcrc_hw_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(rbcrc_hw_reg[ib], rd_data_cnt[ib]);
+          5'b10011:
+          if (buswidth[ib] == 2'b01) rdbk_byte(rbcrc_sw_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(rbcrc_sw_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(rbcrc_sw_reg[ib], rd_data_cnt[ib]);
+          5'b10100:
+          if (buswidth[ib] == 2'b01) rdbk_byte(rbcrc_live_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(rbcrc_live_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(rbcrc_live_reg[ib], rd_data_cnt[ib]);
+          5'b10101:
+          if (buswidth[ib] == 2'b01) rdbk_byte(efar_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(efar_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(efar_reg[ib], rd_data_cnt[ib]);
+          5'b10110:
+          if (buswidth[ib] == 2'b01) rdbk_byte(bootsts_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(bootsts_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(bootsts_reg[ib], rd_data_cnt[ib]);
+          5'b11000:
+          if (buswidth[ib] == 2'b01) rdbk_byte(ctl1_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(ctl1_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(ctl1_reg[ib], rd_data_cnt[ib]);
+          5'b11001:
+          if (buswidth[ib] == 2'b01) rdbk_byte(memrd_param_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(memrd_param_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(memrd_param_reg[ib], rd_data_cnt[ib]);
+          5'b11010:
+          if (buswidth[ib] == 2'b01) rdbk_byte(dwc_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(dwc_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(dwc_reg[ib], rd_data_cnt[ib]);
+          5'b11011:
+          if (buswidth[ib] == 2'b01) rdbk_byte(trim_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(trim_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(trim_reg[ib], rd_data_cnt[ib]);
+          5'b11111:
+          if (buswidth[ib] == 2'b01) rdbk_byte(bspi_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b10) rdbk_wd(bspi_reg[ib], rd_data_cnt[ib]);
+          else if (buswidth[ib] == 2'b11) rdbk_2wd(bspi_reg[ib], rd_data_cnt[ib]);
         endcase
         if (ib != 0) begin
           if (rd_data_cnt[ib] == 1) rd_desynch_tmp <= 1;
@@ -1502,10 +1463,8 @@ module SIM_CONFIGE2 #(
       crc_err_flag[0] <= 0;
       crc_ck_en[0] <= 1;
     end else if (crc_ck[0] == 1 && crc_ck_en[0] == 1) begin
-      if (crc_curr[0] != crc_reg[0]) 
-                crc_err_flag[0] <= 1;
-            else
-                 crc_err_flag[0] <= 0;
+      if (crc_curr[0] != crc_reg[0]) crc_err_flag[0] <= 1;
+      else crc_err_flag[0] <= 0;
 
       crc_ck_en[0] <= 0;
     end else begin
@@ -1518,10 +1477,8 @@ module SIM_CONFIGE2 #(
       crc_err_flag[1] <= 0;
       crc_ck_en[1] <= 1;
     end else if (crc_ck[1] == 1 && crc_ck_en[1] == 1) begin
-      if (crc_curr[1] != crc_reg[1]) 
-                crc_err_flag[1] <= 1;
-            else
-                 crc_err_flag[1] <= 0;
+      if (crc_curr[1] != crc_reg[1]) crc_err_flag[1] <= 1;
+      else crc_err_flag[1] <= 0;
 
       crc_ck_en[1] <= 0;
     end else begin
@@ -1535,10 +1492,8 @@ module SIM_CONFIGE2 #(
       crc_err_flag[2] <= 0;
       crc_ck_en[2] <= 1;
     end else if (crc_ck[2] == 1 && crc_ck_en[2] == 1) begin
-      if (crc_curr[2] != crc_reg[2]) 
-                crc_err_flag[2] <= 1;
-            else
-                 crc_err_flag[2] <= 0;
+      if (crc_curr[2] != crc_reg[2]) crc_err_flag[2] <= 1;
+      else crc_err_flag[2] <= 0;
 
       crc_ck_en[2] <= 0;
     end else begin
@@ -1551,10 +1506,8 @@ module SIM_CONFIGE2 #(
       crc_err_flag[3] <= 0;
       crc_ck_en[3] <= 1;
     end else if (crc_ck[3] == 1 && crc_ck_en[3] == 1) begin
-      if (crc_curr[3] != crc_reg[3]) 
-                crc_err_flag[3] <= 1;
-            else
-                 crc_err_flag[3] <= 0;
+      if (crc_curr[3] != crc_reg[3]) crc_err_flag[3] <= 1;
+      else crc_err_flag[3] <= 0;
 
       crc_ck_en[3] <= 0;
     end else begin
@@ -1563,36 +1516,24 @@ module SIM_CONFIGE2 #(
     end
 
   always @(posedge crc_err_flag[0] or negedge rst_intl or posedge bus_sync_flag[0])
-     if (rst_intl == 0)
-         crc_err_flag_reg[0] <= 0;
-     else if (crc_err_flag[0] == 1)
-         crc_err_flag_reg[0] <= 1;
-     else
-         crc_err_flag_reg[0] <= 0;
+    if (rst_intl == 0) crc_err_flag_reg[0] <= 0;
+    else if (crc_err_flag[0] == 1) crc_err_flag_reg[0] <= 1;
+    else crc_err_flag_reg[0] <= 0;
 
   always @(posedge crc_err_flag[1] or negedge rst_intl or posedge bus_sync_flag[1])
-     if (rst_intl == 0)
-         crc_err_flag_reg[1] <= 0;
-     else if (crc_err_flag[1] == 1)
-         crc_err_flag_reg[1] <= 1;
-     else
-         crc_err_flag_reg[1] <= 0;
+    if (rst_intl == 0) crc_err_flag_reg[1] <= 0;
+    else if (crc_err_flag[1] == 1) crc_err_flag_reg[1] <= 1;
+    else crc_err_flag_reg[1] <= 0;
 
   always @(posedge crc_err_flag[2] or negedge rst_intl or posedge bus_sync_flag[2])
-     if (rst_intl == 0)
-         crc_err_flag_reg[2] <= 0;
-     else if (crc_err_flag[2] == 1)
-         crc_err_flag_reg[2] <= 1;
-     else
-         crc_err_flag_reg[2] <= 0;
+    if (rst_intl == 0) crc_err_flag_reg[2] <= 0;
+    else if (crc_err_flag[2] == 1) crc_err_flag_reg[2] <= 1;
+    else crc_err_flag_reg[2] <= 0;
 
   always @(posedge crc_err_flag[3] or negedge rst_intl or posedge bus_sync_flag[3])
-     if (rst_intl == 0)
-         crc_err_flag_reg[3] <= 0;
-     else if (crc_err_flag[3] == 1)
-         crc_err_flag_reg[3] <= 1;
-     else
-         crc_err_flag_reg[3] <= 0;
+    if (rst_intl == 0) crc_err_flag_reg[3] <= 0;
+    else if (crc_err_flag[3] == 1) crc_err_flag_reg[3] <= 1;
+    else crc_err_flag_reg[3] <= 0;
 
   always @(posedge cclk_in or negedge rst_intl)
     if (rst_intl == 0) begin
@@ -1605,35 +1546,23 @@ module SIM_CONFIGE2 #(
     end else
       for (ci = 0; ci <= 3; ci = ci + 1) begin
         if (cmd_reg_new_flag[ci] == 1) begin
-          if (cmd_reg[ci] == 5'b00011) 
-          ghigh_b[ci] <= 1;
-      else if (cmd_reg[ci] == 5'b01000)
-           ghigh_b[ci] <= 0;
+          if (cmd_reg[ci] == 5'b00011) ghigh_b[ci] <= 1;
+          else if (cmd_reg[ci] == 5'b01000) ghigh_b[ci] <= 0;
 
-          if (cmd_reg[ci] == 5'b00101)
-           startup_set[ci] <= 1;
-      else
-           startup_set[ci] <= 0;
+          if (cmd_reg[ci] == 5'b00101) startup_set[ci] <= 1;
+          else startup_set[ci] <= 0;
 
-          if (cmd_reg[ci] == 5'b00111) 
-           crc_reset[ci] <= 1;
-      else
-           crc_reset[ci] <= 0;
+          if (cmd_reg[ci] == 5'b00111) crc_reset[ci] <= 1;
+          else crc_reset[ci] <= 0;
 
-          if (cmd_reg[ci] == 5'b01010) 
-           gsr_cmd_out[ci] <= 1;
-      else
-           gsr_cmd_out[ci] <= 0;
+          if (cmd_reg[ci] == 5'b01010) gsr_cmd_out[ci] <= 1;
+          else gsr_cmd_out[ci] <= 0;
 
-          if (cmd_reg[ci] == 5'b01011)
-           shutdown_set[ci] <= 1;
-      else 
-           shutdown_set[ci] <= 0;
+          if (cmd_reg[ci] == 5'b01011) shutdown_set[ci] <= 1;
+          else shutdown_set[ci] <= 0;
 
-          if (cmd_reg[ci] == 5'b01101) 
-           desynch_set[ci] <= 1;
-      else
-           desynch_set[ci] <= 0;
+          if (cmd_reg[ci] == 5'b01101) desynch_set[ci] <= 1;
+          else desynch_set[ci] <= 0;
 
           if (cmd_reg[ci] == 5'b01111) begin
             iprog_b[ci] <= 0;
@@ -1742,157 +1671,117 @@ module SIM_CONFIGE2 #(
 
   always @(ctl0_reg[0]) begin
     ctl0_reg_tmp0 = ctl0_reg[0];
-    if (ctl0_reg_tmp0[9] == 1)
-         abort_dis[0] = 1;
-      else
-         abort_dis[0] = 0;
-    if (ctl0_reg_tmp0[3] == 1)
-         persist_en[0] = 1;
-      else
-         persist_en[0] = 0;
-    if (ctl0_reg_tmp0[0] == 1)
-         gts_usr_b[0] = 1;
-      else
-         gts_usr_b[0] = 0;
+    if (ctl0_reg_tmp0[9] == 1) abort_dis[0] = 1;
+    else abort_dis[0] = 0;
+    if (ctl0_reg_tmp0[3] == 1) persist_en[0] = 1;
+    else persist_en[0] = 0;
+    if (ctl0_reg_tmp0[0] == 1) gts_usr_b[0] = 1;
+    else gts_usr_b[0] = 0;
   end
 
   always @(ctl0_reg[1]) begin
     ctl0_reg_tmp1 = ctl0_reg[1];
-    if (ctl0_reg_tmp1[9] == 1)
-         abort_dis[1] = 1;
-      else
-         abort_dis[1] = 0;
-    if (ctl0_reg_tmp1[3] == 1)
-         persist_en[1] = 1;
-      else
-         persist_en[1] = 0;
-    if (ctl0_reg_tmp1[0] == 1)
-         gts_usr_b[1] = 1;
-      else
-         gts_usr_b[1] = 0;
+    if (ctl0_reg_tmp1[9] == 1) abort_dis[1] = 1;
+    else abort_dis[1] = 0;
+    if (ctl0_reg_tmp1[3] == 1) persist_en[1] = 1;
+    else persist_en[1] = 0;
+    if (ctl0_reg_tmp1[0] == 1) gts_usr_b[1] = 1;
+    else gts_usr_b[1] = 0;
   end
 
   always @(ctl0_reg[2]) begin
     ctl0_reg_tmp2 = ctl0_reg[2];
-    if (ctl0_reg_tmp2[9] == 1)
-         abort_dis[2] = 1;
-      else
-         abort_dis[2] = 0;
-    if (ctl0_reg_tmp2[3] == 1)
-         persist_en[2] = 1;
-      else
-         persist_en[2] = 0;
-    if (ctl0_reg_tmp0[2] == 1)
-         gts_usr_b[2] = 1;
-      else
-         gts_usr_b[2] = 0;
+    if (ctl0_reg_tmp2[9] == 1) abort_dis[2] = 1;
+    else abort_dis[2] = 0;
+    if (ctl0_reg_tmp2[3] == 1) persist_en[2] = 1;
+    else persist_en[2] = 0;
+    if (ctl0_reg_tmp0[2] == 1) gts_usr_b[2] = 1;
+    else gts_usr_b[2] = 0;
   end
 
   always @(ctl0_reg[3]) begin
     ctl0_reg_tmp3 = ctl0_reg[3];
-    if (ctl0_reg_tmp3[9] == 1)
-         abort_dis[3] = 1;
-      else
-         abort_dis[3] = 0;
-    if (ctl0_reg_tmp3[3] == 1)
-         persist_en[3] = 1;
-      else
-         persist_en[3] = 0;
-    if (ctl0_reg_tmp3[0] == 1)
-         gts_usr_b[3] = 1;
-      else
-         gts_usr_b[3] = 0;
+    if (ctl0_reg_tmp3[9] == 1) abort_dis[3] = 1;
+    else abort_dis[3] = 0;
+    if (ctl0_reg_tmp3[3] == 1) persist_en[3] = 1;
+    else persist_en[3] = 0;
+    if (ctl0_reg_tmp3[0] == 1) gts_usr_b[3] = 1;
+    else gts_usr_b[3] = 0;
   end
 
   always @(cor0_reg[0]) begin
-    cor0_reg_tmp0 = cor0_reg[0];
+    cor0_reg_tmp0   = cor0_reg[0];
     done_cycle_reg0 = cor0_reg_tmp0[14:12];
     lock_cycle_reg0 = cor0_reg_tmp0[8:6];
-    gts_cycle_reg0 = cor0_reg_tmp0[5:3];
-    gwe_cycle_reg0 = cor0_reg_tmp0[2:0];
+    gts_cycle_reg0  = cor0_reg_tmp0[5:3];
+    gwe_cycle_reg0  = cor0_reg_tmp0[2:0];
 
-    if (cor0_reg_tmp0[24] == 1'b1)
-         done_pin_drv[0] = 1;
-      else
-         done_pin_drv[0] = 0;
+    if (cor0_reg_tmp0[24] == 1'b1) done_pin_drv[0] = 1;
+    else done_pin_drv[0] = 0;
 
-    if (cor0_reg_tmp0[28] == 1'b1)
-         crc_bypass[0] = 1;
-      else
-         crc_bypass[0] = 0;
+    if (cor0_reg_tmp0[28] == 1'b1) crc_bypass[0] = 1;
+    else crc_bypass[0] = 0;
   end
 
   always @(cor0_reg[1]) begin
-    cor0_reg_tmp1 = cor0_reg[1];
+    cor0_reg_tmp1   = cor0_reg[1];
     done_cycle_reg1 = cor0_reg_tmp1[14:12];
     lock_cycle_reg1 = cor0_reg_tmp1[8:6];
-    gts_cycle_reg1 = cor0_reg_tmp1[5:3];
-    gwe_cycle_reg1 = cor0_reg_tmp1[2:0];
+    gts_cycle_reg1  = cor0_reg_tmp1[5:3];
+    gwe_cycle_reg1  = cor0_reg_tmp1[2:0];
 
-    if (cor0_reg_tmp1[24] == 1'b1)
-         done_pin_drv[1] = 1;
-      else
-         done_pin_drv[1] = 0;
+    if (cor0_reg_tmp1[24] == 1'b1) done_pin_drv[1] = 1;
+    else done_pin_drv[1] = 0;
 
-    if (cor0_reg_tmp1[28] == 1'b1)
-         crc_bypass[1] = 1;
-      else
-         crc_bypass[1] = 0;
+    if (cor0_reg_tmp1[28] == 1'b1) crc_bypass[1] = 1;
+    else crc_bypass[1] = 0;
   end
 
   always @(cor0_reg[2]) begin
-    cor0_reg_tmp2 = cor0_reg[2];
+    cor0_reg_tmp2   = cor0_reg[2];
     done_cycle_reg2 = cor0_reg_tmp2[14:12];
     lock_cycle_reg2 = cor0_reg_tmp2[8:6];
-    gts_cycle_reg2 = cor0_reg_tmp2[5:3];
-    gwe_cycle_reg2 = cor0_reg_tmp2[2:0];
+    gts_cycle_reg2  = cor0_reg_tmp2[5:3];
+    gwe_cycle_reg2  = cor0_reg_tmp2[2:0];
 
-    if (cor0_reg_tmp2[24] == 1'b1)
-         done_pin_drv[2] = 1;
-      else
-         done_pin_drv[2] = 0;
+    if (cor0_reg_tmp2[24] == 1'b1) done_pin_drv[2] = 1;
+    else done_pin_drv[2] = 0;
 
-    if (cor0_reg_tmp2[28] == 1'b1)
-         crc_bypass[2] = 1;
-      else
-         crc_bypass[2] = 0;
+    if (cor0_reg_tmp2[28] == 1'b1) crc_bypass[2] = 1;
+    else crc_bypass[2] = 0;
   end
 
   always @(cor0_reg[3]) begin
-    cor0_reg_tmp3 = cor0_reg[3];
+    cor0_reg_tmp3   = cor0_reg[3];
     done_cycle_reg3 = cor0_reg_tmp3[14:12];
     lock_cycle_reg3 = cor0_reg_tmp3[8:6];
-    gts_cycle_reg3 = cor0_reg_tmp3[5:3];
-    gwe_cycle_reg3 = cor0_reg_tmp3[2:0];
+    gts_cycle_reg3  = cor0_reg_tmp3[5:3];
+    gwe_cycle_reg3  = cor0_reg_tmp3[2:0];
 
-    if (cor0_reg_tmp3[24] == 1'b1)
-         done_pin_drv[3] = 1;
-      else
-         done_pin_drv[3] = 0;
+    if (cor0_reg_tmp3[24] == 1'b1) done_pin_drv[3] = 1;
+    else done_pin_drv[3] = 0;
 
-    if (cor0_reg_tmp3[28] == 1'b1)
-         crc_bypass[3] = 1;
-      else
-         crc_bypass[3] = 0;
+    if (cor0_reg_tmp3[28] == 1'b1) crc_bypass[3] = 1;
+    else crc_bypass[3] = 0;
   end
 
   always @(cor1_reg[0]) begin
-    cor1_reg_tmp0 = cor1_reg[0];
+    cor1_reg_tmp0   = cor1_reg[0];
     rbcrc_no_pin[0] = cor1_reg_tmp0[8];
   end
 
   always @(cor1_reg[1]) begin
-    cor1_reg_tmp1 = cor1_reg[1];
+    cor1_reg_tmp1   = cor1_reg[1];
     rbcrc_no_pin[1] = cor1_reg_tmp1[8];
   end
 
   always @(cor1_reg[2]) begin
-    cor1_reg_tmp2 = cor1_reg[2];
+    cor1_reg_tmp2   = cor1_reg[2];
     rbcrc_no_pin[2] = cor1_reg_tmp2[8];
   end
 
   always @(cor1_reg[3]) begin
-    cor1_reg_tmp3 = cor1_reg[3];
+    cor1_reg_tmp3   = cor1_reg[3];
     rbcrc_no_pin[3] = cor1_reg_tmp3[8];
   end
 
@@ -1998,20 +1887,20 @@ module SIM_CONFIGE2 #(
       startup_end_flag3 <= 0;
     end else begin
       st_state0i = st_state0;
-      cur_st_tsk(startup_begin_flag0, startup_end_flag0, st_state0,
-                     st_state0i, nx_st_state0,lock_cycle_reg0);
+      cur_st_tsk(startup_begin_flag0, startup_end_flag0, st_state0, st_state0i, nx_st_state0,
+                 lock_cycle_reg0);
 
       st_state1i = st_state1;
-      cur_st_tsk(startup_begin_flag1, startup_end_flag1, st_state1,
-                     st_state1i, nx_st_state1,lock_cycle_reg1);
+      cur_st_tsk(startup_begin_flag1, startup_end_flag1, st_state1, st_state1i, nx_st_state1,
+                 lock_cycle_reg1);
 
       st_state2i = st_state2;
-      cur_st_tsk(startup_begin_flag2, startup_end_flag2, st_state2,
-                     st_state2i, nx_st_state2,lock_cycle_reg2);
+      cur_st_tsk(startup_begin_flag2, startup_end_flag2, st_state2, st_state2i, nx_st_state2,
+                 lock_cycle_reg2);
 
       st_state3i = st_state3;
-      cur_st_tsk(startup_begin_flag3, startup_end_flag3, st_state3,
-                     st_state3i, nx_st_state3,lock_cycle_reg3);
+      cur_st_tsk(startup_begin_flag3, startup_end_flag3, st_state3, st_state3i, nx_st_state3,
+                 lock_cycle_reg3);
     end
 
   task cur_st_tsk;
@@ -2035,21 +1924,21 @@ module SIM_CONFIGE2 #(
     end
   endtask
 
-  always @(st_state0 or startup_set_pulse0 or DONE ) begin
-        nx_st_tsk(nx_st_state0,st_state0, startup_set_pulse0, done_cycle_reg0);
-    end
+  always @(st_state0 or startup_set_pulse0 or DONE) begin
+    nx_st_tsk(nx_st_state0, st_state0, startup_set_pulse0, done_cycle_reg0);
+  end
 
-  always @(st_state1 or startup_set_pulse1 or DONE ) begin
-        nx_st_tsk(nx_st_state1,st_state1, startup_set_pulse1, done_cycle_reg1);
-    end
+  always @(st_state1 or startup_set_pulse1 or DONE) begin
+    nx_st_tsk(nx_st_state1, st_state1, startup_set_pulse1, done_cycle_reg1);
+  end
 
-  always @(st_state2 or startup_set_pulse2 or DONE ) begin
-        nx_st_tsk(nx_st_state2,st_state2, startup_set_pulse2, done_cycle_reg2);
-    end
+  always @(st_state2 or startup_set_pulse2 or DONE) begin
+    nx_st_tsk(nx_st_state2, st_state2, startup_set_pulse2, done_cycle_reg2);
+  end
 
-  always @(st_state3 or startup_set_pulse3 or DONE ) begin
-        nx_st_tsk(nx_st_state3,st_state3, startup_set_pulse3, done_cycle_reg3);
-    end
+  always @(st_state3 or startup_set_pulse3 or DONE) begin
+    nx_st_tsk(nx_st_state3, st_state3, startup_set_pulse3, done_cycle_reg3);
+  end
 
   task nx_st_tsk;
     output [2:0] nx_st;
@@ -2059,10 +1948,8 @@ module SIM_CONFIGE2 #(
     begin
       if (((cur_st == done_cycle_in) && (DONE !== 0)) || (cur_st != done_cycle_in))
         case (cur_st)
-          STARTUP_PH0: if (stup_pulse == 2'b11 ) 
-                       nx_st = STARTUP_PH1;
-                    else
-                       nx_st = STARTUP_PH0;
+          STARTUP_PH0: if (stup_pulse == 2'b11) nx_st = STARTUP_PH1;
+ else nx_st = STARTUP_PH0;
           STARTUP_PH1: nx_st = STARTUP_PH2;
 
           STARTUP_PH2: nx_st = STARTUP_PH3;
@@ -2089,31 +1976,23 @@ module SIM_CONFIGE2 #(
       done_o <= 4'b0;
     end else begin
       if (nx_st_state0 == done_cycle_reg0 || st_state0 == done_cycle_reg0) begin
-        if (DONE !== 0 || done_pin_drv[0] === 1) 
-                  done_o[0] <= 1'b1;
-             else 
-                 done_o[0] <= 1'bz;
+        if (DONE !== 0 || done_pin_drv[0] === 1) done_o[0] <= 1'b1;
+        else done_o[0] <= 1'bz;
       end
 
       if (nx_st_state1 == done_cycle_reg1 || st_state1 == done_cycle_reg1) begin
-        if (DONE !== 0 || done_pin_drv[1] == 1) 
-                  done_o[1] <= 1'b1;
-             else 
-                 done_o[1] <= 1'bz;
+        if (DONE !== 0 || done_pin_drv[1] == 1) done_o[1] <= 1'b1;
+        else done_o[1] <= 1'bz;
       end
 
       if (nx_st_state2 == done_cycle_reg2 || st_state2 == done_cycle_reg2) begin
-        if (DONE !== 0 || done_pin_drv[2] == 1) 
-                  done_o[2] <= 1'b1;
-             else 
-                 done_o[2] <= 1'bz;
+        if (DONE !== 0 || done_pin_drv[2] == 1) done_o[2] <= 1'b1;
+        else done_o[2] <= 1'bz;
       end
 
       if (nx_st_state3 == done_cycle_reg3 || st_state3 == done_cycle_reg3) begin
-        if (DONE !== 0 || done_pin_drv[3] == 1) 
-                  done_o[3] <= 1'b1;
-             else 
-                 done_o[3] <= 1'bz;
+        if (DONE !== 0 || done_pin_drv[3] == 1) done_o[3] <= 1'b1;
+        else done_o[3] <= 1'bz;
       end
 
       if (st_state0 == gwe_cycle_reg0) gwe_out[0] <= 1;
@@ -2137,10 +2016,10 @@ module SIM_CONFIGE2 #(
       if (st_state3 == STARTUP_PH7) eos_startup[3] <= 1;
     end
 
-  assign gsr_out[0] = gsr_st_out[0] | gsr_cmd_out[0];
-  assign gsr_out[1] = gsr_st_out[1] | gsr_cmd_out[1];
-  assign gsr_out[2] = gsr_st_out[2] | gsr_cmd_out[2];
-  assign gsr_out[3] = gsr_st_out[3] | gsr_cmd_out[3];
+  assign gsr_out[0]   = gsr_st_out[0] | gsr_cmd_out[0];
+  assign gsr_out[1]   = gsr_st_out[1] | gsr_cmd_out[1];
+  assign gsr_out[2]   = gsr_st_out[2] | gsr_cmd_out[2];
+  assign gsr_out[3]   = gsr_st_out[3] | gsr_cmd_out[3];
 
   assign abort_dis_bi = abort_dis[ib];
 
@@ -2154,12 +2033,14 @@ module SIM_CONFIGE2 #(
         if ((rdwr_b_in1 != rdwr_b_in) && checka_en != 0) begin
           abort_flag[ib] <= 1;
           if (icap_on == 0)
-     $display("Warning: [Unisim %s-10]Warning : RDWRB changes when CSB low, which causes Configuration abort at time %t. Instance %m", MODULE_NAME, $time);
+            $display(
+                "Warning: [Unisim %s-10]Warning : RDWRB changes when CSB low, which causes Configuration abort at time %t. Instance %m",
+                MODULE_NAME, $time);
         end
       end else abort_flag[ib] <= 0;
 
       rdwr_b_in1 <= rdwr_b_in;
-      checka_en <= 1;
+      checka_en  <= 1;
     end
 
   always @(posedge abort_flag[ib]) begin
@@ -2169,7 +2050,7 @@ module SIM_CONFIGE2 #(
     @(posedge cclk_in) abort_status <= {cfgerr_b_flag[ib], 1'b0, 1'b0, 1'b0, 4'b1111};
     @(posedge cclk_in) abort_status <= {cfgerr_b_flag[ib], 1'b0, 1'b0, 1'b1, 4'b1111};
     @(posedge cclk_in) begin
-      abort_out_en <= 0;
+      abort_out_en   <= 0;
       abort_flag_rst <= 1;
     end
     @(posedge cclk_in) abort_flag_rst <= 0;
@@ -2271,14 +2152,10 @@ module SIM_CONFIGE2 #(
     input integer rd_dcnt;
     begin
       outbus[31:8] <= 24'b0;
-      if (rd_dcnt==1)
-         outbus[7:0] <= bit_revers8(rdbk_reg[7:0]);
-   else if (rd_dcnt==2)
-         outbus[7:0] <= bit_revers8(rdbk_reg[15:8]);
-   else if (rd_dcnt==3)
-         outbus[7:0] <= bit_revers8(rdbk_reg[23:16]);
-   else if (rd_dcnt==4)
-         outbus[7:0] <= bit_revers8(rdbk_reg[31:24]);
+      if (rd_dcnt == 1) outbus[7:0] <= bit_revers8(rdbk_reg[7:0]);
+      else if (rd_dcnt == 2) outbus[7:0] <= bit_revers8(rdbk_reg[15:8]);
+      else if (rd_dcnt == 3) outbus[7:0] <= bit_revers8(rdbk_reg[23:16]);
+      else if (rd_dcnt == 4) outbus[7:0] <= bit_revers8(rdbk_reg[31:24]);
     end
   endtask
 
@@ -2290,10 +2167,10 @@ module SIM_CONFIGE2 #(
       if (rd_dcnt == 1) outbus[15:0] <= 16'b0;
       else if (rd_dcnt == 2) outbus[15:0] <= 16'b0;
       else if (rd_dcnt == 3) begin
-        outbus[7:0] <= bit_revers8(rdbk_reg[7:0]);
+        outbus[7:0]  <= bit_revers8(rdbk_reg[7:0]);
         outbus[15:8] <= bit_revers8(rdbk_reg[15:8]);
       end else if (rd_dcnt == 4) begin
-        outbus[7:0] <= bit_revers8(rdbk_reg[23:16]);
+        outbus[7:0]  <= bit_revers8(rdbk_reg[23:16]);
         outbus[15:8] <= bit_revers8(rdbk_reg[31:24]);
       end
     end
@@ -2307,8 +2184,8 @@ module SIM_CONFIGE2 #(
       else if (rd_dcnt == 2) outbus <= 32'b0;
       else if (rd_dcnt == 3) outbus <= 32'b0;
       else if (rd_dcnt == 4) begin
-        outbus[7:0] <= bit_revers8(rdbk_reg[7:0]);
-        outbus[15:8] <= bit_revers8(rdbk_reg[15:8]);
+        outbus[7:0]   <= bit_revers8(rdbk_reg[7:0]);
+        outbus[15:8]  <= bit_revers8(rdbk_reg[15:8]);
         outbus[23:16] <= bit_revers8(rdbk_reg[23:16]);
         outbus[31:24] <= bit_revers8(rdbk_reg[31:24]);
       end

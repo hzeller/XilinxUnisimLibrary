@@ -89,29 +89,25 @@ module IBUFDS_GTE4 #(
   // Count the rising edges of the clk
   // =====================
   always @(posedge I) begin
-    if (allEqual)
-      edge_count <= 3'b000;
-    else
-      if ((CEB === 1'b0) || (CEB === 1'bz)) // rv = 0
-        edge_count <= edge_count + 1;
-    end
+    if (allEqual) edge_count <= 3'b000;
+    else if ((CEB === 1'b0) || (CEB === 1'bz))  // rv = 0
+      edge_count <= edge_count + 1;
+  end
 
   //  Generate synchronous reset after DIVIDE number of counts
   always @(edge_count)
-    if (edge_count == ce_count)
-      allEqual = 1;
-    else
-      allEqual = 0;
+    if (edge_count == ce_count) allEqual = 1;
+    else allEqual = 0;
 
   // =====================
   // Generate ODIV2
   // =====================
   always @(*) begin
     case (REFCLK_HROW_CK_SEL_REG)
-      2'b00: ODIV2_out <= ~(REFCLK_EN_TX_PATH_REG | (CEB === 1'b1)) && I;
-      2'b01: ODIV2_out <= allEqual;
-      2'b10: ODIV2_out <= 1'b0;
-      2'b11: ODIV2_out <= 1'b0;
+      2'b00:   ODIV2_out <= ~(REFCLK_EN_TX_PATH_REG | (CEB === 1'b1)) && I;
+      2'b01:   ODIV2_out <= allEqual;
+      2'b10:   ODIV2_out <= 1'b0;
+      2'b11:   ODIV2_out <= 1'b0;
       default: ODIV2_out <= ~(REFCLK_EN_TX_PATH_REG | (CEB === 1'b1)) && I;
     endcase
   end

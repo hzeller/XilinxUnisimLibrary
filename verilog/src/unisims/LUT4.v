@@ -73,29 +73,32 @@ module LUT4 #(
     input [3:0] d;
     input [1:0] s;
     begin
-      if (((s[1]^s[0]) === 1'b1) || ((s[1]^s[0]) === 1'b0))
-      lut_mux4_f = d[s];
-    else if ( ~(|d) || &d)
-      lut_mux4_f = d[0];
-    else if (((s[0] === 1'b1) || (s[0] === 1'b0)) && (d[{1'b0,s[0]}] === d[{1'b1,s[0]}]))
-      lut_mux4_f = d[{1'b0,s[0]}];
-    else if (((s[1] === 1'b1) || (s[1] === 1'b0)) && (d[{s[1],1'b0}] === d[{s[1],1'b1}]))
-      lut_mux4_f = d[{s[1],1'b0}];
-    else
-      lut_mux4_f = 1'bx;
+      if (((s[1] ^ s[0]) === 1'b1) || ((s[1] ^ s[0]) === 1'b0)) lut_mux4_f = d[s];
+      else if (~(|d) || &d) lut_mux4_f = d[0];
+      else if (((s[0] === 1'b1) || (s[0] === 1'b0)) && (d[{1'b0, s[0]}] === d[{1'b1, s[0]}]))
+        lut_mux4_f = d[{1'b0, s[0]}];
+      else if (((s[1] === 1'b1) || (s[1] === 1'b0)) && (d[{s[1], 1'b0}] === d[{s[1], 1'b1}]))
+        lut_mux4_f = d[{s[1], 1'b0}];
+      else lut_mux4_f = 1'bx;
     end
   endfunction
 
-  always @(I0 or I1 or I2 or I3)  begin
-   if ( (I0 ^ I1  ^ I2 ^ I3) === 1'b0 || (I0 ^ I1  ^ I2 ^ I3) === 1'b1)
-    O_out = INIT_REG[{I3, I2, I1, I0}];
-   else if ( ~(|INIT_REG) || &INIT_REG )
-    O_out = INIT_REG[0];
-   else
-    O_out = lut_mux4_f ({lut_mux4_f (INIT_REG[15:12], {I1, I0}),
-                     lut_mux4_f ( INIT_REG[11:8], {I1, I0}),
-                     lut_mux4_f (  INIT_REG[7:4], {I1, I0}),
-                     lut_mux4_f (  INIT_REG[3:0], {I1, I0})}, {I3, I2});
+  always @(I0 or I1 or I2 or I3) begin
+    if ((I0 ^ I1 ^ I2 ^ I3) === 1'b0 || (I0 ^ I1 ^ I2 ^ I3) === 1'b1)
+      O_out = INIT_REG[{I3, I2, I1, I0}];
+    else if (~(|INIT_REG) || &INIT_REG) O_out = INIT_REG[0];
+    else
+      O_out = lut_mux4_f(
+          {
+            lut_mux4_f(INIT_REG[15:12], {I1, I0}),
+            lut_mux4_f(INIT_REG[11:8], {I1, I0}),
+            lut_mux4_f(INIT_REG[7:4], {I1, I0}),
+            lut_mux4_f(INIT_REG[3:0], {I1, I0})
+          },
+          {
+            I3, I2
+          }
+      );
   end
 
   // end behavioral model

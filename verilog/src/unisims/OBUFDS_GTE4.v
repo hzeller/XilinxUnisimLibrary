@@ -76,7 +76,7 @@ module OBUFDS_GTE4 #(
   // Generate O
   // =====================
 
-  assign O = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : I;
+  assign O  = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : I;
   assign OB = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : ~I;
 
 `ifndef XIL_XECLIB

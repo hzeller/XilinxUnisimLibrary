@@ -93,17 +93,21 @@ module IBUFDS_DIFF_OUT_IBUFDISABLE (
          (SIM_DEVICE != "VERSAL_PRIME") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES2")) begin
-      $display("Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE);
+      $display(
+          "Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE);
       #1 $finish;
     end
 
 
     case (DQS_BIAS)
 
-      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "TRUE":  DQS_BIAS_BINARY <= #1 1'b1;
       "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The attribute DQS_BIAS on IBUFDS_DIFF_OUT_IBUFDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DQS_BIAS);
+        $display(
+            "Attribute Syntax Error : The attribute DQS_BIAS on IBUFDS_DIFF_OUT_IBUFDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DQS_BIAS);
         #1 $finish;
       end
 
@@ -113,7 +117,9 @@ module IBUFDS_DIFF_OUT_IBUFDISABLE (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DIFF_TERM on IBUFDS_DIFF_OUT_IBUFDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DIFF_TERM);
+        $display(
+            "Attribute Syntax Error : The attribute DIFF_TERM on IBUFDS_DIFF_OUT_IBUFDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DIFF_TERM);
         #1 $finish;
       end
 
@@ -123,7 +129,9 @@ module IBUFDS_DIFF_OUT_IBUFDISABLE (
 
       "FALSE", "TRUE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on IBUFDS_DIFF_OUT_IBUFDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", IBUF_LOW_PWR);
+        $display(
+            "Attribute Syntax Error : The attribute IBUF_LOW_PWR on IBUFDS_DIFF_OUT_IBUFDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            IBUF_LOW_PWR);
         #1 $finish;
       end
 
@@ -133,32 +141,27 @@ module IBUFDS_DIFF_OUT_IBUFDISABLE (
 
 
   always @(I or IB or DQS_BIAS_BINARY) begin
-	if (I == 1'b1 && IB == 1'b0)
-	    o_out <= I;
-	else if (I == 1'b0 && IB == 1'b1)
-	    o_out <= I;
-	else if ((I === 1'bz || I == 1'b0) && (IB === 1'bz || IB == 1'b1))
-	  if (DQS_BIAS_BINARY == 1'b1)
-	    o_out <= 1'b0;
-	  else
-	    o_out <= 1'bx;
-        else if (I === 1'bx || IB === 1'bx)
-            o_out <= 1'bx;
-    end
+    if (I == 1'b1 && IB == 1'b0) o_out <= I;
+    else if (I == 1'b0 && IB == 1'b1) o_out <= I;
+    else if ((I === 1'bz || I == 1'b0) && (IB === 1'bz || IB == 1'b1))
+      if (DQS_BIAS_BINARY == 1'b1) o_out <= 1'b0;
+      else o_out <= 1'bx;
+    else if (I === 1'bx || IB === 1'bx) o_out <= 1'bx;
+  end
 
   generate
     case (SIM_DEVICE)
       "7SERIES": begin
-        assign out_val = 1'b1;
+        assign out_val   = 1'b1;
         assign out_b_val = 1'b1;
       end
       "ULTRASCALE": begin
-        assign out_val = 1'b0;
+        assign out_val   = 1'b0;
         assign out_b_val = 1'bx;
       end
       default:
       begin
-        assign out_val = 1'b0;
+        assign out_val   = 1'b0;
         assign out_b_val = 1'b0;
       end
     endcase
@@ -167,11 +170,11 @@ module IBUFDS_DIFF_OUT_IBUFDISABLE (
   generate
     case (USE_IBUFDISABLE)
       "TRUE": begin
-        assign O = (IBUFDISABLE == 0) ? o_out : (IBUFDISABLE == 1) ? out_val : 1'bx;
+        assign O  = (IBUFDISABLE == 0) ? o_out : (IBUFDISABLE == 1) ? out_val : 1'bx;
         assign OB = (IBUFDISABLE == 0) ? ~o_out : (IBUFDISABLE == 1) ? out_b_val : 1'bx;
       end
       "FALSE": begin
-        assign O = o_out;
+        assign O  = o_out;
         assign OB = ~o_out;
       end
     endcase

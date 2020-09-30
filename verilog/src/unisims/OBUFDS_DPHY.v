@@ -116,16 +116,16 @@ module OBUFDS_DPHY #(
 */
   always @(LPTX_T_in or HSTX_T_in or LPTX_I_P_in or LPTX_I_N_in or HSTX_I_in) begin
     if (LPTX_T_in === 1'b0) begin
-      O_out <= LPTX_I_P_in;
-      OB_out <= LPTX_I_N_in;
+      O_out   <= LPTX_I_P_in;
+      OB_out  <= LPTX_I_N_in;
       hs_mode <= 1'b0;
     end else if (LPTX_T_in === 1'b1 && HSTX_T_in === 1'b0) begin
-      O_out <= HSTX_I_in;
-      OB_out <= ~HSTX_I_in;
+      O_out   <= HSTX_I_in;
+      OB_out  <= ~HSTX_I_in;
       hs_mode <= 1'b1;
     end else begin
-      O_out <= 1'bz;
-      OB_out <= 1'bz;
+      O_out   <= 1'bz;
+      OB_out  <= 1'bz;
       hs_mode <= 1'bx;
     end
   end

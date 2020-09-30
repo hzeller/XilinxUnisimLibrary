@@ -201,24 +201,32 @@ module IBUFDSE3 #(
     #1;
     if ((attr_test == 1'b1) ||
          ((SIM_INPUT_BUFFER_OFFSET_REG < -50) || (SIM_INPUT_BUFFER_OFFSET_REG > 50))) begin
-      $display("Error: [Unisim %s-105] SIM_INPUT_BUFFER_OFFSET attribute is set to %d.  Legal values for this attribute are -50 to 50. Instance: %m", MODULE_NAME, SIM_INPUT_BUFFER_OFFSET_REG);
+      $display(
+          "Error: [Unisim %s-105] SIM_INPUT_BUFFER_OFFSET attribute is set to %d.  Legal values for this attribute are -50 to 50. Instance: %m",
+          MODULE_NAME, SIM_INPUT_BUFFER_OFFSET_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (DIFF_TERM_REG != "TRUE" && DIFF_TERM_REG != "FALSE")) begin
-      $display("Error: [Unisim %s-101] DIFF_TERM attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. . Instance: %m", MODULE_NAME, DIFF_TERM_REG);
+      $display(
+          "Error: [Unisim %s-101] DIFF_TERM attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. . Instance: %m",
+          MODULE_NAME, DIFF_TERM_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DQS_BIAS_REG != "FALSE") && (DQS_BIAS_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-102] DQS_BIAS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, DQS_BIAS_REG);
+      $display(
+          "Error: [Unisim %s-102] DQS_BIAS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, DQS_BIAS_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((IBUF_LOW_PWR_REG != "TRUE") &&
          (IBUF_LOW_PWR_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-103] IBUF_LOW_PWR attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, IBUF_LOW_PWR_REG);
+      $display(
+          "Error: [Unisim %s-103] IBUF_LOW_PWR attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, IBUF_LOW_PWR_REG);
       attr_err = 1'b1;
     end
 
@@ -243,14 +251,18 @@ module IBUFDSE3 #(
          (SIM_DEVICE_REG != "VERSAL_PRIME") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES2"))) begin
-      $display("Error: [Unisim %s-106] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-106] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((USE_IBUFDISABLE_REG != "FALSE") &&
          (USE_IBUFDISABLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-107] USE_IBUFDISABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, USE_IBUFDISABLE_REG);
+      $display(
+          "Error: [Unisim %s-107] USE_IBUFDISABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, USE_IBUFDISABLE_REG);
       attr_err = 1'b1;
     end
 
@@ -281,23 +293,17 @@ module IBUFDSE3 #(
     if (OSC_in_muxed[3] == 1'b0) OSC_int = -1 * OSC_int;
 
     if (OSC_EN_in_muxed == 2'b11) begin
-      if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0)
-        O_OSC_in <= 1'b0;
-    else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0)  
-        O_OSC_in <= 1'b1;
-    else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0)
-        O_OSC_in <= ~O_OSC_in;
+      if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0) O_OSC_in <= 1'b0;
+      else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0) O_OSC_in <= 1'b1;
+      else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0) O_OSC_in <= ~O_OSC_in;
     end
   end
 
 
   initial begin
-    if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0)
-        O_OSC_in <= 1'b0;
-    else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0)  
-        O_OSC_in <= 1'b1;
-    else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0)
-        O_OSC_in <= 1'bx;
+    if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) < 0) O_OSC_in <= 1'b0;
+    else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) > 0) O_OSC_in <= 1'b1;
+    else if ((SIM_INPUT_BUFFER_OFFSET_REG - OSC_int) == 0) O_OSC_in <= 1'bx;
   end
 
 
@@ -305,17 +311,12 @@ module IBUFDSE3 #(
   always @(I_in or IB_in or DQS_BIAS_BIN or IBUFDISABLE_in or USE_IBUFDISABLE_BIN) begin
     if (USE_IBUFDISABLE_BIN == 1'b1 && IBUFDISABLE_in == 1'b1) O_out <= 1'b0;
     else if ((USE_IBUFDISABLE_BIN == 1'b1 && IBUFDISABLE_in == 1'b0) || (USE_IBUFDISABLE_BIN == 1'b0)) begin
-      if (I_in == 1'b1 && IB_in == 1'b0)
-          O_out <= 1'b1;
-        else if (I_in == 1'b0 && IB_in == 1'b1)
-          O_out <= 1'b0;
-        else if ((I_in === 1'bz || I_in == 1'b0) && (IB_in === 1'bz || IB_in == 1'b1))
-          if (DQS_BIAS_BIN == 1'b1)
-            O_out <= 1'b0;
-          else
-            O_out <= 1'bx;
-        else if ((I_in === 1'bx) || (IB_in === 1'bx))
-          O_out <= 1'bx;
+      if (I_in == 1'b1 && IB_in == 1'b0) O_out <= 1'b1;
+      else if (I_in == 1'b0 && IB_in == 1'b1) O_out <= 1'b0;
+      else if ((I_in === 1'bz || I_in == 1'b0) && (IB_in === 1'bz || IB_in == 1'b1))
+        if (DQS_BIAS_BIN == 1'b1) O_out <= 1'b0;
+        else O_out <= 1'bx;
+      else if ((I_in === 1'bx) || (IB_in === 1'bx)) O_out <= 1'bx;
     end else begin
       O_out <= 1'bx;
     end

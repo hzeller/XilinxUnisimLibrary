@@ -67,9 +67,11 @@ module AUTOBUF (
       "IBUFG": ;
       "NONE": ;
       "OBUF": ;
-      default : begin
-		$display("Attribute Syntax Error : The Attribute BUFFER_TYPE on AUTOBUF instance %m is set to %s.  Legal values for this attribute are AUTO, BUF, BUFG, BUFGP, BUFH, BUFIO, BUFIO2, BUFIO2FB, BUFR, IBUF, IBUFG, NONE, and OBUF.", BUFFER_TYPE);
-	    end
+      default: begin
+        $display(
+            "Attribute Syntax Error : The Attribute BUFFER_TYPE on AUTOBUF instance %m is set to %s.  Legal values for this attribute are AUTO, BUF, BUFG, BUFGP, BUFH, BUFIO, BUFIO2, BUFIO2FB, BUFR, IBUF, IBUFG, NONE, and OBUF.",
+            BUFFER_TYPE);
+      end
     endcase
 
   end

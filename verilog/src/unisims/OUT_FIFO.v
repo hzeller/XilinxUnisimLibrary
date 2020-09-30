@@ -145,7 +145,9 @@ module OUT_FIFO (
       1: ALMOST_EMPTY_VALUE_BINARY <= 8'b01000001;
       2: ALMOST_EMPTY_VALUE_BINARY <= 8'b01100011;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALMOST_EMPTY_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.", MODULE_NAME, ALMOST_EMPTY_VALUE);
+        $display(
+            "Attribute Syntax Error : The Attribute ALMOST_EMPTY_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.",
+            MODULE_NAME, ALMOST_EMPTY_VALUE);
         #1 $finish;
       end
     endcase
@@ -154,7 +156,9 @@ module OUT_FIFO (
       1: ALMOST_FULL_VALUE_BINARY <= 8'b01000001;
       2: ALMOST_FULL_VALUE_BINARY <= 8'b01100011;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALMOST_FULL_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.", MODULE_NAME, ALMOST_FULL_VALUE);
+        $display(
+            "Attribute Syntax Error : The Attribute ALMOST_FULL_VALUE on %s instance %m is set to %d.  Legal values for this attribute are 1 to 2.",
+            MODULE_NAME, ALMOST_FULL_VALUE);
         #1 $finish;
       end
     endcase
@@ -163,16 +167,20 @@ module OUT_FIFO (
       "ARRAY_MODE_8_X_4": ARRAY_MODE_BINARY <= 1'b1;
       "ARRAY_MODE_4_X_4": ARRAY_MODE_BINARY <= 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ARRAY_MODE on %s instance %m is set to %s.  Legal values for this attribute are ARRAY_MODE_8_X_4 or ARRAY_MODE_4_X_4.", MODULE_NAME, ARRAY_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute ARRAY_MODE on %s instance %m is set to %s.  Legal values for this attribute are ARRAY_MODE_8_X_4 or ARRAY_MODE_4_X_4.",
+            MODULE_NAME, ARRAY_MODE);
         #1 $finish;
       end
     endcase
 
     case (OUTPUT_DISABLE)
       "FALSE": OUTPUT_DISABLE_BINARY <= 1'b0;
-      "TRUE": OUTPUT_DISABLE_BINARY <= 1'b1;
+      "TRUE":  OUTPUT_DISABLE_BINARY <= 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute OUTPUT_DISABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, OUTPUT_DISABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute OUTPUT_DISABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+            MODULE_NAME, OUTPUT_DISABLE);
         #1 $finish;
       end
     endcase
@@ -184,7 +192,9 @@ module OUT_FIFO (
     case (SYNCHRONOUS_MODE)
       "FALSE": SYNCHRONOUS_MODE_BINARY <= 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SYNCHRONOUS_MODE on %s instance %m is set to %s.  The legal value for this attribute is FALSE.", MODULE_NAME, SYNCHRONOUS_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute SYNCHRONOUS_MODE on %s instance %m is set to %s.  The legal value for this attribute is FALSE.",
+            MODULE_NAME, SYNCHRONOUS_MODE);
         #1 $finish;
       end
     endcase

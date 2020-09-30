@@ -72,41 +72,39 @@ module FDRE #(
   assign #100 Q = Q_out;
 
   always @(glblGSR)
-      if (glblGSR) 
-        assign Q_out = INIT;
-      else
-        deassign Q_out;
+    if (glblGSR) assign Q_out = INIT;
+    else deassign Q_out;
 
 `ifdef XIL_TIMING
   generate
     if (IS_C_INVERTED == 1'b0) begin : generate_block1
       always @(posedge C_dly)
-    if (((R_dly ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
-      Q_out <=  1'b0;
-    else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
-      Q_out <=  D_dly ^ IS_D_INVERTED_REG;
+        if (((R_dly ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
+          Q_out <= 1'b0;
+        else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
+          Q_out <= D_dly ^ IS_D_INVERTED_REG;
     end else begin : generate_block1
       always @(negedge C_dly)
-    if (((R_dly ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
-      Q_out <=  1'b0;
-    else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
-      Q_out <= D_dly ^ IS_D_INVERTED_REG;
+        if (((R_dly ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
+          Q_out <= 1'b0;
+        else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
+          Q_out <= D_dly ^ IS_D_INVERTED_REG;
     end
   endgenerate
 `else
   generate
     if (IS_C_INVERTED == 1'b0) begin : generate_block1
       always @(posedge C)
-    if (((R ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
-      Q_out <=  1'b0;
-    else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
-      Q_out <=  D ^ IS_D_INVERTED_REG;
+        if (((R ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
+          Q_out <= 1'b0;
+        else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
+          Q_out <= D ^ IS_D_INVERTED_REG;
     end else begin : generate_block1
       always @(negedge C)
-    if (((R ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
-      Q_out <=  1'b0;
-    else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
-      Q_out <=  D ^ IS_D_INVERTED_REG;
+        if (((R ^ IS_R_INVERTED_REG) && (R !== 1'bz)) || (R === 1'bx && Q_out == 1'b0))
+          Q_out <= 1'b0;
+        else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
+          Q_out <= D ^ IS_D_INVERTED_REG;
     end
   endgenerate
 `endif

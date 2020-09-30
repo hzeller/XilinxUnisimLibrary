@@ -168,17 +168,17 @@ module BUFGCTRL #(
 `ifdef XIL_TIMING
   assign CE0_in = (CE0 !== 1'bz) && (CE0_delay ^ IS_CE0_INVERTED_REG);  // rv 0
   assign CE1_in = (CE1 !== 1'bz) && (CE1_delay ^ IS_CE1_INVERTED_REG);  // rv 0
-  assign I0_in = I0_delay ^ IS_I0_INVERTED_REG;
-  assign I1_in = I1_delay ^ IS_I1_INVERTED_REG;
-  assign S0_in = (S0 !== 1'bz) && (S0_delay ^ IS_S0_INVERTED_REG);  // rv 0
-  assign S1_in = (S1 !== 1'bz) && (S1_delay ^ IS_S1_INVERTED_REG);  // rv 0
+  assign I0_in  = I0_delay ^ IS_I0_INVERTED_REG;
+  assign I1_in  = I1_delay ^ IS_I1_INVERTED_REG;
+  assign S0_in  = (S0 !== 1'bz) && (S0_delay ^ IS_S0_INVERTED_REG);  // rv 0
+  assign S1_in  = (S1 !== 1'bz) && (S1_delay ^ IS_S1_INVERTED_REG);  // rv 0
 `else
   assign CE0_in = (CE0 !== 1'bz) && (CE0 ^ IS_CE0_INVERTED_REG);  // rv 0
   assign CE1_in = (CE1 !== 1'bz) && (CE1 ^ IS_CE1_INVERTED_REG);  // rv 0
-  assign I0_in = I0 ^ IS_I0_INVERTED_REG;
-  assign I1_in = I1 ^ IS_I1_INVERTED_REG;
-  assign S0_in = (S0 !== 1'bz) && (S0 ^ IS_S0_INVERTED_REG);  // rv 0
-  assign S1_in = (S1 !== 1'bz) && (S1 ^ IS_S1_INVERTED_REG);  // rv 0
+  assign I0_in  = I0 ^ IS_I0_INVERTED_REG;
+  assign I1_in  = I1 ^ IS_I1_INVERTED_REG;
+  assign S0_in  = (S0 !== 1'bz) && (S0 ^ IS_S0_INVERTED_REG);  // rv 0
+  assign S1_in  = (S1 !== 1'bz) && (S1 ^ IS_S1_INVERTED_REG);  // rv 0
 `endif
 
   assign IGNORE0_in = (IGNORE0 !== 1'bz) && (IGNORE0 ^ IS_IGNORE0_INVERTED_REG);  // rv 0
@@ -316,33 +316,43 @@ module BUFGCTRL #(
     if ((attr_test == 1'b1) ||
         ((CE_TYPE_CE0_REG != "SYNC") &&
          (CE_TYPE_CE0_REG != "HARDSYNC"))) begin
-      $display("Error: [Unisim %s-101] CE_TYPE_CE0 attribute is set to %s.  Legal values for this attribute are SYNC or HARDSYNC. Instance: %m", MODULE_NAME, CE_TYPE_CE0_REG);
+      $display(
+          "Error: [Unisim %s-101] CE_TYPE_CE0 attribute is set to %s.  Legal values for this attribute are SYNC or HARDSYNC. Instance: %m",
+          MODULE_NAME, CE_TYPE_CE0_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CE_TYPE_CE1_REG != "SYNC") &&
          (CE_TYPE_CE1_REG != "HARDSYNC"))) begin
-      $display("Error: [Unisim %s-102] CE_TYPE_CE1 attribute is set to %s.  Legal values for this attribute are SYNC or HARDSYNC. Instance: %m", MODULE_NAME, CE_TYPE_CE1_REG);
+      $display(
+          "Error: [Unisim %s-102] CE_TYPE_CE1 attribute is set to %s.  Legal values for this attribute are SYNC or HARDSYNC. Instance: %m",
+          MODULE_NAME, CE_TYPE_CE1_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((INIT_OUT_REG != 0) && (INIT_OUT_REG != 1))) begin
-      $display("Error: [Unisim %s-104] INIT_OUT attribute is set to %d.  Legal values for this attribute are 0 or 1. Instance: %m", MODULE_NAME, INIT_OUT_REG);
+      $display(
+          "Error: [Unisim %s-104] INIT_OUT attribute is set to %d.  Legal values for this attribute are 0 or 1. Instance: %m",
+          MODULE_NAME, INIT_OUT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((PRESELECT_I0_REG != "FALSE") &&
          (PRESELECT_I0_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-113] PRESELECT_I0 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PRESELECT_I0_REG);
+      $display(
+          "Error: [Unisim %s-113] PRESELECT_I0 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PRESELECT_I0_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((PRESELECT_I1_REG != "FALSE") &&
          (PRESELECT_I1_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-114] PRESELECT_I1 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PRESELECT_I1_REG);
+      $display(
+          "Error: [Unisim %s-114] PRESELECT_I1 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PRESELECT_I1_REG);
       attr_err = 1'b1;
     end
 
@@ -368,14 +378,18 @@ module BUFGCTRL #(
          (SIM_DEVICE_REG != "VERSAL_PRIME") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES2"))) begin
-      $display("Error: [Unisim %s-115] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, 7SERIES, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-115] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, 7SERIES, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((STARTUP_SYNC_REG != "FALSE") &&
          (STARTUP_SYNC_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-116] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, STARTUP_SYNC_REG);
+      $display(
+          "Error: [Unisim %s-116] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, STARTUP_SYNC_REG);
       attr_err = 1'b1;
     end
 
@@ -398,7 +412,9 @@ module BUFGCTRL #(
 
     // *** both preselects can not be 1 simultaneously.
     if ((PRESELECT_I0_REG == "TRUE") && (PRESELECT_I1_REG == "TRUE")) begin
-      $display("Error : [Unisim %s-1] The attributes PRESELECT_I0 and PRESELECT_I1 should not be set to TRUE simultaneously. Instance: %m", MODULE_NAME);
+      $display(
+          "Error : [Unisim %s-1] The attributes PRESELECT_I0 and PRESELECT_I1 should not be set to TRUE simultaneously. Instance: %m",
+          MODULE_NAME);
       attr_err = 1'b1;
     end
 
@@ -426,7 +442,9 @@ module BUFGCTRL #(
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES1    ) &&
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES2    )) &&
         (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE)) begin
-      $display("Warning: [Unisim %s-200] SIM_DEVICE attribute is set to %s and STARTUP_SYNC is set to %s. STARTUP_SYNC functionality is not supported for this DEVICE. Instance: %m", MODULE_NAME, SIM_DEVICE_REG, STARTUP_SYNC_REG);
+      $display(
+          "Warning: [Unisim %s-200] SIM_DEVICE attribute is set to %s and STARTUP_SYNC is set to %s. STARTUP_SYNC functionality is not supported for this DEVICE. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG, STARTUP_SYNC_REG);
       STARTUP_SYNC_BIN = STARTUP_SYNC_FALSE;  //force correct
     end
 
@@ -449,7 +467,9 @@ module BUFGCTRL #(
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES1    ) &&
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES2    )) &&
         (CE_TYPE_CE0_BIN == CE_TYPE_CE0_HARDSYNC || CE_TYPE_CE1_BIN==CE_TYPE_CE1_HARDSYNC)) begin
-      $display("Warning: [Unisim %s-201] SIM_DEVICE attribute is set to %s; CE_TYPE_CE0 is set to %s and CE_TYPE_CE1 is set to %s. HARDSYNC functionality is not supported for this DEVICE. Instance: %m", MODULE_NAME, SIM_DEVICE_REG, CE_TYPE_CE0_REG, CE_TYPE_CE1_REG);
+      $display(
+          "Warning: [Unisim %s-201] SIM_DEVICE attribute is set to %s; CE_TYPE_CE0 is set to %s and CE_TYPE_CE1 is set to %s. HARDSYNC functionality is not supported for this DEVICE. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG, CE_TYPE_CE0_REG, CE_TYPE_CE1_REG);
       CE_TYPE_CE0_BIN = CE_TYPE_CE0_SYNC;  //force correct
       CE_TYPE_CE1_BIN = CE_TYPE_CE1_SYNC;
     end
@@ -506,18 +526,14 @@ module BUFGCTRL #(
   assign I0_optinv = INIT_OUT_BIN ^ I0_in;
   assign I1_optinv = INIT_OUT_BIN ^ I1_in;
 
-  always @ (negedge I0_optinv or posedge glblGRESTORE) begin
-    if(glblGRESTORE)
-      gwe0_sync <= 3'd0;
-    else 
-      gwe0_sync <= {gwe0_sync[1:0], gwe};
-    end
+  always @(negedge I0_optinv or posedge glblGRESTORE) begin
+    if (glblGRESTORE) gwe0_sync <= 3'd0;
+    else gwe0_sync <= {gwe0_sync[1:0], gwe};
+  end
 
-  always @ (negedge I1_optinv or posedge glblGRESTORE) begin 
-    if(glblGRESTORE)
-      gwe1_sync <= 3'd0;
-    else 
-      gwe1_sync <= {gwe1_sync[1:0], gwe};
+  always @(negedge I1_optinv or posedge glblGRESTORE) begin
+    if (glblGRESTORE) gwe1_sync <= 3'd0;
+    else gwe1_sync <= {gwe1_sync[1:0], gwe};
   end
 
   assign gwe_sync = ((PRESELECT_I0_BIN==PRESELECT_I0_TRUE ) ? gwe0_sync[2] :
@@ -528,17 +544,13 @@ module BUFGCTRL #(
   always @(*) CE0_in_dly = #1 CE0_in;
   always @(*) CE1_in_dly = #1 CE1_in;
 
-  always @ (posedge I0_optinv or posedge glblGRESTORE) 
-    if(glblGRESTORE)
-      CE0_sync <= 3'd0;
-    else 
-      CE0_sync <= {CE0_sync[1:0], CE0_in_dly};
+  always @(posedge I0_optinv or posedge glblGRESTORE)
+    if (glblGRESTORE) CE0_sync <= 3'd0;
+    else CE0_sync <= {CE0_sync[1:0], CE0_in_dly};
 
-  always @ (posedge I1_optinv or posedge glblGRESTORE) 
-    if(glblGRESTORE)
-      CE1_sync <= 3'd0;
-    else 
-      CE1_sync <= {CE1_sync[1:0], CE1_in_dly};
+  always @(posedge I1_optinv or posedge glblGRESTORE)
+    if (glblGRESTORE) CE1_sync <= 3'd0;
+    else CE1_sync <= {CE1_sync[1:0], CE1_in_dly};
 
 
   assign ce0_muxed_sync = (CE_TYPE_CE0_BIN == CE_TYPE_CE0_HARDSYNC) ? CE0_sync[2] : CE0_in;
@@ -554,40 +566,28 @@ module BUFGCTRL #(
   assign cb10 = ~((~gwe_muxed_sync) | (~IGNORE1_in) & (~I1_optinv));
   assign cb11 = ~((~gwe_muxed_sync) | (~IGNORE1_in) & (I1_optinv));
 
-  always@(*) begin
-    if (glblGRESTORE && ~PRESELECT_I0_BIN)
-      qb00 <= 1'b0;
-    else if (glblGRESTORE && PRESELECT_I0_BIN)
-      qb00 <= 1'b1;
-    else if(cb00)
-      qb00 <= #1 ~d00;
-    end
-
-  always@(*) begin
-    if (glblGRESTORE && ~PRESELECT_I0_BIN)
-      qb01 <= 1'b0;
-    else if (glblGRESTORE && PRESELECT_I0_BIN)
-      qb01 <= 1'b1;
-    else if(cb01)
-      qb01 <= #1 ~d01;
+  always @(*) begin
+    if (glblGRESTORE && ~PRESELECT_I0_BIN) qb00 <= 1'b0;
+    else if (glblGRESTORE && PRESELECT_I0_BIN) qb00 <= 1'b1;
+    else if (cb00) qb00 <= #1 ~d00;
   end
 
   always @(*) begin
-    if (glblGRESTORE && ~PRESELECT_I1_BIN)
-      qb10 <= 1'b0;
-    else if (glblGRESTORE && PRESELECT_I1_BIN)
-      qb10 <= 1'b1;
-    else if(cb10)
-      qb10 <= #1 ~d10;
-    end
+    if (glblGRESTORE && ~PRESELECT_I0_BIN) qb01 <= 1'b0;
+    else if (glblGRESTORE && PRESELECT_I0_BIN) qb01 <= 1'b1;
+    else if (cb01) qb01 <= #1 ~d01;
+  end
 
-  always@(*) begin
-    if (glblGRESTORE && ~PRESELECT_I1_BIN)
-      qb11 <= 1'b0;
-    else if (glblGRESTORE && PRESELECT_I1_BIN)
-      qb11 <= 1'b1;
-    else if(cb11)
-      qb11 <= #1 ~d11;
+  always @(*) begin
+    if (glblGRESTORE && ~PRESELECT_I1_BIN) qb10 <= 1'b0;
+    else if (glblGRESTORE && PRESELECT_I1_BIN) qb10 <= 1'b1;
+    else if (cb10) qb10 <= #1 ~d10;
+  end
+
+  always @(*) begin
+    if (glblGRESTORE && ~PRESELECT_I1_BIN) qb11 <= 1'b0;
+    else if (glblGRESTORE && PRESELECT_I1_BIN) qb11 <= 1'b1;
+    else if (cb11) qb11 <= #1 ~d11;
   end
 
   always @(*) begin
@@ -599,10 +599,10 @@ module BUFGCTRL #(
     case ({
       state1, state0
     })
-      2'b00: O_out = 1'b0;
-      2'b01: O_out = I1_in;
-      2'b10: O_out = I0_in;
-      2'b11: O_out = INIT_OUT_BIN;
+      2'b00:   O_out = 1'b0;
+      2'b01:   O_out = I1_in;
+      2'b10:   O_out = I0_in;
+      2'b11:   O_out = INIT_OUT_BIN;
       default: O_out = 1'bx;
     endcase
   end

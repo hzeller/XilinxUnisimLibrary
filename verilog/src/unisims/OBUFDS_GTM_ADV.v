@@ -112,7 +112,9 @@ module OBUFDS_GTM_ADV #(
          (REFCLK_ICNTL_TX_REG != 3) &&
          (REFCLK_ICNTL_TX_REG != 7) &&
          (REFCLK_ICNTL_TX_REG != 15))) begin
-      $display("Error: [Unisim %s-102] REFCLK_ICNTL_TX attribute is set to %d.  Legal values for this attribute are 0, 1, 3, 7 or 15. Instance: %m", MODULE_NAME, REFCLK_ICNTL_TX_REG);
+      $display(
+          "Error: [Unisim %s-102] REFCLK_ICNTL_TX attribute is set to %d.  Legal values for this attribute are 0, 1, 3, 7 or 15. Instance: %m",
+          MODULE_NAME, REFCLK_ICNTL_TX_REG);
       attr_err = 1'b1;
     end
 
@@ -128,10 +130,10 @@ module OBUFDS_GTM_ADV #(
   // =====================
   always @(*) begin
     case (RXRECCLK_SEL_REG)
-      2'b00: I_sel <= I[0];
-      2'b01: I_sel <= I[1];
-      2'b10: I_sel <= I[2];
-      2'b11: I_sel <= I[3];
+      2'b00:   I_sel <= I[0];
+      2'b01:   I_sel <= I[1];
+      2'b10:   I_sel <= I[2];
+      2'b11:   I_sel <= I[3];
       default: I_sel <= I[0];
     endcase
   end
@@ -140,7 +142,7 @@ module OBUFDS_GTM_ADV #(
   // Generate O
   // =====================
 
-  assign O = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : I_sel;
+  assign O  = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : I_sel;
   assign OB = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : ~I_sel;
 
 `ifndef XIL_XECLIB

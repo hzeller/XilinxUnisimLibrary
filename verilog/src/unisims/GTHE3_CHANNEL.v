@@ -3023,7 +3023,9 @@ module GTHE3_CHANNEL #(
     if ((attr_test == 1'b1) ||
         ((ALIGN_COMMA_DOUBLE_REG != "FALSE") &&
          (ALIGN_COMMA_DOUBLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-128] ALIGN_COMMA_DOUBLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, ALIGN_COMMA_DOUBLE_REG);
+      $display(
+          "Error: [Unisim %s-128] ALIGN_COMMA_DOUBLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, ALIGN_COMMA_DOUBLE_REG);
       attr_err = 1'b1;
     end
 
@@ -3031,35 +3033,45 @@ module GTHE3_CHANNEL #(
         ((ALIGN_COMMA_WORD_REG != 1) &&
          (ALIGN_COMMA_WORD_REG != 2) &&
          (ALIGN_COMMA_WORD_REG != 4))) begin
-      $display("Error: [Unisim %s-130] ALIGN_COMMA_WORD attribute is set to %d.  Legal values for this attribute are 1, 2 or 4. Instance: %m", MODULE_NAME, ALIGN_COMMA_WORD_REG);
+      $display(
+          "Error: [Unisim %s-130] ALIGN_COMMA_WORD attribute is set to %d.  Legal values for this attribute are 1, 2 or 4. Instance: %m",
+          MODULE_NAME, ALIGN_COMMA_WORD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((ALIGN_MCOMMA_DET_REG != "TRUE") &&
          (ALIGN_MCOMMA_DET_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-131] ALIGN_MCOMMA_DET attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, ALIGN_MCOMMA_DET_REG);
+      $display(
+          "Error: [Unisim %s-131] ALIGN_MCOMMA_DET attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, ALIGN_MCOMMA_DET_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((ALIGN_PCOMMA_DET_REG != "TRUE") &&
          (ALIGN_PCOMMA_DET_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-133] ALIGN_PCOMMA_DET attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, ALIGN_PCOMMA_DET_REG);
+      $display(
+          "Error: [Unisim %s-133] ALIGN_PCOMMA_DET attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, ALIGN_PCOMMA_DET_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CBCC_DATA_SOURCE_SEL_REG != "DECODED") &&
          (CBCC_DATA_SOURCE_SEL_REG != "ENCODED"))) begin
-      $display("Error: [Unisim %s-258] CBCC_DATA_SOURCE_SEL attribute is set to %s.  Legal values for this attribute are DECODED or ENCODED. Instance: %m", MODULE_NAME, CBCC_DATA_SOURCE_SEL_REG);
+      $display(
+          "Error: [Unisim %s-258] CBCC_DATA_SOURCE_SEL attribute is set to %s.  Legal values for this attribute are DECODED or ENCODED. Instance: %m",
+          MODULE_NAME, CBCC_DATA_SOURCE_SEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CHAN_BOND_KEEP_ALIGN_REG != "FALSE") &&
          (CHAN_BOND_KEEP_ALIGN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-260] CHAN_BOND_KEEP_ALIGN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CHAN_BOND_KEEP_ALIGN_REG);
+      $display(
+          "Error: [Unisim %s-260] CHAN_BOND_KEEP_ALIGN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CHAN_BOND_KEEP_ALIGN_REG);
       attr_err = 1'b1;
     end
 
@@ -3078,14 +3090,18 @@ module GTHE3_CHANNEL #(
          (CHAN_BOND_MAX_SKEW_REG != 12) &&
          (CHAN_BOND_MAX_SKEW_REG != 13) &&
          (CHAN_BOND_MAX_SKEW_REG != 14))) begin
-      $display("Error: [Unisim %s-261] CHAN_BOND_MAX_SKEW attribute is set to %d.  Legal values for this attribute are 7, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13 or 14. Instance: %m", MODULE_NAME, CHAN_BOND_MAX_SKEW_REG);
+      $display(
+          "Error: [Unisim %s-261] CHAN_BOND_MAX_SKEW attribute is set to %d.  Legal values for this attribute are 7, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13 or 14. Instance: %m",
+          MODULE_NAME, CHAN_BOND_MAX_SKEW_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CHAN_BOND_SEQ_2_USE_REG != "FALSE") &&
          (CHAN_BOND_SEQ_2_USE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-272] CHAN_BOND_SEQ_2_USE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CHAN_BOND_SEQ_2_USE_REG);
+      $display(
+          "Error: [Unisim %s-272] CHAN_BOND_SEQ_2_USE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CHAN_BOND_SEQ_2_USE_REG);
       attr_err = 1'b1;
     end
 
@@ -3094,51 +3110,67 @@ module GTHE3_CHANNEL #(
          (CHAN_BOND_SEQ_LEN_REG != 1) &&
          (CHAN_BOND_SEQ_LEN_REG != 3) &&
          (CHAN_BOND_SEQ_LEN_REG != 4))) begin
-      $display("Error: [Unisim %s-273] CHAN_BOND_SEQ_LEN attribute is set to %d.  Legal values for this attribute are 2, 1, 3 or 4. Instance: %m", MODULE_NAME, CHAN_BOND_SEQ_LEN_REG);
+      $display(
+          "Error: [Unisim %s-273] CHAN_BOND_SEQ_LEN attribute is set to %d.  Legal values for this attribute are 2, 1, 3 or 4. Instance: %m",
+          MODULE_NAME, CHAN_BOND_SEQ_LEN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CLK_CORRECT_USE_REG != "TRUE") &&
          (CLK_CORRECT_USE_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-274] CLK_CORRECT_USE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, CLK_CORRECT_USE_REG);
+      $display(
+          "Error: [Unisim %s-274] CLK_CORRECT_USE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, CLK_CORRECT_USE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CLK_COR_KEEP_IDLE_REG != "FALSE") &&
          (CLK_COR_KEEP_IDLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-275] CLK_COR_KEEP_IDLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_COR_KEEP_IDLE_REG);
+      $display(
+          "Error: [Unisim %s-275] CLK_COR_KEEP_IDLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_COR_KEEP_IDLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_COR_MAX_LAT_REG < 3) || (CLK_COR_MAX_LAT_REG > 60))) begin
-      $display("Error: [Unisim %s-276] CLK_COR_MAX_LAT attribute is set to %d.  Legal values for this attribute are 3 to 60. Instance: %m", MODULE_NAME, CLK_COR_MAX_LAT_REG);
+      $display(
+          "Error: [Unisim %s-276] CLK_COR_MAX_LAT attribute is set to %d.  Legal values for this attribute are 3 to 60. Instance: %m",
+          MODULE_NAME, CLK_COR_MAX_LAT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_COR_MIN_LAT_REG < 3) || (CLK_COR_MIN_LAT_REG > 63))) begin
-      $display("Error: [Unisim %s-277] CLK_COR_MIN_LAT attribute is set to %d.  Legal values for this attribute are 3 to 63. Instance: %m", MODULE_NAME, CLK_COR_MIN_LAT_REG);
+      $display(
+          "Error: [Unisim %s-277] CLK_COR_MIN_LAT attribute is set to %d.  Legal values for this attribute are 3 to 63. Instance: %m",
+          MODULE_NAME, CLK_COR_MIN_LAT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CLK_COR_PRECEDENCE_REG != "TRUE") &&
          (CLK_COR_PRECEDENCE_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-278] CLK_COR_PRECEDENCE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, CLK_COR_PRECEDENCE_REG);
+      $display(
+          "Error: [Unisim %s-278] CLK_COR_PRECEDENCE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, CLK_COR_PRECEDENCE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CLK_COR_REPEAT_WAIT_REG < 0) || (CLK_COR_REPEAT_WAIT_REG > 31))) begin
-      $display("Error: [Unisim %s-279] CLK_COR_REPEAT_WAIT attribute is set to %d.  Legal values for this attribute are 0 to 31. Instance: %m", MODULE_NAME, CLK_COR_REPEAT_WAIT_REG);
+      $display(
+          "Error: [Unisim %s-279] CLK_COR_REPEAT_WAIT attribute is set to %d.  Legal values for this attribute are 0 to 31. Instance: %m",
+          MODULE_NAME, CLK_COR_REPEAT_WAIT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CLK_COR_SEQ_2_USE_REG != "FALSE") &&
          (CLK_COR_SEQ_2_USE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-290] CLK_COR_SEQ_2_USE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_COR_SEQ_2_USE_REG);
+      $display(
+          "Error: [Unisim %s-290] CLK_COR_SEQ_2_USE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_COR_SEQ_2_USE_REG);
       attr_err = 1'b1;
     end
 
@@ -3147,7 +3179,9 @@ module GTHE3_CHANNEL #(
          (CLK_COR_SEQ_LEN_REG != 1) &&
          (CLK_COR_SEQ_LEN_REG != 3) &&
          (CLK_COR_SEQ_LEN_REG != 4))) begin
-      $display("Error: [Unisim %s-291] CLK_COR_SEQ_LEN attribute is set to %d.  Legal values for this attribute are 2, 1, 3 or 4. Instance: %m", MODULE_NAME, CLK_COR_SEQ_LEN_REG);
+      $display(
+          "Error: [Unisim %s-291] CLK_COR_SEQ_LEN attribute is set to %d.  Legal values for this attribute are 2, 1, 3 or 4. Instance: %m",
+          MODULE_NAME, CLK_COR_SEQ_LEN_REG);
       attr_err = 1'b1;
     end
 
@@ -3163,12 +3197,16 @@ module GTHE3_CHANNEL #(
          (CPLL_FBDIV_REG != 12) &&
          (CPLL_FBDIV_REG != 16) &&
          (CPLL_FBDIV_REG != 20))) begin
-      $display("Error: [Unisim %s-296] CPLL_FBDIV attribute is set to %d.  Legal values for this attribute are 4, 1, 2, 3, 5, 6, 8, 10, 12, 16 or 20. Instance: %m", MODULE_NAME, CPLL_FBDIV_REG);
+      $display(
+          "Error: [Unisim %s-296] CPLL_FBDIV attribute is set to %d.  Legal values for this attribute are 4, 1, 2, 3, 5, 6, 8, 10, 12, 16 or 20. Instance: %m",
+          MODULE_NAME, CPLL_FBDIV_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CPLL_FBDIV_45_REG != 4) && (CPLL_FBDIV_45_REG != 5))) begin
-      $display("Error: [Unisim %s-297] CPLL_FBDIV_45 attribute is set to %d.  Legal values for this attribute are 4 or 5. Instance: %m", MODULE_NAME, CPLL_FBDIV_45_REG);
+      $display(
+          "Error: [Unisim %s-297] CPLL_FBDIV_45 attribute is set to %d.  Legal values for this attribute are 4 or 5. Instance: %m",
+          MODULE_NAME, CPLL_FBDIV_45_REG);
       attr_err = 1'b1;
     end
 
@@ -3184,54 +3222,70 @@ module GTHE3_CHANNEL #(
          (CPLL_REFCLK_DIV_REG != 12) &&
          (CPLL_REFCLK_DIV_REG != 16) &&
          (CPLL_REFCLK_DIV_REG != 20))) begin
-      $display("Error: [Unisim %s-301] CPLL_REFCLK_DIV attribute is set to %d.  Legal values for this attribute are 1, 2, 3, 4, 5, 6, 8, 10, 12, 16 or 20. Instance: %m", MODULE_NAME, CPLL_REFCLK_DIV_REG);
+      $display(
+          "Error: [Unisim %s-301] CPLL_REFCLK_DIV attribute is set to %d.  Legal values for this attribute are 1, 2, 3, 4, 5, 6, 8, 10, 12, 16 or 20. Instance: %m",
+          MODULE_NAME, CPLL_REFCLK_DIV_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DDI_REALIGN_WAIT_REG < 0) || (DDI_REALIGN_WAIT_REG > 31))) begin
-      $display("Error: [Unisim %s-303] DDI_REALIGN_WAIT attribute is set to %d.  Legal values for this attribute are 0 to 31. Instance: %m", MODULE_NAME, DDI_REALIGN_WAIT_REG);
+      $display(
+          "Error: [Unisim %s-303] DDI_REALIGN_WAIT attribute is set to %d.  Legal values for this attribute are 0 to 31. Instance: %m",
+          MODULE_NAME, DDI_REALIGN_WAIT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((DEC_MCOMMA_DETECT_REG != "TRUE") &&
          (DEC_MCOMMA_DETECT_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-304] DEC_MCOMMA_DETECT attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, DEC_MCOMMA_DETECT_REG);
+      $display(
+          "Error: [Unisim %s-304] DEC_MCOMMA_DETECT attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, DEC_MCOMMA_DETECT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((DEC_PCOMMA_DETECT_REG != "TRUE") &&
          (DEC_PCOMMA_DETECT_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-305] DEC_PCOMMA_DETECT attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, DEC_PCOMMA_DETECT_REG);
+      $display(
+          "Error: [Unisim %s-305] DEC_PCOMMA_DETECT attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, DEC_PCOMMA_DETECT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((DEC_VALID_COMMA_ONLY_REG != "TRUE") &&
          (DEC_VALID_COMMA_ONLY_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-306] DEC_VALID_COMMA_ONLY attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, DEC_VALID_COMMA_ONLY_REG);
+      $display(
+          "Error: [Unisim %s-306] DEC_VALID_COMMA_ONLY attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, DEC_VALID_COMMA_ONLY_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((ES_ERRDET_EN_REG != "FALSE") &&
          (ES_ERRDET_EN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-313] ES_ERRDET_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, ES_ERRDET_EN_REG);
+      $display(
+          "Error: [Unisim %s-313] ES_ERRDET_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, ES_ERRDET_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((ES_EYE_SCAN_EN_REG != "FALSE") &&
          (ES_EYE_SCAN_EN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-314] ES_EYE_SCAN_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, ES_EYE_SCAN_EN_REG);
+      $display(
+          "Error: [Unisim %s-314] ES_EYE_SCAN_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, ES_EYE_SCAN_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((FTS_LANE_DESKEW_EN_REG != "FALSE") &&
          (FTS_LANE_DESKEW_EN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-337] FTS_LANE_DESKEW_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, FTS_LANE_DESKEW_EN_REG);
+      $display(
+          "Error: [Unisim %s-337] FTS_LANE_DESKEW_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, FTS_LANE_DESKEW_EN_REG);
       attr_err = 1'b1;
     end
 
@@ -3240,71 +3294,93 @@ module GTHE3_CHANNEL #(
          (PCI3_AUTO_REALIGN_REG != "OVR_1K_BLK") &&
          (PCI3_AUTO_REALIGN_REG != "OVR_8_BLK") &&
          (PCI3_AUTO_REALIGN_REG != "OVR_64_BLK"))) begin
-      $display("Error: [Unisim %s-346] PCI3_AUTO_REALIGN attribute is set to %s.  Legal values for this attribute are FRST_SMPL, OVR_1K_BLK, OVR_8_BLK or OVR_64_BLK. Instance: %m", MODULE_NAME, PCI3_AUTO_REALIGN_REG);
+      $display(
+          "Error: [Unisim %s-346] PCI3_AUTO_REALIGN attribute is set to %s.  Legal values for this attribute are FRST_SMPL, OVR_1K_BLK, OVR_8_BLK or OVR_64_BLK. Instance: %m",
+          MODULE_NAME, PCI3_AUTO_REALIGN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((PCS_PCIE_EN_REG != "FALSE") && (PCS_PCIE_EN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-360] PCS_PCIE_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PCS_PCIE_EN_REG);
+      $display(
+          "Error: [Unisim %s-360] PCS_PCIE_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PCS_PCIE_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_ADDR_MODE_REG != "FULL") &&
          (RXBUF_ADDR_MODE_REG != "FAST"))) begin
-      $display("Error: [Unisim %s-373] RXBUF_ADDR_MODE attribute is set to %s.  Legal values for this attribute are FULL or FAST. Instance: %m", MODULE_NAME, RXBUF_ADDR_MODE_REG);
+      $display(
+          "Error: [Unisim %s-373] RXBUF_ADDR_MODE attribute is set to %s.  Legal values for this attribute are FULL or FAST. Instance: %m",
+          MODULE_NAME, RXBUF_ADDR_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((RXBUF_EN_REG != "TRUE") && (RXBUF_EN_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-376] RXBUF_EN attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, RXBUF_EN_REG);
+      $display(
+          "Error: [Unisim %s-376] RXBUF_EN attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, RXBUF_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_RESET_ON_CB_CHANGE_REG != "TRUE") &&
          (RXBUF_RESET_ON_CB_CHANGE_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-377] RXBUF_RESET_ON_CB_CHANGE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, RXBUF_RESET_ON_CB_CHANGE_REG);
+      $display(
+          "Error: [Unisim %s-377] RXBUF_RESET_ON_CB_CHANGE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, RXBUF_RESET_ON_CB_CHANGE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_RESET_ON_COMMAALIGN_REG != "FALSE") &&
          (RXBUF_RESET_ON_COMMAALIGN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-378] RXBUF_RESET_ON_COMMAALIGN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, RXBUF_RESET_ON_COMMAALIGN_REG);
+      $display(
+          "Error: [Unisim %s-378] RXBUF_RESET_ON_COMMAALIGN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, RXBUF_RESET_ON_COMMAALIGN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_RESET_ON_EIDLE_REG != "FALSE") &&
          (RXBUF_RESET_ON_EIDLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-379] RXBUF_RESET_ON_EIDLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, RXBUF_RESET_ON_EIDLE_REG);
+      $display(
+          "Error: [Unisim %s-379] RXBUF_RESET_ON_EIDLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, RXBUF_RESET_ON_EIDLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_RESET_ON_RATE_CHANGE_REG != "TRUE") &&
          (RXBUF_RESET_ON_RATE_CHANGE_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-380] RXBUF_RESET_ON_RATE_CHANGE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, RXBUF_RESET_ON_RATE_CHANGE_REG);
+      $display(
+          "Error: [Unisim %s-380] RXBUF_RESET_ON_RATE_CHANGE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, RXBUF_RESET_ON_RATE_CHANGE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_THRESH_OVFLW_REG < 0) || (RXBUF_THRESH_OVFLW_REG > 63))) begin
-      $display("Error: [Unisim %s-381] RXBUF_THRESH_OVFLW attribute is set to %d.  Legal values for this attribute are 0 to 63. Instance: %m", MODULE_NAME, RXBUF_THRESH_OVFLW_REG);
+      $display(
+          "Error: [Unisim %s-381] RXBUF_THRESH_OVFLW attribute is set to %d.  Legal values for this attribute are 0 to 63. Instance: %m",
+          MODULE_NAME, RXBUF_THRESH_OVFLW_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_THRESH_OVRD_REG != "FALSE") &&
          (RXBUF_THRESH_OVRD_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-382] RXBUF_THRESH_OVRD attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, RXBUF_THRESH_OVRD_REG);
+      $display(
+          "Error: [Unisim %s-382] RXBUF_THRESH_OVRD attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, RXBUF_THRESH_OVRD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXBUF_THRESH_UNDFLW_REG < 0) || (RXBUF_THRESH_UNDFLW_REG > 63))) begin
-      $display("Error: [Unisim %s-383] RXBUF_THRESH_UNDFLW attribute is set to %d.  Legal values for this attribute are 0 to 63. Instance: %m", MODULE_NAME, RXBUF_THRESH_UNDFLW_REG);
+      $display(
+          "Error: [Unisim %s-383] RXBUF_THRESH_UNDFLW attribute is set to %d.  Legal values for this attribute are 0 to 63. Instance: %m",
+          MODULE_NAME, RXBUF_THRESH_UNDFLW_REG);
       attr_err = 1'b1;
     end
 
@@ -3317,7 +3393,9 @@ module GTHE3_CHANNEL #(
          (RXELECIDLE_CFG_REG != "Sigcfg_8") &&
          (RXELECIDLE_CFG_REG != "Sigcfg_12") &&
          (RXELECIDLE_CFG_REG != "Sigcfg_16"))) begin
-      $display("Error: [Unisim %s-452] RXELECIDLE_CFG attribute is set to %s.  Legal values for this attribute are Sigcfg_4, Sigcfg_1, Sigcfg_2, Sigcfg_3, Sigcfg_6, Sigcfg_8, Sigcfg_12 or Sigcfg_16. Instance: %m", MODULE_NAME, RXELECIDLE_CFG_REG);
+      $display(
+          "Error: [Unisim %s-452] RXELECIDLE_CFG attribute is set to %s.  Legal values for this attribute are Sigcfg_4, Sigcfg_1, Sigcfg_2, Sigcfg_3, Sigcfg_6, Sigcfg_8, Sigcfg_12 or Sigcfg_16. Instance: %m",
+          MODULE_NAME, RXELECIDLE_CFG_REG);
       attr_err = 1'b1;
     end
 
@@ -3326,21 +3404,27 @@ module GTHE3_CHANNEL #(
          (RXGBOX_FIFO_INIT_RD_ADDR_REG != 2) &&
          (RXGBOX_FIFO_INIT_RD_ADDR_REG != 3) &&
          (RXGBOX_FIFO_INIT_RD_ADDR_REG != 5))) begin
-      $display("Error: [Unisim %s-453] RXGBOX_FIFO_INIT_RD_ADDR attribute is set to %d.  Legal values for this attribute are 4, 2, 3 or 5. Instance: %m", MODULE_NAME, RXGBOX_FIFO_INIT_RD_ADDR_REG);
+      $display(
+          "Error: [Unisim %s-453] RXGBOX_FIFO_INIT_RD_ADDR attribute is set to %d.  Legal values for this attribute are 4, 2, 3 or 5. Instance: %m",
+          MODULE_NAME, RXGBOX_FIFO_INIT_RD_ADDR_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXGEARBOX_EN_REG != "FALSE") &&
          (RXGEARBOX_EN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-454] RXGEARBOX_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, RXGEARBOX_EN_REG);
+      $display(
+          "Error: [Unisim %s-454] RXGEARBOX_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, RXGEARBOX_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXOOB_CLK_CFG_REG != "PMA") &&
          (RXOOB_CLK_CFG_REG != "FABRIC"))) begin
-      $display("Error: [Unisim %s-463] RXOOB_CLK_CFG attribute is set to %s.  Legal values for this attribute are PMA or FABRIC. Instance: %m", MODULE_NAME, RXOOB_CLK_CFG_REG);
+      $display(
+          "Error: [Unisim %s-463] RXOOB_CLK_CFG attribute is set to %s.  Legal values for this attribute are PMA or FABRIC. Instance: %m",
+          MODULE_NAME, RXOOB_CLK_CFG_REG);
       attr_err = 1'b1;
     end
 
@@ -3350,7 +3434,9 @@ module GTHE3_CHANNEL #(
          (RXOUT_DIV_REG != 2) &&
          (RXOUT_DIV_REG != 8) &&
          (RXOUT_DIV_REG != 16))) begin
-      $display("Error: [Unisim %s-465] RXOUT_DIV attribute is set to %d.  Legal values for this attribute are 4, 1, 2, 8 or 16. Instance: %m", MODULE_NAME, RXOUT_DIV_REG);
+      $display(
+          "Error: [Unisim %s-465] RXOUT_DIV attribute is set to %d.  Legal values for this attribute are 4, 1, 2, 8 or 16. Instance: %m",
+          MODULE_NAME, RXOUT_DIV_REG);
       attr_err = 1'b1;
     end
 
@@ -3358,13 +3444,17 @@ module GTHE3_CHANNEL #(
         ((RXPMACLK_SEL_REG != "DATA") &&
          (RXPMACLK_SEL_REG != "CROSSING") &&
          (RXPMACLK_SEL_REG != "EYESCAN"))) begin
-      $display("Error: [Unisim %s-482] RXPMACLK_SEL attribute is set to %s.  Legal values for this attribute are DATA, CROSSING or EYESCAN. Instance: %m", MODULE_NAME, RXPMACLK_SEL_REG);
+      $display(
+          "Error: [Unisim %s-482] RXPMACLK_SEL attribute is set to %s.  Legal values for this attribute are DATA, CROSSING or EYESCAN. Instance: %m",
+          MODULE_NAME, RXPMACLK_SEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXPRBS_LINKACQ_CNT_REG < 15) || (RXPRBS_LINKACQ_CNT_REG > 255))) begin
-      $display("Error: [Unisim %s-485] RXPRBS_LINKACQ_CNT attribute is set to %d.  Legal values for this attribute are 15 to 255. Instance: %m", MODULE_NAME, RXPRBS_LINKACQ_CNT_REG);
+      $display(
+          "Error: [Unisim %s-485] RXPRBS_LINKACQ_CNT attribute is set to %d.  Legal values for this attribute are 15 to 255. Instance: %m",
+          MODULE_NAME, RXPRBS_LINKACQ_CNT_REG);
       attr_err = 1'b1;
     end
 
@@ -3384,7 +3474,9 @@ module GTHE3_CHANNEL #(
          (RXSLIDE_AUTO_WAIT_REG != 13) &&
          (RXSLIDE_AUTO_WAIT_REG != 14) &&
          (RXSLIDE_AUTO_WAIT_REG != 15))) begin
-      $display("Error: [Unisim %s-486] RXSLIDE_AUTO_WAIT attribute is set to %d.  Legal values for this attribute are 7, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14 or 15. Instance: %m", MODULE_NAME, RXSLIDE_AUTO_WAIT_REG);
+      $display(
+          "Error: [Unisim %s-486] RXSLIDE_AUTO_WAIT attribute is set to %d.  Legal values for this attribute are 7, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14 or 15. Instance: %m",
+          MODULE_NAME, RXSLIDE_AUTO_WAIT_REG);
       attr_err = 1'b1;
     end
 
@@ -3393,12 +3485,16 @@ module GTHE3_CHANNEL #(
          (RXSLIDE_MODE_REG != "AUTO") &&
          (RXSLIDE_MODE_REG != "PCS") &&
          (RXSLIDE_MODE_REG != "PMA"))) begin
-      $display("Error: [Unisim %s-487] RXSLIDE_MODE attribute is set to %s.  Legal values for this attribute are OFF, AUTO, PCS or PMA. Instance: %m", MODULE_NAME, RXSLIDE_MODE_REG);
+      $display(
+          "Error: [Unisim %s-487] RXSLIDE_MODE attribute is set to %s.  Legal values for this attribute are OFF, AUTO, PCS or PMA. Instance: %m",
+          MODULE_NAME, RXSLIDE_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((RX_CLK25_DIV_REG < 1) || (RX_CLK25_DIV_REG > 32))) begin
-      $display("Error: [Unisim %s-495] RX_CLK25_DIV attribute is set to %d.  Legal values for this attribute are 1 to 32. Instance: %m", MODULE_NAME, RX_CLK25_DIV_REG);
+      $display(
+          "Error: [Unisim %s-495] RX_CLK25_DIV attribute is set to %d.  Legal values for this attribute are 1 to 32. Instance: %m",
+          MODULE_NAME, RX_CLK25_DIV_REG);
       attr_err = 1'b1;
     end
 
@@ -3411,21 +3507,27 @@ module GTHE3_CHANNEL #(
          (RX_DATA_WIDTH_REG != 80) &&
          (RX_DATA_WIDTH_REG != 128) &&
          (RX_DATA_WIDTH_REG != 160))) begin
-      $display("Error: [Unisim %s-503] RX_DATA_WIDTH attribute is set to %d.  Legal values for this attribute are 20, 16, 32, 40, 64, 80, 128 or 160. Instance: %m", MODULE_NAME, RX_DATA_WIDTH_REG);
+      $display(
+          "Error: [Unisim %s-503] RX_DATA_WIDTH attribute is set to %d.  Legal values for this attribute are 20, 16, 32, 40, 64, 80, 128 or 160. Instance: %m",
+          MODULE_NAME, RX_DATA_WIDTH_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RX_DEFER_RESET_BUF_EN_REG != "TRUE") &&
          (RX_DEFER_RESET_BUF_EN_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-505] RX_DEFER_RESET_BUF_EN attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, RX_DEFER_RESET_BUF_EN_REG);
+      $display(
+          "Error: [Unisim %s-505] RX_DEFER_RESET_BUF_EN attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, RX_DEFER_RESET_BUF_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RX_DISPERR_SEQ_MATCH_REG != "TRUE") &&
          (RX_DISPERR_SEQ_MATCH_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-516] RX_DISPERR_SEQ_MATCH attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, RX_DISPERR_SEQ_MATCH_REG);
+      $display(
+          "Error: [Unisim %s-516] RX_DISPERR_SEQ_MATCH attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, RX_DISPERR_SEQ_MATCH_REG);
       attr_err = 1'b1;
     end
 
@@ -3433,7 +3535,9 @@ module GTHE3_CHANNEL #(
         ((RX_INT_DATAWIDTH_REG != 1) &&
          (RX_INT_DATAWIDTH_REG != 0) &&
          (RX_INT_DATAWIDTH_REG != 2))) begin
-      $display("Error: [Unisim %s-524] RX_INT_DATAWIDTH attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, RX_INT_DATAWIDTH_REG);
+      $display(
+          "Error: [Unisim %s-524] RX_INT_DATAWIDTH attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, RX_INT_DATAWIDTH_REG);
       attr_err = 1'b1;
     end
 
@@ -3453,12 +3557,16 @@ module GTHE3_CHANNEL #(
         (RX_PROGDIV_CFG_REG != 66.0) &&
         (RX_PROGDIV_CFG_REG != 80.0) &&
         (RX_PROGDIV_CFG_REG != 100.0))) begin
-      $display("Error: [Unisim %s-526] RX_PROGDIV_CFG attribute is set to %f.  Legal values for this attribute are 0.0, 4.0, 5.0, 8.0, 10.0, 16.0, 16.5, 20.0, 32.0, 33.0, 40.0, 64.0, 66.0, 80.0 or 100.0. Instance: %m", MODULE_NAME, RX_PROGDIV_CFG_REG);
+      $display(
+          "Error: [Unisim %s-526] RX_PROGDIV_CFG attribute is set to %f.  Legal values for this attribute are 0.0, 4.0, 5.0, 8.0, 10.0, 16.0, 16.5, 20.0, 32.0, 33.0, 40.0, 64.0, 66.0, 80.0 or 100.0. Instance: %m",
+          MODULE_NAME, RX_PROGDIV_CFG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((RX_SIG_VALID_DLY_REG < 1) || (RX_SIG_VALID_DLY_REG > 32))) begin
-      $display("Error: [Unisim %s-528] RX_SIG_VALID_DLY attribute is set to %d.  Legal values for this attribute are 1 to 32. Instance: %m", MODULE_NAME, RX_SIG_VALID_DLY_REG);
+      $display(
+          "Error: [Unisim %s-528] RX_SIG_VALID_DLY attribute is set to %d.  Legal values for this attribute are 1 to 32. Instance: %m",
+          MODULE_NAME, RX_SIG_VALID_DLY_REG);
       attr_err = 1'b1;
     end
 
@@ -3466,17 +3574,23 @@ module GTHE3_CHANNEL #(
         ((RX_XCLK_SEL_REG != "RXDES") &&
          (RX_XCLK_SEL_REG != "RXPMA") &&
          (RX_XCLK_SEL_REG != "RXUSR"))) begin
-      $display("Error: [Unisim %s-537] RX_XCLK_SEL attribute is set to %s.  Legal values for this attribute are RXDES, RXPMA or RXUSR. Instance: %m", MODULE_NAME, RX_XCLK_SEL_REG);
+      $display(
+          "Error: [Unisim %s-537] RX_XCLK_SEL attribute is set to %s.  Legal values for this attribute are RXDES, RXPMA or RXUSR. Instance: %m",
+          MODULE_NAME, RX_XCLK_SEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SAS_MAX_COM_REG < 1) || (SAS_MAX_COM_REG > 127))) begin
-      $display("Error: [Unisim %s-538] SAS_MAX_COM attribute is set to %d.  Legal values for this attribute are 1 to 127. Instance: %m", MODULE_NAME, SAS_MAX_COM_REG);
+      $display(
+          "Error: [Unisim %s-538] SAS_MAX_COM attribute is set to %d.  Legal values for this attribute are 1 to 127. Instance: %m",
+          MODULE_NAME, SAS_MAX_COM_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SAS_MIN_COM_REG < 1) || (SAS_MIN_COM_REG > 63))) begin
-      $display("Error: [Unisim %s-539] SAS_MIN_COM attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m", MODULE_NAME, SAS_MIN_COM_REG);
+      $display(
+          "Error: [Unisim %s-539] SAS_MIN_COM attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m",
+          MODULE_NAME, SAS_MIN_COM_REG);
       attr_err = 1'b1;
     end
 
@@ -3484,63 +3598,85 @@ module GTHE3_CHANNEL #(
         ((SATA_CPLL_CFG_REG != "VCO_3000MHZ") &&
          (SATA_CPLL_CFG_REG != "VCO_750MHZ") &&
          (SATA_CPLL_CFG_REG != "VCO_1500MHZ"))) begin
-      $display("Error: [Unisim %s-542] SATA_CPLL_CFG attribute is set to %s.  Legal values for this attribute are VCO_3000MHZ, VCO_750MHZ or VCO_1500MHZ. Instance: %m", MODULE_NAME, SATA_CPLL_CFG_REG);
+      $display(
+          "Error: [Unisim %s-542] SATA_CPLL_CFG attribute is set to %s.  Legal values for this attribute are VCO_3000MHZ, VCO_750MHZ or VCO_1500MHZ. Instance: %m",
+          MODULE_NAME, SATA_CPLL_CFG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SATA_MAX_BURST_REG < 1) || (SATA_MAX_BURST_REG > 63))) begin
-      $display("Error: [Unisim %s-544] SATA_MAX_BURST attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m", MODULE_NAME, SATA_MAX_BURST_REG);
+      $display(
+          "Error: [Unisim %s-544] SATA_MAX_BURST attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m",
+          MODULE_NAME, SATA_MAX_BURST_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SATA_MAX_INIT_REG < 1) || (SATA_MAX_INIT_REG > 63))) begin
-      $display("Error: [Unisim %s-545] SATA_MAX_INIT attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m", MODULE_NAME, SATA_MAX_INIT_REG);
+      $display(
+          "Error: [Unisim %s-545] SATA_MAX_INIT attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m",
+          MODULE_NAME, SATA_MAX_INIT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SATA_MAX_WAKE_REG < 1) || (SATA_MAX_WAKE_REG > 63))) begin
-      $display("Error: [Unisim %s-546] SATA_MAX_WAKE attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m", MODULE_NAME, SATA_MAX_WAKE_REG);
+      $display(
+          "Error: [Unisim %s-546] SATA_MAX_WAKE attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m",
+          MODULE_NAME, SATA_MAX_WAKE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SATA_MIN_BURST_REG < 1) || (SATA_MIN_BURST_REG > 61))) begin
-      $display("Error: [Unisim %s-547] SATA_MIN_BURST attribute is set to %d.  Legal values for this attribute are 1 to 61. Instance: %m", MODULE_NAME, SATA_MIN_BURST_REG);
+      $display(
+          "Error: [Unisim %s-547] SATA_MIN_BURST attribute is set to %d.  Legal values for this attribute are 1 to 61. Instance: %m",
+          MODULE_NAME, SATA_MIN_BURST_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SATA_MIN_INIT_REG < 1) || (SATA_MIN_INIT_REG > 63))) begin
-      $display("Error: [Unisim %s-548] SATA_MIN_INIT attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m", MODULE_NAME, SATA_MIN_INIT_REG);
+      $display(
+          "Error: [Unisim %s-548] SATA_MIN_INIT attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m",
+          MODULE_NAME, SATA_MIN_INIT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SATA_MIN_WAKE_REG < 1) || (SATA_MIN_WAKE_REG > 63))) begin
-      $display("Error: [Unisim %s-549] SATA_MIN_WAKE attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m", MODULE_NAME, SATA_MIN_WAKE_REG);
+      $display(
+          "Error: [Unisim %s-549] SATA_MIN_WAKE attribute is set to %d.  Legal values for this attribute are 1 to 63. Instance: %m",
+          MODULE_NAME, SATA_MIN_WAKE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((SHOW_REALIGN_COMMA_REG != "TRUE") &&
          (SHOW_REALIGN_COMMA_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-550] SHOW_REALIGN_COMMA attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, SHOW_REALIGN_COMMA_REG);
+      $display(
+          "Error: [Unisim %s-550] SHOW_REALIGN_COMMA attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, SHOW_REALIGN_COMMA_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (SIM_MODE_REG != "FAST")) begin
-      $display("Error: [Unisim %s-551] SIM_MODE attribute is set to %s.  Legal values for this attribute are FAST. Instance: %m", MODULE_NAME, SIM_MODE_REG);
+      $display(
+          "Error: [Unisim %s-551] SIM_MODE attribute is set to %s.  Legal values for this attribute are FAST. Instance: %m",
+          MODULE_NAME, SIM_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((SIM_RECEIVER_DETECT_PASS_REG != "TRUE") &&
          (SIM_RECEIVER_DETECT_PASS_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-552] SIM_RECEIVER_DETECT_PASS attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, SIM_RECEIVER_DETECT_PASS_REG);
+      $display(
+          "Error: [Unisim %s-552] SIM_RECEIVER_DETECT_PASS attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, SIM_RECEIVER_DETECT_PASS_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((SIM_RESET_SPEEDUP_REG != "TRUE") &&
          (SIM_RESET_SPEEDUP_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-553] SIM_RESET_SPEEDUP attribute is set to %s.  Legal values for this attribute are TRUE, or FALSE. Instance: %m", MODULE_NAME, SIM_RESET_SPEEDUP_REG);
+      $display(
+          "Error: [Unisim %s-553] SIM_RESET_SPEEDUP attribute is set to %s.  Legal values for this attribute are TRUE, or FALSE. Instance: %m",
+          MODULE_NAME, SIM_RESET_SPEEDUP_REG);
       attr_err = 1'b1;
     end
 
@@ -3548,26 +3684,34 @@ module GTHE3_CHANNEL #(
         ((SIM_VERSION_REG != 2) &&
          (SIM_VERSION_REG != 1) &&
          (SIM_VERSION_REG != 3))) begin
-      $display("Error: [Unisim %s-555] SIM_VERSION attribute is set to %d.  Legal values for this attribute are 2, 1 or 3. Instance: %m", MODULE_NAME, SIM_VERSION_REG);
+      $display(
+          "Error: [Unisim %s-555] SIM_VERSION attribute is set to %d.  Legal values for this attribute are 2, 1 or 3. Instance: %m",
+          MODULE_NAME, SIM_VERSION_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((TXBUF_EN_REG != "TRUE") && (TXBUF_EN_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-563] TXBUF_EN attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, TXBUF_EN_REG);
+      $display(
+          "Error: [Unisim %s-563] TXBUF_EN attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, TXBUF_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((TXBUF_RESET_ON_RATE_CHANGE_REG != "FALSE") &&
          (TXBUF_RESET_ON_RATE_CHANGE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-564] TXBUF_RESET_ON_RATE_CHANGE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, TXBUF_RESET_ON_RATE_CHANGE_REG);
+      $display(
+          "Error: [Unisim %s-564] TXBUF_RESET_ON_RATE_CHANGE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, TXBUF_RESET_ON_RATE_CHANGE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((TXFIFO_ADDR_CFG_REG != "LOW") &&
          (TXFIFO_ADDR_CFG_REG != "HIGH"))) begin
-      $display("Error: [Unisim %s-569] TXFIFO_ADDR_CFG attribute is set to %s.  Legal values for this attribute are LOW or HIGH. Instance: %m", MODULE_NAME, TXFIFO_ADDR_CFG_REG);
+      $display(
+          "Error: [Unisim %s-569] TXFIFO_ADDR_CFG attribute is set to %s.  Legal values for this attribute are LOW or HIGH. Instance: %m",
+          MODULE_NAME, TXFIFO_ADDR_CFG_REG);
       attr_err = 1'b1;
     end
 
@@ -3577,14 +3721,18 @@ module GTHE3_CHANNEL #(
          (TXGBOX_FIFO_INIT_RD_ADDR_REG != 3) &&
          (TXGBOX_FIFO_INIT_RD_ADDR_REG != 5) &&
          (TXGBOX_FIFO_INIT_RD_ADDR_REG != 6))) begin
-      $display("Error: [Unisim %s-570] TXGBOX_FIFO_INIT_RD_ADDR attribute is set to %d.  Legal values for this attribute are 4, 2, 3, 5 or 6. Instance: %m", MODULE_NAME, TXGBOX_FIFO_INIT_RD_ADDR_REG);
+      $display(
+          "Error: [Unisim %s-570] TXGBOX_FIFO_INIT_RD_ADDR attribute is set to %d.  Legal values for this attribute are 4, 2, 3, 5 or 6. Instance: %m",
+          MODULE_NAME, TXGBOX_FIFO_INIT_RD_ADDR_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((TXGEARBOX_EN_REG != "FALSE") &&
          (TXGEARBOX_EN_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-571] TXGEARBOX_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, TXGEARBOX_EN_REG);
+      $display(
+          "Error: [Unisim %s-571] TXGEARBOX_EN attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, TXGEARBOX_EN_REG);
       attr_err = 1'b1;
     end
 
@@ -3594,19 +3742,25 @@ module GTHE3_CHANNEL #(
          (TXOUT_DIV_REG != 2) &&
          (TXOUT_DIV_REG != 8) &&
          (TXOUT_DIV_REG != 16))) begin
-      $display("Error: [Unisim %s-573] TXOUT_DIV attribute is set to %d.  Legal values for this attribute are 4, 1, 2, 8 or 16. Instance: %m", MODULE_NAME, TXOUT_DIV_REG);
+      $display(
+          "Error: [Unisim %s-573] TXOUT_DIV attribute is set to %d.  Legal values for this attribute are 4, 1, 2, 8 or 16. Instance: %m",
+          MODULE_NAME, TXOUT_DIV_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((TXPI_PPMCLK_SEL_REG != "TXUSRCLK2") &&
          (TXPI_PPMCLK_SEL_REG != "TXUSRCLK"))) begin
-      $display("Error: [Unisim %s-588] TXPI_PPMCLK_SEL attribute is set to %s.  Legal values for this attribute are TXUSRCLK2 or TXUSRCLK. Instance: %m", MODULE_NAME, TXPI_PPMCLK_SEL_REG);
+      $display(
+          "Error: [Unisim %s-588] TXPI_PPMCLK_SEL attribute is set to %s.  Legal values for this attribute are TXUSRCLK2 or TXUSRCLK. Instance: %m",
+          MODULE_NAME, TXPI_PPMCLK_SEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((TX_CLK25_DIV_REG < 1) || (TX_CLK25_DIV_REG > 32))) begin
-      $display("Error: [Unisim %s-596] TX_CLK25_DIV attribute is set to %d.  Legal values for this attribute are 1 to 32. Instance: %m", MODULE_NAME, TX_CLK25_DIV_REG);
+      $display(
+          "Error: [Unisim %s-596] TX_CLK25_DIV attribute is set to %d.  Legal values for this attribute are 1 to 32. Instance: %m",
+          MODULE_NAME, TX_CLK25_DIV_REG);
       attr_err = 1'b1;
     end
 
@@ -3619,7 +3773,9 @@ module GTHE3_CHANNEL #(
          (TX_DATA_WIDTH_REG != 80) &&
          (TX_DATA_WIDTH_REG != 128) &&
          (TX_DATA_WIDTH_REG != 160))) begin
-      $display("Error: [Unisim %s-598] TX_DATA_WIDTH attribute is set to %d.  Legal values for this attribute are 20, 16, 32, 40, 64, 80, 128 or 160. Instance: %m", MODULE_NAME, TX_DATA_WIDTH_REG);
+      $display(
+          "Error: [Unisim %s-598] TX_DATA_WIDTH attribute is set to %d.  Legal values for this attribute are 20, 16, 32, 40, 64, 80, 128 or 160. Instance: %m",
+          MODULE_NAME, TX_DATA_WIDTH_REG);
       attr_err = 1'b1;
     end
 
@@ -3627,7 +3783,9 @@ module GTHE3_CHANNEL #(
         ((TX_DRIVE_MODE_REG != "DIRECT") &&
          (TX_DRIVE_MODE_REG != "PIPE") &&
          (TX_DRIVE_MODE_REG != "PIPEGEN3"))) begin
-      $display("Error: [Unisim %s-604] TX_DRIVE_MODE attribute is set to %s.  Legal values for this attribute are DIRECT, PIPE or PIPEGEN3. Instance: %m", MODULE_NAME, TX_DRIVE_MODE_REG);
+      $display(
+          "Error: [Unisim %s-604] TX_DRIVE_MODE attribute is set to %s.  Legal values for this attribute are DIRECT, PIPE or PIPEGEN3. Instance: %m",
+          MODULE_NAME, TX_DRIVE_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -3635,14 +3793,18 @@ module GTHE3_CHANNEL #(
         ((TX_INT_DATAWIDTH_REG != 1) &&
          (TX_INT_DATAWIDTH_REG != 0) &&
          (TX_INT_DATAWIDTH_REG != 2))) begin
-      $display("Error: [Unisim %s-610] TX_INT_DATAWIDTH attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, TX_INT_DATAWIDTH_REG);
+      $display(
+          "Error: [Unisim %s-610] TX_INT_DATAWIDTH attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, TX_INT_DATAWIDTH_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((TX_LOOPBACK_DRIVE_HIZ_REG != "FALSE") &&
          (TX_LOOPBACK_DRIVE_HIZ_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-611] TX_LOOPBACK_DRIVE_HIZ attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, TX_LOOPBACK_DRIVE_HIZ_REG);
+      $display(
+          "Error: [Unisim %s-611] TX_LOOPBACK_DRIVE_HIZ attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, TX_LOOPBACK_DRIVE_HIZ_REG);
       attr_err = 1'b1;
     end
 
@@ -3650,7 +3812,9 @@ module GTHE3_CHANNEL #(
         ((TX_PROGCLK_SEL_REG != "POSTPI") &&
          (TX_PROGCLK_SEL_REG != "CPLL") &&
          (TX_PROGCLK_SEL_REG != "PREPI"))) begin
-      $display("Error: [Unisim %s-626] TX_PROGCLK_SEL attribute is set to %s.  Legal values for this attribute are POSTPI, CPLL or PREPI. Instance: %m", MODULE_NAME, TX_PROGCLK_SEL_REG);
+      $display(
+          "Error: [Unisim %s-626] TX_PROGCLK_SEL attribute is set to %s.  Legal values for this attribute are POSTPI, CPLL or PREPI. Instance: %m",
+          MODULE_NAME, TX_PROGCLK_SEL_REG);
       attr_err = 1'b1;
     end
 
@@ -3670,12 +3834,16 @@ module GTHE3_CHANNEL #(
         (TX_PROGDIV_CFG_REG != 66.0) &&
         (TX_PROGDIV_CFG_REG != 80.0) &&
         (TX_PROGDIV_CFG_REG != 100.0))) begin
-      $display("Error: [Unisim %s-627] TX_PROGDIV_CFG attribute is set to %f.  Legal values for this attribute are 0.0, 4.0, 5.0, 8.0, 10.0, 16.0, 16.5, 20.0, 32.0, 33.0, 40.0, 64.0, 66.0, 80.0 or 100.0. Instance: %m", MODULE_NAME, TX_PROGDIV_CFG_REG);
+      $display(
+          "Error: [Unisim %s-627] TX_PROGDIV_CFG attribute is set to %f.  Legal values for this attribute are 0.0, 4.0, 5.0, 8.0, 10.0, 16.0, 16.5, 20.0, 32.0, 33.0, 40.0, 64.0, 66.0, 80.0 or 100.0. Instance: %m",
+          MODULE_NAME, TX_PROGDIV_CFG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((TX_XCLK_SEL_REG != "TXOUT") && (TX_XCLK_SEL_REG != "TXUSR"))) begin
-      $display("Error: [Unisim %s-637] TX_XCLK_SEL attribute is set to %s.  Legal values for this attribute are TXOUT or TXUSR. Instance: %m", MODULE_NAME, TX_XCLK_SEL_REG);
+      $display(
+          "Error: [Unisim %s-637] TX_XCLK_SEL attribute is set to %s.  Legal values for this attribute are TXOUT or TXUSR. Instance: %m",
+          MODULE_NAME, TX_XCLK_SEL_REG);
       attr_err = 1'b1;
     end
 

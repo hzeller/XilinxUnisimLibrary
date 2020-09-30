@@ -676,12 +676,16 @@ module GTHE3_COMMON #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((QPLL0_FBDIV_REG < 16) || (QPLL0_FBDIV_REG > 160))) begin
-      $display("Error: [Unisim %s-150] QPLL0_FBDIV attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m", MODULE_NAME, QPLL0_FBDIV_REG);
+      $display(
+          "Error: [Unisim %s-150] QPLL0_FBDIV attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m",
+          MODULE_NAME, QPLL0_FBDIV_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((QPLL0_FBDIV_G3_REG < 16) || (QPLL0_FBDIV_G3_REG > 160))) begin
-      $display("Error: [Unisim %s-151] QPLL0_FBDIV_G3 attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m", MODULE_NAME, QPLL0_FBDIV_G3_REG);
+      $display(
+          "Error: [Unisim %s-151] QPLL0_FBDIV_G3 attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m",
+          MODULE_NAME, QPLL0_FBDIV_G3_REG);
       attr_err = 1'b1;
     end
 
@@ -697,17 +701,23 @@ module GTHE3_COMMON #(
          (QPLL0_REFCLK_DIV_REG != 12) &&
          (QPLL0_REFCLK_DIV_REG != 16) &&
          (QPLL0_REFCLK_DIV_REG != 20))) begin
-      $display("Error: [Unisim %s-158] QPLL0_REFCLK_DIV attribute is set to %d.  Legal values for this attribute are 2, 1, 3, 4, 5, 6, 8, 10, 12, 16 or 20. Instance: %m", MODULE_NAME, QPLL0_REFCLK_DIV_REG);
+      $display(
+          "Error: [Unisim %s-158] QPLL0_REFCLK_DIV attribute is set to %d.  Legal values for this attribute are 2, 1, 3, 4, 5, 6, 8, 10, 12, 16 or 20. Instance: %m",
+          MODULE_NAME, QPLL0_REFCLK_DIV_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((QPLL1_FBDIV_REG < 16) || (QPLL1_FBDIV_REG > 160))) begin
-      $display("Error: [Unisim %s-172] QPLL1_FBDIV attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m", MODULE_NAME, QPLL1_FBDIV_REG);
+      $display(
+          "Error: [Unisim %s-172] QPLL1_FBDIV attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m",
+          MODULE_NAME, QPLL1_FBDIV_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((QPLL1_FBDIV_G3_REG < 16) || (QPLL1_FBDIV_G3_REG > 160))) begin
-      $display("Error: [Unisim %s-173] QPLL1_FBDIV_G3 attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m", MODULE_NAME, QPLL1_FBDIV_G3_REG);
+      $display(
+          "Error: [Unisim %s-173] QPLL1_FBDIV_G3 attribute is set to %d.  Legal values for this attribute are 16 to 160. Instance: %m",
+          MODULE_NAME, QPLL1_FBDIV_G3_REG);
       attr_err = 1'b1;
     end
 
@@ -723,19 +733,25 @@ module GTHE3_COMMON #(
          (QPLL1_REFCLK_DIV_REG != 12) &&
          (QPLL1_REFCLK_DIV_REG != 16) &&
          (QPLL1_REFCLK_DIV_REG != 20))) begin
-      $display("Error: [Unisim %s-180] QPLL1_REFCLK_DIV attribute is set to %d.  Legal values for this attribute are 2, 1, 3, 4, 5, 6, 8, 10, 12, 16 or 20. Instance: %m", MODULE_NAME, QPLL1_REFCLK_DIV_REG);
+      $display(
+          "Error: [Unisim %s-180] QPLL1_REFCLK_DIV attribute is set to %d.  Legal values for this attribute are 2, 1, 3, 4, 5, 6, 8, 10, 12, 16 or 20. Instance: %m",
+          MODULE_NAME, QPLL1_REFCLK_DIV_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (SIM_MODE_REG != "FAST")) begin
-      $display("Error: [Unisim %s-212] SIM_MODE attribute is set to %s.  Legal values for this attribute are FAST. Instance: %m", MODULE_NAME, SIM_MODE_REG);
+      $display(
+          "Error: [Unisim %s-212] SIM_MODE attribute is set to %s.  Legal values for this attribute are FAST. Instance: %m",
+          MODULE_NAME, SIM_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((SIM_RESET_SPEEDUP_REG != "TRUE") &&
          (SIM_RESET_SPEEDUP_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-213] SIM_RESET_SPEEDUP attribute is set to %s.  Legal values for this attribute are TRUE, or FALSE. Instance: %m", MODULE_NAME, SIM_RESET_SPEEDUP_REG);
+      $display(
+          "Error: [Unisim %s-213] SIM_RESET_SPEEDUP attribute is set to %s.  Legal values for this attribute are TRUE, or FALSE. Instance: %m",
+          MODULE_NAME, SIM_RESET_SPEEDUP_REG);
       attr_err = 1'b1;
     end
 
@@ -743,7 +759,9 @@ module GTHE3_COMMON #(
         ((SIM_VERSION_REG != 2) &&
          (SIM_VERSION_REG != 1) &&
          (SIM_VERSION_REG != 3))) begin
-      $display("Error: [Unisim %s-214] SIM_VERSION attribute is set to %d.  Legal values for this attribute are 2, 1 or 3. Instance: %m", MODULE_NAME, SIM_VERSION_REG);
+      $display(
+          "Error: [Unisim %s-214] SIM_VERSION attribute is set to %d.  Legal values for this attribute are 2, 1 or 3. Instance: %m",
+          MODULE_NAME, SIM_VERSION_REG);
       attr_err = 1'b1;
     end
 

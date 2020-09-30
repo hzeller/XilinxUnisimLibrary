@@ -266,7 +266,9 @@ module DSP_OUTPUT #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -278,19 +280,25 @@ module DSP_OUTPUT #(
         ((AUTORESET_PATDET_REG != "NO_RESET") &&
          (AUTORESET_PATDET_REG != "RESET_MATCH") &&
          (AUTORESET_PATDET_REG != "RESET_NOT_MATCH"))) begin
-      $display("Error: [Unisim %s-101] AUTORESET_PATDET attribute is set to %s.  Legal values for this attribute are NO_RESET, RESET_MATCH or RESET_NOT_MATCH. Instance: %m", MODULE_NAME, AUTORESET_PATDET_REG);
+      $display(
+          "Error: [Unisim %s-101] AUTORESET_PATDET attribute is set to %s.  Legal values for this attribute are NO_RESET, RESET_MATCH or RESET_NOT_MATCH. Instance: %m",
+          MODULE_NAME, AUTORESET_PATDET_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((AUTORESET_PRIORITY_REG != "RESET") &&
          (AUTORESET_PRIORITY_REG != "CEP"))) begin
-      $display("Error: [Unisim %s-102] AUTORESET_PRIORITY attribute is set to %s.  Legal values for this attribute are RESET or CEP. Instance: %m", MODULE_NAME, AUTORESET_PRIORITY_REG);
+      $display(
+          "Error: [Unisim %s-102] AUTORESET_PRIORITY attribute is set to %s.  Legal values for this attribute are RESET or CEP. Instance: %m",
+          MODULE_NAME, AUTORESET_PRIORITY_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((PREG_REG != 1) && (PREG_REG != 0))) begin
-      $display("Error: [Unisim %s-107] PREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, PREG_REG);
+      $display(
+          "Error: [Unisim %s-107] PREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, PREG_REG);
       attr_err = 1'b1;
     end
 
@@ -299,19 +307,25 @@ module DSP_OUTPUT #(
          (SEL_MASK_REG != "C") &&
          (SEL_MASK_REG != "ROUNDING_MODE1") &&
          (SEL_MASK_REG != "ROUNDING_MODE2"))) begin
-      $display("Error: [Unisim %s-108] SEL_MASK attribute is set to %s.  Legal values for this attribute are MASK, C, ROUNDING_MODE1 or ROUNDING_MODE2. Instance: %m", MODULE_NAME, SEL_MASK_REG);
+      $display(
+          "Error: [Unisim %s-108] SEL_MASK attribute is set to %s.  Legal values for this attribute are MASK, C, ROUNDING_MODE1 or ROUNDING_MODE2. Instance: %m",
+          MODULE_NAME, SEL_MASK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SEL_PATTERN_REG != "PATTERN") && (SEL_PATTERN_REG != "C"))) begin
-      $display("Error: [Unisim %s-109] SEL_PATTERN attribute is set to %s.  Legal values for this attribute are PATTERN or C. Instance: %m", MODULE_NAME, SEL_PATTERN_REG);
+      $display(
+          "Error: [Unisim %s-109] SEL_PATTERN attribute is set to %s.  Legal values for this attribute are PATTERN or C. Instance: %m",
+          MODULE_NAME, SEL_PATTERN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((USE_PATTERN_DETECT_REG != "NO_PATDET") &&
          (USE_PATTERN_DETECT_REG != "PATDET"))) begin
-      $display("Error: [Unisim %s-110] USE_PATTERN_DETECT attribute is set to %s.  Legal values for this attribute are NO_PATDET or PATDET. Instance: %m", MODULE_NAME, USE_PATTERN_DETECT_REG);
+      $display(
+          "Error: [Unisim %s-110] USE_PATTERN_DETECT attribute is set to %s.  Legal values for this attribute are NO_PATDET or PATDET. Instance: %m",
+          MODULE_NAME, USE_PATTERN_DETECT_REG);
       attr_err = 1'b1;
     end
 
@@ -376,9 +390,11 @@ module DSP_OUTPUT #(
   // select mask
   assign the_mask = (USE_PATTERN_DETECT_BIN == USE_PATTERN_DETECT_NO_PATDET) ? {C_WIDTH{1'b1}} :
                       (SEL_MASK_BIN == SEL_MASK_C)              ?    C_DATA_in       :
-                      (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE1) ? {~(C_DATA_in[C_WIDTH-2:0]),1'b0} :
-                      (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE2) ? {~(C_DATA_in[C_WIDTH-3:0]),2'b0} :
-                      MASK_REG; // default or (SEL_MASK_BIN == SEL_MASK_MASK)
+                      (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE1) ? {
+    ~(C_DATA_in[C_WIDTH-2:0]), 1'b0
+  } : (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE2) ? {
+    ~(C_DATA_in[C_WIDTH-3:0]), 2'b0
+  } : MASK_REG;  // default or (SEL_MASK_BIN == SEL_MASK_MASK)
 
   //--  now do the pattern detection
 
@@ -392,15 +408,15 @@ module DSP_OUTPUT #(
 
   always @(posedge CLK_in) begin
     if (RSTP_in || glblGSR || the_auto_reset_patdet) begin
-      pdet_o_reg1 <= 1'b0;
-      pdet_o_reg2 <= 1'b0;
+      pdet_o_reg1  <= 1'b0;
+      pdet_o_reg2  <= 1'b0;
       pdetb_o_reg1 <= 1'b0;
       pdetb_o_reg2 <= 1'b0;
     end else if (CEP_in && PREG_BIN) begin
       //-- the previous values are used in Underflow/Overflow
-      pdet_o_reg2 <= pdet_o_reg1;
+      pdet_o_reg2  <= pdet_o_reg1;
       pdetb_o_reg2 <= pdetb_o_reg1;
-      pdet_o_reg1 <= pdet_o;
+      pdet_o_reg1  <= pdet_o;
       pdetb_o_reg1 <= pdetb_o;
     end
   end

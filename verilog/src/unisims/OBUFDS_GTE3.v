@@ -79,7 +79,7 @@ module OBUFDS_GTE3 #(
 
   assign REFCLK_EN_TX_PATH_BIN = REFCLK_EN_TX_PATH_REG;
 
-  assign REFCLK_ICNTL_TX_BIN = REFCLK_ICNTL_TX_REG;
+  assign REFCLK_ICNTL_TX_BIN   = REFCLK_ICNTL_TX_REG;
 
   wire t1;
   wire t2;

@@ -97,9 +97,9 @@ module DSP_M_DATA #(
 `ifdef XIL_TIMING
   // bus inputs with only partial timing checks 
   assign U_delay[44] = U[44];
-  assign V_delay[1] = V[1];
-  assign V_delay[2] = V[2];
-  assign V_delay[3] = V[3];
+  assign V_delay[1]  = V[1];
+  assign V_delay[2]  = V[2];
+  assign V_delay[3]  = V[3];
   assign V_delay[44] = V[44];
 `endif
 
@@ -148,7 +148,9 @@ module DSP_M_DATA #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -157,7 +159,9 @@ module DSP_M_DATA #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((MREG_REG != 1) && (MREG_REG != 0))) begin
-      $display("Error: [Unisim %s-103] MREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, MREG_REG);
+      $display(
+          "Error: [Unisim %s-103] MREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, MREG_REG);
       attr_err = 1'b1;
     end
 

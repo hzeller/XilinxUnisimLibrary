@@ -195,14 +195,18 @@ module BUFG_PS #(
          (SIM_DEVICE_REG != "VERSAL_PRIME") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES2"))) begin
-      $display("Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((STARTUP_SYNC_REG != "FALSE") &&
          (STARTUP_SYNC_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-102] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, STARTUP_SYNC_REG);
+      $display(
+          "Error: [Unisim %s-102] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, STARTUP_SYNC_REG);
       attr_err = 1'b1;
     end
 
@@ -231,7 +235,9 @@ module BUFG_PS #(
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES1    ) &&
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES2    )) &&
         (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE)) begin
-      $display("Warning: [Unisim %s-200] SIM_DEVICE attribute is set to %s and STARTUP_SYNC is set to %s. STARTUP_SYNC functionality is not supported for this DEVICE. Instance: %m", MODULE_NAME, SIM_DEVICE_REG, STARTUP_SYNC_REG);
+      $display(
+          "Warning: [Unisim %s-200] SIM_DEVICE attribute is set to %s and STARTUP_SYNC is set to %s. STARTUP_SYNC functionality is not supported for this DEVICE. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG, STARTUP_SYNC_REG);
       STARTUP_SYNC_BIN = STARTUP_SYNC_FALSE;  //force correct
     end
   end  //always
@@ -254,20 +260,18 @@ module BUFG_PS #(
   assign I_in = I;
 
   initial begin
-    gwe_sync = 3'b000;
+    gwe_sync   = 3'b000;
     enable_clk = 1'b0;
   end
 
   always @(posedge I_in) begin
-    if(I_in==1'b1)
-      gwe_sync <= {gwe_sync[1:0], ~glblGSR};
+    if (I_in == 1'b1) gwe_sync <= {gwe_sync[1:0], ~glblGSR};
   end
 
   assign gwe_muxed_sync = (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE) ? gwe_sync[2] : ~glblGSR;
 
   always @(*) begin
-    if(~I_in)
-      gwe_latch <= gwe_muxed_sync;
+    if (~I_in) gwe_latch <= gwe_muxed_sync;
   end
 
   always @(*) O_out = gwe_latch && I_in;

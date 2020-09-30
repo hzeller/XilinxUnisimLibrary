@@ -213,7 +213,9 @@ module IDELAYE2 (
     case (CINVCTRL_SEL)
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute CINVCTRL_SEL on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",  CINVCTRL_SEL);
+        $display(
+            "Attribute Syntax Error : The attribute CINVCTRL_SEL on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            CINVCTRL_SEL);
         #1 $finish;
       end
     endcase
@@ -221,7 +223,9 @@ module IDELAYE2 (
     //-------- DELAY_SRC check
 
     if (DELAY_SRC != "DATAIN" && DELAY_SRC != "IDATAIN") begin
-      $display("Attribute Syntax Error : The attribute DELAY_SRC on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are DATAIN or IDATAIN", DELAY_SRC);
+      $display(
+          "Attribute Syntax Error : The attribute DELAY_SRC on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are DATAIN or IDATAIN",
+          DELAY_SRC);
       #1 $finish;
     end
 
@@ -232,7 +236,9 @@ module IDELAYE2 (
     case (HIGH_PERFORMANCE_MODE)
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute HIGH_PERFORMANCE_MODE on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",  HIGH_PERFORMANCE_MODE);
+        $display(
+            "Attribute Syntax Error : The attribute HIGH_PERFORMANCE_MODE on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            HIGH_PERFORMANCE_MODE);
         #1 $finish;
       end
     endcase
@@ -242,7 +248,9 @@ module IDELAYE2 (
 
     if (IDELAY_TYPE != "FIXED" && IDELAY_TYPE != "VARIABLE" && IDELAY_TYPE != "VAR_LOAD" && IDELAY_TYPE != "VAR_LOAD_PIPE") begin
 
-      $display("Attribute Syntax Error : The attribute IDELAY_TYPE on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are FIXED, VARIABLE, VAR_LOAD or VAR_LOAD_PIPE", IDELAY_TYPE);
+      $display(
+          "Attribute Syntax Error : The attribute IDELAY_TYPE on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are FIXED, VARIABLE, VAR_LOAD or VAR_LOAD_PIPE",
+          IDELAY_TYPE);
       #1 $finish;
 
     end
@@ -251,7 +259,9 @@ module IDELAYE2 (
     //-------- IDELAY_VALUE check
 
     if (IDELAY_VALUE < MIN_DELAY_COUNT || IDELAY_VALUE > MAX_DELAY_COUNT) begin
-      $display("Attribute Syntax Error : The attribute IDELAY_VALUE on IDELAYE2 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 3, .... or 31", IDELAY_VALUE);
+      $display(
+          "Attribute Syntax Error : The attribute IDELAY_VALUE on IDELAYE2 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 3, .... or 31",
+          IDELAY_VALUE);
       #1 $finish;
 
     end
@@ -261,7 +271,9 @@ module IDELAYE2 (
     case (PIPE_SEL)
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute PIPE_SEL on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",  PIPE_SEL);
+        $display(
+            "Attribute Syntax Error : The attribute PIPE_SEL on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            PIPE_SEL);
         #1 $finish;
       end
     endcase
@@ -271,10 +283,12 @@ module IDELAYE2 (
 
     if ((REFCLK_FREQUENCY >= 190.0 && REFCLK_FREQUENCY <= 210.0) || 
 	    (REFCLK_FREQUENCY >= 290.0 && REFCLK_FREQUENCY <= 310.0) || 
-	    (REFCLK_FREQUENCY >=390.0 && REFCLK_FREQUENCY <= 410.0)) 
-	      /*    */;
+	    (REFCLK_FREQUENCY >=390.0 && REFCLK_FREQUENCY <= 410.0))
+      /*    */;
     else begin
-      $display("Attribute Syntax Error : The attribute REFCLK_FREQUENCY on IDELAYE2 instance %m is set to %f.  Legal values for this attribute are either between 190.0 and 210.0, or between 290.0 and 310.0 or between 390.0 and 410.0", REFCLK_FREQUENCY);
+      $display(
+          "Attribute Syntax Error : The attribute REFCLK_FREQUENCY on IDELAYE2 instance %m is set to %f.  Legal values for this attribute are either between 190.0 and 210.0, or between 290.0 and 310.0 or between 390.0 and 410.0",
+          REFCLK_FREQUENCY);
       #1 $finish;
     end
 
@@ -283,7 +297,9 @@ module IDELAYE2 (
     case (SIGNAL_PATTERN)
       "CLOCK", "DATA": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute SIGNAL_PATTERN on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are DATA or CLOCK.",  SIGNAL_PATTERN);
+        $display(
+            "Attribute Syntax Error : The attribute SIGNAL_PATTERN on IDELAYE2 instance %m is set to %s.  Legal values for this attribute are DATA or CLOCK.",
+            SIGNAL_PATTERN);
         #1 $finish;
       end
     endcase
@@ -319,7 +335,7 @@ module IDELAYE2 (
 
   generate
     case (CINVCTRL_SEL)
-      "TRUE": always @(c_in_pre or cinvctrl_in) c_in = (cinvctrl_in ? ~c_in_pre : c_in_pre);
+      "TRUE":  always @(c_in_pre or cinvctrl_in) c_in = (cinvctrl_in ? ~c_in_pre : c_in_pre);
       "FALSE": always @(c_in_pre) c_in = c_in_pre;
     endcase
   endgenerate
@@ -329,10 +345,8 @@ module IDELAYE2 (
   //----------------------------------------------------------------------
   always @(idelay_count) begin
     //  Fixed CNTVALUEOUT for when in FIXED mode because of simprim. 
-    if(IDELAY_TYPE != "FIXED")
-           assign cntvalueout_pre = idelay_count;
-       else
-           assign cntvalueout_pre = IDELAY_VALUE;
+    if (IDELAY_TYPE != "FIXED") assign cntvalueout_pre = idelay_count;
+    else assign cntvalueout_pre = IDELAY_VALUE;
   end
 
   //----------------------------------------------------------------------
@@ -347,7 +361,7 @@ module IDELAYE2 (
 
   generate
     case (PIPE_SEL)
-      "TRUE": always @(qcntvalueout_reg) qcntvalueout_mux <= qcntvalueout_reg;
+      "TRUE":  always @(qcntvalueout_reg) qcntvalueout_mux <= qcntvalueout_reg;
       "FALSE": always @(CNTVALUEIN_INTEGER) qcntvalueout_mux <= CNTVALUEIN_INTEGER;
     endcase
   endgenerate
@@ -366,22 +380,18 @@ module IDELAYE2 (
       end else if (ld_in == 1'b0 && ce_in == 1'b1) begin
         if (inc_in == 1'b1) begin
           case (IDELAY_TYPE)
-                        "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE" : begin
-                                        if (idelay_count < MAX_DELAY_COUNT)
-                                          idelay_count = idelay_count + 1;
-                                        else if (idelay_count == MAX_DELAY_COUNT)
-                                          idelay_count = MIN_DELAY_COUNT;
-                                     end
-                    endcase
+            "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE": begin
+              if (idelay_count < MAX_DELAY_COUNT) idelay_count = idelay_count + 1;
+              else if (idelay_count == MAX_DELAY_COUNT) idelay_count = MIN_DELAY_COUNT;
+            end
+          endcase
         end else if (inc_in == 1'b0) begin
           case (IDELAY_TYPE)
-                        "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE" : begin
-                                        if (idelay_count >  MIN_DELAY_COUNT)
-                                          idelay_count = idelay_count - 1;
-                                        else if (idelay_count == MIN_DELAY_COUNT)
-                                          idelay_count = MAX_DELAY_COUNT;
-                                     end
-                    endcase
+            "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE": begin
+              if (idelay_count > MIN_DELAY_COUNT) idelay_count = idelay_count - 1;
+              else if (idelay_count == MIN_DELAY_COUNT) idelay_count = MAX_DELAY_COUNT;
+            end
+          endcase
         end
       end
     end  //
@@ -433,14 +443,16 @@ module IDELAYE2 (
 
     case (DELAY_SRC)
 
-      "IDATAIN" : begin
-                         data_mux <= idatain_in;
-                        end
-      "DATAIN" : begin
-                         data_mux <= datain_in;
-                       end
+      "IDATAIN": begin
+        data_mux <= idatain_in;
+      end
+      "DATAIN": begin
+        data_mux <= datain_in;
+      end
       default: begin
-        $display("Attribute Syntax Error : The attribute DELAY_SRC on X_IODELAYE2 instance %m is set to %s.  Legal values for this attribute are DATAIN or IDATAIN", DELAY_SRC);
+        $display(
+            "Attribute Syntax Error : The attribute DELAY_SRC on X_IODELAYE2 instance %m is set to %s.  Legal values for this attribute are DATAIN or IDATAIN",
+            DELAY_SRC);
         $finish;
       end
 
@@ -533,14 +545,14 @@ module IDELAYE2 (
 
   wire d_en;
   wire id_en;
-  assign d_en = (idelay_count == 0) && (DELAY_SRC == "DATAIN");
+  assign d_en  = (idelay_count == 0) && (DELAY_SRC == "DATAIN");
   assign id_en = (idelay_count == 0) && (DELAY_SRC == "IDATAIN");
 
   //*** Timing Checks Start here
 
   always @(notifier) begin
-        tap_out <= 1'bx;
-    end
+    tap_out <= 1'bx;
+  end
 `endif  // ifdef XIL_TIMING
 
 

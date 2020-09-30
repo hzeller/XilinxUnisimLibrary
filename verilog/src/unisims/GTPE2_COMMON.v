@@ -189,19 +189,21 @@ module GTPE2_COMMON (
 
   initial begin
     case (PLL0_FBDIV)
-      4: PLL0_FBDIV_BINARY = 6'b000010;
-      1: PLL0_FBDIV_BINARY = 6'b010000;
-      2: PLL0_FBDIV_BINARY = 6'b000000;
-      3: PLL0_FBDIV_BINARY = 6'b000001;
-      5: PLL0_FBDIV_BINARY = 6'b000011;
-      6: PLL0_FBDIV_BINARY = 6'b000101;
-      8: PLL0_FBDIV_BINARY = 6'b000110;
+      4:  PLL0_FBDIV_BINARY = 6'b000010;
+      1:  PLL0_FBDIV_BINARY = 6'b010000;
+      2:  PLL0_FBDIV_BINARY = 6'b000000;
+      3:  PLL0_FBDIV_BINARY = 6'b000001;
+      5:  PLL0_FBDIV_BINARY = 6'b000011;
+      6:  PLL0_FBDIV_BINARY = 6'b000101;
+      8:  PLL0_FBDIV_BINARY = 6'b000110;
       10: PLL0_FBDIV_BINARY = 6'b000111;
       12: PLL0_FBDIV_BINARY = 6'b001101;
       16: PLL0_FBDIV_BINARY = 6'b001110;
       20: PLL0_FBDIV_BINARY = 6'b001111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PLL0_FBDIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL0_FBDIV, 4);
+        $display(
+            "Attribute Syntax Error : The Attribute PLL0_FBDIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.",
+            PLL0_FBDIV, 4);
         #1 $finish;
       end
     endcase
@@ -210,43 +212,49 @@ module GTPE2_COMMON (
       5: PLL0_FBDIV_45_BINARY = 1'b1;
       4: PLL0_FBDIV_45_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PLL0_FBDIV_45 on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 4 to 5.", PLL0_FBDIV_45, 5);
+        $display(
+            "Attribute Syntax Error : The Attribute PLL0_FBDIV_45 on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 4 to 5.",
+            PLL0_FBDIV_45, 5);
         #1 $finish;
       end
     endcase
 
     case (PLL0_REFCLK_DIV)
-      1: PLL0_REFCLK_DIV_BINARY = 5'b10000;
-      2: PLL0_REFCLK_DIV_BINARY = 5'b00000;
-      3: PLL0_REFCLK_DIV_BINARY = 5'b00001;
-      4: PLL0_REFCLK_DIV_BINARY = 5'b00010;
-      5: PLL0_REFCLK_DIV_BINARY = 5'b00011;
-      6: PLL0_REFCLK_DIV_BINARY = 5'b00101;
-      8: PLL0_REFCLK_DIV_BINARY = 5'b00110;
+      1:  PLL0_REFCLK_DIV_BINARY = 5'b10000;
+      2:  PLL0_REFCLK_DIV_BINARY = 5'b00000;
+      3:  PLL0_REFCLK_DIV_BINARY = 5'b00001;
+      4:  PLL0_REFCLK_DIV_BINARY = 5'b00010;
+      5:  PLL0_REFCLK_DIV_BINARY = 5'b00011;
+      6:  PLL0_REFCLK_DIV_BINARY = 5'b00101;
+      8:  PLL0_REFCLK_DIV_BINARY = 5'b00110;
       10: PLL0_REFCLK_DIV_BINARY = 5'b00111;
       12: PLL0_REFCLK_DIV_BINARY = 5'b01101;
       16: PLL0_REFCLK_DIV_BINARY = 5'b01110;
       20: PLL0_REFCLK_DIV_BINARY = 5'b01111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PLL0_REFCLK_DIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL0_REFCLK_DIV, 1);
+        $display(
+            "Attribute Syntax Error : The Attribute PLL0_REFCLK_DIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.",
+            PLL0_REFCLK_DIV, 1);
         #1 $finish;
       end
     endcase
 
     case (PLL1_FBDIV)
-      4: PLL1_FBDIV_BINARY = 6'b000010;
-      1: PLL1_FBDIV_BINARY = 6'b010000;
-      2: PLL1_FBDIV_BINARY = 6'b000000;
-      3: PLL1_FBDIV_BINARY = 6'b000001;
-      5: PLL1_FBDIV_BINARY = 6'b000011;
-      6: PLL1_FBDIV_BINARY = 6'b000101;
-      8: PLL1_FBDIV_BINARY = 6'b000110;
+      4:  PLL1_FBDIV_BINARY = 6'b000010;
+      1:  PLL1_FBDIV_BINARY = 6'b010000;
+      2:  PLL1_FBDIV_BINARY = 6'b000000;
+      3:  PLL1_FBDIV_BINARY = 6'b000001;
+      5:  PLL1_FBDIV_BINARY = 6'b000011;
+      6:  PLL1_FBDIV_BINARY = 6'b000101;
+      8:  PLL1_FBDIV_BINARY = 6'b000110;
       10: PLL1_FBDIV_BINARY = 6'b000111;
       12: PLL1_FBDIV_BINARY = 6'b001101;
       16: PLL1_FBDIV_BINARY = 6'b001110;
       20: PLL1_FBDIV_BINARY = 6'b001111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PLL1_FBDIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL1_FBDIV, 4);
+        $display(
+            "Attribute Syntax Error : The Attribute PLL1_FBDIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.",
+            PLL1_FBDIV, 4);
         #1 $finish;
       end
     endcase
@@ -255,34 +263,40 @@ module GTPE2_COMMON (
       5: PLL1_FBDIV_45_BINARY = 1'b1;
       4: PLL1_FBDIV_45_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PLL1_FBDIV_45 on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 4 to 5.", PLL1_FBDIV_45, 5);
+        $display(
+            "Attribute Syntax Error : The Attribute PLL1_FBDIV_45 on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 4 to 5.",
+            PLL1_FBDIV_45, 5);
         #1 $finish;
       end
     endcase
 
     case (PLL1_REFCLK_DIV)
-      1: PLL1_REFCLK_DIV_BINARY = 5'b10000;
-      2: PLL1_REFCLK_DIV_BINARY = 5'b00000;
-      3: PLL1_REFCLK_DIV_BINARY = 5'b00001;
-      4: PLL1_REFCLK_DIV_BINARY = 5'b00010;
-      5: PLL1_REFCLK_DIV_BINARY = 5'b00011;
-      6: PLL1_REFCLK_DIV_BINARY = 5'b00101;
-      8: PLL1_REFCLK_DIV_BINARY = 5'b00110;
+      1:  PLL1_REFCLK_DIV_BINARY = 5'b10000;
+      2:  PLL1_REFCLK_DIV_BINARY = 5'b00000;
+      3:  PLL1_REFCLK_DIV_BINARY = 5'b00001;
+      4:  PLL1_REFCLK_DIV_BINARY = 5'b00010;
+      5:  PLL1_REFCLK_DIV_BINARY = 5'b00011;
+      6:  PLL1_REFCLK_DIV_BINARY = 5'b00101;
+      8:  PLL1_REFCLK_DIV_BINARY = 5'b00110;
       10: PLL1_REFCLK_DIV_BINARY = 5'b00111;
       12: PLL1_REFCLK_DIV_BINARY = 5'b01101;
       16: PLL1_REFCLK_DIV_BINARY = 5'b01110;
       20: PLL1_REFCLK_DIV_BINARY = 5'b01111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PLL1_REFCLK_DIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", PLL1_REFCLK_DIV, 1);
+        $display(
+            "Attribute Syntax Error : The Attribute PLL1_REFCLK_DIV on X_GTPE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.",
+            PLL1_REFCLK_DIV, 1);
         #1 $finish;
       end
     endcase
 
     case (SIM_RESET_SPEEDUP)
-      "TRUE": SIM_RESET_SPEEDUP_BINARY = 0;
+      "TRUE":  SIM_RESET_SPEEDUP_BINARY = 0;
       "FALSE": SIM_RESET_SPEEDUP_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on X_GTPE2_COMMON instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SIM_RESET_SPEEDUP);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on X_GTPE2_COMMON instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            SIM_RESET_SPEEDUP);
         #1 $finish;
       end
     endcase
@@ -292,41 +306,53 @@ module GTPE2_COMMON (
       "1.1": SIM_VERSION_BINARY = 0;
       "2.0": SIM_VERSION_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_VERSION on X_GTPE2_COMMON instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, or 2.0.", SIM_VERSION);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_VERSION on X_GTPE2_COMMON instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, or 2.0.",
+            SIM_VERSION);
         #1 $finish;
       end
     endcase
 
     if ((PLL0_DMON_CFG >= 1'b0) && (PLL0_DMON_CFG <= 1'b1)) PLL0_DMON_CFG_BINARY = PLL0_DMON_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute PLL0_DMON_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", PLL0_DMON_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute PLL0_DMON_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          PLL0_DMON_CFG);
       #1 $finish;
     end
 
     if ((PLL1_DMON_CFG >= 1'b0) && (PLL1_DMON_CFG <= 1'b1)) PLL1_DMON_CFG_BINARY = PLL1_DMON_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute PLL1_DMON_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", PLL1_DMON_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute PLL1_DMON_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          PLL1_DMON_CFG);
       #1 $finish;
     end
 
     if ((PLL_CLKOUT_CFG >= 8'b00000000) && (PLL_CLKOUT_CFG <= 8'b11111111))
       PLL_CLKOUT_CFG_BINARY = PLL_CLKOUT_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute PLL_CLKOUT_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 8'b00000000 to 8'b11111111.", PLL_CLKOUT_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute PLL_CLKOUT_CFG on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 8'b00000000 to 8'b11111111.",
+          PLL_CLKOUT_CFG);
       #1 $finish;
     end
 
     if ((SIM_PLL0REFCLK_SEL >= 3'b0) && (SIM_PLL0REFCLK_SEL <= 3'b111))
       SIM_PLL0REFCLK_SEL_BINARY = SIM_PLL0REFCLK_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute SIM_PLL0REFCLK_SEL on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.", SIM_PLL0REFCLK_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute SIM_PLL0REFCLK_SEL on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.",
+          SIM_PLL0REFCLK_SEL);
       #1 $finish;
     end
 
     if ((SIM_PLL1REFCLK_SEL >= 3'b0) && (SIM_PLL1REFCLK_SEL <= 3'b111))
       SIM_PLL1REFCLK_SEL_BINARY = SIM_PLL1REFCLK_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute SIM_PLL1REFCLK_SEL on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.", SIM_PLL1REFCLK_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute SIM_PLL1REFCLK_SEL on X_GTPE2_COMMON instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.",
+          SIM_PLL1REFCLK_SEL);
       #1 $finish;
     end
 
@@ -417,11 +443,9 @@ module GTPE2_COMMON (
 
     //After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
     case (sfsm)
-      FSM_IDLE:   
-            begin
-               if(delay_DRPEN == 1'b1)
-		 sfsm <= FSM_WAIT;  
-            end
+      FSM_IDLE: begin
+        if (delay_DRPEN == 1'b1) sfsm <= FSM_WAIT;
+      end
 
       FSM_WAIT: begin
         // After the 1st DRPEN, 4 cases can happen

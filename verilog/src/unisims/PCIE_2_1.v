@@ -1318,666 +1318,814 @@ module PCIE_2_1 (
   initial begin
     case (AER_CAP_ECRC_CHECK_CAPABLE)
       "FALSE": AER_CAP_ECRC_CHECK_CAPABLE_BINARY = 1'b0;
-      "TRUE": AER_CAP_ECRC_CHECK_CAPABLE_BINARY = 1'b1;
+      "TRUE":  AER_CAP_ECRC_CHECK_CAPABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute AER_CAP_ECRC_CHECK_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", AER_CAP_ECRC_CHECK_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute AER_CAP_ECRC_CHECK_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            AER_CAP_ECRC_CHECK_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (AER_CAP_ECRC_GEN_CAPABLE)
       "FALSE": AER_CAP_ECRC_GEN_CAPABLE_BINARY = 1'b0;
-      "TRUE": AER_CAP_ECRC_GEN_CAPABLE_BINARY = 1'b1;
+      "TRUE":  AER_CAP_ECRC_GEN_CAPABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute AER_CAP_ECRC_GEN_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", AER_CAP_ECRC_GEN_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute AER_CAP_ECRC_GEN_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            AER_CAP_ECRC_GEN_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (AER_CAP_MULTIHEADER)
       "FALSE": AER_CAP_MULTIHEADER_BINARY = 1'b0;
-      "TRUE": AER_CAP_MULTIHEADER_BINARY = 1'b1;
+      "TRUE":  AER_CAP_MULTIHEADER_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute AER_CAP_MULTIHEADER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", AER_CAP_MULTIHEADER);
+        $display(
+            "Attribute Syntax Error : The Attribute AER_CAP_MULTIHEADER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            AER_CAP_MULTIHEADER);
         #1 $finish;
       end
     endcase
 
     case (AER_CAP_ON)
       "FALSE": AER_CAP_ON_BINARY = 1'b0;
-      "TRUE": AER_CAP_ON_BINARY = 1'b1;
+      "TRUE":  AER_CAP_ON_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute AER_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", AER_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute AER_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            AER_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (AER_CAP_PERMIT_ROOTERR_UPDATE)
-      "TRUE": AER_CAP_PERMIT_ROOTERR_UPDATE_BINARY = 1'b1;
+      "TRUE":  AER_CAP_PERMIT_ROOTERR_UPDATE_BINARY = 1'b1;
       "FALSE": AER_CAP_PERMIT_ROOTERR_UPDATE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute AER_CAP_PERMIT_ROOTERR_UPDATE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", AER_CAP_PERMIT_ROOTERR_UPDATE);
+        $display(
+            "Attribute Syntax Error : The Attribute AER_CAP_PERMIT_ROOTERR_UPDATE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            AER_CAP_PERMIT_ROOTERR_UPDATE);
         #1 $finish;
       end
     endcase
 
     case (ALLOW_X8_GEN2)
       "FALSE": ALLOW_X8_GEN2_BINARY = 1'b0;
-      "TRUE": ALLOW_X8_GEN2_BINARY = 1'b1;
+      "TRUE":  ALLOW_X8_GEN2_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALLOW_X8_GEN2 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ALLOW_X8_GEN2);
+        $display(
+            "Attribute Syntax Error : The Attribute ALLOW_X8_GEN2 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            ALLOW_X8_GEN2);
         #1 $finish;
       end
     endcase
 
     case (CMD_INTX_IMPLEMENTED)
-      "TRUE": CMD_INTX_IMPLEMENTED_BINARY = 1'b1;
+      "TRUE":  CMD_INTX_IMPLEMENTED_BINARY = 1'b1;
       "FALSE": CMD_INTX_IMPLEMENTED_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CMD_INTX_IMPLEMENTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", CMD_INTX_IMPLEMENTED);
+        $display(
+            "Attribute Syntax Error : The Attribute CMD_INTX_IMPLEMENTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            CMD_INTX_IMPLEMENTED);
         #1 $finish;
       end
     endcase
 
     case (CPL_TIMEOUT_DISABLE_SUPPORTED)
       "FALSE": CPL_TIMEOUT_DISABLE_SUPPORTED_BINARY = 1'b0;
-      "TRUE": CPL_TIMEOUT_DISABLE_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  CPL_TIMEOUT_DISABLE_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CPL_TIMEOUT_DISABLE_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CPL_TIMEOUT_DISABLE_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute CPL_TIMEOUT_DISABLE_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            CPL_TIMEOUT_DISABLE_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_ARI_FORWARDING_SUPPORTED)
       "FALSE": DEV_CAP2_ARI_FORWARDING_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_ARI_FORWARDING_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_ARI_FORWARDING_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_ARI_FORWARDING_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_ARI_FORWARDING_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_ARI_FORWARDING_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_ARI_FORWARDING_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED)
       "FALSE": DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_ATOMICOP32_COMPLETER_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED)
       "FALSE": DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_ATOMICOP64_COMPLETER_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED)
       "FALSE": DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_ATOMICOP_ROUTING_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_CAS128_COMPLETER_SUPPORTED)
       "FALSE": DEV_CAP2_CAS128_COMPLETER_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_CAS128_COMPLETER_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_CAS128_COMPLETER_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_CAS128_COMPLETER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_CAS128_COMPLETER_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_CAS128_COMPLETER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_CAS128_COMPLETER_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED)
       "FALSE": DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_ENDEND_TLP_PREFIX_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED)
       "FALSE": DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_EXTENDED_FMT_FIELD_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_LTR_MECHANISM_SUPPORTED)
       "FALSE": DEV_CAP2_LTR_MECHANISM_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_LTR_MECHANISM_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_LTR_MECHANISM_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_LTR_MECHANISM_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_LTR_MECHANISM_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_LTR_MECHANISM_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_LTR_MECHANISM_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING)
       "FALSE": DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING_BINARY = 1'b0;
-      "TRUE": DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING_BINARY = 1'b1;
+      "TRUE":  DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP2_NO_RO_ENABLED_PRPR_PASSING);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE)
-      "TRUE": DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE_BINARY = 1'b1;
+      "TRUE":  DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE_BINARY = 1'b1;
       "FALSE": DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DEV_CAP_ENABLE_SLOT_PWR_LIMIT_SCALE);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE)
-      "TRUE": DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE_BINARY = 1'b1;
+      "TRUE":  DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE_BINARY = 1'b1;
       "FALSE": DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DEV_CAP_ENABLE_SLOT_PWR_LIMIT_VALUE);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP_EXT_TAG_SUPPORTED)
-      "TRUE": DEV_CAP_EXT_TAG_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CAP_EXT_TAG_SUPPORTED_BINARY = 1'b1;
       "FALSE": DEV_CAP_EXT_TAG_SUPPORTED_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP_EXT_TAG_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEV_CAP_EXT_TAG_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP_EXT_TAG_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DEV_CAP_EXT_TAG_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE)
       "FALSE": DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE_BINARY = 1'b0;
-      "TRUE": DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE_BINARY = 1'b1;
+      "TRUE":  DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (DEV_CAP_ROLE_BASED_ERROR)
-      "TRUE": DEV_CAP_ROLE_BASED_ERROR_BINARY = 1'b1;
+      "TRUE":  DEV_CAP_ROLE_BASED_ERROR_BINARY = 1'b1;
       "FALSE": DEV_CAP_ROLE_BASED_ERROR_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CAP_ROLE_BASED_ERROR on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEV_CAP_ROLE_BASED_ERROR);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CAP_ROLE_BASED_ERROR on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DEV_CAP_ROLE_BASED_ERROR);
         #1 $finish;
       end
     endcase
 
     case (DEV_CONTROL_AUX_POWER_SUPPORTED)
       "FALSE": DEV_CONTROL_AUX_POWER_SUPPORTED_BINARY = 1'b0;
-      "TRUE": DEV_CONTROL_AUX_POWER_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  DEV_CONTROL_AUX_POWER_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CONTROL_AUX_POWER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CONTROL_AUX_POWER_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CONTROL_AUX_POWER_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CONTROL_AUX_POWER_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (DEV_CONTROL_EXT_TAG_DEFAULT)
       "FALSE": DEV_CONTROL_EXT_TAG_DEFAULT_BINARY = 1'b0;
-      "TRUE": DEV_CONTROL_EXT_TAG_DEFAULT_BINARY = 1'b1;
+      "TRUE":  DEV_CONTROL_EXT_TAG_DEFAULT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEV_CONTROL_EXT_TAG_DEFAULT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DEV_CONTROL_EXT_TAG_DEFAULT);
+        $display(
+            "Attribute Syntax Error : The Attribute DEV_CONTROL_EXT_TAG_DEFAULT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DEV_CONTROL_EXT_TAG_DEFAULT);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_ASPM_L1_TIMER)
       "FALSE": DISABLE_ASPM_L1_TIMER_BINARY = 1'b0;
-      "TRUE": DISABLE_ASPM_L1_TIMER_BINARY = 1'b1;
+      "TRUE":  DISABLE_ASPM_L1_TIMER_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_ASPM_L1_TIMER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_ASPM_L1_TIMER);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_ASPM_L1_TIMER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_ASPM_L1_TIMER);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_BAR_FILTERING)
       "FALSE": DISABLE_BAR_FILTERING_BINARY = 1'b0;
-      "TRUE": DISABLE_BAR_FILTERING_BINARY = 1'b1;
+      "TRUE":  DISABLE_BAR_FILTERING_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_BAR_FILTERING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_BAR_FILTERING);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_BAR_FILTERING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_BAR_FILTERING);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_ERR_MSG)
       "FALSE": DISABLE_ERR_MSG_BINARY = 1'b0;
-      "TRUE": DISABLE_ERR_MSG_BINARY = 1'b1;
+      "TRUE":  DISABLE_ERR_MSG_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_ERR_MSG on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_ERR_MSG);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_ERR_MSG on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_ERR_MSG);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_ID_CHECK)
       "FALSE": DISABLE_ID_CHECK_BINARY = 1'b0;
-      "TRUE": DISABLE_ID_CHECK_BINARY = 1'b1;
+      "TRUE":  DISABLE_ID_CHECK_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_ID_CHECK on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_ID_CHECK);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_ID_CHECK on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_ID_CHECK);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_LANE_REVERSAL)
       "FALSE": DISABLE_LANE_REVERSAL_BINARY = 1'b0;
-      "TRUE": DISABLE_LANE_REVERSAL_BINARY = 1'b1;
+      "TRUE":  DISABLE_LANE_REVERSAL_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_LANE_REVERSAL on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_LANE_REVERSAL);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_LANE_REVERSAL on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_LANE_REVERSAL);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_LOCKED_FILTER)
       "FALSE": DISABLE_LOCKED_FILTER_BINARY = 1'b0;
-      "TRUE": DISABLE_LOCKED_FILTER_BINARY = 1'b1;
+      "TRUE":  DISABLE_LOCKED_FILTER_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_LOCKED_FILTER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_LOCKED_FILTER);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_LOCKED_FILTER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_LOCKED_FILTER);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_PPM_FILTER)
       "FALSE": DISABLE_PPM_FILTER_BINARY = 1'b0;
-      "TRUE": DISABLE_PPM_FILTER_BINARY = 1'b1;
+      "TRUE":  DISABLE_PPM_FILTER_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_PPM_FILTER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_PPM_FILTER);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_PPM_FILTER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_PPM_FILTER);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_RX_POISONED_RESP)
       "FALSE": DISABLE_RX_POISONED_RESP_BINARY = 1'b0;
-      "TRUE": DISABLE_RX_POISONED_RESP_BINARY = 1'b1;
+      "TRUE":  DISABLE_RX_POISONED_RESP_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_RX_POISONED_RESP on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_RX_POISONED_RESP);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_RX_POISONED_RESP on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_RX_POISONED_RESP);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_RX_TC_FILTER)
       "FALSE": DISABLE_RX_TC_FILTER_BINARY = 1'b0;
-      "TRUE": DISABLE_RX_TC_FILTER_BINARY = 1'b1;
+      "TRUE":  DISABLE_RX_TC_FILTER_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_RX_TC_FILTER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_RX_TC_FILTER);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_RX_TC_FILTER on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_RX_TC_FILTER);
         #1 $finish;
       end
     endcase
 
     case (DISABLE_SCRAMBLING)
       "FALSE": DISABLE_SCRAMBLING_BINARY = 1'b0;
-      "TRUE": DISABLE_SCRAMBLING_BINARY = 1'b1;
+      "TRUE":  DISABLE_SCRAMBLING_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DISABLE_SCRAMBLING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", DISABLE_SCRAMBLING);
+        $display(
+            "Attribute Syntax Error : The Attribute DISABLE_SCRAMBLING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            DISABLE_SCRAMBLING);
         #1 $finish;
       end
     endcase
 
     case (DSN_CAP_ON)
-      "TRUE": DSN_CAP_ON_BINARY = 1'b1;
+      "TRUE":  DSN_CAP_ON_BINARY = 1'b1;
       "FALSE": DSN_CAP_ON_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DSN_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DSN_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute DSN_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DSN_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (ENABLE_RX_TD_ECRC_TRIM)
       "FALSE": ENABLE_RX_TD_ECRC_TRIM_BINARY = 1'b0;
-      "TRUE": ENABLE_RX_TD_ECRC_TRIM_BINARY = 1'b1;
+      "TRUE":  ENABLE_RX_TD_ECRC_TRIM_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ENABLE_RX_TD_ECRC_TRIM on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ENABLE_RX_TD_ECRC_TRIM);
+        $display(
+            "Attribute Syntax Error : The Attribute ENABLE_RX_TD_ECRC_TRIM on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            ENABLE_RX_TD_ECRC_TRIM);
         #1 $finish;
       end
     endcase
 
     case (ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED)
       "FALSE": ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED_BINARY = 1'b0;
-      "TRUE": ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED_BINARY = 1'b1;
+      "TRUE":  ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED);
+        $display(
+            "Attribute Syntax Error : The Attribute ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            ENDEND_TLP_PREFIX_FORWARDING_SUPPORTED);
         #1 $finish;
       end
     endcase
 
     case (ENTER_RVRY_EI_L0)
-      "TRUE": ENTER_RVRY_EI_L0_BINARY = 1'b1;
+      "TRUE":  ENTER_RVRY_EI_L0_BINARY = 1'b1;
       "FALSE": ENTER_RVRY_EI_L0_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ENTER_RVRY_EI_L0 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ENTER_RVRY_EI_L0);
+        $display(
+            "Attribute Syntax Error : The Attribute ENTER_RVRY_EI_L0 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            ENTER_RVRY_EI_L0);
         #1 $finish;
       end
     endcase
 
     case (EXIT_LOOPBACK_ON_EI)
-      "TRUE": EXIT_LOOPBACK_ON_EI_BINARY = 1'b1;
+      "TRUE":  EXIT_LOOPBACK_ON_EI_BINARY = 1'b1;
       "FALSE": EXIT_LOOPBACK_ON_EI_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute EXIT_LOOPBACK_ON_EI on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", EXIT_LOOPBACK_ON_EI);
+        $display(
+            "Attribute Syntax Error : The Attribute EXIT_LOOPBACK_ON_EI on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            EXIT_LOOPBACK_ON_EI);
         #1 $finish;
       end
     endcase
 
     case (INTERRUPT_STAT_AUTO)
-      "TRUE": INTERRUPT_STAT_AUTO_BINARY = 1'b1;
+      "TRUE":  INTERRUPT_STAT_AUTO_BINARY = 1'b1;
       "FALSE": INTERRUPT_STAT_AUTO_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute INTERRUPT_STAT_AUTO on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", INTERRUPT_STAT_AUTO);
+        $display(
+            "Attribute Syntax Error : The Attribute INTERRUPT_STAT_AUTO on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            INTERRUPT_STAT_AUTO);
         #1 $finish;
       end
     endcase
 
     case (IS_SWITCH)
       "FALSE": IS_SWITCH_BINARY = 1'b0;
-      "TRUE": IS_SWITCH_BINARY = 1'b1;
+      "TRUE":  IS_SWITCH_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute IS_SWITCH on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", IS_SWITCH);
+        $display(
+            "Attribute Syntax Error : The Attribute IS_SWITCH on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            IS_SWITCH);
         #1 $finish;
       end
     endcase
 
     case (LINK_CAP_ASPM_OPTIONALITY)
-      "TRUE": LINK_CAP_ASPM_OPTIONALITY_BINARY = 1'b1;
+      "TRUE":  LINK_CAP_ASPM_OPTIONALITY_BINARY = 1'b1;
       "FALSE": LINK_CAP_ASPM_OPTIONALITY_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_CAP_ASPM_OPTIONALITY on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", LINK_CAP_ASPM_OPTIONALITY);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_CAP_ASPM_OPTIONALITY on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            LINK_CAP_ASPM_OPTIONALITY);
         #1 $finish;
       end
     endcase
 
     case (LINK_CAP_CLOCK_POWER_MANAGEMENT)
       "FALSE": LINK_CAP_CLOCK_POWER_MANAGEMENT_BINARY = 1'b0;
-      "TRUE": LINK_CAP_CLOCK_POWER_MANAGEMENT_BINARY = 1'b1;
+      "TRUE":  LINK_CAP_CLOCK_POWER_MANAGEMENT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_CAP_CLOCK_POWER_MANAGEMENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LINK_CAP_CLOCK_POWER_MANAGEMENT);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_CAP_CLOCK_POWER_MANAGEMENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LINK_CAP_CLOCK_POWER_MANAGEMENT);
         #1 $finish;
       end
     endcase
 
     case (LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP)
       "FALSE": LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP_BINARY = 1'b0;
-      "TRUE": LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP_BINARY = 1'b1;
+      "TRUE":  LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LINK_CAP_DLL_LINK_ACTIVE_REPORTING_CAP);
         #1 $finish;
       end
     endcase
 
     case (LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP)
       "FALSE": LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP_BINARY = 1'b0;
-      "TRUE": LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP_BINARY = 1'b1;
+      "TRUE":  LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LINK_CAP_LINK_BANDWIDTH_NOTIFICATION_CAP);
         #1 $finish;
       end
     endcase
 
     case (LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE)
       "FALSE": LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE_BINARY = 1'b0;
-      "TRUE": LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE_BINARY = 1'b1;
+      "TRUE":  LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LINK_CAP_SURPRISE_DOWN_ERROR_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (LINK_CTRL2_DEEMPHASIS)
       "FALSE": LINK_CTRL2_DEEMPHASIS_BINARY = 1'b0;
-      "TRUE": LINK_CTRL2_DEEMPHASIS_BINARY = 1'b1;
+      "TRUE":  LINK_CTRL2_DEEMPHASIS_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_CTRL2_DEEMPHASIS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LINK_CTRL2_DEEMPHASIS);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_CTRL2_DEEMPHASIS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LINK_CTRL2_DEEMPHASIS);
         #1 $finish;
       end
     endcase
 
     case (LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE)
       "FALSE": LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE_BINARY = 1'b0;
-      "TRUE": LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE_BINARY = 1'b1;
+      "TRUE":  LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LINK_CTRL2_HW_AUTONOMOUS_SPEED_DISABLE);
         #1 $finish;
       end
     endcase
 
     case (LINK_STATUS_SLOT_CLOCK_CONFIG)
-      "TRUE": LINK_STATUS_SLOT_CLOCK_CONFIG_BINARY = 1'b1;
+      "TRUE":  LINK_STATUS_SLOT_CLOCK_CONFIG_BINARY = 1'b1;
       "FALSE": LINK_STATUS_SLOT_CLOCK_CONFIG_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LINK_STATUS_SLOT_CLOCK_CONFIG on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", LINK_STATUS_SLOT_CLOCK_CONFIG);
+        $display(
+            "Attribute Syntax Error : The Attribute LINK_STATUS_SLOT_CLOCK_CONFIG on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            LINK_STATUS_SLOT_CLOCK_CONFIG);
         #1 $finish;
       end
     endcase
 
     case (LL_ACK_TIMEOUT_EN)
       "FALSE": LL_ACK_TIMEOUT_EN_BINARY = 1'b0;
-      "TRUE": LL_ACK_TIMEOUT_EN_BINARY = 1'b1;
+      "TRUE":  LL_ACK_TIMEOUT_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LL_ACK_TIMEOUT_EN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LL_ACK_TIMEOUT_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute LL_ACK_TIMEOUT_EN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LL_ACK_TIMEOUT_EN);
         #1 $finish;
       end
     endcase
 
     case (LL_REPLAY_TIMEOUT_EN)
       "FALSE": LL_REPLAY_TIMEOUT_EN_BINARY = 1'b0;
-      "TRUE": LL_REPLAY_TIMEOUT_EN_BINARY = 1'b1;
+      "TRUE":  LL_REPLAY_TIMEOUT_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute LL_REPLAY_TIMEOUT_EN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", LL_REPLAY_TIMEOUT_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute LL_REPLAY_TIMEOUT_EN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            LL_REPLAY_TIMEOUT_EN);
         #1 $finish;
       end
     endcase
 
     case (MPS_FORCE)
       "FALSE": MPS_FORCE_BINARY = 1'b0;
-      "TRUE": MPS_FORCE_BINARY = 1'b1;
+      "TRUE":  MPS_FORCE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute MPS_FORCE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", MPS_FORCE);
+        $display(
+            "Attribute Syntax Error : The Attribute MPS_FORCE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            MPS_FORCE);
         #1 $finish;
       end
     endcase
 
     case (MSIX_CAP_ON)
       "FALSE": MSIX_CAP_ON_BINARY = 1'b0;
-      "TRUE": MSIX_CAP_ON_BINARY = 1'b1;
+      "TRUE":  MSIX_CAP_ON_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute MSIX_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", MSIX_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute MSIX_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            MSIX_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (MSI_CAP_64_BIT_ADDR_CAPABLE)
-      "TRUE": MSI_CAP_64_BIT_ADDR_CAPABLE_BINARY = 1'b1;
+      "TRUE":  MSI_CAP_64_BIT_ADDR_CAPABLE_BINARY = 1'b1;
       "FALSE": MSI_CAP_64_BIT_ADDR_CAPABLE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute MSI_CAP_64_BIT_ADDR_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", MSI_CAP_64_BIT_ADDR_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute MSI_CAP_64_BIT_ADDR_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            MSI_CAP_64_BIT_ADDR_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (MSI_CAP_ON)
       "FALSE": MSI_CAP_ON_BINARY = 1'b0;
-      "TRUE": MSI_CAP_ON_BINARY = 1'b1;
+      "TRUE":  MSI_CAP_ON_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute MSI_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", MSI_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute MSI_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            MSI_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (MSI_CAP_PER_VECTOR_MASKING_CAPABLE)
-      "TRUE": MSI_CAP_PER_VECTOR_MASKING_CAPABLE_BINARY = 1'b1;
+      "TRUE":  MSI_CAP_PER_VECTOR_MASKING_CAPABLE_BINARY = 1'b1;
       "FALSE": MSI_CAP_PER_VECTOR_MASKING_CAPABLE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute MSI_CAP_PER_VECTOR_MASKING_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", MSI_CAP_PER_VECTOR_MASKING_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute MSI_CAP_PER_VECTOR_MASKING_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            MSI_CAP_PER_VECTOR_MASKING_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (PCIE_CAP_ON)
-      "TRUE": PCIE_CAP_ON_BINARY = 1'b1;
+      "TRUE":  PCIE_CAP_ON_BINARY = 1'b1;
       "FALSE": PCIE_CAP_ON_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PCIE_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", PCIE_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute PCIE_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            PCIE_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (PCIE_CAP_SLOT_IMPLEMENTED)
       "FALSE": PCIE_CAP_SLOT_IMPLEMENTED_BINARY = 1'b0;
-      "TRUE": PCIE_CAP_SLOT_IMPLEMENTED_BINARY = 1'b1;
+      "TRUE":  PCIE_CAP_SLOT_IMPLEMENTED_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PCIE_CAP_SLOT_IMPLEMENTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PCIE_CAP_SLOT_IMPLEMENTED);
+        $display(
+            "Attribute Syntax Error : The Attribute PCIE_CAP_SLOT_IMPLEMENTED on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PCIE_CAP_SLOT_IMPLEMENTED);
         #1 $finish;
       end
     endcase
 
     case (PL_FAST_TRAIN)
       "FALSE": PL_FAST_TRAIN_BINARY = 1'b0;
-      "TRUE": PL_FAST_TRAIN_BINARY = 1'b1;
+      "TRUE":  PL_FAST_TRAIN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PL_FAST_TRAIN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PL_FAST_TRAIN);
+        $display(
+            "Attribute Syntax Error : The Attribute PL_FAST_TRAIN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PL_FAST_TRAIN);
         #1 $finish;
       end
     endcase
 
     case (PM_ASPML0S_TIMEOUT_EN)
       "FALSE": PM_ASPML0S_TIMEOUT_EN_BINARY = 1'b0;
-      "TRUE": PM_ASPML0S_TIMEOUT_EN_BINARY = 1'b1;
+      "TRUE":  PM_ASPML0S_TIMEOUT_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_ASPML0S_TIMEOUT_EN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PM_ASPML0S_TIMEOUT_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_ASPML0S_TIMEOUT_EN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PM_ASPML0S_TIMEOUT_EN);
         #1 $finish;
       end
     endcase
 
     case (PM_ASPM_FASTEXIT)
       "FALSE": PM_ASPM_FASTEXIT_BINARY = 1'b0;
-      "TRUE": PM_ASPM_FASTEXIT_BINARY = 1'b1;
+      "TRUE":  PM_ASPM_FASTEXIT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_ASPM_FASTEXIT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PM_ASPM_FASTEXIT);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_ASPM_FASTEXIT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PM_ASPM_FASTEXIT);
         #1 $finish;
       end
     endcase
 
     case (PM_CAP_D1SUPPORT)
-      "TRUE": PM_CAP_D1SUPPORT_BINARY = 1'b1;
+      "TRUE":  PM_CAP_D1SUPPORT_BINARY = 1'b1;
       "FALSE": PM_CAP_D1SUPPORT_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CAP_D1SUPPORT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", PM_CAP_D1SUPPORT);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CAP_D1SUPPORT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            PM_CAP_D1SUPPORT);
         #1 $finish;
       end
     endcase
 
     case (PM_CAP_D2SUPPORT)
-      "TRUE": PM_CAP_D2SUPPORT_BINARY = 1'b1;
+      "TRUE":  PM_CAP_D2SUPPORT_BINARY = 1'b1;
       "FALSE": PM_CAP_D2SUPPORT_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CAP_D2SUPPORT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", PM_CAP_D2SUPPORT);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CAP_D2SUPPORT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            PM_CAP_D2SUPPORT);
         #1 $finish;
       end
     endcase
 
     case (PM_CAP_DSI)
       "FALSE": PM_CAP_DSI_BINARY = 1'b0;
-      "TRUE": PM_CAP_DSI_BINARY = 1'b1;
+      "TRUE":  PM_CAP_DSI_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CAP_DSI on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PM_CAP_DSI);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CAP_DSI on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PM_CAP_DSI);
         #1 $finish;
       end
     endcase
 
     case (PM_CAP_ON)
-      "TRUE": PM_CAP_ON_BINARY = 1'b1;
+      "TRUE":  PM_CAP_ON_BINARY = 1'b1;
       "FALSE": PM_CAP_ON_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", PM_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            PM_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (PM_CAP_PME_CLOCK)
       "FALSE": PM_CAP_PME_CLOCK_BINARY = 1'b0;
-      "TRUE": PM_CAP_PME_CLOCK_BINARY = 1'b1;
+      "TRUE":  PM_CAP_PME_CLOCK_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CAP_PME_CLOCK on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PM_CAP_PME_CLOCK);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CAP_PME_CLOCK on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PM_CAP_PME_CLOCK);
         #1 $finish;
       end
     endcase
 
     case (PM_CSR_B2B3)
       "FALSE": PM_CSR_B2B3_BINARY = 1'b0;
-      "TRUE": PM_CSR_B2B3_BINARY = 1'b1;
+      "TRUE":  PM_CSR_B2B3_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CSR_B2B3 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PM_CSR_B2B3);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CSR_B2B3 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PM_CSR_B2B3);
         #1 $finish;
       end
     endcase
 
     case (PM_CSR_BPCCEN)
       "FALSE": PM_CSR_BPCCEN_BINARY = 1'b0;
-      "TRUE": PM_CSR_BPCCEN_BINARY = 1'b1;
+      "TRUE":  PM_CSR_BPCCEN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CSR_BPCCEN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PM_CSR_BPCCEN);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CSR_BPCCEN on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PM_CSR_BPCCEN);
         #1 $finish;
       end
     endcase
 
     case (PM_CSR_NOSOFTRST)
-      "TRUE": PM_CSR_NOSOFTRST_BINARY = 1'b1;
+      "TRUE":  PM_CSR_NOSOFTRST_BINARY = 1'b1;
       "FALSE": PM_CSR_NOSOFTRST_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_CSR_NOSOFTRST on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", PM_CSR_NOSOFTRST);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_CSR_NOSOFTRST on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            PM_CSR_NOSOFTRST);
         #1 $finish;
       end
     endcase
 
     case (PM_MF)
       "FALSE": PM_MF_BINARY = 1'b0;
-      "TRUE": PM_MF_BINARY = 1'b1;
+      "TRUE":  PM_MF_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PM_MF on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PM_MF);
+        $display(
+            "Attribute Syntax Error : The Attribute PM_MF on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PM_MF);
         #1 $finish;
       end
     endcase
 
     case (RBAR_CAP_ON)
       "FALSE": RBAR_CAP_ON_BINARY = 1'b0;
-      "TRUE": RBAR_CAP_ON_BINARY = 1'b1;
+      "TRUE":  RBAR_CAP_ON_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RBAR_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RBAR_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute RBAR_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            RBAR_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (RECRC_CHK_TRIM)
       "FALSE": RECRC_CHK_TRIM_BINARY = 1'b0;
-      "TRUE": RECRC_CHK_TRIM_BINARY = 1'b1;
+      "TRUE":  RECRC_CHK_TRIM_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RECRC_CHK_TRIM on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RECRC_CHK_TRIM);
+        $display(
+            "Attribute Syntax Error : The Attribute RECRC_CHK_TRIM on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            RECRC_CHK_TRIM);
         #1 $finish;
       end
     endcase
 
     case (ROOT_CAP_CRS_SW_VISIBILITY)
       "FALSE": ROOT_CAP_CRS_SW_VISIBILITY_BINARY = 1'b0;
-      "TRUE": ROOT_CAP_CRS_SW_VISIBILITY_BINARY = 1'b1;
+      "TRUE":  ROOT_CAP_CRS_SW_VISIBILITY_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ROOT_CAP_CRS_SW_VISIBILITY on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ROOT_CAP_CRS_SW_VISIBILITY);
+        $display(
+            "Attribute Syntax Error : The Attribute ROOT_CAP_CRS_SW_VISIBILITY on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            ROOT_CAP_CRS_SW_VISIBILITY);
         #1 $finish;
       end
     endcase
 
     case (SELECT_DLL_IF)
       "FALSE": SELECT_DLL_IF_BINARY = 1'b0;
-      "TRUE": SELECT_DLL_IF_BINARY = 1'b1;
+      "TRUE":  SELECT_DLL_IF_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SELECT_DLL_IF on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SELECT_DLL_IF);
+        $display(
+            "Attribute Syntax Error : The Attribute SELECT_DLL_IF on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SELECT_DLL_IF);
         #1 $finish;
       end
     endcase
@@ -1991,268 +2139,328 @@ module PCIE_2_1 (
       "3.0": SIM_VERSION_BINARY = 0;
       "4.0": SIM_VERSION_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_VERSION on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, 1.2, 1.3, 2.0, 3.0, or 4.0.", SIM_VERSION);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_VERSION on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, 1.2, 1.3, 2.0, 3.0, or 4.0.",
+            SIM_VERSION);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_ATT_BUTTON_PRESENT)
       "FALSE": SLOT_CAP_ATT_BUTTON_PRESENT_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_ATT_BUTTON_PRESENT_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_ATT_BUTTON_PRESENT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_ATT_BUTTON_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_ATT_BUTTON_PRESENT);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_ATT_BUTTON_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_ATT_BUTTON_PRESENT);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_ATT_INDICATOR_PRESENT)
       "FALSE": SLOT_CAP_ATT_INDICATOR_PRESENT_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_ATT_INDICATOR_PRESENT_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_ATT_INDICATOR_PRESENT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_ATT_INDICATOR_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_ATT_INDICATOR_PRESENT);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_ATT_INDICATOR_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_ATT_INDICATOR_PRESENT);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_ELEC_INTERLOCK_PRESENT)
       "FALSE": SLOT_CAP_ELEC_INTERLOCK_PRESENT_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_ELEC_INTERLOCK_PRESENT_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_ELEC_INTERLOCK_PRESENT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_ELEC_INTERLOCK_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_ELEC_INTERLOCK_PRESENT);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_ELEC_INTERLOCK_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_ELEC_INTERLOCK_PRESENT);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_HOTPLUG_CAPABLE)
       "FALSE": SLOT_CAP_HOTPLUG_CAPABLE_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_HOTPLUG_CAPABLE_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_HOTPLUG_CAPABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_HOTPLUG_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_HOTPLUG_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_HOTPLUG_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_HOTPLUG_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_HOTPLUG_SURPRISE)
       "FALSE": SLOT_CAP_HOTPLUG_SURPRISE_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_HOTPLUG_SURPRISE_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_HOTPLUG_SURPRISE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_HOTPLUG_SURPRISE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_HOTPLUG_SURPRISE);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_HOTPLUG_SURPRISE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_HOTPLUG_SURPRISE);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_MRL_SENSOR_PRESENT)
       "FALSE": SLOT_CAP_MRL_SENSOR_PRESENT_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_MRL_SENSOR_PRESENT_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_MRL_SENSOR_PRESENT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_MRL_SENSOR_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_MRL_SENSOR_PRESENT);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_MRL_SENSOR_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_MRL_SENSOR_PRESENT);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_NO_CMD_COMPLETED_SUPPORT)
       "FALSE": SLOT_CAP_NO_CMD_COMPLETED_SUPPORT_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_NO_CMD_COMPLETED_SUPPORT_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_NO_CMD_COMPLETED_SUPPORT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_NO_CMD_COMPLETED_SUPPORT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_NO_CMD_COMPLETED_SUPPORT);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_NO_CMD_COMPLETED_SUPPORT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_NO_CMD_COMPLETED_SUPPORT);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_POWER_CONTROLLER_PRESENT)
       "FALSE": SLOT_CAP_POWER_CONTROLLER_PRESENT_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_POWER_CONTROLLER_PRESENT_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_POWER_CONTROLLER_PRESENT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_POWER_CONTROLLER_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_POWER_CONTROLLER_PRESENT);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_POWER_CONTROLLER_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_POWER_CONTROLLER_PRESENT);
         #1 $finish;
       end
     endcase
 
     case (SLOT_CAP_POWER_INDICATOR_PRESENT)
       "FALSE": SLOT_CAP_POWER_INDICATOR_PRESENT_BINARY = 1'b0;
-      "TRUE": SLOT_CAP_POWER_INDICATOR_PRESENT_BINARY = 1'b1;
+      "TRUE":  SLOT_CAP_POWER_INDICATOR_PRESENT_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SLOT_CAP_POWER_INDICATOR_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SLOT_CAP_POWER_INDICATOR_PRESENT);
+        $display(
+            "Attribute Syntax Error : The Attribute SLOT_CAP_POWER_INDICATOR_PRESENT on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SLOT_CAP_POWER_INDICATOR_PRESENT);
         #1 $finish;
       end
     endcase
 
     case (SSL_MESSAGE_AUTO)
       "FALSE": SSL_MESSAGE_AUTO_BINARY = 1'b0;
-      "TRUE": SSL_MESSAGE_AUTO_BINARY = 1'b1;
+      "TRUE":  SSL_MESSAGE_AUTO_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SSL_MESSAGE_AUTO on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", SSL_MESSAGE_AUTO);
+        $display(
+            "Attribute Syntax Error : The Attribute SSL_MESSAGE_AUTO on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            SSL_MESSAGE_AUTO);
         #1 $finish;
       end
     endcase
 
     case (TECRC_EP_INV)
       "FALSE": TECRC_EP_INV_BINARY = 1'b0;
-      "TRUE": TECRC_EP_INV_BINARY = 1'b1;
+      "TRUE":  TECRC_EP_INV_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TECRC_EP_INV on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TECRC_EP_INV);
+        $display(
+            "Attribute Syntax Error : The Attribute TECRC_EP_INV on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TECRC_EP_INV);
         #1 $finish;
       end
     endcase
 
     case (TL_RBYPASS)
       "FALSE": TL_RBYPASS_BINARY = 1'b0;
-      "TRUE": TL_RBYPASS_BINARY = 1'b1;
+      "TRUE":  TL_RBYPASS_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TL_RBYPASS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TL_RBYPASS);
+        $display(
+            "Attribute Syntax Error : The Attribute TL_RBYPASS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TL_RBYPASS);
         #1 $finish;
       end
     endcase
 
     case (TL_TFC_DISABLE)
       "FALSE": TL_TFC_DISABLE_BINARY = 1'b0;
-      "TRUE": TL_TFC_DISABLE_BINARY = 1'b1;
+      "TRUE":  TL_TFC_DISABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TL_TFC_DISABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TL_TFC_DISABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute TL_TFC_DISABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TL_TFC_DISABLE);
         #1 $finish;
       end
     endcase
 
     case (TL_TX_CHECKS_DISABLE)
       "FALSE": TL_TX_CHECKS_DISABLE_BINARY = 1'b0;
-      "TRUE": TL_TX_CHECKS_DISABLE_BINARY = 1'b1;
+      "TRUE":  TL_TX_CHECKS_DISABLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TL_TX_CHECKS_DISABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TL_TX_CHECKS_DISABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute TL_TX_CHECKS_DISABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TL_TX_CHECKS_DISABLE);
         #1 $finish;
       end
     endcase
 
     case (TRN_DW)
       "FALSE": TRN_DW_BINARY = 1'b0;
-      "TRUE": TRN_DW_BINARY = 1'b1;
+      "TRUE":  TRN_DW_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TRN_DW on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TRN_DW);
+        $display(
+            "Attribute Syntax Error : The Attribute TRN_DW on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TRN_DW);
         #1 $finish;
       end
     endcase
 
     case (TRN_NP_FC)
       "FALSE": TRN_NP_FC_BINARY = 1'b0;
-      "TRUE": TRN_NP_FC_BINARY = 1'b1;
+      "TRUE":  TRN_NP_FC_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TRN_NP_FC on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TRN_NP_FC);
+        $display(
+            "Attribute Syntax Error : The Attribute TRN_NP_FC on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TRN_NP_FC);
         #1 $finish;
       end
     endcase
 
     case (UPCONFIG_CAPABLE)
-      "TRUE": UPCONFIG_CAPABLE_BINARY = 1'b1;
+      "TRUE":  UPCONFIG_CAPABLE_BINARY = 1'b1;
       "FALSE": UPCONFIG_CAPABLE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute UPCONFIG_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", UPCONFIG_CAPABLE);
+        $display(
+            "Attribute Syntax Error : The Attribute UPCONFIG_CAPABLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            UPCONFIG_CAPABLE);
         #1 $finish;
       end
     endcase
 
     case (UPSTREAM_FACING)
-      "TRUE": UPSTREAM_FACING_BINARY = 1'b1;
+      "TRUE":  UPSTREAM_FACING_BINARY = 1'b1;
       "FALSE": UPSTREAM_FACING_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute UPSTREAM_FACING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", UPSTREAM_FACING);
+        $display(
+            "Attribute Syntax Error : The Attribute UPSTREAM_FACING on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            UPSTREAM_FACING);
         #1 $finish;
       end
     endcase
 
     case (UR_ATOMIC)
-      "TRUE": UR_ATOMIC_BINARY = 1'b1;
+      "TRUE":  UR_ATOMIC_BINARY = 1'b1;
       "FALSE": UR_ATOMIC_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute UR_ATOMIC on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", UR_ATOMIC);
+        $display(
+            "Attribute Syntax Error : The Attribute UR_ATOMIC on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            UR_ATOMIC);
         #1 $finish;
       end
     endcase
 
     case (UR_CFG1)
-      "TRUE": UR_CFG1_BINARY = 1'b1;
+      "TRUE":  UR_CFG1_BINARY = 1'b1;
       "FALSE": UR_CFG1_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute UR_CFG1 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", UR_CFG1);
+        $display(
+            "Attribute Syntax Error : The Attribute UR_CFG1 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            UR_CFG1);
         #1 $finish;
       end
     endcase
 
     case (UR_INV_REQ)
-      "TRUE": UR_INV_REQ_BINARY = 1'b1;
+      "TRUE":  UR_INV_REQ_BINARY = 1'b1;
       "FALSE": UR_INV_REQ_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute UR_INV_REQ on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", UR_INV_REQ);
+        $display(
+            "Attribute Syntax Error : The Attribute UR_INV_REQ on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            UR_INV_REQ);
         #1 $finish;
       end
     endcase
 
     case (UR_PRS_RESPONSE)
-      "TRUE": UR_PRS_RESPONSE_BINARY = 1'b1;
+      "TRUE":  UR_PRS_RESPONSE_BINARY = 1'b1;
       "FALSE": UR_PRS_RESPONSE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute UR_PRS_RESPONSE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", UR_PRS_RESPONSE);
+        $display(
+            "Attribute Syntax Error : The Attribute UR_PRS_RESPONSE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            UR_PRS_RESPONSE);
         #1 $finish;
       end
     endcase
 
     case (USER_CLK2_DIV2)
       "FALSE": USER_CLK2_DIV2_BINARY = 1'b0;
-      "TRUE": USER_CLK2_DIV2_BINARY = 1'b1;
+      "TRUE":  USER_CLK2_DIV2_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute USER_CLK2_DIV2 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", USER_CLK2_DIV2);
+        $display(
+            "Attribute Syntax Error : The Attribute USER_CLK2_DIV2 on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            USER_CLK2_DIV2);
         #1 $finish;
       end
     endcase
 
     case (USE_RID_PINS)
       "FALSE": USE_RID_PINS_BINARY = 1'b0;
-      "TRUE": USE_RID_PINS_BINARY = 1'b1;
+      "TRUE":  USE_RID_PINS_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute USE_RID_PINS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", USE_RID_PINS);
+        $display(
+            "Attribute Syntax Error : The Attribute USE_RID_PINS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            USE_RID_PINS);
         #1 $finish;
       end
     endcase
 
     case (VC0_CPL_INFINITE)
-      "TRUE": VC0_CPL_INFINITE_BINARY = 1'b1;
+      "TRUE":  VC0_CPL_INFINITE_BINARY = 1'b1;
       "FALSE": VC0_CPL_INFINITE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute VC0_CPL_INFINITE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", VC0_CPL_INFINITE);
+        $display(
+            "Attribute Syntax Error : The Attribute VC0_CPL_INFINITE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            VC0_CPL_INFINITE);
         #1 $finish;
       end
     endcase
 
     case (VC_CAP_ON)
       "FALSE": VC_CAP_ON_BINARY = 1'b0;
-      "TRUE": VC_CAP_ON_BINARY = 1'b1;
+      "TRUE":  VC_CAP_ON_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute VC_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", VC_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute VC_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            VC_CAP_ON);
         #1 $finish;
       end
     endcase
 
     case (VC_CAP_REJECT_SNOOP_TRANSACTIONS)
       "FALSE": VC_CAP_REJECT_SNOOP_TRANSACTIONS_BINARY = 1'b0;
-      "TRUE": VC_CAP_REJECT_SNOOP_TRANSACTIONS_BINARY = 1'b1;
+      "TRUE":  VC_CAP_REJECT_SNOOP_TRANSACTIONS_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute VC_CAP_REJECT_SNOOP_TRANSACTIONS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", VC_CAP_REJECT_SNOOP_TRANSACTIONS);
+        $display(
+            "Attribute Syntax Error : The Attribute VC_CAP_REJECT_SNOOP_TRANSACTIONS on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            VC_CAP_REJECT_SNOOP_TRANSACTIONS);
         #1 $finish;
       end
     endcase
 
     case (VSEC_CAP_IS_LINK_VISIBLE)
-      "TRUE": VSEC_CAP_IS_LINK_VISIBLE_BINARY = 1'b1;
+      "TRUE":  VSEC_CAP_IS_LINK_VISIBLE_BINARY = 1'b1;
       "FALSE": VSEC_CAP_IS_LINK_VISIBLE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute VSEC_CAP_IS_LINK_VISIBLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", VSEC_CAP_IS_LINK_VISIBLE);
+        $display(
+            "Attribute Syntax Error : The Attribute VSEC_CAP_IS_LINK_VISIBLE on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            VSEC_CAP_IS_LINK_VISIBLE);
         #1 $finish;
       end
     endcase
 
     case (VSEC_CAP_ON)
       "FALSE": VSEC_CAP_ON_BINARY = 1'b0;
-      "TRUE": VSEC_CAP_ON_BINARY = 1'b1;
+      "TRUE":  VSEC_CAP_ON_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute VSEC_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", VSEC_CAP_ON);
+        $display(
+            "Attribute Syntax Error : The Attribute VSEC_CAP_ON on X_PCIE_2_1 instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            VSEC_CAP_ON);
         #1 $finish;
       end
     endcase
@@ -2260,410 +2468,532 @@ module PCIE_2_1 (
     if ((CFG_ECRC_ERR_CPLSTAT >= 0) && (CFG_ECRC_ERR_CPLSTAT <= 3))
       CFG_ECRC_ERR_CPLSTAT_BINARY = CFG_ECRC_ERR_CPLSTAT;
     else begin
-      $display("Attribute Syntax Error : The Attribute CFG_ECRC_ERR_CPLSTAT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", CFG_ECRC_ERR_CPLSTAT);
+      $display(
+          "Attribute Syntax Error : The Attribute CFG_ECRC_ERR_CPLSTAT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          CFG_ECRC_ERR_CPLSTAT);
       #1 $finish;
     end
 
     if ((DEV_CAP_ENDPOINT_L0S_LATENCY >= 0) && (DEV_CAP_ENDPOINT_L0S_LATENCY <= 7))
       DEV_CAP_ENDPOINT_L0S_LATENCY_BINARY = DEV_CAP_ENDPOINT_L0S_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute DEV_CAP_ENDPOINT_L0S_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", DEV_CAP_ENDPOINT_L0S_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute DEV_CAP_ENDPOINT_L0S_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          DEV_CAP_ENDPOINT_L0S_LATENCY);
       #1 $finish;
     end
 
     if ((DEV_CAP_ENDPOINT_L1_LATENCY >= 0) && (DEV_CAP_ENDPOINT_L1_LATENCY <= 7))
       DEV_CAP_ENDPOINT_L1_LATENCY_BINARY = DEV_CAP_ENDPOINT_L1_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute DEV_CAP_ENDPOINT_L1_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", DEV_CAP_ENDPOINT_L1_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute DEV_CAP_ENDPOINT_L1_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          DEV_CAP_ENDPOINT_L1_LATENCY);
       #1 $finish;
     end
 
     if ((DEV_CAP_MAX_PAYLOAD_SUPPORTED >= 0) && (DEV_CAP_MAX_PAYLOAD_SUPPORTED <= 7))
       DEV_CAP_MAX_PAYLOAD_SUPPORTED_BINARY = DEV_CAP_MAX_PAYLOAD_SUPPORTED;
     else begin
-      $display("Attribute Syntax Error : The Attribute DEV_CAP_MAX_PAYLOAD_SUPPORTED on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", DEV_CAP_MAX_PAYLOAD_SUPPORTED);
+      $display(
+          "Attribute Syntax Error : The Attribute DEV_CAP_MAX_PAYLOAD_SUPPORTED on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          DEV_CAP_MAX_PAYLOAD_SUPPORTED);
       #1 $finish;
     end
 
     if ((DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT >= 0) && (DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT <= 3))
       DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT_BINARY = DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT;
     else begin
-      $display("Attribute Syntax Error : The Attribute DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT);
+      $display(
+          "Attribute Syntax Error : The Attribute DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          DEV_CAP_PHANTOM_FUNCTIONS_SUPPORT);
       #1 $finish;
     end
 
     if ((DEV_CAP_RSVD_14_12 >= 0) && (DEV_CAP_RSVD_14_12 <= 7))
       DEV_CAP_RSVD_14_12_BINARY = DEV_CAP_RSVD_14_12;
     else begin
-      $display("Attribute Syntax Error : The Attribute DEV_CAP_RSVD_14_12 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", DEV_CAP_RSVD_14_12);
+      $display(
+          "Attribute Syntax Error : The Attribute DEV_CAP_RSVD_14_12 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          DEV_CAP_RSVD_14_12);
       #1 $finish;
     end
 
     if ((DEV_CAP_RSVD_17_16 >= 0) && (DEV_CAP_RSVD_17_16 <= 3))
       DEV_CAP_RSVD_17_16_BINARY = DEV_CAP_RSVD_17_16;
     else begin
-      $display("Attribute Syntax Error : The Attribute DEV_CAP_RSVD_17_16 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", DEV_CAP_RSVD_17_16);
+      $display(
+          "Attribute Syntax Error : The Attribute DEV_CAP_RSVD_17_16 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          DEV_CAP_RSVD_17_16);
       #1 $finish;
     end
 
     if ((DEV_CAP_RSVD_31_29 >= 0) && (DEV_CAP_RSVD_31_29 <= 7))
       DEV_CAP_RSVD_31_29_BINARY = DEV_CAP_RSVD_31_29;
     else begin
-      $display("Attribute Syntax Error : The Attribute DEV_CAP_RSVD_31_29 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", DEV_CAP_RSVD_31_29);
+      $display(
+          "Attribute Syntax Error : The Attribute DEV_CAP_RSVD_31_29 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          DEV_CAP_RSVD_31_29);
       #1 $finish;
     end
 
     if ((LINK_CAP_ASPM_SUPPORT >= 0) && (LINK_CAP_ASPM_SUPPORT <= 3))
       LINK_CAP_ASPM_SUPPORT_BINARY = LINK_CAP_ASPM_SUPPORT;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_ASPM_SUPPORT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", LINK_CAP_ASPM_SUPPORT);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_ASPM_SUPPORT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          LINK_CAP_ASPM_SUPPORT);
       #1 $finish;
     end
 
     if ((LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1 >= 0) && (LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1 <= 7))
       LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1_BINARY = LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1);
       #1 $finish;
     end
 
     if ((LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2 >= 0) && (LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2 <= 7))
       LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2_BINARY = LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2);
       #1 $finish;
     end
 
     if ((LINK_CAP_L0S_EXIT_LATENCY_GEN1 >= 0) && (LINK_CAP_L0S_EXIT_LATENCY_GEN1 <= 7))
       LINK_CAP_L0S_EXIT_LATENCY_GEN1_BINARY = LINK_CAP_L0S_EXIT_LATENCY_GEN1;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L0S_EXIT_LATENCY_GEN1);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L0S_EXIT_LATENCY_GEN1);
       #1 $finish;
     end
 
     if ((LINK_CAP_L0S_EXIT_LATENCY_GEN2 >= 0) && (LINK_CAP_L0S_EXIT_LATENCY_GEN2 <= 7))
       LINK_CAP_L0S_EXIT_LATENCY_GEN2_BINARY = LINK_CAP_L0S_EXIT_LATENCY_GEN2;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L0S_EXIT_LATENCY_GEN2);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L0S_EXIT_LATENCY_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L0S_EXIT_LATENCY_GEN2);
       #1 $finish;
     end
 
     if ((LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1 >= 0) && (LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1 <= 7))
       LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1_BINARY = LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1);
       #1 $finish;
     end
 
     if ((LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2 >= 0) && (LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2 <= 7))
       LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2_BINARY = LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2);
       #1 $finish;
     end
 
     if ((LINK_CAP_L1_EXIT_LATENCY_GEN1 >= 0) && (LINK_CAP_L1_EXIT_LATENCY_GEN1 <= 7))
       LINK_CAP_L1_EXIT_LATENCY_GEN1_BINARY = LINK_CAP_L1_EXIT_LATENCY_GEN1;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L1_EXIT_LATENCY_GEN1);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L1_EXIT_LATENCY_GEN1);
       #1 $finish;
     end
 
     if ((LINK_CAP_L1_EXIT_LATENCY_GEN2 >= 0) && (LINK_CAP_L1_EXIT_LATENCY_GEN2 <= 7))
       LINK_CAP_L1_EXIT_LATENCY_GEN2_BINARY = LINK_CAP_L1_EXIT_LATENCY_GEN2;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", LINK_CAP_L1_EXIT_LATENCY_GEN2);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_L1_EXIT_LATENCY_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          LINK_CAP_L1_EXIT_LATENCY_GEN2);
       #1 $finish;
     end
 
     if ((LINK_CAP_RSVD_23 >= 0) && (LINK_CAP_RSVD_23 <= 1))
       LINK_CAP_RSVD_23_BINARY = LINK_CAP_RSVD_23;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CAP_RSVD_23 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", LINK_CAP_RSVD_23);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CAP_RSVD_23 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          LINK_CAP_RSVD_23);
       #1 $finish;
     end
 
     if ((LINK_CONTROL_RCB >= 0) && (LINK_CONTROL_RCB <= 1))
       LINK_CONTROL_RCB_BINARY = LINK_CONTROL_RCB;
     else begin
-      $display("Attribute Syntax Error : The Attribute LINK_CONTROL_RCB on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", LINK_CONTROL_RCB);
+      $display(
+          "Attribute Syntax Error : The Attribute LINK_CONTROL_RCB on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          LINK_CONTROL_RCB);
       #1 $finish;
     end
 
     if ((LL_ACK_TIMEOUT_FUNC >= 0) && (LL_ACK_TIMEOUT_FUNC <= 3))
       LL_ACK_TIMEOUT_FUNC_BINARY = LL_ACK_TIMEOUT_FUNC;
     else begin
-      $display("Attribute Syntax Error : The Attribute LL_ACK_TIMEOUT_FUNC on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", LL_ACK_TIMEOUT_FUNC);
+      $display(
+          "Attribute Syntax Error : The Attribute LL_ACK_TIMEOUT_FUNC on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          LL_ACK_TIMEOUT_FUNC);
       #1 $finish;
     end
 
     if ((LL_REPLAY_TIMEOUT_FUNC >= 0) && (LL_REPLAY_TIMEOUT_FUNC <= 3))
       LL_REPLAY_TIMEOUT_FUNC_BINARY = LL_REPLAY_TIMEOUT_FUNC;
     else begin
-      $display("Attribute Syntax Error : The Attribute LL_REPLAY_TIMEOUT_FUNC on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", LL_REPLAY_TIMEOUT_FUNC);
+      $display(
+          "Attribute Syntax Error : The Attribute LL_REPLAY_TIMEOUT_FUNC on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          LL_REPLAY_TIMEOUT_FUNC);
       #1 $finish;
     end
 
     if ((MSIX_CAP_PBA_BIR >= 0) && (MSIX_CAP_PBA_BIR <= 7))
       MSIX_CAP_PBA_BIR_BINARY = MSIX_CAP_PBA_BIR;
     else begin
-      $display("Attribute Syntax Error : The Attribute MSIX_CAP_PBA_BIR on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", MSIX_CAP_PBA_BIR);
+      $display(
+          "Attribute Syntax Error : The Attribute MSIX_CAP_PBA_BIR on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          MSIX_CAP_PBA_BIR);
       #1 $finish;
     end
 
     if ((MSIX_CAP_TABLE_BIR >= 0) && (MSIX_CAP_TABLE_BIR <= 7))
       MSIX_CAP_TABLE_BIR_BINARY = MSIX_CAP_TABLE_BIR;
     else begin
-      $display("Attribute Syntax Error : The Attribute MSIX_CAP_TABLE_BIR on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", MSIX_CAP_TABLE_BIR);
+      $display(
+          "Attribute Syntax Error : The Attribute MSIX_CAP_TABLE_BIR on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          MSIX_CAP_TABLE_BIR);
       #1 $finish;
     end
 
     if ((MSI_CAP_MULTIMSGCAP >= 0) && (MSI_CAP_MULTIMSGCAP <= 7))
       MSI_CAP_MULTIMSGCAP_BINARY = MSI_CAP_MULTIMSGCAP;
     else begin
-      $display("Attribute Syntax Error : The Attribute MSI_CAP_MULTIMSGCAP on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", MSI_CAP_MULTIMSGCAP);
+      $display(
+          "Attribute Syntax Error : The Attribute MSI_CAP_MULTIMSGCAP on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          MSI_CAP_MULTIMSGCAP);
       #1 $finish;
     end
 
     if ((MSI_CAP_MULTIMSG_EXTENSION >= 0) && (MSI_CAP_MULTIMSG_EXTENSION <= 1))
       MSI_CAP_MULTIMSG_EXTENSION_BINARY = MSI_CAP_MULTIMSG_EXTENSION;
     else begin
-      $display("Attribute Syntax Error : The Attribute MSI_CAP_MULTIMSG_EXTENSION on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", MSI_CAP_MULTIMSG_EXTENSION);
+      $display(
+          "Attribute Syntax Error : The Attribute MSI_CAP_MULTIMSG_EXTENSION on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          MSI_CAP_MULTIMSG_EXTENSION);
       #1 $finish;
     end
 
     if ((N_FTS_COMCLK_GEN1 >= 0) && (N_FTS_COMCLK_GEN1 <= 255))
       N_FTS_COMCLK_GEN1_BINARY = N_FTS_COMCLK_GEN1;
     else begin
-      $display("Attribute Syntax Error : The Attribute N_FTS_COMCLK_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.", N_FTS_COMCLK_GEN1);
+      $display(
+          "Attribute Syntax Error : The Attribute N_FTS_COMCLK_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          N_FTS_COMCLK_GEN1);
       #1 $finish;
     end
 
     if ((N_FTS_COMCLK_GEN2 >= 0) && (N_FTS_COMCLK_GEN2 <= 255))
       N_FTS_COMCLK_GEN2_BINARY = N_FTS_COMCLK_GEN2;
     else begin
-      $display("Attribute Syntax Error : The Attribute N_FTS_COMCLK_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.", N_FTS_COMCLK_GEN2);
+      $display(
+          "Attribute Syntax Error : The Attribute N_FTS_COMCLK_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          N_FTS_COMCLK_GEN2);
       #1 $finish;
     end
 
     if ((N_FTS_GEN1 >= 0) && (N_FTS_GEN1 <= 255)) N_FTS_GEN1_BINARY = N_FTS_GEN1;
     else begin
-      $display("Attribute Syntax Error : The Attribute N_FTS_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.", N_FTS_GEN1);
+      $display(
+          "Attribute Syntax Error : The Attribute N_FTS_GEN1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          N_FTS_GEN1);
       #1 $finish;
     end
 
     if ((N_FTS_GEN2 >= 0) && (N_FTS_GEN2 <= 255)) N_FTS_GEN2_BINARY = N_FTS_GEN2;
     else begin
-      $display("Attribute Syntax Error : The Attribute N_FTS_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.", N_FTS_GEN2);
+      $display(
+          "Attribute Syntax Error : The Attribute N_FTS_GEN2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          N_FTS_GEN2);
       #1 $finish;
     end
 
     if ((PCIE_CAP_RSVD_15_14 >= 0) && (PCIE_CAP_RSVD_15_14 <= 3))
       PCIE_CAP_RSVD_15_14_BINARY = PCIE_CAP_RSVD_15_14;
     else begin
-      $display("Attribute Syntax Error : The Attribute PCIE_CAP_RSVD_15_14 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", PCIE_CAP_RSVD_15_14);
+      $display(
+          "Attribute Syntax Error : The Attribute PCIE_CAP_RSVD_15_14 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          PCIE_CAP_RSVD_15_14);
       #1 $finish;
     end
 
     if ((PCIE_REVISION >= 0) && (PCIE_REVISION <= 15)) PCIE_REVISION_BINARY = PCIE_REVISION;
     else begin
-      $display("Attribute Syntax Error : The Attribute PCIE_REVISION on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 15.", PCIE_REVISION);
+      $display(
+          "Attribute Syntax Error : The Attribute PCIE_REVISION on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 15.",
+          PCIE_REVISION);
       #1 $finish;
     end
 
     if ((PL_AUTO_CONFIG >= 0) && (PL_AUTO_CONFIG <= 7)) PL_AUTO_CONFIG_BINARY = PL_AUTO_CONFIG;
     else begin
-      $display("Attribute Syntax Error : The Attribute PL_AUTO_CONFIG on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", PL_AUTO_CONFIG);
+      $display(
+          "Attribute Syntax Error : The Attribute PL_AUTO_CONFIG on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          PL_AUTO_CONFIG);
       #1 $finish;
     end
 
     if ((PM_ASPML0S_TIMEOUT_FUNC >= 0) && (PM_ASPML0S_TIMEOUT_FUNC <= 3))
       PM_ASPML0S_TIMEOUT_FUNC_BINARY = PM_ASPML0S_TIMEOUT_FUNC;
     else begin
-      $display("Attribute Syntax Error : The Attribute PM_ASPML0S_TIMEOUT_FUNC on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", PM_ASPML0S_TIMEOUT_FUNC);
+      $display(
+          "Attribute Syntax Error : The Attribute PM_ASPML0S_TIMEOUT_FUNC on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          PM_ASPML0S_TIMEOUT_FUNC);
       #1 $finish;
     end
 
     if ((PM_CAP_AUXCURRENT >= 0) && (PM_CAP_AUXCURRENT <= 7))
       PM_CAP_AUXCURRENT_BINARY = PM_CAP_AUXCURRENT;
     else begin
-      $display("Attribute Syntax Error : The Attribute PM_CAP_AUXCURRENT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", PM_CAP_AUXCURRENT);
+      $display(
+          "Attribute Syntax Error : The Attribute PM_CAP_AUXCURRENT on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          PM_CAP_AUXCURRENT);
       #1 $finish;
     end
 
     if ((PM_CAP_RSVD_04 >= 0) && (PM_CAP_RSVD_04 <= 1)) PM_CAP_RSVD_04_BINARY = PM_CAP_RSVD_04;
     else begin
-      $display("Attribute Syntax Error : The Attribute PM_CAP_RSVD_04 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", PM_CAP_RSVD_04);
+      $display(
+          "Attribute Syntax Error : The Attribute PM_CAP_RSVD_04 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          PM_CAP_RSVD_04);
       #1 $finish;
     end
 
     if ((PM_CAP_VERSION >= 0) && (PM_CAP_VERSION <= 7)) PM_CAP_VERSION_BINARY = PM_CAP_VERSION;
     else begin
-      $display("Attribute Syntax Error : The Attribute PM_CAP_VERSION on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", PM_CAP_VERSION);
+      $display(
+          "Attribute Syntax Error : The Attribute PM_CAP_VERSION on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          PM_CAP_VERSION);
       #1 $finish;
     end
 
     if ((RECRC_CHK >= 0) && (RECRC_CHK <= 3)) RECRC_CHK_BINARY = RECRC_CHK;
     else begin
-      $display("Attribute Syntax Error : The Attribute RECRC_CHK on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", RECRC_CHK);
+      $display(
+          "Attribute Syntax Error : The Attribute RECRC_CHK on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          RECRC_CHK);
       #1 $finish;
     end
 
     if ((SLOT_CAP_SLOT_POWER_LIMIT_SCALE >= 0) && (SLOT_CAP_SLOT_POWER_LIMIT_SCALE <= 3))
       SLOT_CAP_SLOT_POWER_LIMIT_SCALE_BINARY = SLOT_CAP_SLOT_POWER_LIMIT_SCALE;
     else begin
-      $display("Attribute Syntax Error : The Attribute SLOT_CAP_SLOT_POWER_LIMIT_SCALE on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", SLOT_CAP_SLOT_POWER_LIMIT_SCALE);
+      $display(
+          "Attribute Syntax Error : The Attribute SLOT_CAP_SLOT_POWER_LIMIT_SCALE on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          SLOT_CAP_SLOT_POWER_LIMIT_SCALE);
       #1 $finish;
     end
 
     if ((SPARE_BIT0 >= 0) && (SPARE_BIT0 <= 1)) SPARE_BIT0_BINARY = SPARE_BIT0;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT0 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT0);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT0 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT0);
       #1 $finish;
     end
 
     if ((SPARE_BIT1 >= 0) && (SPARE_BIT1 <= 1)) SPARE_BIT1_BINARY = SPARE_BIT1;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT1);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT1 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT1);
       #1 $finish;
     end
 
     if ((SPARE_BIT2 >= 0) && (SPARE_BIT2 <= 1)) SPARE_BIT2_BINARY = SPARE_BIT2;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT2);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT2 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT2);
       #1 $finish;
     end
 
     if ((SPARE_BIT3 >= 0) && (SPARE_BIT3 <= 1)) SPARE_BIT3_BINARY = SPARE_BIT3;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT3 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT3);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT3 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT3);
       #1 $finish;
     end
 
     if ((SPARE_BIT4 >= 0) && (SPARE_BIT4 <= 1)) SPARE_BIT4_BINARY = SPARE_BIT4;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT4 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT4);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT4 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT4);
       #1 $finish;
     end
 
     if ((SPARE_BIT5 >= 0) && (SPARE_BIT5 <= 1)) SPARE_BIT5_BINARY = SPARE_BIT5;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT5 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT5);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT5 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT5);
       #1 $finish;
     end
 
     if ((SPARE_BIT6 >= 0) && (SPARE_BIT6 <= 1)) SPARE_BIT6_BINARY = SPARE_BIT6;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT6 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT6);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT6 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT6);
       #1 $finish;
     end
 
     if ((SPARE_BIT7 >= 0) && (SPARE_BIT7 <= 1)) SPARE_BIT7_BINARY = SPARE_BIT7;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT7 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT7);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT7 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT7);
       #1 $finish;
     end
 
     if ((SPARE_BIT8 >= 0) && (SPARE_BIT8 <= 1)) SPARE_BIT8_BINARY = SPARE_BIT8;
     else begin
-      $display("Attribute Syntax Error : The Attribute SPARE_BIT8 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", SPARE_BIT8);
+      $display(
+          "Attribute Syntax Error : The Attribute SPARE_BIT8 on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          SPARE_BIT8);
       #1 $finish;
     end
 
     if ((TL_RX_RAM_RADDR_LATENCY >= 0) && (TL_RX_RAM_RADDR_LATENCY <= 1))
       TL_RX_RAM_RADDR_LATENCY_BINARY = TL_RX_RAM_RADDR_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TL_RX_RAM_RADDR_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", TL_RX_RAM_RADDR_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute TL_RX_RAM_RADDR_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          TL_RX_RAM_RADDR_LATENCY);
       #1 $finish;
     end
 
     if ((TL_RX_RAM_RDATA_LATENCY >= 0) && (TL_RX_RAM_RDATA_LATENCY <= 3))
       TL_RX_RAM_RDATA_LATENCY_BINARY = TL_RX_RAM_RDATA_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TL_RX_RAM_RDATA_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", TL_RX_RAM_RDATA_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute TL_RX_RAM_RDATA_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          TL_RX_RAM_RDATA_LATENCY);
       #1 $finish;
     end
 
     if ((TL_RX_RAM_WRITE_LATENCY >= 0) && (TL_RX_RAM_WRITE_LATENCY <= 1))
       TL_RX_RAM_WRITE_LATENCY_BINARY = TL_RX_RAM_WRITE_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TL_RX_RAM_WRITE_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", TL_RX_RAM_WRITE_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute TL_RX_RAM_WRITE_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          TL_RX_RAM_WRITE_LATENCY);
       #1 $finish;
     end
 
     if ((TL_TX_RAM_RADDR_LATENCY >= 0) && (TL_TX_RAM_RADDR_LATENCY <= 1))
       TL_TX_RAM_RADDR_LATENCY_BINARY = TL_TX_RAM_RADDR_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TL_TX_RAM_RADDR_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", TL_TX_RAM_RADDR_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute TL_TX_RAM_RADDR_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          TL_TX_RAM_RADDR_LATENCY);
       #1 $finish;
     end
 
     if ((TL_TX_RAM_RDATA_LATENCY >= 0) && (TL_TX_RAM_RDATA_LATENCY <= 3))
       TL_TX_RAM_RDATA_LATENCY_BINARY = TL_TX_RAM_RDATA_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TL_TX_RAM_RDATA_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.", TL_TX_RAM_RDATA_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute TL_TX_RAM_RDATA_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 3.",
+          TL_TX_RAM_RDATA_LATENCY);
       #1 $finish;
     end
 
     if ((TL_TX_RAM_WRITE_LATENCY >= 0) && (TL_TX_RAM_WRITE_LATENCY <= 1))
       TL_TX_RAM_WRITE_LATENCY_BINARY = TL_TX_RAM_WRITE_LATENCY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TL_TX_RAM_WRITE_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.", TL_TX_RAM_WRITE_LATENCY);
+      $display(
+          "Attribute Syntax Error : The Attribute TL_TX_RAM_WRITE_LATENCY on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          TL_TX_RAM_WRITE_LATENCY);
       #1 $finish;
     end
 
     if ((USER_CLK_FREQ >= 0) && (USER_CLK_FREQ <= 7)) USER_CLK_FREQ_BINARY = USER_CLK_FREQ;
     else begin
-      $display("Attribute Syntax Error : The Attribute USER_CLK_FREQ on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.", USER_CLK_FREQ);
+      $display(
+          "Attribute Syntax Error : The Attribute USER_CLK_FREQ on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 7.",
+          USER_CLK_FREQ);
       #1 $finish;
     end
 
     if ((VC0_TOTAL_CREDITS_CD >= 0) && (VC0_TOTAL_CREDITS_CD <= 2047))
       VC0_TOTAL_CREDITS_CD_BINARY = VC0_TOTAL_CREDITS_CD;
     else begin
-      $display("Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_CD on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 2047.", VC0_TOTAL_CREDITS_CD);
+      $display(
+          "Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_CD on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 2047.",
+          VC0_TOTAL_CREDITS_CD);
       #1 $finish;
     end
 
     if ((VC0_TOTAL_CREDITS_CH >= 0) && (VC0_TOTAL_CREDITS_CH <= 127))
       VC0_TOTAL_CREDITS_CH_BINARY = VC0_TOTAL_CREDITS_CH;
     else begin
-      $display("Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_CH on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 127.", VC0_TOTAL_CREDITS_CH);
+      $display(
+          "Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_CH on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 127.",
+          VC0_TOTAL_CREDITS_CH);
       #1 $finish;
     end
 
     if ((VC0_TOTAL_CREDITS_NPD >= 0) && (VC0_TOTAL_CREDITS_NPD <= 2047))
       VC0_TOTAL_CREDITS_NPD_BINARY = VC0_TOTAL_CREDITS_NPD;
     else begin
-      $display("Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_NPD on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 2047.", VC0_TOTAL_CREDITS_NPD);
+      $display(
+          "Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_NPD on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 2047.",
+          VC0_TOTAL_CREDITS_NPD);
       #1 $finish;
     end
 
     if ((VC0_TOTAL_CREDITS_NPH >= 0) && (VC0_TOTAL_CREDITS_NPH <= 127))
       VC0_TOTAL_CREDITS_NPH_BINARY = VC0_TOTAL_CREDITS_NPH;
     else begin
-      $display("Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_NPH on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 127.", VC0_TOTAL_CREDITS_NPH);
+      $display(
+          "Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_NPH on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 127.",
+          VC0_TOTAL_CREDITS_NPH);
       #1 $finish;
     end
 
     if ((VC0_TOTAL_CREDITS_PD >= 0) && (VC0_TOTAL_CREDITS_PD <= 2047))
       VC0_TOTAL_CREDITS_PD_BINARY = VC0_TOTAL_CREDITS_PD;
     else begin
-      $display("Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_PD on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 2047.", VC0_TOTAL_CREDITS_PD);
+      $display(
+          "Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_PD on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 2047.",
+          VC0_TOTAL_CREDITS_PD);
       #1 $finish;
     end
 
     if ((VC0_TOTAL_CREDITS_PH >= 0) && (VC0_TOTAL_CREDITS_PH <= 127))
       VC0_TOTAL_CREDITS_PH_BINARY = VC0_TOTAL_CREDITS_PH;
     else begin
-      $display("Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_PH on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 127.", VC0_TOTAL_CREDITS_PH);
+      $display(
+          "Attribute Syntax Error : The Attribute VC0_TOTAL_CREDITS_PH on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 127.",
+          VC0_TOTAL_CREDITS_PH);
       #1 $finish;
     end
 
     if ((VC0_TX_LASTPACKET >= 0) && (VC0_TX_LASTPACKET <= 31))
       VC0_TX_LASTPACKET_BINARY = VC0_TX_LASTPACKET;
     else begin
-      $display("Attribute Syntax Error : The Attribute VC0_TX_LASTPACKET on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 31.", VC0_TX_LASTPACKET);
+      $display(
+          "Attribute Syntax Error : The Attribute VC0_TX_LASTPACKET on X_PCIE_2_1 instance %m is set to %d.  Legal values for this attribute are  0 to 31.",
+          VC0_TX_LASTPACKET);
       #1 $finish;
     end
 
@@ -3114,11 +3444,9 @@ module PCIE_2_1 (
 
     //After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
     case (sfsm)
-      FSM_IDLE:   
-            begin
-               if(delay_DRPEN == 1'b1)
-		 sfsm <= FSM_WAIT;  
-            end
+      FSM_IDLE: begin
+        if (delay_DRPEN == 1'b1) sfsm <= FSM_WAIT;
+      end
 
       FSM_WAIT: begin
         // After the 1st DRPEN, 4 cases can happen

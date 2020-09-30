@@ -762,27 +762,37 @@ module DSP48E2 #(
         ((ACASCREG_REG != 1) &&
          (ACASCREG_REG != 0) &&
          (ACASCREG_REG != 2))) begin
-      $display("Error: [Unisim %s-101] ACASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, ACASCREG_REG);
+      $display(
+          "Error: [Unisim %s-101] ACASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, ACASCREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((ADREG_REG != 1) && (ADREG_REG != 0))) begin
-      $display("Error: [Unisim %s-102] ADREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, ADREG_REG);
+      $display(
+          "Error: [Unisim %s-102] ADREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, ADREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((ALUMODEREG_REG != 1) && (ALUMODEREG_REG != 0))) begin
-      $display("Error: [Unisim %s-103] ALUMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, ALUMODEREG_REG);
+      $display(
+          "Error: [Unisim %s-103] ALUMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, ALUMODEREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((AMULTSEL_REG != "A") && (AMULTSEL_REG != "AD"))) begin
-      $display("Error: [Unisim %s-104] AMULTSEL attribute is set to %s.  Legal values for this attribute are A or AD. Instance: %m", MODULE_NAME, AMULTSEL_REG);
+      $display(
+          "Error: [Unisim %s-104] AMULTSEL attribute is set to %s.  Legal values for this attribute are A or AD. Instance: %m",
+          MODULE_NAME, AMULTSEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((AREG_REG != 1) && (AREG_REG != 0) && (AREG_REG != 2))) begin
-      $display("Error: [Unisim %s-105] AREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, AREG_REG);
+      $display(
+          "Error: [Unisim %s-105] AREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, AREG_REG);
       attr_err = 1'b1;
     end
 
@@ -790,19 +800,25 @@ module DSP48E2 #(
         ((AUTORESET_PATDET_REG != "NO_RESET") &&
          (AUTORESET_PATDET_REG != "RESET_MATCH") &&
          (AUTORESET_PATDET_REG != "RESET_NOT_MATCH"))) begin
-      $display("Error: [Unisim %s-106] AUTORESET_PATDET attribute is set to %s.  Legal values for this attribute are NO_RESET, RESET_MATCH or RESET_NOT_MATCH. Instance: %m", MODULE_NAME, AUTORESET_PATDET_REG);
+      $display(
+          "Error: [Unisim %s-106] AUTORESET_PATDET attribute is set to %s.  Legal values for this attribute are NO_RESET, RESET_MATCH or RESET_NOT_MATCH. Instance: %m",
+          MODULE_NAME, AUTORESET_PATDET_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((AUTORESET_PRIORITY_REG != "RESET") &&
          (AUTORESET_PRIORITY_REG != "CEP"))) begin
-      $display("Error: [Unisim %s-107] AUTORESET_PRIORITY attribute is set to %s.  Legal values for this attribute are RESET or CEP. Instance: %m", MODULE_NAME, AUTORESET_PRIORITY_REG);
+      $display(
+          "Error: [Unisim %s-107] AUTORESET_PRIORITY attribute is set to %s.  Legal values for this attribute are RESET or CEP. Instance: %m",
+          MODULE_NAME, AUTORESET_PRIORITY_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((A_INPUT_REG != "DIRECT") && (A_INPUT_REG != "CASCADE"))) begin
-      $display("Error: [Unisim %s-108] A_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m", MODULE_NAME, A_INPUT_REG);
+      $display(
+          "Error: [Unisim %s-108] A_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m",
+          MODULE_NAME, A_INPUT_REG);
       attr_err = 1'b1;
     end
 
@@ -810,67 +826,93 @@ module DSP48E2 #(
         ((BCASCREG_REG != 1) &&
          (BCASCREG_REG != 0) &&
          (BCASCREG_REG != 2))) begin
-      $display("Error: [Unisim %s-109] BCASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, BCASCREG_REG);
+      $display(
+          "Error: [Unisim %s-109] BCASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, BCASCREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((BMULTSEL_REG != "B") && (BMULTSEL_REG != "AD"))) begin
-      $display("Error: [Unisim %s-110] BMULTSEL attribute is set to %s.  Legal values for this attribute are B or AD. Instance: %m", MODULE_NAME, BMULTSEL_REG);
+      $display(
+          "Error: [Unisim %s-110] BMULTSEL attribute is set to %s.  Legal values for this attribute are B or AD. Instance: %m",
+          MODULE_NAME, BMULTSEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((BREG_REG != 1) && (BREG_REG != 0) && (BREG_REG != 2))) begin
-      $display("Error: [Unisim %s-111] BREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, BREG_REG);
+      $display(
+          "Error: [Unisim %s-111] BREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, BREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((B_INPUT_REG != "DIRECT") && (B_INPUT_REG != "CASCADE"))) begin
-      $display("Error: [Unisim %s-112] B_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m", MODULE_NAME, B_INPUT_REG);
+      $display(
+          "Error: [Unisim %s-112] B_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m",
+          MODULE_NAME, B_INPUT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CARRYINREG_REG != 1) && (CARRYINREG_REG != 0))) begin
-      $display("Error: [Unisim %s-113] CARRYINREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, CARRYINREG_REG);
+      $display(
+          "Error: [Unisim %s-113] CARRYINREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, CARRYINREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CARRYINSELREG_REG != 1) && (CARRYINSELREG_REG != 0))) begin
-      $display("Error: [Unisim %s-114] CARRYINSELREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, CARRYINSELREG_REG);
+      $display(
+          "Error: [Unisim %s-114] CARRYINSELREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, CARRYINSELREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CREG_REG != 1) && (CREG_REG != 0))) begin
-      $display("Error: [Unisim %s-115] CREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, CREG_REG);
+      $display(
+          "Error: [Unisim %s-115] CREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, CREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DREG_REG != 1) && (DREG_REG != 0))) begin
-      $display("Error: [Unisim %s-116] DREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, DREG_REG);
+      $display(
+          "Error: [Unisim %s-116] DREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, DREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((INMODEREG_REG != 1) && (INMODEREG_REG != 0))) begin
-      $display("Error: [Unisim %s-117] INMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, INMODEREG_REG);
+      $display(
+          "Error: [Unisim %s-117] INMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, INMODEREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MREG_REG != 1) && (MREG_REG != 0))) begin
-      $display("Error: [Unisim %s-134] MREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, MREG_REG);
+      $display(
+          "Error: [Unisim %s-134] MREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, MREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((OPMODEREG_REG != 1) && (OPMODEREG_REG != 0))) begin
-      $display("Error: [Unisim %s-135] OPMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, OPMODEREG_REG);
+      $display(
+          "Error: [Unisim %s-135] OPMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, OPMODEREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((PREADDINSEL_REG != "A") && (PREADDINSEL_REG != "B"))) begin
-      $display("Error: [Unisim %s-137] PREADDINSEL attribute is set to %s.  Legal values for this attribute are A or B. Instance: %m", MODULE_NAME, PREADDINSEL_REG);
+      $display(
+          "Error: [Unisim %s-137] PREADDINSEL attribute is set to %s.  Legal values for this attribute are A or B. Instance: %m",
+          MODULE_NAME, PREADDINSEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((PREG_REG != 1) && (PREG_REG != 0))) begin
-      $display("Error: [Unisim %s-138] PREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, PREG_REG);
+      $display(
+          "Error: [Unisim %s-138] PREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, PREG_REG);
       attr_err = 1'b1;
     end
 
@@ -879,12 +921,16 @@ module DSP48E2 #(
          (SEL_MASK_REG != "C") &&
          (SEL_MASK_REG != "ROUNDING_MODE1") &&
          (SEL_MASK_REG != "ROUNDING_MODE2"))) begin
-      $display("Error: [Unisim %s-140] SEL_MASK attribute is set to %s.  Legal values for this attribute are MASK, C, ROUNDING_MODE1 or ROUNDING_MODE2. Instance: %m", MODULE_NAME, SEL_MASK_REG);
+      $display(
+          "Error: [Unisim %s-140] SEL_MASK attribute is set to %s.  Legal values for this attribute are MASK, C, ROUNDING_MODE1 or ROUNDING_MODE2. Instance: %m",
+          MODULE_NAME, SEL_MASK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SEL_PATTERN_REG != "PATTERN") && (SEL_PATTERN_REG != "C"))) begin
-      $display("Error: [Unisim %s-141] SEL_PATTERN attribute is set to %s.  Legal values for this attribute are PATTERN or C. Instance: %m", MODULE_NAME, SEL_PATTERN_REG);
+      $display(
+          "Error: [Unisim %s-141] SEL_PATTERN attribute is set to %s.  Legal values for this attribute are PATTERN or C. Instance: %m",
+          MODULE_NAME, SEL_PATTERN_REG);
       attr_err = 1'b1;
     end
 
@@ -892,14 +938,18 @@ module DSP48E2 #(
         ((USE_MULT_REG != "MULTIPLY") &&
          (USE_MULT_REG != "DYNAMIC") &&
          (USE_MULT_REG != "NONE"))) begin
-      $display("Error: [Unisim %s-142] USE_MULT attribute is set to %s.  Legal values for this attribute are MULTIPLY, DYNAMIC or NONE. Instance: %m", MODULE_NAME, USE_MULT_REG);
+      $display(
+          "Error: [Unisim %s-142] USE_MULT attribute is set to %s.  Legal values for this attribute are MULTIPLY, DYNAMIC or NONE. Instance: %m",
+          MODULE_NAME, USE_MULT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((USE_PATTERN_DETECT_REG != "NO_PATDET") &&
          (USE_PATTERN_DETECT_REG != "PATDET"))) begin
-      $display("Error: [Unisim %s-143] USE_PATTERN_DETECT attribute is set to %s.  Legal values for this attribute are NO_PATDET or PATDET. Instance: %m", MODULE_NAME, USE_PATTERN_DETECT_REG);
+      $display(
+          "Error: [Unisim %s-143] USE_PATTERN_DETECT attribute is set to %s.  Legal values for this attribute are NO_PATDET or PATDET. Instance: %m",
+          MODULE_NAME, USE_PATTERN_DETECT_REG);
       attr_err = 1'b1;
     end
 
@@ -907,17 +957,23 @@ module DSP48E2 #(
         ((USE_SIMD_REG != "ONE48") &&
          (USE_SIMD_REG != "FOUR12") &&
          (USE_SIMD_REG != "TWO24"))) begin
-      $display("Error: [Unisim %s-144] USE_SIMD attribute is set to %s.  Legal values for this attribute are ONE48, FOUR12 or TWO24. Instance: %m", MODULE_NAME, USE_SIMD_REG);
+      $display(
+          "Error: [Unisim %s-144] USE_SIMD attribute is set to %s.  Legal values for this attribute are ONE48, FOUR12 or TWO24. Instance: %m",
+          MODULE_NAME, USE_SIMD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((USE_WIDEXOR_REG != "FALSE") && (USE_WIDEXOR_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-145] USE_WIDEXOR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, USE_WIDEXOR_REG);
+      $display(
+          "Error: [Unisim %s-145] USE_WIDEXOR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, USE_WIDEXOR_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((XORSIMD_REG != "XOR24_48_96") && (XORSIMD_REG != "XOR12"))) begin
-      $display("Error: [Unisim %s-146] XORSIMD attribute is set to %s.  Legal values for this attribute are XOR24_48_96 or XOR12. Instance: %m", MODULE_NAME, XORSIMD_REG);
+      $display(
+          "Error: [Unisim %s-146] XORSIMD attribute is set to %s.  Legal values for this attribute are XOR24_48_96 or XOR12. Instance: %m",
+          MODULE_NAME, XORSIMD_REG);
       attr_err = 1'b1;
     end
 
@@ -932,12 +988,16 @@ module DSP48E2 #(
     case (AREG_REG)
       0, 1:
       if (AREG_REG != ACASCREG_REG) begin
-        $display("Error: [Unisim %s-2] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 0 or 1, ACASCREG must be set to the same value. Instance: %m", MODULE_NAME, AREG_REG, ACASCREG_REG);
+        $display(
+            "Error: [Unisim %s-2] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 0 or 1, ACASCREG must be set to the same value. Instance: %m",
+            MODULE_NAME, AREG_REG, ACASCREG_REG);
         attr_err = 1'b1;
       end
       2:
       if (ACASCREG_REG == 0) begin
-        $display("Error: [Unisim %s-3] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 2, ACASCREG must be set to 1 or 2. Instance: %m", MODULE_NAME, AREG_REG, ACASCREG_REG);
+        $display(
+            "Error: [Unisim %s-3] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 2, ACASCREG must be set to 1 or 2. Instance: %m",
+            MODULE_NAME, AREG_REG, ACASCREG_REG);
         attr_err = 1'b1;
       end
     endcase
@@ -945,12 +1005,16 @@ module DSP48E2 #(
     case (BREG_REG)
       0, 1:
       if (BREG_REG != BCASCREG_REG) begin
-        $display("Error: [Unisim %s-4] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 0 or 1, BCASCREG must be set to the same value. Instance: %m", MODULE_NAME, BREG_REG, BCASCREG_REG);
+        $display(
+            "Error: [Unisim %s-4] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 0 or 1, BCASCREG must be set to the same value. Instance: %m",
+            MODULE_NAME, BREG_REG, BCASCREG_REG);
         attr_err = 1'b1;
       end
       2:
       if (BCASCREG_REG == 0) begin
-        $display("Error: [Unisim %s-5] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 2, BCASCREG must be set to 1 or 2. Instance: %m", MODULE_NAME, BREG_REG, BCASCREG_REG);
+        $display(
+            "Error: [Unisim %s-5] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 2, BCASCREG must be set to 1 or 2. Instance: %m",
+            MODULE_NAME, BREG_REG, BCASCREG_REG);
         attr_err = 1'b1;
       end
     endcase
@@ -961,7 +1025,9 @@ module DSP48E2 #(
   always @(trig_attr) begin
     #1;
     if ((USE_MULT_REG == "NONE") && (MREG_REG !== 0)) begin
-      $display("Error : [Unisim %s-6] : Attribute USE_MULT is set to \"NONE\" and MREG is set to %d. MREG must be set to 0 when the multiplier is not used. Instance %m", MODULE_NAME, MREG_REG);
+      $display(
+          "Error : [Unisim %s-6] : Attribute USE_MULT is set to \"NONE\" and MREG is set to %d. MREG must be set to 0 when the multiplier is not used. Instance %m",
+          MODULE_NAME, MREG_REG);
       attr_err = 1'b1;
     end
 
@@ -1194,10 +1260,10 @@ module DSP48E2 #(
   //*** W mux NB
   always @(OPMODE_mux[8:7] or P_FDBK_in or RND_REG or C_DATA_in)
     case (OPMODE_mux[8:7])
-      2'b00: wmux = 48'b0;
-      2'b01: wmux = P_FDBK_in;
-      2'b10: wmux = RND_REG;
-      2'b11: wmux = C_DATA_in;
+      2'b00:   wmux = 48'b0;
+      2'b01:   wmux = P_FDBK_in;
+      2'b10:   wmux = RND_REG;
+      2'b11:   wmux = C_DATA_in;
       default: wmux = {48{1'bx}};
     endcase
 
@@ -1207,33 +1273,33 @@ module DSP48E2 #(
   //*** X mux NB
   always @(U_DATA_in or P_FDBK_in or A_ALU or B_ALU or OPMODE_mux[1:0] or x_mac_cascd)
     case (OPMODE_mux[1:0])
-      2'b00: xmux = x_mac_cascd;
-      2'b01: xmux = {{3{U_DATA_in[44]}}, U_DATA_in};
-      2'b10: xmux = P_FDBK_in;
-      2'b11: xmux = {A_ALU, B_ALU};
+      2'b00:   xmux = x_mac_cascd;
+      2'b01:   xmux = {{3{U_DATA_in[44]}}, U_DATA_in};
+      2'b10:   xmux = P_FDBK_in;
+      2'b11:   xmux = {A_ALU, B_ALU};
       default: xmux = {48{1'bx}};
     endcase
 
   //*** Y mux NB
   always @(OPMODE_mux[3:2] or V_DATA_in or C_DATA_in)
     case (OPMODE_mux[3:2])
-      2'b00: ymux = 48'b0;
-      2'b01: ymux = {{3{1'b0}}, V_DATA_in};
-      2'b10: ymux = {48{1'b1}};
-      2'b11: ymux = C_DATA_in;
+      2'b00:   ymux = 48'b0;
+      2'b01:   ymux = {{3{1'b0}}, V_DATA_in};
+      2'b10:   ymux = {48{1'b1}};
+      2'b11:   ymux = C_DATA_in;
       default: ymux = {48{1'bx}};
     endcase
 
   //*** Z mux NB
   always @(OPMODE_mux[6:4] or PCIN_in or P_FDBK_in or C_DATA_in or P_FDBK_47_in)
     casex (OPMODE_mux[6:4])
-      3'b000: zmux = 48'b0;
-      3'b001: zmux = PCIN_in;
-      3'b010: zmux = P_FDBK_in;
-      3'b011: zmux = C_DATA_in;
-      3'b100: zmux = P_FDBK_in;
-      3'b101: zmux = {{9{PCIN_in[47]}}, {8{PCIN_in[47]}}, PCIN_in[47:17]};
-      3'b11x: zmux = {{9{P_FDBK_47_in}}, {8{P_FDBK_in[47]}}, P_FDBK_in[47:17]};
+      3'b000:  zmux = 48'b0;
+      3'b001:  zmux = PCIN_in;
+      3'b010:  zmux = P_FDBK_in;
+      3'b011:  zmux = C_DATA_in;
+      3'b100:  zmux = P_FDBK_in;
+      3'b101:  zmux = {{9{PCIN_in[47]}}, {8{PCIN_in[47]}}, PCIN_in[47:17]};
+      3'b11x:  zmux = {{9{P_FDBK_47_in}}, {8{P_FDBK_in[47]}}, P_FDBK_in[47:17]};
       default: zmux = {48{1'bx}};
     endcase
 
@@ -1259,25 +1325,33 @@ module DSP48E2 #(
   always @(*) CARRYINSEL_mux = (CARRYINSELREG_BIN == 1'b1) ? CARRYINSEL_reg : CARRYINSEL_in;
 
   always @(*) begin
-      if (OPMODEREG_BIN == 1'b1) OPMODE_mux = OPMODE_reg;
-      else OPMODE_mux = OPMODE_in;
-    end
+    if (OPMODEREG_BIN == 1'b1) OPMODE_mux = OPMODE_reg;
+    else OPMODE_mux = OPMODE_in;
+  end
 
   always @(CARRYINSEL_mux or CARRYCASCIN_in or MULTSIGNIN_in or OPMODE_mux) begin
     if (CARRYINSEL_mux == 3'b010) begin
       if (!((MULTSIGNIN_in === 1'bx) || (cci_drc_msg == 1'b1) ||
              ((OPMODE_mux == 9'b001001000) && !(MULTSIGNIN_in === 1'bx)) ||
              ((MULTSIGNIN_in == 1'b0) && (CARRYCASCIN_in == 1'b0)))) begin
-        $display("DRC warning : [Unisim %s-7] CARRYCASCIN can only be used in the current %s if the previous %s is performing a two input ADD or SUBRTACT operation or the current %s is configured in the MAC extend opmode 7'b1001000 at %.3f ns. Instance %m\n", MODULE_NAME, MODULE_NAME, MODULE_NAME, MODULE_NAME, $time/1000.0);
+        $display(
+            "DRC warning : [Unisim %s-7] CARRYCASCIN can only be used in the current %s if the previous %s is performing a two input ADD or SUBRTACT operation or the current %s is configured in the MAC extend opmode 7'b1001000 at %.3f ns. Instance %m\n",
+            MODULE_NAME, MODULE_NAME, MODULE_NAME, MODULE_NAME, $time / 1000.0);
         // CR 619940 -- Enhanced DRC warning
-        $display("The simulation model does not know the placement of the %s slices used, so it cannot fully confirm the above warning. It is necessary to view the placement of the %s slices and ensure that these warnings are not being breached\n", MODULE_NAME, MODULE_NAME);
+        $display(
+            "The simulation model does not know the placement of the %s slices used, so it cannot fully confirm the above warning. It is necessary to view the placement of the %s slices and ensure that these warnings are not being breached\n",
+            MODULE_NAME, MODULE_NAME);
         cci_drc_msg = 1'b1;
       end
       if (!((MULTSIGNIN_in === 1'bx) || (OPMODE_mux[3:0] != 4'b0101))) begin
-        $display("DRC warning : [Unisim %s-10] CARRYINSEL is set to 010 with OPMODE set to multiplication (xxx0101). This is an illegal mode and may show deviation between simulation results and hardware behavior. %s instance %m at %.3f ns.", MODULE_NAME, MODULE_NAME, $time/1000.0);
+        $display(
+            "DRC warning : [Unisim %s-10] CARRYINSEL is set to 010 with OPMODE set to multiplication (xxx0101). This is an illegal mode and may show deviation between simulation results and hardware behavior. %s instance %m at %.3f ns.",
+            MODULE_NAME, MODULE_NAME, $time / 1000.0);
       end
       if (!((MULTSIGNIN_in === 1'bx) || (cis_drc_msg == 1'b1) || (OPMODEREG_BIN == 1'b1))) begin
-        $display("DRC warning : [Unisim %s-11] CARRYINSEL is set to 010 with OPMODEREG set to 0. This causes unknown values after reset occurs. It is suggested to use OPMODEREG = 1 when cascading large adders. %s instance %m at %.3f ns.", MODULE_NAME, MODULE_NAME, $time/1000.0);
+        $display(
+            "DRC warning : [Unisim %s-11] CARRYINSEL is set to 010 with OPMODEREG set to 0. This causes unknown values after reset occurs. It is suggested to use OPMODEREG = 1 when cascading large adders. %s instance %m at %.3f ns.",
+            MODULE_NAME, MODULE_NAME, $time / 1000.0);
         cis_drc_msg = 1'b1;
       end
     end
@@ -1287,11 +1361,9 @@ module DSP48E2 #(
   //*** ALUMODE with 1 level of register
   //*********************************************************
   always @(posedge CLK_in) begin
-	    if (RSTALUMODE_in || glblGSR)
-          ALUMODE_reg <= 4'b0;
-	    else if (CEALUMODE_in)
-          ALUMODE_reg <= ALUMODE_in;
-       end
+    if (RSTALUMODE_in || glblGSR) ALUMODE_reg <= 4'b0;
+    else if (CEALUMODE_in) ALUMODE_reg <= ALUMODE_in;
+  end
 
   always @(*) ALUMODE_DATA = (ALUMODEREG_BIN == 1'b1) ? ALUMODE_reg : ALUMODE_in;
 
@@ -1324,21 +1396,23 @@ module DSP48E2 #(
   // Carry mux to handle SIMD mode 
   // SIMD must be used here since addition of W requires carry propogation
   assign comux4simd = {
-              comux[47:36],
-              comux[35]&&(USE_SIMD_BIN != USE_SIMD_FOUR12),
-              comux[34:24],
-              comux[23]&&(USE_SIMD_BIN == USE_SIMD_ONE48),
-              comux[22:12],
-              comux[11]&&(USE_SIMD_BIN != USE_SIMD_FOUR12),
-              comux[10:0]
-            };
+    comux[47:36],
+    comux[35] && (USE_SIMD_BIN != USE_SIMD_FOUR12),
+    comux[34:24],
+    comux[23] && (USE_SIMD_BIN == USE_SIMD_ONE48),
+    comux[22:12],
+    comux[11] && (USE_SIMD_BIN != USE_SIMD_FOUR12),
+    comux[10:0]
+  };
 
   // FA to combine W-mux with s and co
   // comux must be shifted to properly reflect carry operation
   assign smux_w = smux ^ {comux4simd[46:0], 1'b0} ^ wmux;
-  assign comux_w = ((smux & {comux4simd[46:0],1'b0}) |
-                    (wmux & {comux4simd[46:0],1'b0}) |
-                    (smux & wmux));
+  assign comux_w = ((smux & {
+    comux4simd[46:0], 1'b0
+  }) | (wmux & {
+    comux4simd[46:0], 1'b0
+  }) | (smux & wmux));
 
   // alumode10 indicates a subtraction, used to correct carryout polarity
   assign ALUMODE10_in = (ALUMODE_DATA[0] & ALUMODE_DATA[1]);
@@ -1408,7 +1482,9 @@ module DSP48E2 #(
   assign COUT_in[1] = (USE_SIMD_BIN != USE_SIMD_ONE48) ? cout_1 : 1'bx;
   assign COUT_in[0] = (USE_SIMD_BIN == USE_SIMD_FOUR12) ? cout_0 : 1'bx;
   assign MULTSIGN_ALU_in = s3[13];  // from alu rtl but doesn't seem right
-  assign #1 ALU_OUT_in = {48{ALUMODE_DATA[1]}} ^ {s3[11:0],s2[11:0],s1[11:0],s0[11:0]}; // break 0 delay feedback
+  assign #1 ALU_OUT_in = {48{ALUMODE_DATA[1]}} ^ {
+    s3[11:0], s2[11:0], s1[11:0], s0[11:0]
+  };  // break 0 delay feedback
   assign XOR_MX_in[0] = XORSIMD_BIN ? xor_12a : xor_24a;
   assign XOR_MX_in[1] = XORSIMD_BIN ? xor_12b : xor_48a;
   assign XOR_MX_in[2] = XORSIMD_BIN ? xor_12c : xor_24b;
@@ -1426,11 +1502,9 @@ module DSP48E2 #(
 
   //-------  input 0
   always @(posedge CLK_in) begin
-	    if (RSTALLCARRYIN_in || glblGSR)
-          CARRYIN_reg <= 1'b0;
-	    else if (CECARRYIN_in)
-          CARRYIN_reg <= CARRYIN_in;
-       end
+    if (RSTALLCARRYIN_in || glblGSR) CARRYIN_reg <= 1'b0;
+    else if (CECARRYIN_in) CARRYIN_reg <= CARRYIN_in;
+  end
 
   assign CARRYIN_mux = (CARRYINREG_BIN == 1'b1) ? CARRYIN_reg : CARRYIN_in;
 
@@ -1444,10 +1518,8 @@ module DSP48E2 #(
   assign dr_carryin_int = rst_carryin_g ? 0 : d_carryin_int;
 
   always @(posedge CLK_in) begin
-    if (glblGSR)
-       qmultcarryin <= 1'b0;
-    else
-       qmultcarryin <= dr_carryin_int;
+    if (glblGSR) qmultcarryin <= 1'b0;
+    else qmultcarryin <= dr_carryin_int;
   end
 
   // bypass register mux
@@ -1456,14 +1528,14 @@ module DSP48E2 #(
   //NB
   always @(CARRYINSEL_mux or CARRYIN_mux or PCIN_in[47] or CARRYCASCIN_in or CCOUT_in or P_FDBK_in[47] or multcarryin_data) begin
     case (CARRYINSEL_mux)
-      3'b000: cin_b = ~CARRYIN_mux;
-      3'b001: cin_b = PCIN_in[47];
-      3'b010: cin_b = ~CARRYCASCIN_in;
-      3'b011: cin_b = ~PCIN_in[47];
-      3'b100: cin_b = ~CCOUT_in;
-      3'b101: cin_b = P_FDBK_in[47];
-      3'b110: cin_b = ~multcarryin_data;
-      3'b111: cin_b = ~P_FDBK_in[47];
+      3'b000:  cin_b = ~CARRYIN_mux;
+      3'b001:  cin_b = PCIN_in[47];
+      3'b010:  cin_b = ~CARRYCASCIN_in;
+      3'b011:  cin_b = ~PCIN_in[47];
+      3'b100:  cin_b = ~CCOUT_in;
+      3'b101:  cin_b = P_FDBK_in[47];
+      3'b110:  cin_b = ~multcarryin_data;
+      3'b111:  cin_b = ~P_FDBK_in[47];
       default: cin_b = 1'bx;
     endcase
   end
@@ -1515,7 +1587,7 @@ module DSP48E2 #(
       B1_DATA_out <= 18'b0;
     end else if (CEB1_in) begin
       if (B_INPUT_BIN == B_INPUT_CASCADE) B1_DATA_out <= BCIN_in;
-          else B1_DATA_out <= B_in;
+      else B1_DATA_out <= B_in;
     end
   end
 
@@ -1523,17 +1595,17 @@ module DSP48E2 #(
     if (RSTB_in || glblGSR) B2_reg <= 18'b0;
     else if (CEB2_in) begin
       if (BREG_BIN == 2'b10) B2_reg <= B1_DATA_out;
-         else if (B_INPUT_BIN == B_INPUT_CASCADE) B2_reg <= BCIN_in;
-         else B2_reg <= B_in;
+      else if (B_INPUT_BIN == B_INPUT_CASCADE) B2_reg <= BCIN_in;
+      else B2_reg <= B_in;
     end
   end
 
-  assign B_ALU = (BREG_BIN != 2'b00) ? B2_reg : (B_INPUT_BIN == B_INPUT_CASCADE) ? BCIN_in : B_in;
+  assign B_ALU   = (BREG_BIN != 2'b00) ? B2_reg : (B_INPUT_BIN == B_INPUT_CASCADE) ? BCIN_in : B_in;
 
   assign B2_DATA = (BREG_BIN != 2'b00) ? B2_reg : (B_INPUT_BIN == B_INPUT_CASCADE) ? BCIN_in : B_in;
 
   // assumes encoding the same for BCASCREG and BREG
-  assign BCOUT = (BCASCREG_BIN == BREG_BIN) ? B2_DATA : B1_DATA_out;
+  assign BCOUT   = (BCASCREG_BIN == BREG_BIN) ? B2_DATA : B1_DATA_out;
 
   // DSP_C_DATA
   //*********************************************************
@@ -1552,13 +1624,13 @@ module DSP48E2 #(
 
   // DSP_MULTIPLIER
   always @(*) begin
-  if (AMULTSEL_BIN == AMULTSEL_A) a_mult_mux = A2A1;
-  else a_mult_mux = AD_DATA;
-end
+    if (AMULTSEL_BIN == AMULTSEL_A) a_mult_mux = A2A1;
+    else a_mult_mux = AD_DATA;
+  end
   always @(*) begin
-  if (BMULTSEL_BIN == BMULTSEL_B) b_mult_mux = B2B1;
-  else b_mult_mux = AD_DATA;
-end
+    if (BMULTSEL_BIN == BMULTSEL_B) b_mult_mux = B2B1;
+    else b_mult_mux = AD_DATA;
+  end
 
   assign AMULT26_in = a_mult_mux[26];
   assign BMULT17_in = b_mult_mux[17];
@@ -1567,9 +1639,9 @@ end
   assign V_in = {~mult[44], mult[43:0] & ps_v_mask};
 
   always @(*) begin
-  if (USE_MULT_BIN == USE_MULT_NONE) mult = 45'b0;
-  else mult = ({{18{a_mult_mux[26]}},a_mult_mux} * {{27{b_mult_mux[17]}},b_mult_mux});
-end
+    if (USE_MULT_BIN == USE_MULT_NONE) mult = 45'b0;
+    else mult = ({{18{a_mult_mux[26]}}, a_mult_mux} * {{27{b_mult_mux[17]}}, b_mult_mux});
+  end
 
   // DSP_M_DATA
   //*********************************************************
@@ -1600,9 +1672,11 @@ end
   // select mask
   assign the_mask = (USE_PATTERN_DETECT_BIN == USE_PATTERN_DETECT_NO_PATDET) ? {C_WIDTH{1'b1}} :
                       (SEL_MASK_BIN == SEL_MASK_C)              ?    C_DATA_in       :
-                      (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE1) ? {~(C_DATA_in[C_WIDTH-2:0]),1'b0} :
-                      (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE2) ? {~(C_DATA_in[C_WIDTH-3:0]),2'b0} :
-                      MASK_REG; // default or (SEL_MASK_BIN == SEL_MASK_MASK)
+                      (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE1) ? {
+    ~(C_DATA_in[C_WIDTH-2:0]), 1'b0
+  } : (SEL_MASK_BIN == SEL_MASK_ROUNDING_MODE2) ? {
+    ~(C_DATA_in[C_WIDTH-3:0]), 2'b0
+  } : MASK_REG;  // default or (SEL_MASK_BIN == SEL_MASK_MASK)
 
   //--  now do the pattern detection
 
@@ -1616,15 +1690,15 @@ end
 
   always @(posedge CLK_in) begin
     if (RSTP_in || glblGSR || the_auto_reset_patdet) begin
-      pdet_o_reg1 <= 1'b0;
-      pdet_o_reg2 <= 1'b0;
+      pdet_o_reg1  <= 1'b0;
+      pdet_o_reg2  <= 1'b0;
       pdetb_o_reg1 <= 1'b0;
       pdetb_o_reg2 <= 1'b0;
     end else if (CEP_in && PREG_BIN) begin
       //-- the previous values are used in Underflow/Overflow
-      pdet_o_reg2 <= pdet_o_reg1;
+      pdet_o_reg2  <= pdet_o_reg1;
       pdetb_o_reg2 <= pdetb_o_reg1;
-      pdet_o_reg1 <= pdet_o;
+      pdet_o_reg1  <= pdet_o;
       pdetb_o_reg1 <= pdetb_o;
     end
   end
@@ -1712,15 +1786,15 @@ end
   end
 
   always @(*) begin
-     if ((PREADDINSEL_BIN==PREADDINSEL_A) && INMODE_mux[1]) A2A1 = 27'b0;
-     else if (INMODE_mux[0]==1'b1) A2A1 = A1_reg[26:0];
-     else A2A1 = A_ALU[26:0];
-   end
+    if ((PREADDINSEL_BIN == PREADDINSEL_A) && INMODE_mux[1]) A2A1 = 27'b0;
+    else if (INMODE_mux[0] == 1'b1) A2A1 = A1_reg[26:0];
+    else A2A1 = A_ALU[26:0];
+  end
   always @(*) begin
-     if ((PREADDINSEL_BIN==PREADDINSEL_B) && INMODE_mux[1]) B2B1 = 18'b0;
-     else if (INMODE_mux[4]==1'b1) B2B1 = B1_DATA_out;
-     else B2B1 = B2_DATA;
-   end
+    if ((PREADDINSEL_BIN == PREADDINSEL_B) && INMODE_mux[1]) B2B1 = 18'b0;
+    else if (INMODE_mux[4] == 1'b1) B2B1 = B1_DATA_out;
+    else B2B1 = B2_DATA;
+  end
   assign PREADD_AB = (PREADDINSEL_BIN == PREADDINSEL_B) ? {{9{B2B1[17]}}, B2B1} : A2A1;
 
   //*********************************************************
@@ -1769,10 +1843,14 @@ end
        ((AREG_BIN==2'b00 && BREG_BIN==2'b00 && MREG_BIN==1'b0) ||
         (AREG_BIN==2'b00 && BREG_BIN==2'b00 && PREG_BIN==1'b0) ||
         (MREG_BIN==1'b0 && PREG_BIN==1'b0)))
-       $display("OPMODE Input Warning : [Unisim %s-8] The OPMODE[1:0] (%b) is invalid when using attributes USE_MULT = MULTIPLY and (A, B and M) or (A, B and P) or (M and P) are not REGISTERED at time %.3f ns. Please set USE_MULT to either NONE or DYNAMIC or REGISTER one of each group. (A or B) and (M or P) will satisfy the requirement. Instance %m", MODULE_NAME, OPMODE_mux[1:0], $time/1000.0);
+      $display(
+          "OPMODE Input Warning : [Unisim %s-8] The OPMODE[1:0] (%b) is invalid when using attributes USE_MULT = MULTIPLY and (A, B and M) or (A, B and P) or (M and P) are not REGISTERED at time %.3f ns. Please set USE_MULT to either NONE or DYNAMIC or REGISTER one of each group. (A or B) and (M or P) will satisfy the requirement. Instance %m",
+          MODULE_NAME, OPMODE_mux[1:0], $time / 1000.0);
     if ((OPMODE_mux[3:0] == 4'b0101) &&
        ((USE_MULT_BIN == USE_MULT_NONE) || (USE_SIMD_BIN != USE_SIMD_ONE48)))
-       $display("OPMODE Input Warning : [Unisim %s-9] The OPMODE[3:0] (%b) is invalid when using attributes USE_MULT = NONE, or USE_SIMD = TWO24 or FOUR12 at %.3f ns. Instance %m", MODULE_NAME, OPMODE_mux[3:0], $time/1000.0);
+      $display(
+          "OPMODE Input Warning : [Unisim %s-9] The OPMODE[3:0] (%b) is invalid when using attributes USE_MULT = NONE, or USE_SIMD = TWO24 or FOUR12 at %.3f ns. Instance %m",
+          MODULE_NAME, OPMODE_mux[3:0], $time / 1000.0);
   end
 
   // end behavioral model

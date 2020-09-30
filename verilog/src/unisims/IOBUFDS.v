@@ -92,10 +92,12 @@ module IOBUFDS (
 
     case (DQS_BIAS)
 
-      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "TRUE":  DQS_BIAS_BINARY <= #1 1'b1;
       "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
+        $display(
+            "Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            MODULE_NAME, DQS_BIAS);
         #1 $finish;
       end
 
@@ -105,7 +107,9 @@ module IOBUFDS (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
+        $display(
+            "Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            MODULE_NAME, DIFF_TERM);
         #1 $finish;
       end
 
@@ -115,31 +119,30 @@ module IOBUFDS (
 
       "FALSE", "TRUE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
+        $display(
+            "Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            MODULE_NAME, IBUF_LOW_PWR);
         #1 $finish;
       end
 
     endcase
 
     if ((IOSTANDARD == "LVDS_25") || (IOSTANDARD == "LVDSEXT_25")) begin
-      $display("DRC Warning : The IOSTANDARD attribute on %s instance %m is set to %s.  LVDS_25 is a fixed impedance structure optimized to 100ohm differential. If the intended usage is a bus architecture, please use BLVDS. This is only intended to be used in point to point transmissions that do not have turn around timing requirements", MODULE_NAME, IOSTANDARD);
+      $display(
+          "DRC Warning : The IOSTANDARD attribute on %s instance %m is set to %s.  LVDS_25 is a fixed impedance structure optimized to 100ohm differential. If the intended usage is a bus architecture, please use BLVDS. This is only intended to be used in point to point transmissions that do not have turn around timing requirements",
+          MODULE_NAME, IOSTANDARD);
     end
 
   end
 
   always @(io_in or iob_in or DQS_BIAS_BINARY) begin
-        if (io_in == 1'b1 && iob_in == 1'b0)
-          o_out <= 1'b1;
-        else if (io_in == 1'b0 && iob_in == 1'b1)
-          o_out <= 1'b0;
-        else if ((io_in === 1'bz || io_in == 1'b0) && (iob_in === 1'bz || iob_in == 1'b1))
-          if (DQS_BIAS_BINARY == 1'b1)
-            o_out <= 1'b0;
-          else
-            o_out <= 1'bx;
-        else if ((io_in === 1'bx) || (iob_in == 1'bx))
-          o_out <= 1'bx;
-        end
+    if (io_in == 1'b1 && iob_in == 1'b0) o_out <= 1'b1;
+    else if (io_in == 1'b0 && iob_in == 1'b1) o_out <= 1'b0;
+    else if ((io_in === 1'bz || io_in == 1'b0) && (iob_in === 1'bz || iob_in == 1'b1))
+      if (DQS_BIAS_BINARY == 1'b1) o_out <= 1'b0;
+      else o_out <= 1'bx;
+    else if ((io_in === 1'bx) || (iob_in == 1'bx)) o_out <= 1'bx;
+  end
 
   //    assign O  =  (t_in === 1'b0) ? 1'b1 : ((t_in === 1'b1) ? o_out : 1'bx));
   assign O = o_out;

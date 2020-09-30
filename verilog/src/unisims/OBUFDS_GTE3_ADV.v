@@ -78,7 +78,7 @@ module OBUFDS_GTE3_ADV #(
 
   assign REFCLK_EN_TX_PATH_BIN = REFCLK_EN_TX_PATH_REG;
 
-  assign REFCLK_ICNTL_TX_BIN = REFCLK_ICNTL_TX_REG;
+  assign REFCLK_ICNTL_TX_BIN   = REFCLK_ICNTL_TX_REG;
 
   wire t1;
   wire t2;
@@ -92,10 +92,10 @@ module OBUFDS_GTE3_ADV #(
   // =====================
   always @(*) begin
     case (RXRECCLK_SEL)
-      2'b00: I_delay <= I[0];
-      2'b01: I_delay <= I[1];
-      2'b10: I_delay <= I[2];
-      2'b11: I_delay <= I[3];
+      2'b00:   I_delay <= I[0];
+      2'b01:   I_delay <= I[1];
+      2'b10:   I_delay <= I[2];
+      2'b11:   I_delay <= I[3];
       default: I_delay <= I[0];
     endcase
   end

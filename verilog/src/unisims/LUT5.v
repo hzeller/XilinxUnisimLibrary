@@ -74,16 +74,13 @@ module LUT5 #(
     input [3:0] d;
     input [1:0] s;
     begin
-      if (((s[1]^s[0]) === 1'b1) || ((s[1]^s[0]) === 1'b0))
-      lut_mux4_f = d[s];
-    else if ( ~(|d) || &d)
-      lut_mux4_f = d[0];
-    else if (((s[0] === 1'b1) || (s[0] === 1'b0)) && (d[{1'b0,s[0]}] === d[{1'b1,s[0]}]))
-      lut_mux4_f = d[{1'b0,s[0]}];
-    else if (((s[1] === 1'b1) || (s[1] === 1'b0)) && (d[{s[1],1'b0}] === d[{s[1],1'b1}]))
-      lut_mux4_f = d[{s[1],1'b0}];
-    else
-      lut_mux4_f = 1'bx;
+      if (((s[1] ^ s[0]) === 1'b1) || ((s[1] ^ s[0]) === 1'b0)) lut_mux4_f = d[s];
+      else if (~(|d) || &d) lut_mux4_f = d[0];
+      else if (((s[0] === 1'b1) || (s[0] === 1'b0)) && (d[{1'b0, s[0]}] === d[{1'b1, s[0]}]))
+        lut_mux4_f = d[{1'b0, s[0]}];
+      else if (((s[1] === 1'b1) || (s[1] === 1'b0)) && (d[{s[1], 1'b0}] === d[{s[1], 1'b1}]))
+        lut_mux4_f = d[{s[1], 1'b0}];
+      else lut_mux4_f = 1'bx;
     end
   endfunction
 
@@ -91,49 +88,88 @@ module LUT5 #(
     input [7:0] d;
     input [2:0] s;
     begin
-      if (((s[2]^s[1]^s[0]) === 1'b1) || ((s[2]^s[1]^s[0]) === 1'b0))
-      lut_mux8_f = d[s];
-    else if ( ~(|d) || &d)
-      lut_mux8_f = d[0];
-    else if ((((s[1]^s[0]) === 1'b1) || ((s[1]^s[0]) === 1'b0)) &&
-             (d[{1'b0,s[1:0]}] === d[{1'b1,s[1:0]}]))
-      lut_mux8_f = d[{1'b0,s[1:0]}];
-    else if ((((s[2]^s[0]) === 1'b1) || ((s[2]^s[0]) === 1'b0)) &&
-             (d[{s[2],1'b0,s[0]}] === d[{s[2],1'b1,s[0]}]))
-      lut_mux8_f = d[{s[2],1'b0,s[0]}];
-    else if ((((s[2]^s[1]) === 1'b1) || ((s[2]^s[1]) === 1'b0)) &&
-             (d[{s[2],s[1],1'b0}] === d[{s[2],s[1],1'b1}]))
-      lut_mux8_f = d[{s[2:1],1'b0}];
-    else if (((s[0] === 1'b1) || (s[0] === 1'b0)) &&
-             (d[{1'b0,1'b0,s[0]}] === d[{1'b0,1'b1,s[0]}]) &&
-             (d[{1'b0,1'b0,s[0]}] === d[{1'b1,1'b0,s[0]}]) &&
-             (d[{1'b0,1'b0,s[0]}] === d[{1'b1,1'b1,s[0]}]))
-      lut_mux8_f = d[{1'b0,1'b0,s[0]}];
-    else if (((s[1] === 1'b1) || (s[1] === 1'b0)) &&
-             (d[{1'b0,s[1],1'b0}] === d[{1'b0,s[1],1'b1}]) &&
-             (d[{1'b0,s[1],1'b0}] === d[{1'b1,s[1],1'b0}]) &&
-             (d[{1'b0,s[1],1'b0}] === d[{1'b1,s[1],1'b1}]))
-      lut_mux8_f = d[{1'b0,s[1],1'b0}];
-    else if (((s[2] === 1'b1) || (s[2] === 1'b0)) &&
-             (d[{s[2],1'b0,1'b0}] === d[{s[2],1'b0,1'b1}]) &&
-             (d[{s[2],1'b0,1'b0}] === d[{s[2],1'b1,1'b0}]) &&
-             (d[{s[2],1'b0,1'b0}] === d[{s[2],1'b1,1'b1}]))
-      lut_mux8_f = d[{s[2],1'b0,1'b0}];
-    else
-      lut_mux8_f = 1'bx;
+      if (((s[2] ^ s[1] ^ s[0]) === 1'b1) || ((s[2] ^ s[1] ^ s[0]) === 1'b0)) lut_mux8_f = d[s];
+      else if (~(|d) || &d) lut_mux8_f = d[0];
+      else if ((((s[1] ^ s[0]) === 1'b1) || ((s[1] ^ s[0]) === 1'b0)) && (d[{
+            1'b0, s[1:0]
+          }] === d[{
+            1'b1, s[1:0]
+          }]))
+        lut_mux8_f = d[{1'b0, s[1:0]}];
+      else if ((((s[2] ^ s[0]) === 1'b1) || ((s[2] ^ s[0]) === 1'b0)) && (d[{
+            s[2], 1'b0, s[0]
+          }] === d[{
+            s[2], 1'b1, s[0]
+          }]))
+        lut_mux8_f = d[{s[2], 1'b0, s[0]}];
+      else if ((((s[2] ^ s[1]) === 1'b1) || ((s[2] ^ s[1]) === 1'b0)) && (d[{
+            s[2], s[1], 1'b0
+          }] === d[{
+            s[2], s[1], 1'b1
+          }]))
+        lut_mux8_f = d[{s[2:1], 1'b0}];
+      else if (((s[0] === 1'b1) || (s[0] === 1'b0)) && (d[{
+            1'b0, 1'b0, s[0]
+          }] === d[{
+            1'b0, 1'b1, s[0]
+          }]) && (d[{
+            1'b0, 1'b0, s[0]
+          }] === d[{
+            1'b1, 1'b0, s[0]
+          }]) && (d[{
+            1'b0, 1'b0, s[0]
+          }] === d[{
+            1'b1, 1'b1, s[0]
+          }]))
+        lut_mux8_f = d[{1'b0, 1'b0, s[0]}];
+      else if (((s[1] === 1'b1) || (s[1] === 1'b0)) && (d[{
+            1'b0, s[1], 1'b0
+          }] === d[{
+            1'b0, s[1], 1'b1
+          }]) && (d[{
+            1'b0, s[1], 1'b0
+          }] === d[{
+            1'b1, s[1], 1'b0
+          }]) && (d[{
+            1'b0, s[1], 1'b0
+          }] === d[{
+            1'b1, s[1], 1'b1
+          }]))
+        lut_mux8_f = d[{1'b0, s[1], 1'b0}];
+      else if (((s[2] === 1'b1) || (s[2] === 1'b0)) && (d[{
+            s[2], 1'b0, 1'b0
+          }] === d[{
+            s[2], 1'b0, 1'b1
+          }]) && (d[{
+            s[2], 1'b0, 1'b0
+          }] === d[{
+            s[2], 1'b1, 1'b0
+          }]) && (d[{
+            s[2], 1'b0, 1'b0
+          }] === d[{
+            s[2], 1'b1, 1'b1
+          }]))
+        lut_mux8_f = d[{s[2], 1'b0, 1'b0}];
+      else lut_mux8_f = 1'bx;
     end
   endfunction
 
-  always @(I0 or I1 or I2 or I3 or I4)  begin
-   if ( (I0 ^ I1  ^ I2 ^ I3 ^ I4) === 1'b0 || (I0 ^ I1  ^ I2 ^ I3 ^ I4) === 1'b1)
-     O_out = INIT_REG[{I4, I3, I2, I1, I0}];
-   else if ( ~(|INIT_REG) || &INIT_REG )
-     O_out = INIT_REG[0];
-   else
-     O_out = lut_mux4_f ({lut_mux8_f (INIT_REG[31:24], {I2, I1, I0}),
-                      lut_mux8_f (INIT_REG[23:16], {I2, I1, I0}),
-                      lut_mux8_f ( INIT_REG[15:8], {I2, I1, I0}),
-                      lut_mux8_f (  INIT_REG[7:0], {I2, I1, I0})}, {I4, I3});
+  always @(I0 or I1 or I2 or I3 or I4) begin
+    if ((I0 ^ I1 ^ I2 ^ I3 ^ I4) === 1'b0 || (I0 ^ I1 ^ I2 ^ I3 ^ I4) === 1'b1)
+      O_out = INIT_REG[{I4, I3, I2, I1, I0}];
+    else if (~(|INIT_REG) || &INIT_REG) O_out = INIT_REG[0];
+    else
+      O_out = lut_mux4_f(
+          {
+            lut_mux8_f(INIT_REG[31:24], {I2, I1, I0}),
+            lut_mux8_f(INIT_REG[23:16], {I2, I1, I0}),
+            lut_mux8_f(INIT_REG[15:8], {I2, I1, I0}),
+            lut_mux8_f(INIT_REG[7:0], {I2, I1, I0})
+          },
+          {
+            I4, I3
+          }
+      );
   end
 
   // end behavioral model

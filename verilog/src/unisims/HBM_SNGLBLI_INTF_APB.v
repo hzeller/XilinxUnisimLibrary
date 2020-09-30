@@ -202,7 +202,9 @@ module HBM_SNGLBLI_INTF_APB #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -211,31 +213,41 @@ module HBM_SNGLBLI_INTF_APB #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((CLK_SEL_REG != "FALSE") && (CLK_SEL_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-101] CLK_SEL attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_REG);
+      $display(
+          "Error: [Unisim %s-101] CLK_SEL attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_REG != "FALSE") && (MC_ENABLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-104] MC_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_REG);
+      $display(
+          "Error: [Unisim %s-104] MC_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((PHY_ENABLE_REG != "FALSE") && (PHY_ENABLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-105] PHY_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_REG);
+      $display(
+          "Error: [Unisim %s-105] PHY_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_PCLK_INVERT_REG != "FALSE") &&
        (PHY_PCLK_INVERT_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-106] PHY_PCLK_INVERT attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_PCLK_INVERT_REG);
+      $display(
+          "Error: [Unisim %s-106] PHY_PCLK_INVERT attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_PCLK_INVERT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((SWITCH_ENABLE_REG != "FALSE") &&
        (SWITCH_ENABLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-107] SWITCH_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, SWITCH_ENABLE_REG);
+      $display(
+          "Error: [Unisim %s-107] SWITCH_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, SWITCH_ENABLE_REG);
       attr_err = 1'b1;
     end
 

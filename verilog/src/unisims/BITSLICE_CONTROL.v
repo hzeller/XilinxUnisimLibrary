@@ -454,78 +454,102 @@ module BITSLICE_CONTROL #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((CTRL_CLK_REG != "EXTERNAL") && (CTRL_CLK_REG != "INTERNAL"))) begin
-      $display("Error: [Unisim %s-103] CTRL_CLK attribute is set to %s.  Legal values for this attribute are EXTERNAL or INTERNAL. Instance: %m", MODULE_NAME, CTRL_CLK_REG);
+      $display(
+          "Error: [Unisim %s-103] CTRL_CLK attribute is set to %s.  Legal values for this attribute are EXTERNAL or INTERNAL. Instance: %m",
+          MODULE_NAME, CTRL_CLK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DIV_MODE_REG != "DIV2") && (DIV_MODE_REG != "DIV4"))) begin
-      $display("Error: [Unisim %s-105] DIV_MODE attribute is set to %s.  Legal values for this attribute are DIV2 or DIV4. Instance: %m", MODULE_NAME, DIV_MODE_REG);
+      $display(
+          "Error: [Unisim %s-105] DIV_MODE attribute is set to %s.  Legal values for this attribute are DIV2 or DIV4. Instance: %m",
+          MODULE_NAME, DIV_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((EN_CLK_TO_EXT_NORTH_REG != "DISABLE") &&
          (EN_CLK_TO_EXT_NORTH_REG != "ENABLE"))) begin
-      $display("Error: [Unisim %s-110] EN_CLK_TO_EXT_NORTH attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m", MODULE_NAME, EN_CLK_TO_EXT_NORTH_REG);
+      $display(
+          "Error: [Unisim %s-110] EN_CLK_TO_EXT_NORTH attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m",
+          MODULE_NAME, EN_CLK_TO_EXT_NORTH_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((EN_CLK_TO_EXT_SOUTH_REG != "DISABLE") &&
          (EN_CLK_TO_EXT_SOUTH_REG != "ENABLE"))) begin
-      $display("Error: [Unisim %s-111] EN_CLK_TO_EXT_SOUTH attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m", MODULE_NAME, EN_CLK_TO_EXT_SOUTH_REG);
+      $display(
+          "Error: [Unisim %s-111] EN_CLK_TO_EXT_SOUTH attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m",
+          MODULE_NAME, EN_CLK_TO_EXT_SOUTH_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((EN_DYN_ODLY_MODE_REG != "FALSE") &&
          (EN_DYN_ODLY_MODE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-112] EN_DYN_ODLY_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, EN_DYN_ODLY_MODE_REG);
+      $display(
+          "Error: [Unisim %s-112] EN_DYN_ODLY_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, EN_DYN_ODLY_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((EN_OTHER_NCLK_REG != "FALSE") &&
          (EN_OTHER_NCLK_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-113] EN_OTHER_NCLK attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, EN_OTHER_NCLK_REG);
+      $display(
+          "Error: [Unisim %s-113] EN_OTHER_NCLK attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, EN_OTHER_NCLK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((EN_OTHER_PCLK_REG != "FALSE") &&
          (EN_OTHER_PCLK_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-114] EN_OTHER_PCLK attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, EN_OTHER_PCLK_REG);
+      $display(
+          "Error: [Unisim %s-114] EN_OTHER_PCLK attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, EN_OTHER_PCLK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((IDLY_VT_TRACK_REG != "TRUE") &&
          (IDLY_VT_TRACK_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-116] IDLY_VT_TRACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, IDLY_VT_TRACK_REG);
+      $display(
+          "Error: [Unisim %s-116] IDLY_VT_TRACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, IDLY_VT_TRACK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((INV_RXCLK_REG != "FALSE") && (INV_RXCLK_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-118] INV_RXCLK attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, INV_RXCLK_REG);
+      $display(
+          "Error: [Unisim %s-118] INV_RXCLK attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, INV_RXCLK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((ODLY_VT_TRACK_REG != "TRUE") &&
          (ODLY_VT_TRACK_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-122] ODLY_VT_TRACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, ODLY_VT_TRACK_REG);
+      $display(
+          "Error: [Unisim %s-122] ODLY_VT_TRACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, ODLY_VT_TRACK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((QDLY_VT_TRACK_REG != "TRUE") &&
          (QDLY_VT_TRACK_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-124] QDLY_VT_TRACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, QDLY_VT_TRACK_REG);
+      $display(
+          "Error: [Unisim %s-124] QDLY_VT_TRACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, QDLY_VT_TRACK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((REFCLK_SRC_REG != "PLLCLK") && (REFCLK_SRC_REG != "REFCLK"))) begin
-      $display("Error: [Unisim %s-126] REFCLK_SRC attribute is set to %s.  Legal values for this attribute are PLLCLK or REFCLK. Instance: %m", MODULE_NAME, REFCLK_SRC_REG);
+      $display(
+          "Error: [Unisim %s-126] REFCLK_SRC attribute is set to %s.  Legal values for this attribute are PLLCLK or REFCLK. Instance: %m",
+          MODULE_NAME, REFCLK_SRC_REG);
       attr_err = 1'b1;
     end
 
@@ -537,45 +561,59 @@ module BITSLICE_CONTROL #(
          (ROUNDING_FACTOR_REG != 32) &&
          (ROUNDING_FACTOR_REG != 64) &&
          (ROUNDING_FACTOR_REG != 128))) begin
-      $display("Error: [Unisim %s-128] ROUNDING_FACTOR attribute is set to %d.  Legal values for this attribute are 16, 2, 4, 8, 32, 64 or 128. Instance: %m", MODULE_NAME, ROUNDING_FACTOR_REG);
+      $display(
+          "Error: [Unisim %s-128] ROUNDING_FACTOR attribute is set to %d.  Legal values for this attribute are 16, 2, 4, 8, 32, 64 or 128. Instance: %m",
+          MODULE_NAME, ROUNDING_FACTOR_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RXGATE_EXTEND_REG != "FALSE") &&
          (RXGATE_EXTEND_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-129] RXGATE_EXTEND attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, RXGATE_EXTEND_REG);
+      $display(
+          "Error: [Unisim %s-129] RXGATE_EXTEND attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, RXGATE_EXTEND_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RX_CLK_PHASE_N_REG != "SHIFT_0") &&
          (RX_CLK_PHASE_N_REG != "SHIFT_90"))) begin
-      $display("Error: [Unisim %s-130] RX_CLK_PHASE_N attribute is set to %s.  Legal values for this attribute are SHIFT_0 or SHIFT_90. Instance: %m", MODULE_NAME, RX_CLK_PHASE_N_REG);
+      $display(
+          "Error: [Unisim %s-130] RX_CLK_PHASE_N attribute is set to %s.  Legal values for this attribute are SHIFT_0 or SHIFT_90. Instance: %m",
+          MODULE_NAME, RX_CLK_PHASE_N_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((RX_CLK_PHASE_P_REG != "SHIFT_0") &&
          (RX_CLK_PHASE_P_REG != "SHIFT_90"))) begin
-      $display("Error: [Unisim %s-131] RX_CLK_PHASE_P attribute is set to %s.  Legal values for this attribute are SHIFT_0 or SHIFT_90. Instance: %m", MODULE_NAME, RX_CLK_PHASE_P_REG);
+      $display(
+          "Error: [Unisim %s-131] RX_CLK_PHASE_P attribute is set to %s.  Legal values for this attribute are SHIFT_0 or SHIFT_90. Instance: %m",
+          MODULE_NAME, RX_CLK_PHASE_P_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((RX_GATING_REG != "DISABLE") && (RX_GATING_REG != "ENABLE"))) begin
-      $display("Error: [Unisim %s-132] RX_GATING attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m", MODULE_NAME, RX_GATING_REG);
+      $display(
+          "Error: [Unisim %s-132] RX_GATING attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m",
+          MODULE_NAME, RX_GATING_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((SELF_CALIBRATE_REG != "ENABLE") &&
          (SELF_CALIBRATE_REG != "DISABLE"))) begin
-      $display("Error: [Unisim %s-133] SELF_CALIBRATE attribute is set to %s.  Legal values for this attribute are ENABLE or DISABLE. Instance: %m", MODULE_NAME, SELF_CALIBRATE_REG);
+      $display(
+          "Error: [Unisim %s-133] SELF_CALIBRATE attribute is set to %s.  Legal values for this attribute are ENABLE or DISABLE. Instance: %m",
+          MODULE_NAME, SELF_CALIBRATE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SERIAL_MODE_REG != "FALSE") && (SERIAL_MODE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-134] SERIAL_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, SERIAL_MODE_REG);
+      $display(
+          "Error: [Unisim %s-134] SERIAL_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, SERIAL_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -584,22 +622,30 @@ module BITSLICE_CONTROL #(
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES2"))) begin
-      $display("Error: [Unisim %s-135] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-135] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SIM_SPEEDUP_REG != "FAST") && (SIM_SPEEDUP_REG != "SLOW"))) begin
-      $display("Error: [Unisim %s-136] SIM_SPEEDUP attribute is set to %s.  Legal values for this attribute are FAST or SLOW. Instance: %m", MODULE_NAME, SIM_SPEEDUP_REG);
+      $display(
+          "Error: [Unisim %s-136] SIM_SPEEDUP attribute is set to %s.  Legal values for this attribute are FAST or SLOW. Instance: %m",
+          MODULE_NAME, SIM_SPEEDUP_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SIM_VERSION_REG != 2.0) && (SIM_VERSION_REG != 1.0))) begin
-      $display("Error: [Unisim %s-137] SIM_VERSION attribute is set to %f.  Legal values for this attribute are 2.0 or 1.0. Instance: %m", MODULE_NAME, SIM_VERSION_REG);
+      $display(
+          "Error: [Unisim %s-137] SIM_VERSION attribute is set to %f.  Legal values for this attribute are 2.0 or 1.0. Instance: %m",
+          MODULE_NAME, SIM_VERSION_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((TX_GATING_REG != "DISABLE") && (TX_GATING_REG != "ENABLE"))) begin
-      $display("Error: [Unisim %s-139] TX_GATING attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m", MODULE_NAME, TX_GATING_REG);
+      $display(
+          "Error: [Unisim %s-139] TX_GATING attribute is set to %s.  Legal values for this attribute are DISABLE or ENABLE. Instance: %m",
+          MODULE_NAME, TX_GATING_REG);
       attr_err = 1'b1;
     end
 
@@ -607,7 +653,9 @@ module BITSLICE_CONTROL #(
 
     if (SIM_DEVICE_REG == "ULTRASCALE") begin
       if (RX_CLK_PHASE_P_REG == "SHIFT_90" || RX_CLK_PHASE_N_REG == "SHIFT_90") begin
-        $display("WARNING: [Unisim %s-1] When using RX_CLK_PHASE_<P:N> = SHIFT_90 simulation may not match hardware when using RX_DELAY_VALUE > 0 or CASCADE = TRUE. Every BITSLICE_CONTROL must have at least one RX_BITSLICE with DELAY_VALUE = 0 in order to ensure proper alignment. Instance: %m",MODULE_NAME);
+        $display(
+            "WARNING: [Unisim %s-1] When using RX_CLK_PHASE_<P:N> = SHIFT_90 simulation may not match hardware when using RX_DELAY_VALUE > 0 or CASCADE = TRUE. Every BITSLICE_CONTROL must have at least one RX_BITSLICE with DELAY_VALUE = 0 in order to ensure proper alignment. Instance: %m",
+            MODULE_NAME);
       end
     end
   end

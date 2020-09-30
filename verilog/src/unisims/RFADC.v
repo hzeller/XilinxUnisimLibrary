@@ -323,12 +323,16 @@ module RFADC #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((OPT_ANALOG_REG < 0) || (OPT_ANALOG_REG > 65535))) begin
-      $display("Error: [Unisim %s-101] OPT_ANALOG attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, OPT_ANALOG_REG);
+      $display(
+          "Error: [Unisim %s-101] OPT_ANALOG attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m",
+          MODULE_NAME, OPT_ANALOG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((OPT_CLK_DIST_REG < 0) || (OPT_CLK_DIST_REG > 65535))) begin
-      $display("Error: [Unisim %s-102] OPT_CLK_DIST attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, OPT_CLK_DIST_REG);
+      $display(
+          "Error: [Unisim %s-102] OPT_CLK_DIST attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m",
+          MODULE_NAME, OPT_CLK_DIST_REG);
       attr_err = 1'b1;
     end
 
@@ -336,28 +340,38 @@ module RFADC #(
         ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES2"))) begin
-      $display("Error: [Unisim %s-103] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-103] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((XPA_ACTIVE_DUTYCYCLE_REG < 0) || (XPA_ACTIVE_DUTYCYCLE_REG > 100))) begin
-      $display("Error: [Unisim %s-104] XPA_ACTIVE_DUTYCYCLE attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, XPA_ACTIVE_DUTYCYCLE_REG);
+      $display(
+          "Error: [Unisim %s-104] XPA_ACTIVE_DUTYCYCLE attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, XPA_ACTIVE_DUTYCYCLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((XPA_CFG0_REG < 0) || (XPA_CFG0_REG > 65535))) begin
-      $display("Error: [Unisim %s-105] XPA_CFG0 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, XPA_CFG0_REG);
+      $display(
+          "Error: [Unisim %s-105] XPA_CFG0 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m",
+          MODULE_NAME, XPA_CFG0_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((XPA_CFG1_REG < 0) || (XPA_CFG1_REG > 65535))) begin
-      $display("Error: [Unisim %s-106] XPA_CFG1 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, XPA_CFG1_REG);
+      $display(
+          "Error: [Unisim %s-106] XPA_CFG1 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m",
+          MODULE_NAME, XPA_CFG1_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((XPA_CFG2_REG < 0) || (XPA_CFG2_REG > 65535))) begin
-      $display("Error: [Unisim %s-107] XPA_CFG2 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m", MODULE_NAME, XPA_CFG2_REG);
+      $display(
+          "Error: [Unisim %s-107] XPA_CFG2 attribute is set to %d.  Legal values for this attribute are 0 to 65535. Instance: %m",
+          MODULE_NAME, XPA_CFG2_REG);
       attr_err = 1'b1;
     end
 
@@ -369,12 +383,16 @@ module RFADC #(
          (XPA_NUM_ADCS_REG != "2I") &&
          (XPA_NUM_ADCS_REG != "3") &&
          (XPA_NUM_ADCS_REG != "4"))) begin
-      $display("Error: [Unisim %s-108] XPA_NUM_ADCS attribute is set to %s.  Legal values for this attribute are 0, 1, 1I, 2, 2I, 3 or 4. Instance: %m", MODULE_NAME, XPA_NUM_ADCS_REG);
+      $display(
+          "Error: [Unisim %s-108] XPA_NUM_ADCS attribute is set to %s.  Legal values for this attribute are 0, 1, 1I, 2, 2I, 3 or 4. Instance: %m",
+          MODULE_NAME, XPA_NUM_ADCS_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((XPA_NUM_DDCS_REG < 0) || (XPA_NUM_DDCS_REG > 4))) begin
-      $display("Error: [Unisim %s-109] XPA_NUM_DDCS attribute is set to %d.  Legal values for this attribute are 0 to 4. Instance: %m", MODULE_NAME, XPA_NUM_DDCS_REG);
+      $display(
+          "Error: [Unisim %s-109] XPA_NUM_DDCS attribute is set to %d.  Legal values for this attribute are 0 to 4. Instance: %m",
+          MODULE_NAME, XPA_NUM_DDCS_REG);
       attr_err = 1'b1;
     end
 
@@ -382,13 +400,17 @@ module RFADC #(
         ((XPA_PLL_USED_REG != "EXTERNAL") &&
          (XPA_PLL_USED_REG != "DISTRIBUTED_T1") &&
          (XPA_PLL_USED_REG != "INTERNAL_PLL"))) begin
-      $display("Error: [Unisim %s-110] XPA_PLL_USED attribute is set to %s.  Legal values for this attribute are EXTERNAL, DISTRIBUTED_T1 or INTERNAL_PLL. Instance: %m", MODULE_NAME, XPA_PLL_USED_REG);
+      $display(
+          "Error: [Unisim %s-110] XPA_PLL_USED attribute is set to %s.  Legal values for this attribute are EXTERNAL, DISTRIBUTED_T1 or INTERNAL_PLL. Instance: %m",
+          MODULE_NAME, XPA_PLL_USED_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((XPA_SAMPLE_RATE_MSPS_REG < 0) || (XPA_SAMPLE_RATE_MSPS_REG > 10000))) begin
-      $display("Error: [Unisim %s-111] XPA_SAMPLE_RATE_MSPS attribute is set to %d.  Legal values for this attribute are 0 to 10000. Instance: %m", MODULE_NAME, XPA_SAMPLE_RATE_MSPS_REG);
+      $display(
+          "Error: [Unisim %s-111] XPA_SAMPLE_RATE_MSPS attribute is set to %d.  Legal values for this attribute are 0 to 10000. Instance: %m",
+          MODULE_NAME, XPA_SAMPLE_RATE_MSPS_REG);
       attr_err = 1'b1;
     end
 

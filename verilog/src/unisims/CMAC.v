@@ -2070,102 +2070,132 @@ module CMAC #(
     if ((attr_test == 1'b1) ||
         ((CTL_PTP_TRANSPCLK_MODE_REG != "FALSE") &&
          (CTL_PTP_TRANSPCLK_MODE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-101] CTL_PTP_TRANSPCLK_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_PTP_TRANSPCLK_MODE_REG);
+      $display(
+          "Error: [Unisim %s-101] CTL_PTP_TRANSPCLK_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_PTP_TRANSPCLK_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_CHECK_ACK_REG != "TRUE") &&
          (CTL_RX_CHECK_ACK_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-102] CTL_RX_CHECK_ACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, CTL_RX_CHECK_ACK_REG);
+      $display(
+          "Error: [Unisim %s-102] CTL_RX_CHECK_ACK attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, CTL_RX_CHECK_ACK_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_CHECK_PREAMBLE_REG != "FALSE") &&
          (CTL_RX_CHECK_PREAMBLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-103] CTL_RX_CHECK_PREAMBLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_RX_CHECK_PREAMBLE_REG);
+      $display(
+          "Error: [Unisim %s-103] CTL_RX_CHECK_PREAMBLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_RX_CHECK_PREAMBLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_CHECK_SFD_REG != "FALSE") &&
          (CTL_RX_CHECK_SFD_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-104] CTL_RX_CHECK_SFD attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_RX_CHECK_SFD_REG);
+      $display(
+          "Error: [Unisim %s-104] CTL_RX_CHECK_SFD attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_RX_CHECK_SFD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_DELETE_FCS_REG != "TRUE") &&
          (CTL_RX_DELETE_FCS_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-105] CTL_RX_DELETE_FCS attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, CTL_RX_DELETE_FCS_REG);
+      $display(
+          "Error: [Unisim %s-105] CTL_RX_DELETE_FCS attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, CTL_RX_DELETE_FCS_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_FORWARD_CONTROL_REG != "FALSE") &&
          (CTL_RX_FORWARD_CONTROL_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-110] CTL_RX_FORWARD_CONTROL attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_RX_FORWARD_CONTROL_REG);
+      $display(
+          "Error: [Unisim %s-110] CTL_RX_FORWARD_CONTROL attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_RX_FORWARD_CONTROL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_IGNORE_FCS_REG != "FALSE") &&
          (CTL_RX_IGNORE_FCS_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-111] CTL_RX_IGNORE_FCS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_RX_IGNORE_FCS_REG);
+      $display(
+          "Error: [Unisim %s-111] CTL_RX_IGNORE_FCS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_RX_IGNORE_FCS_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_MAX_PACKET_LEN_REG < 15'h0000) || (CTL_RX_MAX_PACKET_LEN_REG > 15'h3FFF))) begin
-      $display("Error: [Unisim %s-112] CTL_RX_MAX_PACKET_LEN attribute is set to %h.  Legal values for this attribute are 15'h0000 to 15'h3FFF. Instance: %m", MODULE_NAME, CTL_RX_MAX_PACKET_LEN_REG);
+      $display(
+          "Error: [Unisim %s-112] CTL_RX_MAX_PACKET_LEN attribute is set to %h.  Legal values for this attribute are 15'h0000 to 15'h3FFF. Instance: %m",
+          MODULE_NAME, CTL_RX_MAX_PACKET_LEN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_PROCESS_LFI_REG != "FALSE") &&
          (CTL_RX_PROCESS_LFI_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-123] CTL_RX_PROCESS_LFI attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_RX_PROCESS_LFI_REG);
+      $display(
+          "Error: [Unisim %s-123] CTL_RX_PROCESS_LFI attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_RX_PROCESS_LFI_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TEST_MODE_PIN_CHAR_REG != "FALSE") &&
          (CTL_TEST_MODE_PIN_CHAR_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-145] CTL_TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_TEST_MODE_PIN_CHAR_REG);
+      $display(
+          "Error: [Unisim %s-145] CTL_TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_TEST_MODE_PIN_CHAR_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_FCS_INS_ENABLE_REG != "TRUE") &&
          (CTL_TX_FCS_INS_ENABLE_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-150] CTL_TX_FCS_INS_ENABLE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, CTL_TX_FCS_INS_ENABLE_REG);
+      $display(
+          "Error: [Unisim %s-150] CTL_TX_FCS_INS_ENABLE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, CTL_TX_FCS_INS_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_IGNORE_FCS_REG != "FALSE") &&
          (CTL_TX_IGNORE_FCS_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-151] CTL_TX_IGNORE_FCS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_TX_IGNORE_FCS_REG);
+      $display(
+          "Error: [Unisim %s-151] CTL_TX_IGNORE_FCS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_TX_IGNORE_FCS_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_PTP_1STEP_ENABLE_REG != "FALSE") &&
          (CTL_TX_PTP_1STEP_ENABLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-154] CTL_TX_PTP_1STEP_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_TX_PTP_1STEP_ENABLE_REG);
+      $display(
+          "Error: [Unisim %s-154] CTL_TX_PTP_1STEP_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_TX_PTP_1STEP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((SIM_VERSION_REG != "2.0") && (SIM_VERSION_REG != "1.0"))) begin
-      $display("Error: [Unisim %s-179] SIM_VERSION attribute is set to %s.  Legal values for this attribute are 2.0 or 1.0. Instance: %m", MODULE_NAME, SIM_VERSION_REG);
+      $display(
+          "Error: [Unisim %s-179] SIM_VERSION attribute is set to %s.  Legal values for this attribute are 2.0 or 1.0. Instance: %m",
+          MODULE_NAME, SIM_VERSION_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((TEST_MODE_PIN_CHAR_REG != "FALSE") &&
          (TEST_MODE_PIN_CHAR_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-180] TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, TEST_MODE_PIN_CHAR_REG);
+      $display(
+          "Error: [Unisim %s-180] TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, TEST_MODE_PIN_CHAR_REG);
       attr_err = 1'b1;
     end
 

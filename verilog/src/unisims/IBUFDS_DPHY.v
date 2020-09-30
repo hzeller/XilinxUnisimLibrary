@@ -112,7 +112,9 @@ module IBUFDS_DPHY #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((DIFF_TERM_REG != "TRUE") && (DIFF_TERM_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-101] DIFF_TERM attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, DIFF_TERM_REG);
+      $display(
+          "Error: [Unisim %s-101] DIFF_TERM attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, DIFF_TERM_REG);
       attr_err = 1'b1;
     end
 
@@ -138,7 +140,9 @@ module IBUFDS_DPHY #(
          (SIM_DEVICE != "VERSAL_PRIME") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES2"))) begin
-      $display("Error: [Unisim %s-102] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1, ULTRASCALE_PLUS_ES2, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE);
+      $display(
+          "Error: [Unisim %s-102] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1, ULTRASCALE_PLUS_ES2, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE);
       attr_err = 1'b1;
     end
 
@@ -177,13 +181,10 @@ module IBUFDS_DPHY #(
   assign LPRX_O_N_out = (LPRX_DISABLE_in === 1'b0) ? lp_out[1] : (LPRX_DISABLE_in === 1'bx || LPRX_DISABLE_in === 1'bz) ? 1'bx : sim_mode;
   assign LPRX_O_P_out = (LPRX_DISABLE_in === 1'b0) ? lp_out[0] : (LPRX_DISABLE_in === 1'bx || LPRX_DISABLE_in === 1'bz) ? 1'bx : sim_mode;
 
-  always @ (I_in or IB_in) begin
-    if (I_in == 1'b1 && IB_in == 1'b0)
-      o_out <= 1'b1;
-    else if (I_in == 1'b0 && IB_in == 1'b1)
-      o_out <= 1'b0;
-    else if ((I_in === 1'bx) || (IB_in === 1'bx) || I_in === 1'bz || IB_in === 1'bz )
-      o_out <= 1'bx;
+  always @(I_in or IB_in) begin
+    if (I_in == 1'b1 && IB_in == 1'b0) o_out <= 1'b1;
+    else if (I_in == 1'b0 && IB_in == 1'b1) o_out <= 1'b0;
+    else if ((I_in === 1'bx) || (IB_in === 1'bx) || I_in === 1'bz || IB_in === 1'bz) o_out <= 1'bx;
   end
 
 endmodule

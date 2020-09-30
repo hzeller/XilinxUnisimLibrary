@@ -68,7 +68,7 @@ module AND2B1L #(
   wire DI_in;
   wire SRI_in;
 
-  assign DI_in = DI;
+  assign DI_in  = DI;
   assign SRI_in = SRI ^ IS_SRI_INVERTED_REG;
 
 `ifdef XIL_TIMING

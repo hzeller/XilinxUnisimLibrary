@@ -74,41 +74,39 @@ module FDSE #(
   // end behavioral model
 
   always @(glblGSR)
-      if (glblGSR) 
-        assign Q_out = INIT;
-      else
-        deassign Q_out;
+    if (glblGSR) assign Q_out = INIT;
+    else deassign Q_out;
 
 `ifdef XIL_TIMING
   generate
     if (IS_C_INVERTED == 1'b0) begin : generate_block1
       always @(posedge C_dly)
-    if (((S_dly ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
-      Q_out <=  1'b1;
-    else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
-      Q_out <=  D_dly ^ IS_D_INVERTED_REG;
+        if (((S_dly ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
+          Q_out <= 1'b1;
+        else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
+          Q_out <= D_dly ^ IS_D_INVERTED_REG;
     end else begin : generate_block1
       always @(negedge C_dly)
-    if (((S_dly ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
-      Q_out <=  1'b1;
-    else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
-      Q_out <=  D_dly ^ IS_D_INVERTED_REG;
+        if (((S_dly ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
+          Q_out <= 1'b1;
+        else if (CE_dly || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D_dly ^ IS_D_INVERTED_REG))))
+          Q_out <= D_dly ^ IS_D_INVERTED_REG;
     end
   endgenerate
 `else
   generate
     if (IS_C_INVERTED == 1'b0) begin : generate_block1
       always @(posedge C)
-    if (((S ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
-      Q_out <=  1'b1;
-    else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
-      Q_out <=  D ^ IS_D_INVERTED_REG;
+        if (((S ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
+          Q_out <= 1'b1;
+        else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
+          Q_out <= D ^ IS_D_INVERTED_REG;
     end else begin : generate_block1
       always @(negedge C)
-    if (((S ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
-      Q_out <=  1'b1;
-    else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
-      Q_out <=  D ^ IS_D_INVERTED_REG;
+        if (((S ^ IS_S_INVERTED_REG) && (S !== 1'bz)) || (S === 1'bx && Q_out == 1'b1))
+          Q_out <= 1'b1;
+        else if (CE || (CE === 1'bz) || ((CE === 1'bx) && (Q_out == (D ^ IS_D_INVERTED_REG))))
+          Q_out <= D ^ IS_D_INVERTED_REG;
     end
   endgenerate
 `endif

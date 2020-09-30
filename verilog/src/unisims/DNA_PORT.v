@@ -84,14 +84,14 @@ module DNA_PORT (
 
   always @(posedge clk_in) begin
     if (read_in == 1'b1) begin
-      dna_val = SIM_DNA_VALUE;
+      dna_val  = SIM_DNA_VALUE;
       dout_out = dna_val[MSB_DNA_BITS];
     end // read_in == 1'b1
        else if(read_in == 1'b0)
       if (shift_in == 1'b1) begin
         // IR 494079
         //                   dna_val = {din_in, dna_val[MSB_DNA_BITS :1]};
-        dna_val = {dna_val[MSB_DNA_BITS-1 : 0], din_in};
+        dna_val  = {dna_val[MSB_DNA_BITS-1 : 0], din_in};
         dout_out = dna_val[MSB_DNA_BITS];
       end  // shift_in == 1'b1
   end  // always @ (posedge clk_in)

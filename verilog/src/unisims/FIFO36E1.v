@@ -231,11 +231,14 @@ module FIFO36E1 (
       "FIFO36": ;
       "FIFO36_72":
       if (DATA_WIDTH != 72) begin
-        $display("DRC Error : The attribute DATA_WIDTH must be set to 72 when attribute FIFO_MODE = FIFO36_72.");
+        $display(
+            "DRC Error : The attribute DATA_WIDTH must be set to 72 when attribute FIFO_MODE = FIFO36_72.");
         finish_error = 1;
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute FIFO_MODE on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are FIFO36 or FIFO36_72.", FIFO_MODE);
+        $display(
+            "Attribute Syntax Error : The attribute FIFO_MODE on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are FIFO36 or FIFO36_72.",
+            FIFO_MODE);
         finish_error = 1;
       end
 
@@ -247,11 +250,14 @@ module FIFO36E1 (
       4, 9, 18, 36: ;
       72:
       if (FIFO_MODE != "FIFO36_72") begin
-        $display("DRC Error : The attribute FIFO_MODE must be set to FIFO36_72 when attribute DATA_WIDTH = 72.");
+        $display(
+            "DRC Error : The attribute FIFO_MODE must be set to FIFO36_72 when attribute DATA_WIDTH = 72.");
         finish_error = 1;
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute DATA_WIDTH on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are 4, 9, 18, 36 or 72.", DATA_WIDTH);
+        $display(
+            "Attribute Syntax Error : The attribute DATA_WIDTH on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are 4, 9, 18, 36 or 72.",
+            DATA_WIDTH);
         finish_error = 1;
 
       end
@@ -260,32 +266,44 @@ module FIFO36E1 (
 
 
     if (!((IS_RDCLK_INVERTED >= 1'b0) && (IS_RDCLK_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RDCLK_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RDCLK_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RDCLK_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RDCLK_INVERTED);
       finish_error = 1'b1;
     end
 
     if (!((IS_RDEN_INVERTED >= 1'b0) && (IS_RDEN_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RDEN_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RDEN_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RDEN_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RDEN_INVERTED);
       finish_error = 1'b1;
     end
 
     if (!((IS_RSTREG_INVERTED >= 1'b0) && (IS_RSTREG_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RSTREG_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RSTREG_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RSTREG_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RSTREG_INVERTED);
       finish_error = 1'b1;
     end
 
     if (!((IS_RST_INVERTED >= 1'b0) && (IS_RST_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RST_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RST_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RST_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RST_INVERTED);
       finish_error = 1'b1;
     end
 
     if (!((IS_WRCLK_INVERTED >= 1'b0) && (IS_WRCLK_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_WRCLK_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_WRCLK_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_WRCLK_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_WRCLK_INVERTED);
       finish_error = 1'b1;
     end
 
     if (!((IS_WREN_INVERTED >= 1'b0) && (IS_WREN_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_WREN_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_WREN_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_WREN_INVERTED on FIFO36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_WREN_INVERTED);
       finish_error = 1'b1;
     end
 
@@ -295,8 +313,12 @@ module FIFO36E1 (
 
 
   // Matching HW
-  localparam init_sdp = (FIFO_MODE == "FIFO36_72") ? {INIT[71:68],INIT[35:32],INIT[67:36],INIT[31:0]} : INIT;
-  localparam srval_sdp = (FIFO_MODE == "FIFO36_72") ? {SRVAL[71:68],SRVAL[35:32],SRVAL[67:36],SRVAL[31:0]} : SRVAL;
+  localparam init_sdp = (FIFO_MODE == "FIFO36_72") ? {
+    INIT[71:68], INIT[35:32], INIT[67:36], INIT[31:0]
+  } : INIT;
+  localparam srval_sdp = (FIFO_MODE == "FIFO36_72") ? {
+    SRVAL[71:68], SRVAL[35:32], SRVAL[67:36], SRVAL[31:0]
+  } : SRVAL;
 
 
   FF36_INTERNAL_VLOG #(
@@ -383,7 +405,7 @@ module FIFO36E1 (
 `ifdef XIL_TIMING
 
   always @(notifier) begin
-    DO_out <= 64'bx;
+    DO_out  <= 64'bx;
     DOP_out <= 8'bx;
   end
 
@@ -699,8 +721,8 @@ module FF36_INTERNAL_VLOG (
 
 
   // Input and output ports
-  assign SBITERR = sbiterr_out_out;
-  assign DBITERR = dbiterr_out_out;
+  assign SBITERR   = sbiterr_out_out;
+  assign DBITERR   = dbiterr_out_out;
   assign ECCPARITY = eccparity_out;
 
   initial begin
@@ -721,35 +743,29 @@ module FF36_INTERNAL_VLOG (
 
     // Determine address limit
     case (DATA_WIDTH)
-      4 : begin
-        if (FIFO_SIZE == 36)
-      addr_limit = 8192;
-        else
-      addr_limit = 4096;
-    end
-      9 : begin
-        if (FIFO_SIZE == 36)
-      addr_limit = 4096;
-        else
-      addr_limit = 2048;
-    end
-      18 : begin
-              if (FIFO_SIZE == 36)
-      addr_limit = 2048;
-        else
-      addr_limit = 1024;
-    end
-      36 : begin
-              if (FIFO_SIZE == 36)
-      addr_limit = 1024;
-        else
-      addr_limit = 512;
-    end
-      72 : begin
+      4: begin
+        if (FIFO_SIZE == 36) addr_limit = 8192;
+        else addr_limit = 4096;
+      end
+      9: begin
+        if (FIFO_SIZE == 36) addr_limit = 4096;
+        else addr_limit = 2048;
+      end
+      18: begin
+        if (FIFO_SIZE == 36) addr_limit = 2048;
+        else addr_limit = 1024;
+      end
+      36: begin
+        if (FIFO_SIZE == 36) addr_limit = 1024;
+        else addr_limit = 512;
+      end
+      72: begin
         addr_limit = 512;
-    end
+      end
       default: begin
-        $display("Attribute Syntax Error : The attribute DATA_WIDTH on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are 4, 9, 18, 36 or 72.", DATA_WIDTH);
+        $display(
+            "Attribute Syntax Error : The attribute DATA_WIDTH on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are 4, 9, 18, 36 or 72.",
+            DATA_WIDTH);
         finish_error = 1;
       end
     endcase
@@ -758,9 +774,11 @@ module FF36_INTERNAL_VLOG (
 
     case (EN_SYN)
       "FALSE": sync = 0;
-      "TRUE": sync = 1;
+      "TRUE":  sync = 1;
       default: begin
-        $display("Attribute Syntax Error : The attribute EN_SYN on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", EN_SYN);
+        $display(
+            "Attribute Syntax Error : The attribute EN_SYN on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            EN_SYN);
         finish_error = 1;
       end
     endcase  // case(EN_SYN)
@@ -771,10 +789,10 @@ module FF36_INTERNAL_VLOG (
         fwft = 0;
         if (EN_SYN == "FALSE") begin
           ae_empty = ALMOST_EMPTY_OFFSET - 1;
-          ae_full = ALMOST_FULL_OFFSET;
+          ae_full  = ALMOST_FULL_OFFSET;
         end else begin
           ae_empty = ALMOST_EMPTY_OFFSET;
-          ae_full = ALMOST_FULL_OFFSET;
+          ae_full  = ALMOST_FULL_OFFSET;
         end
       end
       "TRUE": begin
@@ -783,7 +801,9 @@ module FF36_INTERNAL_VLOG (
         ae_full = ALMOST_FULL_OFFSET;
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute FIRST_WORD_FALL_THROUGH on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", FIRST_WORD_FALL_THROUGH);
+        $display(
+            "Attribute Syntax Error : The attribute FIRST_WORD_FALL_THROUGH on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            FIRST_WORD_FALL_THROUGH);
         finish_error = 1;
       end
     endcase
@@ -791,44 +811,53 @@ module FF36_INTERNAL_VLOG (
 
     // DRC for fwft in sync mode
     if (fwft == 1'b1 && EN_SYN == "TRUE") begin
-      $display("DRC Error : First word fall through is not supported in synchronous mode on FIFO36E1 instance %m.");
+      $display(
+          "DRC Error : First word fall through is not supported in synchronous mode on FIFO36E1 instance %m.");
       finish_error = 1;
     end
 
     if (EN_SYN == "FALSE" && DO_REG == 0) begin
-      $display("DRC Error : DO_REG = 0 is invalid when EN_SYN is set to FALSE on FIFO36E1 instance %m.");
+      $display(
+          "DRC Error : DO_REG = 0 is invalid when EN_SYN is set to FALSE on FIFO36E1 instance %m.");
       finish_error = 1;
     end
 
 
     case (EN_ECC_WRITE)
-      "TRUE": en_ecc_write_int <= 1;
+      "TRUE":  en_ecc_write_int <= 1;
       "FALSE": en_ecc_write_int <= 0;
       default: begin
-        $display("Attribute Syntax Error : The attribute EN_ECC_WRITE on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", EN_ECC_WRITE);
+        $display(
+            "Attribute Syntax Error : The attribute EN_ECC_WRITE on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            EN_ECC_WRITE);
         finish_error = 1;
       end
     endcase
 
 
     case (EN_ECC_READ)
-      "TRUE": en_ecc_read_int <= 1;
+      "TRUE":  en_ecc_read_int <= 1;
       "FALSE": en_ecc_read_int <= 0;
       default: begin
-        $display("Attribute Syntax Error : The attribute EN_ECC_READ on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", EN_ECC_READ);
+        $display(
+            "Attribute Syntax Error : The attribute EN_ECC_READ on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            EN_ECC_READ);
         finish_error = 1;
       end
     endcase
 
 
     if ((EN_ECC_READ == "TRUE" || EN_ECC_WRITE == "TRUE") && DATA_WIDTH != 72) begin
-      $display("DRC Error : The attribute DATA_WIDTH must be set to 72 when FIFO36E1 is configured in the ECC mode.");
+      $display(
+          "DRC Error : The attribute DATA_WIDTH must be set to 72 when FIFO36E1 is configured in the ECC mode.");
       finish_error = 1;
     end
 
 
     if (!(SIM_DEVICE == "VIRTEX6" || SIM_DEVICE == "7SERIES")) begin
-      $display("Attribute Syntax Error : The Attribute SIM_DEVICE on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are VIRTEX6, or 7SERIES.", SIM_DEVICE);
+      $display(
+          "Attribute Syntax Error : The Attribute SIM_DEVICE on FIFO36E1 instance %m is set to %s.  Legal values for this attribute are VIRTEX6, or 7SERIES.",
+          SIM_DEVICE);
       finish_error = 1;
     end
 
@@ -886,8 +915,8 @@ module FF36_INTERNAL_VLOG (
       assign rdcount_out = 13'b0;
       RDCOUNT = 13'b0;
       WRCOUNT = 13'b0;
-      RDERR = 0;
-      WRERR = 0;
+      RDERR   = 0;
+      WRERR   = 0;
       assign rd_addr = 0;
       assign rd_prefetch = 0;
       assign wr_addr = 0;
@@ -978,7 +1007,9 @@ module FF36_INTERNAL_VLOG (
 
             if (((rst_rdckreg[2] & rst_rdckreg[1] & rst_rdckreg[0]) == 0) || viol_rst_rden == 1) begin
 
-              $display("DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least three RDCLK clock cycles, and RDEN must be low for four clock cycles before RST becomes active high, and RDEN remains low during this reset cycle.", $stime);
+              $display(
+                  "DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least three RDCLK clock cycles, and RDEN must be low for four clock cycles before RST becomes active high, and RDEN remains low during this reset cycle.",
+                  $stime);
               rst_rdclk_flag = 1;
               #1 $finish;
             end
@@ -986,7 +1017,9 @@ module FF36_INTERNAL_VLOG (
 
             if (((rst_wrckreg[2] & rst_wrckreg[1] & rst_wrckreg[0]) == 0) || viol_rst_wren == 1) begin
 
-              $display("DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least three WRCLK clock cycles, and WREN must be low for four clock cycles before RST becomes active high, and WREN remains low during this reset cycle.", $stime);
+              $display(
+                  "DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least three WRCLK clock cycles, and WREN must be low for four clock cycles before RST becomes active high, and WREN remains low during this reset cycle.",
+                  $stime);
 
               rst_wrclk_flag = 1;
               #1 $finish;
@@ -994,7 +1027,7 @@ module FF36_INTERNAL_VLOG (
 
             if ((rst_rdclk_flag | rst_wrclk_flag) == 1) begin
 
-              FULL = 1'bX;
+              FULL  = 1'bX;
               EMPTY = 1'bX;
               RDERR = 1'bX;
               WRERR = 1'bX;
@@ -1050,15 +1083,15 @@ module FF36_INTERNAL_VLOG (
 
             viol_rst_rden = 0;
             viol_rst_wren = 0;
-            rden_rdckreg = 4'h0;
-            wren_wrckreg = 4'h0;
+            rden_rdckreg  = 4'h0;
+            wren_wrckreg  = 4'h0;
 
-            rst_rdckreg = 5'b0;
-            rst_wrckreg = 5'b0;
+            rst_rdckreg   = 5'b0;
+            rst_wrckreg   = 5'b0;
 
 
             if (rst_rdclk_flag == 0 && rst_wrclk_flag == 0 && first_rst_flag == 0)
-          first_rst_flag = 1;
+              first_rst_flag = 1;
 
           end  // if (rst_tmp1 == 0 && rst_tmp2 == 1)
 
@@ -1085,13 +1118,15 @@ module FF36_INTERNAL_VLOG (
               after_rst_rden_flag = 1'b1;
 
             end else if (after_rst_rdclk >= 3) begin
-              after_rst_rdclk = 0;
+              after_rst_rdclk  = 0;
               rst_trans_rden_1 = 1'b0;
               rst_trans_rden_2 = 1'b0;
 
               if (after_rst_rden_flag == 1'b1) begin
 
-                $display("DRC Error : Reset is unsuccessful at time %t.  RDEN must be low for at least two RDCLK clock cycles after RST deasserted.", $stime);
+                $display(
+                    "DRC Error : Reset is unsuccessful at time %t.  RDEN must be low for at least two RDCLK clock cycles after RST deasserted.",
+                    $stime);
                 after_rst_rden_flag = 1'b0;
                 after_rst_x_flag = 1'b1;
                 #1 $finish;
@@ -1119,14 +1154,16 @@ module FF36_INTERNAL_VLOG (
 
             end else if (after_rst_wrclk >= 3) begin
 
-              after_rst_wrclk = 0;
+              after_rst_wrclk  = 0;
               rst_trans_wren_1 = 1'b0;
               rst_trans_wren_2 = 1'b0;
 
 
               if (after_rst_wren_flag == 1'b1) begin
 
-                $display("DRC Error : Reset is unsuccessful at time %t.  WREN must be low for at least two WRCLK clock cycles after RST deasserted.", $stime);
+                $display(
+                    "DRC Error : Reset is unsuccessful at time %t.  WREN must be low for at least two WRCLK clock cycles after RST deasserted.",
+                    $stime);
                 after_rst_wren_flag = 1'b0;
                 after_rst_x_flag = 1'b1;
                 #1 $finish;
@@ -1140,7 +1177,7 @@ module FF36_INTERNAL_VLOG (
         always @(posedge after_rst_x_flag or negedge RST) begin
 
           if (after_rst_x_flag == 1'b1) begin
-            FULL = 1'bX;
+            FULL  = 1'bX;
             EMPTY = 1'bX;
             RDERR = 1'bX;
             WRERR = 1'bX;
@@ -1247,7 +1284,9 @@ module FF36_INTERNAL_VLOG (
           if (rst_tmp1 == 0 && rst_tmp2 == 1) begin
             if (((rst_rdckreg[4] & rst_rdckreg[3] & rst_rdckreg[2] & rst_rdckreg[1] & rst_rdckreg[0]) == 0) || viol_rst_rden == 1) begin
 
-              $display("DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least five RDCLK clock cycles, and RDEN must be low before RST becomes active high, and RDEN remains low during this reset cycle.", $stime);
+              $display(
+                  "DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least five RDCLK clock cycles, and RDEN must be low before RST becomes active high, and RDEN remains low during this reset cycle.",
+                  $stime);
               rst_rdclk_flag = 1;
               #1 $finish;
 
@@ -1255,14 +1294,16 @@ module FF36_INTERNAL_VLOG (
 
             if (((rst_wrckreg[4] & rst_wrckreg[3] & rst_wrckreg[2] & rst_wrckreg[1] & rst_wrckreg[0]) == 0) || viol_rst_wren == 1) begin
 
-              $display("DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least five WRCLK clock cycles, and WREN must be low before RST becomes active high, and WREN remains low during this reset cycle.", $stime);
+              $display(
+                  "DRC Error : Reset is unsuccessful at time %t.  RST must be held high for at least five WRCLK clock cycles, and WREN must be low before RST becomes active high, and WREN remains low during this reset cycle.",
+                  $stime);
 
               rst_wrclk_flag = 1;
               #1 $finish;
             end
 
             if ((rst_rdclk_flag | rst_wrclk_flag) == 1) begin
-              FULL = 1'bX;
+              FULL  = 1'bX;
               EMPTY = 1'bX;
               RDERR = 1'bX;
               WRERR = 1'bX;
@@ -1324,11 +1365,11 @@ module FF36_INTERNAL_VLOG (
 
             viol_rst_rden = 0;
             viol_rst_wren = 0;
-            rst_rdckreg = 5'b0;
-            rst_wrckreg = 5'b0;
+            rst_rdckreg   = 5'b0;
+            rst_wrckreg   = 5'b0;
 
             if (rst_rdclk_flag == 0 && rst_wrclk_flag == 0 && first_rst_flag == 0)
-          first_rst_flag = 1;
+              first_rst_flag = 1;
 
           end  // if (rst_tmp1 == 0 && rst_tmp2 == 1)
           rst_tmp2 = rst_tmp1;
@@ -1346,7 +1387,9 @@ module FF36_INTERNAL_VLOG (
   always @(posedge RDEN or negedge GSR)
     @(posedge RDCLK)
       if (first_rst_flag == 0 && RDEN == 1'b1 && GSR == 1'b0) begin
-        $display("DRC Error : A RESET cycle must be observed before the first use of the FIFO instance %m which occurs at time %t.", $time);
+        $display(
+            "DRC Error : A RESET cycle must be observed before the first use of the FIFO instance %m which occurs at time %t.",
+            $time);
         #1 $finish;
       end
 
@@ -1354,7 +1397,9 @@ module FF36_INTERNAL_VLOG (
   always @(posedge WREN or negedge GSR)
     @(posedge WRCLK)
       if (first_rst_flag == 0 && WREN == 1'b1 && GSR == 1'b0) begin
-        $display("DRC Error : A RESET cycle must be observed before the first use of the FIFO instance %m which occurs at time %t.", $time);
+        $display(
+            "DRC Error : A RESET cycle must be observed before the first use of the FIFO instance %m which occurs at time %t.",
+            $time);
         #1 $finish;
       end
 
@@ -1370,10 +1415,8 @@ module FF36_INTERNAL_VLOG (
       count_freq_wrclk_reset = 1;
     end
 
-    if (count_freq_rdclk == 150)
-    rise_rdclk = $time;
-  else if (count_freq_rdclk == 151)
-    period_rdclk = $time - rise_rdclk;
+    if (count_freq_rdclk == 150) rise_rdclk = $time;
+    else if (count_freq_rdclk == 151) period_rdclk = $time - rise_rdclk;
 
     if (count_freq_rdclk >= 151 && count_freq_wrclk >= 151 && RST === 1'b0 && GSR === 1'b0) begin
 
@@ -1387,12 +1430,16 @@ module FF36_INTERNAL_VLOG (
             if (fwft == 1'b0) begin
 
               if ((ALMOST_EMPTY_OFFSET < 5) || (ALMOST_EMPTY_OFFSET > addr_limit - 6)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_EMPTY_OFFSET, 5, addr_limit - 6);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_EMPTY_OFFSET, 5, addr_limit - 6);
                 finish_error = 1;
               end
 
               if ((ALMOST_FULL_OFFSET < 4) || (ALMOST_FULL_OFFSET > addr_limit - 7)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_FULL_OFFSET, 4, addr_limit - 7);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_FULL_OFFSET, 4, addr_limit - 7);
                 finish_error = 1;
               end
 
@@ -1400,12 +1447,16 @@ module FF36_INTERNAL_VLOG (
           else begin
 
               if ((ALMOST_EMPTY_OFFSET < 6) || (ALMOST_EMPTY_OFFSET > addr_limit - 5)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_EMPTY_OFFSET, 6, addr_limit - 5);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_EMPTY_OFFSET, 6, addr_limit - 5);
                 finish_error = 1;
               end
 
               if ((ALMOST_FULL_OFFSET < 4) || (ALMOST_FULL_OFFSET > addr_limit - 7)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_FULL_OFFSET, 4, addr_limit - 7);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_FULL_OFFSET, 4, addr_limit - 7);
                 finish_error = 1;
               end
 
@@ -1417,12 +1468,16 @@ module FF36_INTERNAL_VLOG (
             if (fwft == 1'b0) begin
 
               if ((ALMOST_EMPTY_OFFSET < 5) || (ALMOST_EMPTY_OFFSET > addr_limit - 5)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_EMPTY_OFFSET, 5, addr_limit - 5);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_EMPTY_OFFSET, 5, addr_limit - 5);
                 finish_error = 1;
               end
 
               if ((ALMOST_FULL_OFFSET < 4) || (ALMOST_FULL_OFFSET > addr_limit - 5)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_FULL_OFFSET, 4, addr_limit - 5);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_FULL_OFFSET, 4, addr_limit - 5);
                 finish_error = 1;
 
               end
@@ -1431,12 +1486,16 @@ module FF36_INTERNAL_VLOG (
           else begin
 
               if ((ALMOST_EMPTY_OFFSET < 6) || (ALMOST_EMPTY_OFFSET > addr_limit - 4)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_EMPTY_OFFSET, 6, addr_limit - 4);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_EMPTY_OFFSET, 6, addr_limit - 4);
                 finish_error = 1;
               end
 
               if ((ALMOST_FULL_OFFSET < 4) || (ALMOST_FULL_OFFSET > addr_limit - 5)) begin
-                $display("Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_FULL_OFFSET, 4, addr_limit - 5);
+                $display(
+                    "Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                    ALMOST_FULL_OFFSET, 4, addr_limit - 5);
                 finish_error = 1;
               end
 
@@ -1446,12 +1505,16 @@ module FF36_INTERNAL_VLOG (
         else begin
 
           if ((fwft == 1'b0) && ((ALMOST_EMPTY_OFFSET < 1) || (ALMOST_EMPTY_OFFSET > addr_limit - 2))) begin
-            $display("Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_EMPTY_OFFSET, 1, addr_limit - 2);
+            $display(
+                "Attribute Syntax Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                ALMOST_EMPTY_OFFSET, 1, addr_limit - 2);
             finish_error = 1;
           end
 
           if ((fwft == 1'b0) && ((ALMOST_FULL_OFFSET < 1) || (ALMOST_FULL_OFFSET > addr_limit - 2))) begin
-            $display("Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d", ALMOST_FULL_OFFSET, 1, addr_limit - 2);
+            $display(
+                "Attribute Syntax Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d.  Legal values for this attribute are %d to %d",
+                ALMOST_FULL_OFFSET, 1, addr_limit - 2);
             finish_error = 1;
           end
 
@@ -1474,7 +1537,9 @@ module FF36_INTERNAL_VLOG (
           //             $display ("addr_limit (%h) period_rdclk (%d) period_wrclk (%d) real_period_rdclk (%f) real_period_wrclk (%f) roundup_int_period_rdclk_wrclk (%d) roundup_int_period_wrclk_rdclk (%d) s7_roundup_int_period_rdclk_wrclk (%d) instance %m\n",addr_limit,period_rdclk,period_wrclk,real_period_rdclk,real_period_wrclk,roundup_int_period_rdclk_wrclk,roundup_int_period_wrclk_rdclk,s7_roundup_int_period_rdclk_wrclk); 
           if (ALMOST_FULL_OFFSET > (addr_limit - (s7_roundup_int_period_rdclk_wrclk + 6))) begin
 
-            $display("DRC Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d. It must be set to a value smaller than (FIFO_DEPTH - ((roundup(4 * (WRCLK frequency / RDCLK frequency))) + 6)) when FIFO36E1 has different frequencies for RDCLK and WRCLK.", ALMOST_FULL_OFFSET);
+            $display(
+                "DRC Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d. It must be set to a value smaller than (FIFO_DEPTH - ((roundup(4 * (WRCLK frequency / RDCLK frequency))) + 6)) when FIFO36E1 has different frequencies for RDCLK and WRCLK.",
+                ALMOST_FULL_OFFSET);
             finish_error = 1;
 
           end
@@ -1482,14 +1547,18 @@ module FF36_INTERNAL_VLOG (
 
           if (ALMOST_FULL_OFFSET > (addr_limit - ((3 * roundup_int_period_wrclk_rdclk) + 3))) begin
 
-            $display("DRC Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d. It must be set to a value smaller than (FIFO_DEPTH - ((3 * roundup (RDCLK frequency / WRCLK frequency)) + 3)) when FIFO36E1 has different frequencies for RDCLK and WRCLK.", ALMOST_FULL_OFFSET);
+            $display(
+                "DRC Error : The attribute ALMOST_FULL_OFFSET on FIFO36E1 instance %m is set to %d. It must be set to a value smaller than (FIFO_DEPTH - ((3 * roundup (RDCLK frequency / WRCLK frequency)) + 3)) when FIFO36E1 has different frequencies for RDCLK and WRCLK.",
+                ALMOST_FULL_OFFSET);
             finish_error = 1;
 
           end
 
           if (ALMOST_EMPTY_OFFSET > (addr_limit - ((3 * roundup_int_period_rdclk_wrclk) + 3))) begin
 
-            $display("DRC Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d. It must be set to a value smaller than (FIFO_DEPTH - ((3 * roundup (WRCLK frequency / RDCLK frequency)) + 3)) when FIFO36E1 has different frequencies for RDCLK and WRCLK.", ALMOST_EMPTY_OFFSET);
+            $display(
+                "DRC Error : The attribute ALMOST_EMPTY_OFFSET on FIFO36E1 instance %m is set to %d. It must be set to a value smaller than (FIFO_DEPTH - ((3 * roundup (WRCLK frequency / RDCLK frequency)) + 3)) when FIFO36E1 has different frequencies for RDCLK and WRCLK.",
+                ALMOST_EMPTY_OFFSET);
             finish_error = 1;
 
           end
@@ -1516,7 +1585,7 @@ module FF36_INTERNAL_VLOG (
     end else if (((period_wrclk == 0) && (count_freq_wrclk < 152)) ||
                     ((count_freq_wrclk == 0) && (GSR == 1 || RST == 1)) ||
                     ((count_freq_wrclk > 0) && (count_freq_wrclk < 152)))
-        count_freq_wrclk = count_freq_wrclk + 1;
+      count_freq_wrclk = count_freq_wrclk + 1;
 
 
     if (count_freq_wrclk == 150) rise_wrclk = $time;
@@ -1563,7 +1632,7 @@ module FF36_INTERNAL_VLOG (
 
               if (EMPTY == 1'b0) begin
 
-                do_buf = mem[rdcount_out];
+                do_buf  = mem[rdcount_out];
                 dop_buf = memp[rdcount_out];
 
                 // ECC decode
@@ -1638,20 +1707,50 @@ module FF36_INTERNAL_VLOG (
 
                     if (syndrome[7]) begin  // dectect single bit error
 
-                      ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                      ecc_bit_position = {
+                        do_buf[63:57],
+                        dop_buf[6],
+                        do_buf[56:26],
+                        dop_buf[5],
+                        do_buf[25:11],
+                        dop_buf[4],
+                        do_buf[10:4],
+                        dop_buf[3],
+                        do_buf[3:1],
+                        dop_buf[2],
+                        do_buf[0],
+                        dop_buf[1:0],
+                        dop_buf[7]
+                      };
 
                       if (syndrome[6:0] > 71) begin
-                        $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                        $display(
+                            "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                         #1 $finish;
                       end
 
                       ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                      di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                      di_in_ecc_corrected = {
+                        ecc_bit_position[71:65],
+                        ecc_bit_position[63:33],
+                        ecc_bit_position[31:17],
+                        ecc_bit_position[15:9],
+                        ecc_bit_position[7:5],
+                        ecc_bit_position[3]
+                      };  // correct single bit error in the memory
 
                       do_buf = di_in_ecc_corrected;
 
-                      dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                      dip_in_ecc_corrected = {
+                        ecc_bit_position[0],
+                        ecc_bit_position[64],
+                        ecc_bit_position[32],
+                        ecc_bit_position[16],
+                        ecc_bit_position[8],
+                        ecc_bit_position[4],
+                        ecc_bit_position[2:1]
+                      };  // correct single bit error in the parity memory
 
                       dop_buf = dip_in_ecc_corrected;
 
@@ -1728,7 +1827,7 @@ module FF36_INTERNAL_VLOG (
               if (((rd_addr == rdcount_out) && (empty_ram[3] == 1'b0)) ||
         ((rden_reg == 1'b1) && (empty_ram[1] == 1'b0))) begin
 
-                do_buf = mem[rdcount_out];
+                do_buf  = mem[rdcount_out];
                 dop_buf = memp[rdcount_out];
 
                 // ECC decode
@@ -1802,20 +1901,50 @@ module FF36_INTERNAL_VLOG (
 
                     if (syndrome[7]) begin  // dectect single bit error
 
-                      ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                      ecc_bit_position = {
+                        do_buf[63:57],
+                        dop_buf[6],
+                        do_buf[56:26],
+                        dop_buf[5],
+                        do_buf[25:11],
+                        dop_buf[4],
+                        do_buf[10:4],
+                        dop_buf[3],
+                        do_buf[3:1],
+                        dop_buf[2],
+                        do_buf[0],
+                        dop_buf[1:0],
+                        dop_buf[7]
+                      };
 
                       if (syndrome[6:0] > 71) begin
-                        $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                        $display(
+                            "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                         #1 $finish;
                       end
 
                       ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                      di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                      di_in_ecc_corrected = {
+                        ecc_bit_position[71:65],
+                        ecc_bit_position[63:33],
+                        ecc_bit_position[31:17],
+                        ecc_bit_position[15:9],
+                        ecc_bit_position[7:5],
+                        ecc_bit_position[3]
+                      };  // correct single bit error in the memory
 
                       do_buf = di_in_ecc_corrected;
 
-                      dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                      dip_in_ecc_corrected = {
+                        ecc_bit_position[0],
+                        ecc_bit_position[64],
+                        ecc_bit_position[32],
+                        ecc_bit_position[16],
+                        ecc_bit_position[8],
+                        ecc_bit_position[4],
+                        ecc_bit_position[2:1]
+                      };  // correct single bit error in the parity memory
 
                       dop_buf = dip_in_ecc_corrected;
 
@@ -1837,7 +1966,7 @@ module FF36_INTERNAL_VLOG (
                 end  // if (EN_ECC_READ == "TRUE")
                 // end ecc decode
 
-                do_in = do_buf;
+                do_in  = do_buf;
                 dop_in = dop_buf;
 
                 #1;
@@ -1869,7 +1998,7 @@ module FF36_INTERNAL_VLOG (
         ((rden_reg == 1'b1) && (empty_ram[1] == 1'b0)) ||
         ((rden_reg == 1'b0) && (empty_ram[1] == 1'b0) && (rd_addr == rdcount_out))) begin
 
-                do_buf = mem[rdcount_out];
+                do_buf  = mem[rdcount_out];
                 dop_buf = memp[rdcount_out];
 
                 // ECC decode
@@ -1943,20 +2072,50 @@ module FF36_INTERNAL_VLOG (
 
                     if (syndrome[7]) begin  // dectect single bit error
 
-                      ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                      ecc_bit_position = {
+                        do_buf[63:57],
+                        dop_buf[6],
+                        do_buf[56:26],
+                        dop_buf[5],
+                        do_buf[25:11],
+                        dop_buf[4],
+                        do_buf[10:4],
+                        dop_buf[3],
+                        do_buf[3:1],
+                        dop_buf[2],
+                        do_buf[0],
+                        dop_buf[1:0],
+                        dop_buf[7]
+                      };
 
                       if (syndrome[6:0] > 71) begin
-                        $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                        $display(
+                            "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                         #1 $finish;
                       end
 
                       ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                      di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                      di_in_ecc_corrected = {
+                        ecc_bit_position[71:65],
+                        ecc_bit_position[63:33],
+                        ecc_bit_position[31:17],
+                        ecc_bit_position[15:9],
+                        ecc_bit_position[7:5],
+                        ecc_bit_position[3]
+                      };  // correct single bit error in the memory
 
                       do_buf = di_in_ecc_corrected;
 
-                      dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                      dip_in_ecc_corrected = {
+                        ecc_bit_position[0],
+                        ecc_bit_position[64],
+                        ecc_bit_position[32],
+                        ecc_bit_position[16],
+                        ecc_bit_position[8],
+                        ecc_bit_position[4],
+                        ecc_bit_position[2:1]
+                      };  // correct single bit error in the parity memory
 
                       dop_buf = dip_in_ecc_corrected;
 
@@ -1978,7 +2137,7 @@ module FF36_INTERNAL_VLOG (
                 end  // if (EN_ECC_READ == "TRUE")
                 // end ecc decode
 
-                do_in = do_buf;
+                do_in  = do_buf;
                 dop_in = dop_buf;
 
                 #1;
@@ -2060,11 +2219,13 @@ module FF36_INTERNAL_VLOG (
         always @(posedge WRCLK) begin
 
           // DRC
-          if ((INJECTSBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1)) 
-      $display("DRC Warning : INJECTSBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
+          if ((INJECTSBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1))
+            $display(
+                "DRC Warning : INJECTSBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
 
-          if ((INJECTDBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1)) 
-      $display("DRC Warning : INJECTDBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
+          if ((INJECTDBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1))
+            $display(
+                "DRC Warning : INJECTDBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
 
 
           // sync mode
@@ -2183,7 +2344,7 @@ module FF36_INTERNAL_VLOG (
               if ((((rdcount_out + ae_empty) < wr_addr) && (rdcount_flag == wr_flag)) || (((rdcount_out + ae_empty) < (wr_addr + addr_limit) && (rdcount_flag != wr_flag)))) begin
 
                 if (rdcount_out <= rdcount_out + ae_empty || rdcount_flag != wr_flag)
-      ALMOSTEMPTY = 1'b0;
+                  ALMOSTEMPTY = 1'b0;
 
               end
 
@@ -2287,7 +2448,7 @@ module FF36_INTERNAL_VLOG (
 
                 end  // if (en_ecc_write_int == 1 || en_ecc_read_int == 1)
 
-                mem[wr_addr] = di_ecc_col;
+                mem[wr_addr]  = di_ecc_col;
                 memp[wr_addr] = dip_int;
 
                 #1;
@@ -2368,9 +2529,9 @@ module FF36_INTERNAL_VLOG (
 
         always @(time_rdclk or time_wrclk) begin
           if (((time_rdclk - time_wrclk == 0 && prev_time_rdclk - prev_time_wrclk == 0) || (time_wrclk - time_rdclk == 0 && prev_time_wrclk - prev_time_rdclk == 0)) && $time != 0)
-       sync_clk_async_mode = 1'b1;
-          if ((((period_wrclk > 0) && (period_rdclk > 0)) || (sync_clk_async_mode == 1'b1)) && (RST == 1'b0) && (GSR == 1'b0)) 
-       sync_clk_async_mode_done = 1'b1;
+            sync_clk_async_mode = 1'b1;
+          if ((((period_wrclk > 0) && (period_rdclk > 0)) || (sync_clk_async_mode == 1'b1)) && (RST == 1'b0) && (GSR == 1'b0))
+            sync_clk_async_mode_done = 1'b1;
         end
 
 
@@ -2404,7 +2565,7 @@ module FF36_INTERNAL_VLOG (
 
               if (EMPTY == 1'b0) begin
 
-                do_buf = mem[rdcount_out];
+                do_buf  = mem[rdcount_out];
                 dop_buf = memp[rdcount_out];
 
                 // ECC decode
@@ -2479,20 +2640,50 @@ module FF36_INTERNAL_VLOG (
 
                     if (syndrome[7]) begin  // dectect single bit error
 
-                      ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                      ecc_bit_position = {
+                        do_buf[63:57],
+                        dop_buf[6],
+                        do_buf[56:26],
+                        dop_buf[5],
+                        do_buf[25:11],
+                        dop_buf[4],
+                        do_buf[10:4],
+                        dop_buf[3],
+                        do_buf[3:1],
+                        dop_buf[2],
+                        do_buf[0],
+                        dop_buf[1:0],
+                        dop_buf[7]
+                      };
 
                       if (syndrome[6:0] > 71) begin
-                        $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                        $display(
+                            "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                         #1 $finish;
                       end
 
                       ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                      di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                      di_in_ecc_corrected = {
+                        ecc_bit_position[71:65],
+                        ecc_bit_position[63:33],
+                        ecc_bit_position[31:17],
+                        ecc_bit_position[15:9],
+                        ecc_bit_position[7:5],
+                        ecc_bit_position[3]
+                      };  // correct single bit error in the memory
 
                       do_buf = di_in_ecc_corrected;
 
-                      dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                      dip_in_ecc_corrected = {
+                        ecc_bit_position[0],
+                        ecc_bit_position[64],
+                        ecc_bit_position[32],
+                        ecc_bit_position[16],
+                        ecc_bit_position[8],
+                        ecc_bit_position[4],
+                        ecc_bit_position[2:1]
+                      };  // correct single bit error in the parity memory
 
                       dop_buf = dip_in_ecc_corrected;
 
@@ -2556,9 +2747,9 @@ module FF36_INTERNAL_VLOG (
   else
           if (sync == 1'b0) begin
 
-            wr_addr_sync_3 = wr_addr_sync_2;
-            wr_addr_sync_2 = wr_addr_sync_1;
-            wr_addr_sync_1 = wr_addr;
+            wr_addr_sync_3  = wr_addr_sync_2;
+            wr_addr_sync_2  = wr_addr_sync_1;
+            wr_addr_sync_1  = wr_addr;
 
             awr_flag_sync_2 = awr_flag_sync_1;
             awr_flag_sync_1 = awr_flag;
@@ -2581,7 +2772,7 @@ module FF36_INTERNAL_VLOG (
                 if (((rd_addr == rdcount_out) && (empty_ram[3] == 1'b0)) ||
         ((rden_reg == 1'b1) && (empty_ram[1] == 1'b0))) begin
 
-                  do_buf = mem[rdcount_out];
+                  do_buf  = mem[rdcount_out];
                   dop_buf = memp[rdcount_out];
 
                   // ECC decode
@@ -2655,20 +2846,50 @@ module FF36_INTERNAL_VLOG (
 
                       if (syndrome[7]) begin  // dectect single bit error
 
-                        ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                        ecc_bit_position = {
+                          do_buf[63:57],
+                          dop_buf[6],
+                          do_buf[56:26],
+                          dop_buf[5],
+                          do_buf[25:11],
+                          dop_buf[4],
+                          do_buf[10:4],
+                          dop_buf[3],
+                          do_buf[3:1],
+                          dop_buf[2],
+                          do_buf[0],
+                          dop_buf[1:0],
+                          dop_buf[7]
+                        };
 
                         if (syndrome[6:0] > 71) begin
-                          $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                          $display(
+                              "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                           #1 $finish;
                         end
 
                         ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                        di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                        di_in_ecc_corrected = {
+                          ecc_bit_position[71:65],
+                          ecc_bit_position[63:33],
+                          ecc_bit_position[31:17],
+                          ecc_bit_position[15:9],
+                          ecc_bit_position[7:5],
+                          ecc_bit_position[3]
+                        };  // correct single bit error in the memory
 
                         do_buf = di_in_ecc_corrected;
 
-                        dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                        dip_in_ecc_corrected = {
+                          ecc_bit_position[0],
+                          ecc_bit_position[64],
+                          ecc_bit_position[32],
+                          ecc_bit_position[16],
+                          ecc_bit_position[8],
+                          ecc_bit_position[4],
+                          ecc_bit_position[2:1]
+                        };  // correct single bit error in the parity memory
 
                         dop_buf = dip_in_ecc_corrected;
 
@@ -2690,7 +2911,7 @@ module FF36_INTERNAL_VLOG (
                   end  // if (EN_ECC_READ == "TRUE")
                   // end ecc decode
 
-                  do_in = do_buf;
+                  do_in  = do_buf;
                   dop_in = dop_buf;
 
                   #1;
@@ -2722,7 +2943,7 @@ module FF36_INTERNAL_VLOG (
         ((rden_reg == 1'b1) && (empty_ram[1] == 1'b0)) ||
         ((rden_reg == 1'b0) && (empty_ram[1] == 1'b0) && (rd_addr == rdcount_out))) begin
 
-                  do_buf = mem[rdcount_out];
+                  do_buf  = mem[rdcount_out];
                   dop_buf = memp[rdcount_out];
 
                   // ECC decode
@@ -2796,20 +3017,50 @@ module FF36_INTERNAL_VLOG (
 
                       if (syndrome[7]) begin  // dectect single bit error
 
-                        ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                        ecc_bit_position = {
+                          do_buf[63:57],
+                          dop_buf[6],
+                          do_buf[56:26],
+                          dop_buf[5],
+                          do_buf[25:11],
+                          dop_buf[4],
+                          do_buf[10:4],
+                          dop_buf[3],
+                          do_buf[3:1],
+                          dop_buf[2],
+                          do_buf[0],
+                          dop_buf[1:0],
+                          dop_buf[7]
+                        };
 
                         if (syndrome[6:0] > 71) begin
-                          $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                          $display(
+                              "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                           #1 $finish;
                         end
 
                         ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                        di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                        di_in_ecc_corrected = {
+                          ecc_bit_position[71:65],
+                          ecc_bit_position[63:33],
+                          ecc_bit_position[31:17],
+                          ecc_bit_position[15:9],
+                          ecc_bit_position[7:5],
+                          ecc_bit_position[3]
+                        };  // correct single bit error in the memory
 
                         do_buf = di_in_ecc_corrected;
 
-                        dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                        dip_in_ecc_corrected = {
+                          ecc_bit_position[0],
+                          ecc_bit_position[64],
+                          ecc_bit_position[32],
+                          ecc_bit_position[16],
+                          ecc_bit_position[8],
+                          ecc_bit_position[4],
+                          ecc_bit_position[2:1]
+                        };  // correct single bit error in the parity memory
 
                         dop_buf = dip_in_ecc_corrected;
 
@@ -2831,7 +3082,7 @@ module FF36_INTERNAL_VLOG (
                   end  // if (EN_ECC_READ == "TRUE")
                   // end ecc decode
 
-                  do_in = do_buf;
+                  do_in  = do_buf;
                   dop_in = dop_buf;
 
                   #1;
@@ -2924,7 +3175,7 @@ module FF36_INTERNAL_VLOG (
 
                 if (empty_ram[0] == 1'b0 && (RDEN == 1'b1 || rd_addr == rdcount_out)) begin
 
-                  do_buf = mem[rdcount_out];
+                  do_buf  = mem[rdcount_out];
                   dop_buf = memp[rdcount_out];
 
                   // ECC decode
@@ -2998,20 +3249,50 @@ module FF36_INTERNAL_VLOG (
 
                       if (syndrome[7]) begin  // dectect single bit error
 
-                        ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                        ecc_bit_position = {
+                          do_buf[63:57],
+                          dop_buf[6],
+                          do_buf[56:26],
+                          dop_buf[5],
+                          do_buf[25:11],
+                          dop_buf[4],
+                          do_buf[10:4],
+                          dop_buf[3],
+                          do_buf[3:1],
+                          dop_buf[2],
+                          do_buf[0],
+                          dop_buf[1:0],
+                          dop_buf[7]
+                        };
 
                         if (syndrome[6:0] > 71) begin
-                          $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                          $display(
+                              "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                           #1 $finish;
                         end
 
                         ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                        di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                        di_in_ecc_corrected = {
+                          ecc_bit_position[71:65],
+                          ecc_bit_position[63:33],
+                          ecc_bit_position[31:17],
+                          ecc_bit_position[15:9],
+                          ecc_bit_position[7:5],
+                          ecc_bit_position[3]
+                        };  // correct single bit error in the memory
 
                         do_buf = di_in_ecc_corrected;
 
-                        dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                        dip_in_ecc_corrected = {
+                          ecc_bit_position[0],
+                          ecc_bit_position[64],
+                          ecc_bit_position[32],
+                          ecc_bit_position[16],
+                          ecc_bit_position[8],
+                          ecc_bit_position[4],
+                          ecc_bit_position[2:1]
+                        };  // correct single bit error in the parity memory
 
                         dop_buf = dip_in_ecc_corrected;
 
@@ -3033,7 +3314,7 @@ module FF36_INTERNAL_VLOG (
                   end  // if (EN_ECC_READ == "TRUE")
                   // end ecc decode
 
-                  do_in = do_buf;
+                  do_in  = do_buf;
                   dop_in = dop_buf;
 
                   #0;
@@ -3070,7 +3351,7 @@ module FF36_INTERNAL_VLOG (
 
                 if (empty_ram[0] == 1'b0 && (RDEN == 1'b1 || rd_addr == rdcount_out)) begin
 
-                  do_buf = mem[rdcount_out];
+                  do_buf  = mem[rdcount_out];
                   dop_buf = memp[rdcount_out];
 
                   // ECC decode
@@ -3144,20 +3425,50 @@ module FF36_INTERNAL_VLOG (
 
                       if (syndrome[7]) begin  // dectect single bit error
 
-                        ecc_bit_position = {do_buf[63:57], dop_buf[6], do_buf[56:26], dop_buf[5], do_buf[25:11], dop_buf[4], do_buf[10:4], dop_buf[3], do_buf[3:1], dop_buf[2], do_buf[0], dop_buf[1:0], dop_buf[7]};
+                        ecc_bit_position = {
+                          do_buf[63:57],
+                          dop_buf[6],
+                          do_buf[56:26],
+                          dop_buf[5],
+                          do_buf[25:11],
+                          dop_buf[4],
+                          do_buf[10:4],
+                          dop_buf[3],
+                          do_buf[3:1],
+                          dop_buf[2],
+                          do_buf[0],
+                          dop_buf[1:0],
+                          dop_buf[7]
+                        };
 
                         if (syndrome[6:0] > 71) begin
-                          $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                          $display(
+                              "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                           #1 $finish;
                         end
 
                         ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                        di_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                        di_in_ecc_corrected = {
+                          ecc_bit_position[71:65],
+                          ecc_bit_position[63:33],
+                          ecc_bit_position[31:17],
+                          ecc_bit_position[15:9],
+                          ecc_bit_position[7:5],
+                          ecc_bit_position[3]
+                        };  // correct single bit error in the memory
 
                         do_buf = di_in_ecc_corrected;
 
-                        dip_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                        dip_in_ecc_corrected = {
+                          ecc_bit_position[0],
+                          ecc_bit_position[64],
+                          ecc_bit_position[32],
+                          ecc_bit_position[16],
+                          ecc_bit_position[8],
+                          ecc_bit_position[4],
+                          ecc_bit_position[2:1]
+                        };  // correct single bit error in the parity memory
 
                         dop_buf = dip_in_ecc_corrected;
 
@@ -3179,7 +3490,7 @@ module FF36_INTERNAL_VLOG (
                   end  // if (EN_ECC_READ == "TRUE")
                   // end ecc decode
 
-                  do_in = do_buf;
+                  do_in  = do_buf;
                   dop_in = dop_buf;
 
                   #0;
@@ -3196,10 +3507,8 @@ module FF36_INTERNAL_VLOG (
 
               ALMOSTEMPTY = almostempty_int[0];
 
-              if (wr_addr_sync_3 - rdcount_out <= ae_empty)
-    almostempty_int[0] = 1'b1;
-      else
-    almostempty_int[0] = 1'b0;
+              if (wr_addr_sync_3 - rdcount_out <= ae_empty) almostempty_int[0] = 1'b1;
+              else almostempty_int[0] = 1'b0;
 
 
               if (fwft == 1'b0) begin
@@ -3237,11 +3546,13 @@ module FF36_INTERNAL_VLOG (
         always @(posedge WRCLK) begin
 
           // DRC
-          if ((INJECTSBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1)) 
-      $display("DRC Warning : INJECTSBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
+          if ((INJECTSBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1))
+            $display(
+                "DRC Warning : INJECTSBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
 
-          if ((INJECTDBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1)) 
-      $display("DRC Warning : INJECTDBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
+          if ((INJECTDBITERR === 1) && !(en_ecc_write_int == 1 || en_ecc_read_int == 1))
+            $display(
+                "DRC Warning : INJECTDBITERR is not supported when neither EN_ECC_WRITE nor EN_ECCREAD = TRUE on FIFO36E1 instance %m.");
 
 
           // sync mode
@@ -3360,7 +3671,7 @@ module FF36_INTERNAL_VLOG (
               if ((((rdcount_out + ae_empty) <= wr_addr) && (rdcount_flag == wr_flag)) || (((rdcount_out + ae_empty) <= (wr_addr + addr_limit) && (rdcount_flag != wr_flag)))) begin
 
                 if (rdcount_out <= rdcount_out + ae_empty || rdcount_flag != wr_flag)
-      ALMOSTEMPTY = 1'b0;
+                  ALMOSTEMPTY = 1'b0;
 
               end
 
@@ -3471,7 +3782,7 @@ module FF36_INTERNAL_VLOG (
 
                   end  // if (en_ecc_write_int == 1 || en_ecc_read_int == 1)
 
-                  mem[wr_addr] = di_ecc_col;
+                  mem[wr_addr]  = di_ecc_col;
                   memp[wr_addr] = dip_int;
 
                   #1;
@@ -3528,7 +3839,7 @@ module FF36_INTERNAL_VLOG (
 
                 // fix for 724006
                 if (rdcount_out - 1 == wr_addr && (wren_reg == 1'b1 || FULL == 1'b1))
-              FULL = full_int[1];
+                  FULL = full_int[1];
 
 
               end  // if (RST === 1'b0)
@@ -3625,7 +3936,7 @@ module FF36_INTERNAL_VLOG (
 
                   end  // if (en_ecc_write_int == 1 || en_ecc_read_int == 1)
 
-                  mem[wr_addr] = di_ecc_col;
+                  mem[wr_addr]  = di_ecc_col;
                   memp[wr_addr] = dip_int;
 
                   #0;
@@ -3643,10 +3954,9 @@ module FF36_INTERNAL_VLOG (
 
               rm1w_eq = (rdcount_out_sync_2 == wr_addr) ? 1 : 0;
 
-              if (wr_addr + 1 == addr_limit) // wr_addr(FF) + 1 != 0
-    rm1wp1_eq = (rdcount_out_sync_2 == 0) ? 1 : 0;
-      else
-    rm1wp1_eq = (rdcount_out_sync_2 == wr_addr + 1) ? 1 : 0;
+              if (wr_addr + 1 == addr_limit)  // wr_addr(FF) + 1 != 0
+                rm1wp1_eq = (rdcount_out_sync_2 == 0) ? 1 : 0;
+              else rm1wp1_eq = (rdcount_out_sync_2 == wr_addr + 1) ? 1 : 0;
 
 
               if (RST === 1'b0) begin
@@ -3655,10 +3965,8 @@ module FF36_INTERNAL_VLOG (
 
                 ALMOSTFULL = almostfull_int[0];
 
-                if (rdcount_out_sync_3 - wr_addr <= ae_full)
-        almostfull_int[0] = 1'b1;
-    else
-        almostfull_int[0] = 1'b0;
+                if (rdcount_out_sync_3 - wr_addr <= ae_full) almostfull_int[0] = 1'b1;
+                else almostfull_int[0] = 1'b0;
 
 
                 FULL = full_v3;
@@ -3666,7 +3974,7 @@ module FF36_INTERNAL_VLOG (
 
                 //fwft prefetch
                 if (EMPTY == 1'b1 && WREN === 1'b1 && fwft_prefetch_flag == 0)
-        fwft_prefetch_flag = 1;
+                  fwft_prefetch_flag = 1;
 
 
               end  // if (RST === 1'b0)
@@ -3692,21 +4000,23 @@ module FF36_INTERNAL_VLOG (
       case (DO_REG)
 
         0: begin
-          do_out_mux = do_out;
+          do_out_mux  = do_out;
           dop_out_mux = dop_out;
         end
         1: begin
-          do_out_mux = do_outreg;
+          do_out_mux  = do_outreg;
           dop_out_mux = dop_outreg;
         end
         default: begin
-          $display("Attribute Syntax Error : The attribute DO_REG on FIFO36E1 instance %m is set to %2d.  Legal values for this attribute are 0 or 1.", DO_REG);
+          $display(
+              "Attribute Syntax Error : The attribute DO_REG on FIFO36E1 instance %m is set to %2d.  Legal values for this attribute are 0 or 1.",
+              DO_REG);
           #1 $finish;
         end
       endcase
 
     else begin
-      do_out_mux = do_out;
+      do_out_mux  = do_out;
       dop_out_mux = dop_out;
     end  // else: !if(sync == 1)
 
@@ -3714,19 +4024,24 @@ module FF36_INTERNAL_VLOG (
 
 
   // matching HW behavior to X the unused output bits
-  assign DO = (DATA_WIDTH == 4) ? {60'bx, do_out_mux[3:0]}
-                      : (DATA_WIDTH == 9) ? {56'bx, do_out_mux[7:0]}
-                      : (DATA_WIDTH == 18) ? {48'bx, do_out_mux[15:0]}
-                      : (DATA_WIDTH == 36) ? {32'bx, do_out_mux[31:0]}
-                : (DATA_WIDTH == 72) ? do_out_mux
-                      : do_out_mux;
+  assign DO = (DATA_WIDTH == 4) ? {
+    60'bx, do_out_mux[3:0]
+  } : (DATA_WIDTH == 9) ? {
+    56'bx, do_out_mux[7:0]
+  } : (DATA_WIDTH == 18) ? {
+    48'bx, do_out_mux[15:0]
+  } : (DATA_WIDTH == 36) ? {
+    32'bx, do_out_mux[31:0]
+  } : (DATA_WIDTH == 72) ? do_out_mux : do_out_mux;
 
   // matching HW behavior to X the unused output bits
-  assign DOP = (DATA_WIDTH ==  9) ? {7'bx, dop_out_mux[0:0]}
-                       : (DATA_WIDTH == 18) ? {6'bx, dop_out_mux[1:0]}
-           : (DATA_WIDTH == 36) ? {4'bx, dop_out_mux[3:0]}
-                 : (DATA_WIDTH == 72) ? dop_out_mux
-                       : 8'bx;
+  assign DOP = (DATA_WIDTH == 9) ? {
+    7'bx, dop_out_mux[0:0]
+  } : (DATA_WIDTH == 18) ? {
+    6'bx, dop_out_mux[1:0]
+  } : (DATA_WIDTH == 36) ? {
+    4'bx, dop_out_mux[3:0]
+  } : (DATA_WIDTH == 72) ? dop_out_mux : 8'bx;
 
 
   // matching HW behavior to pull up the unused output bits

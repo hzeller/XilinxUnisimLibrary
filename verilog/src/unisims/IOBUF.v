@@ -75,7 +75,9 @@ module IOBUF (
 
       "FALSE", "TRUE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on IBUF instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", IBUF_LOW_PWR);
+        $display(
+            "Attribute Syntax Error : The attribute IBUF_LOW_PWR on IBUF instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            IBUF_LOW_PWR);
         #1 $finish;
       end
 

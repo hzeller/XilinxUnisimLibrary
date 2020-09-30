@@ -90,9 +90,9 @@ module DSP_C_DATA #(
 `endif
 
 `ifdef XIL_TIMING
-  assign CEC_in = (CEC !== 1'bz) && CEC_delay;  // rv 0
-  assign CLK_in = (CLK !== 1'bz) && (CLK_delay ^ IS_CLK_INVERTED_REG);  // rv 0
-  assign C_in[0] = (C[0] === 1'bz) || C_delay[0];  // rv 1
+  assign CEC_in   = (CEC !== 1'bz) && CEC_delay;  // rv 0
+  assign CLK_in   = (CLK !== 1'bz) && (CLK_delay ^ IS_CLK_INVERTED_REG);  // rv 0
+  assign C_in[0]  = (C[0] === 1'bz) || C_delay[0];  // rv 1
   assign C_in[10] = (C[10] === 1'bz) || C_delay[10];  // rv 1
   assign C_in[11] = (C[11] === 1'bz) || C_delay[11];  // rv 1
   assign C_in[12] = (C[12] === 1'bz) || C_delay[12];  // rv 1
@@ -103,7 +103,7 @@ module DSP_C_DATA #(
   assign C_in[17] = (C[17] === 1'bz) || C_delay[17];  // rv 1
   assign C_in[18] = (C[18] === 1'bz) || C_delay[18];  // rv 1
   assign C_in[19] = (C[19] === 1'bz) || C_delay[19];  // rv 1
-  assign C_in[1] = (C[1] === 1'bz) || C_delay[1];  // rv 1
+  assign C_in[1]  = (C[1] === 1'bz) || C_delay[1];  // rv 1
   assign C_in[20] = (C[20] === 1'bz) || C_delay[20];  // rv 1
   assign C_in[21] = (C[21] === 1'bz) || C_delay[21];  // rv 1
   assign C_in[22] = (C[22] === 1'bz) || C_delay[22];  // rv 1
@@ -114,7 +114,7 @@ module DSP_C_DATA #(
   assign C_in[27] = (C[27] === 1'bz) || C_delay[27];  // rv 1
   assign C_in[28] = (C[28] === 1'bz) || C_delay[28];  // rv 1
   assign C_in[29] = (C[29] === 1'bz) || C_delay[29];  // rv 1
-  assign C_in[2] = (C[2] === 1'bz) || C_delay[2];  // rv 1
+  assign C_in[2]  = (C[2] === 1'bz) || C_delay[2];  // rv 1
   assign C_in[30] = (C[30] === 1'bz) || C_delay[30];  // rv 1
   assign C_in[31] = (C[31] === 1'bz) || C_delay[31];  // rv 1
   assign C_in[32] = (C[32] === 1'bz) || C_delay[32];  // rv 1
@@ -125,7 +125,7 @@ module DSP_C_DATA #(
   assign C_in[37] = (C[37] === 1'bz) || C_delay[37];  // rv 1
   assign C_in[38] = (C[38] === 1'bz) || C_delay[38];  // rv 1
   assign C_in[39] = (C[39] === 1'bz) || C_delay[39];  // rv 1
-  assign C_in[3] = (C[3] === 1'bz) || C_delay[3];  // rv 1
+  assign C_in[3]  = (C[3] === 1'bz) || C_delay[3];  // rv 1
   assign C_in[40] = (C[40] === 1'bz) || C_delay[40];  // rv 1
   assign C_in[41] = (C[41] === 1'bz) || C_delay[41];  // rv 1
   assign C_in[42] = (C[42] === 1'bz) || C_delay[42];  // rv 1
@@ -134,17 +134,17 @@ module DSP_C_DATA #(
   assign C_in[45] = (C[45] === 1'bz) || C_delay[45];  // rv 1
   assign C_in[46] = (C[46] === 1'bz) || C_delay[46];  // rv 1
   assign C_in[47] = (C[47] === 1'bz) || C_delay[47];  // rv 1
-  assign C_in[4] = (C[4] === 1'bz) || C_delay[4];  // rv 1
-  assign C_in[5] = (C[5] === 1'bz) || C_delay[5];  // rv 1
-  assign C_in[6] = (C[6] === 1'bz) || C_delay[6];  // rv 1
-  assign C_in[7] = (C[7] === 1'bz) || C_delay[7];  // rv 1
-  assign C_in[8] = (C[8] === 1'bz) || C_delay[8];  // rv 1
-  assign C_in[9] = (C[9] === 1'bz) || C_delay[9];  // rv 1
-  assign RSTC_in = (RSTC !== 1'bz) && (RSTC_delay ^ IS_RSTC_INVERTED_REG);  // rv 0
+  assign C_in[4]  = (C[4] === 1'bz) || C_delay[4];  // rv 1
+  assign C_in[5]  = (C[5] === 1'bz) || C_delay[5];  // rv 1
+  assign C_in[6]  = (C[6] === 1'bz) || C_delay[6];  // rv 1
+  assign C_in[7]  = (C[7] === 1'bz) || C_delay[7];  // rv 1
+  assign C_in[8]  = (C[8] === 1'bz) || C_delay[8];  // rv 1
+  assign C_in[9]  = (C[9] === 1'bz) || C_delay[9];  // rv 1
+  assign RSTC_in  = (RSTC !== 1'bz) && (RSTC_delay ^ IS_RSTC_INVERTED_REG);  // rv 0
 `else
-  assign CEC_in = (CEC !== 1'bz) && CEC;  // rv 0
-  assign CLK_in = (CLK !== 1'bz) && (CLK ^ IS_CLK_INVERTED_REG);  // rv 0
-  assign C_in[0] = (C[0] === 1'bz) || C[0];  // rv 1
+  assign CEC_in   = (CEC !== 1'bz) && CEC;  // rv 0
+  assign CLK_in   = (CLK !== 1'bz) && (CLK ^ IS_CLK_INVERTED_REG);  // rv 0
+  assign C_in[0]  = (C[0] === 1'bz) || C[0];  // rv 1
   assign C_in[10] = (C[10] === 1'bz) || C[10];  // rv 1
   assign C_in[11] = (C[11] === 1'bz) || C[11];  // rv 1
   assign C_in[12] = (C[12] === 1'bz) || C[12];  // rv 1
@@ -155,7 +155,7 @@ module DSP_C_DATA #(
   assign C_in[17] = (C[17] === 1'bz) || C[17];  // rv 1
   assign C_in[18] = (C[18] === 1'bz) || C[18];  // rv 1
   assign C_in[19] = (C[19] === 1'bz) || C[19];  // rv 1
-  assign C_in[1] = (C[1] === 1'bz) || C[1];  // rv 1
+  assign C_in[1]  = (C[1] === 1'bz) || C[1];  // rv 1
   assign C_in[20] = (C[20] === 1'bz) || C[20];  // rv 1
   assign C_in[21] = (C[21] === 1'bz) || C[21];  // rv 1
   assign C_in[22] = (C[22] === 1'bz) || C[22];  // rv 1
@@ -166,7 +166,7 @@ module DSP_C_DATA #(
   assign C_in[27] = (C[27] === 1'bz) || C[27];  // rv 1
   assign C_in[28] = (C[28] === 1'bz) || C[28];  // rv 1
   assign C_in[29] = (C[29] === 1'bz) || C[29];  // rv 1
-  assign C_in[2] = (C[2] === 1'bz) || C[2];  // rv 1
+  assign C_in[2]  = (C[2] === 1'bz) || C[2];  // rv 1
   assign C_in[30] = (C[30] === 1'bz) || C[30];  // rv 1
   assign C_in[31] = (C[31] === 1'bz) || C[31];  // rv 1
   assign C_in[32] = (C[32] === 1'bz) || C[32];  // rv 1
@@ -177,7 +177,7 @@ module DSP_C_DATA #(
   assign C_in[37] = (C[37] === 1'bz) || C[37];  // rv 1
   assign C_in[38] = (C[38] === 1'bz) || C[38];  // rv 1
   assign C_in[39] = (C[39] === 1'bz) || C[39];  // rv 1
-  assign C_in[3] = (C[3] === 1'bz) || C[3];  // rv 1
+  assign C_in[3]  = (C[3] === 1'bz) || C[3];  // rv 1
   assign C_in[40] = (C[40] === 1'bz) || C[40];  // rv 1
   assign C_in[41] = (C[41] === 1'bz) || C[41];  // rv 1
   assign C_in[42] = (C[42] === 1'bz) || C[42];  // rv 1
@@ -186,13 +186,13 @@ module DSP_C_DATA #(
   assign C_in[45] = (C[45] === 1'bz) || C[45];  // rv 1
   assign C_in[46] = (C[46] === 1'bz) || C[46];  // rv 1
   assign C_in[47] = (C[47] === 1'bz) || C[47];  // rv 1
-  assign C_in[4] = (C[4] === 1'bz) || C[4];  // rv 1
-  assign C_in[5] = (C[5] === 1'bz) || C[5];  // rv 1
-  assign C_in[6] = (C[6] === 1'bz) || C[6];  // rv 1
-  assign C_in[7] = (C[7] === 1'bz) || C[7];  // rv 1
-  assign C_in[8] = (C[8] === 1'bz) || C[8];  // rv 1
-  assign C_in[9] = (C[9] === 1'bz) || C[9];  // rv 1
-  assign RSTC_in = (RSTC !== 1'bz) && (RSTC ^ IS_RSTC_INVERTED_REG);  // rv 0
+  assign C_in[4]  = (C[4] === 1'bz) || C[4];  // rv 1
+  assign C_in[5]  = (C[5] === 1'bz) || C[5];  // rv 1
+  assign C_in[6]  = (C[6] === 1'bz) || C[6];  // rv 1
+  assign C_in[7]  = (C[7] === 1'bz) || C[7];  // rv 1
+  assign C_in[8]  = (C[8] === 1'bz) || C[8];  // rv 1
+  assign C_in[9]  = (C[9] === 1'bz) || C[9];  // rv 1
+  assign RSTC_in  = (RSTC !== 1'bz) && (RSTC ^ IS_RSTC_INVERTED_REG);  // rv 0
 `endif
 
 `ifndef XIL_XECLIB
@@ -225,7 +225,9 @@ module DSP_C_DATA #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -234,7 +236,9 @@ module DSP_C_DATA #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((CREG_REG != 1) && (CREG_REG != 0))) begin
-      $display("Error: [Unisim %s-101] CREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, CREG_REG);
+      $display(
+          "Error: [Unisim %s-101] CREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, CREG_REG);
       attr_err = 1'b1;
     end
 
@@ -254,8 +258,8 @@ module DSP_C_DATA #(
   // initialize regs
 `ifndef XIL_XECLIB
   initial begin
-  C_reg = {C_WIDTH{1'b0}};
-end
+    C_reg = {C_WIDTH{1'b0}};
+  end
 `endif
 
   //*********************************************************

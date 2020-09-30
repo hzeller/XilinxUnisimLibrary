@@ -89,10 +89,10 @@ module BUFCE_ROW #(
 
 `ifdef XIL_TIMING
   assign CE_in = (CE === 1'bz) || (CE_delay ^ IS_CE_INVERTED_REG);  // rv 1
-  assign I_in = I_delay ^ IS_I_INVERTED_REG;
+  assign I_in  = I_delay ^ IS_I_INVERTED_REG;
 `else
   assign CE_in = (CE === 1'bz) || (CE ^ IS_CE_INVERTED_REG);  // rv 1
-  assign I_in = I ^ IS_I_INVERTED_REG;
+  assign I_in  = I ^ IS_I_INVERTED_REG;
 `endif
 
 `ifndef XIL_XECLIB
@@ -133,7 +133,9 @@ module BUFCE_ROW #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -145,7 +147,9 @@ module BUFCE_ROW #(
         ((CE_TYPE_REG != "SYNC") &&
          (CE_TYPE_REG != "ASYNC") &&
          (CE_TYPE_REG != "HARDSYNC"))) begin
-      $display("Error: [Unisim %s-101] CE_TYPE attribute is set to %s.  Legal values for this attribute are SYNC, ASYNC or HARDSYNC. Instance: %m", MODULE_NAME, CE_TYPE_REG);
+      $display(
+          "Error: [Unisim %s-101] CE_TYPE attribute is set to %s.  Legal values for this attribute are SYNC, ASYNC or HARDSYNC. Instance: %m",
+          MODULE_NAME, CE_TYPE_REG);
       attr_err = 1'b1;
     end
 
@@ -162,10 +166,8 @@ module BUFCE_ROW #(
   reg enable_clk = 1'b1;
 
   always @(I_in or CE_in or glblGSR) begin
-  if (glblGSR)
-    enable_clk = 1'b1;
-  else if ((CE_TYPE_BIN == CE_TYPE_ASYNC) || ~I_in)
-    enable_clk = CE_in;
+    if (glblGSR) enable_clk = 1'b1;
+    else if ((CE_TYPE_BIN == CE_TYPE_ASYNC) || ~I_in) enable_clk = CE_in;
   end
 
   assign O = enable_clk & I_in;

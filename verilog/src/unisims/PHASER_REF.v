@@ -135,12 +135,12 @@ module PHASER_REF (
   always @(posedge delay_CLKIN or posedge delay_RST or posedge delay_PWRDWN) begin
     if (delay_RST || delay_PWRDWN) begin
       delay_LOCKED <= 1'b0;
-      count_clks <= 0;
+      count_clks   <= 0;
     end else if ((same_period_count >= 1) && (count_clks < 6)) begin
       count_clks <= count_clks + 1;
     end else if (different_period_count >= 1) begin
       delay_LOCKED <= 1'b0;
-      count_clks <= 0;
+      count_clks   <= 0;
     end
    else if ( (count_clks >= 5) &&
         ((ref_clock_input_freq_MHz + last_ref_clock_input_freq_MHz)/2.000 >= ref_clock_input_freq_MHz_min ) && 
@@ -154,7 +154,8 @@ module PHASER_REF (
     if ( (count_clks == 5) && 
         ( ((ref_clock_input_freq_MHz + last_ref_clock_input_freq_MHz)/2.000 < ref_clock_input_freq_MHz_min) || 
           ((ref_clock_input_freq_MHz + last_ref_clock_input_freq_MHz)/2.000 > ref_clock_input_freq_MHz_max) ) ) begin
-      $display("Warning: Invalid average CLKIN frequency detected = %4.3f MHz", (ref_clock_input_freq_MHz + last_ref_clock_input_freq_MHz)/2.000);
+      $display("Warning: Invalid average CLKIN frequency detected = %4.3f MHz",
+               (ref_clock_input_freq_MHz + last_ref_clock_input_freq_MHz) / 2.000);
       $display("    on %s instance %m at time %t ps.", MODULE_NAME, $time);
       $display("    The valid CLKIN frequency range is:");
       $display("        Minimum = %4.3f MHz", ref_clock_input_freq_MHz_min);

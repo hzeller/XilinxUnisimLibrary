@@ -108,10 +108,12 @@ module IOBUFDS_INTERMDISABLE (
 
     case (DQS_BIAS)
 
-      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "TRUE":  DQS_BIAS_BINARY <= #1 1'b1;
       "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DQS_BIAS);
+        $display(
+            "Attribute Syntax Error : The attribute DQS_BIAS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            MODULE_NAME, DQS_BIAS);
         #1 $finish;
       end
 
@@ -121,7 +123,9 @@ module IOBUFDS_INTERMDISABLE (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, DIFF_TERM);
+        $display(
+            "Attribute Syntax Error : The attribute DIFF_TERM on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            MODULE_NAME, DIFF_TERM);
         #1 $finish;
       end
 
@@ -131,22 +135,28 @@ module IOBUFDS_INTERMDISABLE (
 
       "FALSE", "TRUE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, IBUF_LOW_PWR);
+        $display(
+            "Attribute Syntax Error : The attribute IBUF_LOW_PWR on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            MODULE_NAME, IBUF_LOW_PWR);
         #1 $finish;
       end
 
     endcase
 
     if ((IOSTANDARD == "LVDS_25") || (IOSTANDARD == "LVDSEXT_25")) begin
-      $display("DRC Warning : The IOSTANDARD attribute on IOBUFDS_DCIEN instance %m is set to %s.  LVDS_25 is a fixed impedance structure optimized to 100ohm differential. If the intended usage is a bus architecture, please use BLVDS. This is only intended to be used in point to point transmissions that do not have turn around timing requirements", IOSTANDARD);
+      $display(
+          "DRC Warning : The IOSTANDARD attribute on IOBUFDS_DCIEN instance %m is set to %s.  LVDS_25 is a fixed impedance structure optimized to 100ohm differential. If the intended usage is a bus architecture, please use BLVDS. This is only intended to be used in point to point transmissions that do not have turn around timing requirements",
+          IOSTANDARD);
     end
 
     case (USE_IBUFDISABLE)
 
-      "TRUE": USE_IBUFDISABLE_BINARY <= #1 1'b1;
+      "TRUE":  USE_IBUFDISABLE_BINARY <= #1 1'b1;
       "FALSE": USE_IBUFDISABLE_BINARY <= #1 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, USE_IBUFDISABLE);
+        $display(
+            "Attribute Syntax Error : The attribute USE_IBUFDISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            MODULE_NAME, USE_IBUFDISABLE);
         #1 $finish;
       end
 
@@ -172,16 +182,18 @@ module IOBUFDS_INTERMDISABLE (
          (SIM_DEVICE != "VERSAL_PRIME") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES2")) begin
-      $display("Error: [Unisim %s-106] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE);
+      $display(
+          "Error: [Unisim %s-106] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE);
       #1 $finish;
     end
 
   end
   generate
     case (SIM_DEVICE)
-      "7SERIES" : begin
-                        assign out_val = 1'b1;
-                     end
+      "7SERIES": begin
+        assign out_val = 1'b1;
+      end
       default:
       begin
         assign out_val = 1'b0;
@@ -190,18 +202,13 @@ module IOBUFDS_INTERMDISABLE (
   endgenerate
 
   always @(io_in or iob_in or DQS_BIAS_BINARY) begin
-        if (io_in == 1'b1 && iob_in == 1'b0)
-          o_out <= 1'b1;
-        else if (io_in == 1'b0 && iob_in == 1'b1)
-          o_out <= 1'b0;
-        else if ((io_in === 1'bz || io_in == 1'b0) && (iob_in === 1'bz || iob_in == 1'b1))
-          if (DQS_BIAS_BINARY == 1'b1)
-            o_out <= 1'b0;
-          else
-            o_out <= 1'bx;
-        else if (io_in === 1'bx || iob_in === 1'bx)
-          o_out <= 1'bx;
-        end
+    if (io_in == 1'b1 && iob_in == 1'b0) o_out <= 1'b1;
+    else if (io_in == 1'b0 && iob_in == 1'b1) o_out <= 1'b0;
+    else if ((io_in === 1'bz || io_in == 1'b0) && (iob_in === 1'bz || iob_in == 1'b1))
+      if (DQS_BIAS_BINARY == 1'b1) o_out <= 1'b0;
+      else o_out <= 1'bx;
+    else if (io_in === 1'bx || iob_in === 1'bx) o_out <= 1'bx;
+  end
 
 
 `ifdef XIL_TIMING

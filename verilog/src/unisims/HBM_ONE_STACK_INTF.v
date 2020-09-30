@@ -2756,386 +2756,524 @@ module HBM_ONE_STACK_INTF #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((CLK_SEL_00_REG != "FALSE") && (CLK_SEL_00_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-105] CLK_SEL_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_00_REG);
+      $display(
+          "Error: [Unisim %s-105] CLK_SEL_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_00_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_01_REG != "FALSE") && (CLK_SEL_01_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-106] CLK_SEL_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_01_REG);
+      $display(
+          "Error: [Unisim %s-106] CLK_SEL_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_01_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_02_REG != "FALSE") && (CLK_SEL_02_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-107] CLK_SEL_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_02_REG);
+      $display(
+          "Error: [Unisim %s-107] CLK_SEL_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_02_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_03_REG != "FALSE") && (CLK_SEL_03_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-108] CLK_SEL_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_03_REG);
+      $display(
+          "Error: [Unisim %s-108] CLK_SEL_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_03_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_04_REG != "FALSE") && (CLK_SEL_04_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-109] CLK_SEL_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_04_REG);
+      $display(
+          "Error: [Unisim %s-109] CLK_SEL_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_04_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_05_REG != "FALSE") && (CLK_SEL_05_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-110] CLK_SEL_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_05_REG);
+      $display(
+          "Error: [Unisim %s-110] CLK_SEL_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_05_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_06_REG != "FALSE") && (CLK_SEL_06_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-111] CLK_SEL_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_06_REG);
+      $display(
+          "Error: [Unisim %s-111] CLK_SEL_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_06_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_07_REG != "FALSE") && (CLK_SEL_07_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-112] CLK_SEL_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_07_REG);
+      $display(
+          "Error: [Unisim %s-112] CLK_SEL_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_07_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_08_REG != "FALSE") && (CLK_SEL_08_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-113] CLK_SEL_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_08_REG);
+      $display(
+          "Error: [Unisim %s-113] CLK_SEL_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_08_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_09_REG != "FALSE") && (CLK_SEL_09_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-114] CLK_SEL_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_09_REG);
+      $display(
+          "Error: [Unisim %s-114] CLK_SEL_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_09_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_10_REG != "FALSE") && (CLK_SEL_10_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-115] CLK_SEL_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_10_REG);
+      $display(
+          "Error: [Unisim %s-115] CLK_SEL_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_10_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_11_REG != "FALSE") && (CLK_SEL_11_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-116] CLK_SEL_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_11_REG);
+      $display(
+          "Error: [Unisim %s-116] CLK_SEL_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_11_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_12_REG != "FALSE") && (CLK_SEL_12_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-117] CLK_SEL_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_12_REG);
+      $display(
+          "Error: [Unisim %s-117] CLK_SEL_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_12_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_13_REG != "FALSE") && (CLK_SEL_13_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-118] CLK_SEL_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_13_REG);
+      $display(
+          "Error: [Unisim %s-118] CLK_SEL_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_13_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_14_REG != "FALSE") && (CLK_SEL_14_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-119] CLK_SEL_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_14_REG);
+      $display(
+          "Error: [Unisim %s-119] CLK_SEL_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_14_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLK_SEL_15_REG != "FALSE") && (CLK_SEL_15_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-120] CLK_SEL_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CLK_SEL_15_REG);
+      $display(
+          "Error: [Unisim %s-120] CLK_SEL_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CLK_SEL_15_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_00_REG < 50) || (DATARATE_00_REG > 1800))) begin
-      $display("Error: [Unisim %s-121] DATARATE_00 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_00_REG);
+      $display(
+          "Error: [Unisim %s-121] DATARATE_00 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_00_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_01_REG < 50) || (DATARATE_01_REG > 1800))) begin
-      $display("Error: [Unisim %s-122] DATARATE_01 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_01_REG);
+      $display(
+          "Error: [Unisim %s-122] DATARATE_01 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_01_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_02_REG < 50) || (DATARATE_02_REG > 1800))) begin
-      $display("Error: [Unisim %s-123] DATARATE_02 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_02_REG);
+      $display(
+          "Error: [Unisim %s-123] DATARATE_02 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_02_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_03_REG < 50) || (DATARATE_03_REG > 1800))) begin
-      $display("Error: [Unisim %s-124] DATARATE_03 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_03_REG);
+      $display(
+          "Error: [Unisim %s-124] DATARATE_03 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_03_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_04_REG < 50) || (DATARATE_04_REG > 1800))) begin
-      $display("Error: [Unisim %s-125] DATARATE_04 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_04_REG);
+      $display(
+          "Error: [Unisim %s-125] DATARATE_04 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_04_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_05_REG < 50) || (DATARATE_05_REG > 1800))) begin
-      $display("Error: [Unisim %s-126] DATARATE_05 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_05_REG);
+      $display(
+          "Error: [Unisim %s-126] DATARATE_05 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_05_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_06_REG < 50) || (DATARATE_06_REG > 1800))) begin
-      $display("Error: [Unisim %s-127] DATARATE_06 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_06_REG);
+      $display(
+          "Error: [Unisim %s-127] DATARATE_06 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_06_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DATARATE_07_REG < 50) || (DATARATE_07_REG > 1800))) begin
-      $display("Error: [Unisim %s-128] DATARATE_07 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m", MODULE_NAME, DATARATE_07_REG);
+      $display(
+          "Error: [Unisim %s-128] DATARATE_07 attribute is set to %d.  Legal values for this attribute are 50 to 1800. Instance: %m",
+          MODULE_NAME, DATARATE_07_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DA_LOCKOUT_REG != "FALSE") && (DA_LOCKOUT_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-129] DA_LOCKOUT attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, DA_LOCKOUT_REG);
+      $display(
+          "Error: [Unisim %s-129] DA_LOCKOUT attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, DA_LOCKOUT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_0_REG != "FALSE") && (MC_ENABLE_0_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-177] MC_ENABLE_0 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_0_REG);
+      $display(
+          "Error: [Unisim %s-177] MC_ENABLE_0 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_0_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_1_REG != "FALSE") && (MC_ENABLE_1_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-178] MC_ENABLE_1 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_1_REG);
+      $display(
+          "Error: [Unisim %s-178] MC_ENABLE_1 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_1_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_2_REG != "FALSE") && (MC_ENABLE_2_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-179] MC_ENABLE_2 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_2_REG);
+      $display(
+          "Error: [Unisim %s-179] MC_ENABLE_2 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_2_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_3_REG != "FALSE") && (MC_ENABLE_3_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-180] MC_ENABLE_3 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_3_REG);
+      $display(
+          "Error: [Unisim %s-180] MC_ENABLE_3 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_3_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_4_REG != "FALSE") && (MC_ENABLE_4_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-181] MC_ENABLE_4 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_4_REG);
+      $display(
+          "Error: [Unisim %s-181] MC_ENABLE_4 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_4_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_5_REG != "FALSE") && (MC_ENABLE_5_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-182] MC_ENABLE_5 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_5_REG);
+      $display(
+          "Error: [Unisim %s-182] MC_ENABLE_5 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_5_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_6_REG != "FALSE") && (MC_ENABLE_6_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-183] MC_ENABLE_6 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_6_REG);
+      $display(
+          "Error: [Unisim %s-183] MC_ENABLE_6 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_6_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MC_ENABLE_7_REG != "FALSE") && (MC_ENABLE_7_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-184] MC_ENABLE_7 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_7_REG);
+      $display(
+          "Error: [Unisim %s-184] MC_ENABLE_7 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_7_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((MC_ENABLE_APB_REG != "FALSE") &&
        (MC_ENABLE_APB_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-185] MC_ENABLE_APB attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, MC_ENABLE_APB_REG);
+      $display(
+          "Error: [Unisim %s-185] MC_ENABLE_APB attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, MC_ENABLE_APB_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PAGEHIT_PERCENT_00_REG < 0) || (PAGEHIT_PERCENT_00_REG > 100))) begin
-      $display("Error: [Unisim %s-194] PAGEHIT_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, PAGEHIT_PERCENT_00_REG);
+      $display(
+          "Error: [Unisim %s-194] PAGEHIT_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, PAGEHIT_PERCENT_00_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_00_REG != "FALSE") &&
        (PHY_ENABLE_00_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-196] PHY_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_00_REG);
+      $display(
+          "Error: [Unisim %s-196] PHY_ENABLE_00 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_00_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_01_REG != "FALSE") &&
        (PHY_ENABLE_01_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-197] PHY_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_01_REG);
+      $display(
+          "Error: [Unisim %s-197] PHY_ENABLE_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_01_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_02_REG != "FALSE") &&
        (PHY_ENABLE_02_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-198] PHY_ENABLE_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_02_REG);
+      $display(
+          "Error: [Unisim %s-198] PHY_ENABLE_02 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_02_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_03_REG != "FALSE") &&
        (PHY_ENABLE_03_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-199] PHY_ENABLE_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_03_REG);
+      $display(
+          "Error: [Unisim %s-199] PHY_ENABLE_03 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_03_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_04_REG != "FALSE") &&
        (PHY_ENABLE_04_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-200] PHY_ENABLE_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_04_REG);
+      $display(
+          "Error: [Unisim %s-200] PHY_ENABLE_04 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_04_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_05_REG != "FALSE") &&
        (PHY_ENABLE_05_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-201] PHY_ENABLE_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_05_REG);
+      $display(
+          "Error: [Unisim %s-201] PHY_ENABLE_05 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_05_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_06_REG != "FALSE") &&
        (PHY_ENABLE_06_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-202] PHY_ENABLE_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_06_REG);
+      $display(
+          "Error: [Unisim %s-202] PHY_ENABLE_06 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_06_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_07_REG != "FALSE") &&
        (PHY_ENABLE_07_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-203] PHY_ENABLE_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_07_REG);
+      $display(
+          "Error: [Unisim %s-203] PHY_ENABLE_07 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_07_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_08_REG != "FALSE") &&
        (PHY_ENABLE_08_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-204] PHY_ENABLE_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_08_REG);
+      $display(
+          "Error: [Unisim %s-204] PHY_ENABLE_08 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_08_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_09_REG != "FALSE") &&
        (PHY_ENABLE_09_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-205] PHY_ENABLE_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_09_REG);
+      $display(
+          "Error: [Unisim %s-205] PHY_ENABLE_09 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_09_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_10_REG != "FALSE") &&
        (PHY_ENABLE_10_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-206] PHY_ENABLE_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_10_REG);
+      $display(
+          "Error: [Unisim %s-206] PHY_ENABLE_10 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_10_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_11_REG != "FALSE") &&
        (PHY_ENABLE_11_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-207] PHY_ENABLE_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_11_REG);
+      $display(
+          "Error: [Unisim %s-207] PHY_ENABLE_11 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_11_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_12_REG != "FALSE") &&
        (PHY_ENABLE_12_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-208] PHY_ENABLE_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_12_REG);
+      $display(
+          "Error: [Unisim %s-208] PHY_ENABLE_12 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_12_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_13_REG != "FALSE") &&
        (PHY_ENABLE_13_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-209] PHY_ENABLE_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_13_REG);
+      $display(
+          "Error: [Unisim %s-209] PHY_ENABLE_13 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_13_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_14_REG != "FALSE") &&
        (PHY_ENABLE_14_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-210] PHY_ENABLE_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_14_REG);
+      $display(
+          "Error: [Unisim %s-210] PHY_ENABLE_14 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_14_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_15_REG != "FALSE") &&
        (PHY_ENABLE_15_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-211] PHY_ENABLE_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_15_REG);
+      $display(
+          "Error: [Unisim %s-211] PHY_ENABLE_15 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_15_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_ENABLE_APB_REG != "FALSE") &&
        (PHY_ENABLE_APB_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-212] PHY_ENABLE_APB attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_ENABLE_APB_REG);
+      $display(
+          "Error: [Unisim %s-212] PHY_ENABLE_APB attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_ENABLE_APB_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((PHY_PCLK_INVERT_01_REG != "FALSE") &&
        (PHY_PCLK_INVERT_01_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-213] PHY_PCLK_INVERT_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PHY_PCLK_INVERT_01_REG);
+      $display(
+          "Error: [Unisim %s-213] PHY_PCLK_INVERT_01 attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, PHY_PCLK_INVERT_01_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_00_REG < 0) || (READ_PERCENT_00_REG > 100))) begin
-      $display("Error: [Unisim %s-215] READ_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_00_REG);
+      $display(
+          "Error: [Unisim %s-215] READ_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_00_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_01_REG < 0) || (READ_PERCENT_01_REG > 100))) begin
-      $display("Error: [Unisim %s-216] READ_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_01_REG);
+      $display(
+          "Error: [Unisim %s-216] READ_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_01_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_02_REG < 0) || (READ_PERCENT_02_REG > 100))) begin
-      $display("Error: [Unisim %s-217] READ_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_02_REG);
+      $display(
+          "Error: [Unisim %s-217] READ_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_02_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_03_REG < 0) || (READ_PERCENT_03_REG > 100))) begin
-      $display("Error: [Unisim %s-218] READ_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_03_REG);
+      $display(
+          "Error: [Unisim %s-218] READ_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_03_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_04_REG < 0) || (READ_PERCENT_04_REG > 100))) begin
-      $display("Error: [Unisim %s-219] READ_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_04_REG);
+      $display(
+          "Error: [Unisim %s-219] READ_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_04_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_05_REG < 0) || (READ_PERCENT_05_REG > 100))) begin
-      $display("Error: [Unisim %s-220] READ_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_05_REG);
+      $display(
+          "Error: [Unisim %s-220] READ_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_05_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_06_REG < 0) || (READ_PERCENT_06_REG > 100))) begin
-      $display("Error: [Unisim %s-221] READ_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_06_REG);
+      $display(
+          "Error: [Unisim %s-221] READ_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_06_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_07_REG < 0) || (READ_PERCENT_07_REG > 100))) begin
-      $display("Error: [Unisim %s-222] READ_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_07_REG);
+      $display(
+          "Error: [Unisim %s-222] READ_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_07_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_08_REG < 0) || (READ_PERCENT_08_REG > 100))) begin
-      $display("Error: [Unisim %s-223] READ_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_08_REG);
+      $display(
+          "Error: [Unisim %s-223] READ_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_08_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_09_REG < 0) || (READ_PERCENT_09_REG > 100))) begin
-      $display("Error: [Unisim %s-224] READ_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_09_REG);
+      $display(
+          "Error: [Unisim %s-224] READ_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_09_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_10_REG < 0) || (READ_PERCENT_10_REG > 100))) begin
-      $display("Error: [Unisim %s-225] READ_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_10_REG);
+      $display(
+          "Error: [Unisim %s-225] READ_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_10_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_11_REG < 0) || (READ_PERCENT_11_REG > 100))) begin
-      $display("Error: [Unisim %s-226] READ_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_11_REG);
+      $display(
+          "Error: [Unisim %s-226] READ_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_11_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_12_REG < 0) || (READ_PERCENT_12_REG > 100))) begin
-      $display("Error: [Unisim %s-227] READ_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_12_REG);
+      $display(
+          "Error: [Unisim %s-227] READ_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_12_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_13_REG < 0) || (READ_PERCENT_13_REG > 100))) begin
-      $display("Error: [Unisim %s-228] READ_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_13_REG);
+      $display(
+          "Error: [Unisim %s-228] READ_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_13_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_14_REG < 0) || (READ_PERCENT_14_REG > 100))) begin
-      $display("Error: [Unisim %s-229] READ_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_14_REG);
+      $display(
+          "Error: [Unisim %s-229] READ_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_14_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((READ_PERCENT_15_REG < 0) || (READ_PERCENT_15_REG > 100))) begin
-      $display("Error: [Unisim %s-230] READ_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, READ_PERCENT_15_REG);
+      $display(
+          "Error: [Unisim %s-230] READ_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, READ_PERCENT_15_REG);
       attr_err = 1'b1;
     end
 
@@ -3143,99 +3281,137 @@ module HBM_ONE_STACK_INTF #(
         ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES2"))) begin
-      $display("Error: [Unisim %s-231] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-231] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((STACK_LOCATION_REG != 0) && (STACK_LOCATION_REG != 1))) begin
-      $display("Error: [Unisim %s-232] STACK_LOCATION attribute is set to %d.  Legal values for this attribute are 0 or 1. Instance: %m", MODULE_NAME, STACK_LOCATION_REG);
+      $display(
+          "Error: [Unisim %s-232] STACK_LOCATION attribute is set to %d.  Legal values for this attribute are 0 or 1. Instance: %m",
+          MODULE_NAME, STACK_LOCATION_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
       ((SWITCH_ENABLE_REG != "FALSE") &&
        (SWITCH_ENABLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-233] SWITCH_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, SWITCH_ENABLE_REG);
+      $display(
+          "Error: [Unisim %s-233] SWITCH_ENABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, SWITCH_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_00_REG < 0) || (WRITE_PERCENT_00_REG > 100))) begin
-      $display("Error: [Unisim %s-235] WRITE_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_00_REG);
+      $display(
+          "Error: [Unisim %s-235] WRITE_PERCENT_00 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_00_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_01_REG < 0) || (WRITE_PERCENT_01_REG > 100))) begin
-      $display("Error: [Unisim %s-236] WRITE_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_01_REG);
+      $display(
+          "Error: [Unisim %s-236] WRITE_PERCENT_01 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_01_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_02_REG < 0) || (WRITE_PERCENT_02_REG > 100))) begin
-      $display("Error: [Unisim %s-237] WRITE_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_02_REG);
+      $display(
+          "Error: [Unisim %s-237] WRITE_PERCENT_02 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_02_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_03_REG < 0) || (WRITE_PERCENT_03_REG > 100))) begin
-      $display("Error: [Unisim %s-238] WRITE_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_03_REG);
+      $display(
+          "Error: [Unisim %s-238] WRITE_PERCENT_03 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_03_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_04_REG < 0) || (WRITE_PERCENT_04_REG > 100))) begin
-      $display("Error: [Unisim %s-239] WRITE_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_04_REG);
+      $display(
+          "Error: [Unisim %s-239] WRITE_PERCENT_04 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_04_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_05_REG < 0) || (WRITE_PERCENT_05_REG > 100))) begin
-      $display("Error: [Unisim %s-240] WRITE_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_05_REG);
+      $display(
+          "Error: [Unisim %s-240] WRITE_PERCENT_05 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_05_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_06_REG < 0) || (WRITE_PERCENT_06_REG > 100))) begin
-      $display("Error: [Unisim %s-241] WRITE_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_06_REG);
+      $display(
+          "Error: [Unisim %s-241] WRITE_PERCENT_06 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_06_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_07_REG < 0) || (WRITE_PERCENT_07_REG > 100))) begin
-      $display("Error: [Unisim %s-242] WRITE_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_07_REG);
+      $display(
+          "Error: [Unisim %s-242] WRITE_PERCENT_07 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_07_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_08_REG < 0) || (WRITE_PERCENT_08_REG > 100))) begin
-      $display("Error: [Unisim %s-243] WRITE_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_08_REG);
+      $display(
+          "Error: [Unisim %s-243] WRITE_PERCENT_08 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_08_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_09_REG < 0) || (WRITE_PERCENT_09_REG > 100))) begin
-      $display("Error: [Unisim %s-244] WRITE_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_09_REG);
+      $display(
+          "Error: [Unisim %s-244] WRITE_PERCENT_09 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_09_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_10_REG < 0) || (WRITE_PERCENT_10_REG > 100))) begin
-      $display("Error: [Unisim %s-245] WRITE_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_10_REG);
+      $display(
+          "Error: [Unisim %s-245] WRITE_PERCENT_10 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_10_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_11_REG < 0) || (WRITE_PERCENT_11_REG > 100))) begin
-      $display("Error: [Unisim %s-246] WRITE_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_11_REG);
+      $display(
+          "Error: [Unisim %s-246] WRITE_PERCENT_11 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_11_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_12_REG < 0) || (WRITE_PERCENT_12_REG > 100))) begin
-      $display("Error: [Unisim %s-247] WRITE_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_12_REG);
+      $display(
+          "Error: [Unisim %s-247] WRITE_PERCENT_12 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_12_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_13_REG < 0) || (WRITE_PERCENT_13_REG > 100))) begin
-      $display("Error: [Unisim %s-248] WRITE_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_13_REG);
+      $display(
+          "Error: [Unisim %s-248] WRITE_PERCENT_13 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_13_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_14_REG < 0) || (WRITE_PERCENT_14_REG > 100))) begin
-      $display("Error: [Unisim %s-249] WRITE_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_14_REG);
+      $display(
+          "Error: [Unisim %s-249] WRITE_PERCENT_14 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_14_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((WRITE_PERCENT_15_REG < 0) || (WRITE_PERCENT_15_REG > 100))) begin
-      $display("Error: [Unisim %s-250] WRITE_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m", MODULE_NAME, WRITE_PERCENT_15_REG);
+      $display(
+          "Error: [Unisim %s-250] WRITE_PERCENT_15 attribute is set to %d.  Legal values for this attribute are 0 to 100. Instance: %m",
+          MODULE_NAME, WRITE_PERCENT_15_REG);
       attr_err = 1'b1;
     end
 

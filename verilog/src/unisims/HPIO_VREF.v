@@ -103,7 +103,9 @@ module HPIO_VREF #(
         ((VREF_CNTR_REG != "OFF") &&
          (VREF_CNTR_REG != "FABRIC_RANGE1") &&
          (VREF_CNTR_REG != "FABRIC_RANGE2"))) begin
-      $display("Error: [Unisim %s-101] VREF_CNTR attribute is set to %s.  Legal values for this attribute are OFF, FABRIC_RANGE1 or FABRIC_RANGE2. Instance: %m", MODULE_NAME, VREF_CNTR_REG);
+      $display(
+          "Error: [Unisim %s-101] VREF_CNTR attribute is set to %s.  Legal values for this attribute are OFF, FABRIC_RANGE1 or FABRIC_RANGE2. Instance: %m",
+          MODULE_NAME, VREF_CNTR_REG);
       attr_err = 1'b1;
     end
 
@@ -116,8 +118,9 @@ module HPIO_VREF #(
     (VREF_CNTR_REG == "FABRIC_RANGE2") ? VREF_CNTR_FABRIC_RANGE2 :
     VREF_CNTR_OFF;
 
-  always @ (FABRIC_VREF_TUNE_in) begin
-     $display("Info: [Unisim %s-1] Fabric Tune Value changed to %b. Instance: %m",MODULE_NAME, FABRIC_VREF_TUNE_in);
+  always @(FABRIC_VREF_TUNE_in) begin
+    $display("Info: [Unisim %s-1] Fabric Tune Value changed to %b. Instance: %m", MODULE_NAME,
+             FABRIC_VREF_TUNE_in);
   end
 
 endmodule

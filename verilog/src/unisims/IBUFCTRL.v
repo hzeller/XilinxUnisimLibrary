@@ -112,7 +112,9 @@ module IBUFCTRL #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-103] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-103] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -127,7 +129,9 @@ module IBUFCTRL #(
     if ((attr_test == 1'b1) ||
         ((USE_IBUFDISABLE_REG != "FALSE") &&
          (USE_IBUFDISABLE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-104] USE_IBUFDISABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, USE_IBUFDISABLE_REG);
+      $display(
+          "Error: [Unisim %s-104] USE_IBUFDISABLE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, USE_IBUFDISABLE_REG);
       attr_err = 1'b1;
     end
 
@@ -140,9 +144,9 @@ module IBUFCTRL #(
         assign NOT_T_OR_IBUFDISABLE = ~T_in || IBUFDISABLE_in;
         assign O_out = (NOT_T_OR_IBUFDISABLE == 0)? I_in : (NOT_T_OR_IBUFDISABLE == 1)? 1'b0  : 1'bx;
       end
-      "FALSE"  : begin
-              assign O_out = I_in;
-              end
+      "FALSE": begin
+        assign O_out = I_in;
+      end
     endcase
   endgenerate
 

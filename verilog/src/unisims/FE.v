@@ -1705,14 +1705,14 @@ module FE #(
 `endif
 
 `ifdef XIL_XECLIB
-  assign PHYSICAL_UTILIZATION_BIN = PHYSICAL_UTILIZATION_REG * 1000;
+  assign PHYSICAL_UTILIZATION_BIN   = PHYSICAL_UTILIZATION_REG * 1000;
 
   assign THROUGHPUT_UTILIZATION_BIN = THROUGHPUT_UTILIZATION_REG * 1000;
 
 `else
   always @(trig_attr) begin
     #1;
-    PHYSICAL_UTILIZATION_BIN = PHYSICAL_UTILIZATION_REG * 1000;
+    PHYSICAL_UTILIZATION_BIN   = PHYSICAL_UTILIZATION_REG * 1000;
 
     THROUGHPUT_UTILIZATION_BIN = THROUGHPUT_UTILIZATION_REG * 1000;
 
@@ -1726,13 +1726,17 @@ module FE #(
         ((MODE_REG != "TURBO_DECODE") &&
          (MODE_REG != "LDPC_DECODE") &&
          (MODE_REG != "LDPC_ENCODE"))) begin
-      $display("Error: [Unisim %s-101] MODE attribute is set to %s.  Legal values for this attribute are TURBO_DECODE, LDPC_DECODE or LDPC_ENCODE. Instance: %m", MODULE_NAME, MODE_REG);
+      $display(
+          "Error: [Unisim %s-101] MODE attribute is set to %s.  Legal values for this attribute are TURBO_DECODE, LDPC_DECODE or LDPC_ENCODE. Instance: %m",
+          MODULE_NAME, MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (PHYSICAL_UTILIZATION_REG < 0.00 || PHYSICAL_UTILIZATION_REG > 100.00)) begin
-      $display("Error: [Unisim %s-102] PHYSICAL_UTILIZATION attribute is set to %f.  Legal values for this attribute are 0.00 to 100.00. Instance: %m", MODULE_NAME, PHYSICAL_UTILIZATION_REG);
+      $display(
+          "Error: [Unisim %s-102] PHYSICAL_UTILIZATION attribute is set to %f.  Legal values for this attribute are 0.00 to 100.00. Instance: %m",
+          MODULE_NAME, PHYSICAL_UTILIZATION_REG);
       attr_err = 1'b1;
     end
 
@@ -1740,7 +1744,9 @@ module FE #(
       ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
        (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1") &&
        (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES2"))) begin
-      $display("Error: [Unisim %s-103] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-103] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
@@ -1750,13 +1756,17 @@ module FE #(
          (STANDARD_REG != "CUSTOM") &&
          (STANDARD_REG != "DOCSIS") &&
          (STANDARD_REG != "WIFI"))) begin
-      $display("Error: [Unisim %s-104] STANDARD attribute is set to %s.  Legal values for this attribute are LTE, 5G, CUSTOM, DOCSIS or WIFI. Instance: %m", MODULE_NAME, STANDARD_REG);
+      $display(
+          "Error: [Unisim %s-104] STANDARD attribute is set to %s.  Legal values for this attribute are LTE, 5G, CUSTOM, DOCSIS or WIFI. Instance: %m",
+          MODULE_NAME, STANDARD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (THROUGHPUT_UTILIZATION_REG < 0.00 || THROUGHPUT_UTILIZATION_REG > 100.00)) begin
-      $display("Error: [Unisim %s-105] THROUGHPUT_UTILIZATION attribute is set to %f.  Legal values for this attribute are 0.00 to 100.00. Instance: %m", MODULE_NAME, THROUGHPUT_UTILIZATION_REG);
+      $display(
+          "Error: [Unisim %s-105] THROUGHPUT_UTILIZATION attribute is set to %f.  Legal values for this attribute are 0.00 to 100.00. Instance: %m",
+          MODULE_NAME, THROUGHPUT_UTILIZATION_REG);
       attr_err = 1'b1;
     end
 

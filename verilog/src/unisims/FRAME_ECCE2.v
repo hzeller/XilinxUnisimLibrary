@@ -131,30 +131,35 @@ module FRAME_ECCE2 (
   initial begin
     case (FARSRC)
       "EFAR": ;
-      "FAR": ;
+      "FAR":  ;
       default: begin
-        $display("Attribute Syntax Error : The Attribute FARSRC on FRAME_ECCE2 instance %m is set to %s.  Legal values for this attribute are EFAR, or FAR.", FARSRC);
+        $display(
+            "Attribute Syntax Error : The Attribute FARSRC on FRAME_ECCE2 instance %m is set to %s.  Legal values for this attribute are EFAR, or FAR.",
+            FARSRC);
         #1 $finish;
       end
     endcase
 
     sim_file_flag = 0;
-    if (FRAME_RBT_IN_FILENAME == "NONE") 
-       $display(" Message: The configuration frame data file for FRAME_ECCE2 instance %m was not found. Use ICAPE2 to generate frame data file and then use the FRAME_RBT_IN_FILENAME parameter to pass the file name.\n");
+    if (FRAME_RBT_IN_FILENAME == "NONE")
+      $display(
+          " Message: The configuration frame data file for FRAME_ECCE2 instance %m was not found. Use ICAPE2 to generate frame data file and then use the FRAME_RBT_IN_FILENAME parameter to pass the file name.\n");
     else begin
       rbt_fd = $fopen(FRAME_RBT_IN_FILENAME, "r");
       ecc_ecc_out_fd = $fopen(FRAME_ECC_OUT_ECC_FILENAME, "w");
       ecc_rbt_out_fd = $fopen(FRAME_ECC_OUT_RBT_FILENAME, "w");
-      if  (rbt_fd == 0)
-       $display(" Message: The configuration frame data file %s for FRAME_ECCE2 instance %m was not found. Use ICAPE2 to generate frame data file and then use the FRAME_RBT_IN_FILENAME parameter to pass the file name.\n", FRAME_RBT_IN_FILENAME);
-      else
-        if ($fscanf(rbt_fd, "%s\t%s\t%s", tmps1, tmps2, tmps3) != -1)
-           rd_rbt_en <= #1 1;
+      if (rbt_fd == 0)
+        $display(
+            " Message: The configuration frame data file %s for FRAME_ECCE2 instance %m was not found. Use ICAPE2 to generate frame data file and then use the FRAME_RBT_IN_FILENAME parameter to pass the file name.\n",
+            FRAME_RBT_IN_FILENAME);
+      else if ($fscanf(rbt_fd, "%s\t%s\t%s", tmps1, tmps2, tmps3) != -1) rd_rbt_en <= #1 1;
 
-      if  (ecc_ecc_out_fd == 0)
-       $display(" Error: The ecc frame data out file frame_ecc_out_e2.txt for FRAME_ECCE2 instance %m can not created.\n");
-      if  (ecc_rbt_out_fd == 0)
-       $display(" Error: The rbt frame data out file frame_rbt_out_e2.txt for FRAME_ECCE2 instance %m can not created.\n");
+      if (ecc_ecc_out_fd == 0)
+        $display(
+            " Error: The ecc frame data out file frame_ecc_out_e2.txt for FRAME_ECCE2 instance %m can not created.\n");
+      if (ecc_rbt_out_fd == 0)
+        $display(
+            " Error: The rbt frame data out file frame_rbt_out_e2.txt for FRAME_ECCE2 instance %m can not created.\n");
       if (rbt_fd != 0 && ecc_ecc_out_fd != 0 && ecc_rbt_out_fd != 0) sim_file_flag = 1;
     end
   end
@@ -178,25 +183,20 @@ module FRAME_ECCE2 (
         frame_addr <= frame_addr_i;
         rb_data <= data_rbt;
         crc_input[36:0] = {5'b00011, data_rbt};
-        crc_new[31:0] = bcc_next(crc_curr, crc_input);
+        crc_new[31:0]   = bcc_next(crc_curr, crc_input);
         crc_curr[31:0] <= crc_new;
         if (n <= 255) begin
           frame_data[n] <= data_rbt[31:0];
-          if (n == 255) 
-            n <= 174;
-          else if (n==191)
-            n <= 193;
-          else
-            n <= n+ 1;
+          if (n == 255) n <= 174;
+          else if (n == 191) n <= 193;
+          else n <= n + 1;
         end
       end else begin
         rb_data_en <= 0;
         end_rbt <= 1;
         n <= 173;
-        if ( crc_new != rb_crc_rbt)
-           rbcrc_err <= 1;
-        else
-           rbcrc_err <= 0;
+        if (crc_new != rb_crc_rbt) rbcrc_err <= 1;
+        else rbcrc_err <= 0;
         $fclose(rbt_fd);
       end
     end
@@ -235,21 +235,19 @@ module FRAME_ECCE2 (
       rd_rbt_hold2 <= rd_rbt_hold1;
       rd_rbt_hold1 <= rd_rbt_hold;
       if (rd_rbt_hold2 == 1) begin
-        rd_rbt_hold <= 0;
+        rd_rbt_hold  <= 0;
         rd_rbt_hold1 <= 0;
         rd_rbt_hold2 <= 0;
       end
     end else if (end_rbt == 1) begin
-      rd_rbt_hold <= 1;
+      rd_rbt_hold  <= 1;
       rd_rbt_hold1 <= 1;
       rd_rbt_hold2 <= 1;
     end
 
   always @(negedge clk_osc)
-        if (rd_rbt_hold2 == 1 && hamming_rst == 0)
-           hamming_rst <= 1;
-        else
-           hamming_rst <= 0;
+    if (rd_rbt_hold2 == 1 && hamming_rst == 0) hamming_rst <= 1;
+    else hamming_rst <= 0;
 
   assign S_valid_next = rb_data_en & hiaddr127 & ~ecc_run;
   assign S_valid_ungated_next = rb_data_en & hiaddr127;
@@ -262,10 +260,8 @@ module FRAME_ECCE2 (
   always @(posedge clk_osc or posedge hamming_rst)
     if (hamming_rst == 1) hiaddr <= 7'd46;
     else if (rb_data_en == 1) begin
-      if ( hiaddr127 )    
-                hiaddr <=  7'd46;
-            else 
-                hiaddr <=  { hiaddrp1[11:6], ( hiaddr63 | hiaddrp1[5] ) };
+      if (hiaddr127) hiaddr <= 7'd46;
+      else hiaddr <= {hiaddrp1[11:6], (hiaddr63 | hiaddrp1[5])};
     end
 
   assign xorall = (^rb_data[31:13]) ^ ((~hclk) & (^rb_data[12:0]));
@@ -299,78 +295,78 @@ module FRAME_ECCE2 (
                         ( hclk  ? ~calc_syndrome & rb_data[0]  : 
                         ( rb_data[11] ^ rb_data[9] ^ rb_data[7] ^ rb_data[5] ^ rb_data[3] ^ rb_data[1] ) );
 
-  assign new_S[11:5] = ( hiaddr & { 7 { xorall } } ) ^
-                           ( { 7 { hclk & ~calc_syndrome } } &
-                             { rb_data[11], rb_data[10], rb_data[9], rb_data[8],
-                              rb_data[7],  rb_data[6], rb_data[5] } );
+  assign new_S[11:5] = (hiaddr & {7{xorall}}) ^ ({7{hclk & ~calc_syndrome}} & {
+    rb_data[11], rb_data[10], rb_data[9], rb_data[8], rb_data[7], rb_data[6], rb_data[5]
+  });
 
   assign new_S_xor_S = S ^ new_S;
-  assign next_S = (hiaddr127 & calc_syndrome) ? {(^new_S_xor_S), new_S_xor_S[11:0]} :
-                    (hiaddr == 7'd46) ? new_S : new_S_xor_S;
+  assign next_S = (hiaddr127 & calc_syndrome) ? {
+    (^new_S_xor_S), new_S_xor_S[11:0]
+  } : (hiaddr == 7'd46) ? new_S : new_S_xor_S;
 
   assign ecc_synword_next_not_par = new_S_xor_S[11:5] - 7'd46 - {6'b0, new_S_xor_S[11]};
 
   always @(ecc_synword_next_not_par, new_S_xor_S) begin
     if (!new_S_xor_S[12]) begin
       ecc_synword_next = 7'd0;
-      ecc_synbit_next = 5'd0;
+      ecc_synbit_next  = 5'd0;
     end else begin
       case (new_S_xor_S[11:0])
         12'h000: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd12;
+          ecc_synbit_next  = 5'd12;
         end
         12'h001: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd0;
+          ecc_synbit_next  = 5'd0;
         end
         12'h002: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd1;
+          ecc_synbit_next  = 5'd1;
         end
         12'h004: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd2;
+          ecc_synbit_next  = 5'd2;
         end
         12'h008: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd3;
+          ecc_synbit_next  = 5'd3;
         end
         12'h010: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd4;
+          ecc_synbit_next  = 5'd4;
         end
         12'h020: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd5;
+          ecc_synbit_next  = 5'd5;
         end
         12'h040: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd6;
+          ecc_synbit_next  = 5'd6;
         end
         12'h080: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd7;
+          ecc_synbit_next  = 5'd7;
         end
         12'h100: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd8;
+          ecc_synbit_next  = 5'd8;
         end
         12'h200: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd9;
+          ecc_synbit_next  = 5'd9;
         end
         12'h400: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd10;
+          ecc_synbit_next  = 5'd10;
         end
         12'h800: begin
           ecc_synword_next = 7'd40;
-          ecc_synbit_next = 5'd11;
+          ecc_synbit_next  = 5'd11;
         end
         default: begin
           ecc_synword_next = ecc_synword_next_not_par;
-          ecc_synbit_next = new_S_xor_S[4:0];
+          ecc_synbit_next  = new_S_xor_S[4:0];
         end
       endcase
     end
@@ -392,10 +388,10 @@ module FRAME_ECCE2 (
 
     if (hamming_rst == 1) begin
       ecc_synword <= 7'd0;
-      ecc_synbit <= 5'd0;
+      ecc_synbit  <= 5'd0;
     end else if (S_valid_next & ~efar_save) begin
       ecc_synword <= ecc_synword_next;
-      ecc_synbit <= ecc_synbit_next;
+      ecc_synbit  <= ecc_synbit_next;
     end
 
     if (hamming_rst == 1) begin
@@ -406,15 +402,11 @@ module FRAME_ECCE2 (
       ecc_error_single <= next_S[12];
     end
 
-    if (hamming_rst == 1) 
-           ecc_error_ungated <= 0;
-      else if (S_valid_ungated_next == 1) 
-           ecc_error_ungated <= next_error;
+    if (hamming_rst == 1) ecc_error_ungated <= 0;
+    else if (S_valid_ungated_next == 1) ecc_error_ungated <= next_error;
 
-    if (hamming_rst == 1)
-            efar_save  <= 0;
-      else if (ecc_error == 1 | ((S_valid_ungated_next & next_error) == 1))
-            efar_save  <= 1;
+    if (hamming_rst == 1) efar_save <= 0;
+    else if (ecc_error == 1 | ((S_valid_ungated_next & next_error) == 1)) efar_save <= 1;
 
   end
 

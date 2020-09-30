@@ -116,7 +116,9 @@ module IBUFDS_GTM #(
          (REFCLK_HROW_CK_SEL_REG != 1) &&
          (REFCLK_HROW_CK_SEL_REG != 2) &&
          (REFCLK_HROW_CK_SEL_REG != 3))) begin
-      $display("Error: [Unisim %s-102] REFCLK_HROW_CK_SEL attribute is set to %d.  Legal values for this attribute are 0, 1, 2 or 3. Instance: %m", MODULE_NAME, REFCLK_HROW_CK_SEL_REG);
+      $display(
+          "Error: [Unisim %s-102] REFCLK_HROW_CK_SEL attribute is set to %d.  Legal values for this attribute are 0, 1, 2 or 3. Instance: %m",
+          MODULE_NAME, REFCLK_HROW_CK_SEL_REG);
       attr_err = 1'b1;
     end
 
@@ -125,7 +127,9 @@ module IBUFDS_GTM #(
          (REFCLK_ICNTL_RX_REG != 1) &&
          (REFCLK_ICNTL_RX_REG != 2) &&
          (REFCLK_ICNTL_RX_REG != 3))) begin
-      $display("Error: [Unisim %s-103] REFCLK_ICNTL_RX attribute is set to %d.  Legal values for this attribute are 0, 1, 2 or 3. Instance: %m", MODULE_NAME, REFCLK_ICNTL_RX_REG);
+      $display(
+          "Error: [Unisim %s-103] REFCLK_ICNTL_RX attribute is set to %d.  Legal values for this attribute are 0, 1, 2 or 3. Instance: %m",
+          MODULE_NAME, REFCLK_ICNTL_RX_REG);
       attr_err = 1'b1;
     end
 
@@ -147,29 +151,25 @@ module IBUFDS_GTM #(
   // Count the rising edges of the clk
   // =====================
   always @(posedge I) begin
-    if (allEqual)
-      edge_count <= 3'b000;
-    else
-      if ((CEB === 1'b0) || (CEB === 1'bz)) // rv = 0
-        edge_count <= edge_count + 1;
-    end
+    if (allEqual) edge_count <= 3'b000;
+    else if ((CEB === 1'b0) || (CEB === 1'bz))  // rv = 0
+      edge_count <= edge_count + 1;
+  end
 
   //  Generate synchronous reset after DIVIDE number of counts
   always @(edge_count)
-    if (edge_count == ce_count)
-      allEqual = 1;
-    else
-      allEqual = 0;
+    if (edge_count == ce_count) allEqual = 1;
+    else allEqual = 0;
 
   // =====================
   // Generate ODIV2
   // =====================
   always @(*) begin
     case (REFCLK_HROW_CK_SEL_REG)
-      32'b00: ODIV2_out <= ~(REFCLK_EN_TX_PATH_REG | (CEB === 1'b1)) && I;
-      32'b01: ODIV2_out <= allEqual;
-      32'b10: ODIV2_out <= 1'b0;
-      32'b11: ODIV2_out <= 1'b0;
+      32'b00:  ODIV2_out <= ~(REFCLK_EN_TX_PATH_REG | (CEB === 1'b1)) && I;
+      32'b01:  ODIV2_out <= allEqual;
+      32'b10:  ODIV2_out <= 1'b0;
+      32'b11:  ODIV2_out <= 1'b0;
       default: ODIV2_out <= ~(REFCLK_EN_TX_PATH_REG | (CEB === 1'b1)) && I;
     endcase
   end

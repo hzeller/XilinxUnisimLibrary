@@ -77,7 +77,7 @@ module IOBUFDS_DIFF_OUT (
   or O2 (t2, GTS, TS);
   notif0 N2 (IOB, I, t2);
 
-  assign O = O_out;
+  assign O  = O_out;
   assign OB = OB_out;
 
   initial begin
@@ -86,7 +86,9 @@ module IOBUFDS_DIFF_OUT (
 
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute DIFF_TERM on IOBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DIFF_TERM);
+        $display(
+            "Attribute Syntax Error : The attribute DIFF_TERM on IOBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DIFF_TERM);
         #1 $finish;
       end
 
@@ -97,7 +99,9 @@ module IOBUFDS_DIFF_OUT (
 
       "FALSE", "TRUE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on IOBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", IBUF_LOW_PWR);
+        $display(
+            "Attribute Syntax Error : The attribute IBUF_LOW_PWR on IOBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            IBUF_LOW_PWR);
         #1 $finish;
       end
 
@@ -105,10 +109,12 @@ module IOBUFDS_DIFF_OUT (
 
     case (DQS_BIAS)
 
-      "TRUE": DQS_BIAS_BINARY <= #1 1'b1;
+      "TRUE":  DQS_BIAS_BINARY <= #1 1'b1;
       "FALSE": DQS_BIAS_BINARY <= #1 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The attribute DQS_BIAS on IOBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", DQS_BIAS);
+        $display(
+            "Attribute Syntax Error : The attribute DQS_BIAS on IOBUFDS_DIFF_OUT instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            DQS_BIAS);
         #1 $finish;
       end
 
@@ -121,21 +127,21 @@ module IOBUFDS_DIFF_OUT (
 
   always @(IO or IOB or DQS_BIAS_BINARY) begin
     if (IO == 1'b1 && IOB == 1'b0) begin
-      O_out <= IO;
+      O_out  <= IO;
       OB_out <= ~IO;
     end else if (IO == 1'b0 && IOB == 1'b1) begin
-      O_out <= IO;
+      O_out  <= IO;
       OB_out <= ~IO;
     end else if ((IO === 1'bz || IO == 1'b0) && (IOB === 1'bz || IOB == 1'b1)) begin
       if (DQS_BIAS_BINARY == 1'b1) begin
-        O_out <= 1'b0;
+        O_out  <= 1'b0;
         OB_out <= 1'b1;
       end else begin
-        O_out <= 1'bx;
+        O_out  <= 1'bx;
         OB_out <= 1'bx;
       end
     end else begin
-      O_out <= 1'bx;
+      O_out  <= 1'bx;
       OB_out <= 1'bx;
     end
   end

@@ -150,8 +150,8 @@ module DSP_A_B_DATA #(
 `endif
 
 `ifdef XIL_TIMING
-  assign ACIN_in = ACIN_delay;
-  assign A_in[0] = (A[0] === 1'bz) || A_delay[0];  // rv 1
+  assign ACIN_in  = ACIN_delay;
+  assign A_in[0]  = (A[0] === 1'bz) || A_delay[0];  // rv 1
   assign A_in[10] = (A[10] === 1'bz) || A_delay[10];  // rv 1
   assign A_in[11] = (A[11] === 1'bz) || A_delay[11];  // rv 1
   assign A_in[12] = (A[12] === 1'bz) || A_delay[12];  // rv 1
@@ -162,7 +162,7 @@ module DSP_A_B_DATA #(
   assign A_in[17] = (A[17] === 1'bz) || A_delay[17];  // rv 1
   assign A_in[18] = (A[18] === 1'bz) || A_delay[18];  // rv 1
   assign A_in[19] = (A[19] === 1'bz) || A_delay[19];  // rv 1
-  assign A_in[1] = (A[1] === 1'bz) || A_delay[1];  // rv 1
+  assign A_in[1]  = (A[1] === 1'bz) || A_delay[1];  // rv 1
   assign A_in[20] = (A[20] === 1'bz) || A_delay[20];  // rv 1
   assign A_in[21] = (A[21] === 1'bz) || A_delay[21];  // rv 1
   assign A_in[22] = (A[22] === 1'bz) || A_delay[22];  // rv 1
@@ -173,16 +173,16 @@ module DSP_A_B_DATA #(
   assign A_in[27] = (A[27] === 1'bz) || A_delay[27];  // rv 1
   assign A_in[28] = (A[28] === 1'bz) || A_delay[28];  // rv 1
   assign A_in[29] = (A[29] === 1'bz) || A_delay[29];  // rv 1
-  assign A_in[2] = (A[2] === 1'bz) || A_delay[2];  // rv 1
-  assign A_in[3] = (A[3] === 1'bz) || A_delay[3];  // rv 1
-  assign A_in[4] = (A[4] === 1'bz) || A_delay[4];  // rv 1
-  assign A_in[5] = (A[5] === 1'bz) || A_delay[5];  // rv 1
-  assign A_in[6] = (A[6] === 1'bz) || A_delay[6];  // rv 1
-  assign A_in[7] = (A[7] === 1'bz) || A_delay[7];  // rv 1
-  assign A_in[8] = (A[8] === 1'bz) || A_delay[8];  // rv 1
-  assign A_in[9] = (A[9] === 1'bz) || A_delay[9];  // rv 1
-  assign BCIN_in = BCIN_delay;
-  assign B_in[0] = (B[0] === 1'bz) || B_delay[0];  // rv 1
+  assign A_in[2]  = (A[2] === 1'bz) || A_delay[2];  // rv 1
+  assign A_in[3]  = (A[3] === 1'bz) || A_delay[3];  // rv 1
+  assign A_in[4]  = (A[4] === 1'bz) || A_delay[4];  // rv 1
+  assign A_in[5]  = (A[5] === 1'bz) || A_delay[5];  // rv 1
+  assign A_in[6]  = (A[6] === 1'bz) || A_delay[6];  // rv 1
+  assign A_in[7]  = (A[7] === 1'bz) || A_delay[7];  // rv 1
+  assign A_in[8]  = (A[8] === 1'bz) || A_delay[8];  // rv 1
+  assign A_in[9]  = (A[9] === 1'bz) || A_delay[9];  // rv 1
+  assign BCIN_in  = BCIN_delay;
+  assign B_in[0]  = (B[0] === 1'bz) || B_delay[0];  // rv 1
   assign B_in[10] = (B[10] === 1'bz) || B_delay[10];  // rv 1
   assign B_in[11] = (B[11] === 1'bz) || B_delay[11];  // rv 1
   assign B_in[12] = (B[12] === 1'bz) || B_delay[12];  // rv 1
@@ -191,25 +191,25 @@ module DSP_A_B_DATA #(
   assign B_in[15] = (B[15] === 1'bz) || B_delay[15];  // rv 1
   assign B_in[16] = (B[16] === 1'bz) || B_delay[16];  // rv 1
   assign B_in[17] = (B[17] === 1'bz) || B_delay[17];  // rv 1
-  assign B_in[1] = (B[1] === 1'bz) || B_delay[1];  // rv 1
-  assign B_in[2] = (B[2] === 1'bz) || B_delay[2];  // rv 1
-  assign B_in[3] = (B[3] === 1'bz) || B_delay[3];  // rv 1
-  assign B_in[4] = (B[4] === 1'bz) || B_delay[4];  // rv 1
-  assign B_in[5] = (B[5] === 1'bz) || B_delay[5];  // rv 1
-  assign B_in[6] = (B[6] === 1'bz) || B_delay[6];  // rv 1
-  assign B_in[7] = (B[7] === 1'bz) || B_delay[7];  // rv 1
-  assign B_in[8] = (B[8] === 1'bz) || B_delay[8];  // rv 1
-  assign B_in[9] = (B[9] === 1'bz) || B_delay[9];  // rv 1
-  assign CEA1_in = (CEA1 !== 1'bz) && CEA1_delay;  // rv 0
-  assign CEA2_in = (CEA2 !== 1'bz) && CEA2_delay;  // rv 0
-  assign CEB1_in = (CEB1 !== 1'bz) && CEB1_delay;  // rv 0
-  assign CEB2_in = (CEB2 !== 1'bz) && CEB2_delay;  // rv 0
-  assign CLK_in = (CLK !== 1'bz) && (CLK_delay ^ IS_CLK_INVERTED_REG);  // rv 0
-  assign RSTA_in = (RSTA !== 1'bz) && (RSTA_delay ^ IS_RSTA_INVERTED_REG);  // rv 0
-  assign RSTB_in = (RSTB !== 1'bz) && (RSTB_delay ^ IS_RSTB_INVERTED_REG);  // rv 0
+  assign B_in[1]  = (B[1] === 1'bz) || B_delay[1];  // rv 1
+  assign B_in[2]  = (B[2] === 1'bz) || B_delay[2];  // rv 1
+  assign B_in[3]  = (B[3] === 1'bz) || B_delay[3];  // rv 1
+  assign B_in[4]  = (B[4] === 1'bz) || B_delay[4];  // rv 1
+  assign B_in[5]  = (B[5] === 1'bz) || B_delay[5];  // rv 1
+  assign B_in[6]  = (B[6] === 1'bz) || B_delay[6];  // rv 1
+  assign B_in[7]  = (B[7] === 1'bz) || B_delay[7];  // rv 1
+  assign B_in[8]  = (B[8] === 1'bz) || B_delay[8];  // rv 1
+  assign B_in[9]  = (B[9] === 1'bz) || B_delay[9];  // rv 1
+  assign CEA1_in  = (CEA1 !== 1'bz) && CEA1_delay;  // rv 0
+  assign CEA2_in  = (CEA2 !== 1'bz) && CEA2_delay;  // rv 0
+  assign CEB1_in  = (CEB1 !== 1'bz) && CEB1_delay;  // rv 0
+  assign CEB2_in  = (CEB2 !== 1'bz) && CEB2_delay;  // rv 0
+  assign CLK_in   = (CLK !== 1'bz) && (CLK_delay ^ IS_CLK_INVERTED_REG);  // rv 0
+  assign RSTA_in  = (RSTA !== 1'bz) && (RSTA_delay ^ IS_RSTA_INVERTED_REG);  // rv 0
+  assign RSTB_in  = (RSTB !== 1'bz) && (RSTB_delay ^ IS_RSTB_INVERTED_REG);  // rv 0
 `else
-  assign ACIN_in = ACIN;
-  assign A_in[0] = (A[0] === 1'bz) || A[0];  // rv 1
+  assign ACIN_in  = ACIN;
+  assign A_in[0]  = (A[0] === 1'bz) || A[0];  // rv 1
   assign A_in[10] = (A[10] === 1'bz) || A[10];  // rv 1
   assign A_in[11] = (A[11] === 1'bz) || A[11];  // rv 1
   assign A_in[12] = (A[12] === 1'bz) || A[12];  // rv 1
@@ -220,7 +220,7 @@ module DSP_A_B_DATA #(
   assign A_in[17] = (A[17] === 1'bz) || A[17];  // rv 1
   assign A_in[18] = (A[18] === 1'bz) || A[18];  // rv 1
   assign A_in[19] = (A[19] === 1'bz) || A[19];  // rv 1
-  assign A_in[1] = (A[1] === 1'bz) || A[1];  // rv 1
+  assign A_in[1]  = (A[1] === 1'bz) || A[1];  // rv 1
   assign A_in[20] = (A[20] === 1'bz) || A[20];  // rv 1
   assign A_in[21] = (A[21] === 1'bz) || A[21];  // rv 1
   assign A_in[22] = (A[22] === 1'bz) || A[22];  // rv 1
@@ -231,16 +231,16 @@ module DSP_A_B_DATA #(
   assign A_in[27] = (A[27] === 1'bz) || A[27];  // rv 1
   assign A_in[28] = (A[28] === 1'bz) || A[28];  // rv 1
   assign A_in[29] = (A[29] === 1'bz) || A[29];  // rv 1
-  assign A_in[2] = (A[2] === 1'bz) || A[2];  // rv 1
-  assign A_in[3] = (A[3] === 1'bz) || A[3];  // rv 1
-  assign A_in[4] = (A[4] === 1'bz) || A[4];  // rv 1
-  assign A_in[5] = (A[5] === 1'bz) || A[5];  // rv 1
-  assign A_in[6] = (A[6] === 1'bz) || A[6];  // rv 1
-  assign A_in[7] = (A[7] === 1'bz) || A[7];  // rv 1
-  assign A_in[8] = (A[8] === 1'bz) || A[8];  // rv 1
-  assign A_in[9] = (A[9] === 1'bz) || A[9];  // rv 1
-  assign BCIN_in = BCIN;
-  assign B_in[0] = (B[0] === 1'bz) || B[0];  // rv 1
+  assign A_in[2]  = (A[2] === 1'bz) || A[2];  // rv 1
+  assign A_in[3]  = (A[3] === 1'bz) || A[3];  // rv 1
+  assign A_in[4]  = (A[4] === 1'bz) || A[4];  // rv 1
+  assign A_in[5]  = (A[5] === 1'bz) || A[5];  // rv 1
+  assign A_in[6]  = (A[6] === 1'bz) || A[6];  // rv 1
+  assign A_in[7]  = (A[7] === 1'bz) || A[7];  // rv 1
+  assign A_in[8]  = (A[8] === 1'bz) || A[8];  // rv 1
+  assign A_in[9]  = (A[9] === 1'bz) || A[9];  // rv 1
+  assign BCIN_in  = BCIN;
+  assign B_in[0]  = (B[0] === 1'bz) || B[0];  // rv 1
   assign B_in[10] = (B[10] === 1'bz) || B[10];  // rv 1
   assign B_in[11] = (B[11] === 1'bz) || B[11];  // rv 1
   assign B_in[12] = (B[12] === 1'bz) || B[12];  // rv 1
@@ -249,22 +249,22 @@ module DSP_A_B_DATA #(
   assign B_in[15] = (B[15] === 1'bz) || B[15];  // rv 1
   assign B_in[16] = (B[16] === 1'bz) || B[16];  // rv 1
   assign B_in[17] = (B[17] === 1'bz) || B[17];  // rv 1
-  assign B_in[1] = (B[1] === 1'bz) || B[1];  // rv 1
-  assign B_in[2] = (B[2] === 1'bz) || B[2];  // rv 1
-  assign B_in[3] = (B[3] === 1'bz) || B[3];  // rv 1
-  assign B_in[4] = (B[4] === 1'bz) || B[4];  // rv 1
-  assign B_in[5] = (B[5] === 1'bz) || B[5];  // rv 1
-  assign B_in[6] = (B[6] === 1'bz) || B[6];  // rv 1
-  assign B_in[7] = (B[7] === 1'bz) || B[7];  // rv 1
-  assign B_in[8] = (B[8] === 1'bz) || B[8];  // rv 1
-  assign B_in[9] = (B[9] === 1'bz) || B[9];  // rv 1
-  assign CEA1_in = (CEA1 !== 1'bz) && CEA1;  // rv 0
-  assign CEA2_in = (CEA2 !== 1'bz) && CEA2;  // rv 0
-  assign CEB1_in = (CEB1 !== 1'bz) && CEB1;  // rv 0
-  assign CEB2_in = (CEB2 !== 1'bz) && CEB2;  // rv 0
-  assign CLK_in = (CLK !== 1'bz) && (CLK ^ IS_CLK_INVERTED_REG);  // rv 0
-  assign RSTA_in = (RSTA !== 1'bz) && (RSTA ^ IS_RSTA_INVERTED_REG);  // rv 0
-  assign RSTB_in = (RSTB !== 1'bz) && (RSTB ^ IS_RSTB_INVERTED_REG);  // rv 0
+  assign B_in[1]  = (B[1] === 1'bz) || B[1];  // rv 1
+  assign B_in[2]  = (B[2] === 1'bz) || B[2];  // rv 1
+  assign B_in[3]  = (B[3] === 1'bz) || B[3];  // rv 1
+  assign B_in[4]  = (B[4] === 1'bz) || B[4];  // rv 1
+  assign B_in[5]  = (B[5] === 1'bz) || B[5];  // rv 1
+  assign B_in[6]  = (B[6] === 1'bz) || B[6];  // rv 1
+  assign B_in[7]  = (B[7] === 1'bz) || B[7];  // rv 1
+  assign B_in[8]  = (B[8] === 1'bz) || B[8];  // rv 1
+  assign B_in[9]  = (B[9] === 1'bz) || B[9];  // rv 1
+  assign CEA1_in  = (CEA1 !== 1'bz) && CEA1;  // rv 0
+  assign CEA2_in  = (CEA2 !== 1'bz) && CEA2;  // rv 0
+  assign CEB1_in  = (CEB1 !== 1'bz) && CEB1;  // rv 0
+  assign CEB2_in  = (CEB2 !== 1'bz) && CEB2;  // rv 0
+  assign CLK_in   = (CLK !== 1'bz) && (CLK ^ IS_CLK_INVERTED_REG);  // rv 0
+  assign RSTA_in  = (RSTA !== 1'bz) && (RSTA ^ IS_RSTA_INVERTED_REG);  // rv 0
+  assign RSTB_in  = (RSTB !== 1'bz) && (RSTB ^ IS_RSTB_INVERTED_REG);  // rv 0
 `endif
 
 `ifndef XIL_XECLIB
@@ -329,7 +329,9 @@ module DSP_A_B_DATA #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -341,17 +343,23 @@ module DSP_A_B_DATA #(
         ((ACASCREG_REG != 1) &&
          (ACASCREG_REG != 0) &&
          (ACASCREG_REG != 2))) begin
-      $display("Error: [Unisim %s-101] ACASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, ACASCREG_REG);
+      $display(
+          "Error: [Unisim %s-101] ACASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, ACASCREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((AREG_REG != 1) && (AREG_REG != 0) && (AREG_REG != 2))) begin
-      $display("Error: [Unisim %s-102] AREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, AREG_REG);
+      $display(
+          "Error: [Unisim %s-102] AREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, AREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((A_INPUT_REG != "DIRECT") && (A_INPUT_REG != "CASCADE"))) begin
-      $display("Error: [Unisim %s-103] A_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m", MODULE_NAME, A_INPUT_REG);
+      $display(
+          "Error: [Unisim %s-103] A_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m",
+          MODULE_NAME, A_INPUT_REG);
       attr_err = 1'b1;
     end
 
@@ -359,17 +367,23 @@ module DSP_A_B_DATA #(
         ((BCASCREG_REG != 1) &&
          (BCASCREG_REG != 0) &&
          (BCASCREG_REG != 2))) begin
-      $display("Error: [Unisim %s-104] BCASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, BCASCREG_REG);
+      $display(
+          "Error: [Unisim %s-104] BCASCREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, BCASCREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((BREG_REG != 1) && (BREG_REG != 0) && (BREG_REG != 2))) begin
-      $display("Error: [Unisim %s-105] BREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m", MODULE_NAME, BREG_REG);
+      $display(
+          "Error: [Unisim %s-105] BREG attribute is set to %d.  Legal values for this attribute are 1, 0 or 2. Instance: %m",
+          MODULE_NAME, BREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((B_INPUT_REG != "DIRECT") && (B_INPUT_REG != "CASCADE"))) begin
-      $display("Error: [Unisim %s-106] B_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m", MODULE_NAME, B_INPUT_REG);
+      $display(
+          "Error: [Unisim %s-106] B_INPUT attribute is set to %s.  Legal values for this attribute are DIRECT or CASCADE. Instance: %m",
+          MODULE_NAME, B_INPUT_REG);
       attr_err = 1'b1;
     end
 
@@ -388,12 +402,16 @@ module DSP_A_B_DATA #(
     case (AREG_REG)
       0, 1:
       if (AREG_REG != ACASCREG_REG) begin
-        $display("Error: [Unisim %s-2] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 0 or 1, ACASCREG must be set to the same value. Instance: %m", MODULE_NAME, AREG_REG, ACASCREG_REG);
+        $display(
+            "Error: [Unisim %s-2] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 0 or 1, ACASCREG must be set to the same value. Instance: %m",
+            MODULE_NAME, AREG_REG, ACASCREG_REG);
         attr_err = 1'b1;
       end
       2:
       if (ACASCREG_REG == 0) begin
-        $display("Error: [Unisim %s-3] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 2, ACASCREG must be set to 1 or 2. Instance: %m", MODULE_NAME, AREG_REG, ACASCREG_REG);
+        $display(
+            "Error: [Unisim %s-3] AREG attribute is set to %0d and ACASCREG attribute is set to %0d. When AREG is 2, ACASCREG must be set to 1 or 2. Instance: %m",
+            MODULE_NAME, AREG_REG, ACASCREG_REG);
         attr_err = 1'b1;
       end
     endcase
@@ -401,12 +419,16 @@ module DSP_A_B_DATA #(
     case (BREG_REG)
       0, 1:
       if (BREG_REG != BCASCREG_REG) begin
-        $display("Error: [Unisim %s-4] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 0 or 1, BCASCREG must be set to the same value. Instance: %m", MODULE_NAME, BREG_REG, BCASCREG_REG);
+        $display(
+            "Error: [Unisim %s-4] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 0 or 1, BCASCREG must be set to the same value. Instance: %m",
+            MODULE_NAME, BREG_REG, BCASCREG_REG);
         attr_err = 1'b1;
       end
       2:
       if (BCASCREG_REG == 0) begin
-        $display("Error: [Unisim %s-5] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 2, BCASCREG must be set to 1 or 2. Instance: %m", MODULE_NAME, BREG_REG, BCASCREG_REG);
+        $display(
+            "Error: [Unisim %s-5] BREG attribute is set to %0d and BCASCREG attribute is set to %0d. When BREG is 2, BCASCREG must be set to 1 or 2. Instance: %m",
+            MODULE_NAME, BREG_REG, BCASCREG_REG);
         attr_err = 1'b1;
       end
     endcase
@@ -462,10 +484,10 @@ module DSP_A_B_DATA #(
     end
   end
 
-  assign A_ALU = (AREG_BIN != 2'b00) ? A2_reg : (A_INPUT_BIN == A_INPUT_CASCADE) ? ACIN_in : A_in;
+  assign A_ALU   = (AREG_BIN != 2'b00) ? A2_reg : (A_INPUT_BIN == A_INPUT_CASCADE) ? ACIN_in : A_in;
 
   // assumes encoding the same for ACASCREG and AREG
-  assign ACOUT = (ACASCREG_BIN == AREG_BIN) ? A_ALU : A1_reg;
+  assign ACOUT   = (ACASCREG_BIN == AREG_BIN) ? A_ALU : A1_reg;
   assign A1_DATA = A1_reg[26:0];
 
   assign A2_DATA = A_ALU[26:0];
@@ -482,7 +504,7 @@ module DSP_A_B_DATA #(
       B1_DATA_out <= 18'b0;
     end else if (CEB1_in) begin
       if (B_INPUT_BIN == B_INPUT_CASCADE) B1_DATA_out <= BCIN_in;
-          else B1_DATA_out <= B_in;
+      else B1_DATA_out <= B_in;
     end
   end
 
@@ -490,17 +512,17 @@ module DSP_A_B_DATA #(
     if (RSTB_in || glblGSR) B2_reg <= 18'b0;
     else if (CEB2_in) begin
       if (BREG_BIN == 2'b10) B2_reg <= B1_DATA_out;
-         else if (B_INPUT_BIN == B_INPUT_CASCADE) B2_reg <= BCIN_in;
-         else B2_reg <= B_in;
+      else if (B_INPUT_BIN == B_INPUT_CASCADE) B2_reg <= BCIN_in;
+      else B2_reg <= B_in;
     end
   end
 
-  assign B_ALU = (BREG_BIN != 2'b00) ? B2_reg : (B_INPUT_BIN == B_INPUT_CASCADE) ? BCIN_in : B_in;
+  assign B_ALU   = (BREG_BIN != 2'b00) ? B2_reg : (B_INPUT_BIN == B_INPUT_CASCADE) ? BCIN_in : B_in;
 
   assign B2_DATA = (BREG_BIN != 2'b00) ? B2_reg : (B_INPUT_BIN == B_INPUT_CASCADE) ? BCIN_in : B_in;
 
   // assumes encoding the same for BCASCREG and BREG
-  assign BCOUT = (BCASCREG_BIN == BREG_BIN) ? B2_DATA : B1_DATA_out;
+  assign BCOUT   = (BCASCREG_BIN == BREG_BIN) ? B2_DATA : B1_DATA_out;
 
   // end behavioral model
 

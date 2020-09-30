@@ -156,7 +156,7 @@ module ODELAYE2_FINEDELAY (
   //----------------------------------------------------------------------
   generate
     case (FINEDELAY)
-      "BYPASS": always @(tap_out_rd) tap_out_final = tap_out_rd;
+      "BYPASS":  always @(tap_out_rd) tap_out_final = tap_out_rd;
       "ADD_DLY": always @(tap_out_fd) tap_out_final = tap_out_fd;
     endcase
   endgenerate
@@ -204,10 +204,8 @@ module ODELAYE2_FINEDELAY (
   always @(gsr_in) begin
     if (gsr_in == 1'b1) begin
       //   For simprims, the fixed Delay values are taken from the sdf.
-      if (ODELAY_TYPE == "FIXED")
-                assign odelay_count = 0;
-            else
-                assign odelay_count = ODELAY_VALUE;
+      if (ODELAY_TYPE == "FIXED") assign odelay_count = 0;
+      else assign odelay_count = ODELAY_VALUE;
     end else if (gsr_in == 1'b0) begin
       deassign odelay_count;
     end
@@ -225,7 +223,9 @@ module ODELAYE2_FINEDELAY (
     case (CINVCTRL_SEL)
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute CINVCTRL_SEL on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",  CINVCTRL_SEL);
+        $display(
+            "Attribute Syntax Error : The attribute CINVCTRL_SEL on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            CINVCTRL_SEL);
         #1 $finish;
       end
     endcase
@@ -233,14 +233,18 @@ module ODELAYE2_FINEDELAY (
     //-------- DELAY_SRC check
 
     if (DELAY_SRC != "ODATAIN" && DELAY_SRC != "CLKIN") begin
-      $display("Attribute Syntax Error : The attribute DELAY_SRC on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are ODATAIN or CLKIN", DELAY_SRC);
+      $display(
+          "Attribute Syntax Error : The attribute DELAY_SRC on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are ODATAIN or CLKIN",
+          DELAY_SRC);
       #1 $finish;
     end
 
     //-------- FINEDELAY check
 
     if (FINEDELAY != "BYPASS" && FINEDELAY != "ADD_DLY") begin
-      $display("Attribute Syntax Error : The attribute FINEDELAY on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are BYPASS or ADD_DLY", FINEDELAY);
+      $display(
+          "Attribute Syntax Error : The attribute FINEDELAY on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are BYPASS or ADD_DLY",
+          FINEDELAY);
       #1 $finish;
     end
 
@@ -249,7 +253,9 @@ module ODELAYE2_FINEDELAY (
     case (HIGH_PERFORMANCE_MODE)
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute HIGH_PERFORMANCE_MODE on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",  HIGH_PERFORMANCE_MODE);
+        $display(
+            "Attribute Syntax Error : The attribute HIGH_PERFORMANCE_MODE on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            HIGH_PERFORMANCE_MODE);
         #1 $finish;
       end
     endcase
@@ -259,7 +265,9 @@ module ODELAYE2_FINEDELAY (
 
     if (ODELAY_TYPE != "FIXED" && ODELAY_TYPE != "VARIABLE" && ODELAY_TYPE != "VAR_LOAD" && ODELAY_TYPE != "VAR_LOAD_PIPE") begin
 
-      $display("Attribute Syntax Error : The attribute ODELAY_TYPE on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are FIXED, VARIABLE, VAR_LOAD or VAR_LOAD_PIPE", ODELAY_TYPE);
+      $display(
+          "Attribute Syntax Error : The attribute ODELAY_TYPE on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are FIXED, VARIABLE, VAR_LOAD or VAR_LOAD_PIPE",
+          ODELAY_TYPE);
       #1 $finish;
 
     end
@@ -268,7 +276,9 @@ module ODELAYE2_FINEDELAY (
     //-------- ODELAY_VALUE check
 
     if (ODELAY_VALUE < MIN_DELAY_COUNT || ODELAY_VALUE > MAX_DELAY_COUNT) begin
-      $display("Attribute Syntax Error : The attribute ODELAY_VALUE on ODELAYE2_FINEDELAY instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 3, .... or 31", ODELAY_VALUE);
+      $display(
+          "Attribute Syntax Error : The attribute ODELAY_VALUE on ODELAYE2_FINEDELAY instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 3, .... or 31",
+          ODELAY_VALUE);
       #1 $finish;
 
     end
@@ -278,7 +288,9 @@ module ODELAYE2_FINEDELAY (
     case (PIPE_SEL)
       "TRUE", "FALSE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute PIPE_SEL on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",  PIPE_SEL);
+        $display(
+            "Attribute Syntax Error : The attribute PIPE_SEL on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            PIPE_SEL);
         #1 $finish;
       end
     endcase
@@ -289,10 +301,12 @@ module ODELAYE2_FINEDELAY (
 
     if ((REFCLK_FREQUENCY >= 190.0 && REFCLK_FREQUENCY <= 210.0) || 
 	    (REFCLK_FREQUENCY >= 290.0 && REFCLK_FREQUENCY <= 310.0) || 
-	    (REFCLK_FREQUENCY >=390.0 && REFCLK_FREQUENCY <= 410.0)) 
-	      /*    */;
+	    (REFCLK_FREQUENCY >=390.0 && REFCLK_FREQUENCY <= 410.0))
+      /*    */;
     else begin
-      $display("Attribute Syntax Error : The attribute REFCLK_FREQUENCY on ODELAYE2_FINEDELAY instance %m is set to %f.  Legal values for this attribute are either between 190.0 and 210.0, or between 290.0 and 310.0 or between 390.0 and 410.0", REFCLK_FREQUENCY);
+      $display(
+          "Attribute Syntax Error : The attribute REFCLK_FREQUENCY on ODELAYE2_FINEDELAY instance %m is set to %f.  Legal values for this attribute are either between 190.0 and 210.0, or between 290.0 and 310.0 or between 390.0 and 410.0",
+          REFCLK_FREQUENCY);
       #1 $finish;
     end
 
@@ -302,7 +316,9 @@ module ODELAYE2_FINEDELAY (
     case (SIGNAL_PATTERN)
       "CLOCK", "DATA": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute SIGNAL_PATTERN on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are DATA or CLOCK.",  SIGNAL_PATTERN);
+        $display(
+            "Attribute Syntax Error : The attribute SIGNAL_PATTERN on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are DATA or CLOCK.",
+            SIGNAL_PATTERN);
         #1 $finish;
       end
     endcase
@@ -332,7 +348,7 @@ module ODELAYE2_FINEDELAY (
   //----------------------------------------------------------------------
   generate
     case (CINVCTRL_SEL)
-      "TRUE": always @(c_in_pre or cinvctrl_in) c_in = (cinvctrl_in ? ~c_in_pre : c_in_pre);
+      "TRUE":  always @(c_in_pre or cinvctrl_in) c_in = (cinvctrl_in ? ~c_in_pre : c_in_pre);
       "FALSE": always @(c_in_pre) c_in = c_in_pre;
     endcase
   endgenerate
@@ -341,10 +357,8 @@ module ODELAYE2_FINEDELAY (
   //----------------------------------------------------------------------
   always @(odelay_count) begin
     //  Fixed CNTVALUEOUT for when in FIXED mode because of simprim. 
-    if(ODELAY_TYPE != "FIXED")
-           assign cntvalueout_pre = odelay_count;
-       else
-           assign cntvalueout_pre = ODELAY_VALUE;
+    if (ODELAY_TYPE != "FIXED") assign cntvalueout_pre = odelay_count;
+    else assign cntvalueout_pre = ODELAY_VALUE;
   end
 
   //----------------------------------------------------------------------
@@ -359,7 +373,7 @@ module ODELAYE2_FINEDELAY (
 
   generate
     case (PIPE_SEL)
-      "TRUE": always @(qcntvalueout_reg) qcntvalueout_mux <= qcntvalueout_reg;
+      "TRUE":  always @(qcntvalueout_reg) qcntvalueout_mux <= qcntvalueout_reg;
       "FALSE": always @(CNTVALUEIN_INTEGER) qcntvalueout_mux <= CNTVALUEIN_INTEGER;
     endcase
   endgenerate
@@ -378,22 +392,18 @@ module ODELAYE2_FINEDELAY (
       end else if (ld_in == 1'b0 && ce_in == 1'b1) begin
         if (inc_in == 1'b1) begin
           case (ODELAY_TYPE)
-                        "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE" : begin
-                                        if (odelay_count < MAX_DELAY_COUNT)
-                                        odelay_count = odelay_count + 1;
-                                        else if (odelay_count == MAX_DELAY_COUNT)
-                                        odelay_count = MIN_DELAY_COUNT;
-                                     end
-                    endcase
+            "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE": begin
+              if (odelay_count < MAX_DELAY_COUNT) odelay_count = odelay_count + 1;
+              else if (odelay_count == MAX_DELAY_COUNT) odelay_count = MIN_DELAY_COUNT;
+            end
+          endcase
         end else if (inc_in == 1'b0) begin
           case (ODELAY_TYPE)
-                        "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE" : begin
-                                        if (odelay_count >  MIN_DELAY_COUNT)
-                                        odelay_count = odelay_count - 1;
-                                        else if (odelay_count == MIN_DELAY_COUNT)
-                                        odelay_count = MAX_DELAY_COUNT;
-                                     end
-                    endcase
+            "VARIABLE", "VAR_LOAD", "VAR_LOAD_PIPE": begin
+              if (odelay_count > MIN_DELAY_COUNT) odelay_count = odelay_count - 1;
+              else if (odelay_count == MIN_DELAY_COUNT) odelay_count = MAX_DELAY_COUNT;
+            end
+          endcase
         end
       end
     end  //
@@ -445,14 +455,16 @@ module ODELAYE2_FINEDELAY (
 
     case (DELAY_SRC)
 
-      "ODATAIN" : begin
-                         data_mux <= odatain_in;
-                        end
-      "CLKIN"   : begin
-                         data_mux <= clkin_in;
-                       end
+      "ODATAIN": begin
+        data_mux <= odatain_in;
+      end
+      "CLKIN": begin
+        data_mux <= clkin_in;
+      end
       default: begin
-        $display("Attribute Syntax Error : The attribute DELAY_SRC on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are CLKIN or ODATAIN", DELAY_SRC);
+        $display(
+            "Attribute Syntax Error : The attribute DELAY_SRC on ODELAYE2_FINEDELAY instance %m is set to %s.  Legal values for this attribute are CLKIN or ODATAIN",
+            DELAY_SRC);
         $finish;
       end
 
@@ -540,7 +552,7 @@ module ODELAYE2_FINEDELAY (
   //*********************************************************
   //*** FINE DELAY signal
   //*********************************************************
-  assign #(INIT_DELAY_FD) fine_delay_0 = tap_out_rd;
+  assign #(INIT_DELAY_FD)  fine_delay_0 = tap_out_rd;
   assign #CALC_TAPDELAY_FD fine_delay_1 = fine_delay_0;
   assign #CALC_TAPDELAY_FD fine_delay_2 = fine_delay_1;
   assign #CALC_TAPDELAY_FD fine_delay_3 = fine_delay_2;
@@ -549,11 +561,11 @@ module ODELAYE2_FINEDELAY (
 
   always @(ofdly_in) begin
     case (ofdly_in)
-      3'b000: assign tap_out_fd = fine_delay_0;
-      3'b001: assign tap_out_fd = fine_delay_1;
-      3'b010: assign tap_out_fd = fine_delay_2;
-      3'b011: assign tap_out_fd = fine_delay_3;
-      3'b100: assign tap_out_fd = fine_delay_4;
+      3'b000:  assign tap_out_fd = fine_delay_0;
+      3'b001:  assign tap_out_fd = fine_delay_1;
+      3'b010:  assign tap_out_fd = fine_delay_2;
+      3'b011:  assign tap_out_fd = fine_delay_3;
+      3'b100:  assign tap_out_fd = fine_delay_4;
       default: assign tap_out_fd = 1'bx;
     endcase
   end  // always @ (ofdly_in)
@@ -575,8 +587,8 @@ module ODELAYE2_FINEDELAY (
   //*** Timing Checks Start here
 
   always @(notifier) begin
-        tap_out_rd <= 1'bx;
-    end
+    tap_out_rd <= 1'bx;
+  end
 `endif  // ifdef XIL_TIMING
 
 `ifdef XIL_TIMING

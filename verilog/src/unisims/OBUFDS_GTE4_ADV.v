@@ -82,10 +82,10 @@ module OBUFDS_GTE4_ADV #(
   // =====================
   always @(*) begin
     case (RXRECCLK_SEL)
-      2'b00: I_sel <= I[0];
-      2'b01: I_sel <= I[1];
-      2'b10: I_sel <= I[2];
-      2'b11: I_sel <= I[3];
+      2'b00:   I_sel <= I[0];
+      2'b01:   I_sel <= I[1];
+      2'b10:   I_sel <= I[2];
+      2'b11:   I_sel <= I[3];
       default: I_sel <= I[0];
     endcase
   end
@@ -94,7 +94,7 @@ module OBUFDS_GTE4_ADV #(
   // Generate O
   // =====================
 
-  assign O = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : I_sel;
+  assign O  = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : I_sel;
   assign OB = (~REFCLK_EN_TX_PATH_REG || (CEB === 1'b1) || glblGTS) ? 1'bz : ~I_sel;
 
 `ifndef XIL_XECLIB

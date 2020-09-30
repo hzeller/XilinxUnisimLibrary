@@ -90,10 +90,10 @@ module BUFCE_LEAF #(
 
 `ifdef XIL_TIMING
   assign CE_in = (CE === 1'bz) || (CE_delay ^ IS_CE_INVERTED_REG);  // rv 1
-  assign I_in = I_delay ^ IS_I_INVERTED_REG;
+  assign I_in  = I_delay ^ IS_I_INVERTED_REG;
 `else
   assign CE_in = (CE === 1'bz) || (CE ^ IS_CE_INVERTED_REG);  // rv 1
-  assign I_in = I ^ IS_I_INVERTED_REG;
+  assign I_in  = I ^ IS_I_INVERTED_REG;
 `endif
 
 `ifndef XIL_XECLIB
@@ -131,7 +131,9 @@ module BUFCE_LEAF #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((CE_TYPE_REG != "SYNC") && (CE_TYPE_REG != "ASYNC"))) begin
-      $display("Error: [Unisim %s-101] CE_TYPE attribute is set to %s.  Legal values for this attribute are SYNC or ASYNC. Instance: %m", MODULE_NAME, CE_TYPE_REG);
+      $display(
+          "Error: [Unisim %s-101] CE_TYPE attribute is set to %s.  Legal values for this attribute are SYNC or ASYNC. Instance: %m",
+          MODULE_NAME, CE_TYPE_REG);
       attr_err = 1'b1;
     end
 
@@ -148,10 +150,8 @@ module BUFCE_LEAF #(
   reg enable_clk = 1'b1;
 
   always @(I_in or CE_in or glblGSR) begin
-  if (glblGSR)
-    enable_clk = 1'b1;
-  else if ((CE_TYPE_BIN == CE_TYPE_ASYNC) || ~I_in)
-    enable_clk = CE_in;
+    if (glblGSR) enable_clk = 1'b1;
+    else if ((CE_TYPE_BIN == CE_TYPE_ASYNC) || ~I_in) enable_clk = CE_in;
   end
 
   assign O = enable_clk & I_in;

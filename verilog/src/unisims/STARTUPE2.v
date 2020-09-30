@@ -89,16 +89,20 @@ module STARTUPE2 #(
   initial begin
     case (PROG_USR)
       "FALSE": PROG_USR_BINARY = 3'b000;
-      "TRUE": PROG_USR_BINARY = 3'b111;
+      "TRUE":  PROG_USR_BINARY = 3'b111;
       default: begin
-        $display("Error: [Unisim %s-101] PROG_USR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, PROG_USR);
+        $display(
+            "Error: [Unisim %s-101] PROG_USR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+            MODULE_NAME, PROG_USR);
         #1 $finish;
       end
     endcase
 
     if ((SIM_CCLK_FREQ >= 0.0) && (SIM_CCLK_FREQ <= 10.0)) SIM_CCLK_FREQ_BINARY = SIM_CCLK_FREQ;
     else begin
-      $display("Error: [Unisim %s-102] SIM_CCLK_FREQ attribute is set to %f.  Legal values for this attribute are 0.0 to 10.0. Instance: %m", MODULE_NAME, SIM_CCLK_FREQ);
+      $display(
+          "Error: [Unisim %s-102] SIM_CCLK_FREQ attribute is set to %f.  Legal values for this attribute are 0.0 to 10.0. Instance: %m",
+          MODULE_NAME, SIM_CCLK_FREQ);
       #1 $finish;
     end
 
@@ -124,27 +128,24 @@ module STARTUPE2 #(
   assign start_count = (PREQ_out && PACK) ? 1'b1 : 1'b0;
 
   always @(posedge cfgmclk_out) begin
-    if(start_count)
-         edge_count = edge_count + 1;
-       else 
-         edge_count = 0;
+    if (start_count) edge_count = edge_count + 1;
+    else edge_count = 0;
 
-    if(edge_count == 35) 
-        preq_deassert <= 1'b1;
-      else
-        preq_deassert <= 1'b0;
+    if (edge_count == 35) preq_deassert <= 1'b1;
+    else preq_deassert <= 1'b0;
   end
 
 
-  always @(negedge glbl.PROGB_GLBL, posedge preq_deassert) 
-     PREQ_out <= ~glbl.PROGB_GLBL || ~preq_deassert;
+  always @(negedge glbl.PROGB_GLBL, posedge preq_deassert)
+    PREQ_out <= ~glbl.PROGB_GLBL || ~preq_deassert;
 
   //-------------------------------------------------------------------------------
   //-------------------- ERROR MSG ------------------------------------------------
   //-------------------------------------------------------------------------------
   always @(posedge PACK) begin
-     if(PREQ_out == 1'b0) 
-      $display("Warning: [Unisim %s-1] PACK received with no associate PREQ. Instance: %m", MODULE_NAME);
+    if (PREQ_out == 1'b0)
+      $display("Warning: [Unisim %s-1] PACK received with no associate PREQ. Instance: %m",
+               MODULE_NAME);
   end
 
   //-------------------------------------------------------------------------------
@@ -157,8 +158,8 @@ module STARTUPE2 #(
   //-------------------------------------------------------------------------------
 
   always @(posedge USRCCLKO) begin
-       if(EOS_out) edge_count_cclko <= edge_count_cclko + 1;
-   end
+    if (EOS_out) edge_count_cclko <= edge_count_cclko + 1;
+  end
 
   always @(edge_count_cclko) if (edge_count_cclko == cclko_wait_count) start_glbl_cclko = 1;
 

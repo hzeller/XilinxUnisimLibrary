@@ -119,10 +119,10 @@ module BUFGCE #(
 
 `ifdef XIL_TIMING
   assign CE_in = (CE === 1'bz) || (CE_delay ^ IS_CE_INVERTED_REG);  // rv 1
-  assign I_in = I_delay ^ IS_I_INVERTED_REG;
+  assign I_in  = I_delay ^ IS_I_INVERTED_REG;
 `else
   assign CE_in = (CE === 1'bz) || (CE ^ IS_CE_INVERTED_REG);  // rv 1
-  assign I_in = I ^ IS_I_INVERTED_REG;
+  assign I_in  = I ^ IS_I_INVERTED_REG;
 `endif
 
 `ifndef XIL_XECLIB
@@ -226,7 +226,9 @@ module BUFGCE #(
         ((CE_TYPE_REG != "SYNC") &&
          (CE_TYPE_REG != "ASYNC") &&
          (CE_TYPE_REG != "HARDSYNC"))) begin
-      $display("Error: [Unisim %s-101] CE_TYPE attribute is set to %s.  Legal values for this attribute are SYNC, ASYNC or HARDSYNC. Instance: %m", MODULE_NAME, CE_TYPE_REG);
+      $display(
+          "Error: [Unisim %s-101] CE_TYPE attribute is set to %s.  Legal values for this attribute are SYNC, ASYNC or HARDSYNC. Instance: %m",
+          MODULE_NAME, CE_TYPE_REG);
       attr_err = 1'b1;
     end
 
@@ -252,14 +254,18 @@ module BUFGCE #(
          (SIM_DEVICE_REG != "VERSAL_PRIME") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES2"))) begin
-      $display("Error: [Unisim %s-104] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, 7SERIES, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-104] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, 7SERIES, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((STARTUP_SYNC_REG != "FALSE") &&
          (STARTUP_SYNC_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-105] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, STARTUP_SYNC_REG);
+      $display(
+          "Error: [Unisim %s-105] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, STARTUP_SYNC_REG);
       attr_err = 1'b1;
     end
 
@@ -289,17 +295,15 @@ module BUFGCE #(
     enable_clk = 1'b0;
   end
 
-  always @(posedge I_in ) begin
-    if(I_in==1'b1)
-      gwe_sync <= {gwe_sync[1:0], ~glblGSR};
+  always @(posedge I_in) begin
+    if (I_in == 1'b1) gwe_sync <= {gwe_sync[1:0], ~glblGSR};
   end
 
   assign gwe_muxed_sync = (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE) ? gwe_sync[2] : ~glblGSR;
 
 
-  always @(posedge I_in ) begin
-    if(I_in==1'b1)
-      ce_sync <= {ce_sync[1:0], CE_in};
+  always @(posedge I_in) begin
+    if (I_in == 1'b1) ce_sync <= {ce_sync[1:0], CE_in};
   end
 
   assign ce_muxed_sync = (CE_TYPE_BIN == CE_TYPE_HARDSYNC) ? ce_sync[2] : CE_in;
@@ -308,8 +312,7 @@ module BUFGCE #(
 
 
   always @(*) begin
-    if(cb)
-      enable_clk <= ce_muxed_sync;
+    if (cb) enable_clk <= ce_muxed_sync;
   end
 
   always @(*) O_out = enable_clk && I_in;

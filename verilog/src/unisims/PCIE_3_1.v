@@ -6526,86 +6526,116 @@ module PCIE_3_1 #(
   always @(trig_attr) begin
     #1;
     if ((ARI_CAP_ENABLE_REG != "FALSE") && (ARI_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute ARI_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, ARI_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute ARI_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, ARI_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_CC_ALIGNMENT_MODE_REG != "FALSE") &&
         (AXISTEN_IF_CC_ALIGNMENT_MODE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_CC_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, AXISTEN_IF_CC_ALIGNMENT_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_CC_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, AXISTEN_IF_CC_ALIGNMENT_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_CC_PARITY_CHK_REG != "TRUE") && (AXISTEN_IF_CC_PARITY_CHK_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_CC_PARITY_CHK on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, AXISTEN_IF_CC_PARITY_CHK_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_CC_PARITY_CHK on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, AXISTEN_IF_CC_PARITY_CHK_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_CQ_ALIGNMENT_MODE_REG != "FALSE") &&
         (AXISTEN_IF_CQ_ALIGNMENT_MODE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_CQ_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, AXISTEN_IF_CQ_ALIGNMENT_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_CQ_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, AXISTEN_IF_CQ_ALIGNMENT_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_ENABLE_CLIENT_TAG_REG != "FALSE") &&
         (AXISTEN_IF_ENABLE_CLIENT_TAG_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_ENABLE_CLIENT_TAG on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, AXISTEN_IF_ENABLE_CLIENT_TAG_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_ENABLE_CLIENT_TAG on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, AXISTEN_IF_ENABLE_CLIENT_TAG_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_ENABLE_RX_MSG_INTFC_REG != "FALSE") &&
         (AXISTEN_IF_ENABLE_RX_MSG_INTFC_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_ENABLE_RX_MSG_INTFC on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, AXISTEN_IF_ENABLE_RX_MSG_INTFC_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_ENABLE_RX_MSG_INTFC on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, AXISTEN_IF_ENABLE_RX_MSG_INTFC_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_RC_ALIGNMENT_MODE_REG != "FALSE") &&
         (AXISTEN_IF_RC_ALIGNMENT_MODE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_RC_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, AXISTEN_IF_RC_ALIGNMENT_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_RC_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, AXISTEN_IF_RC_ALIGNMENT_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_RC_STRADDLE_REG != "FALSE") && (AXISTEN_IF_RC_STRADDLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_RC_STRADDLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, AXISTEN_IF_RC_STRADDLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_RC_STRADDLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, AXISTEN_IF_RC_STRADDLE_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_RQ_ALIGNMENT_MODE_REG != "FALSE") &&
         (AXISTEN_IF_RQ_ALIGNMENT_MODE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_RQ_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, AXISTEN_IF_RQ_ALIGNMENT_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_RQ_ALIGNMENT_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, AXISTEN_IF_RQ_ALIGNMENT_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((AXISTEN_IF_RQ_PARITY_CHK_REG != "TRUE") && (AXISTEN_IF_RQ_PARITY_CHK_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute AXISTEN_IF_RQ_PARITY_CHK on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, AXISTEN_IF_RQ_PARITY_CHK_REG);
+      $display(
+          "Attribute Syntax Error : The attribute AXISTEN_IF_RQ_PARITY_CHK on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, AXISTEN_IF_RQ_PARITY_CHK_REG);
       attr_err = 1'b1;
     end
 
     if ((CRM_CORE_CLK_FREQ_500_REG != "TRUE") && (CRM_CORE_CLK_FREQ_500_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute CRM_CORE_CLK_FREQ_500 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, CRM_CORE_CLK_FREQ_500_REG);
+      $display(
+          "Attribute Syntax Error : The attribute CRM_CORE_CLK_FREQ_500 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, CRM_CORE_CLK_FREQ_500_REG);
       attr_err = 1'b1;
     end
 
     if ((DEBUG_CFG_LOCAL_MGMT_REG_ACCESS_OVERRIDE_REG != "FALSE") &&
         (DEBUG_CFG_LOCAL_MGMT_REG_ACCESS_OVERRIDE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute DEBUG_CFG_LOCAL_MGMT_REG_ACCESS_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, DEBUG_CFG_LOCAL_MGMT_REG_ACCESS_OVERRIDE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute DEBUG_CFG_LOCAL_MGMT_REG_ACCESS_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, DEBUG_CFG_LOCAL_MGMT_REG_ACCESS_OVERRIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((DEBUG_PL_DISABLE_EI_INFER_IN_L0_REG != "FALSE") &&
         (DEBUG_PL_DISABLE_EI_INFER_IN_L0_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute DEBUG_PL_DISABLE_EI_INFER_IN_L0 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, DEBUG_PL_DISABLE_EI_INFER_IN_L0_REG);
+      $display(
+          "Attribute Syntax Error : The attribute DEBUG_PL_DISABLE_EI_INFER_IN_L0 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, DEBUG_PL_DISABLE_EI_INFER_IN_L0_REG);
       attr_err = 1'b1;
     end
 
     if ((DEBUG_TL_DISABLE_RX_TLP_ORDER_CHECKS_REG != "FALSE") &&
         (DEBUG_TL_DISABLE_RX_TLP_ORDER_CHECKS_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute DEBUG_TL_DISABLE_RX_TLP_ORDER_CHECKS on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, DEBUG_TL_DISABLE_RX_TLP_ORDER_CHECKS_REG);
+      $display(
+          "Attribute Syntax Error : The attribute DEBUG_TL_DISABLE_RX_TLP_ORDER_CHECKS on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, DEBUG_TL_DISABLE_RX_TLP_ORDER_CHECKS_REG);
       attr_err = 1'b1;
     end
 
     if ((LL_ACK_TIMEOUT_EN_REG != "FALSE") && (LL_ACK_TIMEOUT_EN_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LL_ACK_TIMEOUT_EN on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LL_ACK_TIMEOUT_EN_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_ACK_TIMEOUT_EN on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LL_ACK_TIMEOUT_EN_REG);
       attr_err = 1'b1;
     end
 
@@ -6613,36 +6643,48 @@ module PCIE_3_1 #(
         (LL_ACK_TIMEOUT_FUNC_REG != 1) &&
         (LL_ACK_TIMEOUT_FUNC_REG != 2) &&
         (LL_ACK_TIMEOUT_FUNC_REG != 3)) begin
-      $display("Attribute Syntax Error : The attribute LL_ACK_TIMEOUT_FUNC on %s instance %m is set to %d.  Legal values for this attribute are 0 to 3.", MODULE_NAME, LL_ACK_TIMEOUT_FUNC_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_ACK_TIMEOUT_FUNC on %s instance %m is set to %d.  Legal values for this attribute are 0 to 3.",
+          MODULE_NAME, LL_ACK_TIMEOUT_FUNC_REG);
       attr_err = 1'b1;
     end
 
     if ((LL_CPL_FC_UPDATE_TIMER_OVERRIDE_REG != "FALSE") &&
         (LL_CPL_FC_UPDATE_TIMER_OVERRIDE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LL_CPL_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LL_CPL_FC_UPDATE_TIMER_OVERRIDE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_CPL_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LL_CPL_FC_UPDATE_TIMER_OVERRIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((LL_FC_UPDATE_TIMER_OVERRIDE_REG != "FALSE") &&
         (LL_FC_UPDATE_TIMER_OVERRIDE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LL_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LL_FC_UPDATE_TIMER_OVERRIDE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LL_FC_UPDATE_TIMER_OVERRIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((LL_NP_FC_UPDATE_TIMER_OVERRIDE_REG != "FALSE") &&
         (LL_NP_FC_UPDATE_TIMER_OVERRIDE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LL_NP_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LL_NP_FC_UPDATE_TIMER_OVERRIDE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_NP_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LL_NP_FC_UPDATE_TIMER_OVERRIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((LL_P_FC_UPDATE_TIMER_OVERRIDE_REG != "FALSE") &&
         (LL_P_FC_UPDATE_TIMER_OVERRIDE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LL_P_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LL_P_FC_UPDATE_TIMER_OVERRIDE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_P_FC_UPDATE_TIMER_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LL_P_FC_UPDATE_TIMER_OVERRIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((LL_REPLAY_TIMEOUT_EN_REG != "FALSE") && (LL_REPLAY_TIMEOUT_EN_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LL_REPLAY_TIMEOUT_EN on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LL_REPLAY_TIMEOUT_EN_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_REPLAY_TIMEOUT_EN on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LL_REPLAY_TIMEOUT_EN_REG);
       attr_err = 1'b1;
     end
 
@@ -6650,117 +6692,157 @@ module PCIE_3_1 #(
         (LL_REPLAY_TIMEOUT_FUNC_REG != 1) &&
         (LL_REPLAY_TIMEOUT_FUNC_REG != 2) &&
         (LL_REPLAY_TIMEOUT_FUNC_REG != 3)) begin
-      $display("Attribute Syntax Error : The attribute LL_REPLAY_TIMEOUT_FUNC on %s instance %m is set to %d.  Legal values for this attribute are 0 to 3.", MODULE_NAME, LL_REPLAY_TIMEOUT_FUNC_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LL_REPLAY_TIMEOUT_FUNC on %s instance %m is set to %d.  Legal values for this attribute are 0 to 3.",
+          MODULE_NAME, LL_REPLAY_TIMEOUT_FUNC_REG);
       attr_err = 1'b1;
     end
 
     if ((LTR_TX_MESSAGE_ON_FUNC_POWER_STATE_CHANGE_REG != "FALSE") &&
         (LTR_TX_MESSAGE_ON_FUNC_POWER_STATE_CHANGE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LTR_TX_MESSAGE_ON_FUNC_POWER_STATE_CHANGE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LTR_TX_MESSAGE_ON_FUNC_POWER_STATE_CHANGE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LTR_TX_MESSAGE_ON_FUNC_POWER_STATE_CHANGE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LTR_TX_MESSAGE_ON_FUNC_POWER_STATE_CHANGE_REG);
       attr_err = 1'b1;
     end
 
     if ((LTR_TX_MESSAGE_ON_LTR_ENABLE_REG != "FALSE") &&
         (LTR_TX_MESSAGE_ON_LTR_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute LTR_TX_MESSAGE_ON_LTR_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, LTR_TX_MESSAGE_ON_LTR_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute LTR_TX_MESSAGE_ON_LTR_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, LTR_TX_MESSAGE_ON_LTR_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_CONFIGURE_OVERRIDE_REG != "FALSE") && (MCAP_CONFIGURE_OVERRIDE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_CONFIGURE_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_CONFIGURE_OVERRIDE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_CONFIGURE_OVERRIDE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_CONFIGURE_OVERRIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_ENABLE_REG != "FALSE") && (MCAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_EOS_DESIGN_SWITCH_REG != "FALSE") && (MCAP_EOS_DESIGN_SWITCH_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_EOS_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_EOS_DESIGN_SWITCH_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_EOS_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_EOS_DESIGN_SWITCH_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_GATE_IO_ENABLE_DESIGN_SWITCH_REG != "FALSE") &&
         (MCAP_GATE_IO_ENABLE_DESIGN_SWITCH_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_GATE_IO_ENABLE_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_GATE_IO_ENABLE_DESIGN_SWITCH_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_GATE_IO_ENABLE_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_GATE_IO_ENABLE_DESIGN_SWITCH_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_GATE_MEM_ENABLE_DESIGN_SWITCH_REG != "FALSE") &&
         (MCAP_GATE_MEM_ENABLE_DESIGN_SWITCH_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_GATE_MEM_ENABLE_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_GATE_MEM_ENABLE_DESIGN_SWITCH_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_GATE_MEM_ENABLE_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_GATE_MEM_ENABLE_DESIGN_SWITCH_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_INPUT_GATE_DESIGN_SWITCH_REG != "FALSE") &&
         (MCAP_INPUT_GATE_DESIGN_SWITCH_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_INPUT_GATE_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_INPUT_GATE_DESIGN_SWITCH_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_INPUT_GATE_DESIGN_SWITCH on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_INPUT_GATE_DESIGN_SWITCH_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_INTERRUPT_ON_MCAP_EOS_REG != "FALSE") &&
         (MCAP_INTERRUPT_ON_MCAP_EOS_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_INTERRUPT_ON_MCAP_EOS on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_INTERRUPT_ON_MCAP_EOS_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_INTERRUPT_ON_MCAP_EOS on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_INTERRUPT_ON_MCAP_EOS_REG);
       attr_err = 1'b1;
     end
 
     if ((MCAP_INTERRUPT_ON_MCAP_ERROR_REG != "FALSE") &&
         (MCAP_INTERRUPT_ON_MCAP_ERROR_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute MCAP_INTERRUPT_ON_MCAP_ERROR on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, MCAP_INTERRUPT_ON_MCAP_ERROR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute MCAP_INTERRUPT_ON_MCAP_ERROR on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, MCAP_INTERRUPT_ON_MCAP_ERROR_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_AER_CAP_ECRC_CHECK_CAPABLE_REG != "FALSE") &&
         (PF0_AER_CAP_ECRC_CHECK_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_AER_CAP_ECRC_CHECK_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_AER_CAP_ECRC_CHECK_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_AER_CAP_ECRC_GEN_CAPABLE_REG != "FALSE") &&
         (PF0_AER_CAP_ECRC_GEN_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_AER_CAP_ECRC_GEN_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_AER_CAP_ECRC_GEN_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP2_128B_CAS_ATOMIC_COMPLETER_SUPPORT_REG != "TRUE") &&
         (PF0_DEV_CAP2_128B_CAS_ATOMIC_COMPLETER_SUPPORT_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP2_128B_CAS_ATOMIC_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DEV_CAP2_128B_CAS_ATOMIC_COMPLETER_SUPPORT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP2_128B_CAS_ATOMIC_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DEV_CAP2_128B_CAS_ATOMIC_COMPLETER_SUPPORT_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP2_32B_ATOMIC_COMPLETER_SUPPORT_REG != "TRUE") &&
         (PF0_DEV_CAP2_32B_ATOMIC_COMPLETER_SUPPORT_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP2_32B_ATOMIC_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DEV_CAP2_32B_ATOMIC_COMPLETER_SUPPORT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP2_32B_ATOMIC_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DEV_CAP2_32B_ATOMIC_COMPLETER_SUPPORT_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP2_64B_ATOMIC_COMPLETER_SUPPORT_REG != "TRUE") &&
         (PF0_DEV_CAP2_64B_ATOMIC_COMPLETER_SUPPORT_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP2_64B_ATOMIC_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DEV_CAP2_64B_ATOMIC_COMPLETER_SUPPORT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP2_64B_ATOMIC_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DEV_CAP2_64B_ATOMIC_COMPLETER_SUPPORT_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP2_ARI_FORWARD_ENABLE_REG != "FALSE") &&
         (PF0_DEV_CAP2_ARI_FORWARD_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP2_ARI_FORWARD_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_DEV_CAP2_ARI_FORWARD_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP2_ARI_FORWARD_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_DEV_CAP2_ARI_FORWARD_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP2_CPL_TIMEOUT_DISABLE_REG != "TRUE") &&
         (PF0_DEV_CAP2_CPL_TIMEOUT_DISABLE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP2_CPL_TIMEOUT_DISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DEV_CAP2_CPL_TIMEOUT_DISABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP2_CPL_TIMEOUT_DISABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DEV_CAP2_CPL_TIMEOUT_DISABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP2_LTR_SUPPORT_REG != "TRUE") && (PF0_DEV_CAP2_LTR_SUPPORT_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP2_LTR_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DEV_CAP2_LTR_SUPPORT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP2_LTR_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DEV_CAP2_LTR_SUPPORT_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP2_TPH_COMPLETER_SUPPORT_REG != "FALSE") &&
         (PF0_DEV_CAP2_TPH_COMPLETER_SUPPORT_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP2_TPH_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_DEV_CAP2_TPH_COMPLETER_SUPPORT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP2_TPH_COMPLETER_SUPPORT on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_DEV_CAP2_TPH_COMPLETER_SUPPORT_REG);
       attr_err = 1'b1;
     end
 
@@ -6772,7 +6854,9 @@ module PCIE_3_1 #(
         (PF0_DEV_CAP_ENDPOINT_L0S_LATENCY_REG != 5) &&
         (PF0_DEV_CAP_ENDPOINT_L0S_LATENCY_REG != 6) &&
         (PF0_DEV_CAP_ENDPOINT_L0S_LATENCY_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP_ENDPOINT_L0S_LATENCY on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_DEV_CAP_ENDPOINT_L0S_LATENCY_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP_ENDPOINT_L0S_LATENCY on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_DEV_CAP_ENDPOINT_L0S_LATENCY_REG);
       attr_err = 1'b1;
     end
 
@@ -6784,30 +6868,40 @@ module PCIE_3_1 #(
         (PF0_DEV_CAP_ENDPOINT_L1_LATENCY_REG != 5) &&
         (PF0_DEV_CAP_ENDPOINT_L1_LATENCY_REG != 6) &&
         (PF0_DEV_CAP_ENDPOINT_L1_LATENCY_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP_ENDPOINT_L1_LATENCY on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_DEV_CAP_ENDPOINT_L1_LATENCY_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP_ENDPOINT_L1_LATENCY on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_DEV_CAP_ENDPOINT_L1_LATENCY_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP_EXT_TAG_SUPPORTED_REG != "TRUE") &&
         (PF0_DEV_CAP_EXT_TAG_SUPPORTED_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP_EXT_TAG_SUPPORTED on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DEV_CAP_EXT_TAG_SUPPORTED_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP_EXT_TAG_SUPPORTED on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DEV_CAP_EXT_TAG_SUPPORTED_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE_REG != "TRUE") &&
         (PF0_DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DEV_CAP_FUNCTION_LEVEL_RESET_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "TRUE") &&
         (PF0_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_EXPANSION_ROM_ENABLE_REG != "FALSE") && (PF0_EXPANSION_ROM_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_EXPANSION_ROM_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_EXPANSION_ROM_ENABLE_REG);
       attr_err = 1'b1;
     end
 
@@ -6815,7 +6909,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_ASPM_SUPPORT_REG != 1) &&
         (PF0_LINK_CAP_ASPM_SUPPORT_REG != 2) &&
         (PF0_LINK_CAP_ASPM_SUPPORT_REG != 3)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_ASPM_SUPPORT on %s instance %m is set to %d.  Legal values for this attribute are 0 to 3.", MODULE_NAME, PF0_LINK_CAP_ASPM_SUPPORT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_ASPM_SUPPORT on %s instance %m is set to %d.  Legal values for this attribute are 0 to 3.",
+          MODULE_NAME, PF0_LINK_CAP_ASPM_SUPPORT_REG);
       attr_err = 1'b1;
     end
 
@@ -6827,7 +6923,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1_REG != 4) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1_REG != 5) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN1_REG);
       attr_err = 1'b1;
     end
 
@@ -6839,7 +6937,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2_REG != 4) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2_REG != 5) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN2_REG);
       attr_err = 1'b1;
     end
 
@@ -6851,7 +6951,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN3_REG != 4) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN3_REG != 5) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN3_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_COMCLK_GEN3_REG);
       attr_err = 1'b1;
     end
 
@@ -6863,7 +6965,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN1_REG != 4) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN1_REG != 5) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN1_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN1_REG);
       attr_err = 1'b1;
     end
 
@@ -6875,7 +6979,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN2_REG != 4) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN2_REG != 5) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN2_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN2_REG);
       attr_err = 1'b1;
     end
 
@@ -6887,7 +6993,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN3_REG != 4) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN3_REG != 5) &&
         (PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN3_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L0S_EXIT_LATENCY_GEN3_REG);
       attr_err = 1'b1;
     end
 
@@ -6899,7 +7007,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1_REG != 4) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1_REG != 5) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN1_REG);
       attr_err = 1'b1;
     end
 
@@ -6911,7 +7021,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2_REG != 4) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2_REG != 5) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN2_REG);
       attr_err = 1'b1;
     end
 
@@ -6923,7 +7035,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN3_REG != 4) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN3_REG != 5) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN3_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_COMCLK_GEN3_REG);
       attr_err = 1'b1;
     end
 
@@ -6935,7 +7049,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN1_REG != 4) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN1_REG != 5) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN1_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_GEN1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_GEN1_REG);
       attr_err = 1'b1;
     end
 
@@ -6947,7 +7063,9 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN2_REG != 4) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN2_REG != 5) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN2_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_GEN2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_GEN2_REG);
       attr_err = 1'b1;
     end
 
@@ -6959,13 +7077,17 @@ module PCIE_3_1 #(
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN3_REG != 4) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN3_REG != 5) &&
         (PF0_LINK_CAP_L1_EXIT_LATENCY_GEN3_REG != 6)) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_GEN3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_CAP_L1_EXIT_LATENCY_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_LINK_CAP_L1_EXIT_LATENCY_GEN3_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_LINK_STATUS_SLOT_CLOCK_CONFIG_REG != "TRUE") &&
         (PF0_LINK_STATUS_SLOT_CLOCK_CONFIG_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_LINK_STATUS_SLOT_CLOCK_CONFIG on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_LINK_STATUS_SLOT_CLOCK_CONFIG_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_LINK_STATUS_SLOT_CLOCK_CONFIG on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_LINK_STATUS_SLOT_CLOCK_CONFIG_REG);
       attr_err = 1'b1;
     end
 
@@ -6977,7 +7099,9 @@ module PCIE_3_1 #(
         (PF0_MSIX_CAP_PBA_BIR_REG != 5) &&
         (PF0_MSIX_CAP_PBA_BIR_REG != 6) &&
         (PF0_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF0_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -6989,7 +7113,9 @@ module PCIE_3_1 #(
         (PF0_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (PF0_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (PF0_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF0_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7001,95 +7127,129 @@ module PCIE_3_1 #(
         (PF0_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (PF0_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (PF0_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF0_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF0_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF0_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_MSI_CAP_PERVECMASKCAP_REG != "FALSE") &&
         (PF0_MSI_CAP_PERVECMASKCAP_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_MSI_CAP_PERVECMASKCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_MSI_CAP_PERVECMASKCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_PB_CAP_SYSTEM_ALLOCATED_REG != "FALSE") &&
         (PF0_PB_CAP_SYSTEM_ALLOCATED_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_PB_CAP_SYSTEM_ALLOCATED_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_PB_CAP_SYSTEM_ALLOCATED_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_PM_CAP_PMESUPPORT_D0_REG != "TRUE") && (PF0_PM_CAP_PMESUPPORT_D0_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_PM_CAP_PMESUPPORT_D0 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_PM_CAP_PMESUPPORT_D0_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_PM_CAP_PMESUPPORT_D0 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_PM_CAP_PMESUPPORT_D0_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_PM_CAP_PMESUPPORT_D1_REG != "TRUE") && (PF0_PM_CAP_PMESUPPORT_D1_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_PM_CAP_PMESUPPORT_D1 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_PM_CAP_PMESUPPORT_D1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_PM_CAP_PMESUPPORT_D1 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_PM_CAP_PMESUPPORT_D1_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_PM_CAP_PMESUPPORT_D3HOT_REG != "TRUE") &&
         (PF0_PM_CAP_PMESUPPORT_D3HOT_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_PM_CAP_PMESUPPORT_D3HOT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_PM_CAP_PMESUPPORT_D3HOT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_PM_CAP_PMESUPPORT_D3HOT on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_PM_CAP_PMESUPPORT_D3HOT_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_PM_CAP_SUPP_D1_STATE_REG != "TRUE") && (PF0_PM_CAP_SUPP_D1_STATE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_PM_CAP_SUPP_D1_STATE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_PM_CAP_SUPP_D1_STATE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_PM_CAP_SUPP_D1_STATE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_PM_CAP_SUPP_D1_STATE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_PM_CSR_NOSOFTRESET_REG != "TRUE") && (PF0_PM_CSR_NOSOFTRESET_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_PM_CSR_NOSOFTRESET on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_PM_CSR_NOSOFTRESET_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_PM_CSR_NOSOFTRESET on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_PM_CSR_NOSOFTRESET_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_RBAR_CAP_ENABLE_REG != "FALSE") && (PF0_RBAR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_RBAR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_RBAR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (PF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_TPHR_CAP_ENABLE_REG != "FALSE") && (PF0_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (PF0_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF0_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF0_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF0_VC_CAP_ENABLE_REG != "FALSE") && (PF0_VC_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF0_VC_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF0_VC_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF0_VC_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF0_VC_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_AER_CAP_ECRC_CHECK_CAPABLE_REG != "FALSE") &&
         (PF1_AER_CAP_ECRC_CHECK_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF1_AER_CAP_ECRC_CHECK_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF1_AER_CAP_ECRC_CHECK_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_AER_CAP_ECRC_GEN_CAPABLE_REG != "FALSE") &&
         (PF1_AER_CAP_ECRC_GEN_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF1_AER_CAP_ECRC_GEN_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF1_AER_CAP_ECRC_GEN_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "TRUE") &&
         (PF1_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF1_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF1_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_EXPANSION_ROM_ENABLE_REG != "FALSE") && (PF1_EXPANSION_ROM_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF1_EXPANSION_ROM_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF1_EXPANSION_ROM_ENABLE_REG);
       attr_err = 1'b1;
     end
 
@@ -7101,7 +7261,9 @@ module PCIE_3_1 #(
         (PF1_MSIX_CAP_PBA_BIR_REG != 5) &&
         (PF1_MSIX_CAP_PBA_BIR_REG != 6) &&
         (PF1_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF1_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF1_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF1_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7113,7 +7275,9 @@ module PCIE_3_1 #(
         (PF1_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (PF1_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (PF1_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF1_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF1_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF1_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7125,64 +7289,86 @@ module PCIE_3_1 #(
         (PF1_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (PF1_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (PF1_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF1_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF1_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF1_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_MSI_CAP_PERVECMASKCAP_REG != "FALSE") &&
         (PF1_MSI_CAP_PERVECMASKCAP_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF1_MSI_CAP_PERVECMASKCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF1_MSI_CAP_PERVECMASKCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_PB_CAP_SYSTEM_ALLOCATED_REG != "FALSE") &&
         (PF1_PB_CAP_SYSTEM_ALLOCATED_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF1_PB_CAP_SYSTEM_ALLOCATED_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF1_PB_CAP_SYSTEM_ALLOCATED_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_RBAR_CAP_ENABLE_REG != "FALSE") && (PF1_RBAR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF1_RBAR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF1_RBAR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (PF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_TPHR_CAP_ENABLE_REG != "FALSE") && (PF1_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF1_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF1_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF1_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (PF1_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF1_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF1_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF1_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF1_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_AER_CAP_ECRC_CHECK_CAPABLE_REG != "FALSE") &&
         (PF2_AER_CAP_ECRC_CHECK_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF2_AER_CAP_ECRC_CHECK_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF2_AER_CAP_ECRC_CHECK_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_AER_CAP_ECRC_GEN_CAPABLE_REG != "FALSE") &&
         (PF2_AER_CAP_ECRC_GEN_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF2_AER_CAP_ECRC_GEN_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF2_AER_CAP_ECRC_GEN_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "TRUE") &&
         (PF2_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF2_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF2_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_EXPANSION_ROM_ENABLE_REG != "FALSE") && (PF2_EXPANSION_ROM_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF2_EXPANSION_ROM_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF2_EXPANSION_ROM_ENABLE_REG);
       attr_err = 1'b1;
     end
 
@@ -7194,7 +7380,9 @@ module PCIE_3_1 #(
         (PF2_MSIX_CAP_PBA_BIR_REG != 5) &&
         (PF2_MSIX_CAP_PBA_BIR_REG != 6) &&
         (PF2_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF2_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF2_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF2_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7206,7 +7394,9 @@ module PCIE_3_1 #(
         (PF2_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (PF2_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (PF2_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF2_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF2_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF2_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7218,64 +7408,86 @@ module PCIE_3_1 #(
         (PF2_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (PF2_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (PF2_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF2_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF2_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF2_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_MSI_CAP_PERVECMASKCAP_REG != "FALSE") &&
         (PF2_MSI_CAP_PERVECMASKCAP_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF2_MSI_CAP_PERVECMASKCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF2_MSI_CAP_PERVECMASKCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_PB_CAP_SYSTEM_ALLOCATED_REG != "FALSE") &&
         (PF2_PB_CAP_SYSTEM_ALLOCATED_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF2_PB_CAP_SYSTEM_ALLOCATED_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF2_PB_CAP_SYSTEM_ALLOCATED_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_RBAR_CAP_ENABLE_REG != "FALSE") && (PF2_RBAR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF2_RBAR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF2_RBAR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (PF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_TPHR_CAP_ENABLE_REG != "FALSE") && (PF2_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF2_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF2_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF2_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (PF2_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF2_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF2_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF2_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF2_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_AER_CAP_ECRC_CHECK_CAPABLE_REG != "FALSE") &&
         (PF3_AER_CAP_ECRC_CHECK_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF3_AER_CAP_ECRC_CHECK_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_AER_CAP_ECRC_CHECK_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF3_AER_CAP_ECRC_CHECK_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_AER_CAP_ECRC_GEN_CAPABLE_REG != "FALSE") &&
         (PF3_AER_CAP_ECRC_GEN_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF3_AER_CAP_ECRC_GEN_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_AER_CAP_ECRC_GEN_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF3_AER_CAP_ECRC_GEN_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "TRUE") &&
         (PF3_DPA_CAP_SUB_STATE_CONTROL_EN_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF3_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_DPA_CAP_SUB_STATE_CONTROL_EN on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF3_DPA_CAP_SUB_STATE_CONTROL_EN_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_EXPANSION_ROM_ENABLE_REG != "FALSE") && (PF3_EXPANSION_ROM_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF3_EXPANSION_ROM_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_EXPANSION_ROM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF3_EXPANSION_ROM_ENABLE_REG);
       attr_err = 1'b1;
     end
 
@@ -7287,7 +7499,9 @@ module PCIE_3_1 #(
         (PF3_MSIX_CAP_PBA_BIR_REG != 5) &&
         (PF3_MSIX_CAP_PBA_BIR_REG != 6) &&
         (PF3_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF3_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF3_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF3_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7299,7 +7513,9 @@ module PCIE_3_1 #(
         (PF3_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (PF3_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (PF3_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF3_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF3_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF3_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7311,178 +7527,242 @@ module PCIE_3_1 #(
         (PF3_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (PF3_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (PF3_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute PF3_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, PF3_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, PF3_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_MSI_CAP_PERVECMASKCAP_REG != "FALSE") &&
         (PF3_MSI_CAP_PERVECMASKCAP_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF3_MSI_CAP_PERVECMASKCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_MSI_CAP_PERVECMASKCAP on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF3_MSI_CAP_PERVECMASKCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_PB_CAP_SYSTEM_ALLOCATED_REG != "FALSE") &&
         (PF3_PB_CAP_SYSTEM_ALLOCATED_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF3_PB_CAP_SYSTEM_ALLOCATED_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_PB_CAP_SYSTEM_ALLOCATED on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF3_PB_CAP_SYSTEM_ALLOCATED_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_RBAR_CAP_ENABLE_REG != "FALSE") && (PF3_RBAR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF3_RBAR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_RBAR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF3_RBAR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (PF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_TPHR_CAP_ENABLE_REG != "FALSE") && (PF3_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PF3_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PF3_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PF3_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (PF3_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PF3_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PF3_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PF3_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PF3_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_AUTO_EQ_SPEED_CHANGE_TO_GEN3_REG != "FALSE") &&
         (PL_DISABLE_AUTO_EQ_SPEED_CHANGE_TO_GEN3_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_AUTO_EQ_SPEED_CHANGE_TO_GEN3 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_AUTO_EQ_SPEED_CHANGE_TO_GEN3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_AUTO_EQ_SPEED_CHANGE_TO_GEN3 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_AUTO_EQ_SPEED_CHANGE_TO_GEN3_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_AUTO_SPEED_CHANGE_TO_GEN2_REG != "FALSE") &&
         (PL_DISABLE_AUTO_SPEED_CHANGE_TO_GEN2_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_AUTO_SPEED_CHANGE_TO_GEN2 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_AUTO_SPEED_CHANGE_TO_GEN2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_AUTO_SPEED_CHANGE_TO_GEN2 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_AUTO_SPEED_CHANGE_TO_GEN2_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_EI_INFER_IN_L0_REG != "FALSE") &&
         (PL_DISABLE_EI_INFER_IN_L0_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_EI_INFER_IN_L0 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_EI_INFER_IN_L0_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_EI_INFER_IN_L0 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_EI_INFER_IN_L0_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_GEN3_DC_BALANCE_REG != "FALSE") &&
         (PL_DISABLE_GEN3_DC_BALANCE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_GEN3_DC_BALANCE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_GEN3_DC_BALANCE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_GEN3_DC_BALANCE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_GEN3_DC_BALANCE_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_GEN3_LFSR_UPDATE_ON_SKP_REG != "TRUE") &&
         (PL_DISABLE_GEN3_LFSR_UPDATE_ON_SKP_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_GEN3_LFSR_UPDATE_ON_SKP on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PL_DISABLE_GEN3_LFSR_UPDATE_ON_SKP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_GEN3_LFSR_UPDATE_ON_SKP on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PL_DISABLE_GEN3_LFSR_UPDATE_ON_SKP_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_RETRAIN_ON_FRAMING_ERROR_REG != "FALSE") &&
         (PL_DISABLE_RETRAIN_ON_FRAMING_ERROR_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_RETRAIN_ON_FRAMING_ERROR on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_RETRAIN_ON_FRAMING_ERROR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_RETRAIN_ON_FRAMING_ERROR on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_RETRAIN_ON_FRAMING_ERROR_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_SCRAMBLING_REG != "FALSE") && (PL_DISABLE_SCRAMBLING_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_SCRAMBLING on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_SCRAMBLING_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_SCRAMBLING on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_SCRAMBLING_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_SYNC_HEADER_FRAMING_ERROR_REG != "FALSE") &&
         (PL_DISABLE_SYNC_HEADER_FRAMING_ERROR_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_SYNC_HEADER_FRAMING_ERROR on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_SYNC_HEADER_FRAMING_ERROR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_SYNC_HEADER_FRAMING_ERROR on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_SYNC_HEADER_FRAMING_ERROR_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_DISABLE_UPCONFIG_CAPABLE_REG != "FALSE") &&
         (PL_DISABLE_UPCONFIG_CAPABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_DISABLE_UPCONFIG_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_DISABLE_UPCONFIG_CAPABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_DISABLE_UPCONFIG_CAPABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_DISABLE_UPCONFIG_CAPABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_EQ_ADAPT_DISABLE_COEFF_CHECK_REG != "FALSE") &&
         (PL_EQ_ADAPT_DISABLE_COEFF_CHECK_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_EQ_ADAPT_DISABLE_COEFF_CHECK on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_EQ_ADAPT_DISABLE_COEFF_CHECK_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_EQ_ADAPT_DISABLE_COEFF_CHECK on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_EQ_ADAPT_DISABLE_COEFF_CHECK_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_EQ_ADAPT_DISABLE_PRESET_CHECK_REG != "FALSE") &&
         (PL_EQ_ADAPT_DISABLE_PRESET_CHECK_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_EQ_ADAPT_DISABLE_PRESET_CHECK on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_EQ_ADAPT_DISABLE_PRESET_CHECK_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_EQ_ADAPT_DISABLE_PRESET_CHECK on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_EQ_ADAPT_DISABLE_PRESET_CHECK_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_EQ_BYPASS_PHASE23_REG != "FALSE") && (PL_EQ_BYPASS_PHASE23_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_EQ_BYPASS_PHASE23 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_EQ_BYPASS_PHASE23_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_EQ_BYPASS_PHASE23 on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_EQ_BYPASS_PHASE23_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_EQ_PHASE01_RX_ADAPT_REG != "FALSE") && (PL_EQ_PHASE01_RX_ADAPT_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_EQ_PHASE01_RX_ADAPT on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_EQ_PHASE01_RX_ADAPT_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_EQ_PHASE01_RX_ADAPT on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_EQ_PHASE01_RX_ADAPT_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_EQ_SHORT_ADAPT_PHASE_REG != "FALSE") && (PL_EQ_SHORT_ADAPT_PHASE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_EQ_SHORT_ADAPT_PHASE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_EQ_SHORT_ADAPT_PHASE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_EQ_SHORT_ADAPT_PHASE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_EQ_SHORT_ADAPT_PHASE_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_N_FTS_COMCLK_GEN1_REG < 0) || (PL_N_FTS_COMCLK_GEN1_REG > 255)) begin
-      $display("Attribute Syntax Error : The attribute PL_N_FTS_COMCLK_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.", MODULE_NAME, PL_N_FTS_COMCLK_GEN1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_N_FTS_COMCLK_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          MODULE_NAME, PL_N_FTS_COMCLK_GEN1_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_N_FTS_COMCLK_GEN2_REG < 0) || (PL_N_FTS_COMCLK_GEN2_REG > 255)) begin
-      $display("Attribute Syntax Error : The attribute PL_N_FTS_COMCLK_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.", MODULE_NAME, PL_N_FTS_COMCLK_GEN2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_N_FTS_COMCLK_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          MODULE_NAME, PL_N_FTS_COMCLK_GEN2_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_N_FTS_COMCLK_GEN3_REG < 0) || (PL_N_FTS_COMCLK_GEN3_REG > 255)) begin
-      $display("Attribute Syntax Error : The attribute PL_N_FTS_COMCLK_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.", MODULE_NAME, PL_N_FTS_COMCLK_GEN3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_N_FTS_COMCLK_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          MODULE_NAME, PL_N_FTS_COMCLK_GEN3_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_N_FTS_GEN1_REG < 0) || (PL_N_FTS_GEN1_REG > 255)) begin
-      $display("Attribute Syntax Error : The attribute PL_N_FTS_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.", MODULE_NAME, PL_N_FTS_GEN1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_N_FTS_GEN1 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          MODULE_NAME, PL_N_FTS_GEN1_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_N_FTS_GEN2_REG < 0) || (PL_N_FTS_GEN2_REG > 255)) begin
-      $display("Attribute Syntax Error : The attribute PL_N_FTS_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.", MODULE_NAME, PL_N_FTS_GEN2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_N_FTS_GEN2 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          MODULE_NAME, PL_N_FTS_GEN2_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_N_FTS_GEN3_REG < 0) || (PL_N_FTS_GEN3_REG > 255)) begin
-      $display("Attribute Syntax Error : The attribute PL_N_FTS_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.", MODULE_NAME, PL_N_FTS_GEN3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_N_FTS_GEN3 on %s instance %m is set to %d.  Legal values for this attribute are  0 to 255.",
+          MODULE_NAME, PL_N_FTS_GEN3_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_REPORT_ALL_PHY_ERRORS_REG != "TRUE") && (PL_REPORT_ALL_PHY_ERRORS_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PL_REPORT_ALL_PHY_ERRORS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PL_REPORT_ALL_PHY_ERRORS_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_REPORT_ALL_PHY_ERRORS on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PL_REPORT_ALL_PHY_ERRORS_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_SIM_FAST_LINK_TRAINING_REG != "FALSE") &&
         (PL_SIM_FAST_LINK_TRAINING_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PL_SIM_FAST_LINK_TRAINING on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PL_SIM_FAST_LINK_TRAINING_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_SIM_FAST_LINK_TRAINING on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PL_SIM_FAST_LINK_TRAINING_REG);
       attr_err = 1'b1;
     end
 
     if ((PL_UPSTREAM_FACING_REG != "TRUE") && (PL_UPSTREAM_FACING_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PL_UPSTREAM_FACING on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PL_UPSTREAM_FACING_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PL_UPSTREAM_FACING on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PL_UPSTREAM_FACING_REG);
       attr_err = 1'b1;
     end
 
     if ((PM_ENABLE_L23_ENTRY_REG != "FALSE") && (PM_ENABLE_L23_ENTRY_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute PM_ENABLE_L23_ENTRY on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, PM_ENABLE_L23_ENTRY_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PM_ENABLE_L23_ENTRY on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, PM_ENABLE_L23_ENTRY_REG);
       attr_err = 1'b1;
     end
 
     if ((PM_ENABLE_SLOT_POWER_CAPTURE_REG != "TRUE") &&
         (PM_ENABLE_SLOT_POWER_CAPTURE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute PM_ENABLE_SLOT_POWER_CAPTURE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, PM_ENABLE_SLOT_POWER_CAPTURE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute PM_ENABLE_SLOT_POWER_CAPTURE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, PM_ENABLE_SLOT_POWER_CAPTURE_REG);
       attr_err = 1'b1;
     end
 
@@ -7493,108 +7773,148 @@ module PCIE_3_1 #(
         (SIM_VERSION_REG != "2.0") &&
         (SIM_VERSION_REG != "3.0") &&
         (SIM_VERSION_REG != "4.0")) begin
-      $display("Attribute Syntax Error : The attribute SIM_VERSION on %s instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, 1.2, 1.3, 2.0, 3.0 or 4.0.", MODULE_NAME, SIM_VERSION_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SIM_VERSION on %s instance %m is set to %s.  Legal values for this attribute are 1.0, 1.1, 1.2, 1.3, 2.0, 3.0 or 4.0.",
+          MODULE_NAME, SIM_VERSION_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT0_REG != 0) && (SPARE_BIT0_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT0 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT0_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT0 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT0_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT1_REG != 0) && (SPARE_BIT1_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT1_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT1 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT1_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT2_REG != 0) && (SPARE_BIT2_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT2_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT2 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT2_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT3_REG != 0) && (SPARE_BIT3_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT3_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT3 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT3_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT4_REG != 0) && (SPARE_BIT4_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT4 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT4_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT4 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT4_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT5_REG != 0) && (SPARE_BIT5_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT5 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT5_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT5 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT5_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT6_REG != 0) && (SPARE_BIT6_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT6 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT6_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT6 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT6_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT7_REG != 0) && (SPARE_BIT7_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT7 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT7_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT7 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT7_REG);
       attr_err = 1'b1;
     end
 
     if ((SPARE_BIT8_REG != 0) && (SPARE_BIT8_REG != 1)) begin
-      $display("Attribute Syntax Error : The attribute SPARE_BIT8 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.", MODULE_NAME, SPARE_BIT8_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SPARE_BIT8 on %s instance %m is set to %d.  Legal values for this attribute are 0 to 1.",
+          MODULE_NAME, SPARE_BIT8_REG);
       attr_err = 1'b1;
     end
 
     if ((SRIOV_CAP_ENABLE_REG != "FALSE") && (SRIOV_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute SRIOV_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, SRIOV_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute SRIOV_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, SRIOV_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((TL_COMPLETION_RAM_SIZE_16K_REG != "TRUE") &&
         (TL_COMPLETION_RAM_SIZE_16K_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute TL_COMPLETION_RAM_SIZE_16K on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, TL_COMPLETION_RAM_SIZE_16K_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TL_COMPLETION_RAM_SIZE_16K on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, TL_COMPLETION_RAM_SIZE_16K_REG);
       attr_err = 1'b1;
     end
 
     if ((TL_ENABLE_MESSAGE_RID_CHECK_ENABLE_REG != "TRUE") &&
         (TL_ENABLE_MESSAGE_RID_CHECK_ENABLE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute TL_ENABLE_MESSAGE_RID_CHECK_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, TL_ENABLE_MESSAGE_RID_CHECK_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TL_ENABLE_MESSAGE_RID_CHECK_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, TL_ENABLE_MESSAGE_RID_CHECK_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((TL_EXTENDED_CFG_EXTEND_INTERFACE_ENABLE_REG != "FALSE") &&
         (TL_EXTENDED_CFG_EXTEND_INTERFACE_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute TL_EXTENDED_CFG_EXTEND_INTERFACE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, TL_EXTENDED_CFG_EXTEND_INTERFACE_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TL_EXTENDED_CFG_EXTEND_INTERFACE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, TL_EXTENDED_CFG_EXTEND_INTERFACE_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((TL_LEGACY_CFG_EXTEND_INTERFACE_ENABLE_REG != "FALSE") &&
         (TL_LEGACY_CFG_EXTEND_INTERFACE_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute TL_LEGACY_CFG_EXTEND_INTERFACE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, TL_LEGACY_CFG_EXTEND_INTERFACE_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TL_LEGACY_CFG_EXTEND_INTERFACE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, TL_LEGACY_CFG_EXTEND_INTERFACE_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((TL_LEGACY_MODE_ENABLE_REG != "FALSE") && (TL_LEGACY_MODE_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute TL_LEGACY_MODE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, TL_LEGACY_MODE_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TL_LEGACY_MODE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, TL_LEGACY_MODE_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((TL_TX_MUX_STRICT_PRIORITY_REG != "TRUE") &&
         (TL_TX_MUX_STRICT_PRIORITY_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute TL_TX_MUX_STRICT_PRIORITY on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, TL_TX_MUX_STRICT_PRIORITY_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TL_TX_MUX_STRICT_PRIORITY on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, TL_TX_MUX_STRICT_PRIORITY_REG);
       attr_err = 1'b1;
     end
 
     if ((TWO_LAYER_MODE_DLCMSM_ENABLE_REG != "TRUE") &&
         (TWO_LAYER_MODE_DLCMSM_ENABLE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute TWO_LAYER_MODE_DLCMSM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, TWO_LAYER_MODE_DLCMSM_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TWO_LAYER_MODE_DLCMSM_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, TWO_LAYER_MODE_DLCMSM_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((TWO_LAYER_MODE_ENABLE_REG != "FALSE") && (TWO_LAYER_MODE_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute TWO_LAYER_MODE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, TWO_LAYER_MODE_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TWO_LAYER_MODE_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, TWO_LAYER_MODE_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((TWO_LAYER_MODE_WIDTH_256_REG != "TRUE") && (TWO_LAYER_MODE_WIDTH_256_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute TWO_LAYER_MODE_WIDTH_256 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, TWO_LAYER_MODE_WIDTH_256_REG);
+      $display(
+          "Attribute Syntax Error : The attribute TWO_LAYER_MODE_WIDTH_256 on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, TWO_LAYER_MODE_WIDTH_256_REG);
       attr_err = 1'b1;
     end
 
@@ -7606,7 +7926,9 @@ module PCIE_3_1 #(
         (VF0_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF0_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF0_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF0_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF0_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF0_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF0_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7618,7 +7940,9 @@ module PCIE_3_1 #(
         (VF0_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF0_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF0_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF0_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF0_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF0_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF0_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7630,24 +7954,32 @@ module PCIE_3_1 #(
         (VF0_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF0_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF0_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF0_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF0_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF0_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF0_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF0_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF0_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF0_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF0_TPHR_CAP_ENABLE_REG != "FALSE") && (VF0_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF0_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF0_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF0_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF0_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF0_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF0_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF0_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF0_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF0_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF0_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -7659,7 +7991,9 @@ module PCIE_3_1 #(
         (VF1_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF1_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF1_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF1_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF1_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF1_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF1_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7671,7 +8005,9 @@ module PCIE_3_1 #(
         (VF1_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF1_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF1_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF1_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF1_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF1_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF1_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7683,24 +8019,32 @@ module PCIE_3_1 #(
         (VF1_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF1_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF1_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF1_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF1_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF1_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF1_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF1_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF1_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF1_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF1_TPHR_CAP_ENABLE_REG != "FALSE") && (VF1_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF1_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF1_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF1_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF1_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF1_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF1_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF1_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF1_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF1_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF1_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -7712,7 +8056,9 @@ module PCIE_3_1 #(
         (VF2_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF2_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF2_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF2_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF2_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF2_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF2_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7724,7 +8070,9 @@ module PCIE_3_1 #(
         (VF2_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF2_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF2_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF2_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF2_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF2_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF2_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7736,24 +8084,32 @@ module PCIE_3_1 #(
         (VF2_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF2_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF2_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF2_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF2_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF2_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF2_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF2_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF2_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF2_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF2_TPHR_CAP_ENABLE_REG != "FALSE") && (VF2_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF2_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF2_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF2_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF2_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF2_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF2_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF2_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF2_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF2_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF2_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -7765,7 +8121,9 @@ module PCIE_3_1 #(
         (VF3_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF3_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF3_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF3_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF3_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF3_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF3_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7777,7 +8135,9 @@ module PCIE_3_1 #(
         (VF3_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF3_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF3_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF3_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF3_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF3_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF3_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7789,24 +8149,32 @@ module PCIE_3_1 #(
         (VF3_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF3_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF3_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF3_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF3_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF3_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF3_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF3_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF3_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF3_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF3_TPHR_CAP_ENABLE_REG != "FALSE") && (VF3_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF3_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF3_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF3_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF3_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF3_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF3_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF3_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF3_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF3_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF3_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -7818,7 +8186,9 @@ module PCIE_3_1 #(
         (VF4_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF4_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF4_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF4_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF4_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF4_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF4_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7830,7 +8200,9 @@ module PCIE_3_1 #(
         (VF4_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF4_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF4_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF4_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF4_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF4_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF4_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7842,24 +8214,32 @@ module PCIE_3_1 #(
         (VF4_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF4_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF4_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF4_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF4_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF4_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF4_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF4_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF4_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF4_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF4_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF4_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF4_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF4_TPHR_CAP_ENABLE_REG != "FALSE") && (VF4_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF4_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF4_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF4_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF4_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF4_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF4_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF4_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF4_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF4_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF4_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -7871,7 +8251,9 @@ module PCIE_3_1 #(
         (VF5_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF5_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF5_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF5_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF5_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF5_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF5_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7883,7 +8265,9 @@ module PCIE_3_1 #(
         (VF5_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF5_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF5_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF5_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF5_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF5_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF5_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7895,24 +8279,32 @@ module PCIE_3_1 #(
         (VF5_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF5_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF5_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF5_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF5_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF5_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF5_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF5_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF5_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF5_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF5_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF5_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF5_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF5_TPHR_CAP_ENABLE_REG != "FALSE") && (VF5_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF5_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF5_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF5_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF5_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF5_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF5_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF5_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF5_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF5_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF5_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -7924,7 +8316,9 @@ module PCIE_3_1 #(
         (VF6_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF6_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF6_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF6_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF6_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF6_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF6_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7936,7 +8330,9 @@ module PCIE_3_1 #(
         (VF6_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF6_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF6_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF6_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF6_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF6_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF6_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7948,24 +8344,32 @@ module PCIE_3_1 #(
         (VF6_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF6_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF6_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF6_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF6_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF6_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF6_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF6_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF6_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF6_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF6_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF6_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF6_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF6_TPHR_CAP_ENABLE_REG != "FALSE") && (VF6_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF6_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF6_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF6_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF6_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF6_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF6_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF6_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF6_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF6_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF6_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -7977,7 +8381,9 @@ module PCIE_3_1 #(
         (VF7_MSIX_CAP_PBA_BIR_REG != 5) &&
         (VF7_MSIX_CAP_PBA_BIR_REG != 6) &&
         (VF7_MSIX_CAP_PBA_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF7_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF7_MSIX_CAP_PBA_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF7_MSIX_CAP_PBA_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF7_MSIX_CAP_PBA_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -7989,7 +8395,9 @@ module PCIE_3_1 #(
         (VF7_MSIX_CAP_TABLE_BIR_REG != 5) &&
         (VF7_MSIX_CAP_TABLE_BIR_REG != 6) &&
         (VF7_MSIX_CAP_TABLE_BIR_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF7_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF7_MSIX_CAP_TABLE_BIR_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF7_MSIX_CAP_TABLE_BIR on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF7_MSIX_CAP_TABLE_BIR_REG);
       attr_err = 1'b1;
     end
 
@@ -8001,24 +8409,32 @@ module PCIE_3_1 #(
         (VF7_MSI_CAP_MULTIMSGCAP_REG != 5) &&
         (VF7_MSI_CAP_MULTIMSGCAP_REG != 6) &&
         (VF7_MSI_CAP_MULTIMSGCAP_REG != 7)) begin
-      $display("Attribute Syntax Error : The attribute VF7_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, VF7_MSI_CAP_MULTIMSGCAP_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF7_MSI_CAP_MULTIMSGCAP on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, VF7_MSI_CAP_MULTIMSGCAP_REG);
       attr_err = 1'b1;
     end
 
     if ((VF7_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "TRUE") &&
         (VF7_TPHR_CAP_DEV_SPECIFIC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF7_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF7_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF7_TPHR_CAP_DEV_SPECIFIC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF7_TPHR_CAP_DEV_SPECIFIC_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF7_TPHR_CAP_ENABLE_REG != "FALSE") && (VF7_TPHR_CAP_ENABLE_REG != "TRUE")) begin
-      $display("Attribute Syntax Error : The attribute VF7_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, VF7_TPHR_CAP_ENABLE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF7_TPHR_CAP_ENABLE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+          MODULE_NAME, VF7_TPHR_CAP_ENABLE_REG);
       attr_err = 1'b1;
     end
 
     if ((VF7_TPHR_CAP_INT_VEC_MODE_REG != "TRUE") &&
         (VF7_TPHR_CAP_INT_VEC_MODE_REG != "FALSE")) begin
-      $display("Attribute Syntax Error : The attribute VF7_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", MODULE_NAME, VF7_TPHR_CAP_INT_VEC_MODE_REG);
+      $display(
+          "Attribute Syntax Error : The attribute VF7_TPHR_CAP_INT_VEC_MODE on %s instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+          MODULE_NAME, VF7_TPHR_CAP_INT_VEC_MODE_REG);
       attr_err = 1'b1;
     end
 

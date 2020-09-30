@@ -159,28 +159,32 @@ module GTXE2_COMMON (
 
   initial begin
     case (QPLL_REFCLK_DIV)
-      2: QPLL_REFCLK_DIV_BINARY = 5'b00000;
-      1: QPLL_REFCLK_DIV_BINARY = 5'b10000;
-      3: QPLL_REFCLK_DIV_BINARY = 5'b00001;
-      4: QPLL_REFCLK_DIV_BINARY = 5'b00010;
-      5: QPLL_REFCLK_DIV_BINARY = 5'b00011;
-      6: QPLL_REFCLK_DIV_BINARY = 5'b00101;
-      8: QPLL_REFCLK_DIV_BINARY = 5'b00110;
+      2:  QPLL_REFCLK_DIV_BINARY = 5'b00000;
+      1:  QPLL_REFCLK_DIV_BINARY = 5'b10000;
+      3:  QPLL_REFCLK_DIV_BINARY = 5'b00001;
+      4:  QPLL_REFCLK_DIV_BINARY = 5'b00010;
+      5:  QPLL_REFCLK_DIV_BINARY = 5'b00011;
+      6:  QPLL_REFCLK_DIV_BINARY = 5'b00101;
+      8:  QPLL_REFCLK_DIV_BINARY = 5'b00110;
       10: QPLL_REFCLK_DIV_BINARY = 5'b00111;
       12: QPLL_REFCLK_DIV_BINARY = 5'b01101;
       16: QPLL_REFCLK_DIV_BINARY = 5'b01110;
       20: QPLL_REFCLK_DIV_BINARY = 5'b01111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute QPLL_REFCLK_DIV on X_GTXE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.", QPLL_REFCLK_DIV, 2);
+        $display(
+            "Attribute Syntax Error : The Attribute QPLL_REFCLK_DIV on X_GTXE2_COMMON instance %m is set to %d.  Legal values for this attribute are 1 to 20.",
+            QPLL_REFCLK_DIV, 2);
         #1 $finish;
       end
     endcase
 
     case (SIM_RESET_SPEEDUP)
-      "TRUE": SIM_RESET_SPEEDUP_BINARY = 0;
+      "TRUE":  SIM_RESET_SPEEDUP_BINARY = 0;
       "FALSE": SIM_RESET_SPEEDUP_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on X_GTXE2_COMMON instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SIM_RESET_SPEEDUP);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on X_GTXE2_COMMON instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            SIM_RESET_SPEEDUP);
         #1 $finish;
       end
     endcase
@@ -194,7 +198,9 @@ module GTXE2_COMMON (
       "4.1": SIM_VERSION_BINARY = 0;
       "5.0": SIM_VERSION_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_VERSION on X_GTXE2_COMMON instance %m is set to %s.  Legal values for this attribute are 4.0, 1.0, 1.1, 2.0, 3.0, 4.1, or 5.0.", SIM_VERSION);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_VERSION on X_GTXE2_COMMON instance %m is set to %s.  Legal values for this attribute are 4.0, 1.0, 1.1, 2.0, 3.0, 4.1, or 5.0.",
+            SIM_VERSION);
         #1 $finish;
       end
     endcase
@@ -203,75 +209,97 @@ module GTXE2_COMMON (
     if ((QPLL_CLKOUT_CFG >= 4'b0000) && (QPLL_CLKOUT_CFG <= 4'b1111))
       QPLL_CLKOUT_CFG_BINARY = QPLL_CLKOUT_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_CLKOUT_CFG on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", QPLL_CLKOUT_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_CLKOUT_CFG on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          QPLL_CLKOUT_CFG);
       #1 $finish;
     end
 
     if ((QPLL_COARSE_FREQ_OVRD >= 6'b000000) && (QPLL_COARSE_FREQ_OVRD <= 6'b111111))
       QPLL_COARSE_FREQ_OVRD_BINARY = QPLL_COARSE_FREQ_OVRD;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_COARSE_FREQ_OVRD on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", QPLL_COARSE_FREQ_OVRD);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_COARSE_FREQ_OVRD on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          QPLL_COARSE_FREQ_OVRD);
       #1 $finish;
     end
 
     if ((QPLL_COARSE_FREQ_OVRD_EN >= 1'b0) && (QPLL_COARSE_FREQ_OVRD_EN <= 1'b1))
       QPLL_COARSE_FREQ_OVRD_EN_BINARY = QPLL_COARSE_FREQ_OVRD_EN;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_COARSE_FREQ_OVRD_EN on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", QPLL_COARSE_FREQ_OVRD_EN);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_COARSE_FREQ_OVRD_EN on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          QPLL_COARSE_FREQ_OVRD_EN);
       #1 $finish;
     end
 
     if ((QPLL_CP >= 10'b0000000000) && (QPLL_CP <= 10'b1111111111)) QPLL_CP_BINARY = QPLL_CP;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_CP on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", QPLL_CP);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_CP on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          QPLL_CP);
       #1 $finish;
     end
 
     if ((QPLL_CP_MONITOR_EN >= 1'b0) && (QPLL_CP_MONITOR_EN <= 1'b1))
       QPLL_CP_MONITOR_EN_BINARY = QPLL_CP_MONITOR_EN;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_CP_MONITOR_EN on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", QPLL_CP_MONITOR_EN);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_CP_MONITOR_EN on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          QPLL_CP_MONITOR_EN);
       #1 $finish;
     end
 
     if ((QPLL_DMONITOR_SEL >= 1'b0) && (QPLL_DMONITOR_SEL <= 1'b1))
       QPLL_DMONITOR_SEL_BINARY = QPLL_DMONITOR_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_DMONITOR_SEL on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", QPLL_DMONITOR_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_DMONITOR_SEL on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          QPLL_DMONITOR_SEL);
       #1 $finish;
     end
 
     if ((QPLL_FBDIV >= 10'b0000000000) && (QPLL_FBDIV <= 10'b1111111111))
       QPLL_FBDIV_BINARY = QPLL_FBDIV;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_FBDIV on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", QPLL_FBDIV);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_FBDIV on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          QPLL_FBDIV);
       #1 $finish;
     end
 
     if ((QPLL_FBDIV_MONITOR_EN >= 1'b0) && (QPLL_FBDIV_MONITOR_EN <= 1'b1))
       QPLL_FBDIV_MONITOR_EN_BINARY = QPLL_FBDIV_MONITOR_EN;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_FBDIV_MONITOR_EN on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", QPLL_FBDIV_MONITOR_EN);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_FBDIV_MONITOR_EN on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          QPLL_FBDIV_MONITOR_EN);
       #1 $finish;
     end
 
     if ((QPLL_FBDIV_RATIO >= 1'b0) && (QPLL_FBDIV_RATIO <= 1'b1))
       QPLL_FBDIV_RATIO_BINARY = QPLL_FBDIV_RATIO;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_FBDIV_RATIO on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", QPLL_FBDIV_RATIO);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_FBDIV_RATIO on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          QPLL_FBDIV_RATIO);
       #1 $finish;
     end
 
     if ((QPLL_LPF >= 4'b0000) && (QPLL_LPF <= 4'b1111)) QPLL_LPF_BINARY = QPLL_LPF;
     else begin
-      $display("Attribute Syntax Error : The Attribute QPLL_LPF on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", QPLL_LPF);
+      $display(
+          "Attribute Syntax Error : The Attribute QPLL_LPF on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          QPLL_LPF);
       #1 $finish;
     end
 
     if ((SIM_QPLLREFCLK_SEL >= 3'b0) && (SIM_QPLLREFCLK_SEL <= 3'b111))
       SIM_QPLLREFCLK_SEL_BINARY = SIM_QPLLREFCLK_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute SIM_QPLLREFCLK_SEL on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.", SIM_QPLLREFCLK_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute SIM_QPLLREFCLK_SEL on X_GTXE2_COMMON instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.",
+          SIM_QPLLREFCLK_SEL);
       #1 $finish;
     end
 
@@ -349,11 +377,9 @@ module GTXE2_COMMON (
 
     //After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
     case (sfsm)
-      FSM_IDLE:   
-            begin
-               if(delay_DRPEN == 1'b1)
-		 sfsm <= FSM_WAIT;  
-            end
+      FSM_IDLE: begin
+        if (delay_DRPEN == 1'b1) sfsm <= FSM_WAIT;
+      end
 
       FSM_WAIT: begin
         // After the 1st DRPEN, 4 cases can happen

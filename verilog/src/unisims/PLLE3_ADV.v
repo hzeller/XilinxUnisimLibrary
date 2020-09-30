@@ -387,7 +387,8 @@ module PLLE3_ADV #(
     #1;
     trig_attr = ~trig_attr;
     if ($realtime == 0) begin
-      $display ("Error: [Unisim %s-1] Simulator resolution is set to a value greater than 1 ps. ", MODULE_NAME);
+      $display("Error: [Unisim %s-1] Simulator resolution is set to a value greater than 1 ps. ",
+               MODULE_NAME);
       $display("The simulator resolution must be set to 1ps or smaller. Instance %m");
       #1 $finish;
     end
@@ -396,61 +397,83 @@ module PLLE3_ADV #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((CLKFBOUT_MULT_REG < M_MIN) || (CLKFBOUT_MULT_REG > M_MAX))) begin
-      $display("Error: [Unisim %s-102] CLKFBOUT_MULT attribute is set to %d.  Legal values for this attribute are %d to %d. Instance: %m", MODULE_NAME, CLKFBOUT_MULT_REG, M_MIN, M_MAX);
+      $display(
+          "Error: [Unisim %s-102] CLKFBOUT_MULT attribute is set to %d.  Legal values for this attribute are %d to %d. Instance: %m",
+          MODULE_NAME, CLKFBOUT_MULT_REG, M_MIN, M_MAX);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (CLKFBOUT_PHASE_REG < -360.000 || CLKFBOUT_PHASE_REG > 360.000)) begin
-      $display("Error: [Unisim %s-103] CLKFBOUT_PHASE attribute is set to %f.  Legal values for this attribute are -360.000 to 360.000. Instance: %m", MODULE_NAME, CLKFBOUT_PHASE_REG);
+      $display(
+          "Error: [Unisim %s-103] CLKFBOUT_PHASE attribute is set to %f.  Legal values for this attribute are -360.000 to 360.000. Instance: %m",
+          MODULE_NAME, CLKFBOUT_PHASE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (CLKIN_FREQ_MAX_REG < 800.000 || CLKIN_FREQ_MAX_REG > 1066.000)) begin
-      $display("Error: [Unisim %s-107] CLKIN_FREQ_MAX attribute is set to %f.  Legal values for this attribute are 800.000 to 1066.000. Instance: %m", MODULE_NAME, CLKIN_FREQ_MAX_REG);
+      $display(
+          "Error: [Unisim %s-107] CLKIN_FREQ_MAX attribute is set to %f.  Legal values for this attribute are 800.000 to 1066.000. Instance: %m",
+          MODULE_NAME, CLKIN_FREQ_MAX_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (CLKIN_FREQ_MIN_REG < 70.000 || CLKIN_FREQ_MIN_REG > 70.000)) begin
-      $display("Error: [Unisim %s-108] CLKIN_FREQ_MIN attribute is set to %f.  Legal values for this attribute are 70.000 to 70.000. Instance: %m", MODULE_NAME, CLKIN_FREQ_MIN_REG);
+      $display(
+          "Error: [Unisim %s-108] CLKIN_FREQ_MIN attribute is set to %f.  Legal values for this attribute are 70.000 to 70.000. Instance: %m",
+          MODULE_NAME, CLKIN_FREQ_MIN_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (CLKIN_PERIOD_REG < 0.000 || CLKIN_PERIOD_REG > 14.286)) begin
-      $display("Error: [Unisim %s-105] CLKIN_PERIOD attribute is set to %f.  Legal values for this attribute are 0.000 to 14.286. Instance: %m", MODULE_NAME, CLKIN_PERIOD_REG);
+      $display(
+          "Error: [Unisim %s-105] CLKIN_PERIOD attribute is set to %f.  Legal values for this attribute are 0.000 to 14.286. Instance: %m",
+          MODULE_NAME, CLKIN_PERIOD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLKOUT0_DIVIDE_REG < 1) || (CLKOUT0_DIVIDE_REG > 128))) begin
-      $display("Error: [Unisim %s-106] CLKOUT0_DIVIDE attribute is set to %d.  Legal values for this attribute are 1 to 128. Instance: %m", MODULE_NAME, CLKOUT0_DIVIDE_REG);
+      $display(
+          "Error: [Unisim %s-106] CLKOUT0_DIVIDE attribute is set to %d.  Legal values for this attribute are 1 to 128. Instance: %m",
+          MODULE_NAME, CLKOUT0_DIVIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (CLKOUT0_DUTY_CYCLE_REG < 0.001 || CLKOUT0_DUTY_CYCLE_REG > 0.999)) begin
-      $display("Error: [Unisim %s-110] CLKOUT0_DUTY_CYCLE attribute is set to %f.  Legal values for this attribute are 0.001 to 0.999. Instance: %m", MODULE_NAME, CLKOUT0_DUTY_CYCLE_REG);
+      $display(
+          "Error: [Unisim %s-110] CLKOUT0_DUTY_CYCLE attribute is set to %f.  Legal values for this attribute are 0.001 to 0.999. Instance: %m",
+          MODULE_NAME, CLKOUT0_DUTY_CYCLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (CLKOUT0_PHASE_REG < -360.000 || CLKOUT0_PHASE_REG > 360.000)) begin
-      $display("Error: [Unisim %s-111] CLKOUT0_PHASE attribute is set to %f.  Legal values for this attribute are -360.000 to 360.000. Instance: %m", MODULE_NAME, CLKOUT0_PHASE_REG);
+      $display(
+          "Error: [Unisim %s-111] CLKOUT0_PHASE attribute is set to %f.  Legal values for this attribute are -360.000 to 360.000. Instance: %m",
+          MODULE_NAME, CLKOUT0_PHASE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((CLKOUT1_DIVIDE_REG < 1) || (CLKOUT1_DIVIDE_REG > 128))) begin
-      $display("Error: [Unisim %s-113] CLKOUT1_DIVIDE attribute is set to %d.  Legal values for this attribute are 1 to 128. Instance: %m", MODULE_NAME, CLKOUT1_DIVIDE_REG);
+      $display(
+          "Error: [Unisim %s-113] CLKOUT1_DIVIDE attribute is set to %d.  Legal values for this attribute are 1 to 128. Instance: %m",
+          MODULE_NAME, CLKOUT1_DIVIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (CLKOUT1_DUTY_CYCLE_REG < 0.001 || CLKOUT1_DUTY_CYCLE_REG > 0.999)) begin
-      $display("Error: [Unisim %s-114] CLKOUT1_DUTY_CYCLE attribute is set to %f.  Legal values for this attribute are 0.001 to 0.999. Instance: %m", MODULE_NAME, CLKOUT1_DUTY_CYCLE_REG);
+      $display(
+          "Error: [Unisim %s-114] CLKOUT1_DUTY_CYCLE attribute is set to %f.  Legal values for this attribute are 0.001 to 0.999. Instance: %m",
+          MODULE_NAME, CLKOUT1_DUTY_CYCLE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (CLKOUT1_PHASE_REG < -360.000 || CLKOUT1_PHASE_REG > 360.000)) begin
-      $display("Error: [Unisim %s-115] CLKOUT1_PHASE attribute is set to %f.  Legal values for this attribute are -360.000 to 360.000. Instance: %m", MODULE_NAME, CLKOUT1_PHASE_REG);
+      $display(
+          "Error: [Unisim %s-115] CLKOUT1_PHASE attribute is set to %f.  Legal values for this attribute are -360.000 to 360.000. Instance: %m",
+          MODULE_NAME, CLKOUT1_PHASE_REG);
       attr_err = 1'b1;
     end
 
@@ -458,18 +481,24 @@ module PLLE3_ADV #(
         ((CLKOUTPHY_MODE_REG != "VCO_2X") &&
          (CLKOUTPHY_MODE_REG != "VCO") &&
          (CLKOUTPHY_MODE_REG != "VCO_HALF"))) begin
-      $display("Error: [Unisim %s-112] CLKOUTPHY_MODE attribute is set to %s.  Legal values for this attribute are VCO_2X, VCO or VCO_HALF. Instance: %m", MODULE_NAME, CLKOUTPHY_MODE_REG);
+      $display(
+          "Error: [Unisim %s-112] CLKOUTPHY_MODE attribute is set to %s.  Legal values for this attribute are VCO_2X, VCO or VCO_HALF. Instance: %m",
+          MODULE_NAME, CLKOUTPHY_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (CLKPFD_FREQ_MAX_REG < 600.000 || CLKPFD_FREQ_MAX_REG > 667.500)) begin
-      $display("Error: [Unisim %s-138] CLKPFD_FREQ_MAX attribute is set to %f.  Legal values for this attribute are 550.000 to 667.500. Instance: %m", MODULE_NAME, CLKPFD_FREQ_MAX_REG);
+      $display(
+          "Error: [Unisim %s-138] CLKPFD_FREQ_MAX attribute is set to %f.  Legal values for this attribute are 550.000 to 667.500. Instance: %m",
+          MODULE_NAME, CLKPFD_FREQ_MAX_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (CLKPFD_FREQ_MIN_REG < 70.000 || CLKPFD_FREQ_MIN_REG > 70.000)) begin
-      $display("Error: [Unisim %s-139] CLKPFD_FREQ_MIN attribute is set to %f.  Legal values for this attribute are 70.000 to 70.000. Instance: %m", MODULE_NAME, CLKPFD_FREQ_MIN_REG);
+      $display(
+          "Error: [Unisim %s-139] CLKPFD_FREQ_MIN attribute is set to %f.  Legal values for this attribute are 70.000 to 70.000. Instance: %m",
+          MODULE_NAME, CLKPFD_FREQ_MIN_REG);
       attr_err = 1'b1;
     end
 
@@ -477,59 +506,79 @@ module PLLE3_ADV #(
         ((COMPENSATION_REG != "AUTO") &&
          (COMPENSATION_REG != "BUF_IN") &&
          (COMPENSATION_REG != "INTERNAL"))) begin
-      $display("Error: [Unisim %s-140] COMPENSATION attribute is set to %s.  Legal values for this attribute are AUTO, BUF_IN or INTERNAL. Instance: %m", MODULE_NAME, COMPENSATION_REG);
+      $display(
+          "Error: [Unisim %s-140] COMPENSATION attribute is set to %s.  Legal values for this attribute are AUTO, BUF_IN or INTERNAL. Instance: %m",
+          MODULE_NAME, COMPENSATION_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DIVCLK_DIVIDE_REG < 1) || (DIVCLK_DIVIDE_REG > 15))) begin
-      $display("Error: [Unisim %s-141] DIVCLK_DIVIDE attribute is set to %d.  Legal values for this attribute are 1 to 15. Instance: %m", MODULE_NAME, DIVCLK_DIVIDE_REG);
+      $display(
+          "Error: [Unisim %s-141] DIVCLK_DIVIDE attribute is set to %d.  Legal values for this attribute are 1 to 15. Instance: %m",
+          MODULE_NAME, DIVCLK_DIVIDE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((IS_CLKFBIN_INVERTED_REG !== 1'b0) && (IS_CLKFBIN_INVERTED_REG !== 1'b1))) begin
-      $display("Error: [Unisim %s-142] IS_CLKFBIN_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m", MODULE_NAME, IS_CLKFBIN_INVERTED_REG);
+      $display(
+          "Error: [Unisim %s-142] IS_CLKFBIN_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m",
+          MODULE_NAME, IS_CLKFBIN_INVERTED_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((IS_CLKIN_INVERTED_REG !== 1'b0) && (IS_CLKIN_INVERTED_REG !== 1'b1))) begin
-      $display("Error: [Unisim %s-143] IS_CLKIN_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m", MODULE_NAME, IS_CLKIN_INVERTED_REG);
+      $display(
+          "Error: [Unisim %s-143] IS_CLKIN_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m",
+          MODULE_NAME, IS_CLKIN_INVERTED_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((IS_PWRDWN_INVERTED_REG !== 1'b0) && (IS_PWRDWN_INVERTED_REG !== 1'b1))) begin
-      $display("Error: [Unisim %s-148] IS_PWRDWN_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m", MODULE_NAME, IS_PWRDWN_INVERTED_REG);
+      $display(
+          "Error: [Unisim %s-148] IS_PWRDWN_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m",
+          MODULE_NAME, IS_PWRDWN_INVERTED_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((IS_RST_INVERTED_REG !== 1'b0) && (IS_RST_INVERTED_REG !== 1'b1))) begin
-      $display("Error: [Unisim %s-149] IS_RST_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m", MODULE_NAME, IS_RST_INVERTED_REG);
+      $display(
+          "Error: [Unisim %s-149] IS_RST_INVERTED attribute is set to %b.  Legal values for this attribute are 1'b0 to 1'b1. Instance: %m",
+          MODULE_NAME, IS_RST_INVERTED_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (REF_JITTER_REG < 0.000 || REF_JITTER_REG > 0.999)) begin
-      $display("Error: [Unisim %s-150] REF_JITTER attribute is set to %f.  Legal values for this attribute are 0.000 to 0.999. Instance: %m", MODULE_NAME, REF_JITTER_REG);
+      $display(
+          "Error: [Unisim %s-150] REF_JITTER attribute is set to %f.  Legal values for this attribute are 0.000 to 0.999. Instance: %m",
+          MODULE_NAME, REF_JITTER_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((STARTUP_WAIT_REG != "TRUE") &&
          (STARTUP_WAIT_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-155] STARTUP_WAIT attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, STARTUP_WAIT_REG);
+      $display(
+          "Error: [Unisim %s-155] STARTUP_WAIT attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, STARTUP_WAIT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         (VCOCLK_FREQ_MAX_REG < 1200.000 || VCOCLK_FREQ_MAX_REG > 1335.000)) begin
-      $display("Error: [Unisim %s-156] VCOCLK_FREQ_MAX attribute is set to %f.  Legal values for this attribute are 1200.000 to 1335.000. Instance: %m", MODULE_NAME, VCOCLK_FREQ_MAX_REG);
+      $display(
+          "Error: [Unisim %s-156] VCOCLK_FREQ_MAX attribute is set to %f.  Legal values for this attribute are 1200.000 to 1335.000. Instance: %m",
+          MODULE_NAME, VCOCLK_FREQ_MAX_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || (VCOCLK_FREQ_MIN_REG < VF_MIN || VCOCLK_FREQ_MIN_REG > VF_MIN)) begin
-      $display("Error: [Unisim %s-157] VCOCLK_FREQ_MIN attribute is set to %f.  Legal values for this attribute is %3.3f. Instance: %m", MODULE_NAME, VCOCLK_FREQ_MIN_REG, VF_MIN);
+      $display(
+          "Error: [Unisim %s-157] VCOCLK_FREQ_MIN attribute is set to %f.  Legal values for this attribute is %3.3f. Instance: %m",
+          MODULE_NAME, VCOCLK_FREQ_MIN_REG, VF_MIN);
       attr_err = 1'b1;
     end
 
@@ -548,10 +597,8 @@ module PLLE3_ADV #(
     period_vco_min = 1000000 / VCOCLK_FREQ_MAX_REG;
     period_vco_target = 1000000 / VCOCLK_FREQ_TARGET;
     period_vco_target_half = period_vco_target / 2;
-    if (CLKIN_PERIOD_REG < 3.000)
-      fb_delay_max = CLKIN_PERIOD_REG;
-    else
-      fb_delay_max = 3.000;
+    if (CLKIN_PERIOD_REG < 3.000) fb_delay_max = CLKIN_PERIOD_REG;
+    else fb_delay_max = 3.000;
     pll_lock_time = 12;
     lock_period_time = 10;
     md_product = clkfb_div_fint * DIVCLK_DIVIDE_REG;
@@ -561,8 +608,10 @@ module PLLE3_ADV #(
     locked_en_time = md_product + clkout_en_time + 2;
     lock_cnt_max = locked_en_time + 16;
 
-    clk_out_para_cal (clk0_ht, clk0_lt, clk0_nocnt, clk0_edge, CLKOUT0_DIVIDE_REG, CLKOUT0_DUTY_CYCLE_REG);
-    clk_out_para_cal (clk1_ht, clk1_lt, clk1_nocnt, clk1_edge, CLKOUT1_DIVIDE_REG, CLKOUT1_DUTY_CYCLE_REG);
+    clk_out_para_cal(clk0_ht, clk0_lt, clk0_nocnt, clk0_edge, CLKOUT0_DIVIDE_REG,
+                     CLKOUT0_DUTY_CYCLE_REG);
+    clk_out_para_cal(clk1_ht, clk1_lt, clk1_nocnt, clk1_edge, CLKOUT1_DIVIDE_REG,
+                     CLKOUT1_DUTY_CYCLE_REG);
     clk_out_para_cal(clkind_ht, clkind_lt, clkind_nocnt, clkind_edge, DIVCLK_DIVIDE_REG, 0.50);
     clk_out_para_cal(clkfbm1_ht, clkfbm1_lt, clkfbm1_nocnt, clkfbm1_edge, clkfb_div_fint, 0.50);
     tmp_string = "CLKOUT0_PHASE";
@@ -574,255 +623,255 @@ module PLLE3_ADV #(
 
     case (clkfb_div_fint)
       2: begin
-        pll_cp = 4'd3;
+        pll_cp  = 4'd3;
         pll_res = 4'd7;
       end
       3: begin
-        pll_cp = 4'd5;
+        pll_cp  = 4'd5;
         pll_res = 4'd15;
       end
       4: begin
-        pll_cp = 4'd7;
+        pll_cp  = 4'd7;
         pll_res = 4'd15;
       end
       5: begin
-        pll_cp = 4'd7;
+        pll_cp  = 4'd7;
         pll_res = 4'd11;
       end
       6: begin
-        pll_cp = 4'd13;
+        pll_cp  = 4'd13;
         pll_res = 4'd7;
       end
       7: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd11;
       end
       8: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd13;
       end
       9: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd13;
       end
       10: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd3;
       end
       11: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd5;
       end
       12: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd5;
       end
       13: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd9;
       end
       14: begin
-        pll_cp = 4'd13;
+        pll_cp  = 4'd13;
         pll_res = 4'd1;
       end
       15: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd14;
       end
       16: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd1;
       end
       17: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd1;
       end
       18: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd1;
       end
       19: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd1;
       end
       20: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd6;
       end
       21: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd6;
       end
       22: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd6;
       end
       23: begin
-        pll_cp = 4'd15;
+        pll_cp  = 4'd15;
         pll_res = 4'd6;
       end
       24: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd10;
       end
       25: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd10;
       end
       26: begin
-        pll_cp = 4'd14;
+        pll_cp  = 4'd14;
         pll_res = 4'd10;
       end
       27: begin
-        pll_cp = 4'd13;
+        pll_cp  = 4'd13;
         pll_res = 4'd10;
       end
       28: begin
-        pll_cp = 4'd6;
+        pll_cp  = 4'd6;
         pll_res = 4'd2;
       end
       29: begin
-        pll_cp = 4'd6;
+        pll_cp  = 4'd6;
         pll_res = 4'd2;
       end
       30: begin
-        pll_cp = 4'd6;
+        pll_cp  = 4'd6;
         pll_res = 4'd2;
       end
       31: begin
-        pll_cp = 4'd13;
+        pll_cp  = 4'd13;
         pll_res = 4'd6;
       end
       32: begin
-        pll_cp = 4'd12;
+        pll_cp  = 4'd12;
         pll_res = 4'd10;
       end
       33: begin
-        pll_cp = 4'd6;
+        pll_cp  = 4'd6;
         pll_res = 4'd12;
       end
       34: begin
-        pll_cp = 4'd6;
+        pll_cp  = 4'd6;
         pll_res = 4'd12;
       end
       35: begin
-        pll_cp = 4'd5;
+        pll_cp  = 4'd5;
         pll_res = 4'd2;
       end
       36: begin
-        pll_cp = 4'd3;
+        pll_cp  = 4'd3;
         pll_res = 4'd4;
       end
       37: begin
-        pll_cp = 4'd3;
+        pll_cp  = 4'd3;
         pll_res = 4'd4;
       end
       38: begin
-        pll_cp = 4'd3;
+        pll_cp  = 4'd3;
         pll_res = 4'd4;
       end
       39: begin
-        pll_cp = 4'd3;
+        pll_cp  = 4'd3;
         pll_res = 4'd4;
       end
       40: begin
-        pll_cp = 4'd3;
+        pll_cp  = 4'd3;
         pll_res = 4'd4;
       end
       41: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       42: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       43: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       44: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       45: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       46: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       47: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       48: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       49: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       50: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       51: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       52: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       53: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd8;
       end
       54: begin
-        pll_cp = 4'd4;
+        pll_cp  = 4'd4;
         pll_res = 4'd12;
       end
       55: begin
-        pll_cp = 4'd4;
+        pll_cp  = 4'd4;
         pll_res = 4'd12;
       end
       56: begin
-        pll_cp = 4'd4;
+        pll_cp  = 4'd4;
         pll_res = 4'd12;
       end
       57: begin
-        pll_cp = 4'd4;
+        pll_cp  = 4'd4;
         pll_res = 4'd12;
       end
       58: begin
-        pll_cp = 4'd4;
+        pll_cp  = 4'd4;
         pll_res = 4'd12;
       end
       59: begin
-        pll_cp = 4'd4;
+        pll_cp  = 4'd4;
         pll_res = 4'd12;
       end
       60: begin
-        pll_cp = 4'd4;
+        pll_cp  = 4'd4;
         pll_res = 4'd12;
       end
       61: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd4;
       end
       62: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd4;
       end
       63: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd4;
       end
       64: begin
-        pll_cp = 4'd2;
+        pll_cp  = 4'd2;
         pll_res = 4'd4;
       end
     endcase
@@ -1280,7 +1329,9 @@ module PLLE3_ADV #(
     dr_sram[8] = {3'bx, 1'b1, clk0_ht[5:0], clk0_lt[5:0]};
     dr_sram[9] = {8'b0, clk0_edge, clk0_nocnt, clkout0_dly[5:0]};
     dr_sram[10] = {3'bx, 1'b1, clk1_ht[5:0], clk1_lt[5:0]};
-    dr_sram[11] = {1'bx, xiphy_mode[1], xiphy_mode[0],3'bx, 2'b0, clk1_edge, clk1_nocnt, clkout1_dly[5:0]};
+    dr_sram[11] = {
+      1'bx, xiphy_mode[1], xiphy_mode[0], 3'bx, 2'b0, clk1_edge, clk1_nocnt, clkout1_dly[5:0]
+    };
     dr_sram[20] = {3'bx, 1'b1, clkfbm1_ht[5:0], clkfbm1_lt[5:0]};
     dr_sram[21] = {8'b0, clkfbm1_edge, clkfbm1_nocnt, clkfbm1_dly[5:0]};
     dr_sram[22] = {2'bx, clkind_edge, clkind_nocnt, clkind_ht[5:0], clkind_lt[5:0]};
@@ -1290,7 +1341,9 @@ module PLLE3_ADV #(
     dr_sram[26] = {1'bx, drp_lock_ref_dly, drp_lock_sat_high};
     dr_sram[28] = {11'bx, 5'b0};
     dr_sram[78] = {pll_cp[3], 2'bx, pll_cp[2:1], 2'bx, pll_cp[0], 1'b0, 2'bx, pll_cpres, 3'bx};
-    dr_sram[79] = {pll_res[3], 2'bx, pll_res[2:1], 2'bx, pll_res[0], pll_lfhf[1], 2'bx, pll_lfhf[0], 4'bx};
+    dr_sram[79] = {
+      pll_res[3], 2'bx, pll_res[2:1], 2'bx, pll_res[0], pll_lfhf[1], 2'bx, pll_lfhf[0], 4'bx
+    };
   end
 
   initial begin
@@ -1394,39 +1447,42 @@ module PLLE3_ADV #(
   always @(posedge init_chk) begin
     clkin_chk_t1_r = 1000.000 / CLKIN_FREQ_MIN_REG;
     clkin_chk_t1_i = $rtoi(1000.0 * clkin_chk_t1_r);
-    clkin_chk_t1 = 0.001 * clkin_chk_t1_i;
+    clkin_chk_t1   = 0.001 * clkin_chk_t1_i;
     clkin_chk_t2_r = 1000.000 / CLKIN_FREQ_MAX_REG;
     clkin_chk_t2_i = $rtoi(1000.0 * clkin_chk_t2_r);
-    clkin_chk_t2 = 0.001 * clkin_chk_t2_i;
+    clkin_chk_t2   = 0.001 * clkin_chk_t2_i;
 
     if (($time > 1) && (CLKIN_PERIOD_REG > clkin_chk_t1 || CLKIN_PERIOD_REG < clkin_chk_t2)) begin
-      $display ("Error: [Unisim %s-2] The attribute CLKIN_PERIOD is set to %f ns and out of the allowed range %f ns to %f ns. Instance %m.", MODULE_NAME, CLKIN_PERIOD_REG, clkin_chk_t2, clkin_chk_t1);
+      $display(
+          "Error: [Unisim %s-2] The attribute CLKIN_PERIOD is set to %f ns and out of the allowed range %f ns to %f ns. Instance %m.",
+          MODULE_NAME, CLKIN_PERIOD_REG, clkin_chk_t2, clkin_chk_t1);
       #1 $finish;
     end
     clkvco_freq_init_chk = (1000.0 * CLKFBOUT_MULT_REG) / (CLKIN_PERIOD_REG * DIVCLK_DIVIDE_REG);
 
     if (($time > 1) && (clkvco_freq_init_chk > VCOCLK_FREQ_MAX_REG || clkvco_freq_init_chk < VCOCLK_FREQ_MIN_REG)) 
    begin
-      $display ("Error: [Unisim %s-3] The calculation of VCO frequency=%f Mhz. This exceeds the permitted VCO frequency range of %f Mhz to %f Mhz. The VCO frequency is calculated with formula: VCO frequency =  CLKFBOUT_MULT / (DIVCLK_DIVIDE * CLKIN_PERIOD). Please adjust the attributes to the permitted VCO frequency range. Instance %m", MODULE_NAME, clkvco_freq_init_chk, VCOCLK_FREQ_MIN_REG, VCOCLK_FREQ_MAX_REG);
+      $display(
+          "Error: [Unisim %s-3] The calculation of VCO frequency=%f Mhz. This exceeds the permitted VCO frequency range of %f Mhz to %f Mhz. The VCO frequency is calculated with formula: VCO frequency =  CLKFBOUT_MULT / (DIVCLK_DIVIDE * CLKIN_PERIOD). Please adjust the attributes to the permitted VCO frequency range. Instance %m",
+          MODULE_NAME, clkvco_freq_init_chk, VCOCLK_FREQ_MIN_REG, VCOCLK_FREQ_MAX_REG);
       #1 $finish;
     end
     clkpfd_freq_init_chk = (1000.0) / (CLKIN_PERIOD_REG * DIVCLK_DIVIDE_REG);
 
     if ( ($time > 1)  && (clkpfd_freq_init_chk > CLKPFD_FREQ_MAX_REG || clkpfd_freq_init_chk < CLKPFD_FREQ_MIN_REG)) begin
-      $display ("Error: [Unisim %s-4] The calculation of PFD frequency=%f Mhz. This exceeds the permitted PFD frequency range of %f Mhz to %f Mhz. The PFD frequency is calculated with formula: PFD frequency =  1 /(DIVCLK_DIVIDE * CLKIN_PERIOD). Please adjust the attributes to the permitted PFD frequency range. Instance %m", MODULE_NAME, clkpfd_freq_init_chk, CLKPFD_FREQ_MIN_REG, CLKPFD_FREQ_MAX_REG);
+      $display(
+          "Error: [Unisim %s-4] The calculation of PFD frequency=%f Mhz. This exceeds the permitted PFD frequency range of %f Mhz to %f Mhz. The PFD frequency is calculated with formula: PFD frequency =  1 /(DIVCLK_DIVIDE * CLKIN_PERIOD). Please adjust the attributes to the permitted PFD frequency range. Instance %m",
+          MODULE_NAME, clkpfd_freq_init_chk, CLKPFD_FREQ_MIN_REG, CLKPFD_FREQ_MAX_REG);
       #1 $finish;
     end
   end
 
   assign pwrdwn_in1 = (pwrdwn_in === 1) ? 1 : 0;
-  assign rst_input = (rst_input_r === 1 | pwrdwn_in1 === 1) ? 1 : 0;
+  assign rst_input  = (rst_input_r === 1 | pwrdwn_in1 === 1) ? 1 : 0;
 
-  always @(posedge clkin_in or posedge rst_input)
-  begin
-    if (rst_input)
-      rst_in <= 1;
-    else
-      rst_in <= rst_input ;
+  always @(posedge clkin_in or posedge rst_input) begin
+    if (rst_input) rst_in <= 1;
+    else rst_in <= rst_input;
   end
 
   // DRP port read write
@@ -1441,7 +1497,9 @@ module PLLE3_ADV #(
       if (den_in == 1) begin
         valid_daddr = addr_is_valid(daddr_in);
         if (drp_lock == 1) begin
-          $display("Warning: [Unisim %s-14] DEN is high at time %t. Need wait for DRDY signal before next read/write operation through DRP. Instance %m ", MODULE_NAME, $time);
+          $display(
+              "Warning: [Unisim %s-14] DEN is high at time %t. Need wait for DRDY signal before next read/write operation through DRP. Instance %m ",
+              MODULE_NAME, $time);
         end else begin
           drp_lock <= 1;
           daddr_lat <= daddr_in;
@@ -1453,7 +1511,9 @@ module PLLE3_ADV #(
         //        end
         //        else begin
         if (valid_daddr == 0) begin
-          $display("Warning: [Unisim %s-6] Address DADDR=%b is unsupported at time %t. Instance %m.", MODULE_NAME, DADDR, $time);
+          $display(
+              "Warning: [Unisim %s-6] Address DADDR=%b is unsupported at time %t. Instance %m.",
+              MODULE_NAME, DADDR, $time);
         end
 
         if (dwe_in == 1) begin  // write process
@@ -1467,19 +1527,21 @@ module PLLE3_ADV #(
             //                daddr_in == 7'b1011100)) begin // 92
             if (valid_daddr) dr_sram[daddr_in] <= di_in;
             //             end
-            if (daddr_in == 7'b0001000) // 8
-               clkout_hl_para_drp (clk0_lt, clk0_ht, di_in, daddr_in);
-            if (daddr_in == 7'b0001001) // 9
-               clkout_delay_para_drp (clkout0_dly, clk0_nocnt, clk0_edge, di_in, daddr_in);
-            if (daddr_in == 7'b0001010) // 10
-               clkout_hl_para_drp (clk1_lt, clk1_ht, di_in, daddr_in);
-            if (daddr_in == 7'b0001011) // 11
-               clkout_delay_para_drp (clkout1_dly, clk1_nocnt, clk1_edge, di_in, daddr_in);
+            if (daddr_in == 7'b0001000)  // 8
+              clkout_hl_para_drp(clk0_lt, clk0_ht, di_in, daddr_in);
+            if (daddr_in == 7'b0001001)  // 9
+              clkout_delay_para_drp(clkout0_dly, clk0_nocnt, clk0_edge, di_in, daddr_in);
+            if (daddr_in == 7'b0001010)  // 10
+              clkout_hl_para_drp(clk1_lt, clk1_ht, di_in, daddr_in);
+            if (daddr_in == 7'b0001011)  // 11
+              clkout_delay_para_drp(clkout1_dly, clk1_nocnt, clk1_edge, di_in, daddr_in);
             if (daddr_in == 7'b0010100) begin  // 20
               clkout_hl_para_drp(clkfbm1_lt, clkfbm1_ht, di_in, daddr_in);
               clkfbtmp_divi = clkfbm1_ht + clkfbm1_lt;
               if (clkfbtmp_divi > M_MAX || (clkfbtmp_divi < M_MIN))
-                  $display("Error: [Unisim %s-7] DI at Address DADDR=%b is %h at at time %t. The sum of DI[11:6] and DI[5:0] is %d and over the range of %d to %d. Instance %m.", MODULE_NAME, daddr_in, di_in, $time, clkfbtmp_divi, M_MIN, M_MAX);
+                $display(
+                    "Error: [Unisim %s-7] DI at Address DADDR=%b is %h at at time %t. The sum of DI[11:6] and DI[5:0] is %d and over the range of %d to %d. Instance %m.",
+                    MODULE_NAME, daddr_in, di_in, $time, clkfbtmp_divi, M_MIN, M_MAX);
             end
             if (daddr_in == 7'b0010101) begin  // 21
               clkout_delay_para_drp(clkfbm1_dly, clkfbm1_nocnt, clkfbm1_edge, di_in, daddr_in);
@@ -1493,25 +1555,24 @@ module PLLE3_ADV #(
               clkind_ht <= clkind_hti;
               clkind_nocnt <= di_in[12];
               clkind_nocnti = di_in[12];
-              clkind_edgei = di_in[13];
+              clkind_edgei  = di_in[13];
               clkind_edge <= di_in[13];
-              if (di_in[12] == 1)
-                      clkind_divi = 8'b00000001;
-               else if (di_in[5:0] == 6'b0 && di_in[11:6] == 6'b0)
-                      clkind_divi = 8'b10000000;
-               else if (di_in[5:0] == 6'b0)
-                      clkind_divi = 64 + clkind_hti;
-               else if (di_in[11:6] == 6'b0)
-                      clkind_divi = 64 + clkind_lti;
-               else
-                      clkind_divi = clkind_hti + clkind_lti;
+              if (di_in[12] == 1) clkind_divi = 8'b00000001;
+              else if (di_in[5:0] == 6'b0 && di_in[11:6] == 6'b0) clkind_divi = 8'b10000000;
+              else if (di_in[5:0] == 6'b0) clkind_divi = 64 + clkind_hti;
+              else if (di_in[11:6] == 6'b0) clkind_divi = 64 + clkind_lti;
+              else clkind_divi = clkind_hti + clkind_lti;
 
               clkind_div <= clkind_divi;
               if (clkind_divi > D_MAX || (clkind_divi < D_MIN && clkind_nocnti == 0))
-                  $display("Error: [Unisim %s-8] DI at Address DADDR=%b is %h at time %t. The sum of DI[11:6] and DI[5:0] is %d and over the range of %d to %d. Instance %m.", MODULE_NAME, daddr_in, di_in, $time, clkind_divi, D_MIN, D_MAX);
+                $display(
+                    "Error: [Unisim %s-8] DI at Address DADDR=%b is %h at time %t. The sum of DI[11:6] and DI[5:0] is %d and over the range of %d to %d. Instance %m.",
+                    MODULE_NAME, daddr_in, di_in, $time, clkind_divi, D_MIN, D_MAX);
             end
           end else begin
-            $display("Error: [Unisim %s-9] RST is low at time %t. RST needs to be high when changing paramters through DRP. Instance %m ", MODULE_NAME, $time);
+            $display(
+                "Error: [Unisim %s-9] RST is low at time %t. RST needs to be high when changing paramters through DRP. Instance %m ",
+                MODULE_NAME, $time);
           end
         end  //DWE
       end  //DEN
@@ -1531,17 +1592,17 @@ module PLLE3_ADV #(
     input [6:0] daddr_funcin;
     begin
       addr_is_valid = 1;
-      for (i=0; i<=6; i=i+1) begin
-      if ( daddr_funcin[i] != 0 && daddr_funcin[i] != 1) addr_is_valid = 0;
-    end
+      for (i = 0; i <= 6; i = i + 1) begin
+        if (daddr_funcin[i] != 0 && daddr_funcin[i] != 1) addr_is_valid = 0;
+      end
       if (addr_is_valid == 1) begin
-        if ((daddr_funcin >= 7'b0001000 && daddr_funcin <= 7'b0001011) || // 8 - 11
-           (daddr_funcin >= 7'b0010100 && daddr_funcin <= 7'b0010110) || // 20 - 22
-           (daddr_funcin >= 7'b0011000 && daddr_funcin <= 7'b0011010) || // 24 - 26
-            daddr_funcin == 7'b0011100 || // 28
-            daddr_funcin == 7'b1001110 || // 78
-            daddr_funcin == 7'b1001111 || // 79
-            daddr_funcin == 7'b1011100) begin // 92
+        if ((daddr_funcin >= 7'b0001000 && daddr_funcin <= 7'b0001011) ||  // 8 - 11
+            (daddr_funcin >= 7'b0010100 && daddr_funcin <= 7'b0010110) ||  // 20 - 22
+            (daddr_funcin >= 7'b0011000 && daddr_funcin <= 7'b0011010) ||  // 24 - 26
+            daddr_funcin == 7'b0011100 ||  // 28
+            daddr_funcin == 7'b1001110 ||  // 78
+            daddr_funcin == 7'b1001111 ||  // 79
+            daddr_funcin == 7'b1011100) begin  // 92
           addr_is_valid = 1;
         end else begin
           addr_is_valid = 0;
@@ -1556,7 +1617,9 @@ module PLLE3_ADV #(
     pchk_tmp1 = CLKIN_PERIOD_REG * 1100;
     pchk_tmp2 = CLKIN_PERIOD_REG * 900;
     if (period_avg > pchk_tmp1 || period_avg < pchk_tmp2) begin
-      $display("Warning: [Unisim %s-10] input CLKIN period (%f) and attribute CLKIN_PERIOD (%f) are not same. Instance %m.", MODULE_NAME, period_avg, CLKIN_PERIOD_REG);
+      $display(
+          "Warning: [Unisim %s-10] input CLKIN period (%f) and attribute CLKIN_PERIOD (%f) are not same. Instance %m.",
+          MODULE_NAME, period_avg, CLKIN_PERIOD_REG);
     end
   end
 
@@ -1586,11 +1649,10 @@ module PLLE3_ADV #(
       end
 
       if (pll_unlock == 0 && clkin_edge != 0 && clkinstopped_out == 0)
-         clkin_jit <=  $time - clkin_edge - clkin_period[0];
-      else
-         clkin_jit <= 0;
-      if ( ~glblGSR && (clkin_lock_cnt < lock_cnt_max) && fb_delay_found && pll_unlock1 == 0)
-         clkin_lock_cnt <= clkin_lock_cnt + 1;
+        clkin_jit <= $time - clkin_edge - clkin_period[0];
+      else clkin_jit <= 0;
+      if (~glblGSR && (clkin_lock_cnt < lock_cnt_max) && fb_delay_found && pll_unlock1 == 0)
+        clkin_lock_cnt <= clkin_lock_cnt + 1;
       else if (pll_unlock1 == 1 && pll_locked_tmp1 == 1) begin
         clkin_lock_cnt <= lock_cnt_max - 6;
         unlock_recover <= 1;
@@ -1607,12 +1669,10 @@ module PLLE3_ADV #(
   always @(clkin_period[0] or clkin_period[1] or clkin_period[2] or
            clkin_period[3] or clkin_period[4] or period_avg)
   begin
-    if (clkin_period[0] > clkin_period[1])
-        clkin_period_tmp = clkin_period[0] - clkin_period[1];
-    else
-        clkin_period_tmp = clkin_period[1] - clkin_period[0];
+    if (clkin_period[0] > clkin_period[1]) clkin_period_tmp = clkin_period[0] - clkin_period[1];
+    else clkin_period_tmp = clkin_period[1] - clkin_period[0];
 
-    if ( (clkin_period[0] != period_avg) && (clkin_period[0] < 1.5 * period_avg || clkin_period_tmp <= 300) ) 
+    if ( (clkin_period[0] != period_avg) && (clkin_period[0] < 1.5 * period_avg || clkin_period_tmp <= 300) )
       period_avg = (clkin_period[0] + clkin_period[1] + clkin_period[2] + clkin_period[3] + clkin_period[4])/5;
   end
 
@@ -1624,13 +1684,23 @@ module PLLE3_ADV #(
 
   assign init_trig = 1;
   always @(clk0_ht or clk0_lt or clk0_nocnt or init_trig or clk0_edge)
-      clkout_pm_cal(clk0_ht1, clk0_div, clk0_div1, clk0_ht, clk0_lt, clk0_nocnt, clk0_edge);
-  always @(clk1_ht or clk1_lt or clk1_nocnt or init_trig  or clk1_edge)
-      clkout_pm_cal(clk1_ht1, clk1_div, clk1_div1, clk1_ht, clk1_lt, clk1_nocnt, clk1_edge);
-  always @(clkfbm1_ht or clkfbm1_lt or clkfbm1_nocnt or init_trig  or clkfbm1_edge)
-      clkout_pm_cal(clkfbm1_ht1, clkfbm1_div, clkfbm1_div1, clkfbm1_ht, clkfbm1_lt, clkfbm1_nocnt, clkfbm1_edge);
-  always @(clkind_ht or clkind_lt or clkind_nocnt or init_trig  or clkind_edge)
-      clkout_pm_cal(clkind_ht1, clkind_div, clkind_div1, clkind_ht, clkind_lt, clkind_nocnt, clkind_edge);
+    clkout_pm_cal(
+        clk0_ht1, clk0_div, clk0_div1, clk0_ht, clk0_lt, clk0_nocnt, clk0_edge);
+  always @(clk1_ht or clk1_lt or clk1_nocnt or init_trig or clk1_edge)
+    clkout_pm_cal(
+        clk1_ht1, clk1_div, clk1_div1, clk1_ht, clk1_lt, clk1_nocnt, clk1_edge);
+  always @(clkfbm1_ht or clkfbm1_lt or clkfbm1_nocnt or init_trig or clkfbm1_edge)
+    clkout_pm_cal(
+        clkfbm1_ht1,
+        clkfbm1_div,
+        clkfbm1_div1,
+        clkfbm1_ht,
+        clkfbm1_lt,
+        clkfbm1_nocnt,
+        clkfbm1_edge);
+  always @(clkind_ht or clkind_lt or clkind_nocnt or init_trig or clkind_edge)
+    clkout_pm_cal(
+        clkind_ht1, clkind_div, clkind_div1, clkind_ht, clkind_lt, clkind_nocnt, clkind_edge);
 
 
   // Unlock due to jitter
@@ -1640,17 +1710,16 @@ module PLLE3_ADV #(
     else if (pll_locked_tmp2) begin
       if ((clkin_jit > REF_CLK_JITTER_MAX && clkin_jit < period_avg) ||
             (clkin_jit < -REF_CLK_JITTER_MAX && clkin_jit > -period_avg ))
-          clkpll_jitter_unlock = 1;
-        else
-          clkpll_jitter_unlock = 0;
+        clkpll_jitter_unlock = 1;
+      else clkpll_jitter_unlock = 0;
     end else clkpll_jitter_unlock = 0;
   end
 
   // Determine feedback delay - only internal feedback
 
-  always @(posedge clkin_in )
-    if (fb_delay_found) clkfb_tst <=  1'b0;
-    else clkfb_tst <=  ~clkfb_tst;
+  always @(posedge clkin_in)
+    if (fb_delay_found) clkfb_tst <= 1'b0;
+    else clkfb_tst <= ~clkfb_tst;
 
   always @(posedge clkfb_tst) delay_edge = $time;
 
@@ -1681,8 +1750,10 @@ module PLLE3_ADV #(
   always @(negedge clkfb_tst or negedge fb_delay_found_tmp) fb_delay_found <= fb_delay_found_tmp;
 
   always @(fb_delay)
-    if (rst_in==0 && (fb_delay/1000.0 > fb_delay_max)) begin
-      $display("Warning: [Unisim %s-11] The feedback delay at time %t is %f ns. It is over the maximum value %f ns. Instance %m.", MODULE_NAME, $time, fb_delay / 1000.0, fb_delay_max);
+    if (rst_in == 0 && (fb_delay / 1000.0 > fb_delay_max)) begin
+      $display(
+          "Warning: [Unisim %s-11] The feedback delay at time %t is %f ns. It is over the maximum value %f ns. Instance %m.",
+          MODULE_NAME, $time, fb_delay / 1000.0, fb_delay_max);
     end
 
 
@@ -1701,14 +1772,14 @@ module PLLE3_ADV #(
       period_vco_rm = period_fb % clkfbm1_div;
       if (period_vco_rm > 1) begin
         if (period_vco_rm > m_product2) begin
-          period_vco_cmp_cnt = m_product / (m_product - period_vco_rm) - 1;
+          period_vco_cmp_cnt  = m_product / (m_product - period_vco_rm) - 1;
           period_vco_cmp_flag = 2;
         end else begin
-          period_vco_cmp_cnt = (m_product / period_vco_rm) - 1;
+          period_vco_cmp_cnt  = (m_product / period_vco_rm) - 1;
           period_vco_cmp_flag = 1;
         end
       end else begin
-        period_vco_cmp_cnt = 0;
+        period_vco_cmp_cnt  = 0;
         period_vco_cmp_flag = 0;
       end
       period_vco_half = period_vco / 2;
@@ -1725,17 +1796,14 @@ module PLLE3_ADV #(
     end
   end
 
-  always @( clkin_in )    // Why these delays? 
+  always @(clkin_in)  // Why these delays? 
     clkpll_tmp1 <= #(period_avg) clkin_in;
 
   always @(clkpll_tmp1) clkpll <= #(period_avg) clkpll_tmp1;
 
-  always @(clkvco or clkvco_lk_tmp or rst_in) 
-  begin
-    if (rst_in)
-      clkvco  = 0;
-    else
-      clkvco  = clkvco_lk_tmp;
+  always @(clkvco or clkvco_lk_tmp or rst_in) begin
+    if (rst_in) clkvco = 0;
+    else clkvco = clkvco_lk_tmp;
   end
 
   // Xiphy clocks
@@ -1748,12 +1816,9 @@ module PLLE3_ADV #(
     end
   end
 
-  always @(posedge clkvco or posedge rst_in) 
-  begin
-    if (!xiphyen_sync || rst_in)
-      clkvco_by2  <= 0;
-    else
-      clkvco_by2  <= ~clkvco_by2;
+  always @(posedge clkvco or posedge rst_in) begin
+    if (!xiphyen_sync || rst_in) clkvco_by2 <= 0;
+    else clkvco_by2 <= ~clkvco_by2;
   end
 
   always @(posedge clkvco or posedge rst_in) begin
@@ -1797,14 +1862,10 @@ module PLLE3_ADV #(
           vcoflag = 1;
           clkout_en_t <= ik2;
           #(period_vco_half) clkvco_lk_tmp <= 0;
-          if ( clkvco_rm_cnt == 1)
-              #(period_vco_half_rm1) clkvco_lk_tmp <= 1;
-            else
-              #(period_vco_half_rm) clkvco_lk_tmp <= 1;
-          if ( clkvco_rm_cnt == period_vco_cmp_cnt) 
-              clkvco_rm_cnt <= 0;
-            else
-              clkvco_rm_cnt <= clkvco_rm_cnt + 1;
+          if (clkvco_rm_cnt == 1) #(period_vco_half_rm1) clkvco_lk_tmp <= 1;
+          else #(period_vco_half_rm) clkvco_lk_tmp <= 1;
+          if (clkvco_rm_cnt == period_vco_cmp_cnt) clkvco_rm_cnt <= 0;
+          else clkvco_rm_cnt <= clkvco_rm_cnt + 1;
         end
         clkout_en_t <= ik2;
       end else if (period_vco_cmp_flag == 2) begin
@@ -1812,14 +1873,10 @@ module PLLE3_ADV #(
         for (ik3 = 1; ik3 < m_product; ik3 = ik3 + 1) begin
           clkout_en_t <= ik3;
           #(period_vco_half) clkvco_lk_tmp <= 0;
-          if ( clkvco_rm_cnt == 1)
-              #(period_vco_half_rm) clkvco_lk_tmp <= 1;
-            else
-              #(period_vco_half_rm1) clkvco_lk_tmp <= 1;
-          if ( clkvco_rm_cnt == period_vco_cmp_cnt)
-              clkvco_rm_cnt <= 0;
-            else
-              clkvco_rm_cnt <= clkvco_rm_cnt + 1;
+          if (clkvco_rm_cnt == 1) #(period_vco_half_rm) clkvco_lk_tmp <= 1;
+          else #(period_vco_half_rm1) clkvco_lk_tmp <= 1;
+          if (clkvco_rm_cnt == period_vco_cmp_cnt) clkvco_rm_cnt <= 0;
+          else clkvco_rm_cnt <= clkvco_rm_cnt + 1;
         end
         clkout_en_t <= ik3;
       end else begin
@@ -1852,12 +1909,9 @@ module PLLE3_ADV #(
     dly_tmp1 = fb_delay + fbm1_comp_delay;
     dly_tmp_int = 1;
     dly_tmp = dly_tmp1;
-    if (dly_tmp == 0)
-      clkvco_delay = 0;
-    else if ( dly_tmp < val_tmp)
-      clkvco_delay = val_tmp - dly_tmp;
-    else
-      clkvco_delay = val_tmp - dly_tmp % val_tmp ;
+    if (dly_tmp == 0) clkvco_delay = 0;
+    else if (dly_tmp < val_tmp) clkvco_delay = val_tmp - dly_tmp;
+    else clkvco_delay = val_tmp - dly_tmp % val_tmp;
   end
 
   always @(clkvco) begin
@@ -1876,66 +1930,41 @@ module PLLE3_ADV #(
   assign clk1ps_en = (clk1_dly_cnt == clkout1_dly) ? clkout_en : 0;
   assign clkfbm1ps_en = (clkfbm1_dly_cnt == clkfbm1_dly) ? clkout_en : 0;
 
-  always  @(negedge clk0in or posedge rst_in)
-  begin
-    if (rst_in) 
-      clk0_dly_cnt <= 6'b0;
-    else
-      if (clk0_dly_cnt < clkout0_dly && clkout_en == 1)
-        clk0_dly_cnt <= clk0_dly_cnt + 1;
+  always @(negedge clk0in or posedge rst_in) begin
+    if (rst_in) clk0_dly_cnt <= 6'b0;
+    else if (clk0_dly_cnt < clkout0_dly && clkout_en == 1) clk0_dly_cnt <= clk0_dly_cnt + 1;
   end
 
-  always  @(negedge clk1in or posedge rst_in)
-  begin 
-    if (rst_in)
-      clk1_dly_cnt <= 6'b0;
-    else
-      if (clk1_dly_cnt < clkout1_dly && clkout_en ==1)
-        clk1_dly_cnt <= clk1_dly_cnt + 1;
+  always @(negedge clk1in or posedge rst_in) begin
+    if (rst_in) clk1_dly_cnt <= 6'b0;
+    else if (clk1_dly_cnt < clkout1_dly && clkout_en == 1) clk1_dly_cnt <= clk1_dly_cnt + 1;
   end
 
-  always  @(negedge clkfbm1in or posedge rst_in)
-  begin
-    if (rst_in) 
-        clkfbm1_dly_cnt <= 6'b0;
-    else
-       if (clkfbm1_dly_cnt < clkfbm1_dly && clkout_en == 1)
-          clkfbm1_dly_cnt <= clkfbm1_dly_cnt + 1;
+  always @(negedge clkfbm1in or posedge rst_in) begin
+    if (rst_in) clkfbm1_dly_cnt <= 6'b0;
+    else if (clkfbm1_dly_cnt < clkfbm1_dly && clkout_en == 1)
+      clkfbm1_dly_cnt <= clkfbm1_dly_cnt + 1;
   end
 
-  always @(clk0_out or clkfb_tst or fb_delay_found or rst_in)
-  begin
-    if (fb_delay_found == 1)
-      clkout0_out =  clk0_out;
-    else
-      if(rst_in == 1'b0)
-      clkout0_out = clkfb_tst;
+  always @(clk0_out or clkfb_tst or fb_delay_found or rst_in) begin
+    if (fb_delay_found == 1) clkout0_out = clk0_out;
+    else if (rst_in == 1'b0) clkout0_out = clkfb_tst;
   end
 
-  always @(clk1_out or clkfb_tst or fb_delay_found or rst_in)
-  begin
-    if (fb_delay_found == 1)
-      clkout1_out =  clk1_out;
-    else
-      if(rst_in == 1'b0)
-      clkout1_out = clkfb_tst;
+  always @(clk1_out or clkfb_tst or fb_delay_found or rst_in) begin
+    if (fb_delay_found == 1) clkout1_out = clk1_out;
+    else if (rst_in == 1'b0) clkout1_out = clkfb_tst;
   end
 
-  always @(clkfbm1_out or clkfb_tst or fb_delay_found or rst_in)
-  begin
-    if (fb_delay_found == 1)
-      clkfb_out =  clkfbm1_out;
-    else
-      if(rst_in == 1'b0)
-      clkfb_out = clkfb_tst;
+  always @(clkfbm1_out or clkfb_tst or fb_delay_found or rst_in) begin
+    if (fb_delay_found == 1) clkfb_out = clkfbm1_out;
+    else if (rst_in == 1'b0) clkfb_out = clkfb_tst;
   end
 
   // Generate unlock signal
   always begin
-    if (rst_in)
-    clk_osc = 0;
-  else
-    clk_osc = ~clk_osc;
+    if (rst_in) clk_osc = 0;
+    else clk_osc = ~clk_osc;
     #OSC_P2;
   end
 
@@ -1953,20 +1982,20 @@ module PLLE3_ADV #(
   always @(posedge clk_osc or posedge rst_in or posedge clkin_p) begin
     if (rst_in == 1) begin
       clkinstopped_out <= 0;
-      clkin_lost_cnt <= 0;
+      clkin_lost_cnt   <= 0;
     end else if (clkin_p == 1) begin
       if (clkinstopped_out == 1) begin
         @(posedge clkpll) begin
           clkinstopped_out <= 0;
-          clkin_lost_cnt <= 0;
+          clkin_lost_cnt   <= 0;
         end
       end else begin
         clkinstopped_out <= 0;
-        clkin_lost_cnt <= 0;
+        clkin_lost_cnt   <= 0;
       end
     end else if (lock_period) begin
       if (clkin_lost_cnt < clkin_lost_val) begin
-        clkin_lost_cnt <= clkin_lost_cnt + 1;
+        clkin_lost_cnt   <= clkin_lost_cnt + 1;
         clkinstopped_out <= 0;
       end else clkinstopped_out <= 1;
     end
@@ -1975,17 +2004,19 @@ module PLLE3_ADV #(
   always @(posedge clkinstopped_out or posedge rst_in) begin
     if (rst_in);
     else begin
-      $display("Warning: [Unisim %s-12] Input CLKIN is stopped at time %t. Reset is required when input clock returns. Instance %m.", MODULE_NAME, $time);
+      $display(
+          "Warning: [Unisim %s-12] Input CLKIN is stopped at time %t. Reset is required when input clock returns. Instance %m.",
+          MODULE_NAME, $time);
     end
   end
 
   always @(posedge clk_osc or posedge rst_in or posedge clkfb_p) begin
     if (rst_in == 1 || clkfb_p == 1) begin
       clkfbstopped_out <= 0;
-      clkfb_lost_cnt <= 0;
+      clkfb_lost_cnt   <= 0;
     end else if (clkout_en) begin
       if (clkfb_lost_cnt < clkfb_lost_val) begin
-        clkfb_lost_cnt <= clkfb_lost_cnt + 1;
+        clkfb_lost_cnt   <= clkfb_lost_cnt + 1;
         clkfbstopped_out <= 0;
       end else clkfbstopped_out <= 1;
     end
@@ -1998,8 +2029,7 @@ module PLLE3_ADV #(
         if ((clkin_jit > REF_CLK_JITTER_MAX && clkin_jit < period_avg) ||
              (clkin_jit < -REF_CLK_JITTER_MAX && clkin_jit > -period_avg ))
           clkpll_jitter_unlock = 1;
-        else
-          clkpll_jitter_unlock = 0;
+        else clkpll_jitter_unlock = 0;
       end else clkpll_jitter_unlock = 0;
     end
   end
@@ -2014,17 +2044,15 @@ module PLLE3_ADV #(
     if (clkout_en0_tmp == 0) clkout_en0 <= 0;
     else begin
       if (clkout_en_t == clkout_en_val && clkout_en0_tmp1 == 1)
-          clkout_en0 <= #(period_vco-1) clkout_en0_tmp1;
+        clkout_en0 <= #(period_vco - 1) clkout_en0_tmp1;
     end
   end
 
   always @(clkout_en0) clkout_en1 <= #(clkvco_delay) clkout_en0;
 
-  always @(clkout_en1 or rst_in )
-  if (rst_in)
-    clkout_en <= 0;
-  else
-    clkout_en <=  clkout_en1;
+  always @(clkout_en1 or rst_in)
+    if (rst_in) clkout_en <= 0;
+    else clkout_en <= clkout_en1;
 
   always @(pll_locked_tmp1)
     if (pll_locked_tmp1 == 0) pll_locked_tmp2 <= pll_locked_tmp1;
@@ -2044,10 +2072,8 @@ module PLLE3_ADV #(
   assign locked_out = (pll_locked_tm && pll_locked_tmp2_dly && ~pll_unlock && !unlock_recover) ? 1 : 0;
 
   always @(rst_in or locked_out)
-     if (rst_in == 1) 
-           locked_out_tmp <= #1000 0;
-     else
-        locked_out_tmp <= locked_out;
+    if (rst_in == 1) locked_out_tmp <= #1000 0;
+    else locked_out_tmp <= locked_out;
 
   // end of lock	
 
@@ -2057,14 +2083,10 @@ module PLLE3_ADV #(
       clk0_out <= 0;
     end else if (clk0ps_en) begin
       begin
-        if (clk0_cnt < clk0_div1)
-         clk0_cnt <= clk0_cnt + 1;
-      else
-         clk0_cnt <= 9'b0;
-        if (clk0_cnt < clk0_ht1)
-         clk0_out <= 1;
-      else
-         clk0_out <= 0;
+        if (clk0_cnt < clk0_div1) clk0_cnt <= clk0_cnt + 1;
+        else clk0_cnt <= 9'b0;
+        if (clk0_cnt < clk0_ht1) clk0_out <= 1;
+        else clk0_out <= 0;
       end
     end
   end
@@ -2074,14 +2096,10 @@ module PLLE3_ADV #(
       clk1_cnt <= 9'b0;
       clk1_out <= 0;
     end else if (clk1ps_en) begin
-      if (clk1_cnt < clk1_div1)
-                clk1_cnt <= clk1_cnt + 1;
-          else
-                clk1_cnt <= 9'b0;
-      if (clk1_cnt < clk1_ht1)
-                clk1_out <= 1;
-          else
-                clk1_out <= 0;
+      if (clk1_cnt < clk1_div1) clk1_cnt <= clk1_cnt + 1;
+      else clk1_cnt <= 9'b0;
+      if (clk1_cnt < clk1_ht1) clk1_out <= 1;
+      else clk1_out <= 0;
     end
   end
 
@@ -2090,14 +2108,10 @@ module PLLE3_ADV #(
       clkind_cnt <= 8'b0;
       clkind_out <= 0;
     end else if (clkout_en) begin
-      if (clkind_cnt < clkind_div1)
-        clkind_cnt <= clkind_cnt + 1;
-      else
-        clkind_cnt <= 8'b0;
-      if (clkind_cnt < clkind_ht1)
-        clkind_out <= 1;
-      else
-        clkind_out <= 0;
+      if (clkind_cnt < clkind_div1) clkind_cnt <= clkind_cnt + 1;
+      else clkind_cnt <= 8'b0;
+      if (clkind_cnt < clkind_ht1) clkind_out <= 1;
+      else clkind_out <= 0;
     end else begin
       clkind_cnt <= 8'b0;
       clkind_out <= 0;
@@ -2109,14 +2123,10 @@ module PLLE3_ADV #(
       clkfbm1_cnt <= 8'b0;
       clkfbm1_nf_out <= 0;
     end else if (clkfbm1ps_en) begin
-      if (clkfbm1_cnt < clkfbm1_div1)
-        clkfbm1_cnt <= clkfbm1_cnt + 1;
-      else
-        clkfbm1_cnt <= 8'b0;
-      if (clkfbm1_cnt < clkfbm1_ht1)
-          clkfbm1_nf_out <= 1;
-        else
-          clkfbm1_nf_out <= 0;
+      if (clkfbm1_cnt < clkfbm1_div1) clkfbm1_cnt <= clkfbm1_cnt + 1;
+      else clkfbm1_cnt <= 8'b0;
+      if (clkfbm1_cnt < clkfbm1_ht1) clkfbm1_nf_out <= 1;
+      else clkfbm1_nf_out <= 0;
     end else begin
       clkfbm1_cnt <= 8'b0;
       clkfbm1_nf_out <= 0;
@@ -2130,14 +2140,10 @@ module PLLE3_ADV #(
       clkfbm2_cnt <= 8'b0;
       clkfbm2_out <= 0;
     end else if (clkout_en) begin
-      if (clkfbm2_cnt < clkfbm2_div1)
-                clkfbm2_cnt <= clkfbm2_cnt + 1;
-          else
-                clkfbm2_cnt <= 8'b0;
-      if (clkfbm2_cnt < clkfbm2_ht1)
-                clkfbm2_out <= 1;
-          else
-                clkfbm2_out <= 0;
+      if (clkfbm2_cnt < clkfbm2_div1) clkfbm2_cnt <= clkfbm2_cnt + 1;
+      else clkfbm2_cnt <= 8'b0;
+      if (clkfbm2_cnt < clkfbm2_ht1) clkfbm2_out <= 1;
+      else clkfbm2_out <= 0;
     end else begin
       clkfbm2_cnt <= 8'b0;
       clkfbm2_out <= 0;
@@ -2156,16 +2162,16 @@ module PLLE3_ADV #(
     real clk_dly_rl, clk_dly_rem;
     integer clkout_dly_tmp;
     begin
-      if (clk_ps < 0.0)
-      clk_dly_rl = (360.0 + clk_ps) * clkdiv / 360.0;
-    else
-      clk_dly_rl = clk_ps * clkdiv / 360.0;
+      if (clk_ps < 0.0) clk_dly_rl = (360.0 + clk_ps) * clkdiv / 360.0;
+      else clk_dly_rl = clk_ps * clkdiv / 360.0;
 
       //    clkout_dly_tmp =  $rtoi(clk_dly_rl);
       clkout_dly_tmp = clk_dly_rl;
 
       if (clkout_dly_tmp > 63) begin
-        $display("Warning: [Unisim %s-13] Attribute %s is set to %f. Required phase shifting can not be reached since it is over the maximum phase shifting capability. Instance %m ", MODULE_NAME, clk_ps_name, clk_ps);
+        $display(
+            "Warning: [Unisim %s-13] Attribute %s is set to %f. Required phase shifting can not be reached since it is over the maximum phase shifting capability. Instance %m ",
+            MODULE_NAME, clk_ps_name, clk_ps);
         clkout_dly = 6'b111111;
       end else clkout_dly = clkout_dly_tmp;
     end
@@ -2183,15 +2189,13 @@ module PLLE3_ADV #(
     input clk_edge;
     begin
       if (clk_nocnt == 1) begin
-        clk_div = 9'b000000001;
+        clk_div  = 9'b000000001;
         clk_div1 = 9'b000000001;
-        clk_ht1 = 9'b000000001;
+        clk_ht1  = 9'b000000001;
       end else begin
-        if ( clk_edge == 1)
-        clk_ht1 = 2 * clk_ht + 1;
-      else
-        clk_ht1 = 2 * clk_ht;
-        clk_div = clk_ht + clk_lt;
+        if (clk_edge == 1) clk_ht1 = 2 * clk_ht + 1;
+        else clk_ht1 = 2 * clk_ht;
+        clk_div  = clk_ht + clk_lt;
         clk_div1 = 2 * clk_div - 1;
       end
     end
@@ -2215,19 +2219,17 @@ module PLLE3_ADV #(
     integer tmp_value_r2;
     begin
 
-      tmp_value0 = CLKOUT_DIVIDE * CLKOUT_DUTY_CYCLE;
-      tmp_value_r = $rtoi(tmp_value0);
+      tmp_value0   = CLKOUT_DIVIDE * CLKOUT_DUTY_CYCLE;
+      tmp_value_r  = $rtoi(tmp_value0);
       tmp_value_rm = tmp_value0 - tmp_value_r;
       if (tmp_value_rm < 0.1) tmp_value = tmp_value_r * 1.0;
       else if (tmp_value_rm > 0.9) tmp_value = 1.0 * tmp_value_r + 1.0;
       else begin
-        tmp_value_r1 = tmp_value0 * 2.0;
-        tmp_value_r2 = $rtoi(tmp_value_r1);
+        tmp_value_r1  = tmp_value0 * 2.0;
+        tmp_value_r2  = $rtoi(tmp_value_r1);
         tmp_value_rm1 = tmp_value_r1 - tmp_value_r2;
-        if (tmp_value_rm1 > 0.995)
-          tmp_value = tmp_value0 + 0.002;
-       else
-          tmp_value = tmp_value0;
+        if (tmp_value_rm1 > 0.995) tmp_value = tmp_value0 + 0.002;
+        else tmp_value = tmp_value0;
       end
       tmp_value_round = tmp_value * 2.0;
       tmp_value1 = tmp_value_round % 2;
@@ -2237,27 +2239,18 @@ module PLLE3_ADV #(
       if ((tmp_value2) >= O_MAX_HT_LT) begin
         clk_lt = 8'b10000000;
       end else begin
-        if  (tmp_value2 < 1.0)
-          clk_lt = 1;
-       else
-          if ( tmp_value1  != 0)
-             clk_lt = $rtoi(tmp_value2) + 1;
-          else
-             clk_lt = $rtoi(tmp_value2);
+        if (tmp_value2 < 1.0) clk_lt = 1;
+        else if (tmp_value1 != 0) clk_lt = $rtoi(tmp_value2) + 1;
+        else clk_lt = $rtoi(tmp_value2);
       end
 
-      if ( (CLKOUT_DIVIDE -  clk_lt) >= O_MAX_HT_LT)
-       clk_ht = 8'b10000000;
-     else
-       clk_ht =  CLKOUT_DIVIDE -  clk_lt;
+      if ((CLKOUT_DIVIDE - clk_lt) >= O_MAX_HT_LT) clk_ht = 8'b10000000;
+      else clk_ht = CLKOUT_DIVIDE - clk_lt;
 
       clk_nocnt = (CLKOUT_DIVIDE == 1) ? 1 : 0;
-      if ( tmp_value < 1.0)
-       clk_edge = 1;
-     else if (tmp_value1 != 0)
-       clk_edge = 1;
-     else
-       clk_edge = 0;
+      if (tmp_value < 1.0) clk_edge = 1;
+      else if (tmp_value1 != 0) clk_edge = 1;
+      else clk_edge = 0;
     end
   endtask
 
@@ -2269,7 +2262,7 @@ module PLLE3_ADV #(
     real CLKOUT_DUTY_CYCLE;
     real CLK_DUTY_CYCLE_MIN, CLK_DUTY_CYCLE_MAX, CLK_DUTY_CYCLE_STEP;
     real CLK_DUTY_CYCLE_MIN_rnd;
-    reg clk_duty_tmp_int;
+    reg  clk_duty_tmp_int;
     begin
       if (CLKOUT_DIVIDE > O_MAX_HT_LT) begin
         CLK_DUTY_CYCLE_MIN = 1.0 * (CLKOUT_DIVIDE - O_MAX_HT_LT) / CLKOUT_DIVIDE;
@@ -2289,20 +2282,25 @@ module PLLE3_ADV #(
       end
 
       if (CLKOUT_DUTY_CYCLE > CLK_DUTY_CYCLE_MAX || CLKOUT_DUTY_CYCLE < CLK_DUTY_CYCLE_MIN_rnd) begin
-        $display("Warning: [Unisim %s-30] %s is set to %f and is not in the allowed range %f to %f. Instance %m ", MODULE_NAME, CLKOUT_DUTY_CYCLE_N, CLKOUT_DUTY_CYCLE, CLK_DUTY_CYCLE_MIN, CLK_DUTY_CYCLE_MAX );
+        $display(
+            "Warning: [Unisim %s-30] %s is set to %f and is not in the allowed range %f to %f. Instance %m ",
+            MODULE_NAME, CLKOUT_DUTY_CYCLE_N, CLKOUT_DUTY_CYCLE, CLK_DUTY_CYCLE_MIN,
+            CLK_DUTY_CYCLE_MAX);
       end
 
       clk_duty_tmp_int = 0;
       CLK_DUTY_CYCLE_STEP = 0.5 / CLKOUT_DIVIDE;
-      for (j = 0; j < (2 * CLKOUT_DIVIDE - CLK_DUTY_CYCLE_MIN/CLK_DUTY_CYCLE_STEP); j = j + 1)
+      for (j = 0; j < (2 * CLKOUT_DIVIDE - CLK_DUTY_CYCLE_MIN / CLK_DUTY_CYCLE_STEP); j = j + 1)
         if (((CLK_DUTY_CYCLE_MIN + CLK_DUTY_CYCLE_STEP * j) - CLKOUT_DUTY_CYCLE) > -0.001 &&
              ((CLK_DUTY_CYCLE_MIN + CLK_DUTY_CYCLE_STEP * j) - CLKOUT_DUTY_CYCLE) < 0.001)
-            clk_duty_tmp_int = 1;
+          clk_duty_tmp_int = 1;
 
       if (clk_duty_tmp_int != 1) begin
-        $display("Warning: [Unisim %s-31] %s is set to %f and is not an allowed value. Allowed values are:",  MODULE_NAME, CLKOUT_DUTY_CYCLE_N, CLKOUT_DUTY_CYCLE);
-        for (j = 0; j < (2 * CLKOUT_DIVIDE - CLK_DUTY_CYCLE_MIN/CLK_DUTY_CYCLE_STEP); j = j + 1)
-       $display("%f", CLK_DUTY_CYCLE_MIN + CLK_DUTY_CYCLE_STEP * j);
+        $display(
+            "Warning: [Unisim %s-31] %s is set to %f and is not an allowed value. Allowed values are:",
+            MODULE_NAME, CLKOUT_DUTY_CYCLE_N, CLKOUT_DUTY_CYCLE);
+        for (j = 0; j < (2 * CLKOUT_DIVIDE - CLK_DUTY_CYCLE_MIN / CLK_DUTY_CYCLE_STEP); j = j + 1)
+          $display("%f", CLK_DUTY_CYCLE_MIN + CLK_DUTY_CYCLE_STEP * j);
         $display(" Instance %m ");
       end
 
@@ -2318,8 +2316,8 @@ module PLLE3_ADV #(
     input [6:0] daddr_in;
     begin
       clkout_dly = di_in[5:0];
-      clk_nocnt = di_in[6];
-      clk_edge = di_in[7];
+      clk_nocnt  = di_in[6];
+      clk_edge   = di_in[7];
     end
   endtask
 
@@ -2332,14 +2330,10 @@ module PLLE3_ADV #(
       //    if (di_in_tmp[12] != 1) begin
       //      $display("Error: [Unisim %s-34] Input DI is %h at address DADDR=%b at time %t. The bit 12 needs to be set to 1. Instance %m ", MODULE_NAME, di_in_tmp, daddr_in_tmp, $time);
       //    end
-      if ( di_in_tmp[5:0] == 6'b0)
-       clk_lt = 7'b1000000;
-    else
-       clk_lt = { 1'b0, di_in_tmp[5:0]};
-      if (di_in_tmp[11:6] == 6'b0)
-       clk_ht = 7'b1000000;
-    else
-       clk_ht = { 1'b0, di_in_tmp[11:6]};
+      if (di_in_tmp[5:0] == 6'b0) clk_lt = 7'b1000000;
+      else clk_lt = {1'b0, di_in_tmp[5:0]};
+      if (di_in_tmp[11:6] == 6'b0) clk_ht = 7'b1000000;
+      else clk_ht = {1'b0, di_in_tmp[11:6]};
     end
   endtask
 

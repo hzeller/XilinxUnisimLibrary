@@ -1109,9 +1109,11 @@ module GTHE2_CHANNEL (
   initial begin
     case (ALIGN_COMMA_DOUBLE)
       "FALSE": ALIGN_COMMA_DOUBLE_BINARY = 1'b0;
-      "TRUE": ALIGN_COMMA_DOUBLE_BINARY = 1'b1;
+      "TRUE":  ALIGN_COMMA_DOUBLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALIGN_COMMA_DOUBLE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ALIGN_COMMA_DOUBLE);
+        $display(
+            "Attribute Syntax Error : The Attribute ALIGN_COMMA_DOUBLE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            ALIGN_COMMA_DOUBLE);
         #1 $finish;
       end
     endcase
@@ -1121,25 +1123,31 @@ module GTHE2_CHANNEL (
       2: ALIGN_COMMA_WORD_BINARY = 3'b010;
       4: ALIGN_COMMA_WORD_BINARY = 3'b100;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALIGN_COMMA_WORD on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.", ALIGN_COMMA_WORD, 1);
+        $display(
+            "Attribute Syntax Error : The Attribute ALIGN_COMMA_WORD on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.",
+            ALIGN_COMMA_WORD, 1);
         #1 $finish;
       end
     endcase
 
     case (ALIGN_MCOMMA_DET)
-      "TRUE": ALIGN_MCOMMA_DET_BINARY = 1'b1;
+      "TRUE":  ALIGN_MCOMMA_DET_BINARY = 1'b1;
       "FALSE": ALIGN_MCOMMA_DET_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALIGN_MCOMMA_DET on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ALIGN_MCOMMA_DET);
+        $display(
+            "Attribute Syntax Error : The Attribute ALIGN_MCOMMA_DET on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            ALIGN_MCOMMA_DET);
         #1 $finish;
       end
     endcase
 
     case (ALIGN_PCOMMA_DET)
-      "TRUE": ALIGN_PCOMMA_DET_BINARY = 1'b1;
+      "TRUE":  ALIGN_PCOMMA_DET_BINARY = 1'b1;
       "FALSE": ALIGN_PCOMMA_DET_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ALIGN_PCOMMA_DET on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ALIGN_PCOMMA_DET);
+        $display(
+            "Attribute Syntax Error : The Attribute ALIGN_PCOMMA_DET on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            ALIGN_PCOMMA_DET);
         #1 $finish;
       end
     endcase
@@ -1148,25 +1156,31 @@ module GTHE2_CHANNEL (
       "DECODED": CBCC_DATA_SOURCE_SEL_BINARY = 1'b1;
       "ENCODED": CBCC_DATA_SOURCE_SEL_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CBCC_DATA_SOURCE_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are DECODED, or ENCODED.", CBCC_DATA_SOURCE_SEL);
+        $display(
+            "Attribute Syntax Error : The Attribute CBCC_DATA_SOURCE_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are DECODED, or ENCODED.",
+            CBCC_DATA_SOURCE_SEL);
         #1 $finish;
       end
     endcase
 
     case (CHAN_BOND_KEEP_ALIGN)
       "FALSE": CHAN_BOND_KEEP_ALIGN_BINARY = 1'b0;
-      "TRUE": CHAN_BOND_KEEP_ALIGN_BINARY = 1'b1;
+      "TRUE":  CHAN_BOND_KEEP_ALIGN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CHAN_BOND_KEEP_ALIGN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CHAN_BOND_KEEP_ALIGN);
+        $display(
+            "Attribute Syntax Error : The Attribute CHAN_BOND_KEEP_ALIGN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            CHAN_BOND_KEEP_ALIGN);
         #1 $finish;
       end
     endcase
 
     case (CHAN_BOND_SEQ_2_USE)
       "FALSE": CHAN_BOND_SEQ_2_USE_BINARY = 1'b0;
-      "TRUE": CHAN_BOND_SEQ_2_USE_BINARY = 1'b1;
+      "TRUE":  CHAN_BOND_SEQ_2_USE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_USE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CHAN_BOND_SEQ_2_USE);
+        $display(
+            "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_USE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            CHAN_BOND_SEQ_2_USE);
         #1 $finish;
       end
     endcase
@@ -1177,43 +1191,53 @@ module GTHE2_CHANNEL (
       3: CHAN_BOND_SEQ_LEN_BINARY = 2'b10;
       4: CHAN_BOND_SEQ_LEN_BINARY = 2'b11;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_LEN on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.", CHAN_BOND_SEQ_LEN, 1);
+        $display(
+            "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_LEN on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.",
+            CHAN_BOND_SEQ_LEN, 1);
         #1 $finish;
       end
     endcase
 
     case (CLK_CORRECT_USE)
-      "TRUE": CLK_CORRECT_USE_BINARY = 1'b1;
+      "TRUE":  CLK_CORRECT_USE_BINARY = 1'b1;
       "FALSE": CLK_CORRECT_USE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CLK_CORRECT_USE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", CLK_CORRECT_USE);
+        $display(
+            "Attribute Syntax Error : The Attribute CLK_CORRECT_USE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            CLK_CORRECT_USE);
         #1 $finish;
       end
     endcase
 
     case (CLK_COR_KEEP_IDLE)
       "FALSE": CLK_COR_KEEP_IDLE_BINARY = 1'b0;
-      "TRUE": CLK_COR_KEEP_IDLE_BINARY = 1'b1;
+      "TRUE":  CLK_COR_KEEP_IDLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CLK_COR_KEEP_IDLE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CLK_COR_KEEP_IDLE);
+        $display(
+            "Attribute Syntax Error : The Attribute CLK_COR_KEEP_IDLE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            CLK_COR_KEEP_IDLE);
         #1 $finish;
       end
     endcase
 
     case (CLK_COR_PRECEDENCE)
-      "TRUE": CLK_COR_PRECEDENCE_BINARY = 1'b1;
+      "TRUE":  CLK_COR_PRECEDENCE_BINARY = 1'b1;
       "FALSE": CLK_COR_PRECEDENCE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CLK_COR_PRECEDENCE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", CLK_COR_PRECEDENCE);
+        $display(
+            "Attribute Syntax Error : The Attribute CLK_COR_PRECEDENCE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            CLK_COR_PRECEDENCE);
         #1 $finish;
       end
     endcase
 
     case (CLK_COR_SEQ_2_USE)
       "FALSE": CLK_COR_SEQ_2_USE_BINARY = 1'b0;
-      "TRUE": CLK_COR_SEQ_2_USE_BINARY = 1'b1;
+      "TRUE":  CLK_COR_SEQ_2_USE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_USE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", CLK_COR_SEQ_2_USE);
+        $display(
+            "Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_USE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            CLK_COR_SEQ_2_USE);
         #1 $finish;
       end
     endcase
@@ -1224,25 +1248,29 @@ module GTHE2_CHANNEL (
       3: CLK_COR_SEQ_LEN_BINARY = 2'b10;
       4: CLK_COR_SEQ_LEN_BINARY = 2'b11;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_LEN on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.", CLK_COR_SEQ_LEN, 1);
+        $display(
+            "Attribute Syntax Error : The Attribute CLK_COR_SEQ_LEN on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 4.",
+            CLK_COR_SEQ_LEN, 1);
         #1 $finish;
       end
     endcase
 
     case (CPLL_FBDIV)
-      4: CPLL_FBDIV_BINARY = 7'b0000010;
-      1: CPLL_FBDIV_BINARY = 7'b0010000;
-      2: CPLL_FBDIV_BINARY = 7'b0000000;
-      3: CPLL_FBDIV_BINARY = 7'b0000001;
-      5: CPLL_FBDIV_BINARY = 7'b0000011;
-      6: CPLL_FBDIV_BINARY = 7'b0000101;
-      8: CPLL_FBDIV_BINARY = 7'b0000110;
+      4:  CPLL_FBDIV_BINARY = 7'b0000010;
+      1:  CPLL_FBDIV_BINARY = 7'b0010000;
+      2:  CPLL_FBDIV_BINARY = 7'b0000000;
+      3:  CPLL_FBDIV_BINARY = 7'b0000001;
+      5:  CPLL_FBDIV_BINARY = 7'b0000011;
+      6:  CPLL_FBDIV_BINARY = 7'b0000101;
+      8:  CPLL_FBDIV_BINARY = 7'b0000110;
       10: CPLL_FBDIV_BINARY = 7'b0000111;
       12: CPLL_FBDIV_BINARY = 7'b0001101;
       16: CPLL_FBDIV_BINARY = 7'b0001110;
       20: CPLL_FBDIV_BINARY = 7'b0001111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CPLL_FBDIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 20.", CPLL_FBDIV, 4);
+        $display(
+            "Attribute Syntax Error : The Attribute CPLL_FBDIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 20.",
+            CPLL_FBDIV, 4);
         #1 $finish;
       end
     endcase
@@ -1251,88 +1279,106 @@ module GTHE2_CHANNEL (
       5: CPLL_FBDIV_45_BINARY = 1'b1;
       4: CPLL_FBDIV_45_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CPLL_FBDIV_45 on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 4 to 5.", CPLL_FBDIV_45, 5);
+        $display(
+            "Attribute Syntax Error : The Attribute CPLL_FBDIV_45 on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 4 to 5.",
+            CPLL_FBDIV_45, 5);
         #1 $finish;
       end
     endcase
 
     case (CPLL_REFCLK_DIV)
-      1: CPLL_REFCLK_DIV_BINARY = 5'b10000;
-      2: CPLL_REFCLK_DIV_BINARY = 5'b00000;
-      3: CPLL_REFCLK_DIV_BINARY = 5'b00001;
-      4: CPLL_REFCLK_DIV_BINARY = 5'b00010;
-      5: CPLL_REFCLK_DIV_BINARY = 5'b00011;
-      6: CPLL_REFCLK_DIV_BINARY = 5'b00101;
-      8: CPLL_REFCLK_DIV_BINARY = 5'b00110;
+      1:  CPLL_REFCLK_DIV_BINARY = 5'b10000;
+      2:  CPLL_REFCLK_DIV_BINARY = 5'b00000;
+      3:  CPLL_REFCLK_DIV_BINARY = 5'b00001;
+      4:  CPLL_REFCLK_DIV_BINARY = 5'b00010;
+      5:  CPLL_REFCLK_DIV_BINARY = 5'b00011;
+      6:  CPLL_REFCLK_DIV_BINARY = 5'b00101;
+      8:  CPLL_REFCLK_DIV_BINARY = 5'b00110;
       10: CPLL_REFCLK_DIV_BINARY = 5'b00111;
       12: CPLL_REFCLK_DIV_BINARY = 5'b01101;
       16: CPLL_REFCLK_DIV_BINARY = 5'b01110;
       20: CPLL_REFCLK_DIV_BINARY = 5'b01111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CPLL_REFCLK_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 20.", CPLL_REFCLK_DIV, 1);
+        $display(
+            "Attribute Syntax Error : The Attribute CPLL_REFCLK_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 20.",
+            CPLL_REFCLK_DIV, 1);
         #1 $finish;
       end
     endcase
 
     case (DEC_MCOMMA_DETECT)
-      "TRUE": DEC_MCOMMA_DETECT_BINARY = 1'b1;
+      "TRUE":  DEC_MCOMMA_DETECT_BINARY = 1'b1;
       "FALSE": DEC_MCOMMA_DETECT_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEC_MCOMMA_DETECT on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEC_MCOMMA_DETECT);
+        $display(
+            "Attribute Syntax Error : The Attribute DEC_MCOMMA_DETECT on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DEC_MCOMMA_DETECT);
         #1 $finish;
       end
     endcase
 
     case (DEC_PCOMMA_DETECT)
-      "TRUE": DEC_PCOMMA_DETECT_BINARY = 1'b1;
+      "TRUE":  DEC_PCOMMA_DETECT_BINARY = 1'b1;
       "FALSE": DEC_PCOMMA_DETECT_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEC_PCOMMA_DETECT on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEC_PCOMMA_DETECT);
+        $display(
+            "Attribute Syntax Error : The Attribute DEC_PCOMMA_DETECT on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DEC_PCOMMA_DETECT);
         #1 $finish;
       end
     endcase
 
     case (DEC_VALID_COMMA_ONLY)
-      "TRUE": DEC_VALID_COMMA_ONLY_BINARY = 1'b1;
+      "TRUE":  DEC_VALID_COMMA_ONLY_BINARY = 1'b1;
       "FALSE": DEC_VALID_COMMA_ONLY_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DEC_VALID_COMMA_ONLY on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", DEC_VALID_COMMA_ONLY);
+        $display(
+            "Attribute Syntax Error : The Attribute DEC_VALID_COMMA_ONLY on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            DEC_VALID_COMMA_ONLY);
         #1 $finish;
       end
     endcase
 
     case (ES_ERRDET_EN)
       "FALSE": ES_ERRDET_EN_BINARY = 1'b0;
-      "TRUE": ES_ERRDET_EN_BINARY = 1'b1;
+      "TRUE":  ES_ERRDET_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ES_ERRDET_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", ES_ERRDET_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute ES_ERRDET_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            ES_ERRDET_EN);
         #1 $finish;
       end
     endcase
 
     case (ES_EYE_SCAN_EN)
-      "TRUE": ES_EYE_SCAN_EN_BINARY = 1'b1;
+      "TRUE":  ES_EYE_SCAN_EN_BINARY = 1'b1;
       "FALSE": ES_EYE_SCAN_EN_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ES_EYE_SCAN_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ES_EYE_SCAN_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute ES_EYE_SCAN_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            ES_EYE_SCAN_EN);
         #1 $finish;
       end
     endcase
 
     case (FTS_LANE_DESKEW_EN)
       "FALSE": FTS_LANE_DESKEW_EN_BINARY = 1'b0;
-      "TRUE": FTS_LANE_DESKEW_EN_BINARY = 1'b1;
+      "TRUE":  FTS_LANE_DESKEW_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute FTS_LANE_DESKEW_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", FTS_LANE_DESKEW_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute FTS_LANE_DESKEW_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            FTS_LANE_DESKEW_EN);
         #1 $finish;
       end
     endcase
 
     case (PCS_PCIE_EN)
       "FALSE": PCS_PCIE_EN_BINARY = 1'b0;
-      "TRUE": PCS_PCIE_EN_BINARY = 1'b1;
+      "TRUE":  PCS_PCIE_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute PCS_PCIE_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", PCS_PCIE_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute PCS_PCIE_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            PCS_PCIE_EN);
         #1 $finish;
       end
     endcase
@@ -1341,70 +1387,86 @@ module GTHE2_CHANNEL (
       "FULL": RXBUF_ADDR_MODE_BINARY = 1'b0;
       "FAST": RXBUF_ADDR_MODE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXBUF_ADDR_MODE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FULL, or FAST.", RXBUF_ADDR_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute RXBUF_ADDR_MODE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FULL, or FAST.",
+            RXBUF_ADDR_MODE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_EN)
-      "TRUE": RXBUF_EN_BINARY = 1'b1;
+      "TRUE":  RXBUF_EN_BINARY = 1'b1;
       "FALSE": RXBUF_EN_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXBUF_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RXBUF_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute RXBUF_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            RXBUF_EN);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_CB_CHANGE)
-      "TRUE": RXBUF_RESET_ON_CB_CHANGE_BINARY = 1'b1;
+      "TRUE":  RXBUF_RESET_ON_CB_CHANGE_BINARY = 1'b1;
       "FALSE": RXBUF_RESET_ON_CB_CHANGE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_CB_CHANGE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RXBUF_RESET_ON_CB_CHANGE);
+        $display(
+            "Attribute Syntax Error : The Attribute RXBUF_RESET_ON_CB_CHANGE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            RXBUF_RESET_ON_CB_CHANGE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_COMMAALIGN)
       "FALSE": RXBUF_RESET_ON_COMMAALIGN_BINARY = 1'b0;
-      "TRUE": RXBUF_RESET_ON_COMMAALIGN_BINARY = 1'b1;
+      "TRUE":  RXBUF_RESET_ON_COMMAALIGN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_COMMAALIGN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXBUF_RESET_ON_COMMAALIGN);
+        $display(
+            "Attribute Syntax Error : The Attribute RXBUF_RESET_ON_COMMAALIGN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            RXBUF_RESET_ON_COMMAALIGN);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_EIDLE)
       "FALSE": RXBUF_RESET_ON_EIDLE_BINARY = 1'b0;
-      "TRUE": RXBUF_RESET_ON_EIDLE_BINARY = 1'b1;
+      "TRUE":  RXBUF_RESET_ON_EIDLE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_EIDLE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXBUF_RESET_ON_EIDLE);
+        $display(
+            "Attribute Syntax Error : The Attribute RXBUF_RESET_ON_EIDLE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            RXBUF_RESET_ON_EIDLE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_RESET_ON_RATE_CHANGE)
-      "TRUE": RXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
+      "TRUE":  RXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
       "FALSE": RXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXBUF_RESET_ON_RATE_CHANGE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RXBUF_RESET_ON_RATE_CHANGE);
+        $display(
+            "Attribute Syntax Error : The Attribute RXBUF_RESET_ON_RATE_CHANGE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            RXBUF_RESET_ON_RATE_CHANGE);
         #1 $finish;
       end
     endcase
 
     case (RXBUF_THRESH_OVRD)
       "FALSE": RXBUF_THRESH_OVRD_BINARY = 1'b0;
-      "TRUE": RXBUF_THRESH_OVRD_BINARY = 1'b1;
+      "TRUE":  RXBUF_THRESH_OVRD_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXBUF_THRESH_OVRD on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXBUF_THRESH_OVRD);
+        $display(
+            "Attribute Syntax Error : The Attribute RXBUF_THRESH_OVRD on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            RXBUF_THRESH_OVRD);
         #1 $finish;
       end
     endcase
 
     case (RXGEARBOX_EN)
       "FALSE": RXGEARBOX_EN_BINARY = 1'b0;
-      "TRUE": RXGEARBOX_EN_BINARY = 1'b1;
+      "TRUE":  RXGEARBOX_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXGEARBOX_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", RXGEARBOX_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute RXGEARBOX_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            RXGEARBOX_EN);
         #1 $finish;
       end
     endcase
@@ -1413,44 +1475,50 @@ module GTHE2_CHANNEL (
       "PMA": RXOOB_CLK_CFG_BINARY = 1'b0;
       "FABRIC": RXOOB_CLK_CFG_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXOOB_CLK_CFG on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are PMA, or FABRIC.", RXOOB_CLK_CFG);
+        $display(
+            "Attribute Syntax Error : The Attribute RXOOB_CLK_CFG on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are PMA, or FABRIC.",
+            RXOOB_CLK_CFG);
         #1 $finish;
       end
     endcase
 
     case (RXOUT_DIV)
-      2: RXOUT_DIV_BINARY = 3'b001;
-      1: RXOUT_DIV_BINARY = 3'b000;
-      4: RXOUT_DIV_BINARY = 3'b010;
-      8: RXOUT_DIV_BINARY = 3'b011;
+      2:  RXOUT_DIV_BINARY = 3'b001;
+      1:  RXOUT_DIV_BINARY = 3'b000;
+      4:  RXOUT_DIV_BINARY = 3'b010;
+      8:  RXOUT_DIV_BINARY = 3'b011;
       16: RXOUT_DIV_BINARY = 3'b100;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXOUT_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 16.", RXOUT_DIV, 2);
+        $display(
+            "Attribute Syntax Error : The Attribute RXOUT_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 16.",
+            RXOUT_DIV, 2);
         #1 $finish;
       end
     endcase
 
     case (RXSLIDE_MODE)
-      "OFF": RXSLIDE_MODE_BINARY = 2'b00;
+      "OFF":  RXSLIDE_MODE_BINARY = 2'b00;
       "AUTO": RXSLIDE_MODE_BINARY = 2'b01;
-      "PCS": RXSLIDE_MODE_BINARY = 2'b10;
-      "PMA": RXSLIDE_MODE_BINARY = 2'b11;
+      "PCS":  RXSLIDE_MODE_BINARY = 2'b10;
+      "PMA":  RXSLIDE_MODE_BINARY = 2'b11;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RXSLIDE_MODE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are OFF, AUTO, PCS, or PMA.", RXSLIDE_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute RXSLIDE_MODE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are OFF, AUTO, PCS, or PMA.",
+            RXSLIDE_MODE);
         #1 $finish;
       end
     endcase
 
     case (RX_CLK25_DIV)
-      7: RX_CLK25_DIV_BINARY = 5'b00110;
-      1: RX_CLK25_DIV_BINARY = 5'b00000;
-      2: RX_CLK25_DIV_BINARY = 5'b00001;
-      3: RX_CLK25_DIV_BINARY = 5'b00010;
-      4: RX_CLK25_DIV_BINARY = 5'b00011;
-      5: RX_CLK25_DIV_BINARY = 5'b00100;
-      6: RX_CLK25_DIV_BINARY = 5'b00101;
-      8: RX_CLK25_DIV_BINARY = 5'b00111;
-      9: RX_CLK25_DIV_BINARY = 5'b01000;
+      7:  RX_CLK25_DIV_BINARY = 5'b00110;
+      1:  RX_CLK25_DIV_BINARY = 5'b00000;
+      2:  RX_CLK25_DIV_BINARY = 5'b00001;
+      3:  RX_CLK25_DIV_BINARY = 5'b00010;
+      4:  RX_CLK25_DIV_BINARY = 5'b00011;
+      5:  RX_CLK25_DIV_BINARY = 5'b00100;
+      6:  RX_CLK25_DIV_BINARY = 5'b00101;
+      8:  RX_CLK25_DIV_BINARY = 5'b00111;
+      9:  RX_CLK25_DIV_BINARY = 5'b01000;
       10: RX_CLK25_DIV_BINARY = 5'b01001;
       11: RX_CLK25_DIV_BINARY = 5'b01010;
       12: RX_CLK25_DIV_BINARY = 5'b01011;
@@ -1475,7 +1543,9 @@ module GTHE2_CHANNEL (
       31: RX_CLK25_DIV_BINARY = 5'b11110;
       32: RX_CLK25_DIV_BINARY = 5'b11111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RX_CLK25_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.", RX_CLK25_DIV, 7);
+        $display(
+            "Attribute Syntax Error : The Attribute RX_CLK25_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.",
+            RX_CLK25_DIV, 7);
         #1 $finish;
       end
     endcase
@@ -1488,40 +1558,46 @@ module GTHE2_CHANNEL (
       64: RX_DATA_WIDTH_BINARY = 3'b110;
       80: RX_DATA_WIDTH_BINARY = 3'b111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RX_DATA_WIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 16 to 80.", RX_DATA_WIDTH, 20);
+        $display(
+            "Attribute Syntax Error : The Attribute RX_DATA_WIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 16 to 80.",
+            RX_DATA_WIDTH, 20);
         #1 $finish;
       end
     endcase
 
     case (RX_DEFER_RESET_BUF_EN)
-      "TRUE": RX_DEFER_RESET_BUF_EN_BINARY = 1'b1;
+      "TRUE":  RX_DEFER_RESET_BUF_EN_BINARY = 1'b1;
       "FALSE": RX_DEFER_RESET_BUF_EN_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RX_DEFER_RESET_BUF_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RX_DEFER_RESET_BUF_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute RX_DEFER_RESET_BUF_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            RX_DEFER_RESET_BUF_EN);
         #1 $finish;
       end
     endcase
 
     case (RX_DISPERR_SEQ_MATCH)
-      "TRUE": RX_DISPERR_SEQ_MATCH_BINARY = 1'b1;
+      "TRUE":  RX_DISPERR_SEQ_MATCH_BINARY = 1'b1;
       "FALSE": RX_DISPERR_SEQ_MATCH_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RX_DISPERR_SEQ_MATCH on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", RX_DISPERR_SEQ_MATCH);
+        $display(
+            "Attribute Syntax Error : The Attribute RX_DISPERR_SEQ_MATCH on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            RX_DISPERR_SEQ_MATCH);
         #1 $finish;
       end
     endcase
 
     case (RX_SIG_VALID_DLY)
       10: RX_SIG_VALID_DLY_BINARY = 5'b01001;
-      1: RX_SIG_VALID_DLY_BINARY = 5'b00000;
-      2: RX_SIG_VALID_DLY_BINARY = 5'b00001;
-      3: RX_SIG_VALID_DLY_BINARY = 5'b00010;
-      4: RX_SIG_VALID_DLY_BINARY = 5'b00011;
-      5: RX_SIG_VALID_DLY_BINARY = 5'b00100;
-      6: RX_SIG_VALID_DLY_BINARY = 5'b00101;
-      7: RX_SIG_VALID_DLY_BINARY = 5'b00110;
-      8: RX_SIG_VALID_DLY_BINARY = 5'b00111;
-      9: RX_SIG_VALID_DLY_BINARY = 5'b01000;
+      1:  RX_SIG_VALID_DLY_BINARY = 5'b00000;
+      2:  RX_SIG_VALID_DLY_BINARY = 5'b00001;
+      3:  RX_SIG_VALID_DLY_BINARY = 5'b00010;
+      4:  RX_SIG_VALID_DLY_BINARY = 5'b00011;
+      5:  RX_SIG_VALID_DLY_BINARY = 5'b00100;
+      6:  RX_SIG_VALID_DLY_BINARY = 5'b00101;
+      7:  RX_SIG_VALID_DLY_BINARY = 5'b00110;
+      8:  RX_SIG_VALID_DLY_BINARY = 5'b00111;
+      9:  RX_SIG_VALID_DLY_BINARY = 5'b01000;
       11: RX_SIG_VALID_DLY_BINARY = 5'b01010;
       12: RX_SIG_VALID_DLY_BINARY = 5'b01011;
       13: RX_SIG_VALID_DLY_BINARY = 5'b01100;
@@ -1545,7 +1621,9 @@ module GTHE2_CHANNEL (
       31: RX_SIG_VALID_DLY_BINARY = 5'b11110;
       32: RX_SIG_VALID_DLY_BINARY = 5'b11111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RX_SIG_VALID_DLY on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.", RX_SIG_VALID_DLY, 10);
+        $display(
+            "Attribute Syntax Error : The Attribute RX_SIG_VALID_DLY on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.",
+            RX_SIG_VALID_DLY, 10);
         #1 $finish;
       end
     endcase
@@ -1554,44 +1632,54 @@ module GTHE2_CHANNEL (
       "RXREC": RX_XCLK_SEL_BINARY = 1'b0;
       "RXUSR": RX_XCLK_SEL_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute RX_XCLK_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are RXREC, or RXUSR.", RX_XCLK_SEL);
+        $display(
+            "Attribute Syntax Error : The Attribute RX_XCLK_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are RXREC, or RXUSR.",
+            RX_XCLK_SEL);
         #1 $finish;
       end
     endcase
 
     case (SATA_CPLL_CFG)
       "VCO_3000MHZ": SATA_CPLL_CFG_BINARY = 2'b00;
-      "VCO_750MHZ": SATA_CPLL_CFG_BINARY = 2'b10;
+      "VCO_750MHZ":  SATA_CPLL_CFG_BINARY = 2'b10;
       "VCO_1500MHZ": SATA_CPLL_CFG_BINARY = 2'b01;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SATA_CPLL_CFG on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are VCO_3000MHZ, VCO_750MHZ, or VCO_1500MHZ.", SATA_CPLL_CFG);
+        $display(
+            "Attribute Syntax Error : The Attribute SATA_CPLL_CFG on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are VCO_3000MHZ, VCO_750MHZ, or VCO_1500MHZ.",
+            SATA_CPLL_CFG);
         #1 $finish;
       end
     endcase
 
     case (SHOW_REALIGN_COMMA)
-      "TRUE": SHOW_REALIGN_COMMA_BINARY = 1'b1;
+      "TRUE":  SHOW_REALIGN_COMMA_BINARY = 1'b1;
       "FALSE": SHOW_REALIGN_COMMA_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SHOW_REALIGN_COMMA on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SHOW_REALIGN_COMMA);
+        $display(
+            "Attribute Syntax Error : The Attribute SHOW_REALIGN_COMMA on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            SHOW_REALIGN_COMMA);
         #1 $finish;
       end
     endcase
 
     case (SIM_RECEIVER_DETECT_PASS)
-      "TRUE": SIM_RECEIVER_DETECT_PASS_BINARY = 0;
+      "TRUE":  SIM_RECEIVER_DETECT_PASS_BINARY = 0;
       "FALSE": SIM_RECEIVER_DETECT_PASS_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_RECEIVER_DETECT_PASS on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SIM_RECEIVER_DETECT_PASS);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_RECEIVER_DETECT_PASS on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            SIM_RECEIVER_DETECT_PASS);
         #1 $finish;
       end
     endcase
 
     case (SIM_RESET_SPEEDUP)
-      "TRUE": SIM_RESET_SPEEDUP_BINARY = 0;
+      "TRUE":  SIM_RESET_SPEEDUP_BINARY = 0;
       "FALSE": SIM_RESET_SPEEDUP_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", SIM_RESET_SPEEDUP);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_RESET_SPEEDUP on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            SIM_RESET_SPEEDUP);
         #1 $finish;
       end
     endcase
@@ -1602,7 +1690,9 @@ module GTHE2_CHANNEL (
       "1": SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
       "Z": SIM_TX_EIDLE_DRIVE_LEVEL_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_TX_EIDLE_DRIVE_LEVEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are X, 0, 1, or Z.", SIM_TX_EIDLE_DRIVE_LEVEL);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_TX_EIDLE_DRIVE_LEVEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are X, 0, 1, or Z.",
+            SIM_TX_EIDLE_DRIVE_LEVEL);
         #1 $finish;
       end
     endcase
@@ -1613,69 +1703,81 @@ module GTHE2_CHANNEL (
       "1.0": SIM_VERSION_BINARY = 0;
       "2.0": SIM_VERSION_BINARY = 0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SIM_VERSION on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are 1.1, 1.0, or 2.0.", SIM_VERSION);
+        $display(
+            "Attribute Syntax Error : The Attribute SIM_VERSION on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are 1.1, 1.0, or 2.0.",
+            SIM_VERSION);
         #1 $finish;
       end
     endcase
 
     case (TXBUF_EN)
-      "TRUE": TXBUF_EN_BINARY = 1'b1;
+      "TRUE":  TXBUF_EN_BINARY = 1'b1;
       "FALSE": TXBUF_EN_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TXBUF_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", TXBUF_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute TXBUF_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            TXBUF_EN);
         #1 $finish;
       end
     endcase
 
     case (TXBUF_RESET_ON_RATE_CHANGE)
       "FALSE": TXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b0;
-      "TRUE": TXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
+      "TRUE":  TXBUF_RESET_ON_RATE_CHANGE_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TXBUF_RESET_ON_RATE_CHANGE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TXBUF_RESET_ON_RATE_CHANGE);
+        $display(
+            "Attribute Syntax Error : The Attribute TXBUF_RESET_ON_RATE_CHANGE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TXBUF_RESET_ON_RATE_CHANGE);
         #1 $finish;
       end
     endcase
 
     case (TXGEARBOX_EN)
       "FALSE": TXGEARBOX_EN_BINARY = 1'b0;
-      "TRUE": TXGEARBOX_EN_BINARY = 1'b1;
+      "TRUE":  TXGEARBOX_EN_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TXGEARBOX_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TXGEARBOX_EN);
+        $display(
+            "Attribute Syntax Error : The Attribute TXGEARBOX_EN on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TXGEARBOX_EN);
         #1 $finish;
       end
     endcase
 
     case (TXOUT_DIV)
-      2: TXOUT_DIV_BINARY = 3'b001;
-      1: TXOUT_DIV_BINARY = 3'b000;
-      4: TXOUT_DIV_BINARY = 3'b010;
-      8: TXOUT_DIV_BINARY = 3'b011;
+      2:  TXOUT_DIV_BINARY = 3'b001;
+      1:  TXOUT_DIV_BINARY = 3'b000;
+      4:  TXOUT_DIV_BINARY = 3'b010;
+      8:  TXOUT_DIV_BINARY = 3'b011;
       16: TXOUT_DIV_BINARY = 3'b100;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TXOUT_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 16.", TXOUT_DIV, 2);
+        $display(
+            "Attribute Syntax Error : The Attribute TXOUT_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 16.",
+            TXOUT_DIV, 2);
         #1 $finish;
       end
     endcase
 
     case (TXPI_PPMCLK_SEL)
       "TXUSRCLK2": TXPI_PPMCLK_SEL_BINARY = 1'b1;
-      "TXUSRCLK": TXPI_PPMCLK_SEL_BINARY = 1'b0;
+      "TXUSRCLK":  TXPI_PPMCLK_SEL_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TXPI_PPMCLK_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TXUSRCLK2, or TXUSRCLK.", TXPI_PPMCLK_SEL);
+        $display(
+            "Attribute Syntax Error : The Attribute TXPI_PPMCLK_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TXUSRCLK2, or TXUSRCLK.",
+            TXPI_PPMCLK_SEL);
         #1 $finish;
       end
     endcase
 
     case (TX_CLK25_DIV)
-      7: TX_CLK25_DIV_BINARY = 5'b00110;
-      1: TX_CLK25_DIV_BINARY = 5'b00000;
-      2: TX_CLK25_DIV_BINARY = 5'b00001;
-      3: TX_CLK25_DIV_BINARY = 5'b00010;
-      4: TX_CLK25_DIV_BINARY = 5'b00011;
-      5: TX_CLK25_DIV_BINARY = 5'b00100;
-      6: TX_CLK25_DIV_BINARY = 5'b00101;
-      8: TX_CLK25_DIV_BINARY = 5'b00111;
-      9: TX_CLK25_DIV_BINARY = 5'b01000;
+      7:  TX_CLK25_DIV_BINARY = 5'b00110;
+      1:  TX_CLK25_DIV_BINARY = 5'b00000;
+      2:  TX_CLK25_DIV_BINARY = 5'b00001;
+      3:  TX_CLK25_DIV_BINARY = 5'b00010;
+      4:  TX_CLK25_DIV_BINARY = 5'b00011;
+      5:  TX_CLK25_DIV_BINARY = 5'b00100;
+      6:  TX_CLK25_DIV_BINARY = 5'b00101;
+      8:  TX_CLK25_DIV_BINARY = 5'b00111;
+      9:  TX_CLK25_DIV_BINARY = 5'b01000;
       10: TX_CLK25_DIV_BINARY = 5'b01001;
       11: TX_CLK25_DIV_BINARY = 5'b01010;
       12: TX_CLK25_DIV_BINARY = 5'b01011;
@@ -1700,7 +1802,9 @@ module GTHE2_CHANNEL (
       31: TX_CLK25_DIV_BINARY = 5'b11110;
       32: TX_CLK25_DIV_BINARY = 5'b11111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TX_CLK25_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.", TX_CLK25_DIV, 7);
+        $display(
+            "Attribute Syntax Error : The Attribute TX_CLK25_DIV on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 1 to 32.",
+            TX_CLK25_DIV, 7);
         #1 $finish;
       end
     endcase
@@ -1713,7 +1817,9 @@ module GTHE2_CHANNEL (
       64: TX_DATA_WIDTH_BINARY = 3'b110;
       80: TX_DATA_WIDTH_BINARY = 3'b111;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TX_DATA_WIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 16 to 80.", TX_DATA_WIDTH, 20);
+        $display(
+            "Attribute Syntax Error : The Attribute TX_DATA_WIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are 16 to 80.",
+            TX_DATA_WIDTH, 20);
         #1 $finish;
       end
     endcase
@@ -1723,16 +1829,20 @@ module GTHE2_CHANNEL (
       "PIPE": TX_DRIVE_MODE_BINARY = 5'b00001;
       "PIPEGEN3": TX_DRIVE_MODE_BINARY = 5'b00010;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TX_DRIVE_MODE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are DIRECT, PIPE, or PIPEGEN3.", TX_DRIVE_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute TX_DRIVE_MODE on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are DIRECT, PIPE, or PIPEGEN3.",
+            TX_DRIVE_MODE);
         #1 $finish;
       end
     endcase
 
     case (TX_LOOPBACK_DRIVE_HIZ)
       "FALSE": TX_LOOPBACK_DRIVE_HIZ_BINARY = 1'b0;
-      "TRUE": TX_LOOPBACK_DRIVE_HIZ_BINARY = 1'b1;
+      "TRUE":  TX_LOOPBACK_DRIVE_HIZ_BINARY = 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TX_LOOPBACK_DRIVE_HIZ on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.", TX_LOOPBACK_DRIVE_HIZ);
+        $display(
+            "Attribute Syntax Error : The Attribute TX_LOOPBACK_DRIVE_HIZ on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are FALSE, or TRUE.",
+            TX_LOOPBACK_DRIVE_HIZ);
         #1 $finish;
       end
     endcase
@@ -1741,7 +1851,9 @@ module GTHE2_CHANNEL (
       "TXUSR": TX_XCLK_SEL_BINARY = 1'b1;
       "TXOUT": TX_XCLK_SEL_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute TX_XCLK_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TXUSR, or TXOUT.", TX_XCLK_SEL);
+        $display(
+            "Attribute Syntax Error : The Attribute TX_XCLK_SEL on GTHE2_CHANNEL instance %m is set to %s.  Legal values for this attribute are TXUSR, or TXOUT.",
+            TX_XCLK_SEL);
         #1 $finish;
       end
     endcase
@@ -1749,1130 +1861,1466 @@ module GTHE2_CHANNEL (
     if ((ACJTAG_DEBUG_MODE >= 1'b0) && (ACJTAG_DEBUG_MODE <= 1'b1))
       ACJTAG_DEBUG_MODE_BINARY = ACJTAG_DEBUG_MODE;
     else begin
-      $display("Attribute Syntax Error : The Attribute ACJTAG_DEBUG_MODE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", ACJTAG_DEBUG_MODE);
+      $display(
+          "Attribute Syntax Error : The Attribute ACJTAG_DEBUG_MODE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          ACJTAG_DEBUG_MODE);
       #1 $finish;
     end
 
     if ((ACJTAG_MODE >= 1'b0) && (ACJTAG_MODE <= 1'b1)) ACJTAG_MODE_BINARY = ACJTAG_MODE;
     else begin
-      $display("Attribute Syntax Error : The Attribute ACJTAG_MODE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", ACJTAG_MODE);
+      $display(
+          "Attribute Syntax Error : The Attribute ACJTAG_MODE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          ACJTAG_MODE);
       #1 $finish;
     end
 
     if ((ACJTAG_RESET >= 1'b0) && (ACJTAG_RESET <= 1'b1)) ACJTAG_RESET_BINARY = ACJTAG_RESET;
     else begin
-      $display("Attribute Syntax Error : The Attribute ACJTAG_RESET on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", ACJTAG_RESET);
+      $display(
+          "Attribute Syntax Error : The Attribute ACJTAG_RESET on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          ACJTAG_RESET);
       #1 $finish;
     end
 
     if ((ALIGN_COMMA_ENABLE >= 10'b0000000000) && (ALIGN_COMMA_ENABLE <= 10'b1111111111))
       ALIGN_COMMA_ENABLE_BINARY = ALIGN_COMMA_ENABLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute ALIGN_COMMA_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", ALIGN_COMMA_ENABLE);
+      $display(
+          "Attribute Syntax Error : The Attribute ALIGN_COMMA_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          ALIGN_COMMA_ENABLE);
       #1 $finish;
     end
 
     if ((ALIGN_MCOMMA_VALUE >= 10'b0000000000) && (ALIGN_MCOMMA_VALUE <= 10'b1111111111))
       ALIGN_MCOMMA_VALUE_BINARY = ALIGN_MCOMMA_VALUE;
     else begin
-      $display("Attribute Syntax Error : The Attribute ALIGN_MCOMMA_VALUE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", ALIGN_MCOMMA_VALUE);
+      $display(
+          "Attribute Syntax Error : The Attribute ALIGN_MCOMMA_VALUE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          ALIGN_MCOMMA_VALUE);
       #1 $finish;
     end
 
     if ((ALIGN_PCOMMA_VALUE >= 10'b0000000000) && (ALIGN_PCOMMA_VALUE <= 10'b1111111111))
       ALIGN_PCOMMA_VALUE_BINARY = ALIGN_PCOMMA_VALUE;
     else begin
-      $display("Attribute Syntax Error : The Attribute ALIGN_PCOMMA_VALUE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", ALIGN_PCOMMA_VALUE);
+      $display(
+          "Attribute Syntax Error : The Attribute ALIGN_PCOMMA_VALUE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          ALIGN_PCOMMA_VALUE);
       #1 $finish;
     end
 
     if ((A_RXOSCALRESET >= 1'b0) && (A_RXOSCALRESET <= 1'b1))
       A_RXOSCALRESET_BINARY = A_RXOSCALRESET;
     else begin
-      $display("Attribute Syntax Error : The Attribute A_RXOSCALRESET on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", A_RXOSCALRESET);
+      $display(
+          "Attribute Syntax Error : The Attribute A_RXOSCALRESET on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          A_RXOSCALRESET);
       #1 $finish;
     end
 
     if ((CFOK_CFG2 >= 6'b000000) && (CFOK_CFG2 <= 6'b111111)) CFOK_CFG2_BINARY = CFOK_CFG2;
     else begin
-      $display("Attribute Syntax Error : The Attribute CFOK_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", CFOK_CFG2);
+      $display(
+          "Attribute Syntax Error : The Attribute CFOK_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          CFOK_CFG2);
       #1 $finish;
     end
 
     if ((CFOK_CFG3 >= 6'b000000) && (CFOK_CFG3 <= 6'b111111)) CFOK_CFG3_BINARY = CFOK_CFG3;
     else begin
-      $display("Attribute Syntax Error : The Attribute CFOK_CFG3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", CFOK_CFG3);
+      $display(
+          "Attribute Syntax Error : The Attribute CFOK_CFG3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          CFOK_CFG3);
       #1 $finish;
     end
 
     if ((CHAN_BOND_MAX_SKEW >= 1) && (CHAN_BOND_MAX_SKEW <= 14))
       CHAN_BOND_MAX_SKEW_BINARY = CHAN_BOND_MAX_SKEW;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_MAX_SKEW on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 14.", CHAN_BOND_MAX_SKEW);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_MAX_SKEW on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 14.",
+          CHAN_BOND_MAX_SKEW);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_1_1 >= 10'b0000000000) && (CHAN_BOND_SEQ_1_1 <= 10'b1111111111))
       CHAN_BOND_SEQ_1_1_BINARY = CHAN_BOND_SEQ_1_1;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_1_1);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_1_1);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_1_2 >= 10'b0000000000) && (CHAN_BOND_SEQ_1_2 <= 10'b1111111111))
       CHAN_BOND_SEQ_1_2_BINARY = CHAN_BOND_SEQ_1_2;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_1_2);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_1_2);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_1_3 >= 10'b0000000000) && (CHAN_BOND_SEQ_1_3 <= 10'b1111111111))
       CHAN_BOND_SEQ_1_3_BINARY = CHAN_BOND_SEQ_1_3;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_1_3);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_1_3);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_1_4 >= 10'b0000000000) && (CHAN_BOND_SEQ_1_4 <= 10'b1111111111))
       CHAN_BOND_SEQ_1_4_BINARY = CHAN_BOND_SEQ_1_4;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_1_4);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_1_4);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_1_ENABLE >= 4'b0000) && (CHAN_BOND_SEQ_1_ENABLE <= 4'b1111))
       CHAN_BOND_SEQ_1_ENABLE_BINARY = CHAN_BOND_SEQ_1_ENABLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", CHAN_BOND_SEQ_1_ENABLE);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_1_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          CHAN_BOND_SEQ_1_ENABLE);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_2_1 >= 10'b0000000000) && (CHAN_BOND_SEQ_2_1 <= 10'b1111111111))
       CHAN_BOND_SEQ_2_1_BINARY = CHAN_BOND_SEQ_2_1;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_2_1);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_2_1);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_2_2 >= 10'b0000000000) && (CHAN_BOND_SEQ_2_2 <= 10'b1111111111))
       CHAN_BOND_SEQ_2_2_BINARY = CHAN_BOND_SEQ_2_2;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_2_2);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_2_2);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_2_3 >= 10'b0000000000) && (CHAN_BOND_SEQ_2_3 <= 10'b1111111111))
       CHAN_BOND_SEQ_2_3_BINARY = CHAN_BOND_SEQ_2_3;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_2_3);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_2_3);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_2_4 >= 10'b0000000000) && (CHAN_BOND_SEQ_2_4 <= 10'b1111111111))
       CHAN_BOND_SEQ_2_4_BINARY = CHAN_BOND_SEQ_2_4;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CHAN_BOND_SEQ_2_4);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CHAN_BOND_SEQ_2_4);
       #1 $finish;
     end
 
     if ((CHAN_BOND_SEQ_2_ENABLE >= 4'b0000) && (CHAN_BOND_SEQ_2_ENABLE <= 4'b1111))
       CHAN_BOND_SEQ_2_ENABLE_BINARY = CHAN_BOND_SEQ_2_ENABLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", CHAN_BOND_SEQ_2_ENABLE);
+      $display(
+          "Attribute Syntax Error : The Attribute CHAN_BOND_SEQ_2_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          CHAN_BOND_SEQ_2_ENABLE);
       #1 $finish;
     end
 
     if ((CLK_COR_MAX_LAT >= 3) && (CLK_COR_MAX_LAT <= 60)) CLK_COR_MAX_LAT_BINARY = CLK_COR_MAX_LAT;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_MAX_LAT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  3 to 60.", CLK_COR_MAX_LAT);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_MAX_LAT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  3 to 60.",
+          CLK_COR_MAX_LAT);
       #1 $finish;
     end
 
     if ((CLK_COR_MIN_LAT >= 3) && (CLK_COR_MIN_LAT <= 60)) CLK_COR_MIN_LAT_BINARY = CLK_COR_MIN_LAT;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_MIN_LAT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  3 to 60.", CLK_COR_MIN_LAT);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_MIN_LAT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  3 to 60.",
+          CLK_COR_MIN_LAT);
       #1 $finish;
     end
 
     if ((CLK_COR_REPEAT_WAIT >= 0) && (CLK_COR_REPEAT_WAIT <= 31))
       CLK_COR_REPEAT_WAIT_BINARY = CLK_COR_REPEAT_WAIT;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_REPEAT_WAIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 31.", CLK_COR_REPEAT_WAIT);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_REPEAT_WAIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 31.",
+          CLK_COR_REPEAT_WAIT);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_1_1 >= 10'b0000000000) && (CLK_COR_SEQ_1_1 <= 10'b1111111111))
       CLK_COR_SEQ_1_1_BINARY = CLK_COR_SEQ_1_1;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_1_1);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_1_1);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_1_2 >= 10'b0000000000) && (CLK_COR_SEQ_1_2 <= 10'b1111111111))
       CLK_COR_SEQ_1_2_BINARY = CLK_COR_SEQ_1_2;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_1_2);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_1_2);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_1_3 >= 10'b0000000000) && (CLK_COR_SEQ_1_3 <= 10'b1111111111))
       CLK_COR_SEQ_1_3_BINARY = CLK_COR_SEQ_1_3;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_1_3);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_1_3);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_1_4 >= 10'b0000000000) && (CLK_COR_SEQ_1_4 <= 10'b1111111111))
       CLK_COR_SEQ_1_4_BINARY = CLK_COR_SEQ_1_4;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_1_4);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_1_4);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_1_ENABLE >= 4'b0000) && (CLK_COR_SEQ_1_ENABLE <= 4'b1111))
       CLK_COR_SEQ_1_ENABLE_BINARY = CLK_COR_SEQ_1_ENABLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", CLK_COR_SEQ_1_ENABLE);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_1_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          CLK_COR_SEQ_1_ENABLE);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_2_1 >= 10'b0000000000) && (CLK_COR_SEQ_2_1 <= 10'b1111111111))
       CLK_COR_SEQ_2_1_BINARY = CLK_COR_SEQ_2_1;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_2_1);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_2_1);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_2_2 >= 10'b0000000000) && (CLK_COR_SEQ_2_2 <= 10'b1111111111))
       CLK_COR_SEQ_2_2_BINARY = CLK_COR_SEQ_2_2;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_2_2);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_2_2);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_2_3 >= 10'b0000000000) && (CLK_COR_SEQ_2_3 <= 10'b1111111111))
       CLK_COR_SEQ_2_3_BINARY = CLK_COR_SEQ_2_3;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_2_3);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_2_3);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_2_4 >= 10'b0000000000) && (CLK_COR_SEQ_2_4 <= 10'b1111111111))
       CLK_COR_SEQ_2_4_BINARY = CLK_COR_SEQ_2_4;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", CLK_COR_SEQ_2_4);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          CLK_COR_SEQ_2_4);
       #1 $finish;
     end
 
     if ((CLK_COR_SEQ_2_ENABLE >= 4'b0000) && (CLK_COR_SEQ_2_ENABLE <= 4'b1111))
       CLK_COR_SEQ_2_ENABLE_BINARY = CLK_COR_SEQ_2_ENABLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", CLK_COR_SEQ_2_ENABLE);
+      $display(
+          "Attribute Syntax Error : The Attribute CLK_COR_SEQ_2_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          CLK_COR_SEQ_2_ENABLE);
       #1 $finish;
     end
 
     if ((ES_CLK_PHASE_SEL >= 1'b0) && (ES_CLK_PHASE_SEL <= 1'b1))
       ES_CLK_PHASE_SEL_BINARY = ES_CLK_PHASE_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute ES_CLK_PHASE_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", ES_CLK_PHASE_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute ES_CLK_PHASE_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          ES_CLK_PHASE_SEL);
       #1 $finish;
     end
 
     if ((ES_CONTROL >= 6'b000000) && (ES_CONTROL <= 6'b111111)) ES_CONTROL_BINARY = ES_CONTROL;
     else begin
-      $display("Attribute Syntax Error : The Attribute ES_CONTROL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", ES_CONTROL);
+      $display(
+          "Attribute Syntax Error : The Attribute ES_CONTROL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          ES_CONTROL);
       #1 $finish;
     end
 
     if ((ES_PMA_CFG >= 10'b0000000000) && (ES_PMA_CFG <= 10'b1111111111))
       ES_PMA_CFG_BINARY = ES_PMA_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute ES_PMA_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.", ES_PMA_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute ES_PMA_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 10'b0000000000 to 10'b1111111111.",
+          ES_PMA_CFG);
       #1 $finish;
     end
 
     if ((ES_PRESCALE >= 5'b00000) && (ES_PRESCALE <= 5'b11111)) ES_PRESCALE_BINARY = ES_PRESCALE;
     else begin
-      $display("Attribute Syntax Error : The Attribute ES_PRESCALE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", ES_PRESCALE);
+      $display(
+          "Attribute Syntax Error : The Attribute ES_PRESCALE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          ES_PRESCALE);
       #1 $finish;
     end
 
     if ((ES_VERT_OFFSET >= 9'b000000000) && (ES_VERT_OFFSET <= 9'b111111111))
       ES_VERT_OFFSET_BINARY = ES_VERT_OFFSET;
     else begin
-      $display("Attribute Syntax Error : The Attribute ES_VERT_OFFSET on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 9'b000000000 to 9'b111111111.", ES_VERT_OFFSET);
+      $display(
+          "Attribute Syntax Error : The Attribute ES_VERT_OFFSET on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 9'b000000000 to 9'b111111111.",
+          ES_VERT_OFFSET);
       #1 $finish;
     end
 
     if ((FTS_DESKEW_SEQ_ENABLE >= 4'b0000) && (FTS_DESKEW_SEQ_ENABLE <= 4'b1111))
       FTS_DESKEW_SEQ_ENABLE_BINARY = FTS_DESKEW_SEQ_ENABLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute FTS_DESKEW_SEQ_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", FTS_DESKEW_SEQ_ENABLE);
+      $display(
+          "Attribute Syntax Error : The Attribute FTS_DESKEW_SEQ_ENABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          FTS_DESKEW_SEQ_ENABLE);
       #1 $finish;
     end
 
     if ((FTS_LANE_DESKEW_CFG >= 4'b0000) && (FTS_LANE_DESKEW_CFG <= 4'b1111))
       FTS_LANE_DESKEW_CFG_BINARY = FTS_LANE_DESKEW_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute FTS_LANE_DESKEW_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", FTS_LANE_DESKEW_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute FTS_LANE_DESKEW_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          FTS_LANE_DESKEW_CFG);
       #1 $finish;
     end
 
     if ((GEARBOX_MODE >= 3'b000) && (GEARBOX_MODE <= 3'b111)) GEARBOX_MODE_BINARY = GEARBOX_MODE;
     else begin
-      $display("Attribute Syntax Error : The Attribute GEARBOX_MODE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", GEARBOX_MODE);
+      $display(
+          "Attribute Syntax Error : The Attribute GEARBOX_MODE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          GEARBOX_MODE);
       #1 $finish;
     end
 
     if ((LOOPBACK_CFG >= 1'b0) && (LOOPBACK_CFG <= 1'b1)) LOOPBACK_CFG_BINARY = LOOPBACK_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute LOOPBACK_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", LOOPBACK_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute LOOPBACK_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          LOOPBACK_CFG);
       #1 $finish;
     end
 
     if ((OUTREFCLK_SEL_INV >= 2'b00) && (OUTREFCLK_SEL_INV <= 2'b11))
       OUTREFCLK_SEL_INV_BINARY = OUTREFCLK_SEL_INV;
     else begin
-      $display("Attribute Syntax Error : The Attribute OUTREFCLK_SEL_INV on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", OUTREFCLK_SEL_INV);
+      $display(
+          "Attribute Syntax Error : The Attribute OUTREFCLK_SEL_INV on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          OUTREFCLK_SEL_INV);
       #1 $finish;
     end
 
     if ((PMA_RSV >= 32'b00000000000000000000000000000000) && (PMA_RSV <= 32'b11111111111111111111111111111111))
       PMA_RSV_BINARY = PMA_RSV;
     else begin
-      $display("Attribute Syntax Error : The Attribute PMA_RSV on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 32'b00000000000000000000000000000000 to 32'b11111111111111111111111111111111.", PMA_RSV);
+      $display(
+          "Attribute Syntax Error : The Attribute PMA_RSV on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 32'b00000000000000000000000000000000 to 32'b11111111111111111111111111111111.",
+          PMA_RSV);
       #1 $finish;
     end
 
     if ((PMA_RSV2 >= 32'b00000000000000000000000000000000) && (PMA_RSV2 <= 32'b11111111111111111111111111111111))
       PMA_RSV2_BINARY = PMA_RSV2;
     else begin
-      $display("Attribute Syntax Error : The Attribute PMA_RSV2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 32'b00000000000000000000000000000000 to 32'b11111111111111111111111111111111.", PMA_RSV2);
+      $display(
+          "Attribute Syntax Error : The Attribute PMA_RSV2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 32'b00000000000000000000000000000000 to 32'b11111111111111111111111111111111.",
+          PMA_RSV2);
       #1 $finish;
     end
 
     if ((PMA_RSV3 >= 2'b00) && (PMA_RSV3 <= 2'b11)) PMA_RSV3_BINARY = PMA_RSV3;
     else begin
-      $display("Attribute Syntax Error : The Attribute PMA_RSV3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", PMA_RSV3);
+      $display(
+          "Attribute Syntax Error : The Attribute PMA_RSV3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          PMA_RSV3);
       #1 $finish;
     end
 
     if ((PMA_RSV4 >= 15'b000000000000000) && (PMA_RSV4 <= 15'b111111111111111))
       PMA_RSV4_BINARY = PMA_RSV4;
     else begin
-      $display("Attribute Syntax Error : The Attribute PMA_RSV4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 15'b000000000000000 to 15'b111111111111111.", PMA_RSV4);
+      $display(
+          "Attribute Syntax Error : The Attribute PMA_RSV4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 15'b000000000000000 to 15'b111111111111111.",
+          PMA_RSV4);
       #1 $finish;
     end
 
     if ((PMA_RSV5 >= 4'b0000) && (PMA_RSV5 <= 4'b1111)) PMA_RSV5_BINARY = PMA_RSV5;
     else begin
-      $display("Attribute Syntax Error : The Attribute PMA_RSV5 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", PMA_RSV5);
+      $display(
+          "Attribute Syntax Error : The Attribute PMA_RSV5 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          PMA_RSV5);
       #1 $finish;
     end
 
     if ((RESET_POWERSAVE_DISABLE >= 1'b0) && (RESET_POWERSAVE_DISABLE <= 1'b1))
       RESET_POWERSAVE_DISABLE_BINARY = RESET_POWERSAVE_DISABLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute RESET_POWERSAVE_DISABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RESET_POWERSAVE_DISABLE);
+      $display(
+          "Attribute Syntax Error : The Attribute RESET_POWERSAVE_DISABLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RESET_POWERSAVE_DISABLE);
       #1 $finish;
     end
 
     if ((RXBUFRESET_TIME >= 5'b00000) && (RXBUFRESET_TIME <= 5'b11111))
       RXBUFRESET_TIME_BINARY = RXBUFRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXBUFRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXBUFRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXBUFRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXBUFRESET_TIME);
       #1 $finish;
     end
 
     if ((RXBUF_EIDLE_HI_CNT >= 4'b0000) && (RXBUF_EIDLE_HI_CNT <= 4'b1111))
       RXBUF_EIDLE_HI_CNT_BINARY = RXBUF_EIDLE_HI_CNT;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXBUF_EIDLE_HI_CNT on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RXBUF_EIDLE_HI_CNT);
+      $display(
+          "Attribute Syntax Error : The Attribute RXBUF_EIDLE_HI_CNT on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          RXBUF_EIDLE_HI_CNT);
       #1 $finish;
     end
 
     if ((RXBUF_EIDLE_LO_CNT >= 4'b0000) && (RXBUF_EIDLE_LO_CNT <= 4'b1111))
       RXBUF_EIDLE_LO_CNT_BINARY = RXBUF_EIDLE_LO_CNT;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXBUF_EIDLE_LO_CNT on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RXBUF_EIDLE_LO_CNT);
+      $display(
+          "Attribute Syntax Error : The Attribute RXBUF_EIDLE_LO_CNT on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          RXBUF_EIDLE_LO_CNT);
       #1 $finish;
     end
 
     if ((RXBUF_THRESH_OVFLW >= 0) && (RXBUF_THRESH_OVFLW <= 63))
       RXBUF_THRESH_OVFLW_BINARY = RXBUF_THRESH_OVFLW;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXBUF_THRESH_OVFLW on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 63.", RXBUF_THRESH_OVFLW);
+      $display(
+          "Attribute Syntax Error : The Attribute RXBUF_THRESH_OVFLW on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 63.",
+          RXBUF_THRESH_OVFLW);
       #1 $finish;
     end
 
     if ((RXBUF_THRESH_UNDFLW >= 0) && (RXBUF_THRESH_UNDFLW <= 63))
       RXBUF_THRESH_UNDFLW_BINARY = RXBUF_THRESH_UNDFLW;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXBUF_THRESH_UNDFLW on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 63.", RXBUF_THRESH_UNDFLW);
+      $display(
+          "Attribute Syntax Error : The Attribute RXBUF_THRESH_UNDFLW on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 63.",
+          RXBUF_THRESH_UNDFLW);
       #1 $finish;
     end
 
     if ((RXCDRFREQRESET_TIME >= 5'b00000) && (RXCDRFREQRESET_TIME <= 5'b11111))
       RXCDRFREQRESET_TIME_BINARY = RXCDRFREQRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXCDRFREQRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXCDRFREQRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXCDRFREQRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXCDRFREQRESET_TIME);
       #1 $finish;
     end
 
     if ((RXCDRPHRESET_TIME >= 5'b00000) && (RXCDRPHRESET_TIME <= 5'b11111))
       RXCDRPHRESET_TIME_BINARY = RXCDRPHRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXCDRPHRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXCDRPHRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXCDRPHRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXCDRPHRESET_TIME);
       #1 $finish;
     end
 
     if ((RXCDR_FR_RESET_ON_EIDLE >= 1'b0) && (RXCDR_FR_RESET_ON_EIDLE <= 1'b1))
       RXCDR_FR_RESET_ON_EIDLE_BINARY = RXCDR_FR_RESET_ON_EIDLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXCDR_FR_RESET_ON_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXCDR_FR_RESET_ON_EIDLE);
+      $display(
+          "Attribute Syntax Error : The Attribute RXCDR_FR_RESET_ON_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXCDR_FR_RESET_ON_EIDLE);
       #1 $finish;
     end
 
     if ((RXCDR_HOLD_DURING_EIDLE >= 1'b0) && (RXCDR_HOLD_DURING_EIDLE <= 1'b1))
       RXCDR_HOLD_DURING_EIDLE_BINARY = RXCDR_HOLD_DURING_EIDLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXCDR_HOLD_DURING_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXCDR_HOLD_DURING_EIDLE);
+      $display(
+          "Attribute Syntax Error : The Attribute RXCDR_HOLD_DURING_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXCDR_HOLD_DURING_EIDLE);
       #1 $finish;
     end
 
     if ((RXCDR_LOCK_CFG >= 6'b000000) && (RXCDR_LOCK_CFG <= 6'b111111))
       RXCDR_LOCK_CFG_BINARY = RXCDR_LOCK_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXCDR_LOCK_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", RXCDR_LOCK_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RXCDR_LOCK_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          RXCDR_LOCK_CFG);
       #1 $finish;
     end
 
     if ((RXCDR_PH_RESET_ON_EIDLE >= 1'b0) && (RXCDR_PH_RESET_ON_EIDLE <= 1'b1))
       RXCDR_PH_RESET_ON_EIDLE_BINARY = RXCDR_PH_RESET_ON_EIDLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXCDR_PH_RESET_ON_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXCDR_PH_RESET_ON_EIDLE);
+      $display(
+          "Attribute Syntax Error : The Attribute RXCDR_PH_RESET_ON_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXCDR_PH_RESET_ON_EIDLE);
       #1 $finish;
     end
 
     if ((RXDFELPMRESET_TIME >= 7'b0000000) && (RXDFELPMRESET_TIME <= 7'b1111111))
       RXDFELPMRESET_TIME_BINARY = RXDFELPMRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXDFELPMRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", RXDFELPMRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXDFELPMRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          RXDFELPMRESET_TIME);
       #1 $finish;
     end
 
     if ((RXISCANRESET_TIME >= 5'b00000) && (RXISCANRESET_TIME <= 5'b11111))
       RXISCANRESET_TIME_BINARY = RXISCANRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXISCANRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXISCANRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXISCANRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXISCANRESET_TIME);
       #1 $finish;
     end
 
     if ((RXLPM_HF_CFG >= 14'b00000000000000) && (RXLPM_HF_CFG <= 14'b11111111111111))
       RXLPM_HF_CFG_BINARY = RXLPM_HF_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXLPM_HF_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 14'b00000000000000 to 14'b11111111111111.", RXLPM_HF_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RXLPM_HF_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 14'b00000000000000 to 14'b11111111111111.",
+          RXLPM_HF_CFG);
       #1 $finish;
     end
 
     if ((RXLPM_LF_CFG >= 18'b000000000000000000) && (RXLPM_LF_CFG <= 18'b111111111111111111))
       RXLPM_LF_CFG_BINARY = RXLPM_LF_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXLPM_LF_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 18'b000000000000000000 to 18'b111111111111111111.", RXLPM_LF_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RXLPM_LF_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 18'b000000000000000000 to 18'b111111111111111111.",
+          RXLPM_LF_CFG);
       #1 $finish;
     end
 
     if ((RXOOB_CFG >= 7'b0000000) && (RXOOB_CFG <= 7'b1111111)) RXOOB_CFG_BINARY = RXOOB_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXOOB_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", RXOOB_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RXOOB_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          RXOOB_CFG);
       #1 $finish;
     end
 
     if ((RXOSCALRESET_TIME >= 5'b00000) && (RXOSCALRESET_TIME <= 5'b11111))
       RXOSCALRESET_TIME_BINARY = RXOSCALRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXOSCALRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXOSCALRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXOSCALRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXOSCALRESET_TIME);
       #1 $finish;
     end
 
     if ((RXOSCALRESET_TIMEOUT >= 5'b00000) && (RXOSCALRESET_TIMEOUT <= 5'b11111))
       RXOSCALRESET_TIMEOUT_BINARY = RXOSCALRESET_TIMEOUT;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXOSCALRESET_TIMEOUT on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXOSCALRESET_TIMEOUT);
+      $display(
+          "Attribute Syntax Error : The Attribute RXOSCALRESET_TIMEOUT on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXOSCALRESET_TIMEOUT);
       #1 $finish;
     end
 
     if ((RXPCSRESET_TIME >= 5'b00000) && (RXPCSRESET_TIME <= 5'b11111))
       RXPCSRESET_TIME_BINARY = RXPCSRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPCSRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXPCSRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPCSRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXPCSRESET_TIME);
       #1 $finish;
     end
 
     if ((RXPH_MONITOR_SEL >= 5'b00000) && (RXPH_MONITOR_SEL <= 5'b11111))
       RXPH_MONITOR_SEL_BINARY = RXPH_MONITOR_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPH_MONITOR_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXPH_MONITOR_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPH_MONITOR_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXPH_MONITOR_SEL);
       #1 $finish;
     end
 
     if ((RXPI_CFG0 >= 2'b00) && (RXPI_CFG0 <= 2'b11)) RXPI_CFG0_BINARY = RXPI_CFG0;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPI_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RXPI_CFG0);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPI_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RXPI_CFG0);
       #1 $finish;
     end
 
     if ((RXPI_CFG1 >= 2'b00) && (RXPI_CFG1 <= 2'b11)) RXPI_CFG1_BINARY = RXPI_CFG1;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPI_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RXPI_CFG1);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPI_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RXPI_CFG1);
       #1 $finish;
     end
 
     if ((RXPI_CFG2 >= 2'b00) && (RXPI_CFG2 <= 2'b11)) RXPI_CFG2_BINARY = RXPI_CFG2;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPI_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RXPI_CFG2);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPI_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RXPI_CFG2);
       #1 $finish;
     end
 
     if ((RXPI_CFG3 >= 2'b00) && (RXPI_CFG3 <= 2'b11)) RXPI_CFG3_BINARY = RXPI_CFG3;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPI_CFG3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RXPI_CFG3);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPI_CFG3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RXPI_CFG3);
       #1 $finish;
     end
 
     if ((RXPI_CFG4 >= 1'b0) && (RXPI_CFG4 <= 1'b1)) RXPI_CFG4_BINARY = RXPI_CFG4;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPI_CFG4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXPI_CFG4);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPI_CFG4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXPI_CFG4);
       #1 $finish;
     end
 
     if ((RXPI_CFG5 >= 1'b0) && (RXPI_CFG5 <= 1'b1)) RXPI_CFG5_BINARY = RXPI_CFG5;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPI_CFG5 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXPI_CFG5);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPI_CFG5 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXPI_CFG5);
       #1 $finish;
     end
 
     if ((RXPI_CFG6 >= 3'b000) && (RXPI_CFG6 <= 3'b111)) RXPI_CFG6_BINARY = RXPI_CFG6;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPI_CFG6 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", RXPI_CFG6);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPI_CFG6 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          RXPI_CFG6);
       #1 $finish;
     end
 
     if ((RXPMARESET_TIME >= 5'b00000) && (RXPMARESET_TIME <= 5'b11111))
       RXPMARESET_TIME_BINARY = RXPMARESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPMARESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", RXPMARESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPMARESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          RXPMARESET_TIME);
       #1 $finish;
     end
 
     if ((RXPRBS_ERR_LOOPBACK >= 1'b0) && (RXPRBS_ERR_LOOPBACK <= 1'b1))
       RXPRBS_ERR_LOOPBACK_BINARY = RXPRBS_ERR_LOOPBACK;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXPRBS_ERR_LOOPBACK on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXPRBS_ERR_LOOPBACK);
+      $display(
+          "Attribute Syntax Error : The Attribute RXPRBS_ERR_LOOPBACK on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXPRBS_ERR_LOOPBACK);
       #1 $finish;
     end
 
     if ((RXSLIDE_AUTO_WAIT >= 0) && (RXSLIDE_AUTO_WAIT <= 15))
       RXSLIDE_AUTO_WAIT_BINARY = RXSLIDE_AUTO_WAIT;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXSLIDE_AUTO_WAIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 15.", RXSLIDE_AUTO_WAIT);
+      $display(
+          "Attribute Syntax Error : The Attribute RXSLIDE_AUTO_WAIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 15.",
+          RXSLIDE_AUTO_WAIT);
       #1 $finish;
     end
 
     if ((RXSYNC_MULTILANE >= 1'b0) && (RXSYNC_MULTILANE <= 1'b1))
       RXSYNC_MULTILANE_BINARY = RXSYNC_MULTILANE;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXSYNC_MULTILANE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXSYNC_MULTILANE);
+      $display(
+          "Attribute Syntax Error : The Attribute RXSYNC_MULTILANE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXSYNC_MULTILANE);
       #1 $finish;
     end
 
     if ((RXSYNC_OVRD >= 1'b0) && (RXSYNC_OVRD <= 1'b1)) RXSYNC_OVRD_BINARY = RXSYNC_OVRD;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXSYNC_OVRD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXSYNC_OVRD);
+      $display(
+          "Attribute Syntax Error : The Attribute RXSYNC_OVRD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXSYNC_OVRD);
       #1 $finish;
     end
 
     if ((RXSYNC_SKIP_DA >= 1'b0) && (RXSYNC_SKIP_DA <= 1'b1))
       RXSYNC_SKIP_DA_BINARY = RXSYNC_SKIP_DA;
     else begin
-      $display("Attribute Syntax Error : The Attribute RXSYNC_SKIP_DA on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RXSYNC_SKIP_DA);
+      $display(
+          "Attribute Syntax Error : The Attribute RXSYNC_SKIP_DA on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RXSYNC_SKIP_DA);
       #1 $finish;
     end
 
     if ((RX_BIAS_CFG >= 24'b000000000000000000000000) && (RX_BIAS_CFG <= 24'b111111111111111111111111))
       RX_BIAS_CFG_BINARY = RX_BIAS_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_BIAS_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 24'b000000000000000000000000 to 24'b111111111111111111111111.", RX_BIAS_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_BIAS_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 24'b000000000000000000000000 to 24'b111111111111111111111111.",
+          RX_BIAS_CFG);
       #1 $finish;
     end
 
     if ((RX_BUFFER_CFG >= 6'b000000) && (RX_BUFFER_CFG <= 6'b111111))
       RX_BUFFER_CFG_BINARY = RX_BUFFER_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_BUFFER_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", RX_BUFFER_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_BUFFER_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          RX_BUFFER_CFG);
       #1 $finish;
     end
 
     if ((RX_CLKMUX_PD >= 1'b0) && (RX_CLKMUX_PD <= 1'b1)) RX_CLKMUX_PD_BINARY = RX_CLKMUX_PD;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_CLKMUX_PD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_CLKMUX_PD);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_CLKMUX_PD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RX_CLKMUX_PD);
       #1 $finish;
     end
 
     if ((RX_CM_SEL >= 2'b00) && (RX_CM_SEL <= 2'b11)) RX_CM_SEL_BINARY = RX_CM_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_CM_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RX_CM_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_CM_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RX_CM_SEL);
       #1 $finish;
     end
 
     if ((RX_CM_TRIM >= 4'b0000) && (RX_CM_TRIM <= 4'b1111)) RX_CM_TRIM_BINARY = RX_CM_TRIM;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_CM_TRIM on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RX_CM_TRIM);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_CM_TRIM on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          RX_CM_TRIM);
       #1 $finish;
     end
 
     if ((RX_DDI_SEL >= 6'b000000) && (RX_DDI_SEL <= 6'b111111)) RX_DDI_SEL_BINARY = RX_DDI_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DDI_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", RX_DDI_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DDI_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          RX_DDI_SEL);
       #1 $finish;
     end
 
     if ((RX_DEBUG_CFG >= 14'b00000000000000) && (RX_DEBUG_CFG <= 14'b11111111111111))
       RX_DEBUG_CFG_BINARY = RX_DEBUG_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DEBUG_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 14'b00000000000000 to 14'b11111111111111.", RX_DEBUG_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DEBUG_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 14'b00000000000000 to 14'b11111111111111.",
+          RX_DEBUG_CFG);
       #1 $finish;
     end
 
     if ((RX_DFELPM_CFG0 >= 4'b0000) && (RX_DFELPM_CFG0 <= 4'b1111))
       RX_DFELPM_CFG0_BINARY = RX_DFELPM_CFG0;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFELPM_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RX_DFELPM_CFG0);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFELPM_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          RX_DFELPM_CFG0);
       #1 $finish;
     end
 
     if ((RX_DFELPM_CFG1 >= 1'b0) && (RX_DFELPM_CFG1 <= 1'b1))
       RX_DFELPM_CFG1_BINARY = RX_DFELPM_CFG1;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFELPM_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_DFELPM_CFG1);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFELPM_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RX_DFELPM_CFG1);
       #1 $finish;
     end
 
     if ((RX_DFELPM_KLKH_AGC_STUP_EN >= 1'b0) && (RX_DFELPM_KLKH_AGC_STUP_EN <= 1'b1))
       RX_DFELPM_KLKH_AGC_STUP_EN_BINARY = RX_DFELPM_KLKH_AGC_STUP_EN;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFELPM_KLKH_AGC_STUP_EN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_DFELPM_KLKH_AGC_STUP_EN);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFELPM_KLKH_AGC_STUP_EN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RX_DFELPM_KLKH_AGC_STUP_EN);
       #1 $finish;
     end
 
     if ((RX_DFE_AGC_CFG0 >= 2'b00) && (RX_DFE_AGC_CFG0 <= 2'b11))
       RX_DFE_AGC_CFG0_BINARY = RX_DFE_AGC_CFG0;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_AGC_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RX_DFE_AGC_CFG0);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_AGC_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RX_DFE_AGC_CFG0);
       #1 $finish;
     end
 
     if ((RX_DFE_AGC_CFG1 >= 3'b000) && (RX_DFE_AGC_CFG1 <= 3'b111))
       RX_DFE_AGC_CFG1_BINARY = RX_DFE_AGC_CFG1;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_AGC_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", RX_DFE_AGC_CFG1);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_AGC_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          RX_DFE_AGC_CFG1);
       #1 $finish;
     end
 
     if ((RX_DFE_AGC_CFG2 >= 4'b0000) && (RX_DFE_AGC_CFG2 <= 4'b1111))
       RX_DFE_AGC_CFG2_BINARY = RX_DFE_AGC_CFG2;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_AGC_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RX_DFE_AGC_CFG2);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_AGC_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          RX_DFE_AGC_CFG2);
       #1 $finish;
     end
 
     if ((RX_DFE_AGC_OVRDEN >= 1'b0) && (RX_DFE_AGC_OVRDEN <= 1'b1))
       RX_DFE_AGC_OVRDEN_BINARY = RX_DFE_AGC_OVRDEN;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_AGC_OVRDEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_DFE_AGC_OVRDEN);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_AGC_OVRDEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RX_DFE_AGC_OVRDEN);
       #1 $finish;
     end
 
     if ((RX_DFE_H2_CFG >= 12'b000000000000) && (RX_DFE_H2_CFG <= 12'b111111111111))
       RX_DFE_H2_CFG_BINARY = RX_DFE_H2_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_H2_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 12'b000000000000 to 12'b111111111111.", RX_DFE_H2_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_H2_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 12'b000000000000 to 12'b111111111111.",
+          RX_DFE_H2_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_H3_CFG >= 12'b000000000000) && (RX_DFE_H3_CFG <= 12'b111111111111))
       RX_DFE_H3_CFG_BINARY = RX_DFE_H3_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_H3_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 12'b000000000000 to 12'b111111111111.", RX_DFE_H3_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_H3_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 12'b000000000000 to 12'b111111111111.",
+          RX_DFE_H3_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_H4_CFG >= 11'b00000000000) && (RX_DFE_H4_CFG <= 11'b11111111111))
       RX_DFE_H4_CFG_BINARY = RX_DFE_H4_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_H4_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.", RX_DFE_H4_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_H4_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.",
+          RX_DFE_H4_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_H5_CFG >= 11'b00000000000) && (RX_DFE_H5_CFG <= 11'b11111111111))
       RX_DFE_H5_CFG_BINARY = RX_DFE_H5_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_H5_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.", RX_DFE_H5_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_H5_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.",
+          RX_DFE_H5_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_H6_CFG >= 11'b00000000000) && (RX_DFE_H6_CFG <= 11'b11111111111))
       RX_DFE_H6_CFG_BINARY = RX_DFE_H6_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_H6_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.", RX_DFE_H6_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_H6_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.",
+          RX_DFE_H6_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_H7_CFG >= 11'b00000000000) && (RX_DFE_H7_CFG <= 11'b11111111111))
       RX_DFE_H7_CFG_BINARY = RX_DFE_H7_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_H7_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.", RX_DFE_H7_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_H7_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 11'b00000000000 to 11'b11111111111.",
+          RX_DFE_H7_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_CFG >= 33'b000000000000000000000000000000000) && (RX_DFE_KL_CFG <= 33'b111111111111111111111111111111111))
       RX_DFE_KL_CFG_BINARY = RX_DFE_KL_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 33'b000000000000000000000000000000000 to 33'b111111111111111111111111111111111.", RX_DFE_KL_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 33'b000000000000000000000000000000000 to 33'b111111111111111111111111111111111.",
+          RX_DFE_KL_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KH_CFG0 >= 2'b00) && (RX_DFE_KL_LPM_KH_CFG0 <= 2'b11))
       RX_DFE_KL_LPM_KH_CFG0_BINARY = RX_DFE_KL_LPM_KH_CFG0;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RX_DFE_KL_LPM_KH_CFG0);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RX_DFE_KL_LPM_KH_CFG0);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KH_CFG1 >= 3'b000) && (RX_DFE_KL_LPM_KH_CFG1 <= 3'b111))
       RX_DFE_KL_LPM_KH_CFG1_BINARY = RX_DFE_KL_LPM_KH_CFG1;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", RX_DFE_KL_LPM_KH_CFG1);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          RX_DFE_KL_LPM_KH_CFG1);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KH_CFG2 >= 4'b0000) && (RX_DFE_KL_LPM_KH_CFG2 <= 4'b1111))
       RX_DFE_KL_LPM_KH_CFG2_BINARY = RX_DFE_KL_LPM_KH_CFG2;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RX_DFE_KL_LPM_KH_CFG2);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          RX_DFE_KL_LPM_KH_CFG2);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KH_OVRDEN >= 1'b0) && (RX_DFE_KL_LPM_KH_OVRDEN <= 1'b1))
       RX_DFE_KL_LPM_KH_OVRDEN_BINARY = RX_DFE_KL_LPM_KH_OVRDEN;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_OVRDEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_DFE_KL_LPM_KH_OVRDEN);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KH_OVRDEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RX_DFE_KL_LPM_KH_OVRDEN);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KL_CFG0 >= 2'b00) && (RX_DFE_KL_LPM_KL_CFG0 <= 2'b11))
       RX_DFE_KL_LPM_KL_CFG0_BINARY = RX_DFE_KL_LPM_KL_CFG0;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", RX_DFE_KL_LPM_KL_CFG0);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          RX_DFE_KL_LPM_KL_CFG0);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KL_CFG1 >= 3'b000) && (RX_DFE_KL_LPM_KL_CFG1 <= 3'b111))
       RX_DFE_KL_LPM_KL_CFG1_BINARY = RX_DFE_KL_LPM_KL_CFG1;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", RX_DFE_KL_LPM_KL_CFG1);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          RX_DFE_KL_LPM_KL_CFG1);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KL_CFG2 >= 4'b0000) && (RX_DFE_KL_LPM_KL_CFG2 <= 4'b1111))
       RX_DFE_KL_LPM_KL_CFG2_BINARY = RX_DFE_KL_LPM_KL_CFG2;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", RX_DFE_KL_LPM_KL_CFG2);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          RX_DFE_KL_LPM_KL_CFG2);
       #1 $finish;
     end
 
     if ((RX_DFE_KL_LPM_KL_OVRDEN >= 1'b0) && (RX_DFE_KL_LPM_KL_OVRDEN <= 1'b1))
       RX_DFE_KL_LPM_KL_OVRDEN_BINARY = RX_DFE_KL_LPM_KL_OVRDEN;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_OVRDEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_DFE_KL_LPM_KL_OVRDEN);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_KL_LPM_KL_OVRDEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RX_DFE_KL_LPM_KL_OVRDEN);
       #1 $finish;
     end
 
     if ((RX_DFE_LPM_HOLD_DURING_EIDLE >= 1'b0) && (RX_DFE_LPM_HOLD_DURING_EIDLE <= 1'b1))
       RX_DFE_LPM_HOLD_DURING_EIDLE_BINARY = RX_DFE_LPM_HOLD_DURING_EIDLE;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_LPM_HOLD_DURING_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", RX_DFE_LPM_HOLD_DURING_EIDLE);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_LPM_HOLD_DURING_EIDLE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          RX_DFE_LPM_HOLD_DURING_EIDLE);
       #1 $finish;
     end
 
     if ((RX_DFE_UT_CFG >= 17'b00000000000000000) && (RX_DFE_UT_CFG <= 17'b11111111111111111))
       RX_DFE_UT_CFG_BINARY = RX_DFE_UT_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_UT_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 17'b00000000000000000 to 17'b11111111111111111.", RX_DFE_UT_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_UT_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 17'b00000000000000000 to 17'b11111111111111111.",
+          RX_DFE_UT_CFG);
       #1 $finish;
     end
 
     if ((RX_DFE_VP_CFG >= 17'b00000000000000000) && (RX_DFE_VP_CFG <= 17'b11111111111111111))
       RX_DFE_VP_CFG_BINARY = RX_DFE_VP_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_DFE_VP_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 17'b00000000000000000 to 17'b11111111111111111.", RX_DFE_VP_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_DFE_VP_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 17'b00000000000000000 to 17'b11111111111111111.",
+          RX_DFE_VP_CFG);
       #1 $finish;
     end
 
     if ((RX_INT_DATAWIDTH >= 0) && (RX_INT_DATAWIDTH <= 1))
       RX_INT_DATAWIDTH_BINARY = RX_INT_DATAWIDTH;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_INT_DATAWIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 1.", RX_INT_DATAWIDTH);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_INT_DATAWIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          RX_INT_DATAWIDTH);
       #1 $finish;
     end
 
     if ((RX_OS_CFG >= 13'b0000000000000) && (RX_OS_CFG <= 13'b1111111111111))
       RX_OS_CFG_BINARY = RX_OS_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute RX_OS_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 13'b0000000000000 to 13'b1111111111111.", RX_OS_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute RX_OS_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 13'b0000000000000 to 13'b1111111111111.",
+          RX_OS_CFG);
       #1 $finish;
     end
 
     if ((SAS_MAX_COM >= 1) && (SAS_MAX_COM <= 127)) SAS_MAX_COM_BINARY = SAS_MAX_COM;
     else begin
-      $display("Attribute Syntax Error : The Attribute SAS_MAX_COM on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 127.", SAS_MAX_COM);
+      $display(
+          "Attribute Syntax Error : The Attribute SAS_MAX_COM on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 127.",
+          SAS_MAX_COM);
       #1 $finish;
     end
 
     if ((SAS_MIN_COM >= 1) && (SAS_MIN_COM <= 63)) SAS_MIN_COM_BINARY = SAS_MIN_COM;
     else begin
-      $display("Attribute Syntax Error : The Attribute SAS_MIN_COM on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SAS_MIN_COM);
+      $display(
+          "Attribute Syntax Error : The Attribute SAS_MIN_COM on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.",
+          SAS_MIN_COM);
       #1 $finish;
     end
 
     if ((SATA_BURST_SEQ_LEN >= 4'b0000) && (SATA_BURST_SEQ_LEN <= 4'b1111))
       SATA_BURST_SEQ_LEN_BINARY = SATA_BURST_SEQ_LEN;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_BURST_SEQ_LEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.", SATA_BURST_SEQ_LEN);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_BURST_SEQ_LEN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 4'b0000 to 4'b1111.",
+          SATA_BURST_SEQ_LEN);
       #1 $finish;
     end
 
     if ((SATA_BURST_VAL >= 3'b000) && (SATA_BURST_VAL <= 3'b111))
       SATA_BURST_VAL_BINARY = SATA_BURST_VAL;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_BURST_VAL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", SATA_BURST_VAL);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_BURST_VAL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          SATA_BURST_VAL);
       #1 $finish;
     end
 
     if ((SATA_EIDLE_VAL >= 3'b000) && (SATA_EIDLE_VAL <= 3'b111))
       SATA_EIDLE_VAL_BINARY = SATA_EIDLE_VAL;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_EIDLE_VAL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", SATA_EIDLE_VAL);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_EIDLE_VAL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          SATA_EIDLE_VAL);
       #1 $finish;
     end
 
     if ((SATA_MAX_BURST >= 1) && (SATA_MAX_BURST <= 63)) SATA_MAX_BURST_BINARY = SATA_MAX_BURST;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_MAX_BURST on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MAX_BURST);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_MAX_BURST on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.",
+          SATA_MAX_BURST);
       #1 $finish;
     end
 
     if ((SATA_MAX_INIT >= 1) && (SATA_MAX_INIT <= 63)) SATA_MAX_INIT_BINARY = SATA_MAX_INIT;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_MAX_INIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MAX_INIT);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_MAX_INIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.",
+          SATA_MAX_INIT);
       #1 $finish;
     end
 
     if ((SATA_MAX_WAKE >= 1) && (SATA_MAX_WAKE <= 63)) SATA_MAX_WAKE_BINARY = SATA_MAX_WAKE;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_MAX_WAKE on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MAX_WAKE);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_MAX_WAKE on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.",
+          SATA_MAX_WAKE);
       #1 $finish;
     end
 
     if ((SATA_MIN_BURST >= 1) && (SATA_MIN_BURST <= 61)) SATA_MIN_BURST_BINARY = SATA_MIN_BURST;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_MIN_BURST on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 61.", SATA_MIN_BURST);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_MIN_BURST on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 61.",
+          SATA_MIN_BURST);
       #1 $finish;
     end
 
     if ((SATA_MIN_INIT >= 1) && (SATA_MIN_INIT <= 63)) SATA_MIN_INIT_BINARY = SATA_MIN_INIT;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_MIN_INIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MIN_INIT);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_MIN_INIT on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.",
+          SATA_MIN_INIT);
       #1 $finish;
     end
 
     if ((SATA_MIN_WAKE >= 1) && (SATA_MIN_WAKE <= 63)) SATA_MIN_WAKE_BINARY = SATA_MIN_WAKE;
     else begin
-      $display("Attribute Syntax Error : The Attribute SATA_MIN_WAKE on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.", SATA_MIN_WAKE);
+      $display(
+          "Attribute Syntax Error : The Attribute SATA_MIN_WAKE on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  1 to 63.",
+          SATA_MIN_WAKE);
       #1 $finish;
     end
 
     if ((SIM_CPLLREFCLK_SEL >= 3'b0) && (SIM_CPLLREFCLK_SEL <= 3'b111))
       SIM_CPLLREFCLK_SEL_BINARY = SIM_CPLLREFCLK_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute SIM_CPLLREFCLK_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.", SIM_CPLLREFCLK_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute SIM_CPLLREFCLK_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b0 to 3'b111.",
+          SIM_CPLLREFCLK_SEL);
       #1 $finish;
     end
 
     if ((TERM_RCAL_CFG >= 15'b000000000000000) && (TERM_RCAL_CFG <= 15'b111111111111111))
       TERM_RCAL_CFG_BINARY = TERM_RCAL_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute TERM_RCAL_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 15'b000000000000000 to 15'b111111111111111.", TERM_RCAL_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute TERM_RCAL_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 15'b000000000000000 to 15'b111111111111111.",
+          TERM_RCAL_CFG);
       #1 $finish;
     end
 
     if ((TERM_RCAL_OVRD >= 3'b000) && (TERM_RCAL_OVRD <= 3'b111))
       TERM_RCAL_OVRD_BINARY = TERM_RCAL_OVRD;
     else begin
-      $display("Attribute Syntax Error : The Attribute TERM_RCAL_OVRD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", TERM_RCAL_OVRD);
+      $display(
+          "Attribute Syntax Error : The Attribute TERM_RCAL_OVRD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          TERM_RCAL_OVRD);
       #1 $finish;
     end
 
     if ((TXOOB_CFG >= 1'b0) && (TXOOB_CFG <= 1'b1)) TXOOB_CFG_BINARY = TXOOB_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXOOB_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXOOB_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute TXOOB_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXOOB_CFG);
       #1 $finish;
     end
 
     if ((TXPCSRESET_TIME >= 5'b00000) && (TXPCSRESET_TIME <= 5'b11111))
       TXPCSRESET_TIME_BINARY = TXPCSRESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPCSRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", TXPCSRESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPCSRESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          TXPCSRESET_TIME);
       #1 $finish;
     end
 
     if ((TXPH_MONITOR_SEL >= 5'b00000) && (TXPH_MONITOR_SEL <= 5'b11111))
       TXPH_MONITOR_SEL_BINARY = TXPH_MONITOR_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPH_MONITOR_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", TXPH_MONITOR_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPH_MONITOR_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          TXPH_MONITOR_SEL);
       #1 $finish;
     end
 
     if ((TXPI_CFG0 >= 2'b00) && (TXPI_CFG0 <= 2'b11)) TXPI_CFG0_BINARY = TXPI_CFG0;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", TXPI_CFG0);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_CFG0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          TXPI_CFG0);
       #1 $finish;
     end
 
     if ((TXPI_CFG1 >= 2'b00) && (TXPI_CFG1 <= 2'b11)) TXPI_CFG1_BINARY = TXPI_CFG1;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", TXPI_CFG1);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_CFG1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          TXPI_CFG1);
       #1 $finish;
     end
 
     if ((TXPI_CFG2 >= 2'b00) && (TXPI_CFG2 <= 2'b11)) TXPI_CFG2_BINARY = TXPI_CFG2;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.", TXPI_CFG2);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_CFG2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 2'b00 to 2'b11.",
+          TXPI_CFG2);
       #1 $finish;
     end
 
     if ((TXPI_CFG3 >= 1'b0) && (TXPI_CFG3 <= 1'b1)) TXPI_CFG3_BINARY = TXPI_CFG3;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_CFG3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXPI_CFG3);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_CFG3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXPI_CFG3);
       #1 $finish;
     end
 
     if ((TXPI_CFG4 >= 1'b0) && (TXPI_CFG4 <= 1'b1)) TXPI_CFG4_BINARY = TXPI_CFG4;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_CFG4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXPI_CFG4);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_CFG4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXPI_CFG4);
       #1 $finish;
     end
 
     if ((TXPI_CFG5 >= 3'b000) && (TXPI_CFG5 <= 3'b111)) TXPI_CFG5_BINARY = TXPI_CFG5;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_CFG5 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", TXPI_CFG5);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_CFG5 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          TXPI_CFG5);
       #1 $finish;
     end
 
     if ((TXPI_GREY_SEL >= 1'b0) && (TXPI_GREY_SEL <= 1'b1)) TXPI_GREY_SEL_BINARY = TXPI_GREY_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_GREY_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXPI_GREY_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_GREY_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXPI_GREY_SEL);
       #1 $finish;
     end
 
     if ((TXPI_INVSTROBE_SEL >= 1'b0) && (TXPI_INVSTROBE_SEL <= 1'b1))
       TXPI_INVSTROBE_SEL_BINARY = TXPI_INVSTROBE_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_INVSTROBE_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXPI_INVSTROBE_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_INVSTROBE_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXPI_INVSTROBE_SEL);
       #1 $finish;
     end
 
     if ((TXPI_PPM_CFG >= 8'b00000000) && (TXPI_PPM_CFG <= 8'b11111111))
       TXPI_PPM_CFG_BINARY = TXPI_PPM_CFG;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_PPM_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 8'b00000000 to 8'b11111111.", TXPI_PPM_CFG);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_PPM_CFG on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 8'b00000000 to 8'b11111111.",
+          TXPI_PPM_CFG);
       #1 $finish;
     end
 
     if ((TXPI_SYNFREQ_PPM >= 3'b000) && (TXPI_SYNFREQ_PPM <= 3'b111))
       TXPI_SYNFREQ_PPM_BINARY = TXPI_SYNFREQ_PPM;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPI_SYNFREQ_PPM on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", TXPI_SYNFREQ_PPM);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPI_SYNFREQ_PPM on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          TXPI_SYNFREQ_PPM);
       #1 $finish;
     end
 
     if ((TXPMARESET_TIME >= 5'b00000) && (TXPMARESET_TIME <= 5'b11111))
       TXPMARESET_TIME_BINARY = TXPMARESET_TIME;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXPMARESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.", TXPMARESET_TIME);
+      $display(
+          "Attribute Syntax Error : The Attribute TXPMARESET_TIME on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 5'b00000 to 5'b11111.",
+          TXPMARESET_TIME);
       #1 $finish;
     end
 
     if ((TXSYNC_MULTILANE >= 1'b0) && (TXSYNC_MULTILANE <= 1'b1))
       TXSYNC_MULTILANE_BINARY = TXSYNC_MULTILANE;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXSYNC_MULTILANE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXSYNC_MULTILANE);
+      $display(
+          "Attribute Syntax Error : The Attribute TXSYNC_MULTILANE on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXSYNC_MULTILANE);
       #1 $finish;
     end
 
     if ((TXSYNC_OVRD >= 1'b0) && (TXSYNC_OVRD <= 1'b1)) TXSYNC_OVRD_BINARY = TXSYNC_OVRD;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXSYNC_OVRD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXSYNC_OVRD);
+      $display(
+          "Attribute Syntax Error : The Attribute TXSYNC_OVRD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXSYNC_OVRD);
       #1 $finish;
     end
 
     if ((TXSYNC_SKIP_DA >= 1'b0) && (TXSYNC_SKIP_DA <= 1'b1))
       TXSYNC_SKIP_DA_BINARY = TXSYNC_SKIP_DA;
     else begin
-      $display("Attribute Syntax Error : The Attribute TXSYNC_SKIP_DA on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TXSYNC_SKIP_DA);
+      $display(
+          "Attribute Syntax Error : The Attribute TXSYNC_SKIP_DA on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TXSYNC_SKIP_DA);
       #1 $finish;
     end
 
     if ((TX_CLKMUX_PD >= 1'b0) && (TX_CLKMUX_PD <= 1'b1)) TX_CLKMUX_PD_BINARY = TX_CLKMUX_PD;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_CLKMUX_PD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TX_CLKMUX_PD);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_CLKMUX_PD on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TX_CLKMUX_PD);
       #1 $finish;
     end
 
     if ((TX_DEEMPH0 >= 6'b000000) && (TX_DEEMPH0 <= 6'b111111)) TX_DEEMPH0_BINARY = TX_DEEMPH0;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_DEEMPH0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", TX_DEEMPH0);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_DEEMPH0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          TX_DEEMPH0);
       #1 $finish;
     end
 
     if ((TX_DEEMPH1 >= 6'b000000) && (TX_DEEMPH1 <= 6'b111111)) TX_DEEMPH1_BINARY = TX_DEEMPH1;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_DEEMPH1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.", TX_DEEMPH1);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_DEEMPH1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 6'b000000 to 6'b111111.",
+          TX_DEEMPH1);
       #1 $finish;
     end
 
     if ((TX_EIDLE_ASSERT_DELAY >= 3'b000) && (TX_EIDLE_ASSERT_DELAY <= 3'b111))
       TX_EIDLE_ASSERT_DELAY_BINARY = TX_EIDLE_ASSERT_DELAY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_EIDLE_ASSERT_DELAY on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", TX_EIDLE_ASSERT_DELAY);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_EIDLE_ASSERT_DELAY on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          TX_EIDLE_ASSERT_DELAY);
       #1 $finish;
     end
 
     if ((TX_EIDLE_DEASSERT_DELAY >= 3'b000) && (TX_EIDLE_DEASSERT_DELAY <= 3'b111))
       TX_EIDLE_DEASSERT_DELAY_BINARY = TX_EIDLE_DEASSERT_DELAY;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_EIDLE_DEASSERT_DELAY on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", TX_EIDLE_DEASSERT_DELAY);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_EIDLE_DEASSERT_DELAY on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          TX_EIDLE_DEASSERT_DELAY);
       #1 $finish;
     end
 
     if ((TX_INT_DATAWIDTH >= 0) && (TX_INT_DATAWIDTH <= 1))
       TX_INT_DATAWIDTH_BINARY = TX_INT_DATAWIDTH;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_INT_DATAWIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 1.", TX_INT_DATAWIDTH);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_INT_DATAWIDTH on GTHE2_CHANNEL instance %m is set to %d.  Legal values for this attribute are  0 to 1.",
+          TX_INT_DATAWIDTH);
       #1 $finish;
     end
 
     if ((TX_MAINCURSOR_SEL >= 1'b0) && (TX_MAINCURSOR_SEL <= 1'b1))
       TX_MAINCURSOR_SEL_BINARY = TX_MAINCURSOR_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MAINCURSOR_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TX_MAINCURSOR_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MAINCURSOR_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TX_MAINCURSOR_SEL);
       #1 $finish;
     end
 
     if ((TX_MARGIN_FULL_0 >= 7'b0000000) && (TX_MARGIN_FULL_0 <= 7'b1111111))
       TX_MARGIN_FULL_0_BINARY = TX_MARGIN_FULL_0;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_FULL_0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_FULL_0);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_FULL_0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_FULL_0);
       #1 $finish;
     end
 
     if ((TX_MARGIN_FULL_1 >= 7'b0000000) && (TX_MARGIN_FULL_1 <= 7'b1111111))
       TX_MARGIN_FULL_1_BINARY = TX_MARGIN_FULL_1;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_FULL_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_FULL_1);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_FULL_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_FULL_1);
       #1 $finish;
     end
 
     if ((TX_MARGIN_FULL_2 >= 7'b0000000) && (TX_MARGIN_FULL_2 <= 7'b1111111))
       TX_MARGIN_FULL_2_BINARY = TX_MARGIN_FULL_2;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_FULL_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_FULL_2);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_FULL_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_FULL_2);
       #1 $finish;
     end
 
     if ((TX_MARGIN_FULL_3 >= 7'b0000000) && (TX_MARGIN_FULL_3 <= 7'b1111111))
       TX_MARGIN_FULL_3_BINARY = TX_MARGIN_FULL_3;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_FULL_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_FULL_3);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_FULL_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_FULL_3);
       #1 $finish;
     end
 
     if ((TX_MARGIN_FULL_4 >= 7'b0000000) && (TX_MARGIN_FULL_4 <= 7'b1111111))
       TX_MARGIN_FULL_4_BINARY = TX_MARGIN_FULL_4;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_FULL_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_FULL_4);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_FULL_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_FULL_4);
       #1 $finish;
     end
 
     if ((TX_MARGIN_LOW_0 >= 7'b0000000) && (TX_MARGIN_LOW_0 <= 7'b1111111))
       TX_MARGIN_LOW_0_BINARY = TX_MARGIN_LOW_0;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_LOW_0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_LOW_0);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_LOW_0 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_LOW_0);
       #1 $finish;
     end
 
     if ((TX_MARGIN_LOW_1 >= 7'b0000000) && (TX_MARGIN_LOW_1 <= 7'b1111111))
       TX_MARGIN_LOW_1_BINARY = TX_MARGIN_LOW_1;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_LOW_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_LOW_1);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_LOW_1 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_LOW_1);
       #1 $finish;
     end
 
     if ((TX_MARGIN_LOW_2 >= 7'b0000000) && (TX_MARGIN_LOW_2 <= 7'b1111111))
       TX_MARGIN_LOW_2_BINARY = TX_MARGIN_LOW_2;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_LOW_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_LOW_2);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_LOW_2 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_LOW_2);
       #1 $finish;
     end
 
     if ((TX_MARGIN_LOW_3 >= 7'b0000000) && (TX_MARGIN_LOW_3 <= 7'b1111111))
       TX_MARGIN_LOW_3_BINARY = TX_MARGIN_LOW_3;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_LOW_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_LOW_3);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_LOW_3 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_LOW_3);
       #1 $finish;
     end
 
     if ((TX_MARGIN_LOW_4 >= 7'b0000000) && (TX_MARGIN_LOW_4 <= 7'b1111111))
       TX_MARGIN_LOW_4_BINARY = TX_MARGIN_LOW_4;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_MARGIN_LOW_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.", TX_MARGIN_LOW_4);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_MARGIN_LOW_4 on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 7'b0000000 to 7'b1111111.",
+          TX_MARGIN_LOW_4);
       #1 $finish;
     end
 
     if ((TX_QPI_STATUS_EN >= 1'b0) && (TX_QPI_STATUS_EN <= 1'b1))
       TX_QPI_STATUS_EN_BINARY = TX_QPI_STATUS_EN;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_QPI_STATUS_EN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", TX_QPI_STATUS_EN);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_QPI_STATUS_EN on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          TX_QPI_STATUS_EN);
       #1 $finish;
     end
 
     if ((TX_RXDETECT_REF >= 3'b000) && (TX_RXDETECT_REF <= 3'b111))
       TX_RXDETECT_REF_BINARY = TX_RXDETECT_REF;
     else begin
-      $display("Attribute Syntax Error : The Attribute TX_RXDETECT_REF on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.", TX_RXDETECT_REF);
+      $display(
+          "Attribute Syntax Error : The Attribute TX_RXDETECT_REF on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 3'b000 to 3'b111.",
+          TX_RXDETECT_REF);
       #1 $finish;
     end
 
     if ((UCODEER_CLR >= 1'b0) && (UCODEER_CLR <= 1'b1)) UCODEER_CLR_BINARY = UCODEER_CLR;
     else begin
-      $display("Attribute Syntax Error : The Attribute UCODEER_CLR on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", UCODEER_CLR);
+      $display(
+          "Attribute Syntax Error : The Attribute UCODEER_CLR on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          UCODEER_CLR);
       #1 $finish;
     end
 
     if ((USE_PCS_CLK_PHASE_SEL >= 1'b0) && (USE_PCS_CLK_PHASE_SEL <= 1'b1))
       USE_PCS_CLK_PHASE_SEL_BINARY = USE_PCS_CLK_PHASE_SEL;
     else begin
-      $display("Attribute Syntax Error : The Attribute USE_PCS_CLK_PHASE_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", USE_PCS_CLK_PHASE_SEL);
+      $display(
+          "Attribute Syntax Error : The Attribute USE_PCS_CLK_PHASE_SEL on GTHE2_CHANNEL instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          USE_PCS_CLK_PHASE_SEL);
       #1 $finish;
     end
 
@@ -3195,11 +3643,9 @@ module GTHE2_CHANNEL (
 
     //After the 1st DRPEN pulse, check the DRPEN and DRPRDY.
     case (sfsm)
-      FSM_IDLE:   
-            begin
-               if(delay_DRPEN == 1'b1)
-		 sfsm <= FSM_WAIT;  
-            end
+      FSM_IDLE: begin
+        if (delay_DRPEN == 1'b1) sfsm <= FSM_WAIT;
+      end
 
       FSM_WAIT: begin
         // After the 1st DRPEN, 4 cases can happen

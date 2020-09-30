@@ -1027,81 +1027,107 @@ module ILKNE4 #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((BYPASS_REG != "FALSE") && (BYPASS_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-101] BYPASS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, BYPASS_REG);
+      $display(
+          "Error: [Unisim %s-101] BYPASS attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, BYPASS_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_LAST_LANE_REG < 4'h0) || (CTL_RX_LAST_LANE_REG > 4'hB))) begin
-      $display("Error: [Unisim %s-112] CTL_RX_LAST_LANE attribute is set to %h.  Legal values for this attribute are 4'h0 to 4'hB. Instance: %m", MODULE_NAME, CTL_RX_LAST_LANE_REG);
+      $display(
+          "Error: [Unisim %s-112] CTL_RX_LAST_LANE attribute is set to %h.  Legal values for this attribute are 4'h0 to 4'hB. Instance: %m",
+          MODULE_NAME, CTL_RX_LAST_LANE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_MFRAMELEN_MINUS1_REG < 16'h00FF) || (CTL_RX_MFRAMELEN_MINUS1_REG > 16'h1FFF))) begin
-      $display("Error: [Unisim %s-113] CTL_RX_MFRAMELEN_MINUS1 attribute is set to %h.  Legal values for this attribute are 16'h00FF to 16'h1FFF. Instance: %m", MODULE_NAME, CTL_RX_MFRAMELEN_MINUS1_REG);
+      $display(
+          "Error: [Unisim %s-113] CTL_RX_MFRAMELEN_MINUS1 attribute is set to %h.  Legal values for this attribute are 16'h00FF to 16'h1FFF. Instance: %m",
+          MODULE_NAME, CTL_RX_MFRAMELEN_MINUS1_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_PACKET_MODE_REG != "FALSE") &&
          (CTL_RX_PACKET_MODE_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-114] CTL_RX_PACKET_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_RX_PACKET_MODE_REG);
+      $display(
+          "Error: [Unisim %s-114] CTL_RX_PACKET_MODE attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_RX_PACKET_MODE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_RX_RETRANS_MULT_REG < 3'h0) || (CTL_RX_RETRANS_MULT_REG > 3'h5))) begin
-      $display("Error: [Unisim %s-115] CTL_RX_RETRANS_MULT attribute is set to %h.  Legal values for this attribute are 3'h0 to 3'h5. Instance: %m", MODULE_NAME, CTL_RX_RETRANS_MULT_REG);
+      $display(
+          "Error: [Unisim %s-115] CTL_RX_RETRANS_MULT attribute is set to %h.  Legal values for this attribute are 3'h0 to 3'h5. Instance: %m",
+          MODULE_NAME, CTL_RX_RETRANS_MULT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TEST_MODE_PIN_CHAR_REG != "FALSE") &&
          (CTL_TEST_MODE_PIN_CHAR_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-121] CTL_TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_TEST_MODE_PIN_CHAR_REG);
+      $display(
+          "Error: [Unisim %s-121] CTL_TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_TEST_MODE_PIN_CHAR_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_BURSTSHORT_REG < 3'h1) || (CTL_TX_BURSTSHORT_REG > 3'h7))) begin
-      $display("Error: [Unisim %s-123] CTL_TX_BURSTSHORT attribute is set to %h.  Legal values for this attribute are 3'h1 to 3'h7. Instance: %m", MODULE_NAME, CTL_TX_BURSTSHORT_REG);
+      $display(
+          "Error: [Unisim %s-123] CTL_TX_BURSTSHORT attribute is set to %h.  Legal values for this attribute are 3'h1 to 3'h7. Instance: %m",
+          MODULE_NAME, CTL_TX_BURSTSHORT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_DISABLE_SKIPWORD_REG != "FALSE") &&
          (CTL_TX_DISABLE_SKIPWORD_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-125] CTL_TX_DISABLE_SKIPWORD attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, CTL_TX_DISABLE_SKIPWORD_REG);
+      $display(
+          "Error: [Unisim %s-125] CTL_TX_DISABLE_SKIPWORD attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, CTL_TX_DISABLE_SKIPWORD_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_LAST_LANE_REG < 4'h0) || (CTL_TX_LAST_LANE_REG > 4'hB))) begin
-      $display("Error: [Unisim %s-127] CTL_TX_LAST_LANE attribute is set to %h.  Legal values for this attribute are 4'h0 to 4'hB. Instance: %m", MODULE_NAME, CTL_TX_LAST_LANE_REG);
+      $display(
+          "Error: [Unisim %s-127] CTL_TX_LAST_LANE attribute is set to %h.  Legal values for this attribute are 4'h0 to 4'hB. Instance: %m",
+          MODULE_NAME, CTL_TX_LAST_LANE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_MFRAMELEN_MINUS1_REG < 16'h00FF) || (CTL_TX_MFRAMELEN_MINUS1_REG > 16'h1FFF))) begin
-      $display("Error: [Unisim %s-128] CTL_TX_MFRAMELEN_MINUS1 attribute is set to %h.  Legal values for this attribute are 16'h00FF to 16'h1FFF. Instance: %m", MODULE_NAME, CTL_TX_MFRAMELEN_MINUS1_REG);
+      $display(
+          "Error: [Unisim %s-128] CTL_TX_MFRAMELEN_MINUS1 attribute is set to %h.  Legal values for this attribute are 16'h00FF to 16'h1FFF. Instance: %m",
+          MODULE_NAME, CTL_TX_MFRAMELEN_MINUS1_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_RETRANS_DEPTH_REG < 14'h0015) || (CTL_TX_RETRANS_DEPTH_REG > 14'h0800))) begin
-      $display("Error: [Unisim %s-129] CTL_TX_RETRANS_DEPTH attribute is set to %h.  Legal values for this attribute are 14'h0015 to 14'h0800. Instance: %m", MODULE_NAME, CTL_TX_RETRANS_DEPTH_REG);
+      $display(
+          "Error: [Unisim %s-129] CTL_TX_RETRANS_DEPTH attribute is set to %h.  Legal values for this attribute are 14'h0015 to 14'h0800. Instance: %m",
+          MODULE_NAME, CTL_TX_RETRANS_DEPTH_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((CTL_TX_RETRANS_MULT_REG < 3'h0) || (CTL_TX_RETRANS_MULT_REG > 3'h5))) begin
-      $display("Error: [Unisim %s-130] CTL_TX_RETRANS_MULT attribute is set to %h.  Legal values for this attribute are 3'h0 to 3'h5. Instance: %m", MODULE_NAME, CTL_TX_RETRANS_MULT_REG);
+      $display(
+          "Error: [Unisim %s-130] CTL_TX_RETRANS_MULT attribute is set to %h.  Legal values for this attribute are 3'h0 to 3'h5. Instance: %m",
+          MODULE_NAME, CTL_TX_RETRANS_MULT_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((MODE_REG != "TRUE") && (MODE_REG != "FALSE"))) begin
-      $display("Error: [Unisim %s-132] MODE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m", MODULE_NAME, MODE_REG);
+      $display(
+          "Error: [Unisim %s-132] MODE attribute is set to %s.  Legal values for this attribute are TRUE or FALSE. Instance: %m",
+          MODULE_NAME, MODE_REG);
       attr_err = 1'b1;
     end
 
@@ -1109,14 +1135,18 @@ module ILKNE4 #(
         ((SIM_DEVICE_REG != "ULTRASCALE_PLUS") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES1") &&
          (SIM_DEVICE_REG != "ULTRASCALE_PLUS_ES2"))) begin
-      $display("Error: [Unisim %s-133] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-133] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE_PLUS, ULTRASCALE_PLUS_ES1 or ULTRASCALE_PLUS_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((TEST_MODE_PIN_CHAR_REG != "FALSE") &&
          (TEST_MODE_PIN_CHAR_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-134] TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, TEST_MODE_PIN_CHAR_REG);
+      $display(
+          "Error: [Unisim %s-134] TEST_MODE_PIN_CHAR attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, TEST_MODE_PIN_CHAR_REG);
       attr_err = 1'b1;
     end
 

@@ -84,7 +84,9 @@ module IOBUF_INTERMDISABLE (
 
       "FALSE", "TRUE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute IBUF_LOW_PWR on IOBUF_INTERMDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", IBUF_LOW_PWR);
+        $display(
+            "Attribute Syntax Error : The attribute IBUF_LOW_PWR on IOBUF_INTERMDISABLE instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            IBUF_LOW_PWR);
         #1 $finish;
       end
 
@@ -109,7 +111,9 @@ module IOBUF_INTERMDISABLE (
          (SIM_DEVICE != "VERSAL_PRIME") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE != "VERSAL_PRIME_ES2")) begin
-      $display("Error: [Unisim %s-104] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE);
+      $display(
+          "Error: [Unisim %s-104] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are 7SERIES, ULTRASCALE, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE);
       #1 $finish;
     end
 
@@ -117,9 +121,9 @@ module IOBUF_INTERMDISABLE (
   end  // initial begin
   generate
     case (SIM_DEVICE)
-      "7SERIES" : begin
-                        assign out_val = 1'b1;
-                     end
+      "7SERIES": begin
+        assign out_val = 1'b1;
+      end
       default:
       begin
         assign out_val = 1'b0;
@@ -133,9 +137,9 @@ module IOBUF_INTERMDISABLE (
         assign T_OR_IBUFDISABLE = ~T || IBUFDISABLE;
         assign O = (T_OR_IBUFDISABLE == 1'b1) ? out_val : (T_OR_IBUFDISABLE == 1'b0) ? IO : 1'bx;
       end
-      "FALSE" : begin
-                        assign O = IO;
-                    end
+      "FALSE": begin
+        assign O = IO;
+      end
     endcase
   endgenerate
 

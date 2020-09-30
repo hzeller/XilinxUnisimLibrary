@@ -452,42 +452,58 @@ module RAMB36E1 (
 
 
     if (!((IS_CLKARDCLK_INVERTED >= 1'b0) && (IS_CLKARDCLK_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_CLKARDCLK_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_CLKARDCLK_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_CLKARDCLK_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_CLKARDCLK_INVERTED);
       attr_err = 1'b1;
     end
 
     if (!((IS_CLKBWRCLK_INVERTED >= 1'b0) && (IS_CLKBWRCLK_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_CLKBWRCLK_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_CLKBWRCLK_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_CLKBWRCLK_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_CLKBWRCLK_INVERTED);
       attr_err = 1'b1;
     end
 
     if (!((IS_ENARDEN_INVERTED >= 1'b0) && (IS_ENARDEN_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_ENARDEN_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_ENARDEN_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_ENARDEN_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_ENARDEN_INVERTED);
       attr_err = 1'b1;
     end
 
     if (!((IS_ENBWREN_INVERTED >= 1'b0) && (IS_ENBWREN_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_ENBWREN_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_ENBWREN_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_ENBWREN_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_ENBWREN_INVERTED);
       attr_err = 1'b1;
     end
 
     if (!((IS_RSTRAMARSTRAM_INVERTED >= 1'b0) && (IS_RSTRAMARSTRAM_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RSTRAMARSTRAM_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RSTRAMARSTRAM_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RSTRAMARSTRAM_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RSTRAMARSTRAM_INVERTED);
       attr_err = 1'b1;
     end
 
     if (!((IS_RSTRAMB_INVERTED >= 1'b0) && (IS_RSTRAMB_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RSTRAMB_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RSTRAMB_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RSTRAMB_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RSTRAMB_INVERTED);
       attr_err = 1'b1;
     end
 
     if (!((IS_RSTREGARSTREG_INVERTED >= 1'b0) && (IS_RSTREGARSTREG_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RSTREGARSTREG_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RSTREGARSTREG_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RSTREGARSTREG_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RSTREGARSTREG_INVERTED);
       attr_err = 1'b1;
     end
 
     if (!((IS_RSTREGB_INVERTED >= 1'b0) && (IS_RSTREGB_INVERTED <= 1'b1))) begin
-      $display("Attribute Syntax Error : The attribute IS_RSTREGB_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.", IS_RSTREGB_INVERTED);
+      $display(
+          "Attribute Syntax Error : The attribute IS_RSTREGB_INVERTED on RAMB36E1 instance %m is set to %b.  Legal values for this attribute are 1'b0 to 1'b1.",
+          IS_RSTREGB_INVERTED);
       attr_err = 1'b1;
     end
 
@@ -498,8 +514,16 @@ module RAMB36E1 (
 
 
   // special handle for sdp width = 72 and < 72
-  localparam [71:0] init_sdp = (READ_WIDTH_A == 72) ? {INIT_B[35:32],INIT_A[35:32],INIT_B[31:0],INIT_A[31:0]} : {INIT_B, INIT_A};
-  localparam [71:0] srval_sdp = (READ_WIDTH_A == 72) ? {SRVAL_B[35:32],SRVAL_A[35:32],SRVAL_B[31:0],SRVAL_A[31:0]} : {SRVAL_B, SRVAL_A};
+  localparam [71:0] init_sdp = (READ_WIDTH_A == 72) ? {
+    INIT_B[35:32], INIT_A[35:32], INIT_B[31:0], INIT_A[31:0]
+  } : {
+    INIT_B, INIT_A
+  };
+  localparam [71:0] srval_sdp = (READ_WIDTH_A == 72) ? {
+    SRVAL_B[35:32], SRVAL_A[35:32], SRVAL_B[31:0], SRVAL_A[31:0]
+  } : {
+    SRVAL_B, SRVAL_A
+  };
 
 
   generate
@@ -1210,133 +1234,133 @@ module RAMB36E1 (
 
 
   always @(notifier_addra0) begin
-   task_warn_msg ("ADDRARDADDR[0]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[0]", "CLKARDCLK");
+  end
 
   always @(notifier_addra1) begin
-   task_warn_msg ("ADDRARDADDR[1]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[1]", "CLKARDCLK");
+  end
 
   always @(notifier_addra2) begin
-   task_warn_msg ("ADDRARDADDR[2]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[2]", "CLKARDCLK");
+  end
 
   always @(notifier_addra3) begin
-   task_warn_msg ("ADDRARDADDR[3]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[3]", "CLKARDCLK");
+  end
 
   always @(notifier_addra4) begin
-   task_warn_msg ("ADDRARDADDR[4]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[4]", "CLKARDCLK");
+  end
 
   always @(notifier_addra5) begin
-   task_warn_msg ("ADDRARDADDR[5]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[5]", "CLKARDCLK");
+  end
 
   always @(notifier_addra6) begin
-   task_warn_msg ("ADDRARDADDR[6]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[6]", "CLKARDCLK");
+  end
 
   always @(notifier_addra7) begin
-   task_warn_msg ("ADDRARDADDR[7]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[7]", "CLKARDCLK");
+  end
 
   always @(notifier_addra8) begin
-   task_warn_msg ("ADDRARDADDR[8]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[8]", "CLKARDCLK");
+  end
 
   always @(notifier_addra9) begin
-   task_warn_msg ("ADDRARDADDR[9]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[9]", "CLKARDCLK");
+  end
 
   always @(notifier_addra10) begin
-   task_warn_msg ("ADDRARDADDR[10]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[10]", "CLKARDCLK");
+  end
 
   always @(notifier_addra11) begin
-   task_warn_msg ("ADDRARDADDR[11]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[11]", "CLKARDCLK");
+  end
 
   always @(notifier_addra12) begin
-   task_warn_msg ("ADDRARDADDR[12]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[12]", "CLKARDCLK");
+  end
 
   always @(notifier_addra13) begin
-   task_warn_msg ("ADDRARDADDR[13]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[13]", "CLKARDCLK");
+  end
 
   always @(notifier_addra14) begin
-   task_warn_msg ("ADDRARDADDR[14]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[14]", "CLKARDCLK");
+  end
 
   always @(notifier_addra15) begin
-   task_warn_msg ("ADDRARDADDR[15]", "CLKARDCLK");
-    end
+    task_warn_msg("ADDRARDADDR[15]", "CLKARDCLK");
+  end
 
 
   always @(notifier_addrb0) begin
-   task_warn_msg ("ADDRBWRADDR[0]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[0]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb1) begin
-   task_warn_msg ("ADDRBWRADDR[1]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[1]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb2) begin
-   task_warn_msg ("ADDRBWRADDR[2]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[2]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb3) begin
-   task_warn_msg ("ADDRBWRADDR[3]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[3]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb4) begin
-   task_warn_msg ("ADDRBWRADDR[4]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[4]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb5) begin
-   task_warn_msg ("ADDRBWRADDR[5]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[5]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb6) begin
-   task_warn_msg ("ADDRBWRADDR[6]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[6]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb7) begin
-   task_warn_msg ("ADDRBWRADDR[7]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[7]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb8) begin
-   task_warn_msg ("ADDRBWRADDR[8]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[8]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb9) begin
-   task_warn_msg ("ADDRBWRADDR[9]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[9]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb10) begin
-   task_warn_msg ("ADDRBWRADDR[10]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[10]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb11) begin
-   task_warn_msg ("ADDRBWRADDR[11]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[11]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb12) begin
-   task_warn_msg ("ADDRBWRADDR[12]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[12]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb13) begin
-   task_warn_msg ("ADDRBWRADDR[13]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[13]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb14) begin
-   task_warn_msg ("ADDRBWRADDR[14]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[14]", "CLKBWRCLK");
+  end
 
   always @(notifier_addrb15) begin
-   task_warn_msg ("ADDRBWRADDR[15]", "CLKBWRCLK");
-    end
+    task_warn_msg("ADDRBWRADDR[15]", "CLKBWRCLK");
+  end
 
 
   task task_warn_msg;
@@ -1346,7 +1370,9 @@ module RAMB36E1 (
 
     begin
 
-      $display("Error: Setup/Hold Violation on %s with respect to %s when memory has been enabled. The memory contents at %s of the RAM can be corrupted. This corruption is not modeled in this simulation model. Please take the necessary steps to recover from this data corruption in hardware.", addr_str, clk_str, addr_str);
+      $display(
+          "Error: Setup/Hold Violation on %s with respect to %s when memory has been enabled. The memory contents at %s of the RAM can be corrupted. This corruption is not modeled in this simulation model. Please take the necessary steps to recover from this data corruption in hardware.",
+          addr_str, clk_str, addr_str);
 
     end
 
@@ -2000,17 +2026,17 @@ module RB36_INTERNAL_VLOG (
 
   always @(*) begin
     if (WRITE_MODE_A == "READ_FIRST" || WRITE_MODE_B == "READ_FIRST") begin
-      if (BRAM_SIZE == 36) ox_addra_reconstruct[15:0] = {1'b0,ADDRA[14:8],8'b0};
-        else if (BRAM_SIZE == 18) ox_addra_reconstruct[15:0] = {2'b0,ADDRA[13:7],7'b0};
-        else ox_addra_reconstruct[15:0] = ADDRA;
+      if (BRAM_SIZE == 36) ox_addra_reconstruct[15:0] = {1'b0, ADDRA[14:8], 8'b0};
+      else if (BRAM_SIZE == 18) ox_addra_reconstruct[15:0] = {2'b0, ADDRA[13:7], 7'b0};
+      else ox_addra_reconstruct[15:0] = ADDRA;
     end else ox_addra_reconstruct[15:0] = ADDRA;
   end
 
   always @(*) begin
     if (WRITE_MODE_A == "READ_FIRST" || WRITE_MODE_B == "READ_FIRST") begin
-      if (BRAM_SIZE == 36) ox_addrb_reconstruct[15:0] = {1'b0,ADDRB[14:8],8'b0};
-        else if (BRAM_SIZE == 18) ox_addrb_reconstruct[15:0] = {2'b0,ADDRB[13:7],7'b0};
-        else ox_addrb_reconstruct[15:0] = ADDRB;
+      if (BRAM_SIZE == 36) ox_addrb_reconstruct[15:0] = {1'b0, ADDRB[14:8], 8'b0};
+      else if (BRAM_SIZE == 18) ox_addrb_reconstruct[15:0] = {2'b0, ADDRB[13:7], 7'b0};
+      else ox_addrb_reconstruct[15:0] = ADDRB;
     end else ox_addrb_reconstruct[15:0] = ADDRB;
   end
 
@@ -2242,7 +2268,7 @@ module RB36_INTERNAL_VLOG (
 
         for (ram_col_i = 0; ram_col_i < 8; ram_col_i = ram_col_i + 1)
           if (ram_col_mem_task[ram_col_i] !== 1'bx || !(ram_col_we === ram_col_we_o && ram_col_we === 1'b1))
-         ram_col_mem_task[ram_col_i] = ram_col_di[ram_col_i];
+            ram_col_mem_task[ram_col_i] = ram_col_di[ram_col_i];
 
         if (width >= 8 && (ram_col_memp_task !== 1'bx || !(ram_col_we === ram_col_we_o && ram_col_we === 1'b1)))
           ram_col_memp_task = ram_col_dip;
@@ -2293,9 +2319,8 @@ module RB36_INTERNAL_VLOG (
 
       if (wr_rd_mode == 2'b01) begin
         for (i = do_lindex; i <= do_uindex; i = i + 1) begin
-          if (do_ltmp[i] === 1'bx)
-         x_buf_do_tmp[i] = 1'bx;
-      end
+          if (do_ltmp[i] === 1'bx) x_buf_do_tmp[i] = 1'bx;
+        end
 
         if (dop_ltmp[dop_index] === 1'bx) x_buf_dop_tmp[dop_index] = 1'bx;
 
@@ -2323,138 +2348,248 @@ module RB36_INTERNAL_VLOG (
         1, 2, 4: begin
           if (!(col_wr_ram_a_wea_tmp[0] === 1'b1 && col_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || col_wr_ram_a_seq == 2'b10) begin
             if (wa_width >= width)
-            task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0, mem[col_wr_ram_a_addra_tmp[14:addra_lbit_124]], junk1);
-          else
-            task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0, mem[col_wr_ram_a_addra_tmp[14:addra_bit_124+1]][(col_wr_ram_a_addra_tmp[addra_bit_124:addra_lbit_124] * wa_width) +: wa_width], junk1);
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0,
+                           mem[col_wr_ram_a_addra_tmp[14:addra_lbit_124]], junk1);
+            else
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0,
+                           mem[col_wr_ram_a_addra_tmp[14:addra_bit_124+1]][(col_wr_ram_a_addra_tmp[addra_bit_124:addra_lbit_124] * wa_width) +: wa_width],
+                           junk1);
 
             if (col_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
           end  // if (!(col_wr_ram_a_wea_tmp[0] === 1'b1 && col_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || col_wr_ram_a_seq == 2'b10)
         end  // case: 1, 2, 4
         8:
         if (width >= 8) begin
           if (!(col_wr_ram_a_wea_tmp[0] === 1'b1 && col_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || col_wr_ram_a_seq == 2'b10) begin
             if (wa_width >= width)
-            task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:3]], memp[col_wr_ram_a_addra_tmp[14:3]]);
-          else
-            task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(col_wr_ram_a_addra_tmp[addra_bit_8:3] * wa_width) +: wa_width], memp[col_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(col_wr_ram_a_addra_tmp[addra_bit_8:3] * 1) +: 1]);
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                           mem[col_wr_ram_a_addra_tmp[14:3]], memp[col_wr_ram_a_addra_tmp[14:3]]);
+            else
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                           mem[col_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(col_wr_ram_a_addra_tmp[addra_bit_8:3] * wa_width) +: wa_width],
+                           memp[col_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(col_wr_ram_a_addra_tmp[addra_bit_8:3] * 1) +: 1]);
 
             if (col_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
           end  // if (wa_width <= wb_width)
         end  // case: 8
         16:
         if (width >= 16) begin
           if (!(col_wr_ram_a_wea_tmp[0] === 1'b1 && col_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || col_wr_ram_a_seq == 2'b10) begin
             if (wa_width >= width)
-            task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:4]][width_0 +: width_n], memp[col_wr_ram_a_addra_tmp[14:4]][(index)+:1]);
-          else
-            task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(col_wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(col_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) +: 1]);
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                           mem[col_wr_ram_a_addra_tmp[14:4]][width_0 +: width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:4]][(index)+:1]);
+            else
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                           mem[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(col_wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) +: wa_width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(col_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) +: 1]);
 
             if (col_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
             if (wa_width >= width)
-            task_ram_col (col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1], col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1], mem[col_wr_ram_a_addra_tmp[14:4]][width_1 +: width_n], memp[col_wr_ram_a_addra_tmp[14:4]][(index+1)+:1]);
-          else
-            task_ram_col (col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1], col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1], mem[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((col_wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) + wa_width_1) +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((col_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) + 1) +: 1]);
+              task_ram_col(col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1],
+                           col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1],
+                           mem[col_wr_ram_a_addra_tmp[14:4]][width_1 +: width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:4]][(index+1)+:1]);
+            else
+              task_ram_col(col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1],
+                           col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1],
+                           mem[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((col_wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) + wa_width_1) +: wa_width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((col_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) + 1) +: 1]);
 
             if (col_wr_ram_a_seq == 2'b00)
-             chk_for_col_msg (col_wr_ram_a_wea_tmp[1], col_wr_ram_a_web_tmp[1], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[1], col_wr_ram_a_web_tmp[1],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
           end  // if (wa_width <= wb_width)
         end  // case: 16
         32:
         if (width >= 32) begin
           if (!(col_wr_ram_a_wea_tmp[0] === 1'b1 && col_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || col_wr_ram_a_seq == 2'b10) begin
             if (wa_width >= width)
-          task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:5]][width_0 +: width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index)+:1]);
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][width_0 +: width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index)+:1]);
             else if (wa_width < width) begin
-              task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_0 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index)+:1]);
+              task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                           col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_0 +: wa_width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index)+:1]);
             end
 
             if (col_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
             if (wa_width >= width)
-          task_ram_col (col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1], col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1], mem[col_wr_ram_a_addra_tmp[14:5]][width_1 +: width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
-          else if (wa_width < width)
-          task_ram_col (col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1], col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1], mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_1 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
+              task_ram_col(col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1],
+                           col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][width_1 +: width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
+            else if (wa_width < width)
+              task_ram_col(col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1],
+                           col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_1 +: wa_width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
             if (col_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_a_wea_tmp[1], col_wr_ram_a_web_tmp[1], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[1], col_wr_ram_a_web_tmp[1],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
             if (wa_width >= width)
-          task_ram_col (col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2], col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2], mem[col_wr_ram_a_addra_tmp[14:5]][width_2 +: width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
-          else if (wa_width < width)
-          task_ram_col (col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2], col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2], mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_2 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
+              task_ram_col(col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2],
+                           col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][width_2 +: width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
+            else if (wa_width < width)
+              task_ram_col(col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2],
+                           col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_2 +: wa_width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
             if (col_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_a_wea_tmp[2], col_wr_ram_a_web_tmp[2], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[2], col_wr_ram_a_web_tmp[2],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
             if (wa_width >= width)
-          task_ram_col (col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3], col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3], mem[col_wr_ram_a_addra_tmp[14:5]][width_3 +: width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
-          else if (wa_width < width)
-          task_ram_col (col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3], col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3], mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_3 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
+              task_ram_col(col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3],
+                           col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][width_3 +: width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
+            else if (wa_width < width)
+              task_ram_col(col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3],
+                           col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3],
+                           mem[col_wr_ram_a_addra_tmp[14:5]][wa_width_3 +: wa_width_n],
+                           memp[col_wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
             if (col_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_a_wea_tmp[3], col_wr_ram_a_web_tmp[3], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_a_wea_tmp[3], col_wr_ram_a_web_tmp[3],
+                              col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           end  // if (wa_width <= wb_width)
         end  // case: 32
         64:
         if (width >= 64) begin
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:6]][width_0 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                         col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_0 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0], col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_0 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[0], col_wr_ram_a_wea_tmp[0],
+                         col_wr_ram_a_dia_tmp[7:0], col_wr_ram_a_dipa_tmp[0],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_0 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[0], col_wr_ram_a_web_tmp[0],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1], col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1], mem[col_wr_ram_a_addra_tmp[14:6]][width_1 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+1)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1],
+                         col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_1 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+1)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1], col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_1 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+1)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[1], col_wr_ram_a_wea_tmp[1],
+                         col_wr_ram_a_dia_tmp[15:8], col_wr_ram_a_dipa_tmp[1],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_1 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+1)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[1], col_wr_ram_a_web_tmp[1], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[1], col_wr_ram_a_web_tmp[1],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2], col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2], mem[col_wr_ram_a_addra_tmp[14:6]][width_2 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+2)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2],
+                         col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_2 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+2)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2], col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_2 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+2)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[2], col_wr_ram_a_wea_tmp[2],
+                         col_wr_ram_a_dia_tmp[23:16], col_wr_ram_a_dipa_tmp[2],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_2 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+2)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[2], col_wr_ram_a_web_tmp[2], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[2], col_wr_ram_a_web_tmp[2],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3], col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3], mem[col_wr_ram_a_addra_tmp[14:6]][width_3 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+3)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3],
+                         col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_3 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+3)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3], col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_3 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+3)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[3], col_wr_ram_a_wea_tmp[3],
+                         col_wr_ram_a_dia_tmp[31:24], col_wr_ram_a_dipa_tmp[3],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_3 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+3)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[3], col_wr_ram_a_web_tmp[3], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[3], col_wr_ram_a_web_tmp[3],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[4], col_wr_ram_a_wea_tmp[4], col_wr_ram_a_dia_tmp[39:32], col_wr_ram_a_dipa_tmp[4], mem[col_wr_ram_a_addra_tmp[14:6]][width_4 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+4)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[4], col_wr_ram_a_wea_tmp[4],
+                         col_wr_ram_a_dia_tmp[39:32], col_wr_ram_a_dipa_tmp[4],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_4 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+4)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[4], col_wr_ram_a_wea_tmp[4], col_wr_ram_a_dia_tmp[39:32], col_wr_ram_a_dipa_tmp[4], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_4 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+4)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[4], col_wr_ram_a_wea_tmp[4],
+                         col_wr_ram_a_dia_tmp[39:32], col_wr_ram_a_dipa_tmp[4],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_4 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+4)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[4], col_wr_ram_a_web_tmp[4], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[4], col_wr_ram_a_web_tmp[4],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[5], col_wr_ram_a_wea_tmp[5], col_wr_ram_a_dia_tmp[47:40], col_wr_ram_a_dipa_tmp[5], mem[col_wr_ram_a_addra_tmp[14:6]][width_5 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+5)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[5], col_wr_ram_a_wea_tmp[5],
+                         col_wr_ram_a_dia_tmp[47:40], col_wr_ram_a_dipa_tmp[5],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_5 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+5)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[5], col_wr_ram_a_wea_tmp[5], col_wr_ram_a_dia_tmp[47:40], col_wr_ram_a_dipa_tmp[5], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_5 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+5)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[5], col_wr_ram_a_wea_tmp[5],
+                         col_wr_ram_a_dia_tmp[47:40], col_wr_ram_a_dipa_tmp[5],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_5 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+5)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[5], col_wr_ram_a_web_tmp[5], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[5], col_wr_ram_a_web_tmp[5],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[6], col_wr_ram_a_wea_tmp[6], col_wr_ram_a_dia_tmp[55:48], col_wr_ram_a_dipa_tmp[6], mem[col_wr_ram_a_addra_tmp[14:6]][width_6 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+6)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[6], col_wr_ram_a_wea_tmp[6],
+                         col_wr_ram_a_dia_tmp[55:48], col_wr_ram_a_dipa_tmp[6],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_6 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+6)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[6], col_wr_ram_a_wea_tmp[6], col_wr_ram_a_dia_tmp[55:48], col_wr_ram_a_dipa_tmp[6], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_6 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+6)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[6], col_wr_ram_a_wea_tmp[6],
+                         col_wr_ram_a_dia_tmp[55:48], col_wr_ram_a_dipa_tmp[6],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_6 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+6)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[6], col_wr_ram_a_web_tmp[6], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[6], col_wr_ram_a_web_tmp[6],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
           if (wa_width >= width)
-        task_ram_col (col_wr_ram_a_web_tmp[7], col_wr_ram_a_wea_tmp[7], col_wr_ram_a_dia_tmp[63:56], col_wr_ram_a_dipa_tmp[7], mem[col_wr_ram_a_addra_tmp[14:6]][width_7 +: width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+7)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[7], col_wr_ram_a_wea_tmp[7],
+                         col_wr_ram_a_dia_tmp[63:56], col_wr_ram_a_dipa_tmp[7],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][width_7 +: width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+7)+:1]);
           else
-        task_ram_col (col_wr_ram_a_web_tmp[7], col_wr_ram_a_wea_tmp[7], col_wr_ram_a_dia_tmp[63:56], col_wr_ram_a_dipa_tmp[7], mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_7 +: wa_width_n], memp[col_wr_ram_a_addra_tmp[14:6]][(index+7)+:1]);
+            task_ram_col(col_wr_ram_a_web_tmp[7], col_wr_ram_a_wea_tmp[7],
+                         col_wr_ram_a_dia_tmp[63:56], col_wr_ram_a_dipa_tmp[7],
+                         mem[col_wr_ram_a_addra_tmp[14:6]][wa_width_7 +: wa_width_n],
+                         memp[col_wr_ram_a_addra_tmp[14:6]][(index+7)+:1]);
           if (col_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_a_wea_tmp[7], col_wr_ram_a_web_tmp[7], col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_a_wea_tmp[7], col_wr_ram_a_web_tmp[7],
+                            col_wr_ram_a_addra_tmp, col_wr_ram_a_addrb_tmp);
 
         end  // case: 64
       endcase  // case(wa_width)
@@ -2476,12 +2611,18 @@ module RB36_INTERNAL_VLOG (
         1, 2, 4: begin
           if (!(ox_wr_ram_a_wea_tmp[0] === 1'b1 && ox_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || ox_wr_ram_a_seq == 2'b10) begin
             if (wa_width >= width)
-            task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0, mem[ox_wr_ram_a_addra_tmp[14:addra_lbit_124]], junk1);
-          else
-            task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0, mem[ox_wr_ram_a_addra_tmp[14:addra_bit_124+1]][(ox_wr_ram_a_addra_tmp[addra_bit_124:addra_lbit_124] * wa_width) +: wa_width], junk1);
+              task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0],
+                          ox_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0,
+                          mem[ox_wr_ram_a_addra_tmp[14:addra_lbit_124]], junk1);
+            else
+              task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0],
+                          ox_wr_ram_a_dia_tmp[wa_width-1:0], 1'b0,
+                          mem[ox_wr_ram_a_addra_tmp[14:addra_bit_124+1]][(ox_wr_ram_a_addra_tmp[addra_bit_124:addra_lbit_124] * wa_width) +: wa_width],
+                          junk1);
 
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
 
           end  // if (!(ox_wr_ram_a_wea_tmp[0] === 1'b1 && ox_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || ox_wr_ram_a_seq == 2'b10)
         end  // case: 1, 2, 4
@@ -2489,12 +2630,18 @@ module RB36_INTERNAL_VLOG (
         if (width >= 8) begin
           if (!(ox_wr_ram_a_wea_tmp[0] === 1'b1 && ox_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || ox_wr_ram_a_seq == 2'b10) begin
             if (wa_width >= width)
-            task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0], ox_wr_ram_a_dipa_tmp[0], mem[ox_wr_ram_a_addra_tmp[14:3]], memp[ox_wr_ram_a_addra_tmp[14:3]]);
-          else
-            task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0], ox_wr_ram_a_dipa_tmp[0], mem[ox_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(ox_wr_ram_a_addra_tmp[addra_bit_8:3] * 8) +: 8], memp[ox_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(ox_wr_ram_a_addra_tmp[addra_bit_8:3] * 1) +: 1]);
+              task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0],
+                          ox_wr_ram_a_dipa_tmp[0], mem[ox_wr_ram_a_addra_tmp[14:3]],
+                          memp[ox_wr_ram_a_addra_tmp[14:3]]);
+            else
+              task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0],
+                          ox_wr_ram_a_dipa_tmp[0],
+                          mem[ox_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(ox_wr_ram_a_addra_tmp[addra_bit_8:3] * 8) +: 8],
+                          memp[ox_wr_ram_a_addra_tmp[14:addra_bit_8+1]][(ox_wr_ram_a_addra_tmp[addra_bit_8:3] * 1) +: 1]);
 
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
 
           end  // if (wa_width <= wb_width)
         end  // case: 8
@@ -2502,75 +2649,137 @@ module RB36_INTERNAL_VLOG (
         if (width >= 16) begin
           if (!(ox_wr_ram_a_wea_tmp[0] === 1'b1 && ox_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || ox_wr_ram_a_seq == 2'b10) begin
             if (wa_width >= width)
-            task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0], ox_wr_ram_a_dipa_tmp[0], mem[ox_wr_ram_a_addra_tmp[14:4]][width_0 +: width_n], memp[ox_wr_ram_a_addra_tmp[14:4]][(index)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0], ox_wr_ram_a_dipa_tmp[0], mem[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 16) +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) +: 1]);
+              task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0],
+                          ox_wr_ram_a_dipa_tmp[0],
+                          mem[ox_wr_ram_a_addra_tmp[14:4]][width_0 +: width_n],
+                          memp[ox_wr_ram_a_addra_tmp[14:4]][(index)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0],
+                          ox_wr_ram_a_dipa_tmp[0],
+                          mem[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 16) +: wa_width_n],
+                          memp[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][(ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) +: 1]);
 
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
 
             if (wa_width >= width)
-            task_ram_ox (ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8], ox_wr_ram_a_dipa_tmp[1], mem[ox_wr_ram_a_addra_tmp[14:4]][width_1 +: width_n], memp[ox_wr_ram_a_addra_tmp[14:4]][(index+1)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8], ox_wr_ram_a_dipa_tmp[1], mem[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 16) + wa_width_1) +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) + 1) +: 1]);
+              task_ram_ox(ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8],
+                          ox_wr_ram_a_dipa_tmp[1],
+                          mem[ox_wr_ram_a_addra_tmp[14:4]][width_1 +: width_n],
+                          memp[ox_wr_ram_a_addra_tmp[14:4]][(index+1)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8],
+                          ox_wr_ram_a_dipa_tmp[1],
+                          mem[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 16) + wa_width_1) +: wa_width_n],
+                          memp[ox_wr_ram_a_addra_tmp[14:addra_bit_16+1]][((ox_wr_ram_a_addra_tmp[addra_bit_16:4] * 2) + 1) +: 1]);
 
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
           end  // if (wa_width <= wb_width)
         end  // case: 16
         32:
         if (width >= 32) begin
           if (!(ox_wr_ram_a_wea_tmp[0] === 1'b1 && ox_wr_ram_a_web_tmp[0] === 1'b1 && wa_width > wb_width) || ox_wr_ram_a_seq == 2'b10) begin
-            task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0], ox_wr_ram_a_dipa_tmp[0], mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_0 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:5]][(index)+:1]);
+            task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0],
+                        ox_wr_ram_a_dipa_tmp[0],
+                        mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_0 +: wa_width_n],
+                        memp[ox_wr_ram_a_addra_tmp[14:5]][(index)+:1]);
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
 
-            task_ram_ox (ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8], ox_wr_ram_a_dipa_tmp[1], mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_1 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
+            task_ram_ox(ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8],
+                        ox_wr_ram_a_dipa_tmp[1],
+                        mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_1 +: wa_width_n],
+                        memp[ox_wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
 
-            task_ram_ox (ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_dia_tmp[23:16], ox_wr_ram_a_dipa_tmp[2], mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_2 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
+            task_ram_ox(ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_dia_tmp[23:16],
+                        ox_wr_ram_a_dipa_tmp[2],
+                        mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_2 +: wa_width_n],
+                        memp[ox_wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
 
-            task_ram_ox (ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_dia_tmp[31:24], ox_wr_ram_a_dipa_tmp[3], mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_3 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
+            task_ram_ox(ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_dia_tmp[31:24],
+                        ox_wr_ram_a_dipa_tmp[3],
+                        mem[ox_wr_ram_a_addra_tmp[14:5]][wa_width_3 +: wa_width_n],
+                        memp[ox_wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
             if (ox_wr_ram_a_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_addra_tmp,
+                              ox_wr_ram_a_addrb_tmp);
           end  // if (wa_width <= wb_width)
         end  // case: 32
         64:
         if (width >= 64) begin
-          task_ram_ox (ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0], ox_wr_ram_a_dipa_tmp[0], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_0 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_dia_tmp[7:0],
+                      ox_wr_ram_a_dipa_tmp[0],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_0 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[0], ox_wr_ram_a_web_tmp[0], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8], ox_wr_ram_a_dipa_tmp[1], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_1 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index+1)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_dia_tmp[15:8],
+                      ox_wr_ram_a_dipa_tmp[1],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_1 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index+1)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[1], ox_wr_ram_a_web_tmp[1], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_dia_tmp[23:16], ox_wr_ram_a_dipa_tmp[2], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_2 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index+2)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_dia_tmp[23:16],
+                      ox_wr_ram_a_dipa_tmp[2],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_2 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index+2)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[2], ox_wr_ram_a_web_tmp[2], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_dia_tmp[31:24], ox_wr_ram_a_dipa_tmp[3], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_3 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index+3)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_dia_tmp[31:24],
+                      ox_wr_ram_a_dipa_tmp[3],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_3 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index+3)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[3], ox_wr_ram_a_web_tmp[3], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_a_web_tmp[4], ox_wr_ram_a_wea_tmp[4], ox_wr_ram_a_dia_tmp[39:32], ox_wr_ram_a_dipa_tmp[4], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_4 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index+4)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[4], ox_wr_ram_a_wea_tmp[4], ox_wr_ram_a_dia_tmp[39:32],
+                      ox_wr_ram_a_dipa_tmp[4],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_4 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index+4)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[4], ox_wr_ram_a_web_tmp[4], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[4], ox_wr_ram_a_web_tmp[4], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_a_web_tmp[5], ox_wr_ram_a_wea_tmp[5], ox_wr_ram_a_dia_tmp[47:40], ox_wr_ram_a_dipa_tmp[5], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_5 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index+5)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[5], ox_wr_ram_a_wea_tmp[5], ox_wr_ram_a_dia_tmp[47:40],
+                      ox_wr_ram_a_dipa_tmp[5],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_5 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index+5)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[5], ox_wr_ram_a_web_tmp[5], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[5], ox_wr_ram_a_web_tmp[5], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_a_web_tmp[6], ox_wr_ram_a_wea_tmp[6], ox_wr_ram_a_dia_tmp[55:48], ox_wr_ram_a_dipa_tmp[6], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_6 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index+6)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[6], ox_wr_ram_a_wea_tmp[6], ox_wr_ram_a_dia_tmp[55:48],
+                      ox_wr_ram_a_dipa_tmp[6],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_6 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index+6)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[6], ox_wr_ram_a_web_tmp[6], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[6], ox_wr_ram_a_web_tmp[6], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_a_web_tmp[7], ox_wr_ram_a_wea_tmp[7], ox_wr_ram_a_dia_tmp[63:56], ox_wr_ram_a_dipa_tmp[7], mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_7 +: wa_width_n], memp[ox_wr_ram_a_addra_tmp[14:6]][(index+7)+:1]);
+          task_ram_ox(ox_wr_ram_a_web_tmp[7], ox_wr_ram_a_wea_tmp[7], ox_wr_ram_a_dia_tmp[63:56],
+                      ox_wr_ram_a_dipa_tmp[7],
+                      mem[ox_wr_ram_a_addra_tmp[14:6]][wa_width_7 +: wa_width_n],
+                      memp[ox_wr_ram_a_addra_tmp[14:6]][(index+7)+:1]);
           if (ox_wr_ram_a_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_a_wea_tmp[7], ox_wr_ram_a_web_tmp[7], ox_wr_ram_a_addra_tmp, ox_wr_ram_a_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_a_wea_tmp[7], ox_wr_ram_a_web_tmp[7], ox_wr_ram_a_addra_tmp,
+                            ox_wr_ram_a_addrb_tmp);
         end  // case: 64
       endcase  // case(wa_width)
     end
@@ -2592,116 +2801,202 @@ module RB36_INTERNAL_VLOG (
         1, 2, 4: begin
           if (!(col_wr_ram_b_wea_tmp[0] === 1'b1 && col_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || col_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0, mem[col_wr_ram_b_addrb_tmp[14:addrb_lbit_124]], junk1);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0, mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_124+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_124:addrb_lbit_124] * wb_width) +: wb_width_n], junk1);
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0,
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_lbit_124]], junk1);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0,
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_124+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_124:addrb_lbit_124] * wb_width) +: wb_width_n],
+                           junk1);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
           end  // if (wb_width <= wa_width)
         end  // case: 1, 2, 4
         8:
         if (width >= 8) begin
           if (!(col_wr_ram_b_wea_tmp[0] === 1'b1 && col_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || col_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0], mem[col_wr_ram_b_addrb_tmp[14:3]], memp[col_wr_ram_b_addrb_tmp[14:3]]);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0], mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_8:3] * wb_width) +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_8:3] * 1) +: 1]);
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0],
+                           mem[col_wr_ram_b_addrb_tmp[14:3]], memp[col_wr_ram_b_addrb_tmp[14:3]]);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0],
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_8:3] * wb_width) +: wb_width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_8:3] * 1) +: 1]);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
           end  // if (wb_width <= wa_width)
         end  // case: 8
         16:
         if (width >= 16) begin
           if (!(col_wr_ram_b_wea_tmp[0] === 1'b1 && col_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || col_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0], mem[col_wr_ram_b_addrb_tmp[14:4]][width_0 +: width_n], memp[col_wr_ram_b_addrb_tmp[14:4]][(index)+:1]);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0], mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) +: 1]);
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0],
+                           mem[col_wr_ram_b_addrb_tmp[14:4]][width_0 +: width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:4]][(index)+:1]);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0],
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) +: wb_width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) +: 1]);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1], mem[col_wr_ram_b_addrb_tmp[14:4]][width_1 +: width_n], memp[col_wr_ram_b_addrb_tmp[14:4]][(index+1)+:1]);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1], mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) + wb_width_n) +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) + 1) +: 1]);
+              task_ram_col(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1],
+                           col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1],
+                           mem[col_wr_ram_b_addrb_tmp[14:4]][width_1 +: width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:4]][(index+1)+:1]);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1],
+                           col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1],
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) + wb_width_n) +: wb_width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) + 1) +: 1]);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
           end  // if (!(col_wr_ram_b_wea_tmp[0] === 1'b1 && col_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || col_wr_ram_b_seq == 2'b10)
         end  // case: 16
         32:
         if (width >= 32) begin
           if (!(col_wr_ram_b_wea_tmp[0] === 1'b1 && col_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || col_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0], mem[col_wr_ram_b_addrb_tmp[14:5]][width_0 +: width_n], memp[col_wr_ram_b_addrb_tmp[14:5]][(index)+:1]);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0], mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) +: 1]);
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0],
+                           mem[col_wr_ram_b_addrb_tmp[14:5]][width_0 +: width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:5]][(index)+:1]);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                           col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0],
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) +: wb_width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) +: 1]);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1], mem[col_wr_ram_b_addrb_tmp[14:5]][width_1 +: width_n], memp[col_wr_ram_b_addrb_tmp[14:5]][(index+1)+:1]);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1], mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_1) +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 1) +: 1]);
+              task_ram_col(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1],
+                           col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1],
+                           mem[col_wr_ram_b_addrb_tmp[14:5]][width_1 +: width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:5]][(index+1)+:1]);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1],
+                           col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1],
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_1) +: wb_width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 1) +: 1]);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2], col_wr_ram_b_dib_tmp[23:16], col_wr_ram_b_dipb_tmp[2], mem[col_wr_ram_b_addrb_tmp[14:5]][width_2 +: width_n], memp[col_wr_ram_b_addrb_tmp[14:5]][(index+2)+:1]);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2], col_wr_ram_b_dib_tmp[23:16], col_wr_ram_b_dipb_tmp[2], mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_2) +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 2) +: 1]);
+              task_ram_col(col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2],
+                           col_wr_ram_b_dib_tmp[23:16], col_wr_ram_b_dipb_tmp[2],
+                           mem[col_wr_ram_b_addrb_tmp[14:5]][width_2 +: width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:5]][(index+2)+:1]);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2],
+                           col_wr_ram_b_dib_tmp[23:16], col_wr_ram_b_dipb_tmp[2],
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_2) +: wb_width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 2) +: 1]);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_col (col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3], col_wr_ram_b_dib_tmp[31:24], col_wr_ram_b_dipb_tmp[3], mem[col_wr_ram_b_addrb_tmp[14:5]][width_3 +: width_n], memp[col_wr_ram_b_addrb_tmp[14:5]][(index+3)+:1]);
-          else
-            task_ram_col (col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3], col_wr_ram_b_dib_tmp[31:24], col_wr_ram_b_dipb_tmp[3], mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_3) +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 3) +: 1]);
+              task_ram_col(col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3],
+                           col_wr_ram_b_dib_tmp[31:24], col_wr_ram_b_dipb_tmp[3],
+                           mem[col_wr_ram_b_addrb_tmp[14:5]][width_3 +: width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:5]][(index+3)+:1]);
+            else
+              task_ram_col(col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3],
+                           col_wr_ram_b_dib_tmp[31:24], col_wr_ram_b_dipb_tmp[3],
+                           mem[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_3) +: wb_width_n],
+                           memp[col_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((col_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 3) +: 1]);
 
             if (col_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3],
+                              col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
           end  // if (!(col_wr_ram_b_wea_tmp[0] === 1'b1 && col_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || col_wr_ram_b_seq == 2'b10)
         end  // case: 32
         64:
         if (width >= 64) begin
-          task_ram_col (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0], col_wr_ram_b_dipb_tmp[0], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_0 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_dib_tmp[7:0],
+                       col_wr_ram_b_dipb_tmp[0],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_0 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[0], col_wr_ram_b_web_tmp[0],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
-          task_ram_col (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_dib_tmp[15:8], col_wr_ram_b_dipb_tmp[1], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_1 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index+1)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_dib_tmp[15:8],
+                       col_wr_ram_b_dipb_tmp[1],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_1 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index+1)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[1], col_wr_ram_b_web_tmp[1],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
-          task_ram_col (col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2], col_wr_ram_b_dib_tmp[23:16], col_wr_ram_b_dipb_tmp[2], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_2 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index+2)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2],
+                       col_wr_ram_b_dib_tmp[23:16], col_wr_ram_b_dipb_tmp[2],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_2 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index+2)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[2], col_wr_ram_b_web_tmp[2],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
-          task_ram_col (col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3], col_wr_ram_b_dib_tmp[31:24], col_wr_ram_b_dipb_tmp[3], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_3 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index+3)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3],
+                       col_wr_ram_b_dib_tmp[31:24], col_wr_ram_b_dipb_tmp[3],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_3 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index+3)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[3], col_wr_ram_b_web_tmp[3],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
-          task_ram_col (col_wr_ram_b_wea_tmp[4], col_wr_ram_b_web_tmp[4], col_wr_ram_b_dib_tmp[39:32], col_wr_ram_b_dipb_tmp[4], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_4 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index+4)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[4], col_wr_ram_b_web_tmp[4],
+                       col_wr_ram_b_dib_tmp[39:32], col_wr_ram_b_dipb_tmp[4],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_4 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index+4)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[4], col_wr_ram_b_web_tmp[4], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[4], col_wr_ram_b_web_tmp[4],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
-          task_ram_col (col_wr_ram_b_wea_tmp[5], col_wr_ram_b_web_tmp[5], col_wr_ram_b_dib_tmp[47:40], col_wr_ram_b_dipb_tmp[5], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_5 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index+5)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[5], col_wr_ram_b_web_tmp[5],
+                       col_wr_ram_b_dib_tmp[47:40], col_wr_ram_b_dipb_tmp[5],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_5 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index+5)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[5], col_wr_ram_b_web_tmp[5], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[5], col_wr_ram_b_web_tmp[5],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
-          task_ram_col (col_wr_ram_b_wea_tmp[6], col_wr_ram_b_web_tmp[6], col_wr_ram_b_dib_tmp[55:48], col_wr_ram_b_dipb_tmp[6], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_6 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index+6)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[6], col_wr_ram_b_web_tmp[6],
+                       col_wr_ram_b_dib_tmp[55:48], col_wr_ram_b_dipb_tmp[6],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_6 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index+6)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[6], col_wr_ram_b_web_tmp[6], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[6], col_wr_ram_b_web_tmp[6],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
 
-          task_ram_col (col_wr_ram_b_wea_tmp[7], col_wr_ram_b_web_tmp[7], col_wr_ram_b_dib_tmp[63:56], col_wr_ram_b_dipb_tmp[7], mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_7 +: wb_width_n], memp[col_wr_ram_b_addrb_tmp[14:6]][(index+7)+:1]);
+          task_ram_col(col_wr_ram_b_wea_tmp[7], col_wr_ram_b_web_tmp[7],
+                       col_wr_ram_b_dib_tmp[63:56], col_wr_ram_b_dipb_tmp[7],
+                       mem[col_wr_ram_b_addrb_tmp[14:6]][wb_width_7 +: wb_width_n],
+                       memp[col_wr_ram_b_addrb_tmp[14:6]][(index+7)+:1]);
           if (col_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (col_wr_ram_b_wea_tmp[7], col_wr_ram_b_web_tmp[7], col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(col_wr_ram_b_wea_tmp[7], col_wr_ram_b_web_tmp[7],
+                            col_wr_ram_b_addra_tmp, col_wr_ram_b_addrb_tmp);
         end  // case: 64
       endcase  // case(wb_width)
     end
@@ -2722,44 +3017,70 @@ module RB36_INTERNAL_VLOG (
         1, 2, 4: begin
           if (!(ox_wr_ram_b_wea_tmp[0] === 1'b1 && ox_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || ox_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0, mem[ox_wr_ram_b_addrb_tmp[14:addrb_lbit_124]], junk1);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0, mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_124+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_124:addrb_lbit_124] * wb_width) +: wb_width], junk1);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0],
+                          ox_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0,
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_lbit_124]], junk1);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0],
+                          ox_wr_ram_b_dib_tmp[wb_width-1:0], 1'b0,
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_124+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_124:addrb_lbit_124] * wb_width) +: wb_width],
+                          junk1);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
           end  // if (wb_width <= wa_width)
         end  // case: 1, 2, 4
         8:
         if (width >= 8) begin
           if (!(ox_wr_ram_b_wea_tmp[0] === 1'b1 && ox_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || ox_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0], ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:3]], memp[ox_wr_ram_b_addrb_tmp[14:3]]);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0], ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_8:3] * wb_width) +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_8:3] * 1) +: 1]);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0],
+                          ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:3]],
+                          memp[ox_wr_ram_b_addrb_tmp[14:3]]);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0],
+                          ox_wr_ram_b_dipb_tmp[0],
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_8:3] * wb_width) +: wb_width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_8:3] * 1) +: 1]);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
           end  // if (wb_width <= wa_width)
         end  // case: 8
         16:
         if (width >= 16) begin
           if (!(ox_wr_ram_b_wea_tmp[0] === 1'b1 && ox_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || ox_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0], ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:4]][width_0 +: width_n], memp[ox_wr_ram_b_addrb_tmp[14:4]][(index)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0], ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) +: 1]);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0],
+                          ox_wr_ram_b_dipb_tmp[0],
+                          mem[ox_wr_ram_b_addrb_tmp[14:4]][width_0 +: width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:4]][(index)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0],
+                          ox_wr_ram_b_dipb_tmp[0],
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) +: wb_width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) +: 1]);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8], ox_wr_ram_b_dipb_tmp[1], mem[ox_wr_ram_b_addrb_tmp[14:4]][width_1 +: width_n], memp[ox_wr_ram_b_addrb_tmp[14:4]][(index+1)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8], ox_wr_ram_b_dipb_tmp[1], mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) + wb_width_1) +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) + 1) +: 1]);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8],
+                          ox_wr_ram_b_dipb_tmp[1],
+                          mem[ox_wr_ram_b_addrb_tmp[14:4]][width_1 +: width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:4]][(index+1)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8],
+                          ox_wr_ram_b_dipb_tmp[1],
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) + wb_width_1) +: wb_width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) + 1) +: 1]);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
 
           end  // if (!(ox_wr_ram_b_wea_tmp[0] === 1'b1 && ox_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || ox_wr_ram_b_seq == 2'b10)
         end  // case: 16
@@ -2767,72 +3088,132 @@ module RB36_INTERNAL_VLOG (
         if (width >= 32) begin
           if (!(ox_wr_ram_b_wea_tmp[0] === 1'b1 && ox_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || ox_wr_ram_b_seq == 2'b10) begin
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0], ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:5]][width_0 +: width_n], memp[ox_wr_ram_b_addrb_tmp[14:5]][(index)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0], ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) +: 1]);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0],
+                          ox_wr_ram_b_dipb_tmp[0],
+                          mem[ox_wr_ram_b_addrb_tmp[14:5]][width_0 +: width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:5]][(index)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0],
+                          ox_wr_ram_b_dipb_tmp[0],
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) +: wb_width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) +: 1]);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8], ox_wr_ram_b_dipb_tmp[1], mem[ox_wr_ram_b_addrb_tmp[14:5]][width_1 +: width_n], memp[ox_wr_ram_b_addrb_tmp[14:5]][(index+1)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8], ox_wr_ram_b_dipb_tmp[1], mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_1) +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 1) +: 1]);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8],
+                          ox_wr_ram_b_dipb_tmp[1],
+                          mem[ox_wr_ram_b_addrb_tmp[14:5]][width_1 +: width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:5]][(index+1)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8],
+                          ox_wr_ram_b_dipb_tmp[1],
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_1) +: wb_width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 1) +: 1]);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_dib_tmp[23:16], ox_wr_ram_b_dipb_tmp[2], mem[ox_wr_ram_b_addrb_tmp[14:5]][width_2 +: width_n], memp[ox_wr_ram_b_addrb_tmp[14:5]][(index+2)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_dib_tmp[23:16], ox_wr_ram_b_dipb_tmp[2], mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_2) +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 2) +: 1]);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2],
+                          ox_wr_ram_b_dib_tmp[23:16], ox_wr_ram_b_dipb_tmp[2],
+                          mem[ox_wr_ram_b_addrb_tmp[14:5]][width_2 +: width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:5]][(index+2)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2],
+                          ox_wr_ram_b_dib_tmp[23:16], ox_wr_ram_b_dipb_tmp[2],
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_2) +: wb_width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 2) +: 1]);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
 
             if (wb_width >= width)
-            task_ram_ox (ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_dib_tmp[31:24], ox_wr_ram_b_dipb_tmp[3], mem[ox_wr_ram_b_addrb_tmp[14:5]][width_3 +: width_n], memp[ox_wr_ram_b_addrb_tmp[14:5]][(index+3)+:1]);
-          else
-            task_ram_ox (ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_dib_tmp[31:24], ox_wr_ram_b_dipb_tmp[3], mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_3) +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 3) +: 1]);
+              task_ram_ox(ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3],
+                          ox_wr_ram_b_dib_tmp[31:24], ox_wr_ram_b_dipb_tmp[3],
+                          mem[ox_wr_ram_b_addrb_tmp[14:5]][width_3 +: width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:5]][(index+3)+:1]);
+            else
+              task_ram_ox(ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3],
+                          ox_wr_ram_b_dib_tmp[31:24], ox_wr_ram_b_dipb_tmp[3],
+                          mem[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_3) +: wb_width_n],
+                          memp[ox_wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((ox_wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 3) +: 1]);
 
             if (ox_wr_ram_b_seq == 2'b00)
-            chk_for_col_msg (ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+              chk_for_col_msg(ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_addra_tmp,
+                              ox_wr_ram_b_addrb_tmp);
 
           end  // if (!(ox_wr_ram_b_wea_tmp[0] === 1'b1 && ox_wr_ram_b_web_tmp[0] === 1'b1 && wb_width > wa_width) || ox_wr_ram_b_seq == 2'b10)
         end  // case: 32
         64:
         if (width >= 64) begin
-          task_ram_ox (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0], ox_wr_ram_b_dipb_tmp[0], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_0 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_dib_tmp[7:0],
+                      ox_wr_ram_b_dipb_tmp[0],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_0 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[0], ox_wr_ram_b_web_tmp[0], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8], ox_wr_ram_b_dipb_tmp[1], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_1 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+1)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_dib_tmp[15:8],
+                      ox_wr_ram_b_dipb_tmp[1],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_1 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+1)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[1], ox_wr_ram_b_web_tmp[1], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_dib_tmp[23:16], ox_wr_ram_b_dipb_tmp[2], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_2 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+2)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_dib_tmp[23:16],
+                      ox_wr_ram_b_dipb_tmp[2],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_2 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+2)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[2], ox_wr_ram_b_web_tmp[2], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_dib_tmp[31:24], ox_wr_ram_b_dipb_tmp[3], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_3 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+3)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_dib_tmp[31:24],
+                      ox_wr_ram_b_dipb_tmp[3],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_3 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+3)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[3], ox_wr_ram_b_web_tmp[3], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_b_wea_tmp[4], ox_wr_ram_b_web_tmp[4], ox_wr_ram_b_dib_tmp[39:32], ox_wr_ram_b_dipb_tmp[4], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_4 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+4)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[4], ox_wr_ram_b_web_tmp[4], ox_wr_ram_b_dib_tmp[39:32],
+                      ox_wr_ram_b_dipb_tmp[4],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_4 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+4)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[4], ox_wr_ram_b_web_tmp[4], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[4], ox_wr_ram_b_web_tmp[4], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_b_wea_tmp[5], ox_wr_ram_b_web_tmp[5], ox_wr_ram_b_dib_tmp[47:40], ox_wr_ram_b_dipb_tmp[5], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_5 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+5)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[5], ox_wr_ram_b_web_tmp[5], ox_wr_ram_b_dib_tmp[47:40],
+                      ox_wr_ram_b_dipb_tmp[5],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_5 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+5)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[5], ox_wr_ram_b_web_tmp[5], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[5], ox_wr_ram_b_web_tmp[5], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_b_wea_tmp[6], ox_wr_ram_b_web_tmp[6], ox_wr_ram_b_dib_tmp[55:48], ox_wr_ram_b_dipb_tmp[6], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_6 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+6)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[6], ox_wr_ram_b_web_tmp[6], ox_wr_ram_b_dib_tmp[55:48],
+                      ox_wr_ram_b_dipb_tmp[6],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_6 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+6)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[6], ox_wr_ram_b_web_tmp[6], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[6], ox_wr_ram_b_web_tmp[6], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
 
-          task_ram_ox (ox_wr_ram_b_wea_tmp[7], ox_wr_ram_b_web_tmp[7], ox_wr_ram_b_dib_tmp[63:56], ox_wr_ram_b_dipb_tmp[7], mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_7 +: wb_width_n], memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+7)+:1]);
+          task_ram_ox(ox_wr_ram_b_wea_tmp[7], ox_wr_ram_b_web_tmp[7], ox_wr_ram_b_dib_tmp[63:56],
+                      ox_wr_ram_b_dipb_tmp[7],
+                      mem[ox_wr_ram_b_addrb_tmp[14:6]][wb_width_7 +: wb_width_n],
+                      memp[ox_wr_ram_b_addrb_tmp[14:6]][(index+7)+:1]);
           if (ox_wr_ram_b_seq == 2'b00)
-          chk_for_col_msg (ox_wr_ram_b_wea_tmp[7], ox_wr_ram_b_web_tmp[7], ox_wr_ram_b_addra_tmp, ox_wr_ram_b_addrb_tmp);
+            chk_for_col_msg(ox_wr_ram_b_wea_tmp[7], ox_wr_ram_b_web_tmp[7], ox_wr_ram_b_addra_tmp,
+                            ox_wr_ram_b_addrb_tmp);
         end  // case: 64
       endcase  // case(wb_width)
     end
@@ -2846,35 +3227,57 @@ module RB36_INTERNAL_VLOG (
     input [15:0] wr_ram_a_addra_tmp;
     begin
       case (wa_width)
-        1, 2, 4 : begin
-        if (wa_width >= width)
-              task_ram (wr_ram_a_wea_tmp[0], dia_tmp[wa_width-1:0], 1'b0, mem[wr_ram_a_addra_tmp[14:addra_lbit_124]], junk1);
-        else
-              task_ram (wr_ram_a_wea_tmp[0], dia_tmp[wa_width-1:0], 1'b0, mem[wr_ram_a_addra_tmp[14:addra_bit_124+1]][(wr_ram_a_addra_tmp[addra_bit_124:addra_lbit_124] * wa_width) +: wa_width_n], junk1);
-      end
+        1, 2, 4: begin
+          if (wa_width >= width)
+            task_ram(wr_ram_a_wea_tmp[0], dia_tmp[wa_width-1:0], 1'b0,
+                     mem[wr_ram_a_addra_tmp[14:addra_lbit_124]], junk1);
+          else
+            task_ram(wr_ram_a_wea_tmp[0], dia_tmp[wa_width-1:0], 1'b0,
+                     mem[wr_ram_a_addra_tmp[14:addra_bit_124+1]][(wr_ram_a_addra_tmp[addra_bit_124:addra_lbit_124] * wa_width) +: wa_width_n],
+                     junk1);
+        end
         8:
         if (width >= 8) begin
           if (wa_width >= width)
-          task_ram (wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0], mem[wr_ram_a_addra_tmp[14:3]], memp[wr_ram_a_addra_tmp[14:3]]);
-        else
-          task_ram (wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0], mem[wr_ram_a_addra_tmp[14:addra_bit_8+1]][(wr_ram_a_addra_tmp[addra_bit_8:3] * wa_width) +: wa_width_n], memp[wr_ram_a_addra_tmp[14:addra_bit_8+1]][(wr_ram_a_addra_tmp[addra_bit_8:3] * 1) +: 1]);
+            task_ram(wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0], mem[wr_ram_a_addra_tmp[14:3]],
+                     memp[wr_ram_a_addra_tmp[14:3]]);
+          else
+            task_ram(wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0],
+                     mem[wr_ram_a_addra_tmp[14:addra_bit_8+1]][(wr_ram_a_addra_tmp[addra_bit_8:3] * wa_width) +: wa_width_n],
+                     memp[wr_ram_a_addra_tmp[14:addra_bit_8+1]][(wr_ram_a_addra_tmp[addra_bit_8:3] * 1) +: 1]);
         end
         16:
         if (width >= 16) begin
           if (wa_width >= width) begin
-            task_ram (wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0], mem[wr_ram_a_addra_tmp[14:4]][width_0 +: width_n], memp[wr_ram_a_addra_tmp[14:4]][(index)+:1]);
-            task_ram (wr_ram_a_wea_tmp[1], dia_tmp[15:8], dipa_tmp[1], mem[wr_ram_a_addra_tmp[14:4]][width_1 +: width_n], memp[wr_ram_a_addra_tmp[14:4]][(index+1)+:1]);
+            task_ram(wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0],
+                     mem[wr_ram_a_addra_tmp[14:4]][width_0 +: width_n],
+                     memp[wr_ram_a_addra_tmp[14:4]][(index)+:1]);
+            task_ram(wr_ram_a_wea_tmp[1], dia_tmp[15:8], dipa_tmp[1],
+                     mem[wr_ram_a_addra_tmp[14:4]][width_1 +: width_n],
+                     memp[wr_ram_a_addra_tmp[14:4]][(index+1)+:1]);
           end else begin
-            task_ram (wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0], mem[wr_ram_a_addra_tmp[14:addra_bit_16+1]][(wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) +: wa_width_n], memp[wr_ram_a_addra_tmp[14:addra_bit_16+1]][(wr_ram_a_addra_tmp[addra_bit_16:4] * 2) +: 1]);
-            task_ram (wr_ram_a_wea_tmp[1], dia_tmp[15:8], dipa_tmp[1], mem[wr_ram_a_addra_tmp[14:addra_bit_16+1]][((wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) + wa_width_1) +: wa_width_n], memp[wr_ram_a_addra_tmp[14:addra_bit_16+1]][((wr_ram_a_addra_tmp[addra_bit_16:4] * 2) + 1) +: 1]);
+            task_ram(wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0],
+                     mem[wr_ram_a_addra_tmp[14:addra_bit_16+1]][(wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) +: wa_width_n],
+                     memp[wr_ram_a_addra_tmp[14:addra_bit_16+1]][(wr_ram_a_addra_tmp[addra_bit_16:4] * 2) +: 1]);
+            task_ram(wr_ram_a_wea_tmp[1], dia_tmp[15:8], dipa_tmp[1],
+                     mem[wr_ram_a_addra_tmp[14:addra_bit_16+1]][((wr_ram_a_addra_tmp[addra_bit_16:4] * wa_width) + wa_width_1) +: wa_width_n],
+                     memp[wr_ram_a_addra_tmp[14:addra_bit_16+1]][((wr_ram_a_addra_tmp[addra_bit_16:4] * 2) + 1) +: 1]);
           end  // else: !if(wa_width >= wb_width)
         end  // case: 16
         32:
         if (width >= 32) begin
-          task_ram (wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0], mem[wr_ram_a_addra_tmp[14:5]][wa_width_0 +: wa_width_n], memp[wr_ram_a_addra_tmp[14:5]][(index)+:1]);
-          task_ram (wr_ram_a_wea_tmp[1], dia_tmp[15:8], dipa_tmp[1], mem[wr_ram_a_addra_tmp[14:5]][wa_width_1 +: wa_width_n], memp[wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
-          task_ram (wr_ram_a_wea_tmp[2], dia_tmp[23:16], dipa_tmp[2], mem[wr_ram_a_addra_tmp[14:5]][wa_width_2 +: wa_width_n], memp[wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
-          task_ram (wr_ram_a_wea_tmp[3], dia_tmp[31:24], dipa_tmp[3], mem[wr_ram_a_addra_tmp[14:5]][wa_width_3 +: wa_width_n], memp[wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
+          task_ram(wr_ram_a_wea_tmp[0], dia_tmp[7:0], dipa_tmp[0],
+                   mem[wr_ram_a_addra_tmp[14:5]][wa_width_0 +: wa_width_n],
+                   memp[wr_ram_a_addra_tmp[14:5]][(index)+:1]);
+          task_ram(wr_ram_a_wea_tmp[1], dia_tmp[15:8], dipa_tmp[1],
+                   mem[wr_ram_a_addra_tmp[14:5]][wa_width_1 +: wa_width_n],
+                   memp[wr_ram_a_addra_tmp[14:5]][(index+1)+:1]);
+          task_ram(wr_ram_a_wea_tmp[2], dia_tmp[23:16], dipa_tmp[2],
+                   mem[wr_ram_a_addra_tmp[14:5]][wa_width_2 +: wa_width_n],
+                   memp[wr_ram_a_addra_tmp[14:5]][(index+2)+:1]);
+          task_ram(wr_ram_a_wea_tmp[3], dia_tmp[31:24], dipa_tmp[3],
+                   mem[wr_ram_a_addra_tmp[14:5]][wa_width_3 +: wa_width_n],
+                   memp[wr_ram_a_addra_tmp[14:5]][(index+3)+:1]);
         end  // case: 32
       endcase  // case(wa_width)
     end
@@ -2888,53 +3291,99 @@ module RB36_INTERNAL_VLOG (
     input [15:0] wr_ram_b_addrb_tmp;
     begin
       case (wb_width)
-        1, 2, 4 : begin
-        if (wb_width >= width)
-          task_ram (wr_ram_b_web_tmp[0], dib_tmp[wb_width-1:0], 1'b0, mem[wr_ram_b_addrb_tmp[14:addrb_lbit_124]], junk1);
-        else
-          task_ram (wr_ram_b_web_tmp[0], dib_tmp[wb_width-1:0], 1'b0, mem[wr_ram_b_addrb_tmp[14:addrb_bit_124+1]][(wr_ram_b_addrb_tmp[addrb_bit_124:addrb_lbit_124] * wb_width) +: wb_width_n], junk1);
-      end
+        1, 2, 4: begin
+          if (wb_width >= width)
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[wb_width-1:0], 1'b0,
+                     mem[wr_ram_b_addrb_tmp[14:addrb_lbit_124]], junk1);
+          else
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[wb_width-1:0], 1'b0,
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_124+1]][(wr_ram_b_addrb_tmp[addrb_bit_124:addrb_lbit_124] * wb_width) +: wb_width_n],
+                     junk1);
+        end
         8:
         if (width >= 8) begin
           if (wb_width >= width)
-          task_ram (wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:3]], memp[wr_ram_b_addrb_tmp[14:3]]);
-        else
-          task_ram (wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(wr_ram_b_addrb_tmp[addrb_bit_8:3] * wb_width) +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(wr_ram_b_addrb_tmp[addrb_bit_8:3] * 1) +: 1]);
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:3]],
+                     memp[wr_ram_b_addrb_tmp[14:3]]);
+          else
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0],
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(wr_ram_b_addrb_tmp[addrb_bit_8:3] * wb_width) +: wb_width_n],
+                     memp[wr_ram_b_addrb_tmp[14:addrb_bit_8+1]][(wr_ram_b_addrb_tmp[addrb_bit_8:3] * 1) +: 1]);
         end
         16:
         if (width >= 16) begin
           if (wb_width >= width) begin
-            task_ram (wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:4]][width_0 +: width_n], memp[wr_ram_b_addrb_tmp[14:4]][(index)+:1]);
-            task_ram (wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1], mem[wr_ram_b_addrb_tmp[14:4]][width_1 +: width_n], memp[wr_ram_b_addrb_tmp[14:4]][(index+1)+:1]);
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0],
+                     mem[wr_ram_b_addrb_tmp[14:4]][width_0 +: width_n],
+                     memp[wr_ram_b_addrb_tmp[14:4]][(index)+:1]);
+            task_ram(wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1],
+                     mem[wr_ram_b_addrb_tmp[14:4]][width_1 +: width_n],
+                     memp[wr_ram_b_addrb_tmp[14:4]][(index+1)+:1]);
           end else begin
-            task_ram (wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) +: 1]);
-            task_ram (wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1], mem[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) + wb_width_1) +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) + 1) +: 1]);
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0],
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) +: wb_width_n],
+                     memp[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][(wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) +: 1]);
+            task_ram(wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1],
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((wr_ram_b_addrb_tmp[addrb_bit_16:4] * wb_width) + wb_width_1) +: wb_width_n],
+                     memp[wr_ram_b_addrb_tmp[14:addrb_bit_16+1]][((wr_ram_b_addrb_tmp[addrb_bit_16:4] * 2) + 1) +: 1]);
           end
         end  // case: 16
         32:
         if (width >= 32) begin
           if (wb_width >= width) begin
-            task_ram (wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:5]][width_0 +: width_n], memp[wr_ram_b_addrb_tmp[14:5]][(index)+:1]);
-            task_ram (wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1], mem[wr_ram_b_addrb_tmp[14:5]][width_1 +: width_n], memp[wr_ram_b_addrb_tmp[14:5]][(index+1)+:1]);
-            task_ram (wr_ram_b_web_tmp[2], dib_tmp[23:16], dipb_tmp[2], mem[wr_ram_b_addrb_tmp[14:5]][width_2 +: width_n], memp[wr_ram_b_addrb_tmp[14:5]][(index+2)+:1]);
-            task_ram (wr_ram_b_web_tmp[3], dib_tmp[31:24], dipb_tmp[3], mem[wr_ram_b_addrb_tmp[14:5]][width_3 +: width_n], memp[wr_ram_b_addrb_tmp[14:5]][(index+3)+:1]);
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0],
+                     mem[wr_ram_b_addrb_tmp[14:5]][width_0 +: width_n],
+                     memp[wr_ram_b_addrb_tmp[14:5]][(index)+:1]);
+            task_ram(wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1],
+                     mem[wr_ram_b_addrb_tmp[14:5]][width_1 +: width_n],
+                     memp[wr_ram_b_addrb_tmp[14:5]][(index+1)+:1]);
+            task_ram(wr_ram_b_web_tmp[2], dib_tmp[23:16], dipb_tmp[2],
+                     mem[wr_ram_b_addrb_tmp[14:5]][width_2 +: width_n],
+                     memp[wr_ram_b_addrb_tmp[14:5]][(index+2)+:1]);
+            task_ram(wr_ram_b_web_tmp[3], dib_tmp[31:24], dipb_tmp[3],
+                     mem[wr_ram_b_addrb_tmp[14:5]][width_3 +: width_n],
+                     memp[wr_ram_b_addrb_tmp[14:5]][(index+3)+:1]);
           end else begin
-            task_ram (wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) +: 1]);
-            task_ram (wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1], mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_1) +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 1) +: 1]);
-            task_ram (wr_ram_b_web_tmp[2], dib_tmp[23:16], dipb_tmp[2], mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_2) +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 2) +: 1]);
-            task_ram (wr_ram_b_web_tmp[3], dib_tmp[31:24], dipb_tmp[3], mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_3) +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 3) +: 1]);
+            task_ram(wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0],
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) +: wb_width_n],
+                     memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][(wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) +: 1]);
+            task_ram(wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1],
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_1) +: wb_width_n],
+                     memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 1) +: 1]);
+            task_ram(wr_ram_b_web_tmp[2], dib_tmp[23:16], dipb_tmp[2],
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_2) +: wb_width_n],
+                     memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 2) +: 1]);
+            task_ram(wr_ram_b_web_tmp[3], dib_tmp[31:24], dipb_tmp[3],
+                     mem[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * wb_width) + wb_width_3) +: wb_width_n],
+                     memp[wr_ram_b_addrb_tmp[14:addrb_bit_32+1]][((wr_ram_b_addrb_tmp[addrb_bit_32:5] * 4) + 3) +: 1]);
           end  // else: !if(wb_width >= width)
         end  // case: 32
         64:
         if (width >= 64) begin  // only valid with ECC single bit correction for 64 bits
-          task_ram (wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_0 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index)+:1]);
-          task_ram (wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_1 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index+1)+:1]);
-          task_ram (wr_ram_b_web_tmp[2], dib_tmp[23:16], dipb_tmp[2], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_2 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index+2)+:1]);
-          task_ram (wr_ram_b_web_tmp[3], dib_tmp[31:24], dipb_tmp[3], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_3 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index+3)+:1]);
-          task_ram (wr_ram_b_web_tmp[4], dib_tmp[39:32], dipb_tmp[4], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_4 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index+4)+:1]);
-          task_ram (wr_ram_b_web_tmp[5], dib_tmp[47:40], dipb_tmp[5], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_5 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index+5)+:1]);
-          task_ram (wr_ram_b_web_tmp[6], dib_tmp[55:48], dipb_tmp[6], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_6 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index+6)+:1]);
-          task_ram (wr_ram_b_web_tmp[7], dib_tmp[63:56], dipb_tmp[7], mem[wr_ram_b_addrb_tmp[14:6]][wb_width_7 +: wb_width_n], memp[wr_ram_b_addrb_tmp[14:6]][(index+7)+:1]);
+          task_ram(wr_ram_b_web_tmp[0], dib_tmp[7:0], dipb_tmp[0],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_0 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index)+:1]);
+          task_ram(wr_ram_b_web_tmp[1], dib_tmp[15:8], dipb_tmp[1],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_1 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index+1)+:1]);
+          task_ram(wr_ram_b_web_tmp[2], dib_tmp[23:16], dipb_tmp[2],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_2 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index+2)+:1]);
+          task_ram(wr_ram_b_web_tmp[3], dib_tmp[31:24], dipb_tmp[3],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_3 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index+3)+:1]);
+          task_ram(wr_ram_b_web_tmp[4], dib_tmp[39:32], dipb_tmp[4],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_4 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index+4)+:1]);
+          task_ram(wr_ram_b_web_tmp[5], dib_tmp[47:40], dipb_tmp[5],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_5 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index+5)+:1]);
+          task_ram(wr_ram_b_web_tmp[6], dib_tmp[55:48], dipb_tmp[6],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_6 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index+6)+:1]);
+          task_ram(wr_ram_b_web_tmp[7], dib_tmp[63:56], dipb_tmp[7],
+                   mem[wr_ram_b_addrb_tmp[14:6]][wb_width_7 +: wb_width_n],
+                   memp[wr_ram_b_addrb_tmp[14:6]][(index+7)+:1]);
         end  // case: 64
       endcase  // case(wb_width)
     end
@@ -2949,45 +3398,47 @@ module RB36_INTERNAL_VLOG (
     inout [63:0] col_rd_ram_a_doa_tmp;
     inout [7:0] col_rd_ram_a_dopa_tmp;
     reg [63:0] doa_ltmp;
-    reg [7:0] dopa_ltmp;
+    reg [ 7:0] dopa_ltmp;
 
     begin
-      doa_ltmp = 64'b0;
+      doa_ltmp  = 64'b0;
       dopa_ltmp = 8'b0;
       case (ra_width)
         1, 2, 4: begin
           if ((col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[0] !== 1'b1)) begin
-            if (ra_width >= width)
-            doa_ltmp = mem[col_rd_ram_a_addra_tmp[14:r_addra_lbit_124]];
-          else
-            doa_ltmp = mem[col_rd_ram_a_addra_tmp[14:r_addra_bit_124+1]][(col_rd_ram_a_addra_tmp[r_addra_bit_124:r_addra_lbit_124] * ra_width) +: ra_width];
-            task_x_buf (wr_mode_a, 3, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            if (ra_width >= width) doa_ltmp = mem[col_rd_ram_a_addra_tmp[14:r_addra_lbit_124]];
+            else
+              doa_ltmp = mem[col_rd_ram_a_addra_tmp[14:r_addra_bit_124+1]][(col_rd_ram_a_addra_tmp[r_addra_bit_124:r_addra_lbit_124] * ra_width) +: ra_width];
+            task_x_buf(wr_mode_a, 3, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
         end  // case: 1, 2, 4
         8:
         if (width >= 8) begin
           if ((col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[0] !== 1'b1)) begin
             if (ra_width >= width) begin
-              doa_ltmp = mem[col_rd_ram_a_addra_tmp[14:3]];
+              doa_ltmp  = mem[col_rd_ram_a_addra_tmp[14:3]];
               dopa_ltmp = memp[col_rd_ram_a_addra_tmp[14:3]];
             end else begin
               doa_ltmp = mem[col_rd_ram_a_addra_tmp[14:r_addra_bit_8+1]][(col_rd_ram_a_addra_tmp[r_addra_bit_8:3] * ra_width) +: ra_width_n];
               dopa_ltmp = memp[col_rd_ram_a_addra_tmp[14:r_addra_bit_8+1]][(col_rd_ram_a_addra_tmp[r_addra_bit_8:3] * 1) +: 1];
             end
-            task_x_buf (wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            task_x_buf(wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
         end  // case: 8
         16:
         if (width >= 16) begin
           if ((col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[0] !== 1'b1)) begin
             if (ra_width >= width) begin
-              doa_ltmp[7:0] = mem[col_rd_ram_a_addra_tmp[14:4]][width_0 +: width_n];
+              doa_ltmp[7:0]  = mem[col_rd_ram_a_addra_tmp[14:4]][width_0 +: width_n];
               dopa_ltmp[0:0] = memp[col_rd_ram_a_addra_tmp[14:4]][(index)+:1];
             end else begin
               doa_ltmp[7:0] = mem[col_rd_ram_a_addra_tmp[14:r_addra_bit_16+1]][(col_rd_ram_a_addra_tmp[r_addra_bit_16:4] * ra_width) +: ra_width_n];
               dopa_ltmp[0:0] = memp[col_rd_ram_a_addra_tmp[14:r_addra_bit_16+1]][(col_rd_ram_a_addra_tmp[r_addra_bit_16:4] * 2) +: 1];
             end
-            task_x_buf (wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            task_x_buf(wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
           if ((col_rd_ram_a_web_tmp[1] === 1'b1 && col_rd_ram_a_wea_tmp[1] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[1] === 1'b1 && col_rd_ram_a_wea_tmp[1] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[1] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[1] !== 1'b1)) begin
             if (ra_width >= width) begin
@@ -2997,34 +3448,39 @@ module RB36_INTERNAL_VLOG (
               doa_ltmp[15:8] = mem[col_rd_ram_a_addra_tmp[14:r_addra_bit_16+1]][((col_rd_ram_a_addra_tmp[r_addra_bit_16:4] * ra_width) + ra_width_n) +: ra_width_n];
               dopa_ltmp[1:1] = memp[col_rd_ram_a_addra_tmp[14:r_addra_bit_16+1]][((col_rd_ram_a_addra_tmp[r_addra_bit_16:4] * 2) + 1) +: 1];
             end
-            task_x_buf (wr_mode_a, 15, 8, 1, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            task_x_buf(wr_mode_a, 15, 8, 1, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
         end
         32:
         if (width >= 32) begin
           if (ra_width >= width) begin
             if ((col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[0] !== 1'b1)) begin
-              doa_ltmp[7:0] = mem[col_rd_ram_a_addra_tmp[14:5]][width_0 +: width_n];
+              doa_ltmp[7:0]  = mem[col_rd_ram_a_addra_tmp[14:5]][width_0 +: width_n];
               dopa_ltmp[0:0] = memp[col_rd_ram_a_addra_tmp[14:5]][(index)+:1];
-              task_x_buf (wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+              task_x_buf(wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                         col_rd_ram_a_dopa_tmp);
             end
 
             if ((col_rd_ram_a_web_tmp[1] === 1'b1 && col_rd_ram_a_wea_tmp[1] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[1] === 1'b1 && col_rd_ram_a_wea_tmp[1] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[1] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[1] !== 1'b1)) begin
               doa_ltmp[15:8] = mem[col_rd_ram_a_addra_tmp[14:5]][width_1 +: width_n];
               dopa_ltmp[1:1] = memp[col_rd_ram_a_addra_tmp[14:5]][(index+1)+:1];
-              task_x_buf (wr_mode_a, 15, 8, 1, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+              task_x_buf(wr_mode_a, 15, 8, 1, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                         col_rd_ram_a_dopa_tmp);
             end
 
             if ((col_rd_ram_a_web_tmp[2] === 1'b1 && col_rd_ram_a_wea_tmp[2] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[2] === 1'b1 && col_rd_ram_a_wea_tmp[2] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[2] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[2] !== 1'b1)) begin
               doa_ltmp[23:16] = mem[col_rd_ram_a_addra_tmp[14:5]][width_2 +: width_n];
-              dopa_ltmp[2:2] = memp[col_rd_ram_a_addra_tmp[14:5]][(index+2)+:1];
-              task_x_buf (wr_mode_a, 23, 16, 2, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+              dopa_ltmp[2:2]  = memp[col_rd_ram_a_addra_tmp[14:5]][(index+2)+:1];
+              task_x_buf(wr_mode_a, 23, 16, 2, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                         col_rd_ram_a_dopa_tmp);
             end
 
             if ((col_rd_ram_a_web_tmp[3] === 1'b1 && col_rd_ram_a_wea_tmp[3] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[3] === 1'b1 && col_rd_ram_a_wea_tmp[3] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[3] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[3] !== 1'b1)) begin
               doa_ltmp[31:24] = mem[col_rd_ram_a_addra_tmp[14:5]][width_3 +: width_n];
-              dopa_ltmp[3:3] = memp[col_rd_ram_a_addra_tmp[14:5]][(index+3)+:1];
-              task_x_buf (wr_mode_a, 31, 24, 3, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+              dopa_ltmp[3:3]  = memp[col_rd_ram_a_addra_tmp[14:5]][(index+3)+:1];
+              task_x_buf(wr_mode_a, 31, 24, 3, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                         col_rd_ram_a_dopa_tmp);
             end
 
           end  // if (ra_width >= width)
@@ -3032,51 +3488,59 @@ module RB36_INTERNAL_VLOG (
         64:
         if (width >= 64) begin
           if ((col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1 && col_rd_ram_a_wea_tmp[0] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[0] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[0] !== 1'b1)) begin
-            doa_ltmp[7:0] = mem[col_rd_ram_a_addra_tmp[14:6]][width_0 +: width_n];
+            doa_ltmp[7:0]  = mem[col_rd_ram_a_addra_tmp[14:6]][width_0 +: width_n];
             dopa_ltmp[0:0] = memp[col_rd_ram_a_addra_tmp[14:6]][(index)+:1];
-            task_x_buf (wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            task_x_buf(wr_mode_a, 7, 0, 0, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
 
           if ((col_rd_ram_a_web_tmp[1] === 1'b1 && col_rd_ram_a_wea_tmp[1] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[1] === 1'b1 && col_rd_ram_a_wea_tmp[1] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[1] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[1] !== 1'b1)) begin
             doa_ltmp[15:8] = mem[col_rd_ram_a_addra_tmp[14:6]][width_1 +: width_n];
             dopa_ltmp[1:1] = memp[col_rd_ram_a_addra_tmp[14:6]][(index+1)+:1];
-            task_x_buf (wr_mode_a, 15, 8, 1, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            task_x_buf(wr_mode_a, 15, 8, 1, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
 
           if ((col_rd_ram_a_web_tmp[2] === 1'b1 && col_rd_ram_a_wea_tmp[2] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[2] === 1'b1 && col_rd_ram_a_wea_tmp[2] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[2] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[2] !== 1'b1)) begin
             doa_ltmp[23:16] = mem[col_rd_ram_a_addra_tmp[14:6]][width_2 +: width_n];
-            dopa_ltmp[2:2] = memp[col_rd_ram_a_addra_tmp[14:6]][(index+2)+:1];
-            task_x_buf (wr_mode_a, 23, 16, 2, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            dopa_ltmp[2:2]  = memp[col_rd_ram_a_addra_tmp[14:6]][(index+2)+:1];
+            task_x_buf(wr_mode_a, 23, 16, 2, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
 
           if ((col_rd_ram_a_web_tmp[3] === 1'b1 && col_rd_ram_a_wea_tmp[3] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[3] === 1'b1 && col_rd_ram_a_wea_tmp[3] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[3] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[3] !== 1'b1)) begin
             doa_ltmp[31:24] = mem[col_rd_ram_a_addra_tmp[14:6]][width_3 +: width_n];
-            dopa_ltmp[3:3] = memp[col_rd_ram_a_addra_tmp[14:6]][(index+3)+:1];
-            task_x_buf (wr_mode_a, 31, 24, 3, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            dopa_ltmp[3:3]  = memp[col_rd_ram_a_addra_tmp[14:6]][(index+3)+:1];
+            task_x_buf(wr_mode_a, 31, 24, 3, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
 
           if ((col_rd_ram_a_web_tmp[4] === 1'b1 && col_rd_ram_a_wea_tmp[4] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[4] === 1'b1 && col_rd_ram_a_wea_tmp[4] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[4] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[4] !== 1'b1)) begin
             doa_ltmp[39:32] = mem[col_rd_ram_a_addra_tmp[14:6]][width_4 +: width_n];
-            dopa_ltmp[4:4] = memp[col_rd_ram_a_addra_tmp[14:6]][(index+4)+:1];
-            task_x_buf (wr_mode_a, 39, 32, 4, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            dopa_ltmp[4:4]  = memp[col_rd_ram_a_addra_tmp[14:6]][(index+4)+:1];
+            task_x_buf(wr_mode_a, 39, 32, 4, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
 
           if ((col_rd_ram_a_web_tmp[5] === 1'b1 && col_rd_ram_a_wea_tmp[5] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[5] === 1'b1 && col_rd_ram_a_wea_tmp[5] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[5] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[5] !== 1'b1)) begin
             doa_ltmp[47:40] = mem[col_rd_ram_a_addra_tmp[14:6]][width_5 +: width_n];
-            dopa_ltmp[5:5] = memp[col_rd_ram_a_addra_tmp[14:6]][(index+5)+:1];
-            task_x_buf (wr_mode_a, 47, 40, 5, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            dopa_ltmp[5:5]  = memp[col_rd_ram_a_addra_tmp[14:6]][(index+5)+:1];
+            task_x_buf(wr_mode_a, 47, 40, 5, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
 
           if ((col_rd_ram_a_web_tmp[6] === 1'b1 && col_rd_ram_a_wea_tmp[6] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[6] === 1'b1 && col_rd_ram_a_wea_tmp[6] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[6] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[6] !== 1'b1)) begin
             doa_ltmp[55:48] = mem[col_rd_ram_a_addra_tmp[14:6]][width_6 +: width_n];
-            dopa_ltmp[6:6] = memp[col_rd_ram_a_addra_tmp[14:6]][(index+6)+:1];
-            task_x_buf (wr_mode_a, 55, 48, 6, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            dopa_ltmp[6:6]  = memp[col_rd_ram_a_addra_tmp[14:6]][(index+6)+:1];
+            task_x_buf(wr_mode_a, 55, 48, 6, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
 
           if ((col_rd_ram_a_web_tmp[7] === 1'b1 && col_rd_ram_a_wea_tmp[7] === 1'b1) || (col_rd_ram_a_seq == 2'b01 && col_rd_ram_a_web_tmp[7] === 1'b1 && col_rd_ram_a_wea_tmp[7] === 1'b0 && viol_type == 2'b10) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a != 2'b01 && wr_mode_b != 2'b01) || (col_rd_ram_a_seq == 2'b01 && wr_mode_a == 2'b01 && wr_mode_b != 2'b01 && col_rd_ram_a_web_tmp[7] === 1'b1) || (col_rd_ram_a_seq == 2'b11 && wr_mode_a == 2'b00 && col_rd_ram_a_web_tmp[7] !== 1'b1)) begin
             doa_ltmp[63:56] = mem[col_rd_ram_a_addra_tmp[14:6]][width_7 +: width_n];
-            dopa_ltmp[7:7] = memp[col_rd_ram_a_addra_tmp[14:6]][(index+7)+:1];
-            task_x_buf (wr_mode_a, 63, 56, 7, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp, col_rd_ram_a_dopa_tmp);
+            dopa_ltmp[7:7]  = memp[col_rd_ram_a_addra_tmp[14:6]][(index+7)+:1];
+            task_x_buf(wr_mode_a, 63, 56, 7, doa_ltmp, col_rd_ram_a_doa_tmp, dopa_ltmp,
+                       col_rd_ram_a_dopa_tmp);
           end
         end
       endcase  // case(ra_width)
@@ -3092,35 +3556,37 @@ module RB36_INTERNAL_VLOG (
     inout [63:0] col_rd_ram_b_dob_tmp;
     inout [7:0] col_rd_ram_b_dopb_tmp;
     reg [63:0] col_rd_ram_b_dob_ltmp;
-    reg [7:0] col_rd_ram_b_dopb_ltmp;
+    reg [ 7:0] col_rd_ram_b_dopb_ltmp;
 
     begin
-      col_rd_ram_b_dob_ltmp = 64'b0;
+      col_rd_ram_b_dob_ltmp  = 64'b0;
       col_rd_ram_b_dopb_ltmp = 8'b0;
 
       case (rb_width)
         1, 2, 4: begin
           if ((col_rd_ram_b_web_tmp[0] === 1'b1 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1 && col_rd_ram_b_web_tmp[0] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[0] !== 1'b1)) begin
             if (rb_width >= width)
-            col_rd_ram_b_dob_ltmp = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_lbit_124]];
-          else
-            col_rd_ram_b_dob_ltmp = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_124+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_124:r_addrb_lbit_124] * rb_width) +: rb_width_n];
+              col_rd_ram_b_dob_ltmp = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_lbit_124]];
+            else
+              col_rd_ram_b_dob_ltmp = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_124+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_124:r_addrb_lbit_124] * rb_width) +: rb_width_n];
 
-            task_x_buf (wr_mode_b, 3, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 3, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
         end  // case: 1, 2, 4
         8:
         if (width >= 8) begin
           if ((col_rd_ram_b_web_tmp[0] === 1'b1 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1 && col_rd_ram_b_web_tmp[0] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[0] !== 1'b1)) begin
             if (rb_width >= width) begin
-              col_rd_ram_b_dob_ltmp = mem[col_rd_ram_b_addrb_tmp[14:3]];
+              col_rd_ram_b_dob_ltmp  = mem[col_rd_ram_b_addrb_tmp[14:3]];
               col_rd_ram_b_dopb_ltmp = memp[col_rd_ram_b_addrb_tmp[14:3]];
             end else begin
               col_rd_ram_b_dob_ltmp = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_8+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_8:3] * rb_width) +: rb_width_n];
               col_rd_ram_b_dopb_ltmp = memp[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_8+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_8:3] * 1) +: 1];
             end
 
-            task_x_buf (wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
 
           end
         end  // case: 8
@@ -3128,13 +3594,14 @@ module RB36_INTERNAL_VLOG (
         if (width >= 16) begin
           if ((col_rd_ram_b_web_tmp[0] === 1'b1 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1 && col_rd_ram_b_web_tmp[0] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[0] !== 1'b1)) begin
             if (rb_width >= width) begin
-              col_rd_ram_b_dob_ltmp[7:0] = mem[col_rd_ram_b_addrb_tmp[14:4]][width_0 +: width_n];
+              col_rd_ram_b_dob_ltmp[7:0]  = mem[col_rd_ram_b_addrb_tmp[14:4]][width_0 +: width_n];
               col_rd_ram_b_dopb_ltmp[0:0] = memp[col_rd_ram_b_addrb_tmp[14:4]][(index)+:1];
             end else begin
               col_rd_ram_b_dob_ltmp[7:0] = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_16+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_16:4] * rb_width) +: rb_width_n];
               col_rd_ram_b_dopb_ltmp[0:0] = memp[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_16+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_16:4] * 2) +: 1];
             end
-            task_x_buf (wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
           if ((col_rd_ram_b_web_tmp[1] === 1'b1 && col_rd_ram_b_wea_tmp[1] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[1] === 1'b1 && col_rd_ram_b_web_tmp[1] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[1] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[1] !== 1'b1)) begin
 
@@ -3145,20 +3612,22 @@ module RB36_INTERNAL_VLOG (
               col_rd_ram_b_dob_ltmp[15:8] = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_16+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_16:4] * rb_width) + rb_width_n) +: rb_width_n];
               col_rd_ram_b_dopb_ltmp[1:1] = memp[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_16+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_16:4] * 2) + 1) +: 1];
             end
-            task_x_buf (wr_mode_b, 15, 8, 1, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 15, 8, 1, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
         end
         32:
         if (width >= 32) begin
           if ((col_rd_ram_b_web_tmp[0] === 1'b1 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1 && col_rd_ram_b_web_tmp[0] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[0] !== 1'b1)) begin
             if (rb_width >= width) begin
-              col_rd_ram_b_dob_ltmp[7:0] = mem[col_rd_ram_b_addrb_tmp[14:5]][width_0 +: width_n];
+              col_rd_ram_b_dob_ltmp[7:0]  = mem[col_rd_ram_b_addrb_tmp[14:5]][width_0 +: width_n];
               col_rd_ram_b_dopb_ltmp[0:0] = memp[col_rd_ram_b_addrb_tmp[14:5]][(index)+:1];
             end else begin
               col_rd_ram_b_dob_ltmp[7:0] = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * rb_width) +: rb_width_n];
               col_rd_ram_b_dopb_ltmp[0:0] = memp[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][(col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * 4) +: 1];
             end
-            task_x_buf (wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
           if ((col_rd_ram_b_web_tmp[1] === 1'b1 && col_rd_ram_b_wea_tmp[1] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[1] === 1'b1 && col_rd_ram_b_web_tmp[1] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[1] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[1] !== 1'b1)) begin
             if (rb_width >= width) begin
@@ -3168,77 +3637,88 @@ module RB36_INTERNAL_VLOG (
               col_rd_ram_b_dob_ltmp[15:8] = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * rb_width) + rb_width_1) +: rb_width_n];
               col_rd_ram_b_dopb_ltmp[1:1] = memp[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * 4) + 1) +: 1];
             end
-            task_x_buf (wr_mode_b, 15, 8, 1, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 15, 8, 1, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
           if ((col_rd_ram_b_web_tmp[2] === 1'b1 && col_rd_ram_b_wea_tmp[2] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[2] === 1'b1 && col_rd_ram_b_web_tmp[2] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[2] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[2] !== 1'b1)) begin
             if (rb_width >= width) begin
               col_rd_ram_b_dob_ltmp[23:16] = mem[col_rd_ram_b_addrb_tmp[14:5]][width_2 +: width_n];
-              col_rd_ram_b_dopb_ltmp[2:2] = memp[col_rd_ram_b_addrb_tmp[14:5]][(index+2)+:1];
+              col_rd_ram_b_dopb_ltmp[2:2]  = memp[col_rd_ram_b_addrb_tmp[14:5]][(index+2)+:1];
             end else begin
               col_rd_ram_b_dob_ltmp[23:16] = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * rb_width) + rb_width_2) +: rb_width_n];
               col_rd_ram_b_dopb_ltmp[2:2] = memp[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * 4) + 2) +: 1];
             end
-            task_x_buf (wr_mode_b, 23, 16, 2, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 23, 16, 2, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
           if ((col_rd_ram_b_web_tmp[3] === 1'b1 && col_rd_ram_b_wea_tmp[3] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[3] === 1'b1 && col_rd_ram_b_web_tmp[3] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[3] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[3] !== 1'b1)) begin
             if (rb_width >= width) begin
               col_rd_ram_b_dob_ltmp[31:24] = mem[col_rd_ram_b_addrb_tmp[14:5]][width_3 +: width_n];
-              col_rd_ram_b_dopb_ltmp[3:3] = memp[col_rd_ram_b_addrb_tmp[14:5]][(index+3)+:1];
+              col_rd_ram_b_dopb_ltmp[3:3]  = memp[col_rd_ram_b_addrb_tmp[14:5]][(index+3)+:1];
             end else begin
               col_rd_ram_b_dob_ltmp[31:24] = mem[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * rb_width) + rb_width_3) +: rb_width_n];
               col_rd_ram_b_dopb_ltmp[3:3] = memp[col_rd_ram_b_addrb_tmp[14:r_addrb_bit_32+1]][((col_rd_ram_b_addrb_tmp[r_addrb_bit_32:5] * 4) + 3) +: 1];
             end
-            task_x_buf (wr_mode_b, 31, 24, 3, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 31, 24, 3, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
         end
         64:
         if (width >= 64) begin
           if ((col_rd_ram_b_web_tmp[0] === 1'b1 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1 && col_rd_ram_b_web_tmp[0] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[0] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[0] !== 1'b1)) begin
-            col_rd_ram_b_dob_ltmp[7:0] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_0 +: width_n];
+            col_rd_ram_b_dob_ltmp[7:0]  = mem[col_rd_ram_b_addrb_tmp[14:6]][width_0 +: width_n];
             col_rd_ram_b_dopb_ltmp[0:0] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index)+:1];
-            task_x_buf (wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 7, 0, 0, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
           if ((col_rd_ram_b_web_tmp[1] === 1'b1 && col_rd_ram_b_wea_tmp[1] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[1] === 1'b1 && col_rd_ram_b_web_tmp[1] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[1] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[1] !== 1'b1)) begin
             col_rd_ram_b_dob_ltmp[15:8] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_1 +: width_n];
             col_rd_ram_b_dopb_ltmp[1:1] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+1)+:1];
-            task_x_buf (wr_mode_b, 15, 8, 1, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            task_x_buf(wr_mode_b, 15, 8, 1, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
           if ((col_rd_ram_b_web_tmp[2] === 1'b1 && col_rd_ram_b_wea_tmp[2] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[2] === 1'b1 && col_rd_ram_b_web_tmp[2] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[2] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[2] !== 1'b1)) begin
             col_rd_ram_b_dob_ltmp[23:16] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_2 +: width_n];
-            col_rd_ram_b_dopb_ltmp[2:2] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+2)+:1];
-            task_x_buf (wr_mode_b, 23, 16, 2, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            col_rd_ram_b_dopb_ltmp[2:2]  = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+2)+:1];
+            task_x_buf(wr_mode_b, 23, 16, 2, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
           if ((col_rd_ram_b_web_tmp[3] === 1'b1 && col_rd_ram_b_wea_tmp[3] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[3] === 1'b1 && col_rd_ram_b_web_tmp[3] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[3] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[3] !== 1'b1)) begin
             col_rd_ram_b_dob_ltmp[31:24] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_3 +: width_n];
-            col_rd_ram_b_dopb_ltmp[3:3] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+3)+:1];
-            task_x_buf (wr_mode_b, 31, 24, 3, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            col_rd_ram_b_dopb_ltmp[3:3]  = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+3)+:1];
+            task_x_buf(wr_mode_b, 31, 24, 3, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
           if ((col_rd_ram_b_web_tmp[4] === 1'b1 && col_rd_ram_b_wea_tmp[4] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[4] === 1'b1 && col_rd_ram_b_web_tmp[4] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[4] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[4] !== 1'b1)) begin
             col_rd_ram_b_dob_ltmp[39:32] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_4 +: width_n];
-            col_rd_ram_b_dopb_ltmp[4:4] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+4)+:1];
-            task_x_buf (wr_mode_b, 39, 32, 4, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            col_rd_ram_b_dopb_ltmp[4:4]  = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+4)+:1];
+            task_x_buf(wr_mode_b, 39, 32, 4, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
           if ((col_rd_ram_b_web_tmp[5] === 1'b1 && col_rd_ram_b_wea_tmp[5] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[5] === 1'b1 && col_rd_ram_b_web_tmp[5] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[5] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[5] !== 1'b1)) begin
             col_rd_ram_b_dob_ltmp[47:40] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_5 +: width_n];
-            col_rd_ram_b_dopb_ltmp[5:5] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+5)+:1];
-            task_x_buf (wr_mode_b, 47, 40, 5, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            col_rd_ram_b_dopb_ltmp[5:5]  = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+5)+:1];
+            task_x_buf(wr_mode_b, 47, 40, 5, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
           if ((col_rd_ram_b_web_tmp[6] === 1'b1 && col_rd_ram_b_wea_tmp[6] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[6] === 1'b1 && col_rd_ram_b_web_tmp[6] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[6] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[6] !== 1'b1)) begin
             col_rd_ram_b_dob_ltmp[55:48] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_6 +: width_n];
-            col_rd_ram_b_dopb_ltmp[6:6] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+6)+:1];
-            task_x_buf (wr_mode_b, 55, 48, 6, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            col_rd_ram_b_dopb_ltmp[6:6]  = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+6)+:1];
+            task_x_buf(wr_mode_b, 55, 48, 6, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
           if ((col_rd_ram_b_web_tmp[7] === 1'b1 && col_rd_ram_b_wea_tmp[7] === 1'b1) || (col_rd_ram_b_seq == 2'b01 && col_rd_ram_b_wea_tmp[7] === 1'b1 && col_rd_ram_b_web_tmp[7] === 1'b0 && viol_type == 2'b11) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b != 2'b01 && wr_mode_a != 2'b01) || (col_rd_ram_b_seq == 2'b01 && wr_mode_b == 2'b01 && wr_mode_a != 2'b01 && col_rd_ram_b_wea_tmp[7] === 1'b1) || (col_rd_ram_b_seq == 2'b11 && wr_mode_b == 2'b00 && col_rd_ram_b_wea_tmp[7] !== 1'b1)) begin
             col_rd_ram_b_dob_ltmp[63:56] = mem[col_rd_ram_b_addrb_tmp[14:6]][width_7 +: width_n];
-            col_rd_ram_b_dopb_ltmp[7:7] = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+7)+:1];
-            task_x_buf (wr_mode_b, 63, 56, 7, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp, col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
+            col_rd_ram_b_dopb_ltmp[7:7]  = memp[col_rd_ram_b_addrb_tmp[14:6]][(index+7)+:1];
+            task_x_buf(wr_mode_b, 63, 56, 7, col_rd_ram_b_dob_ltmp, col_rd_ram_b_dob_tmp,
+                       col_rd_ram_b_dopb_ltmp, col_rd_ram_b_dopb_tmp);
           end
 
         end
@@ -3256,16 +3736,15 @@ module RB36_INTERNAL_VLOG (
     begin
 
       case (ra_width)
-        1, 2, 4 : begin
-                    if (ra_width >= width)
-              doa_tmp = mem[rd_ram_a_addra_tmp[14:r_addra_lbit_124]];
+        1, 2, 4: begin
+          if (ra_width >= width) doa_tmp = mem[rd_ram_a_addra_tmp[14:r_addra_lbit_124]];
 
-               else
-              doa_tmp = mem[rd_ram_a_addra_tmp[14:r_addra_bit_124+1]][(rd_ram_a_addra_tmp[r_addra_bit_124:r_addra_lbit_124] * ra_width) +: ra_width];
-                end
+          else
+            doa_tmp = mem[rd_ram_a_addra_tmp[14:r_addra_bit_124+1]][(rd_ram_a_addra_tmp[r_addra_bit_124:r_addra_lbit_124] * ra_width) +: ra_width];
+        end
         8: begin
           if (ra_width >= width) begin
-            doa_tmp = mem[rd_ram_a_addra_tmp[14:3]];
+            doa_tmp  = mem[rd_ram_a_addra_tmp[14:3]];
             dopa_tmp = memp[rd_ram_a_addra_tmp[14:3]];
           end else begin
             doa_tmp = mem[rd_ram_a_addra_tmp[14:r_addra_bit_8+1]][(rd_ram_a_addra_tmp[r_addra_bit_8:3] * ra_width) +: ra_width];
@@ -3274,7 +3753,7 @@ module RB36_INTERNAL_VLOG (
         end
         16: begin
           if (ra_width >= width) begin
-            doa_tmp = mem[rd_ram_a_addra_tmp[14:4]];
+            doa_tmp  = mem[rd_ram_a_addra_tmp[14:4]];
             dopa_tmp = memp[rd_ram_a_addra_tmp[14:4]];
           end else begin
             doa_tmp = mem[rd_ram_a_addra_tmp[14:r_addra_bit_16+1]][(rd_ram_a_addra_tmp[r_addra_bit_16:4] * ra_width) +: ra_width];
@@ -3283,7 +3762,7 @@ module RB36_INTERNAL_VLOG (
         end
         32: begin
           if (ra_width >= width) begin
-            doa_tmp = mem[rd_ram_a_addra_tmp[14:5]];
+            doa_tmp  = mem[rd_ram_a_addra_tmp[14:5]];
             dopa_tmp = memp[rd_ram_a_addra_tmp[14:5]];
           end else begin
             doa_tmp = mem[rd_ram_a_addra_tmp[14:r_addra_bit_32+1]][(rd_ram_a_addra_tmp[r_addra_bit_32:5] * ra_width) +: ra_width];
@@ -3292,7 +3771,7 @@ module RB36_INTERNAL_VLOG (
         end
         64: begin
           if (ra_width >= width) begin
-            doa_tmp = mem[rd_ram_a_addra_tmp[14:6]];
+            doa_tmp  = mem[rd_ram_a_addra_tmp[14:6]];
             dopa_tmp = memp[rd_ram_a_addra_tmp[14:6]];
           end
         end
@@ -3311,15 +3790,14 @@ module RB36_INTERNAL_VLOG (
     begin
 
       case (rb_width)
-        1, 2, 4 : begin
-                    if (rb_width >= width)
-              dob_tmp = mem[rd_ram_b_addrb_tmp[14:r_addrb_lbit_124]];
-               else
-              dob_tmp = mem[rd_ram_b_addrb_tmp[14:r_addrb_bit_124+1]][(rd_ram_b_addrb_tmp[r_addrb_bit_124:r_addrb_lbit_124] * rb_width) +: rb_width];
-                            end
+        1, 2, 4: begin
+          if (rb_width >= width) dob_tmp = mem[rd_ram_b_addrb_tmp[14:r_addrb_lbit_124]];
+          else
+            dob_tmp = mem[rd_ram_b_addrb_tmp[14:r_addrb_bit_124+1]][(rd_ram_b_addrb_tmp[r_addrb_bit_124:r_addrb_lbit_124] * rb_width) +: rb_width];
+        end
         8: begin
           if (rb_width >= width) begin
-            dob_tmp = mem[rd_ram_b_addrb_tmp[14:3]];
+            dob_tmp  = mem[rd_ram_b_addrb_tmp[14:3]];
             dopb_tmp = memp[rd_ram_b_addrb_tmp[14:3]];
           end else begin
             dob_tmp = mem[rd_ram_b_addrb_tmp[14:r_addrb_bit_8+1]][(rd_ram_b_addrb_tmp[r_addrb_bit_8:3] * 8) +: 8];
@@ -3328,7 +3806,7 @@ module RB36_INTERNAL_VLOG (
         end
         16: begin
           if (rb_width >= width) begin
-            dob_tmp = mem[rd_ram_b_addrb_tmp[14:4]];
+            dob_tmp  = mem[rd_ram_b_addrb_tmp[14:4]];
             dopb_tmp = memp[rd_ram_b_addrb_tmp[14:4]];
           end else begin
             dob_tmp = mem[rd_ram_b_addrb_tmp[14:r_addrb_bit_16+1]][(rd_ram_b_addrb_tmp[r_addrb_bit_16:4] * 16) +: 16];
@@ -3336,12 +3814,12 @@ module RB36_INTERNAL_VLOG (
           end
         end
         32: begin
-          dob_tmp = mem[rd_ram_b_addrb_tmp[14:5]];
+          dob_tmp  = mem[rd_ram_b_addrb_tmp[14:5]];
           dopb_tmp = memp[rd_ram_b_addrb_tmp[14:5]];
         end
         64: begin
           if (rb_width >= width) begin
-            dob_tmp = mem[rd_ram_b_addrb_tmp[14:6]];
+            dob_tmp  = mem[rd_ram_b_addrb_tmp[14:6]];
             dopb_tmp = memp[rd_ram_b_addrb_tmp[14:6]];
           end
         end
@@ -3366,12 +3844,15 @@ module RB36_INTERNAL_VLOG (
           if (chk_ox_msg == 1) begin
 
             if (!(rdaddr_collision_hwconfig_int == 0 && chk_ox_same_clk == 1))
-             $display("Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA write was requested to the overlapped address simultaneously at both port A and port B of the RAM. The contents written to the RAM at address location %h (hex) of port A and address location %h (hex) of port B are unknown.", $time/1000.0, addra_tmp, addrb_tmp);
+              $display(
+                  "Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA write was requested to the overlapped address simultaneously at both port A and port B of the RAM. The contents written to the RAM at address location %h (hex) of port A and address location %h (hex) of port B are unknown.",
+                  $time / 1000.0, addra_tmp, addrb_tmp);
 
 
-          end
-          else
-         $display("Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA write was requested to the same address simultaneously at both port A and port B of the RAM. The contents written to the RAM at address location %h (hex) of port A and address location %h (hex) of port B are unknown.", $time/1000.0, addra_tmp, addrb_tmp);
+          end else
+            $display(
+                "Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA write was requested to the same address simultaneously at both port A and port B of the RAM. The contents written to the RAM at address location %h (hex) of port A and address location %h (hex) of port B are unknown.",
+                $time / 1000.0, addra_tmp, addrb_tmp);
 
           col_wr_wr_msg = 0;
 
@@ -3381,14 +3862,20 @@ module RB36_INTERNAL_VLOG (
           if (chk_ox_msg == 1) begin
 
             if (!(rdaddr_collision_hwconfig_int == 0 && chk_ox_same_clk == 1))
-             $display("Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port B while a write was requested to the overlapped address %h (hex) of port A.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.", $time/1000.0, addrb_tmp, addra_tmp);
+              $display(
+                  "Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port B while a write was requested to the overlapped address %h (hex) of port A.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.",
+                  $time / 1000.0, addrb_tmp, addra_tmp);
 
           end else begin
 
             if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (!(chk_col_same_clk == 1 && rdaddr_collision_hwconfig_int == 0) && SIM_DEVICE == "VIRTEX6"))
-               $display("Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port B while a write was requested to the same address on port A.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.", $time/1000.0, addrb_tmp);
-         else if (wr_mode_a != 2'b01 || (viol_type == 2'b11 && wr_mode_a == 2'b01))
-             $display("Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port B while a write was requested to the same address on port A.  The write will be successful however the read value on port B is unknown until the next CLKB cycle.", $time/1000.0, addrb_tmp);
+              $display(
+                  "Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port B while a write was requested to the same address on port A.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.",
+                  $time / 1000.0, addrb_tmp);
+            else if (wr_mode_a != 2'b01 || (viol_type == 2'b11 && wr_mode_a == 2'b01))
+              $display(
+                  "Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port B while a write was requested to the same address on port A.  The write will be successful however the read value on port B is unknown until the next CLKB cycle.",
+                  $time / 1000.0, addrb_tmp);
 
           end  // else: !if(chk_ox_msg == 1)
 
@@ -3399,14 +3886,20 @@ module RB36_INTERNAL_VLOG (
           if (chk_ox_msg == 1) begin
 
             if (!(rdaddr_collision_hwconfig_int == 0 && chk_ox_same_clk == 1))
-             $display("Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port A while a write was requested to the overlapped address %h (hex) of port B.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.", $time/1000.0, addra_tmp, addrb_tmp);
+              $display(
+                  "Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port A while a write was requested to the overlapped address %h (hex) of port B.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.",
+                  $time / 1000.0, addra_tmp, addrb_tmp);
 
           end else begin
 
             if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (!(chk_col_same_clk == 1 && rdaddr_collision_hwconfig_int == 0) && SIM_DEVICE == "VIRTEX6"))
-               $display("Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port A while a write was requested to the same address on port B.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.", $time/1000.0, addrb_tmp);
-         else if (wr_mode_b != 2'b01 || (viol_type == 2'b10 && wr_mode_b == 2'b01))
-                 $display("Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port A while a write was requested to the same address on port B.  The write will be successful however the read value on port A is unknown until the next CLKA cycle.", $time/1000.0, addra_tmp);
+              $display(
+                  "Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port A while a write was requested to the same address on port B.  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.",
+                  $time / 1000.0, addrb_tmp);
+            else if (wr_mode_b != 2'b01 || (viol_type == 2'b10 && wr_mode_b == 2'b01))
+              $display(
+                  "Memory Collision Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read was performed on address %h (hex) of port A while a write was requested to the same address on port B.  The write will be successful however the read value on port A is unknown until the next CLKA cycle.",
+                  $time / 1000.0, addra_tmp);
 
           end  // else: !if(chk_ox_msg == 1)
 
@@ -3428,7 +3921,7 @@ module RB36_INTERNAL_VLOG (
     reg [71:0] task_ecc_bit_position;
     reg [7:0] task_dopr_ecc, task_syndrome;
     reg [63:0] task_di_in_ecc_corrected;
-    reg [7:0] task_dip_in_ecc_corrected;
+    reg [ 7:0] task_dip_in_ecc_corrected;
 
     begin
 
@@ -3445,21 +3938,51 @@ module RB36_INTERNAL_VLOG (
 
           if (task_syndrome[7]) begin  // dectect single bit error
 
-            task_ecc_bit_position = {do_tmp[63:57], dop_tmp[6], do_tmp[56:26], dop_tmp[5], do_tmp[25:11], dop_tmp[4], do_tmp[10:4], dop_tmp[3], do_tmp[3:1], dop_tmp[2], do_tmp[0], dop_tmp[1:0], dop_tmp[7]};
+            task_ecc_bit_position = {
+              do_tmp[63:57],
+              dop_tmp[6],
+              do_tmp[56:26],
+              dop_tmp[5],
+              do_tmp[25:11],
+              dop_tmp[4],
+              do_tmp[10:4],
+              dop_tmp[3],
+              do_tmp[3:1],
+              dop_tmp[2],
+              do_tmp[0],
+              dop_tmp[1:0],
+              dop_tmp[7]
+            };
 
 
             if (task_syndrome[6:0] > 71) begin
-              $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+              $display(
+                  "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
               $finish;
             end
 
             task_ecc_bit_position[task_syndrome[6:0]] = ~task_ecc_bit_position[task_syndrome[6:0]]; // correct single bit error in the output 
 
-            task_di_in_ecc_corrected = {task_ecc_bit_position[71:65], task_ecc_bit_position[63:33], task_ecc_bit_position[31:17], task_ecc_bit_position[15:9], task_ecc_bit_position[7:5], task_ecc_bit_position[3]}; // correct single bit error in the memory
+            task_di_in_ecc_corrected = {
+              task_ecc_bit_position[71:65],
+              task_ecc_bit_position[63:33],
+              task_ecc_bit_position[31:17],
+              task_ecc_bit_position[15:9],
+              task_ecc_bit_position[7:5],
+              task_ecc_bit_position[3]
+            };  // correct single bit error in the memory
 
             do_tmp = task_di_in_ecc_corrected;
 
-            task_dip_in_ecc_corrected = {task_ecc_bit_position[0], task_ecc_bit_position[64], task_ecc_bit_position[32], task_ecc_bit_position[16], task_ecc_bit_position[8], task_ecc_bit_position[4], task_ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+            task_dip_in_ecc_corrected = {
+              task_ecc_bit_position[0],
+              task_ecc_bit_position[64],
+              task_ecc_bit_position[32],
+              task_ecc_bit_position[16],
+              task_ecc_bit_position[8],
+              task_ecc_bit_position[4],
+              task_ecc_bit_position[2:1]
+            };  // correct single bit error in the parity memory
 
             dop_tmp = task_dip_in_ecc_corrected;
 
@@ -3539,8 +4062,8 @@ module RB36_INTERNAL_VLOG (
                      ^di_in[60]^di_in[61]^di_in[62]^di_in[63];
 
       if (encode == 1'b1)
-      
-      fn_dip_ecc[7] = fn_dip_ecc[0]^fn_dip_ecc[1]^fn_dip_ecc[2]^fn_dip_ecc[3]^fn_dip_ecc[4]^fn_dip_ecc[5]^fn_dip_ecc[6]
+
+        fn_dip_ecc[7] = fn_dip_ecc[0]^fn_dip_ecc[1]^fn_dip_ecc[2]^fn_dip_ecc[3]^fn_dip_ecc[4]^fn_dip_ecc[5]^fn_dip_ecc[6]
                      ^di_in[0]^di_in[1]^di_in[2]^di_in[3]^di_in[4]^di_in[5]^di_in[6]^di_in[7]^di_in[8]^di_in[9]
                      ^di_in[10]^di_in[11]^di_in[12]^di_in[13]^di_in[14]^di_in[15]^di_in[16]^di_in[17]^di_in[18]^di_in[19]
                      ^di_in[20]^di_in[21]^di_in[22]^di_in[23]^di_in[24]^di_in[25]^di_in[26]^di_in[27]^di_in[28]^di_in[29]
@@ -3548,8 +4071,8 @@ module RB36_INTERNAL_VLOG (
                      ^di_in[40]^di_in[41]^di_in[42]^di_in[43]^di_in[44]^di_in[45]^di_in[46]^di_in[47]^di_in[48]^di_in[49]
                      ^di_in[50]^di_in[51]^di_in[52]^di_in[53]^di_in[54]^di_in[55]^di_in[56]^di_in[57]^di_in[58]^di_in[59]
                      ^di_in[60]^di_in[61]^di_in[62]^di_in[63];
-       else
-      fn_dip_ecc[7] = dip_in[0]^dip_in[1]^dip_in[2]^dip_in[3]^dip_in[4]^dip_in[5]^dip_in[6]
+      else
+        fn_dip_ecc[7] = dip_in[0]^dip_in[1]^dip_in[2]^dip_in[3]^dip_in[4]^dip_in[5]^dip_in[6]
                      ^di_in[0]^di_in[1]^di_in[2]^di_in[3]^di_in[4]^di_in[5]^di_in[6]^di_in[7]^di_in[8]^di_in[9]
                      ^di_in[10]^di_in[11]^di_in[12]^di_in[13]^di_in[14]^di_in[15]^di_in[16]^di_in[17]^di_in[18]^di_in[19]
                      ^di_in[20]^di_in[21]^di_in[22]^di_in[23]^di_in[24]^di_in[25]^di_in[26]^di_in[27]^di_in[28]^di_in[29]
@@ -3640,42 +4163,42 @@ module RB36_INTERNAL_VLOG (
         mem[count + (init_mult * 63)] = INIT_3F[init_offset +: width];
 
         if (BRAM_SIZE == 36) begin
-          mem[count + (init_mult * 64)] = INIT_40[init_offset +: width];
-          mem[count + (init_mult * 65)] = INIT_41[init_offset +: width];
-          mem[count + (init_mult * 66)] = INIT_42[init_offset +: width];
-          mem[count + (init_mult * 67)] = INIT_43[init_offset +: width];
-          mem[count + (init_mult * 68)] = INIT_44[init_offset +: width];
-          mem[count + (init_mult * 69)] = INIT_45[init_offset +: width];
-          mem[count + (init_mult * 70)] = INIT_46[init_offset +: width];
-          mem[count + (init_mult * 71)] = INIT_47[init_offset +: width];
-          mem[count + (init_mult * 72)] = INIT_48[init_offset +: width];
-          mem[count + (init_mult * 73)] = INIT_49[init_offset +: width];
-          mem[count + (init_mult * 74)] = INIT_4A[init_offset +: width];
-          mem[count + (init_mult * 75)] = INIT_4B[init_offset +: width];
-          mem[count + (init_mult * 76)] = INIT_4C[init_offset +: width];
-          mem[count + (init_mult * 77)] = INIT_4D[init_offset +: width];
-          mem[count + (init_mult * 78)] = INIT_4E[init_offset +: width];
-          mem[count + (init_mult * 79)] = INIT_4F[init_offset +: width];
-          mem[count + (init_mult * 80)] = INIT_50[init_offset +: width];
-          mem[count + (init_mult * 81)] = INIT_51[init_offset +: width];
-          mem[count + (init_mult * 82)] = INIT_52[init_offset +: width];
-          mem[count + (init_mult * 83)] = INIT_53[init_offset +: width];
-          mem[count + (init_mult * 84)] = INIT_54[init_offset +: width];
-          mem[count + (init_mult * 85)] = INIT_55[init_offset +: width];
-          mem[count + (init_mult * 86)] = INIT_56[init_offset +: width];
-          mem[count + (init_mult * 87)] = INIT_57[init_offset +: width];
-          mem[count + (init_mult * 88)] = INIT_58[init_offset +: width];
-          mem[count + (init_mult * 89)] = INIT_59[init_offset +: width];
-          mem[count + (init_mult * 90)] = INIT_5A[init_offset +: width];
-          mem[count + (init_mult * 91)] = INIT_5B[init_offset +: width];
-          mem[count + (init_mult * 92)] = INIT_5C[init_offset +: width];
-          mem[count + (init_mult * 93)] = INIT_5D[init_offset +: width];
-          mem[count + (init_mult * 94)] = INIT_5E[init_offset +: width];
-          mem[count + (init_mult * 95)] = INIT_5F[init_offset +: width];
-          mem[count + (init_mult * 96)] = INIT_60[init_offset +: width];
-          mem[count + (init_mult * 97)] = INIT_61[init_offset +: width];
-          mem[count + (init_mult * 98)] = INIT_62[init_offset +: width];
-          mem[count + (init_mult * 99)] = INIT_63[init_offset +: width];
+          mem[count + (init_mult * 64)]  = INIT_40[init_offset +: width];
+          mem[count + (init_mult * 65)]  = INIT_41[init_offset +: width];
+          mem[count + (init_mult * 66)]  = INIT_42[init_offset +: width];
+          mem[count + (init_mult * 67)]  = INIT_43[init_offset +: width];
+          mem[count + (init_mult * 68)]  = INIT_44[init_offset +: width];
+          mem[count + (init_mult * 69)]  = INIT_45[init_offset +: width];
+          mem[count + (init_mult * 70)]  = INIT_46[init_offset +: width];
+          mem[count + (init_mult * 71)]  = INIT_47[init_offset +: width];
+          mem[count + (init_mult * 72)]  = INIT_48[init_offset +: width];
+          mem[count + (init_mult * 73)]  = INIT_49[init_offset +: width];
+          mem[count + (init_mult * 74)]  = INIT_4A[init_offset +: width];
+          mem[count + (init_mult * 75)]  = INIT_4B[init_offset +: width];
+          mem[count + (init_mult * 76)]  = INIT_4C[init_offset +: width];
+          mem[count + (init_mult * 77)]  = INIT_4D[init_offset +: width];
+          mem[count + (init_mult * 78)]  = INIT_4E[init_offset +: width];
+          mem[count + (init_mult * 79)]  = INIT_4F[init_offset +: width];
+          mem[count + (init_mult * 80)]  = INIT_50[init_offset +: width];
+          mem[count + (init_mult * 81)]  = INIT_51[init_offset +: width];
+          mem[count + (init_mult * 82)]  = INIT_52[init_offset +: width];
+          mem[count + (init_mult * 83)]  = INIT_53[init_offset +: width];
+          mem[count + (init_mult * 84)]  = INIT_54[init_offset +: width];
+          mem[count + (init_mult * 85)]  = INIT_55[init_offset +: width];
+          mem[count + (init_mult * 86)]  = INIT_56[init_offset +: width];
+          mem[count + (init_mult * 87)]  = INIT_57[init_offset +: width];
+          mem[count + (init_mult * 88)]  = INIT_58[init_offset +: width];
+          mem[count + (init_mult * 89)]  = INIT_59[init_offset +: width];
+          mem[count + (init_mult * 90)]  = INIT_5A[init_offset +: width];
+          mem[count + (init_mult * 91)]  = INIT_5B[init_offset +: width];
+          mem[count + (init_mult * 92)]  = INIT_5C[init_offset +: width];
+          mem[count + (init_mult * 93)]  = INIT_5D[init_offset +: width];
+          mem[count + (init_mult * 94)]  = INIT_5E[init_offset +: width];
+          mem[count + (init_mult * 95)]  = INIT_5F[init_offset +: width];
+          mem[count + (init_mult * 96)]  = INIT_60[init_offset +: width];
+          mem[count + (init_mult * 97)]  = INIT_61[init_offset +: width];
+          mem[count + (init_mult * 98)]  = INIT_62[init_offset +: width];
+          mem[count + (init_mult * 99)]  = INIT_63[init_offset +: width];
           mem[count + (init_mult * 100)] = INIT_64[init_offset +: width];
           mem[count + (init_mult * 101)] = INIT_65[init_offset +: width];
           mem[count + (init_mult * 102)] = INIT_66[init_offset +: width];
@@ -3727,8 +4250,8 @@ module RB36_INTERNAL_VLOG (
           memp[countp + (initp_mult * 7)] = INITP_07[initp_offset +: widthp];
 
           if (BRAM_SIZE == 36) begin
-            memp[countp + (initp_mult * 8)] = INITP_08[initp_offset +: widthp];
-            memp[countp + (initp_mult * 9)] = INITP_09[initp_offset +: widthp];
+            memp[countp + (initp_mult * 8)]  = INITP_08[initp_offset +: widthp];
+            memp[countp + (initp_mult * 9)]  = INITP_09[initp_offset +: widthp];
             memp[countp + (initp_mult * 10)] = INITP_0A[initp_offset +: widthp];
             memp[countp + (initp_mult * 11)] = INITP_0B[initp_offset +: widthp];
             memp[countp + (initp_mult * 12)] = INITP_0C[initp_offset +: widthp];
@@ -3743,44 +4266,43 @@ module RB36_INTERNAL_VLOG (
    
    else begin // memory initialization from memory file
       for (j = 0; j < mem_depth; j = j + 1) begin
-       for (j1 = 0; j1 < widest_width; j1 = j1 + 1) begin
-         tmp_mem[j][j1] = 1'b0;
-       end
-     end
+        for (j1 = 0; j1 < widest_width; j1 = j1 + 1) begin
+          tmp_mem[j][j1] = 1'b0;
+        end
+      end
 
       $readmemh(INIT_FILE, tmp_mem);
 
       case (widest_width)
 
-        1, 2, 4 : begin
-        for (i_mem = 0; i_mem <= mem_depth; i_mem = i_mem + 1)
-          mem[i_mem] = tmp_mem [i_mem];
-      end
+        1, 2, 4: begin
+          for (i_mem = 0; i_mem <= mem_depth; i_mem = i_mem + 1) mem[i_mem] = tmp_mem[i_mem];
+        end
         9:
         if ((width == 8) && (widthp == 1)) begin
           for (i_mem = 0; i_mem <= mem_depth; i_mem = i_mem + 1) begin
-            mem[i_mem] = tmp_mem[i_mem][0 +: width];
+            mem[i_mem]  = tmp_mem[i_mem][0 +: width];
             memp[i_mem] = tmp_mem[i_mem][width +: widthp];
           end
         end
         18:
         if ((width == 16) && (widthp == 2)) begin
           for (i_mem = 0; i_mem <= mem_depth; i_mem = i_mem + 1) begin
-            mem[i_mem] = tmp_mem[i_mem][0 +: width];
+            mem[i_mem]  = tmp_mem[i_mem][0 +: width];
             memp[i_mem] = tmp_mem[i_mem][width +: widthp];
           end
         end
         36:
         if ((width == 32) && (widthp == 4)) begin
           for (i_mem = 0; i_mem <= mem_depth; i_mem = i_mem + 1) begin
-            mem[i_mem] = tmp_mem[i_mem][0 +: width];
+            mem[i_mem]  = tmp_mem[i_mem][0 +: width];
             memp[i_mem] = tmp_mem[i_mem][width +: widthp];
           end
         end
         72:
         if ((width == 64) && (widthp == 8)) begin
           for (i_mem = 0; i_mem <= mem_depth; i_mem = i_mem + 1) begin
-            mem[i_mem] = tmp_mem[i_mem][0 +: width];
+            mem[i_mem]  = tmp_mem[i_mem][0 +: width];
             memp[i_mem] = tmp_mem[i_mem][width +: widthp];
           end
         end
@@ -3788,20 +4310,24 @@ module RB36_INTERNAL_VLOG (
     end  // else: !if(INIT_FILE == "NONE")
 
     case (EN_ECC_WRITE)
-      "TRUE": en_ecc_write_int = 1;
+      "TRUE":  en_ecc_write_int = 1;
       "FALSE": en_ecc_write_int = 0;
       default: begin
-        $display("Attribute Syntax Error : The attribute EN_ECC_WRITE on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", EN_ECC_WRITE);
+        $display(
+            "Attribute Syntax Error : The attribute EN_ECC_WRITE on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            EN_ECC_WRITE);
         finish_error = 1;
       end
     endcase
 
 
     case (EN_ECC_READ)
-      "TRUE": en_ecc_read_int = 1;
+      "TRUE":  en_ecc_read_int = 1;
       "FALSE": en_ecc_read_int = 0;
       default: begin
-        $display("Attribute Syntax Error : The attribute EN_ECC_READ on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.", EN_ECC_READ);
+        $display(
+            "Attribute Syntax Error : The attribute EN_ECC_READ on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are TRUE or FALSE.",
+            EN_ECC_READ);
         finish_error = 1;
       end
     endcase
@@ -3812,12 +4338,16 @@ module RB36_INTERNAL_VLOG (
         ram_mode_int = 1;
 
         if (en_ecc_write_int == 1) begin
-          $display("DRC Error : The attribute EN_ECC_WRITE on RAMB36E1 instance %m is set to %s which requires RAM_MODE = SDP.", EN_ECC_WRITE);
+          $display(
+              "DRC Error : The attribute EN_ECC_WRITE on RAMB36E1 instance %m is set to %s which requires RAM_MODE = SDP.",
+              EN_ECC_WRITE);
           finish_error = 1;
         end
 
         if (en_ecc_read_int == 1) begin
-          $display("DRC Error : The attribute EN_ECC_READ on RAMB36E1 instance %m is set to %s which requires RAM_MODE = SDP.", EN_ECC_READ);
+          $display(
+              "DRC Error : The attribute EN_ECC_READ on RAMB36E1 instance %m is set to %s which requires RAM_MODE = SDP.",
+              EN_ECC_READ);
           finish_error = 1;
         end
 
@@ -3827,7 +4357,8 @@ module RB36_INTERNAL_VLOG (
 
         if ((WRITE_MODE_A != WRITE_MODE_B) || WRITE_MODE_A == "NO_CHANGE" || WRITE_MODE_B == "NO_CHANGE") begin
 
-          $display("DRC Error : Both attributes WRITE_MODE_A and WRITE_MODE_B must be set to READ_FIRST or both attributes must be set to WRITE_FIRST when RAM_MODE = SDP on RAMB36E1 instance %m.");
+          $display(
+              "DRC Error : Both attributes WRITE_MODE_A and WRITE_MODE_B must be set to READ_FIRST or both attributes must be set to WRITE_FIRST when RAM_MODE = SDP on RAMB36E1 instance %m.");
 
           finish_error = 1;
 
@@ -3837,21 +4368,25 @@ module RB36_INTERNAL_VLOG (
         if (BRAM_SIZE == 18) begin
           if (!(WRITE_WIDTH_B == 36 || READ_WIDTH_A == 36)) begin
 
-            $display("DRC Error : One of the attribute WRITE_WIDTH_B or READ_WIDTH_A must set to 36 when RAM_MODE = SDP.");
+            $display(
+                "DRC Error : One of the attribute WRITE_WIDTH_B or READ_WIDTH_A must set to 36 when RAM_MODE = SDP.");
 
             finish_error = 1;
           end
         end else begin
 
           if (!(WRITE_WIDTH_B == 72 || READ_WIDTH_A == 72)) begin
-            $display("DRC Error : One of the attribute WRITE_WIDTH_B or READ_WIDTH_A must set to 72 when RAM_MODE = SDP.");
+            $display(
+                "DRC Error : One of the attribute WRITE_WIDTH_B or READ_WIDTH_A must set to 72 when RAM_MODE = SDP.");
             finish_error = 1;
           end
         end  // else: !if(BRAM_SIZE == 18)
 
       end  // case: "SDP"
       default: begin
-        $display("Attribute Syntax Error : The attribute RAM_MODE on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are TDP or SDP.", RAM_MODE);
+        $display(
+            "Attribute Syntax Error : The attribute RAM_MODE on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are TDP or SDP.",
+            RAM_MODE);
         finish_error = 1;
       end
     endcase
@@ -3862,25 +4397,35 @@ module RB36_INTERNAL_VLOG (
       0, 1, 2, 4, 9, 18: ;
       36: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", WRITE_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              WRITE_WIDTH_A);
           finish_error = 1;
         end
       end
       72: begin
         if (BRAM_SIZE == 18) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", WRITE_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              WRITE_WIDTH_A);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", WRITE_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              WRITE_WIDTH_A);
           finish_error = 1;
         end
       end
       default: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", WRITE_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              WRITE_WIDTH_A);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 || (BRAM_SIZE == 18 && ram_mode_int == 0)) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", WRITE_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              WRITE_WIDTH_A);
           finish_error = 1;
         end
       end
@@ -3893,25 +4438,35 @@ module RB36_INTERNAL_VLOG (
       0, 1, 2, 4, 9, 18: ;
       36: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", WRITE_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              WRITE_WIDTH_B);
           finish_error = 1;
         end
       end
       72: begin
         if (BRAM_SIZE == 18) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", WRITE_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              WRITE_WIDTH_B);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", WRITE_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              WRITE_WIDTH_B);
           finish_error = 1;
         end
       end
       default: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", WRITE_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              WRITE_WIDTH_B);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 || (BRAM_SIZE == 18 && ram_mode_int == 0)) begin
-          $display("Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", WRITE_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute WRITE_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              WRITE_WIDTH_B);
           finish_error = 1;
         end
       end
@@ -3924,25 +4479,35 @@ module RB36_INTERNAL_VLOG (
       0, 1, 2, 4, 9, 18: ;
       36: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", READ_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              READ_WIDTH_A);
           finish_error = 1;
         end
       end
       72: begin
         if (BRAM_SIZE == 18) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", READ_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              READ_WIDTH_A);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", READ_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              READ_WIDTH_A);
           finish_error = 1;
         end
       end
       default: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", READ_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              READ_WIDTH_A);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 || (BRAM_SIZE == 18 && ram_mode_int == 0)) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", READ_WIDTH_A);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_A on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              READ_WIDTH_A);
           finish_error = 1;
         end
       end
@@ -3955,25 +4520,35 @@ module RB36_INTERNAL_VLOG (
       0, 1, 2, 4, 9, 18: ;
       36: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", READ_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              READ_WIDTH_B);
           finish_error = 1;
         end
       end
       72: begin
         if (BRAM_SIZE == 18) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", READ_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              READ_WIDTH_B);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", READ_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              READ_WIDTH_B);
           finish_error = 1;
         end
       end
       default: begin
         if (BRAM_SIZE == 18 && ram_mode_int == 1) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.", READ_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9 or 18.",
+              READ_WIDTH_B);
           finish_error = 1;
         end else if (BRAM_SIZE == 36 || (BRAM_SIZE == 18 && ram_mode_int == 0)) begin
-          $display("Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.", READ_WIDTH_B);
+          $display(
+              "Attribute Syntax Error : The attribute READ_WIDTH_B on RAMB36E1 instance %m is set to %d.  Legal values for this attribute are 0, 1, 2, 4, 9, 18 or 36.",
+              READ_WIDTH_B);
           finish_error = 1;
         end
       end
@@ -3982,41 +4557,48 @@ module RB36_INTERNAL_VLOG (
 
 
     if ((RAM_EXTENSION_A == "LOWER" || RAM_EXTENSION_A == "UPPER") && READ_WIDTH_A != 1) begin
-      $display("Attribute Syntax Error : If attribute RAM_EXTENSION_A on RAMB36E1 instance %m is set to either LOWER or UPPER, then READ_WIDTH_A has to be set to 1.");
+      $display(
+          "Attribute Syntax Error : If attribute RAM_EXTENSION_A on RAMB36E1 instance %m is set to either LOWER or UPPER, then READ_WIDTH_A has to be set to 1.");
       finish_error = 1;
     end
 
 
     if ((RAM_EXTENSION_A == "LOWER" || RAM_EXTENSION_A == "UPPER") && WRITE_WIDTH_A != 1) begin
-      $display("Attribute Syntax Error : If attribute RAM_EXTENSION_A on RAMB36E1 instance %m is set to either LOWER or UPPER, then WRITE_WIDTH_A has to be set to 1.");
+      $display(
+          "Attribute Syntax Error : If attribute RAM_EXTENSION_A on RAMB36E1 instance %m is set to either LOWER or UPPER, then WRITE_WIDTH_A has to be set to 1.");
       finish_error = 1;
     end
 
 
     if ((RAM_EXTENSION_B == "LOWER" || RAM_EXTENSION_B == "UPPER") && READ_WIDTH_B != 1) begin
-      $display("Attribute Syntax Error : If attribute RAM_EXTENSION_B on RAMB36E1 instance %m is set to either LOWER or UPPER, then READ_WIDTH_B has to be set to 1.");
+      $display(
+          "Attribute Syntax Error : If attribute RAM_EXTENSION_B on RAMB36E1 instance %m is set to either LOWER or UPPER, then READ_WIDTH_B has to be set to 1.");
       finish_error = 1;
     end
 
 
     if ((RAM_EXTENSION_B == "LOWER" || RAM_EXTENSION_B == "UPPER") && WRITE_WIDTH_B != 1) begin
-      $display("Attribute Syntax Error : If attribute RAM_EXTENSION_B on RAMB36E1 instance %m is set to either LOWER or UPPER, then WRITE_WIDTH_B has to be set to 1.");
+      $display(
+          "Attribute Syntax Error : If attribute RAM_EXTENSION_B on RAMB36E1 instance %m is set to either LOWER or UPPER, then WRITE_WIDTH_B has to be set to 1.");
       finish_error = 1;
     end
 
 
     if (READ_WIDTH_A == 0 && READ_WIDTH_B == 0) begin
-      $display("Attribute Syntax Error : Attributes READ_WIDTH_A and READ_WIDTH_B on RAMB36E1 instance %m, both can not be 0.");
+      $display(
+          "Attribute Syntax Error : Attributes READ_WIDTH_A and READ_WIDTH_B on RAMB36E1 instance %m, both can not be 0.");
       finish_error = 1;
     end
 
 
     case (WRITE_MODE_A)
       "WRITE_FIRST": wr_mode_a = 2'b00;
-      "READ_FIRST": wr_mode_a = 2'b01;
-      "NO_CHANGE": wr_mode_a = 2'b10;
+      "READ_FIRST":  wr_mode_a = 2'b01;
+      "NO_CHANGE":   wr_mode_a = 2'b10;
       default: begin
-        $display("Attribute Syntax Error : The Attribute WRITE_MODE_A on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are WRITE_FIRST, READ_FIRST or NO_CHANGE.", WRITE_MODE_A);
+        $display(
+            "Attribute Syntax Error : The Attribute WRITE_MODE_A on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are WRITE_FIRST, READ_FIRST or NO_CHANGE.",
+            WRITE_MODE_A);
         finish_error = 1;
       end
     endcase
@@ -4024,10 +4606,12 @@ module RB36_INTERNAL_VLOG (
 
     case (WRITE_MODE_B)
       "WRITE_FIRST": wr_mode_b = 2'b00;
-      "READ_FIRST": wr_mode_b = 2'b01;
-      "NO_CHANGE": wr_mode_b = 2'b10;
+      "READ_FIRST":  wr_mode_b = 2'b01;
+      "NO_CHANGE":   wr_mode_b = 2'b10;
       default: begin
-        $display("Attribute Syntax Error : The Attribute WRITE_MODE_B on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are WRITE_FIRST, READ_FIRST or NO_CHANGE.", WRITE_MODE_B);
+        $display(
+            "Attribute Syntax Error : The Attribute WRITE_MODE_B on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are WRITE_FIRST, READ_FIRST or NO_CHANGE.",
+            WRITE_MODE_B);
         finish_error = 1;
       end
     endcase
@@ -4035,9 +4619,11 @@ module RB36_INTERNAL_VLOG (
     case (RAM_EXTENSION_A)
       "UPPER": cascade_a = 2'b11;
       "LOWER": cascade_a = 2'b01;
-      "NONE": cascade_a = 2'b00;
+      "NONE":  cascade_a = 2'b00;
       default: begin
-        $display("Attribute Syntax Error : The attribute RAM_EXTENSION_A on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are LOWER, NONE or UPPER.", RAM_EXTENSION_A);
+        $display(
+            "Attribute Syntax Error : The attribute RAM_EXTENSION_A on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are LOWER, NONE or UPPER.",
+            RAM_EXTENSION_A);
         finish_error = 1;
       end
     endcase
@@ -4046,9 +4632,11 @@ module RB36_INTERNAL_VLOG (
     case (RAM_EXTENSION_B)
       "UPPER": cascade_b = 2'b11;
       "LOWER": cascade_b = 2'b01;
-      "NONE": cascade_b = 2'b00;
+      "NONE":  cascade_b = 2'b00;
       default: begin
-        $display("Attribute Syntax Error : The attribute RAM_EXTENSION_B on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are LOWER, NONE or UPPER.", RAM_EXTENSION_B);
+        $display(
+            "Attribute Syntax Error : The attribute RAM_EXTENSION_B on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are LOWER, NONE or UPPER.",
+            RAM_EXTENSION_B);
         finish_error = 1;
       end
     endcase
@@ -4056,7 +4644,9 @@ module RB36_INTERNAL_VLOG (
 
     if ((SIM_COLLISION_CHECK != "ALL") && (SIM_COLLISION_CHECK != "NONE") && (SIM_COLLISION_CHECK != "WARNING_ONLY") && (SIM_COLLISION_CHECK != "GENERATE_X_ONLY")) begin
 
-      $display("Attribute Syntax Error : The attribute SIM_COLLISION_CHECK on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are ALL, NONE, WARNING_ONLY or GENERATE_X_ONLY.", SIM_COLLISION_CHECK);
+      $display(
+          "Attribute Syntax Error : The attribute SIM_COLLISION_CHECK on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are ALL, NONE, WARNING_ONLY or GENERATE_X_ONLY.",
+          SIM_COLLISION_CHECK);
       finish_error = 1;
 
     end
@@ -4064,9 +4654,11 @@ module RB36_INTERNAL_VLOG (
 
     case (RSTREG_PRIORITY_A)
       "RSTREG": rstreg_priority_a_int = 1;
-      "REGCE": rstreg_priority_a_int = 0;
+      "REGCE":  rstreg_priority_a_int = 0;
       default: begin
-        $display("Attribute Syntax Error : The attribute RSTREG_PRIORITY_A on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are RSTREG or REGCE.", RSTREG_PRIORITY_A);
+        $display(
+            "Attribute Syntax Error : The attribute RSTREG_PRIORITY_A on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are RSTREG or REGCE.",
+            RSTREG_PRIORITY_A);
         finish_error = 1;
       end
     endcase
@@ -4074,32 +4666,39 @@ module RB36_INTERNAL_VLOG (
 
     case (RSTREG_PRIORITY_B)
       "RSTREG": rstreg_priority_b_int = 1;
-      "REGCE": rstreg_priority_b_int = 0;
+      "REGCE":  rstreg_priority_b_int = 0;
       default: begin
-        $display("Attribute Syntax Error : The attribute RSTREG_PRIORITY_B on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are RSTREG or REGCE.", RSTREG_PRIORITY_B);
+        $display(
+            "Attribute Syntax Error : The attribute RSTREG_PRIORITY_B on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are RSTREG or REGCE.",
+            RSTREG_PRIORITY_B);
         finish_error = 1;
       end
     endcase
 
 
     if ((en_ecc_write_int == 1 || en_ecc_read_int == 1) && (WRITE_WIDTH_B != 72 || READ_WIDTH_A != 72)) begin
-      $display("DRC Error : Attributes WRITE_WIDTH_B and READ_WIDTH_A have to be set to 72 on RAMB36E1 instance %m when either attribute EN_ECC_WRITE or EN_ECC_READ is set to TRUE.");
+      $display(
+          "DRC Error : Attributes WRITE_WIDTH_B and READ_WIDTH_A have to be set to 72 on RAMB36E1 instance %m when either attribute EN_ECC_WRITE or EN_ECC_READ is set to TRUE.");
       finish_error = 1;
     end
 
 
     case (RDADDR_COLLISION_HWCONFIG)
       "DELAYED_WRITE": rdaddr_collision_hwconfig_int = 0;
-      "PERFORMANCE": rdaddr_collision_hwconfig_int = 1;
+      "PERFORMANCE":   rdaddr_collision_hwconfig_int = 1;
       default: begin
-        $display("Attribute Syntax Error : The attribute RDADDR_COLLISION_HWCONFIG on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are DELAYED_WRITE or PERFORMANCE.", RDADDR_COLLISION_HWCONFIG);
+        $display(
+            "Attribute Syntax Error : The attribute RDADDR_COLLISION_HWCONFIG on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are DELAYED_WRITE or PERFORMANCE.",
+            RDADDR_COLLISION_HWCONFIG);
         finish_error = 1;
       end
     endcase
 
 
     if (!(SIM_DEVICE == "VIRTEX6" || SIM_DEVICE == "7SERIES")) begin
-      $display("Attribute Syntax Error : The Attribute SIM_DEVICE on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are VIRTEX6, or 7SERIES.", SIM_DEVICE);
+      $display(
+          "Attribute Syntax Error : The Attribute SIM_DEVICE on RAMB36E1 instance %m is set to %s.  Legal values for this attribute are VIRTEX6, or 7SERIES.",
+          SIM_DEVICE);
       finish_error = 1;
     end
 
@@ -4221,16 +4820,12 @@ module RB36_INTERNAL_VLOG (
 
     // Registering addr[15] for cascade mode
     if (rising_clka)
-       if (cascade_a[1])
-      addra_in_15_reg_bram = ~ADDRA[15];
-       else
-      addra_in_15_reg_bram = ADDRA[15];
+      if (cascade_a[1]) addra_in_15_reg_bram = ~ADDRA[15];
+      else addra_in_15_reg_bram = ADDRA[15];
 
     if (rising_clkb)
-       if (cascade_b[1])
-      addrb_in_15_reg_bram = ~ADDRB[15];
-       else
-      addrb_in_15_reg_bram = ADDRB[15];
+      if (cascade_b[1]) addrb_in_15_reg_bram = ~ADDRB[15];
+      else addrb_in_15_reg_bram = ADDRB[15];
 
     if ((cascade_a == 2'b00 || (addra_in_15_reg_bram == 1'b0 && cascade_a != 2'b00)) && (cascade_b == 2'b00 || (addrb_in_15_reg_bram == 1'b0 && cascade_b != 2'b00)))  begin
 
@@ -4262,8 +4857,8 @@ module RB36_INTERNAL_VLOG (
 
 
           if ((WRITE_WIDTH_A <= 9 && WEA[0] === 1'b0) || (WRITE_WIDTH_A == 18 && WEA[1:0] === 2'b00) || ((WRITE_WIDTH_A == 36 || WRITE_WIDTH_A == 72) && WEA[3:0] === 4'b0000))
-          if ((WRITE_WIDTH_B <= 9 && WEB[0] === 1'b0) || (WRITE_WIDTH_B == 18 && WEB[1:0] === 2'b00) || (WRITE_WIDTH_B == 36 && WEB[3:0] === 4'b0000) || (WRITE_WIDTH_B == 72 && WEB[7:0] === 8'h00))
-         viol_time = 0;
+            if ((WRITE_WIDTH_B <= 9 && WEB[0] === 1'b0) || (WRITE_WIDTH_B == 18 && WEB[1:0] === 2'b00) || (WRITE_WIDTH_B == 36 && WEB[3:0] === 4'b0000) || (WRITE_WIDTH_B == 72 && WEB[7:0] === 8'h00))
+              viol_time = 0;
 
 
           if (viol_time != 0) begin
@@ -4280,11 +4875,11 @@ module RB36_INTERNAL_VLOG (
 
 
                   if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (time_port_a > time_port_b)) begin
-                    doa_buf = dob_buf;
+                    doa_buf  = dob_buf;
                     dopa_buf = dopb_buf;
                   end
              else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (time_port_b > time_port_a)) begin
-                    dob_buf = doa_buf;
+                    dob_buf  = doa_buf;
                     dopb_buf = dopa_buf;
                   end else begin
                     task_rd_ram_a(ADDRA, doa_buf, dopa_buf);
@@ -4318,7 +4913,7 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && ENB === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, DIB, DIPB);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, DIB, DIPB);
                     eccparity_out = dip_ecc_col;
                     task_col_wr_ram_b(2'b10, WEA, WEB, dib_ecc_col, dip_ecc_col, ADDRA, ADDRB);
 
@@ -4326,9 +4921,9 @@ module RB36_INTERNAL_VLOG (
 
 
                   if (wr_mode_a != 2'b01)
-            task_col_rd_ram_a (2'b11, WEB, WEA, ADDRA, doa_buf, dopa_buf);
+                    task_col_rd_ram_a(2'b11, WEB, WEA, ADDRA, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, WEA, WEB, ADDRB, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, WEA, WEB, ADDRB, dob_buf, dopb_buf);
 
 
                   if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && rdaddr_collision_hwconfig_int == 1) begin
@@ -4337,7 +4932,7 @@ module RB36_INTERNAL_VLOG (
                   end
 
                   if ((ram_mode_int == 0 && en_ecc_read_int == 1) && ((time_port_a > time_port_b) || (rising_clka && rising_clkb)))
-            task_col_ecc_read (doa_buf, dopa_buf, ADDRA);
+                    task_col_ecc_read(doa_buf, dopa_buf, ADDRA);
 
                 end // if (ADDRA[15:col_addr_lsb] === ADDRB[15:col_addr_lsb])
          else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct[15:col_addr_lsb] === ox_addrb_reconstruct[15:col_addr_lsb])) begin
@@ -4378,7 +4973,7 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && ENB === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, DIB, DIPB);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, DIB, DIPB);
                     eccparity_out = dip_ecc_col;
                     task_ox_wr_ram_b(2'b10, WEA, WEB, dib_ecc_col, dip_ecc_col, ADDRA, ADDRB);
 
@@ -4386,9 +4981,9 @@ module RB36_INTERNAL_VLOG (
 
 
                   if (wr_mode_a != 2'b01)
-            task_col_rd_ram_a (2'b11, WEB, WEA, ADDRA, doa_buf, dopa_buf);
+                    task_col_rd_ram_a(2'b11, WEB, WEA, ADDRA, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, WEA, WEB, ADDRB, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, WEA, WEB, ADDRB, dob_buf, dopb_buf);
 
 
                   if (rdaddr_collision_hwconfig_int == 1) begin
@@ -4397,11 +4992,11 @@ module RB36_INTERNAL_VLOG (
                   end
 
                   if ((ram_mode_int == 0 && en_ecc_read_int == 1) && ((time_port_a > time_port_b) || (rising_clka && rising_clkb)))
-            task_col_ecc_read (doa_buf, dopa_buf, ADDRA);
+                    task_col_ecc_read(doa_buf, dopa_buf, ADDRA);
 
                 end // if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct[15:col_addr_lsb] === ox_addrb_reconstruct[15:col_addr_lsb]))
          else
-             viol_time = 0;
+                  viol_time = 0;
 
 
               end // if (rising_clka && rising_clkb)
@@ -4441,19 +5036,19 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && enb_reg === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, dib_reg, dipb_reg);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, dib_reg, dipb_reg);
                     eccparity_out = dip_ecc_col;
-                    task_col_wr_ram_b (2'b10, WEA, web_reg, dib_ecc_col, dip_ecc_col, ADDRA, addrb_reg);
+                    task_col_wr_ram_b(2'b10, WEA, web_reg, dib_ecc_col, dip_ecc_col, ADDRA,
+                                      addrb_reg);
 
-                  end
-             else
-            task_col_wr_ram_b (2'b10, WEA, web_reg, dib_ecc_col, dipb_reg, ADDRA, addrb_reg);
+                  end else
+                    task_col_wr_ram_b(2'b10, WEA, web_reg, dib_ecc_col, dipb_reg, ADDRA, addrb_reg);
 
 
                   if (wr_mode_a != 2'b01)
-            task_col_rd_ram_a (2'b11, web_reg, WEA, ADDRA, doa_buf, dopa_buf);
+                    task_col_rd_ram_a(2'b11, web_reg, WEA, ADDRA, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, WEA, web_reg, addrb_reg, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, WEA, web_reg, addrb_reg, dob_buf, dopb_buf);
 
 
                   if (wr_mode_a == 2'b01 || wr_mode_b == 2'b01) begin
@@ -4463,12 +5058,12 @@ module RB36_INTERNAL_VLOG (
 
 
                   if (ram_mode_int == 0 && en_ecc_read_int == 1)
-            task_col_ecc_read (doa_buf, dopa_buf, ADDRA);
+                    task_col_ecc_read(doa_buf, dopa_buf, ADDRA);
 
                 end // if (ADDRA[15:col_addr_lsb] === addrb_reg[15:col_addr_lsb])
          else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct[15:col_addr_lsb] === ox_addrb_reconstruct_reg[15:col_addr_lsb])) begin
 
-                  viol_type = 2'b10;
+                  viol_type  = 2'b10;
                   chk_ox_msg = 1;
 
                   task_rd_ram_a(ADDRA, doa_buf, dopa_buf);
@@ -4497,19 +5092,19 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && enb_reg === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, dib_reg, dipb_reg);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, dib_reg, dipb_reg);
                     eccparity_out = dip_ecc_col;
-                    task_ox_wr_ram_b (2'b10, WEA, web_reg, dib_ecc_col, dip_ecc_col, ADDRA, addrb_reg);
+                    task_ox_wr_ram_b(2'b10, WEA, web_reg, dib_ecc_col, dip_ecc_col, ADDRA,
+                                     addrb_reg);
 
-                  end
-             else
-            task_ox_wr_ram_b (2'b10, WEA, web_reg, dib_ecc_col, dipb_reg, ADDRA, addrb_reg);
+                  end else
+                    task_ox_wr_ram_b(2'b10, WEA, web_reg, dib_ecc_col, dipb_reg, ADDRA, addrb_reg);
 
 
                   if (wr_mode_a != 2'b01)
-            task_col_rd_ram_a (2'b11, web_reg, WEA, ADDRA, doa_buf, dopa_buf);
+                    task_col_rd_ram_a(2'b11, web_reg, WEA, ADDRA, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, WEA, web_reg, addrb_reg, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, WEA, web_reg, addrb_reg, dob_buf, dopb_buf);
 
 
                   task_col_wr_ram_a(2'b10, web_reg, 8'hff, di_x, di_x[7:0], addrb_reg, ADDRA);
@@ -4517,12 +5112,12 @@ module RB36_INTERNAL_VLOG (
 
 
                   if (ram_mode_int == 0 && en_ecc_read_int == 1)
-            task_col_ecc_read (doa_buf, dopa_buf, ADDRA);
+                    task_col_ecc_read(doa_buf, dopa_buf, ADDRA);
 
 
                 end // if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct[15:col_addr_lsb] === ox_addrb_reconstruct_reg[15:col_addr_lsb]))
          else
-             viol_time = 0;
+                  viol_time = 0;
 
 
               end // if (rising_clka && !rising_clkb)
@@ -4563,19 +5158,19 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && ENB === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, DIB, DIPB);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, DIB, DIPB);
                     eccparity_out = dip_ecc_col;
-                    task_col_wr_ram_b (2'b10, wea_reg, WEB, dib_ecc_col, dip_ecc_col, addra_reg, ADDRB);
+                    task_col_wr_ram_b(2'b10, wea_reg, WEB, dib_ecc_col, dip_ecc_col, addra_reg,
+                                      ADDRB);
 
-                  end
-             else
-            task_col_wr_ram_b (2'b10, wea_reg, WEB, dib_ecc_col, DIPB, addra_reg, ADDRB);
+                  end else
+                    task_col_wr_ram_b(2'b10, wea_reg, WEB, dib_ecc_col, DIPB, addra_reg, ADDRB);
 
 
-                  if (wr_mode_a != 2'b01)             
-            task_col_rd_ram_a (2'b11, WEB, wea_reg, addra_reg, doa_buf, dopa_buf);
+                  if (wr_mode_a != 2'b01)
+                    task_col_rd_ram_a(2'b11, WEB, wea_reg, addra_reg, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, wea_reg, WEB, ADDRB, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, wea_reg, WEB, ADDRB, dob_buf, dopb_buf);
 
 
                   if (wr_mode_a == 2'b01 || wr_mode_b == 2'b01) begin
@@ -4585,12 +5180,12 @@ module RB36_INTERNAL_VLOG (
 
 
                   if (ram_mode_int == 0 && en_ecc_read_int == 1)
-            task_col_ecc_read (doa_buf, dopa_buf, addra_reg);
+                    task_col_ecc_read(doa_buf, dopa_buf, addra_reg);
 
                 end // if (addra_reg[15:col_addr_lsb] === ADDRB[15:col_addr_lsb])
          else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct_reg[15:col_addr_lsb] === ox_addrb_reconstruct[15:col_addr_lsb])) begin
 
-                  viol_type = 2'b11;
+                  viol_type  = 2'b11;
                   chk_ox_msg = 1;
 
                   task_rd_ram_b(ADDRB, dob_buf, dopb_buf);
@@ -4620,19 +5215,19 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && ENB === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, DIB, DIPB);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, DIB, DIPB);
                     eccparity_out = dip_ecc_col;
-                    task_ox_wr_ram_b (2'b10, wea_reg, WEB, dib_ecc_col, dip_ecc_col, addra_reg, ADDRB);
+                    task_ox_wr_ram_b(2'b10, wea_reg, WEB, dib_ecc_col, dip_ecc_col, addra_reg,
+                                     ADDRB);
 
-                  end
-             else
-            task_ox_wr_ram_b (2'b10, wea_reg, WEB, dib_ecc_col, DIPB, addra_reg, ADDRB);
+                  end else
+                    task_ox_wr_ram_b(2'b10, wea_reg, WEB, dib_ecc_col, DIPB, addra_reg, ADDRB);
 
 
                   if (wr_mode_a != 2'b01)
-            task_col_rd_ram_a (2'b11, WEB, wea_reg, addra_reg, doa_buf, dopa_buf);
+                    task_col_rd_ram_a(2'b11, WEB, wea_reg, addra_reg, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, wea_reg, WEB, ADDRB, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, wea_reg, WEB, ADDRB, dob_buf, dopb_buf);
 
 
                   task_col_wr_ram_a(2'b10, WEB, 8'hff, di_x, di_x[7:0], ADDRB, addra_reg);
@@ -4640,11 +5235,11 @@ module RB36_INTERNAL_VLOG (
 
 
                   if (ram_mode_int == 0 && en_ecc_read_int == 1)
-            task_col_ecc_read (doa_buf, dopa_buf, addra_reg);
+                    task_col_ecc_read(doa_buf, dopa_buf, addra_reg);
 
                 end // if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct_reg[15:col_addr_lsb] === ox_addrb_reconstruct[15:col_addr_lsb]))
          else
-             viol_time = 0;
+                  viol_time = 0;
 
 
               end  // if (!rising_clka && rising_clkb)
@@ -4663,11 +5258,11 @@ module RB36_INTERNAL_VLOG (
                   chk_col_same_clk = 1;
 
                   if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (time_port_a > time_port_b)) begin
-                    doa_buf = dob_buf;
+                    doa_buf  = dob_buf;
                     dopa_buf = dopb_buf;
                   end
              else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (time_port_b > time_port_a)) begin
-                    dob_buf = doa_buf;
+                    dob_buf  = doa_buf;
                     dopb_buf = dopa_buf;
                   end else begin
                     task_rd_ram_a(ADDRA, doa_buf, dopa_buf);
@@ -4701,7 +5296,7 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && ENB === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, DIB, DIPB);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, DIB, DIPB);
                     eccparity_out = dip_ecc_col;
                     task_col_wr_ram_b(2'b10, WEA, WEB, dib_ecc_col, dip_ecc_col, ADDRA, ADDRB);
 
@@ -4709,17 +5304,20 @@ module RB36_INTERNAL_VLOG (
 
 
                   if (wr_mode_a != 2'b01)
-            task_col_rd_ram_a (2'b11, WEB, WEA, ADDRA, doa_buf, dopa_buf);
+                    task_col_rd_ram_a(2'b11, WEB, WEA, ADDRA, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, WEA, WEB, ADDRB, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, WEA, WEB, ADDRB, dob_buf, dopb_buf);
 
                   if ((ram_mode_int == 0 && en_ecc_read_int == 1) && ((time_port_a > time_port_b) || (rising_clka && rising_clkb)))
-                task_col_ecc_read (doa_buf, dopa_buf, ADDRA);
+                    task_col_ecc_read(doa_buf, dopa_buf, ADDRA);
 
                 end // if (ADDRA[15:col_addr_lsb] === ADDRB[15:col_addr_lsb])
          else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct[15:col_addr_lsb] === ox_addrb_reconstruct[15:col_addr_lsb]) && rdaddr_collision_hwconfig_int == 1) begin
 
-                  $display ("Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read/write/write was performed on address %h (hex) of port A while a write/read/write was requested to the overlapped address %h (hex) of port B with RDADDR_COLLISION_HWCONFIG set to %s and WRITE_MODE_A set %s and WRITE_MODE_B set to %s .  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.  To correct this issue, either evaluate changing RDADDR_COLLISION_HWCONFIG to DELAYED_WRITE, change both WITRE_MODEs to something other than READ_FIRST or control addressing to not incur address overlap.", $time/1000.0, ADDRA, ADDRB, RDADDR_COLLISION_HWCONFIG, WRITE_MODE_A, WRITE_MODE_B );
+                  $display(
+                      "Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read/write/write was performed on address %h (hex) of port A while a write/read/write was requested to the overlapped address %h (hex) of port B with RDADDR_COLLISION_HWCONFIG set to %s and WRITE_MODE_A set %s and WRITE_MODE_B set to %s .  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.  To correct this issue, either evaluate changing RDADDR_COLLISION_HWCONFIG to DELAYED_WRITE, change both WITRE_MODEs to something other than READ_FIRST or control addressing to not incur address overlap.",
+                      $time / 1000.0, ADDRA, ADDRB, RDADDR_COLLISION_HWCONFIG, WRITE_MODE_A,
+                      WRITE_MODE_B);
 
                   $finish;
 
@@ -4763,29 +5361,32 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && enb_reg === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, dib_reg, dipb_reg);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, dib_reg, dipb_reg);
                     eccparity_out = dip_ecc_col;
-                    task_col_wr_ram_b (2'b10, WEA, web_reg, dib_ecc_col, dip_ecc_col, ADDRA, addrb_reg);
+                    task_col_wr_ram_b(2'b10, WEA, web_reg, dib_ecc_col, dip_ecc_col, ADDRA,
+                                      addrb_reg);
 
-                  end
-             else
-            task_col_wr_ram_b (2'b10, WEA, web_reg, dib_ecc_col, dipb_reg, ADDRA, addrb_reg);
+                  end else
+                    task_col_wr_ram_b(2'b10, WEA, web_reg, dib_ecc_col, dipb_reg, ADDRA, addrb_reg);
 
 
                   if (wr_mode_a != 2'b01)
-            task_col_rd_ram_a (2'b11, web_reg, WEA, ADDRA, doa_buf, dopa_buf);
+                    task_col_rd_ram_a(2'b11, web_reg, WEA, ADDRA, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, WEA, web_reg, addrb_reg, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, WEA, web_reg, addrb_reg, dob_buf, dopb_buf);
 
 
                   if (ram_mode_int == 0 && en_ecc_read_int == 1)
-            task_col_ecc_read (doa_buf, dopa_buf, ADDRA);
+                    task_col_ecc_read(doa_buf, dopa_buf, ADDRA);
 
 
                 end // if (ADDRA[15:col_addr_lsb] === addrb_reg[15:col_addr_lsb])
          else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct[15:col_addr_lsb] === ox_addrb_reconstruct_reg[15:col_addr_lsb]) && rdaddr_collision_hwconfig_int == 1) begin
 
-                  $display ("Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read/write/write was performed on address %h (hex) of port A while a write/read/write was requested to the overlapped address %h (hex) of port B with RDADDR_COLLISION_HWCONFIG set to %s and WRITE_MODE_A set %s and WRITE_MODE_B set to %s .  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.  To correct this issue, either evaluate changing RDADDR_COLLISION_HWCONFIG to DELAYED_WRITE, change both WITRE_MODEs to something other than READ_FIRST or control addressing to not incur address overlap.", $time/1000.0, ADDRA, addrb_reg, RDADDR_COLLISION_HWCONFIG, WRITE_MODE_A, WRITE_MODE_B );
+                  $display(
+                      "Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read/write/write was performed on address %h (hex) of port A while a write/read/write was requested to the overlapped address %h (hex) of port B with RDADDR_COLLISION_HWCONFIG set to %s and WRITE_MODE_A set %s and WRITE_MODE_B set to %s .  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.  To correct this issue, either evaluate changing RDADDR_COLLISION_HWCONFIG to DELAYED_WRITE, change both WITRE_MODEs to something other than READ_FIRST or control addressing to not incur address overlap.",
+                      $time / 1000.0, ADDRA, addrb_reg, RDADDR_COLLISION_HWCONFIG, WRITE_MODE_A,
+                      WRITE_MODE_B);
 
                   $finish;
 
@@ -4830,29 +5431,32 @@ module RB36_INTERNAL_VLOG (
 
                   if (ram_mode_int == 0 && en_ecc_write_int == 1 && ENB === 1'b1) begin
 
-                    dip_ecc_col = fn_dip_ecc(1'b1, DIB, DIPB);
+                    dip_ecc_col   = fn_dip_ecc(1'b1, DIB, DIPB);
                     eccparity_out = dip_ecc_col;
-                    task_col_wr_ram_b (2'b10, wea_reg, WEB, dib_ecc_col, dip_ecc_col, addra_reg, ADDRB);
+                    task_col_wr_ram_b(2'b10, wea_reg, WEB, dib_ecc_col, dip_ecc_col, addra_reg,
+                                      ADDRB);
 
-                  end
-             else
-            task_col_wr_ram_b (2'b10, wea_reg, WEB, dib_ecc_col, DIPB, addra_reg, ADDRB);
+                  end else
+                    task_col_wr_ram_b(2'b10, wea_reg, WEB, dib_ecc_col, DIPB, addra_reg, ADDRB);
 
 
-                  if (wr_mode_a != 2'b01)             
-            task_col_rd_ram_a (2'b11, WEB, wea_reg, addra_reg, doa_buf, dopa_buf);
+                  if (wr_mode_a != 2'b01)
+                    task_col_rd_ram_a(2'b11, WEB, wea_reg, addra_reg, doa_buf, dopa_buf);
                   if (wr_mode_b != 2'b01)
-            task_col_rd_ram_b (2'b11, wea_reg, WEB, ADDRB, dob_buf, dopb_buf);
+                    task_col_rd_ram_b(2'b11, wea_reg, WEB, ADDRB, dob_buf, dopb_buf);
 
 
                   if (ram_mode_int == 0 && en_ecc_read_int == 1)
-            task_col_ecc_read (doa_buf, dopa_buf, addra_reg);
+                    task_col_ecc_read(doa_buf, dopa_buf, addra_reg);
 
 
                 end // if (addra_reg[15:col_addr_lsb] === ADDRB[15:col_addr_lsb])
          else if ((wr_mode_a == 2'b01 || wr_mode_b == 2'b01) && (ox_addra_reconstruct_reg[15:col_addr_lsb] === ox_addrb_reconstruct[15:col_addr_lsb]) && rdaddr_collision_hwconfig_int == 1) begin
 
-                  $display ("Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read/write/write was performed on address %h (hex) of port A while a write/read/write was requested to the overlapped address %h (hex) of port B with RDADDR_COLLISION_HWCONFIG set to %s and WRITE_MODE_A set %s and WRITE_MODE_B set to %s .  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.  To correct this issue, either evaluate changing RDADDR_COLLISION_HWCONFIG to DELAYED_WRITE, change both WITRE_MODEs to something other than READ_FIRST or control addressing to not incur address overlap.", $time/1000.0, addra_reg, ADDRB, RDADDR_COLLISION_HWCONFIG, WRITE_MODE_A, WRITE_MODE_B );
+                  $display(
+                      "Address Overlap Error on RAMB36E1 : %m at simulation time %.3f ns.\nA read/write/write was performed on address %h (hex) of port A while a write/read/write was requested to the overlapped address %h (hex) of port B with RDADDR_COLLISION_HWCONFIG set to %s and WRITE_MODE_A set %s and WRITE_MODE_B set to %s .  The write will be unsuccessful and the contents of the RAM at both address locations of port A and B became unknown.  To correct this issue, either evaluate changing RDADDR_COLLISION_HWCONFIG to DELAYED_WRITE, change both WITRE_MODEs to something other than READ_FIRST or control addressing to not incur address overlap.",
+                      $time / 1000.0, addra_reg, ADDRB, RDADDR_COLLISION_HWCONFIG, WRITE_MODE_A,
+                      WRITE_MODE_B);
 
                   $finish;
 
@@ -4884,7 +5488,8 @@ module RB36_INTERNAL_VLOG (
 
       // DRC
       if (RSTRAMA === 1 && ram_mode_int == 0 && (en_ecc_write_int == 1 || en_ecc_read_int == 1))
-      $display("DRC Warning : SET/RESET (RSTRAM) is not supported in ECC mode on RAMB36E1 instance %m.");
+        $display(
+            "DRC Warning : SET/RESET (RSTRAM) is not supported in ECC mode on RAMB36E1 instance %m.");
 
       // end DRC
 
@@ -4894,10 +5499,8 @@ module RB36_INTERNAL_VLOG (
 
 
       if (ENA && (wr_mode_a != 2'b10 || WEA[0] == 0 || RSTRAMA == 1'b1))
-      if (cascade_a[1])
-          addra_in_15_reg = ~ADDRA[15];
-      else
-          addra_in_15_reg = ADDRA[15];
+        if (cascade_a[1]) addra_in_15_reg = ~ADDRA[15];
+        else addra_in_15_reg = ADDRA[15];
 
 
       if (GSR == 1'b0 && ENA == 1'b1 && (cascade_a == 2'b00 || (addra_in_15_reg_bram == 1'b0 && cascade_a != 2'b00))) begin
@@ -4933,20 +5536,50 @@ module RB36_INTERNAL_VLOG (
 
                 if (syndrome[7]) begin  // dectect single bit error
 
-                  ecc_bit_position = {doa_buf[63:57], dopa_buf[6], doa_buf[56:26], dopa_buf[5], doa_buf[25:11], dopa_buf[4], doa_buf[10:4], dopa_buf[3], doa_buf[3:1], dopa_buf[2], doa_buf[0], dopa_buf[1:0], dopa_buf[7]};
+                  ecc_bit_position = {
+                    doa_buf[63:57],
+                    dopa_buf[6],
+                    doa_buf[56:26],
+                    dopa_buf[5],
+                    doa_buf[25:11],
+                    dopa_buf[4],
+                    doa_buf[10:4],
+                    dopa_buf[3],
+                    doa_buf[3:1],
+                    dopa_buf[2],
+                    doa_buf[0],
+                    dopa_buf[1:0],
+                    dopa_buf[7]
+                  };
 
                   if (syndrome[6:0] > 71) begin
-                    $display ("DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
+                    $display(
+                        "DRC Error : Simulation halted due Corrupted DIP. To correct this problem, make sure that reliable data is fed to the DIP. The correct Parity must be generated by a Hamming code encoder or encoder in the Block RAM. The output from the model is unreliable if there are more than 2 bit errors. The model doesn't warn if there is sporadic input of more than 2 bit errors due to the limitation in Hamming code.");
                     $finish;
                   end
 
                   ecc_bit_position[syndrome[6:0]] = ~ecc_bit_position[syndrome[6:0]]; // correct single bit error in the output 
 
-                  dia_in_ecc_corrected = {ecc_bit_position[71:65], ecc_bit_position[63:33], ecc_bit_position[31:17], ecc_bit_position[15:9], ecc_bit_position[7:5], ecc_bit_position[3]}; // correct single bit error in the memory
+                  dia_in_ecc_corrected = {
+                    ecc_bit_position[71:65],
+                    ecc_bit_position[63:33],
+                    ecc_bit_position[31:17],
+                    ecc_bit_position[15:9],
+                    ecc_bit_position[7:5],
+                    ecc_bit_position[3]
+                  };  // correct single bit error in the memory
 
                   doa_buf = dia_in_ecc_corrected;
 
-                  dipa_in_ecc_corrected = {ecc_bit_position[0], ecc_bit_position[64], ecc_bit_position[32], ecc_bit_position[16], ecc_bit_position[8], ecc_bit_position[4], ecc_bit_position[2:1]}; // correct single bit error in the parity memory
+                  dipa_in_ecc_corrected = {
+                    ecc_bit_position[0],
+                    ecc_bit_position[64],
+                    ecc_bit_position[32],
+                    ecc_bit_position[16],
+                    ecc_bit_position[8],
+                    ecc_bit_position[4],
+                    ecc_bit_position[2:1]
+                  };  // correct single bit error in the parity memory
 
                   dopa_buf = dipa_in_ecc_corrected;
 
@@ -4978,7 +5611,7 @@ module RB36_INTERNAL_VLOG (
 
           // Read if not read first
           if (wr_mode_a != 2'b01 && !(ram_mode_int == 0 && en_ecc_read_int == 1))
-             task_rd_ram_a (ADDRA, doa_buf, dopa_buf);
+            task_rd_ram_a(ADDRA, doa_buf, dopa_buf);
 
         end  // if (viol_time == 0)
 
@@ -4993,15 +5626,18 @@ module RB36_INTERNAL_VLOG (
 
       // DRC
       if (RSTRAMB === 1 && ram_mode_int == 0 && (en_ecc_write_int == 1 || en_ecc_read_int == 1))
-      $display("DRC Warning : SET/RESET (RSTRAM) is not supported in ECC mode on RAMB36E1 instance %m.");
+        $display(
+            "DRC Warning : SET/RESET (RSTRAM) is not supported in ECC mode on RAMB36E1 instance %m.");
 
       if (!(en_ecc_write_int == 1 || en_ecc_read_int == 1)) begin
 
         if (injectsbiterr_in === 1)
-          $display("DRC Warning : INJECTSBITERR is not supported when neither EN_ECC_WRITE nor EN_ECC_READ = TRUE on RAMB36E1 instance %m.");
+          $display(
+              "DRC Warning : INJECTSBITERR is not supported when neither EN_ECC_WRITE nor EN_ECC_READ = TRUE on RAMB36E1 instance %m.");
 
         if (injectdbiterr_in === 1)
-          $display("DRC Warning : INJECTDBITERR is not supported when neither EN_ECC_WRITE nor EN_ECC_READ = TRUE on RAMB36E1 instance %m.");
+          $display(
+              "DRC Warning : INJECTDBITERR is not supported when neither EN_ECC_WRITE nor EN_ECC_READ = TRUE on RAMB36E1 instance %m.");
 
       end
       // End DRC
@@ -5011,10 +5647,8 @@ module RB36_INTERNAL_VLOG (
 
 
       if (ENB && (wr_mode_b != 2'b10 || WEB[0] == 0 || RSTRAMB == 1'b1))
-      if (cascade_b[1])
-          addrb_in_15_reg = ~ADDRB[15];
-      else
-          addrb_in_15_reg = ADDRB[15];
+        if (cascade_b[1]) addrb_in_15_reg = ~ADDRB[15];
+        else addrb_in_15_reg = ADDRB[15];
 
 
       if (GSR == 1'b0 && ENB == 1'b1 && (cascade_b == 2'b00 || (addrb_in_15_reg_bram == 1'b0 && cascade_b != 2'b00))) begin
@@ -5201,8 +5835,8 @@ module RB36_INTERNAL_VLOG (
       end else if (GSR == 1'b0) begin
 
         if (REGCEA === 1'b1) begin
-          dbiterr_outreg <= dbiterr_out;
-          sbiterr_outreg <= sbiterr_out;
+          dbiterr_outreg   <= dbiterr_out;
+          sbiterr_outreg   <= sbiterr_out;
           rdaddrecc_outreg <= rdaddrecc_out;
         end
 
@@ -5276,7 +5910,9 @@ module RB36_INTERNAL_VLOG (
 
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute DOA_REG on RAMB36E1 instance %m is set to %2d.  Legal values for this attribute are 0 or 1.", DOA_REG);
+        $display(
+            "Attribute Syntax Error : The attribute DOA_REG on RAMB36E1 instance %m is set to %2d.  Legal values for this attribute are 0 or 1.",
+            DOA_REG);
         $finish;
       end
 
@@ -5360,7 +5996,9 @@ module RB36_INTERNAL_VLOG (
 
       end
       default: begin
-        $display("Attribute Syntax Error : The attribute DOB_REG on RAMB36E1 instance %m is set to %2d.  Legal values for this attribute are 0 or 1.", DOB_REG);
+        $display(
+            "Attribute Syntax Error : The attribute DOB_REG on RAMB36E1 instance %m is set to %2d.  Legal values for this attribute are 0 or 1.",
+            DOB_REG);
         $finish;
       end
 

@@ -326,7 +326,9 @@ module DSP_PREADD_DATA #(
 
 `ifndef XIL_TIMING
   initial begin
-    $display("Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m", MODULE_NAME);
+    $display(
+        "Error: [Unisim %s-100] SIMPRIM primitive is not intended for direct instantiation in RTL or functional netlists. This primitive is only available in the SIMPRIM library for implemented netlists, please ensure you are pointing to the correct library. Instance %m",
+        MODULE_NAME);
     #1 $finish;
   end
 `endif
@@ -335,32 +337,44 @@ module DSP_PREADD_DATA #(
   always @(trig_attr) begin
     #1;
     if ((attr_test == 1'b1) || ((ADREG_REG != 1) && (ADREG_REG != 0))) begin
-      $display("Error: [Unisim %s-101] ADREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, ADREG_REG);
+      $display(
+          "Error: [Unisim %s-101] ADREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, ADREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((AMULTSEL_REG != "A") && (AMULTSEL_REG != "AD"))) begin
-      $display("Error: [Unisim %s-102] AMULTSEL attribute is set to %s.  Legal values for this attribute are A or AD. Instance: %m", MODULE_NAME, AMULTSEL_REG);
+      $display(
+          "Error: [Unisim %s-102] AMULTSEL attribute is set to %s.  Legal values for this attribute are A or AD. Instance: %m",
+          MODULE_NAME, AMULTSEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((BMULTSEL_REG != "B") && (BMULTSEL_REG != "AD"))) begin
-      $display("Error: [Unisim %s-103] BMULTSEL attribute is set to %s.  Legal values for this attribute are B or AD. Instance: %m", MODULE_NAME, BMULTSEL_REG);
+      $display(
+          "Error: [Unisim %s-103] BMULTSEL attribute is set to %s.  Legal values for this attribute are B or AD. Instance: %m",
+          MODULE_NAME, BMULTSEL_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((DREG_REG != 1) && (DREG_REG != 0))) begin
-      $display("Error: [Unisim %s-104] DREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, DREG_REG);
+      $display(
+          "Error: [Unisim %s-104] DREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, DREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((INMODEREG_REG != 1) && (INMODEREG_REG != 0))) begin
-      $display("Error: [Unisim %s-105] INMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m", MODULE_NAME, INMODEREG_REG);
+      $display(
+          "Error: [Unisim %s-105] INMODEREG attribute is set to %d.  Legal values for this attribute are 1 or 0. Instance: %m",
+          MODULE_NAME, INMODEREG_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) || ((PREADDINSEL_REG != "A") && (PREADDINSEL_REG != "B"))) begin
-      $display("Error: [Unisim %s-110] PREADDINSEL attribute is set to %s.  Legal values for this attribute are A or B. Instance: %m", MODULE_NAME, PREADDINSEL_REG);
+      $display(
+          "Error: [Unisim %s-110] PREADDINSEL attribute is set to %s.  Legal values for this attribute are A or B. Instance: %m",
+          MODULE_NAME, PREADDINSEL_REG);
       attr_err = 1'b1;
     end
 
@@ -368,7 +382,9 @@ module DSP_PREADD_DATA #(
         ((USE_MULT_REG != "MULTIPLY") &&
          (USE_MULT_REG != "DYNAMIC") &&
          (USE_MULT_REG != "NONE"))) begin
-      $display("Error: [Unisim %s-111] USE_MULT attribute is set to %s.  Legal values for this attribute are MULTIPLY, DYNAMIC or NONE. Instance: %m", MODULE_NAME, USE_MULT_REG);
+      $display(
+          "Error: [Unisim %s-111] USE_MULT attribute is set to %s.  Legal values for this attribute are MULTIPLY, DYNAMIC or NONE. Instance: %m",
+          MODULE_NAME, USE_MULT_REG);
       attr_err = 1'b1;
     end
 
@@ -396,9 +412,9 @@ module DSP_PREADD_DATA #(
   // initialize regs
 `ifndef XIL_XECLIB
   initial begin
-    INMODE_reg = 5'b0;
+    INMODE_reg  = 5'b0;
     AD_DATA_reg = {D_WIDTH{1'b0}};
-    D_DATA_reg = {D_WIDTH{1'b0}};
+    D_DATA_reg  = {D_WIDTH{1'b0}};
   end
 `endif
 

@@ -65,7 +65,9 @@ module OBUFDS (
 
       "LOW", "NORMAL", "DONT_CARE": ;
       default: begin
-        $display("Attribute Syntax Error : The attribute CAPACITANCE on OBUFDS instance %m is set to %s.  Legal values for this attribute are DONT_CARE, LOW or NORMAL.", CAPACITANCE);
+        $display(
+            "Attribute Syntax Error : The attribute CAPACITANCE on OBUFDS instance %m is set to %s.  Legal values for this attribute are DONT_CARE, LOW or NORMAL.",
+            CAPACITANCE);
         #1 $finish;
       end
 

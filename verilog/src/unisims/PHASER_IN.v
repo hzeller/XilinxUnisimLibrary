@@ -151,14 +151,14 @@ module PHASER_IN #(
     BURST_MODE_BINARY <= 1'b0;
 
     case (CLKOUT_DIV)
-      4: CLKOUT_DIV_BINARY <= 4'b0010;
-      2: CLKOUT_DIV_BINARY <= 4'b0000;
-      3: CLKOUT_DIV_BINARY <= 4'b0001;
-      5: CLKOUT_DIV_BINARY <= 4'b0011;
-      6: CLKOUT_DIV_BINARY <= 4'b0100;
-      7: CLKOUT_DIV_BINARY <= 4'b0101;
-      8: CLKOUT_DIV_BINARY <= 4'b0110;
-      9: CLKOUT_DIV_BINARY <= 4'b0111;
+      4:  CLKOUT_DIV_BINARY <= 4'b0010;
+      2:  CLKOUT_DIV_BINARY <= 4'b0000;
+      3:  CLKOUT_DIV_BINARY <= 4'b0001;
+      5:  CLKOUT_DIV_BINARY <= 4'b0011;
+      6:  CLKOUT_DIV_BINARY <= 4'b0100;
+      7:  CLKOUT_DIV_BINARY <= 4'b0101;
+      8:  CLKOUT_DIV_BINARY <= 4'b0110;
+      9:  CLKOUT_DIV_BINARY <= 4'b0111;
       10: CLKOUT_DIV_BINARY <= 4'b1000;
       11: CLKOUT_DIV_BINARY <= 4'b1001;
       12: CLKOUT_DIV_BINARY <= 4'b1010;
@@ -167,7 +167,9 @@ module PHASER_IN #(
       15: CLKOUT_DIV_BINARY <= 4'b1101;
       16: CLKOUT_DIV_BINARY <= 4'b1110;
       default: begin
-        $display("Attribute Syntax Error : The Attribute CLKOUT_DIV on %s instance %m is set to %d.  Legal values for this attribute are 2 to 16.", MODULE_NAME, CLKOUT_DIV);
+        $display(
+            "Attribute Syntax Error : The Attribute CLKOUT_DIV on %s instance %m is set to %d.  Legal values for this attribute are 2 to 16.",
+            MODULE_NAME, CLKOUT_DIV);
         #1 $finish;
       end
     endcase
@@ -176,18 +178,22 @@ module PHASER_IN #(
 
     case (DQS_BIAS_MODE)
       "FALSE": DQS_BIAS_MODE_BINARY <= 1'b0;
-      "TRUE": DQS_BIAS_MODE_BINARY <= 1'b1;
+      "TRUE":  DQS_BIAS_MODE_BINARY <= 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute DQS_BIAS_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, DQS_BIAS_MODE);
+        $display(
+            "Attribute Syntax Error : The Attribute DQS_BIAS_MODE on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+            MODULE_NAME, DQS_BIAS_MODE);
         #1 $finish;
       end
     endcase
 
     case (EN_ISERDES_RST)
       "FALSE": EN_ISERDES_RST_BINARY <= 1'b0;
-      "TRUE": EN_ISERDES_RST_BINARY <= 1'b1;
+      "TRUE":  EN_ISERDES_RST_BINARY <= 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute EN_ISERDES_RST on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, EN_ISERDES_RST);
+        $display(
+            "Attribute Syntax Error : The Attribute EN_ISERDES_RST on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+            MODULE_NAME, EN_ISERDES_RST);
         #1 $finish;
       end
     endcase
@@ -198,7 +204,9 @@ module PHASER_IN #(
       "NONE": FREQ_REF_DIV_BINARY <= 2'b00;
       "DIV2": FREQ_REF_DIV_BINARY <= 2'b01;
       default: begin
-        $display("Attribute Syntax Error : The Attribute FREQ_REF_DIV on %s instance %m is set to %s.  Legal values for this attribute are NONE or DIV2.", MODULE_NAME, FREQ_REF_DIV);
+        $display(
+            "Attribute Syntax Error : The Attribute FREQ_REF_DIV on %s instance %m is set to %s.  Legal values for this attribute are NONE or DIV2.",
+            MODULE_NAME, FREQ_REF_DIV);
         #1 $finish;
       end
     endcase
@@ -215,7 +223,9 @@ module PHASER_IN #(
       "FREQ_REF": OUTPUT_CLK_SRC_BINARY <= 4'b1000;
       "MEM_REF": OUTPUT_CLK_SRC_BINARY <= 4'b0010;
       default: begin
-        $display("Attribute Syntax Error : The Attribute OUTPUT_CLK_SRC on %s instance %m is set to %s.  Legal values for this attribute are PHASE_REF, DELAYED_MEM_REF, DELAYED_PHASE_REF, DELAYED_REF, FREQ_REF or MEM_REF.", MODULE_NAME, OUTPUT_CLK_SRC);
+        $display(
+            "Attribute Syntax Error : The Attribute OUTPUT_CLK_SRC on %s instance %m is set to %s.  Legal values for this attribute are PHASE_REF, DELAYED_MEM_REF, DELAYED_PHASE_REF, DELAYED_REF, FREQ_REF or MEM_REF.",
+            MODULE_NAME, OUTPUT_CLK_SRC);
         #1 $finish;
       end
     endcase
@@ -228,9 +238,11 @@ module PHASER_IN #(
 
     case (SYNC_IN_DIV_RST)
       "FALSE": SYNC_IN_DIV_RST_BINARY <= 1'b0;
-      "TRUE": SYNC_IN_DIV_RST_BINARY <= 1'b1;
+      "TRUE":  SYNC_IN_DIV_RST_BINARY <= 1'b1;
       default: begin
-        $display("Attribute Syntax Error : The Attribute SYNC_IN_DIV_RST on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.", MODULE_NAME, SYNC_IN_DIV_RST);
+        $display(
+            "Attribute Syntax Error : The Attribute SYNC_IN_DIV_RST on %s instance %m is set to %s.  Legal values for this attribute are FALSE or TRUE.",
+            MODULE_NAME, SYNC_IN_DIV_RST);
         #1 $finish;
       end
     endcase
@@ -268,7 +280,9 @@ module PHASER_IN #(
 
     if ((FINE_DELAY >= 0) && (FINE_DELAY <= 63)) FINE_DELAY_BINARY <= FINE_DELAY;
     else begin
-      $display("Attribute Syntax Error : The Attribute FINE_DELAY on %s instance %m is set to %d.  Legal values for this attribute are 0 to 63.", MODULE_NAME, FINE_DELAY);
+      $display(
+          "Attribute Syntax Error : The Attribute FINE_DELAY on %s instance %m is set to %d.  Legal values for this attribute are 0 to 63.",
+          MODULE_NAME, FINE_DELAY);
       #1 $finish;
     end
 
@@ -276,14 +290,18 @@ module PHASER_IN #(
 
     if ((MEMREFCLK_PERIOD > 0.000) && (MEMREFCLK_PERIOD <= 5.000)) MEMREFCLK_PERIOD_BINARY <= 1'b1;
     else begin
-      $display("Attribute Syntax Error : The Attribute MEMREFCLK_PERIOD on %s instance %m is set to %2.3f.  Legal values for this attribute are greater than 0.000 but less than or equal 5.000.", MODULE_NAME, MEMREFCLK_PERIOD);
+      $display(
+          "Attribute Syntax Error : The Attribute MEMREFCLK_PERIOD on %s instance %m is set to %2.3f.  Legal values for this attribute are greater than 0.000 but less than or equal 5.000.",
+          MODULE_NAME, MEMREFCLK_PERIOD);
       #1 $finish;
     end
 
-    if ((PHASEREFCLK_PERIOD >  0.000) && (PHASEREFCLK_PERIOD <= 5.000))
+    if ((PHASEREFCLK_PERIOD > 0.000) && (PHASEREFCLK_PERIOD <= 5.000))
       PHASEREFCLK_PERIOD_BINARY <= 1'b1;
     else begin
-      $display("Attribute Syntax Error : The Attribute PHASEREFCLK_PERIOD on %s instance %m is set to %2.3f.  Legal values for this attribute are greater than 0.000 but less than or equal 5.000.", MODULE_NAME, PHASEREFCLK_PERIOD);
+      $display(
+          "Attribute Syntax Error : The Attribute PHASEREFCLK_PERIOD on %s instance %m is set to %2.3f.  Legal values for this attribute are greater than 0.000 but less than or equal 5.000.",
+          MODULE_NAME, PHASEREFCLK_PERIOD);
       #1 $finish;
     end
 
@@ -292,7 +310,9 @@ module PHASER_IN #(
 
     if ((REFCLK_PERIOD > 0.000) && (REFCLK_PERIOD <= 2.500)) REFCLK_PERIOD_BINARY <= 1'b1;
     else begin
-      $display("Attribute Syntax Error : The Attribute REFCLK_PERIOD on %s instance %m is set to %2.3f.  Legal values for this attribute are greater than 0.000 but less than or equal to 2.500.", MODULE_NAME, REFCLK_PERIOD);
+      $display(
+          "Attribute Syntax Error : The Attribute REFCLK_PERIOD on %s instance %m is set to %2.3f.  Legal values for this attribute are greater than 0.000 but less than or equal to 2.500.",
+          MODULE_NAME, REFCLK_PERIOD);
       #1 $finish;
     end
 
@@ -302,11 +322,13 @@ module PHASER_IN #(
 
     REG_OPT_4_BINARY <= 1'b0;
 
-    RST_SEL_BINARY <= 1'b0;
+    RST_SEL_BINARY   <= 1'b0;
 
     if ((SEL_CLK_OFFSET >= 0) && (SEL_CLK_OFFSET <= 7)) SEL_CLK_OFFSET_BINARY <= 0;  // Model Alert
     else begin
-      $display("Attribute Syntax Error : The Attribute SEL_CLK_OFFSET on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.", MODULE_NAME, SEL_CLK_OFFSET);
+      $display(
+          "Attribute Syntax Error : The Attribute SEL_CLK_OFFSET on %s instance %m is set to %d.  Legal values for this attribute are 0 to 7.",
+          MODULE_NAME, SEL_CLK_OFFSET);
       #1 $finish;
     end
 
@@ -384,8 +406,8 @@ module PHASER_IN #(
   assign #(in_delay) delay_FINEENABLE = FINEENABLE;
   assign #(in_delay) delay_FINEINC = FINEINC;
 `endif
-  assign #(in_delay) delay_FREQREFCLK = FREQREFCLK;
-  assign #(in_delay) delay_MEMREFCLK = MEMREFCLK;
+  assign #(in_delay) delay_FREQREFCLK  = FREQREFCLK;
+  assign #(in_delay) delay_MEMREFCLK   = MEMREFCLK;
   assign #(in_delay) delay_PHASEREFCLK = PHASEREFCLK;
 `ifndef XIL_TIMING
   assign #(in_delay) delay_RANKSEL = RANKSEL;

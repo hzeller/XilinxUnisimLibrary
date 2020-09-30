@@ -63,10 +63,12 @@ module CAPTUREE2 (
 
   initial begin
     case (ONESHOT)
-      "TRUE": ONESHOT_BINARY = 1'b1;
+      "TRUE":  ONESHOT_BINARY = 1'b1;
       "FALSE": ONESHOT_BINARY = 1'b0;
       default: begin
-        $display("Attribute Syntax Error : The Attribute ONESHOT on CAPTUREE2 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.", ONESHOT);
+        $display(
+            "Attribute Syntax Error : The Attribute ONESHOT on CAPTUREE2 instance %m is set to %s.  Legal values for this attribute are TRUE, or FALSE.",
+            ONESHOT);
         #1 $finish;
       end
     endcase

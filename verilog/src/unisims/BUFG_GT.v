@@ -220,14 +220,18 @@ module BUFG_GT #(
          (SIM_DEVICE_REG != "VERSAL_PRIME") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES1") &&
          (SIM_DEVICE_REG != "VERSAL_PRIME_ES2"))) begin
-      $display("Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m", MODULE_NAME, SIM_DEVICE_REG);
+      $display(
+          "Error: [Unisim %s-101] SIM_DEVICE attribute is set to %s.  Legal values for this attribute are ULTRASCALE, ULTRASCALE_PLUS, VERSAL_AI_CORE, VERSAL_AI_CORE_ES1, VERSAL_AI_CORE_ES2, VERSAL_AI_EDGE, VERSAL_AI_EDGE_ES1, VERSAL_AI_EDGE_ES2, VERSAL_AI_RF, VERSAL_AI_RF_ES1, VERSAL_AI_RF_ES2, VERSAL_HBM, VERSAL_HBM_ES1, VERSAL_HBM_ES2, VERSAL_PREMIUM, VERSAL_PREMIUM_ES1, VERSAL_PREMIUM_ES2, VERSAL_PRIME, VERSAL_PRIME_ES1 or VERSAL_PRIME_ES2. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG);
       attr_err = 1'b1;
     end
 
     if ((attr_test == 1'b1) ||
         ((STARTUP_SYNC_REG != "FALSE") &&
          (STARTUP_SYNC_REG != "TRUE"))) begin
-      $display("Error: [Unisim %s-102] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m", MODULE_NAME, STARTUP_SYNC_REG);
+      $display(
+          "Error: [Unisim %s-102] STARTUP_SYNC attribute is set to %s.  Legal values for this attribute are FALSE or TRUE. Instance: %m",
+          MODULE_NAME, STARTUP_SYNC_REG);
       attr_err = 1'b1;
     end
 
@@ -255,7 +259,9 @@ module BUFG_GT #(
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES1    ) &&
          (SIM_DEVICE_BIN != SIM_DEVICE_VERSAL_PRIME_ES2    )) &&
         (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE)) begin
-      $display("Warning: [Unisim %s-200] SIM_DEVICE attribute is set to %s and STARTUP_SYNC is set to %s. STARTUP_SYNC functionality is not supported for this DEVICE. Instance: %m", MODULE_NAME, SIM_DEVICE_REG, STARTUP_SYNC_REG);
+      $display(
+          "Warning: [Unisim %s-200] SIM_DEVICE attribute is set to %s and STARTUP_SYNC is set to %s. STARTUP_SYNC functionality is not supported for this DEVICE. Instance: %m",
+          MODULE_NAME, SIM_DEVICE_REG, STARTUP_SYNC_REG);
       STARTUP_SYNC_BIN = STARTUP_SYNC_FALSE;  //force correct
     end
   end  //always
@@ -311,13 +317,11 @@ module BUFG_GT #(
         (SIM_DEVICE_BIN == SIM_DEVICE_VERSAL_PRIME_ES1    ) ||
         (SIM_DEVICE_BIN == SIM_DEVICE_VERSAL_PRIME_ES2    ))
       sim_device_versal_or_later <= 1'b1;
-    else 
-      sim_device_versal_or_later <= 1'b0;
+    else sim_device_versal_or_later <= 1'b0;
   end  //always
 
   always @(posedge I_in) begin
-    if(I_in==1'b1)
-      gwe_sync <= {gwe_sync[1:0], ~glblGSR};
+    if (I_in == 1'b1) gwe_sync <= {gwe_sync[1:0], ~glblGSR};
   end
 
   assign gsr_muxed_sync = (STARTUP_SYNC_BIN == STARTUP_SYNC_TRUE) ? ~gwe_sync[2] : glblGSR;
@@ -325,35 +329,35 @@ module BUFG_GT #(
   always @(DIV_in) begin
     case (DIV_in)
       3'b000: begin
-        first_toggle_count = 1;
+        first_toggle_count  = 1;
         second_toggle_count = 1;
       end
       3'b001: begin
-        first_toggle_count = 2;
+        first_toggle_count  = 2;
         second_toggle_count = 2;
       end
       3'b010: begin
-        first_toggle_count = 2;
+        first_toggle_count  = 2;
         second_toggle_count = 4;
       end
       3'b011: begin
-        first_toggle_count = 4;
+        first_toggle_count  = 4;
         second_toggle_count = 4;
       end
       3'b100: begin
-        first_toggle_count = 4;
+        first_toggle_count  = 4;
         second_toggle_count = 6;
       end
       3'b101: begin
-        first_toggle_count = 6;
+        first_toggle_count  = 6;
         second_toggle_count = 6;
       end
       3'b110: begin
-        first_toggle_count = 6;
+        first_toggle_count  = 6;
         second_toggle_count = 8;
       end
       3'b111: begin
-        first_toggle_count = 8;
+        first_toggle_count  = 8;
         second_toggle_count = 8;
       end
     endcase  // case(BUFG_GT)
@@ -402,12 +406,9 @@ module BUFG_GT #(
   assign ce_masked = ce_sync | CEMASK_in;
   assign clr_masked = ~clr_sync & clrmask_inv;
 
-  always @(i_inv, gsr_muxed_sync, ce_masked, clr_masked)
-  begin
-    if (gsr_muxed_sync || clr_masked)
-      ce_en <= 1'b0;
-    else if (i_inv)
-      ce_en <= ce_masked;
+  always @(i_inv, gsr_muxed_sync, ce_masked, clr_masked) begin
+    if (gsr_muxed_sync || clr_masked) ce_en <= 1'b0;
+    else if (i_inv) ce_en <= ce_masked;
   end
 
   assign i_ce = I_in & ce_en;
@@ -445,10 +446,8 @@ module BUFG_GT #(
   // assign #1 O =   O_bufg_gt;
 
   always @(*) begin
-    if(sim_device_versal_or_later)
-      O_bufg_gt_dev <= O_bufg_gt;
-    else
-      O_bufg_gt_dev <= #1 O_bufg_gt;
+    if (sim_device_versal_or_later) O_bufg_gt_dev <= O_bufg_gt;
+    else O_bufg_gt_dev <= #1 O_bufg_gt;
   end
 
   assign O = O_bufg_gt_dev;
